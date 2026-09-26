@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Submit a resource through the site
+    url: https://everything-free-by-quilonix.github.io/everything-free/submit/
+    about: The form checks your submission against the same rules and prefills an issue for you.
+  - name: Report a problem with a listing
+    url: https://everything-free-by-quilonix.github.io/everything-free/report/
+    about: The fastest way to get an inaccurate entry corrected.
+  - name: Report a security vulnerability
+    url: https://github.com/everything-free-by-Quilonix/everything-free/security/advisories/new
+    about: Please report security issues privately, not as a public issue.
+  - name: What "free" means here
+    url: https://everything-free-by-quilonix.github.io/everything-free/free-status/
+    about: The free-status definitions, if you are unsure how to classify something.

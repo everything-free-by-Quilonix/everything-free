@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+/*
+ * Everything.Free design system
+ * ---------------------------------------------------------------------------
+ * Dark-first, restrained palette. All colour is expressed through *semantic*
+ * tokens (bg / surface / fg / border / primary / status) rather than raw
+ * values, so light mode is a token swap and components never hardcode a hue.
+ *
+ * Because the product is dark-first, the dark values live on :root. That means
+ * the correct theme renders even before JavaScript runs, and with JS disabled.
+ * The `.light` class opts into light mode; `.dark` is accepted as an explicit
+ * alias so the `dark:` variant below stays usable for rare one-offs.
+ */
+
+@custom-variant dark (&:where(:root:not(.light), .dark, .dark *));
+
+:root,
+.dark {
+  color-scheme: dark;
+
+  /* Surfaces, from furthest back to closest to the reader. */
+  --bg: #0a0a0f;
+  --bg-subtle: #0d0d14;
+  --surface: #12121a;
+  --surface-raised: #181822;
+  --surface-hover: #1e1e2a;
+
+  /* Lines. `strong` is for interactive edges that must read as affordances. */
+  --border: #23232f;
+  --border-strong: #32323f;
+
+  /* Text. `muted` meets AA on --bg; `subtle` is reserved for non-essential
+     metadata that is always duplicated elsewhere or non-informational. */
+  --fg: #f5f5f5;
+  --fg-muted: #a6a6b4;
+  --fg-subtle: #74748a;
+
+  /* Brand. Gold on near-black; text on gold is always near-black. */
+  --primary: #d4af37;
+  --primary-hover: #e0bf51;
+  --primary-fg: #0a0a0f;
+  --primary-soft: rgb(212 175 55 / 0.12);
+  --primary-ring: rgb(212 175 55 / 0.42);
+
+  --secondary: #334155;
+  --secondary-fg: #f5f5f5;
+
+  /* Status. Foreground variants are lightened for contrast on dark surfaces. */
+  --success: #0faf78;
+  --success-fg: #3ddba4;
+  --success-soft: rgb(15 175 120 / 0.14);
+
+  --warning: #d99a00;
+  --warning-fg: #f0b93a;
+  --warning-soft: rgb(217 154 0 / 0.14);
+
+  --danger: #b42318;
+  --danger-fg: #f4796d;
+  --danger-soft: rgb(180 35 24 / 0.16);
+
+  --info: #3b6fd4;
+  --info-fg: #7ea6f0;
+  --info-soft: rgb(59 111 212 / 0.16);
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-raised: 0 8px 24px -8px rgb(0 0 0 / 0.6);
+  --shadow-overlay: 0 24px 64px -16px rgb(0 0 0 / 0.75);
+}
+
+.light {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --bg-subtle: #f7f7f8;
+  --surface: #ffffff;
+  --surface-raised: #f5f5f6;
+  --surface-hover: #eeeef0;
+
+  --border: #e3e3e7;
+  --border-strong: #cdcdd4;
+
+  --fg: #15151c;
+  --fg-muted: #55555f;
+  --fg-subtle: #74748a;
+
+  /* Gold is lowered in light mode so that gold-on-white text clears AA. */
+  --primary: #8a6d12;
+  --primary-hover: #745c0f;
+  --primary-fg: #ffffff;
+  --primary-soft: rgb(138 109 18 / 0.1);
+  --primary-ring: rgb(138 109 18 / 0.4);
+
+  --secondary: #334155;
+  --secondary-fg: #ffffff;
+
+  --success: #0a7d56;
+  --success-fg: #07603f;
+  --success-soft: rgb(10 125 86 / 0.1);
+
+  --warning: #8a6300;
+  --warning-fg: #6d4e00;
+  --warning-soft: rgb(138 99 0 / 0.1);
+
+  --danger: #b42318;
+  --danger-fg: #94170e;
+  --danger-soft: rgb(180 35 24 / 0.08);
+
+  --info: #29509c;
+  --info-fg: #1e3d7d;
+  --info-soft: rgb(41 80 156 / 0.08);
+
+  --shadow-card: 0 1px 2px rgb(16 16 24 / 0.06);
+  --shadow-raised: 0 8px 24px -8px rgb(16 16 24 / 0.12);
+  --shadow-overlay: 0 24px 64px -16px rgb(16 16 24 / 0.2);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-hover: var(--surface-hover);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-soft: var(--primary-soft);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-fg: var(--secondary-fg);
+
+  --color-success: var(--success);
+  --color-success-fg: var(--success-fg);
+  --color-success-soft: var(--success-soft);
+
+  --color-warning: var(--warning);
+  --color-warning-fg: var(--warning-fg);
+  --color-warning-soft: var(--warning-soft);
+
+  --color-danger: var(--danger);
+  --color-danger-fg: var(--danger-fg);
+  --color-danger-soft: var(--danger-soft);
+
+  --color-info: var(--info);
+  --color-info-fg: var(--info-fg);
+  --color-info-soft: var(--info-soft);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --shadow-card: var(--shadow-card);
+  --shadow-raised: var(--shadow-raised);
+  --shadow-overlay: var(--shadow-overlay);
+
+  /* Content measure: wide enough for a 4-up card grid, narrow enough to keep
+     prose line length readable on large displays. */
+  --container-content: 80rem;
+  --container-prose: 46rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    font-variant-ligatures: contextual;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /*
+   * A single global focus treatment. Uses :focus-visible so pointer users do
+   * not see rings, but every keyboard user always does. Never removed.
+   */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Honour the OS-level reduced-motion preference everywhere, including
+     third-party markup we do not control. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Keep native form controls legible in both themes. */
+  ::placeholder {
+    color: var(--fg-subtle);
+    opacity: 1;
+  }
+
+  ::selection {
+    background-color: var(--primary-soft);
+    color: var(--fg);
+  }
+
+  /* Only apply a custom scrollbar where it will not break usability. */
+  @supports selector(::-webkit-scrollbar) {
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-subtle);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-strong);
+      border-radius: 999px;
+      border: 2px solid var(--bg-subtle);
+    }
+  }
+}
+
+@utility hairline-t {
+  border-top: 1px solid var(--border);
+}
+
+/* A low-contrast grid used only behind the hero. Purely decorative, so it is
+   hidden from assistive tech at the usage site and fades out at the edges. */
+@utility hero-grid {
+  background-image: linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 10%, transparent 75%);
+}

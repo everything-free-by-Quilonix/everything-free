@@ -1,0 +1,90 @@
+name: Deploy to GitHub Pages
+
+# Production deployment. GitHub Pages is the project's one host: free for public
+# repositories, and it serves static files, which is all this application produces.
+# See docs/deployment.md for why it was chosen and what it cannot do.
+#
+# Deploys only what CI has passed. This workflow does not run on push; it runs when
+# the CI workflow finishes on `main`, and only if CI succeeded. A commit that fails
+# lint, types, data validation or the browser smoke test is never published — and
+# the commit deployed is exactly the commit CI tested, not whatever `main` points at
+# by the time this starts.
+#
+# `workflow_dispatch` remains for re-deploying by hand (for example after changing
+# the SITE_URL repository variable).
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  # Both required by the Pages deployment action.
+  pages: write
+  id-token: write
+
+# Never run two deployments at once, and never cancel one halfway: an interrupted
+# deployment can leave the site partially updated.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build static site
+    # `branches: [main]` above matches on branch name alone, which a pull request
+    # from a fork's own `main` would also satisfy. Requiring a push event closes that.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v6
+
+      - name: Build
+        # The public URL has to be correct at build time: it is baked into canonical
+        # URLs, the sitemap and OpenGraph tags, and its path becomes the base path
+        # every asset is served under. None of that can be corrected at request time
+        # on a static host. The Pages URL is used unless a SITE_URL variable is set.
+        run: npm run build:static
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL || steps.pages.outputs.base_url }}
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: out
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

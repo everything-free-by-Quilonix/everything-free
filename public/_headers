@@ -1,0 +1,42 @@
+# Response headers for static hosts that support this file (Cloudflare Pages,
+# Netlify). Under `STATIC_EXPORT=1` there is no server, so anything Next.js would
+# normally set at runtime has to be declared here instead.
+#
+# GitHub Pages does NOT read this file. See docs/deployment.md for what that costs.
+
+/*
+  # Referrer is withheld cross-origin so browsing the library does not tell every
+  # listed vendor which page the visitor came from.
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Nothing here needs to be embeddable, and refusing framing removes clickjacking
+  # and UI-redress surface for free.
+  X-Frame-Options: DENY
+
+  X-Content-Type-Options: nosniff
+
+  # The project uses none of these APIs. Denying them means an injected script
+  # cannot silently reach for them either.
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+
+  # The strict policy is NOT here. Every exported page carries its own
+  # <meta http-equiv="Content-Security-Policy"> with SHA-256 hashes of exactly its
+  # inline scripts (scripts/csp.mjs), so scripts need no 'unsafe-inline'. Per-page
+  # hashes cannot be expressed in one site-wide header.
+  #
+  # This header only adds what a meta policy cannot carry — frame-ancestors — plus a
+  # permissive baseline. Browsers enforce every policy present, so the stricter meta
+  # policy still governs scripts wherever both apply.
+  Content-Security-Policy: frame-ancestors 'none'; object-src 'none'; base-uri 'self'
+
+# OpenGraph images are real .png files, so content type comes from the extension on
+# every host. Only caching is declared here.
+/og/*
+  Cache-Control: public, max-age=86400
+
+# Build-hashed assets are immutable by construction.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable

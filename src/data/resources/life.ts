@@ -1,0 +1,92 @@
+import { defineResources } from "./define";
+
+export const lifeResources = defineResources([
+  {
+    slug: "openstreetmap",
+    name: "OpenStreetMap",
+    shortDescription: "Openly licensed map data of the whole world, free to use and reuse.",
+    longDescription:
+      "OpenStreetMap is a collaboratively maintained geographic database covering roads, paths, buildings, addresses and points of interest worldwide. The data is published under an open database licence and can be downloaded in full, which is why it underpins a large number of other mapping products.",
+    whyListed:
+      "Commercial map APIs bill per request. This is the underlying data, openly licensed, downloadable in bulk, and usable as the basis for your own maps.",
+    category: "maps",
+    subcategories: ["travel", "research"],
+    resourceType: "DATASET",
+    officialUrl: "https://www.openstreetmap.org",
+    licenseUrl: "https://www.openstreetmap.org/copyright",
+    freeStatus: "FREE",
+    openSource: true,
+    license: "ODbL-1.0",
+    licenseNotes:
+      "The database is licensed under the Open Database License. Use and redistribution are permitted, including commercially, but attribution is required and databases derived from it must be shared under the same terms.",
+    platforms: ["BROWSER"],
+    requiresAccount: "no",
+    requiresCreditCard: "no",
+    commercialUse: "yes",
+    personalUse: "yes",
+    apiAvailable: true,
+    downloadAvailable: true,
+    features: [
+      "Worldwide street, path and address data",
+      "Full database extracts available for download",
+      "Editing APIs for contributors",
+      "Basis for many third-party map renderers and routing engines",
+    ],
+    limitations: [
+      "Attribution is required, and derived databases inherit the share-alike obligation.",
+      "Data completeness and accuracy vary sharply by region, since it is contributor-maintained.",
+      "The public tile servers on openstreetmap.org are for light use only, not for serving production traffic — use a tile provider or host your own.",
+      "It is a data project, not a turn-by-turn navigation product.",
+    ],
+    tags: ["maps", "geodata", "open-data", "travel", "commercial-use"],
+    alternativeTo: ["Google Maps Platform", "Mapbox paid tiers"],
+    relatedResources: ["organic-maps", "wikipedia"],
+    verificationStatus: "PARTIALLY_VERIFIED",
+    verificationNotes:
+      "Licensing recorded from the project's own copyright page. Regional data quality cannot be verified centrally and is listed as a limitation.",
+    lastVerifiedAt: "2026-09-25",
+  },
+  {
+    slug: "organic-maps",
+    name: "Organic Maps",
+    shortDescription: "Offline maps and navigation with no tracking and no account.",
+    longDescription:
+      "Organic Maps is a mobile mapping application built on OpenStreetMap data, designed to work fully offline after downloading regional map files. It offers walking, cycling and driving directions, and does not require an account or collect usage tracking.",
+    whyListed:
+      "Works with no connection and no account, which makes it useful while travelling without data — and it does not monetise location history.",
+    category: "maps",
+    subcategories: ["travel", "health-fitness"],
+    resourceType: "MOBILE_APP",
+    officialUrl: "https://organicmaps.app",
+    sourceUrl: "https://github.com/organicmaps/organicmaps",
+    freeStatus: "OPEN_SOURCE",
+    openSource: true,
+    license: "Apache-2.0",
+    platforms: ["ANDROID", "IOS"],
+    requiresAccount: "no",
+    requiresCreditCard: "no",
+    commercialUse: "yes",
+    personalUse: "yes",
+    downloadAvailable: true,
+    features: [
+      "Fully offline maps after regional download",
+      "Walking, cycling and driving directions",
+      "No account and no usage tracking",
+      "Bookmarks and track recording",
+      "Built on OpenStreetMap data",
+    ],
+    limitations: [
+      "Search and routing are less refined than large commercial navigation apps.",
+      "No live traffic, public-transport timetables or ride-hailing integration.",
+      "Map quality depends on OpenStreetMap coverage in the area.",
+      "Offline map files take up meaningful storage space.",
+    ],
+    tags: ["maps", "offline", "navigation", "privacy", "travel", "no-signup"],
+    alternativeTo: ["Google Maps", "Waze", "paid offline map apps"],
+    relatedResources: ["openstreetmap"],
+    verificationStatus: "PARTIALLY_VERIFIED",
+    verificationNotes:
+      "Licence, offline capability and absence of an account requirement recorded from the project's repository and site.",
+    lastVerifiedAt: "2026-09-25",
+  },
+]);

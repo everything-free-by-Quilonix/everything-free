@@ -1,0 +1,88 @@
+name: Link health
+
+# Monthly check that the URLs this library points at still resolve.
+#
+# Monthly, not daily, and deliberately so. These requests hit servers belonging to
+# projects the library recommends, and there is no justification for polling them
+# frequently — a dead link discovered three weeks late costs a user one click, while
+# an impolite crawler costs the project its standing. The script honours robots.txt,
+# identifies itself with a contact URL, and paces requests.
+#
+# What this does NOT do: decide whether anything is still free. A 200 response proves
+# a URL resolves and nothing more. Pricing and licence changes are found by a person
+# reading the page — see docs/verification.md.
+
+on:
+  schedule:
+    # 06:00 UTC on the 1st of each month.
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  # Needed to file the report.
+  issues: write
+
+concurrency:
+  group: link-health
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Check external URLs
+    runs-on: ubuntu-latest
+    # Generous: the script paces itself, so the run is intentionally slow.
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (produces the URL manifest)
+        run: npm run build:static
+
+      - name: Check links
+        id: check
+        run: node .github/scripts/check-links.mjs out/link-manifest.json --out link-report.md
+
+      - name: File a report if anything needs attention
+        if: steps.check.outputs.problem_count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          # `gh issue create --label` fails if the label does not exist, which it will
+          # not in a fresh repository. `--force` makes this idempotent.
+          gh label create link-health --color "B42318" --description "Automated link-check report" --force
+
+          TITLE="Link health report — $(date -u +'%Y-%m-%d')"
+
+          # Reuse a single open issue rather than filing a new one every month, so the
+          # tracker does not fill with near-identical reports.
+          EXISTING=$(gh issue list --label link-health --state open --limit 1 --json number --jq '.[0].number // empty')
+
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body-file link-report.md
+            echo "Commented on existing issue #$EXISTING"
+          else
+            gh issue create \
+              --title "$TITLE" \
+              --label link-health \
+              --body-file link-report.md
+          fi
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: link-report
+          path: link-report.md
+          if-no-files-found: ignore

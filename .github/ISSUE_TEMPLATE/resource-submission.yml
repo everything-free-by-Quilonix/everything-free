@@ -1,0 +1,147 @@
+name: Submit a resource
+description: Suggest a free resource for the Everything.Free library
+title: "Add resource: "
+labels: ["resource-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing. A good submission takes a few minutes and saves everyone else an hour.
+
+        Before filing, please check the free-status definitions in [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md#choosing-a-free-status). Getting the status right is the single most important part of a submission.
+
+  - type: input
+    id: name
+    attributes:
+      label: Resource name
+      placeholder: GIMP
+    validations:
+      required: true
+
+  - type: input
+    id: official-url
+    attributes:
+      label: Official URL
+      description: The provider's own site. Not a mirror, aggregator, review page or affiliate link. Must be HTTPS.
+      placeholder: https://www.gimp.org
+    validations:
+      required: true
+
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: One primary category. See src/config/categories.ts for the full list.
+      placeholder: photography
+    validations:
+      required: true
+
+  - type: dropdown
+    id: resource-type
+    attributes:
+      label: Resource type
+      options:
+        - WEBSITE
+        - WEB_APP
+        - MOBILE_APP
+        - DESKTOP_APP
+        - OPEN_SOURCE
+        - AI_TOOL
+        - API
+        - COURSE
+        - BOOK
+        - GAME
+        - DATASET
+        - TEMPLATE
+        - FONT
+        - ICON
+        - STOCK_IMAGE
+        - STOCK_VIDEO
+        - STOCK_AUDIO
+        - MUSIC
+        - EDUCATIONAL_RESOURCE
+        - PRODUCTIVITY_TOOL
+        - BUSINESS_TOOL
+        - DEVELOPER_TOOL
+        - CREATIVE_TOOL
+        - UTILITY
+        - SERVICE
+        - COMMUNITY
+        - OTHER
+    validations:
+      required: true
+
+  - type: dropdown
+    id: free-status
+    attributes:
+      label: Free status
+      description: A trial is not free. A free tier is not the same as free.
+      options:
+        - FREE — usable in full without payment, no time limit
+        - FREE_TIER — permanent free plan with capped usage or features
+        - OPEN_SOURCE — source published under an open-source licence
+        - PERSONAL_FREE — free for personal use, commercial use restricted
+        - LIMITED_FREE — real free capability but significant limits
+        - TRIAL — free access expires
+        - UNKNOWN — cannot establish it
+    validations:
+      required: true
+
+  - type: textarea
+    id: why-listed
+    attributes:
+      label: Why should it be listed?
+      description: What does this do for someone that earns it a place? This is shown on the resource page. "It's free and useful" is not a reason.
+    validations:
+      required: true
+
+  - type: textarea
+    id: limitations
+    attributes:
+      label: Known limitations
+      description: |
+        Required for FREE_TIER, LIMITED_FREE, PERSONAL_FREE and TRIAL. Include the inconvenient ones: export caps, watermarks, seat limits, storage quotas, expiry, inactivity pauses. One per line.
+      placeholder: |
+        Free plan is capped at 3 projects.
+        Exports carry a watermark below the paid tier.
+    validations:
+      required: false
+
+  - type: input
+    id: license
+    attributes:
+      label: Licence
+      description: SPDX identifier where one applies. Note any nuance, such as open source code with proprietary official builds.
+      placeholder: GPL-3.0-or-later
+    validations:
+      required: false
+
+  - type: input
+    id: commercial-use
+    attributes:
+      label: Commercial use
+      description: Permitted on the free offering? If you are not sure, say so — a guess is worse than "unknown".
+    validations:
+      required: false
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification information
+      description: How did you establish the free status? A link to the exact pricing or licence page you read is the most useful thing here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: The URL above is the provider's own site, with no affiliate or tracking parameters.
+          required: true
+        - label: I have checked the free status rather than assumed it, and it is not a trial presented as free.
+          required: true
+        - label: This resource does not circumvent payment, licensing or access controls.
+          required: true
+        - label: If this is my own product, I have said so in the "why should it be listed" field.
+          required: true

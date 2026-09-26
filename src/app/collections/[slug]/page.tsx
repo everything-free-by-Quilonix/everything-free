@@ -1,0 +1,113 @@
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+
+import { JsonLdScript } from "@/components/seo/json-ld";
+import { Callout } from "@/components/ui/callout";
+import { Breadcrumbs, Container } from "@/components/ui/layout";
+import { collections } from "@/data/collections";
+import { ResourceCard } from "@/features/resources/components/resource-card";
+import { getCollectionBySlug, getCollectionResources } from "@/lib/repository";
+import { buildMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, collectionSchema } from "@/lib/seo/structured-data";
+import { formatFullDate } from "@/lib/utils/date";
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export function generateStaticParams() {
+  return collections.map((collection) => ({ slug: collection.slug }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const collection = await getCollectionBySlug(slug);
+
+  if (!collection) {
+    return buildMetadata({
+      title: "Collection not found",
+      description: "This collection does not exist.",
+      path: `/collections/${slug}`,
+      noIndex: true,
+    });
+  }
+
+  return buildMetadata({
+    title: collection.name,
+    description: collection.shortDescription,
+    path: `/collections/${collection.slug}`,
+    type: "article",
+    modifiedTime: collection.updatedAt,
+  });
+}
+
+export default async function CollectionPage({ params }: PageProps) {
+  const { slug } = await params;
+  const collection = await getCollectionBySlug(slug);
+
+  if (!collection) notFound();
+
+  const resources = await getCollectionResources(collection);
+
+  return (
+    <article className="pb-16">
+      <header className="border-b border-border bg-bg-subtle py-10">
+        <Container>
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Collections", href: "/collections" },
+              { label: collection.name },
+            ]}
+          />
+
+          <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">{collection.name}</h1>
+          <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{collection.longDescription}</p>
+
+          <p className="mt-5 text-sm text-fg-subtle">
+            {resources.length} {resources.length === 1 ? "resource" : "resources"} · Updated{" "}
+            <time dateTime={collection.updatedAt}>{formatFullDate(collection.updatedAt)}</time>
+          </p>
+        </Container>
+      </header>
+
+      <Container className="pt-8">
+        <Callout tone="primary" icon="info" title="How these were chosen" className="mb-8">
+          {collection.rationale}
+        </Callout>
+
+        {/* Ordered list: the sequence is deliberate — it follows the order you
+            would actually use these in. */}
+        <ol className="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {resources.map((resource, index) => (
+            <li key={resource.slug} className="flex">
+              <div className="flex w-full flex-col gap-2">
+                <p className="text-xs font-medium text-fg-subtle tabular-nums">
+                  Step {index + 1}
+                  <span className="sr-only">: {resource.name}</span>
+                </p>
+                <ResourceCard resource={resource} className="flex-1" />
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Container>
+
+      <JsonLdScript
+        data={[
+          collectionSchema({
+            name: collection.name,
+            description: collection.shortDescription,
+            path: `/collections/${collection.slug}`,
+            resources,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Collections", path: "/collections" },
+            { name: collection.name, path: `/collections/${collection.slug}` },
+          ]),
+        ]}
+      />
+    </article>
+  );
+}

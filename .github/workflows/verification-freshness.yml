@@ -1,0 +1,80 @@
+name: Verification freshness
+
+# Keeps the manual verification backlog visible.
+#
+# This workflow cannot verify anything, and does not try to. Verification means a
+# person opening a provider's own pages and confirming each claim; no automation in
+# this repository ever marks a resource verified. What it does is make sure the queue
+# of work is reported on a schedule rather than quietly growing until the badges are
+# meaningless.
+#
+# Makes no network requests — everything comes from the build manifest.
+
+on:
+  schedule:
+    # 07:00 UTC on the 8th, a week after the link check, so the two reports do not
+    # arrive together and get skimmed as one.
+    - cron: "0 7 8 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: verification-freshness
+  cancel-in-progress: false
+
+jobs:
+  report:
+    name: Report verification backlog
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (produces the manifest)
+        run: npm run build:static
+
+      - name: Assess verification freshness
+        id: check
+        run: node .github/scripts/check-verification-freshness.mjs out/link-manifest.json --out verification-report.md
+
+      - name: File a report if anything needs attention
+        if: steps.check.outputs.needs_attention != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          # Idempotent: creates the label in a fresh repository, no-op otherwise.
+          gh label create verification --color "D4AF37" --description "Verification work needed" --force
+
+          EXISTING=$(gh issue list --label verification --state open --limit 1 --json number --jq '.[0].number // empty')
+
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body-file verification-report.md
+            echo "Commented on existing issue #$EXISTING"
+          else
+            gh issue create \
+              --title "Verification backlog — $(date -u +'%Y-%m')" \
+              --label verification \
+              --body-file verification-report.md
+          fi
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: verification-report
+          path: verification-report.md
+          if-no-files-found: ignore

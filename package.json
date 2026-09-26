@@ -1,0 +1,38 @@
+{
+  "name": "everything.free",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Everything.Free — the free-resource ecosystem. A library of genuinely free resources with free status, limitations and verification stated plainly.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:static": "node scripts/build-static.mjs",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "verify": "npm run lint && npm run typecheck && npm run build",
+    "verify:static": "npm run lint && npm run typecheck && npm run build:static",
+    "test:browser": "node scripts/browser-smoke.mjs",
+    "check:links": "node .github/scripts/check-links.mjs out/link-manifest.json",
+    "check:verification": "node .github/scripts/check-verification-freshness.mjs out/link-manifest.json",
+    "backlog": "node scripts/verification-backlog.mjs out/link-manifest.json --write docs/verification-backlog.md",
+    "backlog:check": "node scripts/verification-backlog.mjs out/link-manifest.json --check docs/verification-backlog.md"
+  },
+  "dependencies": {
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "4.1.13"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

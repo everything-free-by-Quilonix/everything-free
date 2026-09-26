@@ -1,0 +1,668 @@
+#!/usr/bin/env node
+/**
+ * Real-browser smoke test for the static export.
+ *
+ * Drives a locally installed Chrome over the DevTools Protocol, using Node's built-in
+ * WebSocket — no Puppeteer, no Playwright, no new dependency. GitHub's Ubuntu runners
+ * ship with Chrome, so this runs in CI at no cost.
+ *
+ * Why a browser and not just HTML assertions: the two failure modes that matter most
+ * here are invisible to a file check. A wrong CSP hash silently disables all
+ * interactivity; a wrong base path makes every asset 404 while the HTML still looks
+ * fine. Only a real page load catches either.
+ *
+ *   node scripts/browser-smoke.mjs                  # serves ./out at the configured base path
+ *   node scripts/browser-smoke.mjs --url <site-url> # tests a deployed site instead
+ *
+ * Assertions are structural rather than tied to today's data, so adding or editing a
+ * resource does not break CI.
+ */
+
+import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
+import { mkdtemp, readFile, rm, stat, writeFile } from "node:fs/promises";
+import { createServer } from "node:http";
+import { tmpdir } from "node:os";
+import { extname, join, normalize, resolve } from "node:path";
+import { argv, env, exit, platform } from "node:process";
+
+/* -------------------------------------------------------------------------- */
+/* Configuration                                                              */
+/* -------------------------------------------------------------------------- */
+
+const urlFlag = argv.indexOf("--url");
+const remoteUrl = urlFlag !== -1 ? argv[urlFlag + 1]?.replace(/\/+$/, "") : null;
+const DEFAULT_SITE_URL = "https://everything-free-by-quilonix.github.io/everything-free";
+const configuredSite = (env.NEXT_PUBLIC_SITE_URL?.trim() || DEFAULT_SITE_URL).replace(/\/+$/, "");
+const basePath = new URL(remoteUrl ?? configuredSite).pathname.replace(/\/+$/, "");
+
+const VIEWPORTS = {
+  desktop: { width: 1366, height: 900, mobile: false, deviceScaleFactor: 1 },
+  tablet: { width: 820, height: 1180, mobile: true, deviceScaleFactor: 2 },
+  mobile: { width: 390, height: 844, mobile: true, deviceScaleFactor: 3 },
+};
+
+function findChrome() {
+  const candidates = [
+    env.CHROME_PATH,
+    "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "/usr/bin/google-chrome",
+    "/usr/bin/google-chrome-stable",
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  ].filter(Boolean);
+  return candidates.find((path) => existsSync(path)) ?? null;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Static server — behaves like a header-less static host                     */
+/* -------------------------------------------------------------------------- */
+
+const TYPES = {
+  ".html": "text/html; charset=utf-8",
+  ".js": "text/javascript",
+  ".css": "text/css",
+  ".json": "application/json",
+  ".xml": "application/xml",
+  ".txt": "text/plain",
+  ".png": "image/png",
+  ".ico": "image/x-icon",
+  ".woff2": "font/woff2",
+  ".svg": "image/svg+xml",
+};
+
+async function startServer(root) {
+  const server = createServer(async (req, res) => {
+    const pathname = decodeURIComponent(new URL(req.url, "http://local").pathname);
+    const send404 = async () => {
+      res.writeHead(404, { "Content-Type": TYPES[".html"] });
+      res.end(await readFile(join(root, "404.html")).catch(() => "Not found"));
+    };
+
+    if (!pathname.startsWith(`${basePath}/`) && pathname !== basePath) return send404();
+
+    let file = normalize(join(root, pathname.slice(basePath.length)));
+    if (!file.startsWith(root)) return send404();
+
+    try {
+      if ((await stat(file)).isDirectory()) file = join(file, "index.html");
+      const body = await readFile(file);
+      // Deliberately no security headers: the production host cannot send any, so
+      // the meta-tag CSP has to hold up on its own.
+      res.writeHead(200, { "Content-Type": TYPES[extname(file)] ?? "application/octet-stream" });
+      res.end(body);
+    } catch {
+      await send404();
+    }
+  });
+
+  await new Promise((ok) => server.listen(0, "127.0.0.1", ok));
+  return { server, origin: `http://127.0.0.1:${server.address().port}` };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Minimal DevTools Protocol client                                           */
+/* -------------------------------------------------------------------------- */
+
+const sleep = (ms) => new Promise((ok) => setTimeout(ok, ms));
+
+async function launchChrome(chromePath) {
+  const profile = await mkdtemp(join(tmpdir(), "ef-smoke-"));
+  const child = spawn(
+    chromePath,
+    [
+      "--headless=new",
+      "--disable-gpu",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-extensions",
+      "--remote-debugging-port=0",
+      `--user-data-dir=${profile}`,
+      ...(platform === "linux" ? ["--no-sandbox"] : []),
+      "about:blank",
+    ],
+    // No inherited handles: otherwise Chrome's children keep the caller's stdout
+    // open after this script exits.
+    { stdio: "ignore", windowsHide: true },
+  );
+
+  const portFile = join(profile, "DevToolsActivePort");
+  for (let i = 0; i < 100 && !existsSync(portFile); i++) await sleep(100);
+  const [port, path] = (await readFile(portFile, "utf8")).trim().split("\n");
+
+  const socket = new WebSocket(`ws://127.0.0.1:${port}${path}`);
+  await new Promise((ok, fail) => {
+    socket.onopen = ok;
+    socket.onerror = fail;
+  });
+
+  let nextId = 0;
+  const pending = new Map();
+  const listeners = new Set();
+
+  socket.onmessage = ({ data }) => {
+    const message = JSON.parse(data);
+    if (message.id !== undefined && pending.has(message.id)) {
+      const { ok, fail } = pending.get(message.id);
+      pending.delete(message.id);
+      if (message.error) fail(new Error(message.error.message));
+      else ok(message.result);
+    } else if (message.method) {
+      for (const listener of listeners) listener(message);
+    }
+  };
+
+  const send = (method, params = {}, sessionId) =>
+    new Promise((ok, fail) => {
+      const id = ++nextId;
+      pending.set(id, { ok, fail });
+      socket.send(JSON.stringify({ id, method, params, ...(sessionId ? { sessionId } : {}) }));
+    });
+
+  const exited = new Promise((ok) => child.once("exit", ok));
+
+  const close = async () => {
+    // Browser.close asks Chrome to shut down cleanly; it may not reply before exiting.
+    send("Browser.close").catch(() => {});
+    const clean = await Promise.race([exited.then(() => true), sleep(3000).then(() => false)]);
+
+    if (!clean) {
+      // `child.kill()` only kills the top process on Windows, leaving renderer and
+      // GPU children alive — and holding any inherited handles. Kill the tree.
+      if (platform === "win32") {
+        await new Promise((ok) => spawn("taskkill", ["/pid", String(child.pid), "/T", "/F"], { stdio: "ignore" }).on("exit", ok));
+      } else {
+        child.kill("SIGKILL");
+      }
+    }
+
+    socket.close();
+    await sleep(300);
+    await rm(profile, { recursive: true, force: true }).catch(() => {});
+  };
+
+  return { send, listeners, close };
+}
+
+async function openPage(browser, { viewport = VIEWPORTS.desktop, javascript = true } = {}) {
+  const { targetId } = await browser.send("Target.createTarget", { url: "about:blank" });
+  const { sessionId } = await browser.send("Target.attachToTarget", { targetId, flatten: true });
+  const send = (method, params) => browser.send(method, params, sessionId);
+
+  const events = { errors: [], failedRequests: [], loads: 0, lastStatus: null };
+
+  const listener = (message) => {
+    if (message.sessionId !== sessionId) return;
+    const { method, params } = message;
+
+    if (method === "Page.loadEventFired") events.loads += 1;
+    if (method === "Runtime.exceptionThrown") {
+      events.errors.push(`exception: ${params.exceptionDetails.exception?.description ?? params.exceptionDetails.text}`);
+    }
+    if (method === "Log.entryAdded" && params.entry.level === "error") {
+      events.errors.push(`${params.entry.source}: ${params.entry.text}`);
+    }
+    if (method === "Runtime.consoleAPICalled" && params.type === "error") {
+      events.errors.push(`console: ${params.args.map((a) => a.value ?? a.description).join(" ")}`);
+    }
+    if (method === "Network.responseReceived" && params.type === "Document") {
+      events.lastStatus = params.response.status;
+    }
+    // Every 4xx/5xx, of any type, with its URL — a console "404" alone is unactionable.
+    // The main document is excluded because navigation checks assert its status.
+    if (method === "Network.responseReceived" && params.response.status >= 400 && params.type !== "Document") {
+      events.failedRequests.push(`${params.response.status} ${params.type} ${params.response.url}`);
+    }
+    if (method === "Network.loadingFailed" && !params.canceled) {
+      events.failedRequests.push(`${params.blockedReason ?? params.errorText} ${params.type}`);
+    }
+  };
+  browser.listeners.add(listener);
+
+  await send("Page.enable");
+  await send("Runtime.enable");
+  await send("Log.enable");
+  await send("Network.enable");
+  await send("Emulation.setDeviceMetricsOverride", viewport);
+  if (!javascript) await send("Emulation.setScriptExecutionDisabled", { value: true });
+
+  // Records CSP violations from inside the page. Installed by DevTools, so the page's
+  // own policy does not apply to it.
+  await send("Page.addScriptToEvaluateOnNewDocument", {
+    source: `window.__cspViolations = [];
+      document.addEventListener("securitypolicyviolation", (e) =>
+        window.__cspViolations.push(e.violatedDirective + " " + (e.blockedURI || "inline")));`,
+  });
+
+  const evaluate = async (expression) => {
+    const { result, exceptionDetails } = await send("Runtime.evaluate", {
+      expression,
+      returnByValue: true,
+      awaitPromise: true,
+    });
+    if (exceptionDetails) throw new Error(exceptionDetails.exception?.description ?? exceptionDetails.text);
+    return result.value;
+  };
+
+  const waitFor = async (expression, timeout = 8000) => {
+    const start = Date.now();
+    while (Date.now() - start < timeout) {
+      try {
+        if (await evaluate(expression)) return true;
+      } catch {
+        /* page mid-navigation */
+      }
+      await sleep(100);
+    }
+    return false;
+  };
+
+  const goto = async (url) => {
+    const before = events.loads;
+    events.lastStatus = null;
+    // Each navigation starts clean, so a failure is attributed to the page that
+    // caused it rather than to whichever check happens to look next.
+    events.errors.length = 0;
+    events.failedRequests.length = 0;
+    await send("Page.navigate", { url });
+    const start = Date.now();
+    while (events.loads === before && Date.now() - start < 15000) await sleep(50);
+    await sleep(javascript ? 400 : 100);
+  };
+
+  const key = async (keyName, code, keyCode) => {
+    for (const type of ["keyDown", "keyUp"]) {
+      await send("Input.dispatchKeyEvent", { type, key: keyName, code, windowsVirtualKeyCode: keyCode });
+    }
+  };
+
+  const close = async () => {
+    browser.listeners.delete(listener);
+    await browser.send("Target.closeTarget", { targetId });
+  };
+
+  return { send, evaluate, waitFor, goto, key, events, close };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Test harness                                                               */
+/* -------------------------------------------------------------------------- */
+
+const results = [];
+
+async function check(name, fn) {
+  try {
+    const detail = await fn();
+    results.push({ name, ok: true, detail: detail ?? "" });
+    console.log(`  ✓ ${name}${detail ? ` — ${detail}` : ""}`);
+  } catch (error) {
+    results.push({ name, ok: false, detail: error.message });
+    console.log(`  ✗ ${name} — ${error.message}`);
+  }
+}
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+}
+
+/** Selectors and expressions reused across checks. */
+const JS = {
+  hydrated: `!!document.querySelector('button[aria-label^="Switch to"]')`,
+  violations: `window.__cspViolations || []`,
+  cards: `document.querySelectorAll('main article').length`,
+  h1: `document.querySelector('h1')?.textContent?.trim() ?? ""`,
+  overflow: `document.documentElement.scrollWidth - window.innerWidth`,
+  setValue: (selector, value) => `(() => {
+    const el = document.querySelector(${JSON.stringify(selector)});
+    if (!el) return false;
+    const proto = el instanceof HTMLTextAreaElement ? HTMLTextAreaElement.prototype
+      : el instanceof HTMLSelectElement ? HTMLSelectElement.prototype : HTMLInputElement.prototype;
+    Object.getOwnPropertyDescriptor(proto, "value").set.call(el, ${JSON.stringify(value)});
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+    el.dispatchEvent(new Event("change", { bubbles: true }));
+    return true;
+  })()`,
+  click: (selector) => `(() => { const el = document.querySelector(${JSON.stringify(selector)}); if (!el) return false; el.click(); return true; })()`,
+  clickText: (tag, text) => `(() => {
+    const el = [...document.querySelectorAll(${JSON.stringify(tag)})].find((n) => n.textContent.trim() === ${JSON.stringify(text)});
+    if (!el) return false; el.click(); return true;
+  })()`,
+};
+
+async function assertCleanLoad(page, label) {
+  const violations = await page.evaluate(JS.violations);
+  assert(violations.length === 0, `${label}: CSP violations ${JSON.stringify(violations)}`);
+  // Failed requests first: they carry the URL, which the matching console error does not.
+  const failed = page.events.failedRequests.filter((e) => !/favicon/i.test(e));
+  assert(failed.length === 0, `${label}: failed requests ${JSON.stringify(failed.slice(0, 3))}`);
+  const errors = page.events.errors.filter((e) => !/favicon/i.test(e));
+  assert(errors.length === 0, `${label}: console errors ${JSON.stringify(errors.slice(0, 3))}`);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Run                                                                        */
+/* -------------------------------------------------------------------------- */
+
+async function main() {
+  const chromePath = findChrome();
+  if (!chromePath) {
+    console.error("No Chrome or Edge found. Set CHROME_PATH.");
+    exit(2);
+  }
+
+  let server = null;
+  let origin;
+  if (remoteUrl) {
+    origin = new URL(remoteUrl).origin;
+  } else {
+    const root = resolve("out");
+    if (!existsSync(join(root, "index.html"))) {
+      console.error("out/ is missing. Run `npm run build:static` first.");
+      exit(2);
+    }
+    ({ server, origin } = await startServer(root));
+  }
+
+  const site = `${origin}${basePath}`;
+  console.log(`Testing ${site}/ with ${chromePath.split(/[\\/]/).pop()}\n`);
+
+  const browser = await launchChrome(chromePath);
+
+  try {
+    const manifest = await (await fetch(`${site}/link-manifest.json`)).json();
+    const slugs = manifest.entries.map((entry) => entry.slug);
+    assert(slugs.length > 0, "link manifest lists no resources");
+
+    const routes = [
+      "/",
+      "/resources/",
+      `/resources/${slugs[0]}/`,
+      `/resources/${slugs[slugs.length - 1]}/`,
+      "/categories/",
+      "/categories/photography/",
+      "/collections/",
+      "/collections/student-starter-kit/",
+      "/alternatives/",
+      "/alternatives/adobe-photoshop/",
+      "/for/students/",
+      "/tools/",
+      "/tools/image-converter/",
+      "/tools/contrast-checker/",
+      "/tools/text-toolkit/",
+      "/submit/",
+      "/report/",
+      "/free-status/",
+      "/verification/",
+      "/about/",
+      "/privacy/",
+      "/terms/",
+    ];
+
+    /* ------------------------------------------------ direct loads, desktop */
+    console.log("Direct navigation (desktop), JavaScript on");
+    const desktop = await openPage(browser);
+    for (const route of routes) {
+      await check(`load ${route}`, async () => {
+        desktop.events.errors.length = 0;
+        desktop.events.failedRequests.length = 0;
+        await desktop.goto(`${site}${route}`);
+        assert(desktop.events.lastStatus === 200, `HTTP ${desktop.events.lastStatus}`);
+        assert(await desktop.waitFor(JS.hydrated), "did not hydrate (scripts blocked or failed)");
+        await assertCleanLoad(desktop, route);
+        return await desktop.evaluate(JS.h1);
+      });
+    }
+
+    await check("missing page returns 404 with the site's not-found page", async () => {
+      await desktop.goto(`${site}/this-page-does-not-exist/`);
+      assert(desktop.events.lastStatus === 404, `HTTP ${desktop.events.lastStatus}`);
+      assert(/does not exist/i.test(await desktop.evaluate(JS.h1)), "custom 404 not rendered");
+    });
+
+    await check("static files: sitemap, robots, OG image", async () => {
+      for (const [path, type] of [
+        ["/sitemap.xml", "xml"],
+        ["/robots.txt", "text/plain"],
+        [`/og/${slugs[0]}.png`, "image/png"],
+      ]) {
+        const response = await fetch(`${site}${path}`);
+        assert(response.ok, `${path} HTTP ${response.status}`);
+        assert((response.headers.get("content-type") ?? "").includes(type), `${path} served as ${response.headers.get("content-type")}`);
+      }
+    });
+
+    /* ------------------------------------------------------- behaviour */
+    console.log("\nBehaviour");
+
+    await check("client-side navigation from a resource card", async () => {
+      await desktop.goto(`${site}/`);
+      await desktop.waitFor(JS.hydrated);
+      const card = `main article h3 a[href*="/resources/"]`;
+      const href = await desktop.evaluate(`document.querySelector(${JSON.stringify(card)})?.getAttribute('href')`);
+      assert(href, "no resource card link on homepage");
+      // Marks the document so a full reload (which would wipe the marker) can be
+      // told apart from a genuine client-side transition.
+      await desktop.evaluate(`window.__noReload = true`);
+      await desktop.evaluate(JS.click(card));
+      assert(await desktop.waitFor(`location.pathname === ${JSON.stringify(href)}`), `did not navigate to ${href}`);
+      assert(await desktop.waitFor(`document.querySelector('h1') && !document.body.innerText.includes("Browse by category")`), "detail page did not render");
+      assert(await desktop.evaluate(`window.__noReload === true`), "navigation fell back to a full page load");
+      await assertCleanLoad(desktop, "after client navigation");
+      return href;
+    });
+
+    await check("verification evidence is summarised, then disclosed on demand", async () => {
+      // Uses the manifest rather than a hard-coded slug, so the check follows the data:
+      // pick any entry that has recorded per-check evidence.
+      const audited = manifest.entries.find((e) => e.confirmedChecks.length + e.unresolvedChecks.length > 0);
+      assert(audited, "no resource has recorded verification checks");
+      await desktop.goto(`${site}/resources/${audited.slug}/`);
+      await desktop.waitFor(JS.hydrated);
+      const required = manifest.rules.requiredChecks.length;
+      const confirmed = required - audited.missingRequiredChecks.length;
+      assert(
+        await desktop.evaluate(`document.body.innerText.includes(${JSON.stringify(`${confirmed} of ${required}`)})`),
+        `summary does not state ${confirmed} of ${required} required checks`,
+      );
+      const details = `[...document.querySelectorAll('details')].find(d => d.querySelector('summary')?.textContent.includes('View verification evidence'))`;
+      assert(await desktop.evaluate(`!!${details} && !${details}.open`), "evidence disclosure missing or open by default");
+      await desktop.evaluate(`${details}.querySelector('summary').click()`);
+      assert(await desktop.waitFor(`${details}.open`), "evidence disclosure did not open");
+      const sourceLinks = await desktop.evaluate(`${details}.querySelectorAll('a[href^="http"]').length`);
+      assert(sourceLinks > 0, "no source links inside the evidence");
+      return `${audited.slug}: ${confirmed}/${required}, ${sourceLinks} source links`;
+    });
+
+    await check("search: natural-language constraint becomes a removable filter", async () => {
+      await desktop.goto(`${site}/resources/?q=${encodeURIComponent("free AI voice generator without a credit card")}`);
+      assert(await desktop.waitFor(`document.body.innerText.includes("set a filter automatically")`), "inferred-filter notice missing");
+      assert(await desktop.waitFor(`[...document.querySelectorAll('[aria-label="Active filters"] a')].some(a => a.textContent.includes("No credit card"))`), "no removable chip");
+    });
+
+    await check("search: alternative-to query explains its matches", async () => {
+      await desktop.goto(`${site}/resources/?q=${encodeURIComponent("alternative to Photoshop")}`);
+      assert(await desktop.waitFor(`document.body.innerText.includes("Listed as a free alternative to")`), "no match reason shown");
+      return `${await desktop.evaluate(JS.cards)} results`;
+    });
+
+    await check("search: no match shows the empty state", async () => {
+      await desktop.goto(`${site}/resources/?q=${encodeURIComponent("quantum banana synthesiser")}`);
+      assert(await desktop.waitFor(`document.body.innerText.includes("Nothing matched")`), "empty state missing");
+    });
+
+    await check("filters update the URL and the results", async () => {
+      // The total count, not the number of cards: results are paginated, so a
+      // filter that still matches a full page would look unchanged by card count.
+      const total = `Number((document.querySelector('p[aria-live="polite"]')?.textContent.match(/\\d+/) ?? [0])[0])`;
+      await desktop.goto(`${site}/resources/`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`${total} > 0`), "no result count shown");
+      const before = await desktop.evaluate(total);
+      assert(await desktop.evaluate(JS.click('input[name="openSource"]')), "open-source filter not found");
+      assert(await desktop.waitFor(`location.search.includes("openSource=1")`), "URL did not update");
+      assert(await desktop.waitFor(`${total} > 0 && ${total} < ${before}`), "result total did not change");
+      return `${before} → ${await desktop.evaluate(total)} resources`;
+    });
+
+    await check("URL-driven filter loads directly", async () => {
+      await desktop.goto(`${site}/resources/?platform=LINUX`);
+      assert(await desktop.waitFor(`[...document.querySelectorAll('[aria-label="Active filters"] a')].some(a => a.textContent.includes("Linux"))`), "Linux chip missing");
+      assert(await desktop.evaluate(`document.querySelector('input[name="platform"][value="LINUX"]').checked`), "checkbox not checked");
+    });
+
+    await check("contrast checker computes a ratio", async () => {
+      await desktop.goto(`${site}/tools/contrast-checker/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.evaluate(JS.setValue('input[placeholder="#000000"]', "#000000"));
+      assert(await desktop.waitFor(`/\\d+\\.\\d{2}:1/.test(document.body.innerText)`), "no ratio shown");
+      return await desktop.evaluate(`document.body.innerText.match(/\\d+\\.\\d{2}:1/)[0]`);
+    });
+
+    await check("text toolkit transforms text", async () => {
+      await desktop.goto(`${site}/tools/text-toolkit/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.evaluate(JS.setValue("textarea", "hello world"));
+      assert(await desktop.waitFor(JS.clickText("button", "UPPERCASE")), "UPPERCASE button not found");
+      assert(await desktop.waitFor(`document.querySelector("textarea").value === "HELLO WORLD"`), "text not transformed");
+    });
+
+    await check("image converter runs locally and renders a blob: result", async () => {
+      await desktop.goto(`${site}/tools/image-converter/`);
+      await desktop.waitFor(JS.hydrated);
+      const loaded = await desktop.evaluate(`(async () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 64; canvas.height = 48;
+        const ctx = canvas.getContext("2d"); ctx.fillStyle = "#d4af37"; ctx.fillRect(0, 0, 64, 48);
+        const blob = await new Promise((r) => canvas.toBlob(r, "image/png"));
+        const input = document.querySelector('input[type="file"]');
+        const dt = new DataTransfer(); dt.items.add(new File([blob], "test.png", { type: "image/png" }));
+        input.files = dt.files; input.dispatchEvent(new Event("change", { bubbles: true }));
+        return true;
+      })()`);
+      assert(loaded, "could not supply a file");
+      assert(await desktop.waitFor(JS.clickText("button", "Convert image")), "convert button did not appear");
+      assert(await desktop.waitFor(`!!document.querySelector('a[download][href^="blob:"]')`), "no download link");
+      assert(await desktop.waitFor(`(() => { const img = document.querySelector('img[src^="blob:"]'); return img && img.complete && img.naturalWidth > 0; })()`), "blob: preview did not render (CSP img-src?)");
+      await assertCleanLoad(desktop, "image converter");
+    });
+
+    await check("submit form: empty submission shows errors", async () => {
+      await desktop.goto(`${site}/submit/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.evaluate(JS.click('form button[type="submit"]'));
+      assert(await desktop.waitFor(`document.body.innerText.includes("could not be submitted yet")`), "no error summary");
+      assert(await desktop.evaluate(`document.querySelectorAll('[aria-invalid="true"]').length > 0`), "no field marked invalid");
+    });
+
+    await check("submit form: valid submission yields a prefilled GitHub issue", async () => {
+      await desktop.goto(`${site}/submit/`);
+      await desktop.waitFor(JS.hydrated);
+      for (const [selector, value] of [
+        ['input[name="name"]', "Smoke Test Resource"],
+        ['input[name="officialUrl"]', "https://example.org"],
+        ['select[name="category"]', "utilities"],
+        ['select[name="resourceType"]', "UTILITY"],
+        ['select[name="freeStatus"]', "FREE"],
+        ['textarea[name="whyListed"]', "Automated smoke test entry used only to check that validation succeeds."],
+      ]) {
+        assert(await desktop.evaluate(JS.setValue(selector, value)), `missing field ${selector}`);
+      }
+      await desktop.evaluate(JS.click('form button[type="submit"]'));
+      assert(await desktop.waitFor(`!!document.querySelector('a[href^="https://github.com/everything-free-by-Quilonix/everything-free/issues/new"]')`), "no issue link");
+    });
+
+    await check("report form prefills a known resource from the URL", async () => {
+      await desktop.goto(`${site}/report/?resource=${slugs[0]}`);
+      assert(await desktop.waitFor(`document.querySelector('input[name="resourceSlug"]')?.value === ${JSON.stringify(slugs[0])}`), "slug not prefilled");
+      assert(await desktop.evaluate(`document.querySelector('input[name="resourceSlug"]').readOnly`), "field not locked");
+    });
+
+    await check("keyboard: first Tab reaches a visible skip link", async () => {
+      await desktop.goto(`${site}/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.key("Tab", "Tab", 9);
+      const text = await desktop.evaluate(`document.activeElement?.textContent?.trim()`);
+      assert(text === "Skip to main content", `focused "${text}"`);
+      const outline = await desktop.evaluate(`getComputedStyle(document.activeElement).outlineStyle`);
+      assert(outline !== "none", "no focus outline");
+      return `outline ${outline}`;
+    });
+    await desktop.close();
+
+    /* ------------------------------------------------ viewports */
+    for (const [name, viewport] of Object.entries({ tablet: VIEWPORTS.tablet, mobile: VIEWPORTS.mobile })) {
+      console.log(`\n${name[0].toUpperCase()}${name.slice(1)} (${viewport.width}×${viewport.height})`);
+      const page = await openPage(browser, { viewport });
+      for (const route of ["/", "/resources/", `/resources/${slugs[0]}/`, "/tools/image-converter/", "/submit/", "/alternatives/adobe-photoshop/"]) {
+        await check(`${name} ${route} has no horizontal overflow`, async () => {
+          await page.goto(`${site}${route}`);
+          await page.waitFor(JS.hydrated);
+          const overflow = await page.evaluate(JS.overflow);
+          assert(overflow <= 1, `content ${overflow}px wider than the viewport`);
+        });
+      }
+
+      if (name === "mobile") {
+        await check("mobile menu opens as a dialog, traps focus, closes on Escape", async () => {
+          await page.goto(`${site}/`);
+          await page.waitFor(JS.hydrated);
+          assert(await page.evaluate(JS.click('button[aria-label="Open menu"]')), "menu button missing");
+          assert(await page.waitFor(`!!document.querySelector('[role="dialog"][aria-modal="true"]')`), "dialog did not open");
+          assert(await page.waitFor(`document.querySelector('[role="dialog"]').contains(document.activeElement)`), "focus not moved into dialog");
+          await page.key("Escape", "Escape", 27);
+          assert(await page.waitFor(`!document.querySelector('[role="dialog"]')`), "Escape did not close");
+          assert(await page.waitFor(`document.activeElement?.getAttribute("aria-label") === "Open menu"`), "focus not returned to trigger");
+        });
+      }
+      await page.close();
+    }
+
+    /* ------------------------------------------------ JavaScript disabled */
+    console.log("\nJavaScript disabled");
+    const noJs = await openPage(browser, { javascript: false });
+    await check("no-JS: /resources lists the library as static HTML", async () => {
+      await noJs.goto(`${site}/resources/`);
+      const cards = await noJs.evaluate(JS.cards);
+      assert(cards === slugs.length, `${cards} cards, expected ${slugs.length}`);
+      assert(await noJs.evaluate(`document.body.innerText.includes("Search and filters need JavaScript")`), "no-JS notice not shown");
+      return `${cards} resources`;
+    });
+    await check("no-JS: resource and category pages render fully", async () => {
+      await noJs.goto(`${site}/resources/${slugs[0]}/`);
+      assert((await noJs.evaluate(JS.h1)).length > 0, "resource h1 missing");
+      assert(await noJs.evaluate(`document.body.innerText.includes("Limitations")`), "resource body missing");
+      await noJs.goto(`${site}/categories/photography/`);
+      assert((await noJs.evaluate(JS.cards)) > 0, "category lists nothing");
+    });
+    await check("no-JS: submit and report offer the GitHub issue form", async () => {
+      await noJs.goto(`${site}/submit/`);
+      assert(await noJs.evaluate(`!!document.querySelector('a[href*="template=resource-submission"]')`), "submit fallback missing");
+      await noJs.goto(`${site}/report/`);
+      assert(await noJs.evaluate(`!!document.querySelector('a[href*="template=resource-correction"]')`), "report fallback missing");
+    });
+    await noJs.close();
+  } finally {
+    await browser.close();
+    server?.close();
+  }
+
+  const failed = results.filter((r) => !r.ok);
+  const summary = `${results.length - failed.length}/${results.length} checks passed`;
+  console.log(`\n${summary}`);
+
+  // A machine-readable report, independent of how stdout is captured.
+  const reportFlag = argv.indexOf("--report");
+  if (reportFlag !== -1) {
+    const lines = [
+      summary,
+      ...results.map((r) => `${r.ok ? "PASS" : "FAIL"}  ${r.name}${r.detail ? ` — ${r.detail}` : ""}`),
+    ];
+    await writeFile(argv[reportFlag + 1], `${lines.join("\n")}\n`, "utf8");
+  }
+
+  exit(failed.length === 0 ? 0 : 1);
+}
+
+await main();

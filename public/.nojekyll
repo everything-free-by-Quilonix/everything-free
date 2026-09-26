@@ -1,0 +1,5 @@
+Tells GitHub Pages to serve this directory as-is instead of running Jekyll.
+
+Without this file, Jekyll silently drops directories whose names begin with an
+underscore — which includes Next.js's `_next/` output, meaning every script,
+stylesheet and font would 404 and the site would render unstyled and dead.
