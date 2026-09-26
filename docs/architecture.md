@@ -253,7 +253,7 @@ Every route is static. The default `next build` produces no server-rendered rout
 
 That second command is the project's architectural assertion: `output: export` **fails** if any route needs a server. CI runs it on every pull request, so a change that reintroduces a server requirement — and therefore a hosting cost — fails before merge rather than being discovered on a bill.
 
-Two post-processing steps run on the export. `scripts/fix-rsc-paths.mjs` works around a Next.js 16 bug that writes client-navigation payloads where the router does not look for them. `scripts/csp.mjs` writes a hash-based Content Security Policy into each page, because the host cannot send headers.
+Two post-processing steps run on the export. `scripts/fix-rsc-paths.mjs` works around a Next.js 16 bug that, on Windows builds, writes client-navigation payloads where the router does not look for them. On the Linux runners that build production it finds nothing to fix. `scripts/csp.mjs` writes a hash-based Content Security Policy into each page, because the host cannot send headers.
 
 The site URL decides the base path. On GitHub Pages it is served under `/everything-free/`, and the build derives that prefix from `NEXT_PUBLIC_SITE_URL`, so moving to a root domain is a variable change.
 

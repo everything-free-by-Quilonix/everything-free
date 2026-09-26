@@ -22,7 +22,7 @@ npm run build:static   # the deployable export in out/
 `build:static` (`scripts/build-static.mjs`) runs three steps:
 
 1. `next build` with `output: "export"`. **This fails if any route needs a server** — a server action, an API route, per-request rendering. CI runs it on every pull request, so a change that reintroduces a server requirement fails before merge rather than turning up as a cost later.
-2. `scripts/fix-rsc-paths.mjs` — works around a Next.js 16 export bug ([vercel/next.js#85374](https://github.com/vercel/next.js/issues/85374)) where client-navigation payloads are written to nested paths the router never requests. Without it every client-side navigation silently degrades to a full page load. It is idempotent and becomes a no-op once the upstream fix lands.
+2. `scripts/fix-rsc-paths.mjs` works around a Next.js 16 export bug ([vercel/next.js#85374](https://github.com/vercel/next.js/issues/85374)). The bug writes client-navigation payloads to nested paths the router never requests, so every client-side navigation silently degrades to a full page load. It shows up on **Windows builds only**: a Windows export needed 237 files copied to the right paths, while the Linux runners that build production needed none. The script is idempotent and does nothing where the export is already correct, so it is safe everywhere and keeps local Windows builds testable.
 3. `scripts/csp.mjs` — writes a per-page Content Security Policy into every HTML file ([below](#content-security-policy)).
 
 Current output:
@@ -125,8 +125,8 @@ Hashes are recomputed on every build, so framework upgrades cannot silently inva
 
 - **No response headers.** `frame-ancestors`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy` and `X-Content-Type-Options` cannot be set: browsers ignore `frame-ancestors` in a `<meta>` policy. The site can therefore be framed by another site. It has no accounts, sessions or state-changing actions, so there is nothing for a clickjacking attack to trigger. `public/_headers` sets all of these and is kept for any host that reads it.
 - **`robots.txt` is advisory only.** Crawlers read `robots.txt` from the domain root, which on a project site belongs to the organisation's own site, not to this project. The file is still published, and the sitemap is linked from it and discoverable on its own.
-- **No custom caching.** Pages sets its own cache headers (currently short-lived). Build-hashed assets under `/_next/static/` are safe to cache forever, but that cannot be declared here.
-- **No redirects.** The site does not need any; every route has a pre-rendered file, and `trailingSlash` makes `/path/` resolve to `/path/index.html`.
+- **No custom caching.** Pages sends `Cache-Control: max-age=600` on everything, so a deploy reaches every visitor within ten minutes. Build-hashed assets under `/_next/static/` could safely be cached for a year, but that cannot be declared here.
+- **No redirects of its own.** The site does not need any. Every route has a pre-rendered file, and `trailingSlash` makes `/path/` resolve to `/path/index.html`. Pages itself redirects `/path` to `/path/` (301). Paths are case-sensitive, so `/RESOURCES/` is a 404.
 - **Hidden files are not published.** `upload-pages-artifact` excludes dotfiles by default. Nothing here needs one: Jekyll never runs on an Actions deployment. `public/.nojekyll` is kept only for anyone deploying the export from a branch instead.
 
 ---

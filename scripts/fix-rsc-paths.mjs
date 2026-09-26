@@ -18,6 +18,11 @@
  * nothing that might read the nested path breaks, and it is idempotent: on a build
  * where the bug is fixed there is nothing nested to copy.
  *
+ * Observed on Windows builds only: the export's file copy joins paths with "/"
+ * (reported in the issue thread). A Windows build here needs 237 copies; the Linux
+ * runners that build production need none, and this pass reports 0. It stays so
+ * that local Windows builds behave like production and the smoke test is meaningful.
+ *
  * Remove this once the upstream fix lands; `scripts/browser-smoke.mjs` fails on any
  * 404 during navigation, so a regression either way is caught.
  */
