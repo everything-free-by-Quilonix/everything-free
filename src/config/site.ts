@@ -26,7 +26,7 @@ export const site = {
   tagline: "Discover. Compare. Use. Learn. — Free.",
   shortDescription: "The free-resource ecosystem.",
   description:
-    "Discover free apps, websites, software, tools, learning resources and creative assets in one place — with free status, limitations and verification stated plainly.",
+    "A trustworthy way to discover free apps, software, tools, learning resources and creative assets — each with its free status, its limitations and exactly how much of it has been checked.",
   url: siteUrl,
   locale: "en",
   githubUrl: "https://github.com/everything-free-by-Quilonix",

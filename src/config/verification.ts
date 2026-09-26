@@ -30,33 +30,34 @@ export const verificationDefinitions: Record<VerificationStatus, VerificationDef
   VERIFIED: {
     id: "VERIFIED",
     label: "Verified",
-    summary: "Free status and limits confirmed against official sources.",
+    summary: "Every required fact confirmed against official sources, and signed off.",
     definition:
-      "A contributor opened the official pricing, licence or documentation pages and confirmed every claim in the listing, recording what they checked.",
+      "Every required check was confirmed against the provider's own pricing, licence or documentation pages, each with the page and the date it was read, and a named maintainer re-opened those sources and signed the listing off.",
     tone: "success",
     icon: "shield-check",
   },
   PARTIALLY_VERIFIED: {
     id: "PARTIALLY_VERIFIED",
     label: "Partially verified",
-    summary: "Core claims checked; some details still need confirmation.",
+    summary: "Free status confirmed; some details still need checking.",
     definition:
-      "The resource exists, is reachable, and the headline free status is right, but at least one detail — an exact limit, commercial-use terms, or platform coverage — has not been confirmed against an official source.",
+      "The free status has been confirmed against the provider's own pages, but at least one required check — an exact limit, the card requirement, commercial-use terms — is not yet confirmed, or a maintainer has not yet signed the evidence off. The resource page lists exactly which.",
     tone: "info",
     icon: "shield-alert",
   },
   UNVERIFIED: {
     id: "UNVERIFIED",
     label: "Unverified",
-    summary: "Submitted but not yet checked by anyone.",
-    definition: "The entry is in the library but no verification pass has happened. Treat the details as a starting point.",
+    summary: "Free status not yet confirmed against an official source.",
+    definition:
+      "Nobody has yet confirmed the free status from the provider's own pages. The listing was compiled from public documentation, and some individual facts may have been checked — the resource page says which. Treat the details as a starting point.",
     tone: "neutral",
     icon: "help-circle",
   },
   OUTDATED: {
     id: "OUTDATED",
     label: "Needs re-checking",
-    summary: "Last verified long enough ago that it may have changed.",
+    summary: "Last checked long enough ago that it may have changed.",
     definition:
       "Free plans change often. Once a listing passes its re-check window it is marked here until someone confirms it again.",
     tone: "warning",
@@ -220,6 +221,43 @@ export function unresolvedChecks(records: readonly VerificationCheckRecord[] = [
 export function missingRequiredChecks(records: readonly VerificationCheckRecord[] = []): VerificationCheck[] {
   const confirmed = new Set(confirmedChecks(records));
   return requiredVerificationChecks.filter((check) => !confirmed.has(check));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Where a listing is in the verification workflow                            */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Workflow stages, derived from the evidence rather than stored.
+ *
+ * The stored `verificationStatus` is what visitors see; the stage is what a
+ * maintainer needs, because it separates cases the badge deliberately does not:
+ * "every required check is confirmed, waiting for a person" versus "half done".
+ * Everything that sorts or reports verification work — the resource page, the
+ * `/verification` page, the generated backlog and the monthly issue — uses this one
+ * function, so they cannot disagree about which bucket a listing is in.
+ */
+export const VERIFICATION_STAGES = ["verified", "awaiting-sign-off", "partial", "started", "not-started"] as const;
+export type VerificationStage = (typeof VERIFICATION_STAGES)[number];
+
+export const verificationStageLabels: Record<VerificationStage, string> = {
+  verified: "Verified",
+  "awaiting-sign-off": "Evidence complete, awaiting maintainer sign-off",
+  partial: "Partially verified",
+  started: "Checks started, free status not yet confirmed",
+  "not-started": "Not verified yet",
+};
+
+export function verificationStage(resource: {
+  verificationStatus: VerificationStatus;
+  verificationChecks?: readonly VerificationCheckRecord[];
+}): VerificationStage {
+  const records = resource.verificationChecks ?? [];
+  if (resource.verificationStatus === "VERIFIED") return "verified";
+  if (records.length === 0) return "not-started";
+  if (missingRequiredChecks(records).length === 0) return "awaiting-sign-off";
+  if (confirmedChecks(records).includes("FREE_STATUS")) return "partial";
+  return "started";
 }
 
 /**

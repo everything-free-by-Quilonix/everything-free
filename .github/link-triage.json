@@ -1,0 +1,63 @@
+{
+  "$comment": [
+    "Human triage of link-health findings, read by .github/scripts/check-links.mjs.",
+    "",
+    "The monthly link check only sees HTTP responses. A 401 or 403 is often a bot challenge, not a dead page, and a redirect is often a language choice, not a move. When a person has checked a finding by hand, it is recorded here so the report files it correctly instead of raising it every month.",
+    "",
+    "- classification: 'bot-protection' (reachable for people, the checker is challenged), 'accepted-redirect' (the redirect is expected; keep the listed URL), or 'confirmed-broken' (a person confirmed the page is gone; the listing needs fixing).",
+    "- expect: what the checker must still see for this review to apply. If the response changes (for example a 403 becomes a 404), the review stops applying and the link goes back to 'Needs manual review'.",
+    "- reviewedAt: reviews expire after 90 days, like verification claims, and the link is raised again.",
+    "- Never record 'confirmed-broken' from the checker's output alone. Open the page in a browser first.",
+    "- This file changes how a finding is reported. It never changes a listing: fix URLs in src/data/resources."
+  ],
+  "reviews": [
+    {
+      "url": "https://unsplash.com",
+      "classification": "bot-protection",
+      "expect": { "status": [401] },
+      "reviewedAt": "2026-09-26",
+      "reviewedBy": "agent-assisted triage — awaiting maintainer review",
+      "evidence": "The site redirects automated clients to an Anubis proof-of-work challenge (/.within.website, 'Making sure you're not a bot!') that answers 401. A real Chrome engine completes the challenge and loads Unsplash."
+    },
+    {
+      "url": "https://unsplash.com/license",
+      "classification": "bot-protection",
+      "expect": { "status": [401] },
+      "reviewedAt": "2026-09-26",
+      "reviewedBy": "agent-assisted triage — awaiting maintainer review",
+      "evidence": "Same Anubis challenge as the homepage. A real Chrome engine loaded the page titled 'License | Unsplash'."
+    },
+    {
+      "url": "https://www.pexels.com",
+      "classification": "bot-protection",
+      "expect": { "status": [403] },
+      "reviewedAt": "2026-09-26",
+      "reviewedBy": "agent-assisted triage — awaiting maintainer review",
+      "evidence": "Cloudflare answers automated clients with 403, header cf-mitigated: challenge and a 'Just a moment...' challenge page. The site loads for a browser."
+    },
+    {
+      "url": "https://www.pexels.com/license",
+      "classification": "bot-protection",
+      "expect": { "status": [403] },
+      "reviewedAt": "2026-09-26",
+      "reviewedBy": "agent-assisted triage — awaiting maintainer review",
+      "evidence": "Same Cloudflare challenge as the homepage. A browser-style fetch loaded the 'Free Stock Photo & Video License - Pexels' page."
+    },
+    {
+      "url": "https://www.autodesk.com/products/fusion-360/personal",
+      "classification": "bot-protection",
+      "expect": { "status": [403] },
+      "reviewedAt": "2026-09-26",
+      "reviewedBy": "agent-assisted triage — awaiting maintainer review",
+      "evidence": "Akamai (server: AkamaiGHost) answers the checker's user agent and headless browsers with 403 'Access Denied'. A browser-style fetch loaded the full Personal Use comparison page the same day."
+    },
+    {
+      "url": "https://www.thunderbird.net",
+      "classification": "accepted-redirect",
+      "expect": { "finalUrlPrefix": "https://www.thunderbird.net/" },
+      "reviewedAt": "2026-09-26",
+      "reviewedBy": "agent-assisted triage — awaiting maintainer review",
+      "evidence": "A temporary (302) redirect to a language-specific page such as /en-US/. The language-neutral address is the right one to list, so each visitor lands on their own language."
+    }
+  ]
+}

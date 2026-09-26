@@ -38,9 +38,11 @@ export function VerificationBadge({ resource, size = "sm" }: { resource: Resourc
 }
 
 /**
- * "Last verified September 2026", or an explicit statement that it never has been.
+ * "Last checked September 2026", or an explicit statement that it never has been.
  *
- * The absent case is spelled out rather than omitted, because a missing date is
+ * "Checked", not "verified": a date means some checks were recorded then, which is
+ * not the same as the listing being Verified — the badge next to it says which. The
+ * absent case is spelled out rather than omitted, because a missing date is
  * information the user needs, not an empty field to hide.
  */
 export function LastVerified({ resource, className }: { resource: Resource; className?: string }) {
@@ -50,7 +52,7 @@ export function LastVerified({ resource, className }: { resource: Resource; clas
     <span className={className}>
       {formatted ? (
         <>
-          Last verified{" "}
+          Last checked{" "}
           <time dateTime={resource.lastVerifiedAt} className="text-fg-muted">
             {formatted}
           </time>

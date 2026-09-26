@@ -94,8 +94,8 @@ See [`docs/deployment.md`](deployment.md).
 
 | Service | Why not |
 | --- | --- |
-| **Database** (Supabase, Postgres, PlanetScale) | Not needed at 43 resources. Git provides review, diffs, history and rollback for free. See the [migration trigger](architecture.md#migration-trigger) |
-| **Search** (Algolia, Elastic, Typesense Cloud) | In-process search over 43 records is faster than a network call. [When this changes](architecture.md#when-a-real-search-engine-becomes-necessary) |
+| **Database** (Supabase, Postgres, PlanetScale) | Not needed at 44 resources. Git provides review, diffs, history and rollback for free. See the [migration trigger](architecture.md#migration-trigger) |
+| **Search** (Algolia, Elastic, Typesense Cloud) | In-process search over 44 records is faster than a network call. [When this changes](architecture.md#when-a-real-search-engine-becomes-necessary) |
 | **AI APIs** | Natural-language search is deterministic phrase matching with no model. A paid API would make a core feature cost money per use |
 | **Analytics** (GA, Plausible, PostHog) | Would contradict the privacy position and add a third-party request to every page. The project does not need to know what visitors do |
 | **Error tracking** (Sentry) | Would send data off-device on error. The route error boundary logs to the console |

@@ -42,10 +42,9 @@ export const developmentResources = defineResources([
     tags: ["code-editor", "ide", "developer", "extensions", "git"],
     alternativeTo: ["Sublime Text", "JetBrains IDEs"],
     relatedResources: ["github", "excalidraw"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "The split between the MIT-licensed source and the proprietary official builds is documented by the project itself. Current telemetry defaults were not re-checked.",
-    lastVerifiedAt: "2026-09-25",
     editorialSpotlight: true,
   },
   {
@@ -88,10 +87,9 @@ export const developmentResources = defineResources([
     tags: ["git", "version-control", "ci-cd", "developer", "collaboration"],
     alternativeTo: ["Bitbucket", "Azure DevOps"],
     relatedResources: ["vs-code", "cloudflare-pages", "supabase"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "The shape of the free plan is stable and well documented, but specific metered allowances were not re-checked during compilation and are intentionally not quoted as figures in this entry.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "cloudflare-pages",
@@ -104,7 +102,9 @@ export const developmentResources = defineResources([
     category: "hosting",
     subcategories: ["deployment", "storage"],
     resourceType: "SERVICE",
-    officialUrl: "https://pages.cloudflare.com",
+    // Was https://pages.cloudflare.com, which now answers 301 to this product page on
+    // Cloudflare's own domain (checked 2026-09-26).
+    officialUrl: "https://www.cloudflare.com/products/pages/",
     pricingUrl: "https://developers.cloudflare.com/pages/functions/pricing",
     freeStatus: "FREE_TIER",
     openSource: false,
@@ -132,10 +132,30 @@ export const developmentResources = defineResources([
     tags: ["hosting", "static-site", "jamstack", "cdn", "developer"],
     alternativeTo: ["Netlify", "Vercel", "AWS Amplify"],
     relatedResources: ["github", "supabase"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Free-plan shape recorded from Cloudflare's developer documentation. Exact build-count and file-count limits were not re-checked and are not quoted as figures here.",
-    lastVerifiedAt: "2026-09-25",
+    verificationNotes:
+      "Only the official URL has been checked, during link-health triage on 26 September 2026. The previously listed address, pages.cloudflare.com, now answers with a permanent (301) redirect to the Cloudflare Pages product page on cloudflare.com, so the listing links that page directly. The free status, limits and every other check are not yet verified.",
+    lastVerifiedAt: "2026-09-26",
+    verifiedBy: "agent-assisted pass — awaiting maintainer review",
+    verificationSources: [
+      {
+        url: "https://www.cloudflare.com/products/pages/",
+        label:
+          "Cloudflare Pages product page on cloudflare.com; the former address pages.cloudflare.com answers 301 to it",
+        retrievedAt: "2026-09-26",
+      },
+    ],
+    verificationChecks: [
+      {
+        check: "OFFICIAL_URL",
+        result: "confirmed",
+        evidence:
+          "pages.cloudflare.com permanently redirects to www.cloudflare.com/products/pages/, a page on Cloudflare's own domain describing Cloudflare Pages. It loaded, and the listing now points there.",
+        sourceUrl: "https://www.cloudflare.com/products/pages/",
+      },
+    ],
   },
   {
     slug: "supabase",
@@ -187,7 +207,7 @@ export const developmentResources = defineResources([
     relatedResources: ["github", "cloudflare-pages"],
     verificationStatus: "PARTIALLY_VERIFIED",
     verificationNotes:
-      "Re-checked against Supabase's own pricing page, billing documentation, Terms of Service and repository licence on 26 September 2026. Nine of ten required checks are confirmed. The pass also corrected two claims: paused projects do not wake on the next request — they stay offline until resumed from the dashboard — and the two-project limit is per person, not per plan. The credit-card requirement could not be established: the Terms reserve the right to validate a payment method at account creation, and no official page says a card is never needed, so it is recorded as unknown.",
+      "Re-checked against Supabase's own pricing page, billing documentation, sign-up form, Terms of Service and repository licence on 26 September 2026. Nine of ten required checks are confirmed. The pass also corrected two claims: paused projects do not wake on the next request — they stay offline until resumed from the dashboard — and the two-project limit is per person, not per plan. The credit-card requirement is still not established. The sign-up form asks only for an email and password, but the Terms reserve the right to validate a payment method at account creation or before provisioning, and no official page says the Free Plan never asks for one. It stays unknown. Settling it needs either an explicit Supabase statement or a maintainer's own sign-up test, recorded with its date.",
     lastVerifiedAt: "2026-09-26",
     verifiedBy: "agent-assisted pass — awaiting maintainer review",
     verificationSources: [
@@ -212,8 +232,14 @@ export const developmentResources = defineResources([
         retrievedAt: "2026-09-26",
       },
       {
+        url: "https://supabase.com/dashboard/sign-up",
+        label: "Sign-up form: creating an account asks for an email and password, or SSO; the form has no payment step",
+        retrievedAt: "2026-09-26",
+      },
+      {
         url: "https://supabase.com/terms",
-        label: "Terms of Service: use for the customer's business purposes; reserves right to validate a payment method at account creation",
+        label:
+          "Terms of Service: use for the customer's business purposes; reserves the right to preauthorise or validate a payment method upon account creation or before provisioning services",
         retrievedAt: "2026-09-26",
       },
       {
@@ -259,14 +285,14 @@ export const developmentResources = defineResources([
         check: "ACCOUNT_REQUIREMENT",
         result: "confirmed",
         evidence:
-          "Projects belong to organisations with Owner and Admin members, and are managed through the Supabase Dashboard, so an account is required.",
-        sourceUrl: "https://supabase.com/docs/guides/platform/billing-faq",
+          "Using the hosted service starts at the sign-up form, which creates a Supabase account; projects then belong to organisations with Owner and Admin members. An account is required.",
+        sourceUrl: "https://supabase.com/dashboard/sign-up",
       },
       {
         check: "CREDIT_CARD_REQUIREMENT",
         result: "unresolved",
         evidence:
-          "No official page states that the Free plan needs no card. The Terms of Service reserve the right to validate a payment method upon account creation, so a card may be asked for. Recorded as unknown rather than guessed; confirming it needs a signup test or an explicit vendor statement.",
+          "The sign-up form asks only for an email and password (or SSO), with no payment step. But the Terms reserve the right to preauthorise or validate a payment method upon account creation or before provisioning services, and no official page says the Free Plan never asks for one. The form alone does not show what happens when a project is created. Recorded as unknown; settling it needs an explicit Supabase statement or a dated sign-up test by a maintainer.",
         sourceUrl: "https://supabase.com/terms",
       },
       {
@@ -351,10 +377,9 @@ export const developmentResources = defineResources([
     tags: ["game-engine", "game-dev", "2d", "3d", "no-royalties", "open-source"],
     alternativeTo: ["Unity", "GameMaker", "Construct"],
     relatedResources: ["blender", "krita", "audacity"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "MIT licence and absence of royalty terms recorded from the project's repository and licence file.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "excalidraw",
@@ -395,10 +420,9 @@ export const developmentResources = defineResources([
     tags: ["whiteboard", "diagrams", "no-signup", "local-first", "developer", "collaboration"],
     alternativeTo: ["Miro", "Lucidchart", "Whimsical"],
     relatedResources: ["penpot", "vs-code"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence, local-first behaviour and the free/Excalidraw+ split recorded from the project's repository and site.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "stirling-pdf",
@@ -411,15 +435,22 @@ export const developmentResources = defineResources([
     category: "documents",
     subcategories: ["utilities", "open-source", "everyday"],
     resourceType: "OPEN_SOURCE",
-    officialUrl: "https://www.stirlingpdf.com",
+    // Was https://www.stirlingpdf.com, which now answers 301 here. The project's
+    // official repository names stirling.com as its website (checked 2026-09-26).
+    officialUrl: "https://www.stirling.com",
     sourceUrl: "https://github.com/Stirling-Tools/Stirling-PDF",
+    licenseUrl: "https://github.com/Stirling-Tools/Stirling-PDF/blob/main/LICENSE",
     freeStatus: "OPEN_SOURCE",
     openSource: true,
     license: "MIT",
+    licenseNotes:
+      "The repository's LICENSE file applies MIT to everything outside a list of directories — including app/proprietary/, app/saas/ and engine/ — that carry their own licences. The project's site describes it as free for individual use. Which features sit outside the MIT part, and whether team or commercial use needs a paid licence, has not been verified.",
     platforms: ["SELF_HOSTED", "BROWSER"],
     requiresAccount: "no",
     requiresCreditCard: "no",
-    commercialUse: "yes",
+    // Was "yes". The site now says "free for individual use" and parts of the code are
+    // under separate licences, so commercial use is not established either way.
+    commercialUse: "unknown",
     personalUse: "yes",
     downloadAvailable: true,
     features: [
@@ -438,9 +469,60 @@ export const developmentResources = defineResources([
     tags: ["pdf", "self-hosted", "privacy", "documents", "ocr", "utilities"],
     alternativeTo: ["Adobe Acrobat Pro", "Smallpdf", "iLovePDF"],
     relatedResources: ["libreoffice"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence and self-hosted deployment model recorded from the project's repository. The feature list was taken from project documentation and not exhaustively exercised.",
-    lastVerifiedAt: "2026-09-25",
+    verificationNotes:
+      "Started during link-health triage on 26 September 2026, when the monthly check reported that stirlingpdf.com now redirects to stirling.com. The official repository names stirling.com as the project's website, so the listing now links it. The same pass found the listing's licence was incomplete: the LICENSE file is MIT except for a list of directories under their own licences, and the site describes the product as free for individual use. The free status and commercial use are therefore unresolved, and commercial use is now shown as unknown instead of yes. A full pass needs the licences of the excluded directories and the project's own statement of what is free.",
+    lastVerifiedAt: "2026-09-26",
+    verifiedBy: "agent-assisted pass — awaiting maintainer review",
+    verificationSources: [
+      {
+        url: "https://github.com/Stirling-Tools/Stirling-PDF",
+        label: "Official repository: names https://stirling.com as the project's website; stirlingpdf.com answers 301 to www.stirling.com",
+        retrievedAt: "2026-09-26",
+      },
+      {
+        url: "https://github.com/Stirling-Tools/Stirling-PDF/blob/main/LICENSE",
+        label:
+          "LICENSE file: MIT for everything outside listed directories (app/proprietary/, app/saas/, engine/ and several frontend directories), which carry their own licences",
+        retrievedAt: "2026-09-26",
+      },
+      {
+        url: "https://www.stirling.com",
+        label: "Project site: describes Stirling PDF as open source and \"free for individual use\", alongside team and processing products",
+        retrievedAt: "2026-09-26",
+      },
+    ],
+    verificationChecks: [
+      {
+        check: "OFFICIAL_URL",
+        result: "confirmed",
+        evidence:
+          "The official repository's website field is stirling.com, and the old address stirlingpdf.com permanently redirects to www.stirling.com, which loaded and presents Stirling PDF.",
+        sourceUrl: "https://github.com/Stirling-Tools/Stirling-PDF",
+      },
+      {
+        check: "LICENSE",
+        result: "confirmed",
+        evidence:
+          "The LICENSE file grants MIT for content outside a listed set of directories, which are licensed separately. The listing records MIT with a licence note naming that exception; it previously said plain MIT.",
+        sourceUrl: "https://github.com/Stirling-Tools/Stirling-PDF/blob/main/LICENSE",
+      },
+      {
+        check: "FREE_STATUS",
+        result: "unresolved",
+        evidence:
+          "The MIT core supports OPEN_SOURCE, but the site now says \"free for individual use\" and part of the code is under other licences. Whether self-hosted team or company use is free was not established, so the classification is not confirmed.",
+        sourceUrl: "https://www.stirling.com",
+      },
+      {
+        check: "COMMERCIAL_USE",
+        result: "unresolved",
+        evidence:
+          "MIT permits commercial use of the MIT-licensed part, but the separately licensed directories and the \"free for individual use\" wording leave commercial use of the product as shipped unsettled. Recorded as unknown.",
+        sourceUrl: "https://github.com/Stirling-Tools/Stirling-PDF/blob/main/LICENSE",
+      },
+    ],
   },
 ]);

@@ -31,7 +31,7 @@ The organising constraint is that the project must run **without paid infrastruc
                               │
               ┌───────────────┴───────────────┐
               ▼                               ▼
-      240 HTML pages                44 OG images (.png)
+      244 HTML pages                45 OG images (.png)
       sitemap · robots            link-manifest.json
               │
               ▼  only if CI passed
@@ -58,7 +58,7 @@ There is no database, no API server, no server actions and no per-request render
 | --- | --- |
 | **Search needs JavaScript** | `/resources` filters in the browser. Without JavaScript it still lists the complete library as static HTML — only filtering and ranking are unavailable. Every other page works fully without it |
 | **Forms need JavaScript** | With a documented fallback to GitHub's own issue forms |
-| **Library ships to the client** | ~43 entries of JSON. This is the scaling limit, and the database trigger |
+| **Library ships to the client** | ~44 entries of JSON. This is the scaling limit, and the database trigger |
 | **Publishing requires a build** | A correction goes live on the next deploy, not instantly |
 
 ---
@@ -99,7 +99,7 @@ There is no write path in the application. Data changes are Git commits. See [Su
 
 The previous milestone proposed a Postgres/Supabase adapter. It was reconsidered and rejected for now.
 
-A database earns its place when it solves a problem you actually have. At 43 resources:
+A database earns its place when it solves a problem you actually have. At 44 resources:
 
 | Need | Database | Git + build |
 | --- | --- | --- |
@@ -208,7 +208,7 @@ Filter state lives in the URL, not in component state. Consequences: filtered vi
 
 ### When a real search engine becomes necessary
 
-Not yet, and not for a while. The current engine is a linear scan with field weighting over 43 records — microseconds, and far faster than a network round trip to a search service.
+Not yet, and not for a while. The current engine is a linear scan with field weighting over 44 records — microseconds, and far faster than a network round trip to a search service.
 
 Introduce a dedicated index (Typesense, Meilisearch, Postgres full-text — self-hosted or free-tier) only when:
 

@@ -301,6 +301,13 @@ export interface Resource {
   limitations: string[];
   /** Plain-language summary of the free/paid boundary. */
   pricingNotes?: string;
+  /**
+   * How the listing was put together before anyone verified it — what it was based
+   * on and what is known to be missing. Useful to the next verifier, and shown on the
+   * page as exactly that. It is **not** evidence: nothing here counts towards a
+   * verification status, and it carries no date that could be mistaken for a check.
+   */
+  compilationNotes?: string;
 
   features: string[];
   tags: string[];
@@ -311,16 +318,25 @@ export interface Resource {
   relatedResources: string[];
 
   verificationStatus: VerificationStatus;
-  /** What was actually checked, and how. Shown on the detail page. */
+  /**
+   * What the current verification pass checked, how, and what it could not settle.
+   * Only valid alongside recorded `verificationChecks`; notes from before any check
+   * was recorded belong in `compilationNotes`.
+   */
   verificationNotes?: string;
+  /**
+   * The date of the current verification pass. Only valid alongside recorded
+   * `verificationChecks` — a date with no recorded checks would read as a check that
+   * happened but left no evidence.
+   */
   lastVerifiedAt?: IsoDate;
   /**
    * Who performed the current verification pass.
    *
-   * For `VERIFIED` this must be a GitHub handle (`@name`) — a person accountable
-   * for the claim. Any other value, such as a description of an automated or
-   * agent-assisted pass, can record evidence but cannot award `VERIFIED`. Enforced
-   * at build time.
+   * For `VERIFIED` this must be the GitHub handle (`@name`) of a maintainer listed in
+   * `config/maintainers.ts` — a person accountable for the claim. Any other value,
+   * such as a description of an automated or agent-assisted pass, can record evidence
+   * but cannot award `VERIFIED`. Enforced at build time.
    */
   verifiedBy?: string;
   /** Official pages read during verification, with the date each was read. */

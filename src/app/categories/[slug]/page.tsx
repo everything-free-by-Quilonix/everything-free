@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return buildMetadata({
     title: `Free ${category.name.toLowerCase()} resources`,
-    description: `${category.description} Every entry states its free status, limitations and when it was last verified.`,
+    description: `${category.description} Every entry states its free status, its limitations and how much of it has been checked.`,
     path: `/categories/${category.slug}`,
   });
 }
@@ -93,7 +93,7 @@ export default async function CategoryPage({ params }: PageProps) {
         {resources.length > 0 ? (
           <>
             <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-              <p className="text-sm text-fg-muted">Sorted by most recently verified.</p>
+              <p className="text-sm text-fg-muted">Sorted by most recently checked.</p>
               <Link
                 href={`/resources?category=${category.id}`}
                 className={buttonClasses({ variant: "secondary", size: "sm" })}

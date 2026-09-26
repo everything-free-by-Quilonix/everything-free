@@ -8,7 +8,7 @@ import type { SortOption } from "@/types/search";
 
 const OPTIONS: { value: SortOption; label: string }[] = [
   { value: "relevance", label: "Best match" },
-  { value: "recently-verified", label: "Recently verified" },
+  { value: "recently-verified", label: "Recently checked" },
   { value: "recently-updated", label: "Recently updated" },
   { value: "name", label: "Name (A–Z)" },
 ];

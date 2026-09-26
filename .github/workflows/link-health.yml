@@ -50,12 +50,16 @@ jobs:
 
       - name: Check links
         id: check
-        run: node .github/scripts/check-links.mjs out/link-manifest.json --out link-report.md
+        # .github/link-triage.json holds findings a person has already checked by hand
+        # (bot protection, expected redirects), so they are filed correctly instead of
+        # being raised again every month.
+        run: node .github/scripts/check-links.mjs out/link-manifest.json --out link-report.md --triage .github/link-triage.json
 
-      - name: File a report if anything needs attention
-        if: steps.check.outputs.problem_count != '0'
+      - name: File, update or close the report
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ATTENTION: ${{ steps.check.outputs.attention_count }}
+          SUMMARY: ${{ steps.check.outputs.summary }}
         run: |
           set -euo pipefail
 
@@ -63,20 +67,29 @@ jobs:
           # not in a fresh repository. `--force` makes this idempotent.
           gh label create link-health --color "B42318" --description "Automated link-check report" --force
 
-          TITLE="Link health report — $(date -u +'%Y-%m-%d')"
-
-          # Reuse a single open issue rather than filing a new one every month, so the
-          # tracker does not fill with near-identical reports.
+          # One open issue at a time rather than a new one every month, so the tracker
+          # does not fill with near-identical reports. Its description is always the
+          # latest report; a short comment records each run.
           EXISTING=$(gh issue list --label link-health --state open --limit 1 --json number --jq '.[0].number // empty')
+          DATE=$(date -u +'%Y-%m-%d')
 
-          if [ -n "$EXISTING" ]; then
-            gh issue comment "$EXISTING" --body-file link-report.md
-            echo "Commented on existing issue #$EXISTING"
+          if [ "$ATTENTION" != "0" ]; then
+            if [ -n "$EXISTING" ]; then
+              gh issue edit "$EXISTING" --body-file link-report.md
+              gh issue comment "$EXISTING" --body "Report refreshed $DATE: ${SUMMARY}. ${ATTENTION} finding(s) need a person. The description above is the current report."
+              echo "Updated existing issue #$EXISTING"
+            else
+              gh issue create --title "Link health report — $DATE" --label link-health --body-file link-report.md
+            fi
+          elif [ -n "$EXISTING" ]; then
+            # Nothing left for a person to do: every finding is explained or reviewed.
+            # Close the issue rather than leave a stale report open.
+            gh issue edit "$EXISTING" --body-file link-report.md
+            gh issue comment "$EXISTING" --body "Report refreshed $DATE: ${SUMMARY}. Nothing needs a person, so this issue is closed. The next run reopens a report if that changes."
+            gh issue close "$EXISTING" --reason completed
+            echo "Closed issue #$EXISTING"
           else
-            gh issue create \
-              --title "$TITLE" \
-              --label link-health \
-              --body-file link-report.md
+            echo "Nothing needs attention and no report is open."
           fi
 
       - name: Upload report

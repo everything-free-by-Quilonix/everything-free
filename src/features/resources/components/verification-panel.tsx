@@ -5,10 +5,10 @@ import { Card } from "@/components/ui/card";
 import { ExternalLink } from "@/components/ui/external-link";
 import {
   getVerificationCheck,
-  isAccountableVerifier,
   missingRequiredChecks,
   requiredVerificationChecks,
   verificationCheckList,
+  verificationStage,
 } from "@/config/verification";
 import { effectiveVerification } from "@/lib/resources/derive";
 import { cn } from "@/lib/utils/cn";
@@ -70,6 +70,20 @@ function buildRows(resource: Resource): Row[] {
   );
 }
 
+/**
+ * Notes written while the listing was compiled. Labelled as such, because they
+ * describe what the listing was based on — not a check anyone recorded.
+ */
+function CompilationNotes({ notes }: { notes: string }) {
+  return (
+    <div className="mt-3 border-t border-border pt-3">
+      <p className="text-xs font-medium text-fg">How this listing was compiled</p>
+      <p className="mt-1 text-xs leading-relaxed text-fg-muted">{notes}</p>
+      <p className="mt-1 text-xs leading-relaxed text-fg-subtle">Not verification: nothing here was recorded as checked.</p>
+    </div>
+  );
+}
+
 export function VerificationPanel({ resource }: { resource: Resource }) {
   const verification = effectiveVerification(resource);
   const records = resource.verificationChecks ?? [];
@@ -77,8 +91,8 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
 
   const requiredTotal = requiredVerificationChecks.length;
   const requiredConfirmed = requiredTotal - missingRequiredChecks(records).length;
-  const evidenceComplete = requiredConfirmed === requiredTotal;
-  const awaitingSignOff = evidenceComplete && resource.verificationStatus !== "VERIFIED" && !isAccountableVerifier(resource.verifiedBy);
+  const stage = verificationStage(resource);
+  const awaitingSignOff = stage === "awaiting-sign-off";
 
   const rows = buildRows(resource);
   const lastChecked = formatMonthYear(resource.lastVerifiedAt);
@@ -115,7 +129,11 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
               required checks confirmed
             </li>
           ) : null}
-          {resource.verifiedBy ? <li>Checked by {resource.verifiedBy}</li> : null}
+          {resource.verifiedBy ? (
+            <li>
+              {stage === "verified" ? "Signed off by" : "Checked by"} {resource.verifiedBy}
+            </li>
+          ) : null}
         </ul>
 
         {awaitingSignOff ? (
@@ -128,8 +146,14 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
 
         {records.length === 0 ? (
           <p className="text-xs leading-relaxed text-fg-subtle">
-            {verification.summary} The details on this page were compiled from the provider&rsquo;s public
-            documentation, but no individual check has been recorded against an official source.
+            The details on this page were compiled from the provider&rsquo;s public documentation. None of them has been
+            checked against an official source and recorded yet, so treat them as a starting point and confirm anything
+            you rely on with the provider.
+          </p>
+        ) : stage === "started" ? (
+          <p className="text-xs leading-relaxed text-fg-subtle">
+            Some facts have been checked, but the free status itself has not been confirmed against an official source
+            yet.
           </p>
         ) : null}
       </div>
@@ -209,15 +233,15 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
 
           {resource.verificationNotes ? (
             <div className="mt-3 border-t border-border pt-3">
-              <p className="text-xs font-medium text-fg">Notes</p>
+              <p className="text-xs font-medium text-fg">Verification notes</p>
               <p className="mt-1 text-xs leading-relaxed text-fg-muted">{resource.verificationNotes}</p>
             </div>
           ) : null}
+
+          {resource.compilationNotes ? <CompilationNotes notes={resource.compilationNotes} /> : null}
         </details>
-      ) : resource.verificationNotes ? (
-        <p className="mt-3 border-t border-border pt-3 text-xs leading-relaxed text-fg-muted">
-          {resource.verificationNotes}
-        </p>
+      ) : resource.compilationNotes ? (
+        <CompilationNotes notes={resource.compilationNotes} />
       ) : null}
 
       <div className="mt-4 flex flex-col gap-1.5 border-t border-border pt-3">

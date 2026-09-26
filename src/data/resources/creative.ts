@@ -3,12 +3,10 @@ import { defineResources } from "./define";
 /**
  * Creative resources.
  *
- * Verification policy for this seed set: entries are recorded from each
- * project's own public documentation and licence files. Where a claim was
- * confirmed against an official page during compilation, `verificationNotes`
- * says so. Where it was not, the status is PARTIALLY_VERIFIED and the notes say
- * what still needs checking. Nothing here is marked VERIFIED on the strength of
- * recollection alone.
+ * Entries were compiled from each project's own public documentation and licence
+ * files. That is recorded in `compilationNotes` and is not verification: until a
+ * check is recorded in `verificationChecks` against an official source, an entry is
+ * UNVERIFIED and carries no verification date. See docs/verification.md.
  */
 export const creativeResources = defineResources([
   {
@@ -43,17 +41,123 @@ export const creativeResources = defineResources([
       "Third-party plugin ecosystem",
     ],
     limitations: [
-      "The interface and terminology differ substantially from Adobe tools, so switching takes time.",
-      "CMYK and print colour workflows are limited compared with commercial print software.",
-      "Non-destructive adjustment layers are not available in the way Photoshop provides them.",
+      "The interface deliberately does not copy Photoshop's, so switching from Adobe tools takes time.",
+      "CMYK is not a native image mode: CMYK files are converted to and from RGB on import and export, with soft-proofing for print, and advanced print features such as GCR are not planned.",
+      "Desktop only — there is no Android or iOS version.",
     ],
     tags: ["image-editor", "photo-editing", "raster", "creator", "photoshop-alternative"],
     alternativeTo: ["Adobe Photoshop", "Corel PaintShop Pro"],
     relatedResources: ["krita", "photopea", "inkscape"],
     verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    compilationNotes:
       "Licence and platform support recorded from the project's own site and repository. Exact feature-by-feature comparison against Photoshop has not been independently re-checked.",
-    lastVerifiedAt: "2026-09-25",
+    verificationNotes:
+      "Every required check was confirmed against GIMP's own pages on 26 September 2026: the user FAQ, the downloads page, the licence file and the release notes for 3.0 and 3.2. The pass corrected an outdated limitation: the listing said non-destructive adjustment layers were unavailable, but GIMP 3.0 added non-destructive filters and 3.2 added vector and link layers and an adjustment-layer workflow, so that line was removed. The CMYK limitation now uses the project's own description, and the missing fact that there is no mobile version was added. The evidence is complete, but this pass was agent-assisted, so the listing is not marked Verified until a registered maintainer re-opens the sources and signs it off.",
+    lastVerifiedAt: "2026-09-26",
+    verifiedBy: "agent-assisted pass — awaiting maintainer review",
+    verificationSources: [
+      {
+        url: "https://www.gimp.org/docs/userfaq.html",
+        label:
+          "User FAQ: commercial use allowed; GPL v3 and later, free to use for any purpose; interface deliberately not a Photoshop copy; no Android or iOS version; CMYK converted on import and export, not a core image mode; development funded by volunteers and donations",
+        retrievedAt: "2026-09-26",
+      },
+      {
+        url: "https://www.gimp.org/downloads/",
+        label: "Downloads page: current stable release 3.2.6, direct downloads for Linux, macOS and Windows with no sign-in or payment step",
+        retrievedAt: "2026-09-26",
+      },
+      {
+        url: "https://www.gimp.org/about/COPYING",
+        label: "Licence file published on gimp.org: GNU General Public License, version 3",
+        retrievedAt: "2026-09-26",
+      },
+      {
+        url: "https://www.gimp.org/release-notes/gimp-3.2.html",
+        label: "GIMP 3.2 release notes: non-destructive link and vector layers, non-destructive filters, an adjustment-layer workflow via pass-through layer groups",
+        retrievedAt: "2026-09-26",
+      },
+    ],
+    verificationChecks: [
+      {
+        check: "OFFICIAL_URL",
+        result: "confirmed",
+        evidence: "gimp.org is the GIMP project's own site; the FAQ, downloads page and licence file under it all loaded.",
+        sourceUrl: "https://www.gimp.org/downloads/",
+      },
+      {
+        check: "FREE_STATUS",
+        result: "confirmed",
+        evidence:
+          "The FAQ states GIMP is distributed under the GPL v3 and later and that you are free to use, study, change and distribute it. That is OPEN_SOURCE.",
+        sourceUrl: "https://www.gimp.org/docs/userfaq.html",
+      },
+      {
+        check: "FREE_TIER_LIMITS",
+        result: "confirmed",
+        evidence:
+          "There is no free tier to cap: the FAQ says you are free to use GIMP for any purpose, and the downloads page offers the full current release (3.2.6) with no paid edition.",
+        sourceUrl: "https://www.gimp.org/docs/userfaq.html",
+      },
+      {
+        check: "LIMITATIONS",
+        result: "confirmed",
+        evidence:
+          "The FAQ says the interface is deliberately not a copy of Photoshop's, that there is no Android or iOS version, and that CMYK is handled by converting on import and export rather than as a core image mode, with GCR not planned. The 3.2 release notes show non-destructive layers now exist, so the old limitation saying they did not was removed.",
+        sourceUrl: "https://www.gimp.org/docs/userfaq.html",
+      },
+      {
+        check: "ACCOUNT_REQUIREMENT",
+        result: "confirmed",
+        evidence: "The downloads page links installers directly (and via BitTorrent, Flathub and the Snap Store) with no sign-in step.",
+        sourceUrl: "https://www.gimp.org/downloads/",
+      },
+      {
+        check: "CREDIT_CARD_REQUIREMENT",
+        result: "confirmed",
+        evidence:
+          "The downloads page has no payment step; the FAQ describes funding through voluntary donations and contributor fundraisers. No card is needed.",
+        sourceUrl: "https://www.gimp.org/downloads/",
+      },
+      {
+        check: "COMMERCIAL_USE",
+        result: "confirmed",
+        evidence: "The FAQ answers 'Can I use GIMP commercially?' with 'Yes, you can', adding that it puts no restrictions on the kind of work you produce.",
+        sourceUrl: "https://www.gimp.org/docs/userfaq.html",
+      },
+      {
+        check: "PERSONAL_USE",
+        result: "confirmed",
+        evidence: "The FAQ states you are free to use GIMP for any purpose.",
+        sourceUrl: "https://www.gimp.org/docs/userfaq.html",
+      },
+      {
+        check: "LICENSE",
+        result: "confirmed",
+        evidence:
+          "The FAQ gives the licence as GPL v3 and later, and the licence file on gimp.org is the GNU GPL version 3. That matches the recorded GPL-3.0-or-later.",
+        sourceUrl: "https://www.gimp.org/about/COPYING",
+      },
+      {
+        check: "PRICING_INFORMATION",
+        result: "confirmed",
+        evidence:
+          "No paid version exists. The FAQ describes a volunteer project, with development funded by donations and fundraisers by trusted contributors. That matches 'no paid tier'.",
+        sourceUrl: "https://www.gimp.org/docs/userfaq.html",
+      },
+      {
+        check: "PLATFORM_AVAILABILITY",
+        result: "confirmed",
+        evidence: "The downloads page offers builds for GNU/Linux, macOS and Microsoft Windows — the three platforms recorded.",
+        sourceUrl: "https://www.gimp.org/downloads/",
+      },
+      {
+        check: "OPEN_SOURCE_STATUS",
+        result: "confirmed",
+        evidence: "GPL v3 and later, with the right to study and change the source, per the FAQ. Matches openSource: true.",
+        sourceUrl: "https://www.gimp.org/docs/userfaq.html",
+      },
+    ],
     editorialSpotlight: true,
   },
   {
@@ -93,10 +197,9 @@ export const creativeResources = defineResources([
     tags: ["painting", "illustration", "digital-art", "creator", "animation"],
     alternativeTo: ["Adobe Photoshop", "Corel Painter", "Clip Studio Paint"],
     relatedResources: ["gimp", "blender", "inkscape"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence and platform support recorded from the project's own site. Mobile and tablet builds exist in varying states and were deliberately not listed as supported platforms.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "inkscape",
@@ -135,9 +238,8 @@ export const creativeResources = defineResources([
     tags: ["vector", "svg", "logo-design", "illustration", "creator"],
     alternativeTo: ["Adobe Illustrator", "CorelDRAW", "Affinity Designer"],
     relatedResources: ["gimp", "penpot", "krita"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes: "Licence and platform support recorded from the project's own site and repository.",
-    lastVerifiedAt: "2026-09-25",
+    verificationStatus: "UNVERIFIED",
+    compilationNotes: "Licence and platform support recorded from the project's own site and repository.",
   },
   {
     slug: "blender",
@@ -179,10 +281,9 @@ export const creativeResources = defineResources([
     tags: ["3d", "modelling", "animation", "rendering", "vfx", "creator", "game-dev"],
     alternativeTo: ["Autodesk Maya", "Autodesk 3ds Max", "Cinema 4D", "ZBrush"],
     relatedResources: ["godot", "krita", "davinci-resolve"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence recorded from the Blender Foundation's licence page. Hardware requirements not independently tested.",
-    lastVerifiedAt: "2026-09-25",
     editorialSpotlight: true,
   },
   {
@@ -220,10 +321,9 @@ export const creativeResources = defineResources([
     tags: ["image-editor", "psd", "browser", "no-install", "photoshop-alternative"],
     alternativeTo: ["Adobe Photoshop"],
     relatedResources: ["gimp", "krita", "inkscape"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Free browser access and PSD support confirmed as the product's core advertised behaviour. Exact differences between free and paid tiers were not re-checked against the pricing page and may have changed.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "penpot",
@@ -261,10 +361,9 @@ export const creativeResources = defineResources([
     tags: ["ui-design", "prototyping", "self-hosted", "collaboration", "figma-alternative"],
     alternativeTo: ["Figma", "Adobe XD", "Sketch"],
     relatedResources: ["inkscape", "excalidraw", "google-fonts"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence and self-hosting support recorded from the project's repository. Hosted free-plan limits were not re-checked and may have changed.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "davinci-resolve",
@@ -305,10 +404,9 @@ export const creativeResources = defineResources([
     tags: ["video-editor", "colour-grading", "vfx", "creator", "premiere-alternative"],
     alternativeTo: ["Adobe Premiere Pro", "Final Cut Pro", "Avid Media Composer"],
     relatedResources: ["shotcut", "kdenlive", "audacity", "obs-studio"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "The free-versus-Studio feature split was checked against multiple independent comparisons in September 2026 but not against Blackmagic Design's own comparison page. Treat the specific feature boundaries as indicative and confirm on the official site before relying on one.",
-    lastVerifiedAt: "2026-09-25",
     editorialSpotlight: true,
   },
   {
@@ -346,9 +444,8 @@ export const creativeResources = defineResources([
     tags: ["video-editor", "ffmpeg", "no-watermark", "creator"],
     alternativeTo: ["Adobe Premiere Pro", "Camtasia", "Filmora"],
     relatedResources: ["kdenlive", "davinci-resolve", "obs-studio"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes: "Licence and platform support recorded from the project's site and repository.",
-    lastVerifiedAt: "2026-09-25",
+    verificationStatus: "UNVERIFIED",
+    compilationNotes: "Licence and platform support recorded from the project's site and repository.",
   },
   {
     slug: "kdenlive",
@@ -385,9 +482,8 @@ export const creativeResources = defineResources([
     tags: ["video-editor", "kde", "proxy-editing", "creator"],
     alternativeTo: ["Adobe Premiere Pro", "Final Cut Pro"],
     relatedResources: ["shotcut", "davinci-resolve", "audacity"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes: "Licence and platform support recorded from the project's site and repository.",
-    lastVerifiedAt: "2026-09-25",
+    verificationStatus: "UNVERIFIED",
+    compilationNotes: "Licence and platform support recorded from the project's site and repository.",
   },
   {
     slug: "audacity",
@@ -425,9 +521,8 @@ export const creativeResources = defineResources([
     tags: ["audio-editor", "podcast", "recording", "noise-reduction", "creator"],
     alternativeTo: ["Adobe Audition", "Sound Forge"],
     relatedResources: ["obs-studio", "davinci-resolve", "whisper"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes: "Licence and platform support recorded from the project's repository.",
-    lastVerifiedAt: "2026-09-25",
+    verificationStatus: "UNVERIFIED",
+    compilationNotes: "Licence and platform support recorded from the project's repository.",
   },
   {
     slug: "obs-studio",
@@ -466,9 +561,8 @@ export const creativeResources = defineResources([
     tags: ["screen-recording", "streaming", "creator", "no-watermark"],
     alternativeTo: ["Camtasia", "Streamlabs", "ScreenFlow"],
     relatedResources: ["shotcut", "audacity", "davinci-resolve"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes: "Licence and platform support recorded from the project's repository.",
-    lastVerifiedAt: "2026-09-25",
+    verificationStatus: "UNVERIFIED",
+    compilationNotes: "Licence and platform support recorded from the project's repository.",
     editorialSpotlight: true,
   },
   {
@@ -509,10 +603,9 @@ export const creativeResources = defineResources([
     tags: ["stock-photos", "images", "commercial-use", "no-attribution", "creator"],
     alternativeTo: ["Adobe Stock", "Getty Images", "Shutterstock"],
     relatedResources: ["pexels", "google-fonts", "gimp"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence terms summarised from the published Unsplash License. Attribution is not required but is encouraged by the platform; confirm current terms before a high-stakes commercial use.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "pexels",
@@ -551,10 +644,9 @@ export const creativeResources = defineResources([
     tags: ["stock-photos", "stock-video", "commercial-use", "creator"],
     alternativeTo: ["Shutterstock", "Adobe Stock", "Getty Images"],
     relatedResources: ["unsplash", "davinci-resolve", "shotcut"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence terms summarised from the published Pexels License. Confirm current terms before a high-stakes commercial use.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "google-fonts",
@@ -596,10 +688,9 @@ export const creativeResources = defineResources([
     tags: ["fonts", "typography", "open-font-license", "commercial-use", "web"],
     alternativeTo: ["Adobe Fonts", "Monotype"],
     relatedResources: ["penpot", "inkscape", "unsplash"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Predominant licensing recorded from the catalogue's own licensing documentation. Individual family licences were not enumerated.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "autodesk-fusion-personal",
@@ -634,6 +725,7 @@ export const creativeResources = defineResources([
     limitations: [
       "Personal, non-commercial projects only. It may not be used in your primary employment, in a company environment, or for commercial training.",
       "Eligibility is limited to individuals generating less than USD 1,000 per year.",
+      "Only 10 documents can be active and editable at a time.",
       "The Personal Use licence expires and has to be renewed; renewal is only possible in the last 30 days before it lapses.",
       "Reduced feature set compared with the paid subscription: limited CAM, electronics and PCB design, 2D drawings, and import/export file types; single-user data management; forum support only.",
       "Requires signing in with an Autodesk account.",
@@ -645,7 +737,7 @@ export const creativeResources = defineResources([
     relatedResources: ["blender", "freecad"],
     verificationStatus: "PARTIALLY_VERIFIED",
     verificationNotes:
-      "Re-checked against three Autodesk pages on 26 September 2026: the Personal Use comparison page, the account renewal FAQ and the installation guide. Nine of ten required checks are confirmed. The pass replaced a vague limitation with Autodesk's own list of reduced features, and replaced a third-party university page as the source for the licence expiry. Whether signup asks for a payment method is not stated on any official page, so it is recorded as unknown.",
+      "Re-checked against four Autodesk pages on 26 September 2026: the Personal Use comparison page, Autodesk's Fusion subscription-types guide, the account renewal FAQ and the installation guide. Nine of ten required checks are confirmed. The pass replaced a vague limitation with Autodesk's own list of reduced features, added the 10 active editable documents limit that the listing had missed, and replaced a third-party university page as the source for the licence expiry. Whether signing up asks for a payment method is not stated on any official Autodesk page. Community forum answers were not accepted as evidence. It stays unknown until Autodesk states it or a maintainer records a dated sign-up test.",
     lastVerifiedAt: "2026-09-26",
     verifiedBy: "agent-assisted pass — awaiting maintainer review",
     verificationSources: [
@@ -653,6 +745,12 @@ export const creativeResources = defineResources([
         url: "https://www.autodesk.com/products/fusion-360/personal",
         label:
           "Comparison page: personal non-commercial use only, under USD 1,000 a year, not in primary employment or company environments; list of reduced features; paid subscription options",
+        retrievedAt: "2026-09-26",
+      },
+      {
+        url: "https://www.autodesk.com/products/fusion-360/blog/fusion-subscription-types/",
+        label:
+          "Autodesk's Fusion subscription-types guide: Personal Use is free, for non-commercial home-based projects, limited to 10 active editable documents, with no commercial-use rights",
         retrievedAt: "2026-09-26",
       },
       {
@@ -684,14 +782,14 @@ export const creativeResources = defineResources([
         check: "FREE_TIER_LIMITS",
         result: "confirmed",
         evidence:
-          "The page lists the Personal Use limits: limited CAM, single-user data management, limited electronics and PCB designs, limited 2D documentation and drawings, forum support only, limited import/export file types.",
-        sourceUrl: "https://www.autodesk.com/products/fusion-360/personal",
+          "The subscription-types guide states Personal Use has a 10 active editable document limit. The comparison page lists the reduced features: limited CAM, single-user data management, limited electronics and PCB designs, limited 2D documentation and drawings, forum support only, limited import/export file types.",
+        sourceUrl: "https://www.autodesk.com/products/fusion-360/blog/fusion-subscription-types/",
       },
       {
         check: "LIMITATIONS",
         result: "confirmed",
         evidence:
-          "The eligibility restrictions and reduced features come from the comparison page. The renewal FAQ confirms the licence expires, with renewal only in the last 30 days. The installation guide confirms Autodesk Account sign-in.",
+          "The eligibility restrictions and reduced features come from the comparison page, and the 10 active editable documents limit from the subscription-types guide. The renewal FAQ confirms the licence expires, with renewal only in the last 30 days. The installation guide confirms Autodesk Account sign-in.",
         sourceUrl: "https://www.autodesk.com/uk/support/account/manage/renew/faq",
       },
       {
@@ -705,7 +803,7 @@ export const creativeResources = defineResources([
         check: "CREDIT_CARD_REQUIREMENT",
         result: "unresolved",
         evidence:
-          "None of the official pages reviewed says whether the Personal Use signup asks for a payment method. Recorded as unknown; settling it needs a signup test or an explicit Autodesk statement.",
+          "Neither the comparison page, the subscription-types guide nor the installation guide says whether signing up for Personal Use asks for a payment method. Community forum answers discuss activation but are not Autodesk statements and were not used. Recorded as unknown; settling it needs an explicit Autodesk statement or a dated sign-up test by a maintainer.",
         sourceUrl: "https://www.autodesk.com/products/fusion-360/personal",
       },
       {
@@ -780,8 +878,7 @@ export const creativeResources = defineResources([
     tags: ["cad", "parametric", "engineering", "open-source", "commercial-use"],
     alternativeTo: ["SolidWorks", "Autodesk Fusion", "Autodesk Inventor"],
     relatedResources: ["autodesk-fusion-personal", "blender"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes: "Licence and platform support recorded from the project's repository.",
-    lastVerifiedAt: "2026-09-25",
+    verificationStatus: "UNVERIFIED",
+    compilationNotes: "Licence and platform support recorded from the project's repository.",
   },
 ]);

@@ -9,11 +9,10 @@ import { ExternalLink } from "@/components/ui/external-link";
 import { Container, PageHeader } from "@/components/ui/layout";
 import { site } from "@/config/site";
 import {
-  isAccountableVerifier,
-  missingRequiredChecks,
   VERIFICATION_FRESHNESS_DAYS,
   verificationCheckList,
   verificationList,
+  verificationStage,
 } from "@/config/verification";
 import { getAllResourcesForClient } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -27,17 +26,14 @@ export const metadata: Metadata = buildMetadata({
 
 export default async function VerificationPage() {
   const resources = await getAllResourcesForClient();
+  const stages = resources.map((resource) => verificationStage(resource));
+  const count = (...wanted: ReturnType<typeof verificationStage>[]) => stages.filter((s) => wanted.includes(s)).length;
   const counts = {
     total: resources.length,
-    verified: resources.filter((resource) => resource.verificationStatus === "VERIFIED").length,
-    awaitingSignOff: resources.filter(
-      (resource) =>
-        resource.verificationStatus !== "VERIFIED" &&
-        (resource.verificationChecks?.length ?? 0) > 0 &&
-        missingRequiredChecks(resource.verificationChecks).length === 0 &&
-        !isAccountableVerifier(resource.verifiedBy),
-    ).length,
-    withEvidence: resources.filter((resource) => (resource.verificationChecks?.length ?? 0) > 0).length,
+    verified: count("verified"),
+    awaitingSignOff: count("awaiting-sign-off"),
+    partial: count("partial"),
+    notStarted: count("not-started", "started"),
   };
 
   return (
@@ -110,9 +106,10 @@ export default async function VerificationPage() {
 
           <p className="mt-5 text-sm leading-relaxed text-fg-muted">
             A listing may only claim <strong className="text-fg">Verified</strong> once every required check is
-            confirmed, it cites at least one official source with the date it was read, and the person who checked it is
-            recorded. That rule is enforced when the site is built — an entry that claims more than its evidence supports
-            fails the build rather than shipping.
+            confirmed against an official source, each with the page and the date it was read, and a maintainer has
+            signed it off. <strong className="text-fg">Partially verified</strong> means at least the free status itself
+            was confirmed that way. These rules are enforced when the site is built — an entry that claims more than its
+            evidence supports fails the build rather than shipping.
           </p>
         </section>
 
@@ -123,8 +120,9 @@ export default async function VerificationPage() {
           <p className="mt-3 leading-relaxed text-fg-muted">
             Scripts and AI-assisted research can find official pages and record what they say, and that evidence is kept
             and shown. But a listing is only marked <strong className="text-fg">Verified</strong> when a maintainer has
-            reviewed the evidence and put their own GitHub handle on it. The build enforces this: no tool, script or
-            assistant can award the badge by itself.
+            re-opened the sources and put their own GitHub handle on it. Maintainers are listed in a register in the
+            repository, and each adds their own name to it. The build enforces both: no tool, script or assistant can
+            award the badge by itself, and nobody outside the register can either.
           </p>
         </section>
 
@@ -134,11 +132,12 @@ export default async function VerificationPage() {
           </h2>
           {/* Counted from the data at build time, so this cannot drift from what
               the resource pages actually show. */}
-          <dl className="mt-4 grid gap-3 sm:grid-cols-3">
+          <dl className="mt-4 grid gap-3 sm:grid-cols-2">
             {[
               { term: "Verified", value: counts.verified },
               { term: "Evidence complete, awaiting sign-off", value: counts.awaitingSignOff },
-              { term: "With recorded evidence", value: counts.withEvidence },
+              { term: "Partially verified", value: counts.partial },
+              { term: "Free status not yet confirmed", value: counts.notStarted },
             ].map((item) => (
               <div key={item.term} className="rounded-lg border border-border bg-surface p-4">
                 <dt className="text-xs text-fg-muted">{item.term}</dt>
@@ -152,8 +151,10 @@ export default async function VerificationPage() {
           <Callout tone="info" icon="info" className="mt-4">
             <p>
               The library was compiled from each project&rsquo;s own public documentation, which is a reasonable basis
-              but not the same as working through the checklist above. Most entries have no individual checks recorded
-              yet, and say so on their page.
+              but not the same as working through the checklist above. Until a listing&rsquo;s checks are recorded it is
+              shown as <strong className="text-fg">Unverified</strong>, with no verification date, and its page says how
+              it was compiled. The aim is the most trustworthy library, not the largest one, so an honest
+              &ldquo;not checked yet&rdquo; is preferred to a badge the evidence does not support.
             </p>
             <p className="mt-2">
               Entries with recorded evidence show every check, the page it came from and the date it was read. Where a fact

@@ -54,7 +54,7 @@ const COLUMNS: { key: string; label: string; render: (resource: Resource) => Rea
   },
   {
     key: "verified",
-    label: "Last verified",
+    label: "Last checked",
     render: (resource) => formatMonthYear(resource.lastVerifiedAt) ?? <Unknown label="Never" />,
   },
 ];

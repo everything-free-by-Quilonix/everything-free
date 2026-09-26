@@ -46,7 +46,8 @@ export function Hero({ resourceCount, toolCount }: { resourceCount: number; tool
           <SearchSuggestions queries={searchExamples.slice(0, 5)} className="mt-5 justify-center" />
 
           <p className="mt-8 text-sm text-fg-subtle">
-            {formatCount(resourceCount)} resources in the library · {formatCount(toolCount)} tools you can use here
+            {formatCount(resourceCount)} resources, each showing how much of it has been checked ·{" "}
+            {formatCount(toolCount)} tools you can use here
           </p>
         </div>
 

@@ -102,20 +102,20 @@ export default async function HomePage() {
           )}
         </Section>
 
-        {/* --------------------------------------------- recently verified */}
+        {/* ---------------------------------------------- recently checked */}
         <Section
           id="recently-verified"
-          title="Recently verified"
-          description="Free plans change. These are the entries whose details were checked most recently."
+          title="Recently checked"
+          description="Free plans change. These entries had facts checked against official sources most recently. The badge on each says how far that checking got."
           action={<SectionLink href="/resources?sort=recently-verified">See all by date</SectionLink>}
         >
           {recentlyVerified.length > 0 ? (
-            <ResourceGrid resources={recentlyVerified} label="Recently verified resources" />
+            <ResourceGrid resources={recentlyVerified} label="Recently checked resources" />
           ) : (
             <EmptyState
               icon="shield-check"
-              title="Nothing has been verified yet"
-              description="Once contributors start confirming free status against official sources, the most recent checks will appear here."
+              title="Nothing has been checked yet"
+              description="Once contributors start confirming facts against official sources, the most recent checks will appear here."
               action={
                 <Link href="/verification" className={buttonClasses({ variant: "secondary" })}>
                   How verification works

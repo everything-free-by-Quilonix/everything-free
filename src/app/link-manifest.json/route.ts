@@ -1,11 +1,15 @@
 import { freeStatusDefinitions } from "@/config/free-status";
+import { maintainers } from "@/config/maintainers";
 import {
   confirmedChecks,
   missingRequiredChecks,
   requiredVerificationChecks,
   unresolvedChecks,
   VERIFICATION_FRESHNESS_DAYS,
+  VERIFICATION_STAGES,
   verificationCheckList,
+  verificationStage,
+  verificationStageLabels,
 } from "@/config/verification";
 import { getAllResourcesForClient } from "@/lib/repository";
 
@@ -34,6 +38,8 @@ export async function GET() {
 
   const entries = resources.map((resource) => {
     const records = resource.verificationChecks ?? [];
+    const recordsByCheck = new Map(records.map((record) => [record.check, record]));
+    const sourcesByUrl = new Map((resource.verificationSources ?? []).map((source) => [source.url, source]));
     return {
       slug: resource.slug,
       name: resource.name,
@@ -49,11 +55,30 @@ export async function GET() {
       conditionalFreeStatus: freeStatusDefinitions[resource.freeStatus].requiresLimitations,
       editorialSpotlight: Boolean(resource.editorialSpotlight),
       verificationStatus: resource.verificationStatus,
+      // Where the listing is in the verification workflow. Computed by the same
+      // function the site uses, so every report buckets it identically.
+      stage: verificationStage(resource),
       lastVerifiedAt: resource.lastVerifiedAt ?? null,
       verifiedBy: resource.verifiedBy ?? null,
       confirmedChecks: confirmedChecks(records),
       unresolvedChecks: unresolvedChecks(records),
       missingRequiredChecks: missingRequiredChecks(records),
+      // The full worksheet: every check, including the ones nobody has looked at,
+      // with the evidence and the source it rests on joined in. This is what lets a
+      // maintainer see exactly what remains without reading the data file.
+      checks: verificationCheckList.map((definition) => {
+        const record = recordsByCheck.get(definition.id);
+        const source = record?.sourceUrl ? sourcesByUrl.get(record.sourceUrl) : undefined;
+        return {
+          id: definition.id,
+          required: definition.requiredForVerified,
+          result: record?.result ?? "not-checked",
+          evidence: record?.evidence ?? null,
+          sourceUrl: record?.sourceUrl ?? null,
+          sourceLabel: source?.label ?? null,
+          readOn: source?.retrievedAt ?? null,
+        };
+      }),
       verificationSources: (resource.verificationSources ?? []).map((source) => ({
         url: source.url,
         label: source.label,
@@ -71,8 +96,13 @@ export async function GET() {
       checks: verificationCheckList.map((check) => ({
         id: check.id,
         label: check.label,
+        question: check.question,
         required: check.requiredForVerified,
       })),
+      stages: VERIFICATION_STAGES.map((id) => ({ id, label: verificationStageLabels[id] })),
+      // Who can sign off VERIFIED. Published so the reports can say plainly when
+      // nobody can yet.
+      maintainers: maintainers.map((maintainer) => maintainer.handle),
     },
     count: entries.length,
     entries,

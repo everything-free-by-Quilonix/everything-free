@@ -57,7 +57,7 @@ export const footerNav: FooterSection[] = [
       { label: "Categories", href: "/categories" },
       { label: "Collections", href: "/collections" },
       { label: "Free alternatives", href: "/alternatives" },
-      { label: "Recently verified", href: "/resources?sort=recently-verified" },
+      { label: "Recently checked", href: "/resources?sort=recently-verified" },
     ],
   },
   {

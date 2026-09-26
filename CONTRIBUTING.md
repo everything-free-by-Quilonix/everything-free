@@ -98,7 +98,7 @@ Verification is what separates this from a stale directory, and it is the most v
 
 The short version:
 
-1. Pick an entry from **[`docs/verification-backlog.md`](docs/verification-backlog.md)**, the generated work queue.
+1. Pick an entry from **[`docs/verification-backlog.md`](docs/verification-backlog.md)**, the generated work queue, and print its worksheet with `npm run build:static && npm run worksheet -- <slug>`. It shows every check still open, the question to answer and a record template.
 2. Open the provider's **own** pricing, licence or documentation pages — not a review, blog post, university IT page or other directory.
 3. Record each page you read once, in `verificationSources`, with a label saying what that page establishes and the date you read it.
 4. Add one record per check you looked at to `verificationChecks`:
@@ -114,12 +114,14 @@ The short version:
 
    A check you did not look at gets no record. If a source contradicts the listing, correct the listing. There is no "failed" result.
 5. Say in `verificationNotes` what you did **not** confirm.
-6. Put your GitHub handle (`@name`) in `verifiedBy` and the date in `lastVerifiedAt`. Leave `verificationStatus` as `PARTIALLY_VERIFIED`.
+6. Put your GitHub handle (`@name`) in `verifiedBy` and the date in `lastVerifiedAt`. Set `verificationStatus` to `PARTIALLY_VERIFIED` once `FREE_STATUS` is confirmed, and leave it `UNVERIFIED` until then. Notes from compiling a listing go in `compilationNotes`; they are not evidence.
 7. Run `npm run build:static && npm run backlog`, and commit the regenerated backlog with your change. CI fails if you forget.
 
 **Confirming three checks and honestly recording the rest as unresolved or unchecked is a real contribution. Claiming all ten without looking is not.** The build rejects a confirmed check with no official source behind it.
 
-**Only a maintainer marks an entry `VERIFIED`**, after re-opening the sources themselves. The build requires a maintainer's `@handle` on every `VERIFIED` entry and rejects one awarded by a script, bot or AI assistant. See [signing off](docs/verification.md#signing-off-maintainers).
+**Only a maintainer marks an entry `VERIFIED`**, after re-opening the sources themselves. The build requires the handle of a maintainer listed in `src/config/maintainers.ts` on every `VERIFIED` entry, and each maintainer adds their own handle there. It rejects a badge awarded by a script, bot or AI assistant. See [signing off](docs/verification.md#signing-off-maintainers).
+
+**Found a broken or redirected link?** Report it, or check it in a browser and record what you found in `.github/link-triage.json` ([how](docs/verification.md#recording-triage)). Change a listing's URL only once the new destination is confirmed as the provider's own.
 
 A verification older than 90 days is automatically displayed as needing a re-check, so re-verifying existing entries is genuinely useful work.
 

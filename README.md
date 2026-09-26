@@ -95,9 +95,9 @@ A verification older than 90 days is **automatically** displayed as needing a re
 
 Verification is recorded **one check at a time**, not as a single judgement. For each of twelve checks a verifier records whether it was confirmed or could not be settled, what the official source actually says, and which page says it. Every source is dated. A resource page summarises the result ("9 of 10 required checks confirmed") and opens the full evidence on request, so the badge can be interrogated rather than taken on trust.
 
-`VERIFIED` requires all ten required checks confirmed, each citing a dated official source, **and sign-off under a maintainer's GitHub handle**. Both are enforced at build time. An entry claiming more than its evidence supports fails the build, and so does a `VERIFIED` badge awarded by a script, bot or AI assistant. Automated passes may gather evidence, but a person signs off.
+`VERIFIED` requires all ten required checks confirmed, each citing a dated official source, **and sign-off by a maintainer listed in [`src/config/maintainers.ts`](src/config/maintainers.ts)**. `PARTIALLY_VERIFIED` requires at least the free status confirmed that way; anything less is `UNVERIFIED`. All of this is enforced at build time. An entry claiming more than its evidence supports fails the build, and so does a `VERIFIED` badge awarded by a script, bot or AI assistant. Automated passes may gather evidence, but a person signs off.
 
-> **Where the library stands:** **nothing is marked `VERIFIED`**, because no maintainer has signed anything off yet. Three entries have been re-checked against official pages only, with every check recorded. Obsidian has all ten required checks confirmed and is awaiting sign-off. Supabase and Autodesk Fusion have nine; neither vendor documents whether a card is needed, so that field says "unknown". The other forty entries were compiled from each project's own documentation and have no per-check records yet.
+> **Where the library stands:** **nothing is marked `VERIFIED`**, because no maintainer has registered or signed anything off yet. Four entries — Obsidian, GIMP, LibreOffice and KeePassXC — have all ten required checks confirmed against official pages and are awaiting sign-off. Supabase and Autodesk Fusion have nine; neither vendor documents whether a card is needed, so that field says "unknown". Four more have had their official URL checked. The other 34 were compiled from each project's own documentation, have no checks recorded, and are shown as Unverified with no verification date.
 >
 > The work queue is [`docs/verification-backlog.md`](docs/verification-backlog.md), generated from the data and kept in sync by CI.
 
@@ -109,7 +109,7 @@ Verification is recorded **one check at a time**, not as a single judgement. For
 - Resource model covering free status, licensing, platforms, requirements, limitations and verification
 - 8 category groups over a flat, canonically-slugged taxonomy of 72 categories
 - 27 resource types
-- 43 hand-written seed resources — small on purpose, because a directory's value is accuracy, not size
+- 44 hand-written resources — small on purpose, because the aim is the most trustworthy way to find free resources, not the largest list of them
 - Curated collections with a stated rationale for each selection
 - "Free alternatives to X" pages, derived automatically from the library
 - Audience views (students, creators, developers, small businesses, researchers) that resolve to live queries rather than hand-maintained lists
@@ -233,8 +233,9 @@ Maintenance, after a `build:static`:
 
 ```bash
 npm run backlog              # regenerate docs/verification-backlog.md (CI checks it with backlog:check)
+npm run worksheet -- <slug>  # every check for one resource: evidence, source, date read, what is still open
 npm run check:verification   # freshness and completeness summary (no network requests)
-npm run check:links          # external link health (paced, honours robots.txt)
+npm run check:links          # external link health (paced, honours robots.txt, applies .github/link-triage.json)
 ```
 
 ### Configuration

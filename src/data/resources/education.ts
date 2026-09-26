@@ -39,10 +39,9 @@ export const educationResources = defineResources([
     tags: ["education", "students", "mathematics", "science", "free-courses", "non-profit"],
     alternativeTo: ["Coursera", "Udemy"],
     relatedResources: ["mit-opencourseware", "freecodecamp", "anki"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Non-profit model and free access are the organisation's stated position. The exact Creative Commons version applied to each content area was not enumerated.",
-    lastVerifiedAt: "2026-09-25",
     editorialSpotlight: true,
   },
   {
@@ -81,10 +80,9 @@ export const educationResources = defineResources([
     tags: ["university", "courses", "students", "open-educational-resources", "research"],
     alternativeTo: ["Coursera", "edX verified certificates"],
     relatedResources: ["khan-academy", "freecodecamp", "zotero"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Open licensing and free access are the programme's stated model. Per-course completeness was not audited.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "freecodecamp",
@@ -124,10 +122,9 @@ export const educationResources = defineResources([
     tags: ["learn-to-code", "web-development", "students", "career", "non-profit", "developer"],
     alternativeTo: ["Codecademy Pro", "Udemy", "Pluralsight"],
     relatedResources: ["khan-academy", "vs-code", "mit-opencourseware"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Free access and free certification are the organisation's stated model. The licence applying to curriculum content as distinct from platform code was not established, so commercial reuse is recorded as unknown rather than guessed.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "project-gutenberg",
@@ -166,10 +163,9 @@ export const educationResources = defineResources([
     tags: ["ebooks", "public-domain", "reading", "students", "drm-free"],
     alternativeTo: ["Kindle Store purchases", "Audible"],
     relatedResources: ["internet-archive", "wikipedia"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Public-domain basis and DRM-free distribution are the project's stated model. Per-title copyright status by jurisdiction cannot be verified centrally, which is why it is listed as a limitation.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "anki",
@@ -212,10 +208,9 @@ export const educationResources = defineResources([
     tags: ["flashcards", "spaced-repetition", "students", "study", "languages"],
     alternativeTo: ["Quizlet Plus", "Brainscape Pro"],
     relatedResources: ["khan-academy", "zotero"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "The split between the free desktop/Android clients and the paid iOS client is documented by the project. Commercial reuse of the software under AGPL terms is recorded as unknown because it depends on how it would be deployed.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "zotero",
@@ -258,10 +253,9 @@ export const educationResources = defineResources([
     tags: ["citations", "research", "academic", "students", "bibliography"],
     alternativeTo: ["EndNote", "Mendeley premium", "Papers"],
     relatedResources: ["mit-opencourseware", "internet-archive", "libreoffice"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence, WebDAV alternative and the free-software-plus-metered-storage model are documented by the project. The exact free storage quota was not re-checked and is deliberately not quoted here.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "wikipedia",
@@ -303,10 +297,9 @@ export const educationResources = defineResources([
     tags: ["encyclopaedia", "reference", "open-content", "research", "students"],
     alternativeTo: ["Encyclopaedia Britannica subscription"],
     relatedResources: ["internet-archive", "project-gutenberg", "openstreetmap"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Text licensing recorded from the Wikimedia Foundation's terms of use. Per-file media licensing varies and was not enumerated.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "internet-archive",
@@ -347,9 +340,8 @@ export const educationResources = defineResources([
     tags: ["archive", "wayback-machine", "digital-library", "research", "non-profit"],
     alternativeTo: ["Commercial archiving services"],
     relatedResources: ["project-gutenberg", "wikipedia"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Free access is the organisation's stated model. Reuse rights are per item, which is why commercial use is recorded as unknown rather than asserted.",
-    lastVerifiedAt: "2026-09-25",
   },
 ]);

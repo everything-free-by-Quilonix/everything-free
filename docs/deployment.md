@@ -29,9 +29,9 @@ Current output:
 
 | | |
 | --- | --- |
-| HTML pages | 240 |
-| OpenGraph images | 44 real `.png` files under `/og/` |
-| Total size | ~65 MB, 1,753 files (Pages limit: 1 GB) |
+| HTML pages | 244 |
+| OpenGraph images | 45 real `.png` files under `/og/` |
+| Total size | ~67 MB, 1,782 files on a Windows build (Pages limit: 1 GB) |
 | Server runtime, API routes, server actions | **None** |
 
 ---

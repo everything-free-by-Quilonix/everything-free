@@ -475,6 +475,26 @@ async function main() {
       return `${audited.slug}: ${confirmed}/${required}, ${sourceLinks} source links`;
     });
 
+    await check("an unchecked listing claims no verification and says how it was compiled", async () => {
+      // A listing with no recorded checks must not show a verification date or an
+      // evidence disclosure, and its compilation notes must be labelled as such.
+      const unchecked = manifest.entries.find((e) => e.stage === "not-started");
+      assert(unchecked, "no unchecked resource to test");
+      await desktop.goto(`${site}/resources/${unchecked.slug}/`);
+      await desktop.waitFor(JS.hydrated);
+      // Scoped to the verification panel: related-resource cards elsewhere on the page
+      // legitimately show their own check dates.
+      const text = await desktop.evaluate(
+        `[...document.querySelectorAll('h2')].find((h) => h.textContent.trim() === 'Verification')?.parentElement?.innerText ?? ''`,
+      );
+      assert(text.length > 0, "verification panel not found");
+      assert(text.includes("Not checked against official sources yet"), "missing the not-checked statement");
+      assert(!text.includes("Last checked"), "shows a check date for a listing with no recorded checks");
+      assert(!text.includes("View verification evidence"), "offers evidence that does not exist");
+      assert(text.includes("How this listing was compiled"), "compilation notes are not labelled");
+      return unchecked.slug;
+    });
+
     await check("search: natural-language constraint becomes a removable filter", async () => {
       await desktop.goto(`${site}/resources/?q=${encodeURIComponent("free AI voice generator without a credit card")}`);
       assert(await desktop.waitFor(`document.body.innerText.includes("set a filter automatically")`), "inferred-filter notice missing");

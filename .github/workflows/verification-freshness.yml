@@ -53,6 +53,7 @@ jobs:
         if: steps.check.outputs.needs_attention != '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SUMMARY: ${{ steps.check.outputs.summary }}
         run: |
           set -euo pipefail
 
@@ -62,8 +63,12 @@ jobs:
           EXISTING=$(gh issue list --label verification --state open --limit 1 --json number --jq '.[0].number // empty')
 
           if [ -n "$EXISTING" ]; then
-            gh issue comment "$EXISTING" --body-file verification-report.md
-            echo "Commented on existing issue #$EXISTING"
+            # The issue description is always the current report, so the state of the
+            # queue is readable at the top without scrolling through old months. A
+            # short comment records that it changed, which is what notifies watchers.
+            gh issue edit "$EXISTING" --body-file verification-report.md
+            gh issue comment "$EXISTING" --body "Report refreshed $(date -u +'%Y-%m-%d'): ${SUMMARY}. The description above is the current report."
+            echo "Updated existing issue #$EXISTING"
           else
             gh issue create \
               --title "Verification backlog — $(date -u +'%Y-%m')" \

@@ -41,10 +41,9 @@ export const lifeResources = defineResources([
     tags: ["maps", "geodata", "open-data", "travel", "commercial-use"],
     alternativeTo: ["Google Maps Platform", "Mapbox paid tiers"],
     relatedResources: ["organic-maps", "wikipedia"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licensing recorded from the project's own copyright page. Regional data quality cannot be verified centrally and is listed as a limitation.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "organic-maps",
@@ -84,9 +83,8 @@ export const lifeResources = defineResources([
     tags: ["maps", "offline", "navigation", "privacy", "travel", "no-signup"],
     alternativeTo: ["Google Maps", "Waze", "paid offline map apps"],
     relatedResources: ["openstreetmap"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence, offline capability and absence of an account requirement recorded from the project's repository and site.",
-    lastVerifiedAt: "2026-09-25",
   },
 ]);

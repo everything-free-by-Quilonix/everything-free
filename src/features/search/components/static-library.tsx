@@ -59,7 +59,7 @@ export function StaticLibrary({ resources }: { resources: Resource[] }) {
 
         <p className="text-sm text-fg-muted">
           {formatCount(resources.length)} {resources.length === 1 ? "resource" : "resources"}
-          <span className="text-fg-subtle"> · most recently verified first</span>
+          <span className="text-fg-subtle"> · most recently checked first</span>
         </p>
 
         <div className="mt-6">

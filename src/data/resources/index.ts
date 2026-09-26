@@ -1,7 +1,15 @@
 import { freeStatusDefinitions } from "@/config/free-status";
 import { isCategoryId } from "@/config/categories";
-import { isAccountableVerifier, isVerificationCheck, missingRequiredChecks } from "@/config/verification";
-import { VERIFICATION_CHECK_RESULTS, type Resource } from "@/types/resource";
+import { isRegisteredMaintainer } from "@/config/maintainers";
+import {
+  confirmedChecks,
+  isAccountableVerifier,
+  isVerificationCheck,
+  missingRequiredChecks,
+  unresolvedChecks,
+  VERIFICATION_FRESHNESS_DAYS,
+} from "@/config/verification";
+import { VERIFICATION_CHECK_RESULTS, type Resource, type VerificationCheck } from "@/types/resource";
 
 import { aiResources } from "./ai";
 import { creativeResources } from "./creative";
@@ -24,6 +32,24 @@ const allSeedResources: Resource[] = [
   ...aiResources,
   ...productivityResources,
   ...lifeResources,
+];
+
+const DAY_MS = 86_400_000;
+
+/**
+ * Verification dates may not be later than tomorrow. One day of tolerance, because
+ * a date written in UTC+5:30 can legitimately be "tomorrow" on a UTC build runner.
+ */
+const LATEST_ACCEPTABLE_DATE = Date.now() + DAY_MS;
+
+/** Checks whose outcome is also stored as a yes/no/unknown field on the listing. */
+const TRI_STATE_CHECKS: ReadonlyArray<
+  readonly [VerificationCheck, "requiresAccount" | "requiresCreditCard" | "commercialUse" | "personalUse"]
+> = [
+  ["ACCOUNT_REQUIREMENT", "requiresAccount"],
+  ["CREDIT_CARD_REQUIREMENT", "requiresCreditCard"],
+  ["COMMERCIAL_USE", "commercialUse"],
+  ["PERSONAL_USE", "personalUse"],
 ];
 
 /**
@@ -68,57 +94,129 @@ function validateSeedData(resources: Resource[]): void {
       );
     }
 
-    // An entry claiming a verified state has to say what was actually verified.
-    if (
-      (resource.verificationStatus === "VERIFIED" || resource.verificationStatus === "PARTIALLY_VERIFIED") &&
-      !resource.verificationNotes
-    ) {
-      problems.push(`${where} claims verification status "${resource.verificationStatus}" without verification notes`);
+    const records = resource.verificationChecks ?? [];
+    const sourceUrls = new Set((resource.verificationSources ?? []).map((source) => source.url));
+    const confirmed = new Set(confirmedChecks(records));
+    const unresolved = new Set(unresolvedChecks(records));
+
+    /*
+     * Verification metadata only exists alongside recorded checks.
+     *
+     * A "last verified" date, a verifier or verification notes with no check behind
+     * them is exactly the misleading state this rule removes: it reads as a check that
+     * happened but left no evidence. Notes written while compiling a listing belong
+     * in `compilationNotes`, which carries no date and counts for nothing.
+     */
+    if (records.length === 0) {
+      for (const field of ["lastVerifiedAt", "verifiedBy", "verificationNotes", "verificationSources"] as const) {
+        if (resource[field] !== undefined) {
+          problems.push(
+            `${where} has ${field} but no recorded verificationChecks. A verification claim needs the checks behind it; ` +
+              `notes from compiling the listing belong in compilationNotes`,
+          );
+        }
+      }
+    } else {
+      // A check record is a claim about a point in time, made by someone, explained.
+      if (!resource.lastVerifiedAt) problems.push(`${where} records verification checks but has no lastVerifiedAt date`);
+      if (!resource.verifiedBy) problems.push(`${where} records verification checks but not who performed them (verifiedBy)`);
+      if (!resource.verificationNotes) {
+        problems.push(`${where} records verification checks without verificationNotes saying what was and was not settled`);
+      }
+    }
+
+    /*
+     * The status must match the evidence, in both directions.
+     *
+     * "Partially verified" tells a visitor the headline claim — the free status — has
+     * been confirmed from an official source. So it requires exactly that, and an
+     * entry whose free status *is* confirmed may not understate it as unverified.
+     */
+    if (resource.verificationStatus === "PARTIALLY_VERIFIED" && !confirmed.has("FREE_STATUS")) {
+      problems.push(
+        `${where} is PARTIALLY_VERIFIED but its FREE_STATUS check is not confirmed. ` +
+          `Partially verified means the free status was confirmed against an official source; otherwise use UNVERIFIED`,
+      );
+    }
+    if (resource.verificationStatus === "UNVERIFIED" && confirmed.has("FREE_STATUS")) {
+      problems.push(`${where} is UNVERIFIED but has a confirmed FREE_STATUS check; use PARTIALLY_VERIFIED`);
     }
 
     /*
      * `VERIFIED` is the strongest claim the project makes, so it has to be backed by
-     * recorded evidence rather than a contributor's assurance: a date, an
-     * attributable verifier, at least one official source, and every trust-critical
-     * check confirmed.
+     * recorded evidence rather than a contributor's assurance: every required check
+     * confirmed, sources read recently enough to still be true, and sign-off by a
+     * maintainer in the register.
      *
      * This is what stops the badge drifting back into meaning "looks right to me".
      */
     if (resource.verificationStatus === "VERIFIED") {
-      if (!resource.lastVerifiedAt) {
-        problems.push(`${where} is marked VERIFIED but has no lastVerifiedAt date`);
-      }
       // The human gate. A pass by a script, bot or AI assistant may record evidence,
-      // but only a named maintainer can put the VERIFIED badge on it.
+      // but only a registered maintainer can put the VERIFIED badge on it.
       if (!isAccountableVerifier(resource.verifiedBy)) {
         problems.push(
           `${where} is marked VERIFIED but verifiedBy is ${JSON.stringify(resource.verifiedBy ?? null)}. ` +
             `VERIFIED requires the GitHub handle (@name) of the maintainer who reviewed the evidence`,
         );
-      }
-      if (!resource.verificationSources || resource.verificationSources.length === 0) {
-        problems.push(`${where} is marked VERIFIED but cites no verificationSources`);
+      } else if (!isRegisteredMaintainer(resource.verifiedBy)) {
+        problems.push(
+          `${where} is marked VERIFIED by ${resource.verifiedBy}, who is not in the maintainer register ` +
+            `(src/config/maintainers.ts). A maintainer adds their own handle there before signing anything off`,
+        );
       }
 
-      const missing = missingRequiredChecks(resource.verificationChecks);
+      const missing = missingRequiredChecks(records);
       if (missing.length > 0) {
         problems.push(
           `${where} is marked VERIFIED but has not confirmed required checks: ${missing.join(", ")}. ` +
             `Either confirm them or use PARTIALLY_VERIFIED`,
         );
       }
+
+      // Sign-off means re-reading the sources, not approving someone else's old notes.
+      if (resource.lastVerifiedAt) {
+        const signedOff = Date.parse(resource.lastVerifiedAt);
+        for (const record of records) {
+          if (record.result !== "confirmed" || !record.sourceUrl) continue;
+          const source = resource.verificationSources?.find((s) => s.url === record.sourceUrl);
+          if (source && signedOff - Date.parse(source.retrievedAt) > VERIFICATION_FRESHNESS_DAYS * DAY_MS) {
+            problems.push(
+              `${where} is marked VERIFIED on ${resource.lastVerifiedAt} but ${record.check} rests on ${source.url}, ` +
+                `last read ${source.retrievedAt}. Re-read it and update retrievedAt before signing off`,
+            );
+          }
+        }
+      }
     }
 
-    const records = resource.verificationChecks ?? [];
-    const sourceUrls = new Set((resource.verificationSources ?? []).map((source) => source.url));
-
-    // A check record is a claim about a point in time, made by someone.
-    if (records.length > 0) {
-      if (!resource.lastVerifiedAt) {
-        problems.push(`${where} records verification checks but has no lastVerifiedAt date`);
+    /*
+     * A fact that was looked for and could not be settled is unknown — on the page as
+     * well as in the evidence. This is what stops an unresolved check sitting next to
+     * a confident "No credit card required".
+     */
+    for (const [check, field] of TRI_STATE_CHECKS) {
+      if (unresolved.has(check) && resource[field] !== "unknown") {
+        problems.push(
+          `${where} records ${check} as unresolved but ${field} is "${resource[field]}". ` +
+            `An unresolved check means the answer is not established: set ${field} to "unknown"`,
+        );
       }
-      if (!resource.verifiedBy) {
-        problems.push(`${where} records verification checks but not who performed them (verifiedBy)`);
+    }
+
+    // No evidence dated in the future, and no source read after the pass it belongs to.
+    for (const date of [resource.lastVerifiedAt, ...(resource.verificationSources ?? []).map((s) => s.retrievedAt)]) {
+      if (date && Date.parse(date) > LATEST_ACCEPTABLE_DATE) {
+        problems.push(`${where} records a verification date in the future: ${date}`);
+      }
+    }
+    if (resource.lastVerifiedAt) {
+      for (const source of resource.verificationSources ?? []) {
+        if (source.retrievedAt > resource.lastVerifiedAt) {
+          problems.push(
+            `${where} cites ${source.url} read on ${source.retrievedAt}, after lastVerifiedAt ${resource.lastVerifiedAt}. ` +
+              `lastVerifiedAt is the date of the pass, so it cannot precede the reading it is based on`,
+          );
+        }
       }
     }
 

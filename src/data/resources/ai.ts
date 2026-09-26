@@ -49,10 +49,9 @@ export const aiResources = defineResources([
     tags: ["local-ai", "llm", "privacy", "offline", "developer", "no-signup"],
     alternativeTo: ["ChatGPT Plus", "Claude Pro", "GitHub Copilot"],
     relatedResources: ["hugging-face", "whisper"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Licence and local-execution model recorded from the project's repository. Hardware requirements vary by model and were not benchmarked.",
-    lastVerifiedAt: "2026-09-25",
     editorialSpotlight: true,
   },
   {
@@ -93,10 +92,9 @@ export const aiResources = defineResources([
     tags: ["transcription", "speech-to-text", "subtitles", "offline", "privacy", "accessibility"],
     alternativeTo: ["Otter.ai", "Rev", "Descript transcription"],
     relatedResources: ["ollama", "audacity", "hugging-face"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "MIT licensing of the model and inference code recorded from the project's repository. Accuracy characteristics summarised from the published model card rather than independent testing.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "hugging-face",
@@ -140,10 +138,9 @@ export const aiResources = defineResources([
     tags: ["models", "datasets", "machine-learning", "developer", "ai-research"],
     alternativeTo: ["Replicate paid plans", "AWS SageMaker"],
     relatedResources: ["ollama", "whisper", "google-colab"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "The shape of the free tier is stable and documented, but the specific allowances were not re-checked during compilation and are intentionally not quoted as figures.",
-    lastVerifiedAt: "2026-09-25",
   },
   {
     slug: "google-colab",
@@ -184,7 +181,7 @@ export const aiResources = defineResources([
     alternativeTo: ["Paid GPU cloud instances", "Deepnote paid plans"],
     relatedResources: ["hugging-face", "ollama"],
     verificationStatus: "UNVERIFIED",
-    verificationNotes:
+    compilationNotes:
       "Recorded from general product documentation but not verified against current terms during compilation. Free-tier resource policies in this product have changed repeatedly, and commercial-use terms were not established — treat the details here as a starting point and confirm on the official site.",
   },
   {
@@ -229,9 +226,8 @@ export const aiResources = defineResources([
     tags: ["grammar", "writing", "proofreading", "self-hostable", "students", "languages"],
     alternativeTo: ["Grammarly Premium", "ProWritingAid"],
     relatedResources: ["libreoffice", "obsidian"],
-    verificationStatus: "PARTIALLY_VERIFIED",
-    verificationNotes:
+    verificationStatus: "UNVERIFIED",
+    compilationNotes:
       "Open-source core and the hosted free/paid split are documented by the project. The exact free-tier text-length cap was not re-checked and is deliberately not quoted here.",
-    lastVerifiedAt: "2026-09-25",
   },
 ]);

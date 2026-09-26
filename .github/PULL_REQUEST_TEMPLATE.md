@@ -42,7 +42,8 @@ npx tsc --noEmit
 - [ ] `verificationStatus` reflects what was really checked, and `verificationNotes` say what that was
 - [ ] Each `verificationChecks` record states what the official source says, and cites it
 - [ ] `docs/verification-backlog.md` regenerated (`npm run build:static && npm run backlog`)
-- [ ] `VERIFIED` is only set by a maintainer who re-opened the sources, under their own `@handle`
+- [ ] `PARTIALLY_VERIFIED` only with a confirmed `FREE_STATUS` check; pre-verification notes are in `compilationNotes`
+- [ ] `VERIFIED` is only set by a maintainer in `src/config/maintainers.ts` who re-opened the sources, under their own `@handle`
 
 ## If this changes the UI
 
