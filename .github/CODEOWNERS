@@ -1,0 +1,78 @@
+# Code owners for Everything.Free.
+#
+# Every path below decides who may sign off a listing, what counts as verified
+# evidence, how that evidence is shown, what CI and the deploy run, or the written
+# policy behind them. A change to any of them needs an approving review from an
+# organisation owner. The `main-protection` ruleset
+# requires code-owner review, and approval from someone other than the last person
+# to push, so an owner's own change here needs the other owner's approval.
+#
+# GitHub reads this file from the pull request's base branch, so a pull request
+# cannot change who has to review it. Owners must keep write access to the
+# repository: GitHub silently ignores a code owner without it.
+#
+# The last matching pattern wins. Every line names the same owners, so order does
+# not change anything today; the more specific lines come last so they stay
+# owner-only if a broader line is ever widened.
+
+# --- Resource data, including every verification record (status, verifier,
+#     checks and sources) --------------------------------------------------------
+/src/data/resources/                     @Manvanth-Gowda-M @mithun50
+
+# --- Verification rules and the vocabulary they check ---------------------------
+/src/config/verification.ts              @Manvanth-Gowda-M @mithun50
+/src/config/free-status.ts               @Manvanth-Gowda-M @mithun50
+/src/types/resource.ts                   @Manvanth-Gowda-M @mithun50
+/src/data/resources/validate.ts          @Manvanth-Gowda-M @mithun50
+/src/data/resources/index.ts             @Manvanth-Gowda-M @mithun50
+
+# --- Fact evidence and freshness ------------------------------------------------
+/src/lib/resources/evidence.ts           @Manvanth-Gowda-M @mithun50
+/src/lib/resources/derive.ts             @Manvanth-Gowda-M @mithun50
+/src/lib/utils/date.ts                   @Manvanth-Gowda-M @mithun50
+
+# --- What CI's checks read: the published rules, facts and maintainer list -------
+/src/app/link-manifest.json/route.ts     @Manvanth-Gowda-M @mithun50
+
+# --- The tests and checks that enforce the rules, and what CI runs --------------
+/tests/                                  @Manvanth-Gowda-M @mithun50
+/scripts/test/                           @Manvanth-Gowda-M @mithun50
+/scripts/browser-smoke.mjs               @Manvanth-Gowda-M @mithun50
+/scripts/verification-backlog.mjs        @Manvanth-Gowda-M @mithun50
+/scripts/verification-worksheet.mjs      @Manvanth-Gowda-M @mithun50
+/package.json                            @Manvanth-Gowda-M @mithun50
+/package-lock.json                       @Manvanth-Gowda-M @mithun50
+
+# --- How verification and fact evidence are shown and interpreted ---------------
+/src/features/resources/components/status-badges.tsx       @Manvanth-Gowda-M @mithun50
+/src/features/resources/components/verification-panel.tsx  @Manvanth-Gowda-M @mithun50
+/src/features/resources/components/evidence.tsx            @Manvanth-Gowda-M @mithun50
+/src/features/resources/components/resource-facts.tsx      @Manvanth-Gowda-M @mithun50
+/src/features/resources/components/resource-card.tsx       @Manvanth-Gowda-M @mithun50
+/src/lib/search/filters.ts                                 @Manvanth-Gowda-M @mithun50
+# The resource detail page, src/app/resources/[slug]/page.tsx. CODEOWNERS does not
+# support [ ] in patterns, so the dynamic segment is matched with *.
+/src/app/resources/*/page.tsx                              @Manvanth-Gowda-M @mithun50
+
+# --- Build and deployment integrity ---------------------------------------------
+/next.config.ts                          @Manvanth-Gowda-M @mithun50
+/scripts/build-static.mjs                @Manvanth-Gowda-M @mithun50
+/scripts/csp.mjs                         @Manvanth-Gowda-M @mithun50
+/scripts/fix-rsc-paths.mjs               @Manvanth-Gowda-M @mithun50
+/src/config/deployment.ts                @Manvanth-Gowda-M @mithun50
+/src/config/tools.ts                     @Manvanth-Gowda-M @mithun50
+
+# --- Policy and security documentation ------------------------------------------
+/docs/verification.md                    @Manvanth-Gowda-M @mithun50
+/CONTRIBUTING.md                         @Manvanth-Gowda-M @mithun50
+/SECURITY.md                             @Manvanth-Gowda-M @mithun50
+
+# --- GitHub configuration: workflows, CI scripts, templates, link triage --------
+/.github/                                @Manvanth-Gowda-M @mithun50
+/.github/workflows/                      @Manvanth-Gowda-M @mithun50
+
+# --- Maintainer register: who may sign off VERIFIED -----------------------------
+/src/config/maintainers.ts               @Manvanth-Gowda-M @mithun50
+
+# --- This file ------------------------------------------------------------------
+/.github/CODEOWNERS                      @Manvanth-Gowda-M @mithun50
