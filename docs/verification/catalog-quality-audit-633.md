@@ -160,3 +160,98 @@ The free status model across all 633 resources is strictly maintained:
 ## Remaining Manual Review Queue
 1. Review and approve merging/deprecation of the 11 identified duplicate pairs from Batches 001–004 in a dedicated cleanup PR.
 2. Review maintainer sign-off queue for the 4 benchmark verification candidates (`cloudflare-pages`, `stirling-pdf`, `thunderbird`, `vlc`).
+
+---
+
+## Cleanup 001
+
+A data-only follow-up to this audit, on branch `data/catalog-cleanup-001`. Everything above this section is the original 633-resource audit and is kept unchanged as the historical record. No resources were added, and no verification record, evidence state, maintainer entry or tri-state value was changed.
+
+### Duplicates removed (11)
+
+In every pair the canonical entry was kept exactly as it was, and the duplicate was deleted. No fields were copied across. The differences were tags, subcategories, wording and, in three pairs, conflicting values. Copying any of them would have added claims the canonical entry does not make. No other resource, collection, tool, test or document referenced a removed slug.
+
+| Kept (canonical) | Removed (duplicate) | Duplicate's file | Conflicting values left as the canonical records them |
+| :--- | :--- | :--- | :--- |
+| `bevy` | `bevy-engine` | `batch-004.ts` | — |
+| `losslesscut` | `lossless-cut` | `batch-002.ts` | Licence: `GPL-2.0-only` kept; the duplicate said `GPL-2.0-or-later` |
+| `joplin` | `joplin-mobile` | `batch-004.ts` | Type: `DESKTOP_APP` kept; the duplicate said `MOBILE_APP` |
+| `virtual-labs` | `virtual-labs-india` | `batch-004.ts` | — |
+| `diksha` | `diksha-portal` | `batch-004.ts` | — |
+| `gallica` | `gallica-bnf` | `batch-004.ts` | Type: `BOOK` kept; the duplicate said `EDUCATIONAL_RESOURCE` |
+| `trove` | `trove-australia` | `batch-004.ts` | — |
+| `coq` | `coq-prover` | `batch-004.ts` | — |
+| `lean` | `lean-prover` | `batch-004.ts` | — |
+| `svg-repo` | `svgrepo` | `batch-004.ts` | — |
+| `cs50` | `cs50-harvard` | `batch-004.ts` | Official URL: `https://cs50.harvard.edu` kept; the duplicate used `/x/` |
+
+For `losslesscut`, the canonical slug follows the Cleanup 001 instruction. The audit table above had recommended keeping `lossless-cut`. The batch labels in that table also differ from where some entries actually live: `bevy` is in `batch-002.ts`, `losslesscut` and `cs50-harvard` were in `batch-004.ts`, and `lossless-cut` was in `batch-002.ts`.
+
+The removed pages now return the site's 404 page. The static architecture has no redirect mechanism, so none was added.
+
+### Platform metadata (12 of 28 backfilled)
+
+Each of the 28 entries with `platforms: []` was checked against its project's own documentation. `["WINDOWS", "MACOS", "LINUX"]` was added only where that documentation names all three operating systems, as supported or with installation steps for each. Being written in a cross-platform language was not treated as evidence.
+
+This is research to correct listing data, not verification. No `PLATFORM_AVAILABILITY` check was recorded, so these entries show their platforms as **Not verified**, where they previously showed **Unknown**.
+
+| Resource | Official source read (27 September 2026) |
+| :--- | :--- |
+| `sqlite` | [Download page](https://www.sqlite.org/download.html): precompiled binaries for Linux, Mac OS X and Windows |
+| `playwright` | [Introduction](https://playwright.dev/docs/intro): system requirements for Windows, macOS and Debian/Ubuntu |
+| `django` | [Install guide](https://docs.djangoproject.com/en/stable/topics/install/) with Linux/macOS and Windows commands, plus a [Windows guide](https://docs.djangoproject.com/en/stable/howto/windows/) |
+| `flask` | [Installation](https://flask.palletsprojects.com/en/stable/installation/): macOS/Linux and Windows steps |
+| `llama-cpp` | [Install docs](https://github.com/ggml-org/llama.cpp/blob/master/docs/install.md): pre-built packages for Windows, Mac and Linux |
+| `rasa` | [Environment set-up](https://github.com/RasaHQ/rasa/blob/main/docs/docs/installation/environment-set-up.mdx): Ubuntu, macOS and Windows steps |
+| `spacy` | [Usage](https://spacy.io/usage): states it runs on Linux, macOS and Windows |
+| `tensorflow` | [pip install](https://www.tensorflow.org/install/pip): Linux, macOS and Windows requirements and packages |
+| `pytorch` | [Get started locally](https://pytorch.org/get-started/locally/): installation sections for Windows, macOS and Linux |
+| `scikit-learn` | [Install](https://scikit-learn.org/stable/install.html): Windows, macOS and Linux steps |
+| `open-interpreter` | [Repository README](https://github.com/OpenInterpreter/open-interpreter): installers for macOS/Linux and Windows |
+| `pa11y` | [Repository README](https://github.com/pa11y/pa11y): Linux/macOS and Windows requirements |
+
+**Left unchanged (16), for manual review.** The project's own documentation either names no operating system or mentions one only in passing. A lone "Windows" would read as Windows-only, so no partial list was recorded.
+- Incidental Windows mention only: `jest`, `mkdocs`, `eslint`, `prettier`, `transformers`.
+- No operating system named: `vitest`, `storybook`, `docusaurus`, `astro`, `fastapi`, `haystack`, `sentence-transformers`, `langchain`, `llamaindex`, `bark`, `axe-core`.
+
+### Catalog counts
+
+| | Before | After |
+| :--- | ---: | ---: |
+| Resources | 633 | **622** |
+| Empty `platforms` | 28 | 16 |
+| `OPEN_SOURCE` / `FREE` / `FREE_TIER` / `PERSONAL_FREE` | 396 / 173 / 59 / 5 | 391 / 167 / 59 / 5 |
+| `UNVERIFIED` / `PARTIALLY_VERIFIED` / `VERIFIED` | 627 / 6 / 0 | 616 / 6 / 0 |
+| Platform listings: Browser / Windows / macOS / Linux | 331 / 277 / 267 / 272 | 324 / 284 / 274 / 279 |
+| Platform listings: Android / iOS / Self-hosted | 109 / 73 / 88 | 107 / 72 / 88 |
+| Confirmed facts (any) | unchanged | unchanged |
+
+The 11 removed entries were all `UNVERIFIED` with no checks recorded. The audit's figure of 629 unverified does not match the stored statuses, which were 627 `UNVERIFIED` and 6 `PARTIALLY_VERIFIED`. No status changed apart from the 11 removals.
+
+### Generated backlog
+
+`docs/verification-backlog.md` was regenerated (`npm run build:static && npm run backlog`). It had not been regenerated since the 44-resource seed. As a result, CI's "Verification backlog matches the data" step has failed on every resource-expansion pull request and on `main` since batch 001, and the Pages deploy was skipped each time.
+
+### Validation
+
+| Check | Before | After |
+| :--- | :--- | :--- |
+| `npm test` | 47/47 | 47/47 |
+| `npm run verify` | pass | pass |
+| `npm run verify:static` | pass (1,623 pages) | pass (1,601 pages) |
+| `npm run test:browser` | 61/61 | 61/61 |
+| `npm run backlog:check` | **fail** (stale since batch 001) | pass |
+| `npm run check:verification` | — | pass (0 verified, 4 awaiting sign-off, 0 maintainers) |
+
+Other checks after cleanup:
+- No duplicate slugs, normalised names or official URLs remain.
+- No removed slug appears in the sitemap, the link manifest, any built page or any source-controlled file (other than the historical table above).
+- All 11 canonical pages build.
+- Evidence reasons changed only for the 12 backfilled `platforms` facts, from `not-established` to `not-checked`. No fact became confirmed.
+
+### Remaining manual review
+
+1. Platforms for the 16 entries listed above.
+2. LosslessCut's licence (`GPL-2.0-only` vs `GPL-2.0-or-later`), against the project's own licence file.
+3. Maintainer sign-off for the 4 evidence-complete listings (GIMP, KeePassXC, LibreOffice, Obsidian). The four named in the audit's queue (Cloudflare Pages, Stirling PDF, Thunderbird, VLC) have checks started but their free status is not yet confirmed, so they are not ready for sign-off.
+4. The 14 LOW naming and description findings, which were out of scope here.
