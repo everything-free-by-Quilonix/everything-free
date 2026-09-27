@@ -2,6 +2,7 @@ import type { Resource } from "@/types/resource";
 
 import { aiResources } from "./ai";
 import { batch001Resources } from "./batch-001";
+import { batch002Resources } from "./batch-002";
 import { creativeResources } from "./creative";
 import { developmentResources } from "./development";
 import { educationResources } from "./education";
@@ -24,6 +25,7 @@ const allSeedResources: Resource[] = [
   ...productivityResources,
   ...lifeResources,
   ...batch001Resources,
+  ...batch002Resources,
 ];
 
 /**
