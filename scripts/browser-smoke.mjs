@@ -128,8 +128,12 @@ async function launchChrome(chromePath) {
     { stdio: "ignore", windowsHide: true },
   );
 
+  // Chrome writes this file once DevTools is listening. A cold CI runner can take
+  // well over 10 seconds to get there, so allow up to 30 before giving up.
+  const STARTUP_TIMEOUT_MS = 30_000;
+  const POLL_MS = 100;
   const portFile = join(profile, "DevToolsActivePort");
-  for (let i = 0; i < 100 && !existsSync(portFile); i++) await sleep(100);
+  for (let waited = 0; waited < STARTUP_TIMEOUT_MS && !existsSync(portFile); waited += POLL_MS) await sleep(POLL_MS);
   const [port, path] = (await readFile(portFile, "utf8")).trim().split("\n");
 
   const socket = new WebSocket(`ws://127.0.0.1:${port}${path}`);
