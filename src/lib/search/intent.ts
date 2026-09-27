@@ -48,7 +48,7 @@ const RULES: Rule[] = [
   {
     phrases: ["without a credit card", "without credit card", "no credit card", "no card required"],
     key: "noCreditCardOnly",
-    label: "No credit card required",
+    label: "No credit card (confirmed only)",
     apply: (q) => {
       q.noCreditCardOnly = true;
     },
@@ -56,7 +56,7 @@ const RULES: Rule[] = [
   {
     phrases: ["without signing up", "without an account", "without account", "no signup", "no sign up", "no account", "without registration"],
     key: "noAccountOnly",
-    label: "No account required",
+    label: "No account needed (confirmed only)",
     apply: (q) => {
       q.noAccountOnly = true;
     },
@@ -64,7 +64,7 @@ const RULES: Rule[] = [
   {
     phrases: ["open source", "opensource", "foss"],
     key: "openSourceOnly",
-    label: "Open source only",
+    label: "Open source (confirmed only)",
     apply: (q) => {
       q.openSourceOnly = true;
     },
@@ -72,7 +72,7 @@ const RULES: Rule[] = [
   {
     phrases: ["for commercial use", "commercial use", "for client work", "for my business", "commercially"],
     key: "commercialUseOnly",
-    label: "Commercial use permitted",
+    label: "Commercial use allowed (confirmed only)",
     apply: (q) => {
       q.commercialUseOnly = true;
     },

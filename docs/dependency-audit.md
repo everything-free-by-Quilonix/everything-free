@@ -48,6 +48,7 @@ That is the entire runtime dependency list. Icons, class-name joining, theming, 
 
 ### Build and test tooling that is not an npm package
 
+- **Node's built-in test runner** (`node --test`), for `npm test`. Test files are TypeScript, run through Node's own type stripping (Node 22.18+). A small resolver hook in `scripts/test/` maps the `@/` import alias and extensionless imports the way the bundler does. No Vitest, Jest or ts-node, and nothing to install.
 - **Chrome**, for `npm run test:browser`. The smoke test drives whatever Chrome is already installed, over the DevTools protocol, with no Puppeteer or Playwright download. CI uses the Chrome preinstalled on GitHub's Ubuntu runners.
 - **GitHub Actions** from the `actions/` organisation only (`checkout`, `setup-node`, `upload-artifact`, `configure-pages`, `upload-pages-artifact`, `deploy-pages`), on their current major versions. No third-party actions.
 

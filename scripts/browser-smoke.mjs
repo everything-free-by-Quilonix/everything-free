@@ -312,6 +312,42 @@ const JS = {
   hydrated: `!!document.querySelector('button[aria-label^="Switch to"]')`,
   violations: `window.__cspViolations || []`,
   cards: `document.querySelectorAll('main article').length`,
+  /**
+   * Audits every resource card on the page against the manifest's fact evidence.
+   * A card may only put a fact under "Confirmed" if the manifest says it is
+   * confirmed, its free-status badge must carry the same evidence state, and no
+   * reassurance ("no credit card", "commercial use allowed") may appear anywhere in
+   * the evidence list outside the confirmed line. Returns the problems found.
+   */
+  cardAudit: (factsBySlug) => `(() => {
+    const facts = ${JSON.stringify(factsBySlug)};
+    const REASSURANCE = /no credit card|no account needed|commercial use allowed|personal use allowed/i;
+    const problems = [];
+    let audited = 0;
+    for (const card of document.querySelectorAll('main article')) {
+      const href = card.querySelector('h3 a')?.getAttribute('href') ?? '';
+      const slug = (href.split('/resources/')[1] ?? '').replace(/\\/$/, '');
+      if (!facts[slug]) continue;
+      audited += 1;
+      const f = facts[slug];
+      for (const el of card.querySelectorAll('[data-evidence-group="confirmed"] [data-fact]')) {
+        if (f[el.dataset.fact]?.state !== 'confirmed') problems.push(slug + ': shows ' + el.dataset.fact + ' as confirmed');
+      }
+      for (const group of card.querySelectorAll('[data-evidence-group]:not([data-evidence-group="confirmed"])')) {
+        if (REASSURANCE.test(group.textContent)) problems.push(slug + ': reassurance outside Confirmed: ' + group.textContent.trim());
+      }
+      const badge = card.querySelector('[data-fact="freeStatus"]');
+      if (!badge) problems.push(slug + ': no free-status badge');
+      else if (badge.dataset.evidence !== f.freeStatus.state) problems.push(slug + ': free-status badge says ' + badge.dataset.evidence);
+      const openSource = card.querySelector('[data-fact="openSource"]');
+      if (openSource && openSource.dataset.evidence !== f.openSource.state) problems.push(slug + ': open-source chip says ' + openSource.dataset.evidence);
+      if (!card.querySelector('ul[aria-label="What has been checked"]')) problems.push(slug + ': no evidence summary');
+    }
+    return { audited, problems };
+  })()`,
+  /** The value cell of a row in the resource page's Details list. */
+  detailRow: (term) =>
+    `[...document.querySelectorAll('#facts-heading ~ div dl > div')].find((row) => row.querySelector('dt')?.textContent.trim() === ${JSON.stringify(term)})?.querySelector('dd')`,
   h1: `document.querySelector('h1')?.textContent?.trim() ?? ""`,
   overflow: `document.documentElement.scrollWidth - window.innerWidth`,
   setValue: (selector, value) => `(() => {
@@ -495,6 +531,128 @@ async function main() {
       return unchecked.slug;
     });
 
+    /* ------------------------------------------ fact-level evidence */
+    const factsBySlug = Object.fromEntries(manifest.entries.map((entry) => [entry.slug, entry.facts]));
+
+    await check("cards never present an unconfirmed fact as confirmed", async () => {
+      // Every card surface: the browse page, the homepage, a category, an audience,
+      // a collection chosen for a fact ("commercial use"), and an alternatives page.
+      const routes = [
+        "/resources/",
+        "/",
+        "/categories/photography/",
+        "/for/developers/",
+        "/collections/assets-safe-for-client-work/",
+        "/alternatives/adobe-photoshop/",
+      ];
+      let audited = 0;
+      for (const route of routes) {
+        await desktop.goto(`${site}${route}`);
+        await desktop.waitFor(JS.hydrated);
+        const result = await desktop.evaluate(JS.cardAudit(factsBySlug));
+        assert(result.problems.length === 0, `${route}: ${result.problems.slice(0, 3).join("; ")}`);
+        assert(result.audited > 0, `${route}: no cards audited`);
+        audited += result.audited;
+        if (route.startsWith("/collections/")) {
+          const note = await desktop.evaluate(`document.querySelector('[data-testid="collection-evidence-note"]')?.textContent ?? ""`);
+          assert(note.includes("not the same as each fact being confirmed"), "collection does not say its selection is not confirmation");
+        }
+        if (route.startsWith("/alternatives/")) {
+          // The comparison table: every fact cell carries the manifest's evidence state.
+          const table = await desktop.evaluate(`(() => {
+            const facts = ${JSON.stringify(factsBySlug)};
+            const problems = [];
+            let cells = 0;
+            for (const row of document.querySelectorAll('table tbody tr')) {
+              const slug = (row.querySelector('th a')?.getAttribute('href') ?? '').split('/resources/')[1]?.replace(/\\/$/, '') ?? '';
+              if (!facts[slug]) { problems.push('row without a known resource: ' + slug); continue; }
+              for (const cell of row.querySelectorAll('[data-fact]')) {
+                cells += 1;
+                const shown = cell.querySelector('[data-evidence]')?.dataset.evidence;
+                if (shown !== facts[slug][cell.dataset.fact]?.state) problems.push(slug + ' ' + cell.dataset.fact + ' cell says ' + shown);
+              }
+            }
+            return { cells, problems };
+          })()`);
+          assert(table.cells > 0, "comparison table has no fact cells");
+          assert(table.problems.length === 0, `comparison: ${table.problems.slice(0, 3).join("; ")}`);
+        }
+      }
+      return `${audited} cards on ${routes.length} pages`;
+    });
+
+    await check("strict filter matches confirmed facts only and says what it held back", async () => {
+      await desktop.goto(`${site}/resources/?noCreditCard=1`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`!!document.querySelector('[data-testid="evidence-filter-notice"]')`), "no confirmed-only notice");
+      const slugsShown = await desktop.evaluate(
+        `[...document.querySelectorAll('main article h3 a')].map((a) => a.getAttribute('href').split('/resources/')[1].replace(/\\/$/, ''))`,
+      );
+      assert(slugsShown.length > 0, "no results");
+      for (const slug of slugsShown) {
+        const entry = manifest.entries.find((e) => e.slug === slug);
+        assert(entry.values.requiresCreditCard === "no" && entry.facts.requiresCreditCard.state === "confirmed", `${slug} matched without a confirmed "no"`);
+      }
+      const heldBack = manifest.entries.filter((e) => e.values.requiresCreditCard === "no" && e.facts.requiresCreditCard.state !== "confirmed").length;
+      const notice = await desktop.evaluate(`document.querySelector('[data-testid="evidence-filter-notice"]').textContent`);
+      assert(notice.includes(`${heldBack} more listings record it`), `notice does not report ${heldBack} held back: ${notice}`);
+      assert(await desktop.evaluate(`[...document.querySelectorAll('[aria-label="Active filters"] a')].some((a) => a.textContent.includes("No credit card · confirmed"))`), "chip does not say confirmed");
+      return `${slugsShown.length} confirmed, ${heldBack} held back`;
+    });
+
+    await check("search: 'without credit card' never badges an unconfirmed card", async () => {
+      await desktop.goto(`${site}/resources/?q=${encodeURIComponent("free AI tool without credit card")}`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`document.body.innerText.includes("set a filter automatically")`), "inferred-filter notice missing");
+      const result = await desktop.evaluate(JS.cardAudit(factsBySlug));
+      assert(result.problems.length === 0, result.problems.slice(0, 3).join("; "));
+      const unknownCard = manifest.entries.filter((e) => e.values.requiresCreditCard === "unknown").map((e) => e.slug);
+      const shown = await desktop.evaluate(`[...document.querySelectorAll('main article h3 a')].map((a) => a.getAttribute('href'))`);
+      assert(!shown.some((href) => unknownCard.some((slug) => href.includes(`/resources/${slug}/`))), "a listing with an unknown card requirement matched");
+      return `${result.audited} results, all confirmed`;
+    });
+
+    await check("detail page shows value and evidence per fact, with mixed states", async () => {
+      // Supabase: free status and commercial use confirmed, card requirement unresolved.
+      await desktop.goto(`${site}/resources/supabase/`);
+      await desktop.waitFor(JS.hydrated);
+      const card = await desktop.evaluate(`${JS.detailRow("Credit card required")}?.innerText ?? ""`);
+      assert(/Unknown/.test(card) && /Not confirmed/.test(card), `card row reads: ${card}`);
+      assert(!/No credit card needed/.test(card), "card row claims no card");
+      const commercial = await desktop.evaluate(`${JS.detailRow("Commercial use")}?.innerText ?? ""`);
+      assert(/Commercial use allowed/.test(commercial) && /Confirmed/.test(commercial), `commercial row reads: ${commercial}`);
+      // "How we know" opens on demand and names the source and who checked it.
+      const details = `${JS.detailRow("Credit card required")}.querySelector('details')`;
+      assert(await desktop.evaluate(`!!${details} && !${details}.open`), "no closed 'How we know' disclosure");
+      await desktop.evaluate(`${details}.querySelector('summary').click()`);
+      assert(await desktop.waitFor(`${details}.open`), "disclosure did not open");
+      const opened = await desktop.evaluate(`${details}.innerText`);
+      assert(opened.includes("supabase.com") && opened.includes("Checked by"), `disclosure lacks source or verifier: ${opened.slice(0, 160)}`);
+      const badge = await desktop.evaluate(`document.querySelector('header [data-fact="freeStatus"]')?.dataset.evidence`);
+      assert(badge === "confirmed", `free-status badge evidence is ${badge}`);
+      return "confirmed, not confirmed and not verified on one page";
+    });
+
+    await check("unverified listing shows recorded values as not verified", async () => {
+      const unchecked = manifest.entries.find((e) => e.stage === "not-started" && e.values.requiresCreditCard === "no");
+      assert(unchecked, "no unchecked listing with a recorded 'no'");
+      await desktop.goto(`${site}/resources/${unchecked.slug}/`);
+      await desktop.waitFor(JS.hydrated);
+      const card = await desktop.evaluate(`${JS.detailRow("Credit card required")}?.innerText ?? ""`);
+      assert(/Recorded as no/.test(card) && /Not verified/.test(card), `card row reads: ${card}`);
+      const confirmedInDetails = await desktop.evaluate(`document.querySelectorAll('#facts-heading ~ div [data-evidence="confirmed"]').length`);
+      assert(confirmedInDetails === 0, `${confirmedInDetails} facts shown as confirmed with no checks recorded`);
+      const badge = await desktop.evaluate(`document.querySelector('header [data-fact="freeStatus"]')?.dataset.evidence`);
+      assert(badge === "unconfirmed", `free-status badge evidence is ${badge}`);
+      const title = await desktop.evaluate(`document.title`);
+      assert(title.includes("(not verified)"), `title does not flag it: ${title}`);
+      const offers = await desktop.evaluate(
+        `[...document.querySelectorAll('script[type="application/ld+json"]')].some((s) => s.textContent.includes('"offers"'))`,
+      );
+      assert(!offers, "structured data offers a zero price for an unverified status");
+      return unchecked.slug;
+    });
+
     await check("search: natural-language constraint becomes a removable filter", async () => {
       await desktop.goto(`${site}/resources/?q=${encodeURIComponent("free AI voice generator without a credit card")}`);
       assert(await desktop.waitFor(`document.body.innerText.includes("set a filter automatically")`), "inferred-filter notice missing");
@@ -625,6 +783,20 @@ async function main() {
       }
 
       if (name === "mobile") {
+        await check("mobile: card evidence stays compact", async () => {
+          // At most one line per evidence state, never a table: three short lines.
+          await page.goto(`${site}/resources/`);
+          await page.waitFor(JS.hydrated);
+          const sizes = await page.evaluate(
+            `[...document.querySelectorAll('ul[aria-label="What has been checked"]')].map((ul) => ({ items: ul.children.length, height: ul.getBoundingClientRect().height }))`,
+          );
+          assert(sizes.length > 0, "no evidence summaries");
+          const tallest = Math.max(...sizes.map((s) => s.height));
+          assert(sizes.every((s) => s.items <= 3), "a card has more than three evidence lines");
+          assert(tallest <= 90, `tallest evidence summary is ${Math.round(tallest)}px`);
+          return `${sizes.length} cards, tallest ${Math.round(tallest)}px`;
+        });
+
         await check("mobile menu opens as a dialog, traps focus, closes on Escape", async () => {
           await page.goto(`${site}/`);
           await page.waitFor(JS.hydrated);

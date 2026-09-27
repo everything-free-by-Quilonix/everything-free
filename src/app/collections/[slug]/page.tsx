@@ -73,7 +73,11 @@ export default async function CollectionPage({ params }: PageProps) {
 
       <Container className="pt-8">
         <Callout tone="primary" icon="info" title="How these were chosen" className="mb-8">
-          {collection.rationale}
+          <p>{collection.rationale}</p>
+          <p className="mt-2" data-testid="collection-evidence-note">
+            A collection is chosen from what each listing records. That is not the same as each fact being confirmed:
+            every card below says which of its facts an official source has confirmed and which have not been checked.
+          </p>
         </Callout>
 
         {/* Ordered list: the sequence is deliberate — it follows the order you

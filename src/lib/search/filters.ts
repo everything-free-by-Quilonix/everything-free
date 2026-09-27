@@ -1,6 +1,7 @@
 import { freeStatusDefinitions } from "@/config/free-status";
+import { confirmedAvailability, isFactConfirmed, type Fact } from "@/lib/resources/evidence";
 import type { Resource } from "@/types/resource";
-import type { ResourceFacets, ResourceQuery } from "@/types/search";
+import type { EvidenceFilterKey, ResourceFacets, ResourceQuery } from "@/types/search";
 import { normalizeText } from "./tokenize";
 
 /**
@@ -10,12 +11,17 @@ import { normalizeText } from "./tokenize";
  * filter is OR within itself — the behaviour people expect from faceted search:
  * "Windows or macOS" *and* "open source".
  *
- * Important semantics: the tri-state `Availability` fields are treated strictly.
- * `noAccountOnly` matches only `requiresAccount === 'no'`, never `'unknown'`.
- * Including unknowns would mean telling someone a resource needs no account when
- * nobody has checked, which is the kind of quiet inaccuracy this project exists
- * to avoid. The cost is that unverified entries are excluded from strict filters,
- * and that is the right trade.
+ * Two kinds of filter, deliberately treated differently:
+ *
+ * - **Classification** filters — free status, type, platform, category, tag —
+ *   narrow by what a listing is filed under. Every listing has one, and each result
+ *   card shows how far that classification has been checked.
+ * - **Evidence** filters — open source, no account, no credit card, commercial use,
+ *   personal use — are promises about a fact. They match only when an official
+ *   source *confirms* the fact (`lib/resources/evidence.ts`). A stored "no" that
+ *   nobody has checked does not match "No credit card", and an unknown never does.
+ *   Unchecked listings are excluded, and the UI says how many and why rather than
+ *   quietly mixing them in.
  */
 
 function matchesAny<T>(selected: T[] | undefined, values: readonly T[]): boolean {
@@ -23,7 +29,53 @@ function matchesAny<T>(selected: T[] | undefined, values: readonly T[]): boolean
   return selected.some((value) => values.includes(value));
 }
 
-export function matchesFilters(resource: Resource, query: ResourceQuery): boolean {
+/**
+ * What each evidence filter requires. `recorded` is the stored value alone and is
+ * used only to count, never to match: it is how the UI can say "12 more listings
+ * record this, but it is not verified".
+ */
+const EVIDENCE_FILTERS: Record<
+  EvidenceFilterKey,
+  { fact: Fact; confirmed: (resource: Resource) => boolean; recorded: (resource: Resource) => boolean }
+> = {
+  openSourceOnly: {
+    fact: "openSource",
+    confirmed: (r) => r.openSource && isFactConfirmed(r, "openSource"),
+    recorded: (r) => r.openSource,
+  },
+  noAccountOnly: {
+    fact: "requiresAccount",
+    confirmed: (r) => confirmedAvailability(r, "requiresAccount") === "no",
+    recorded: (r) => r.requiresAccount === "no",
+  },
+  noCreditCardOnly: {
+    fact: "requiresCreditCard",
+    confirmed: (r) => confirmedAvailability(r, "requiresCreditCard") === "no",
+    recorded: (r) => r.requiresCreditCard === "no",
+  },
+  commercialUseOnly: {
+    fact: "commercialUse",
+    confirmed: (r) => confirmedAvailability(r, "commercialUse") === "yes",
+    recorded: (r) => r.commercialUse === "yes",
+  },
+  personalUseOnly: {
+    fact: "personalUse",
+    confirmed: (r) => confirmedAvailability(r, "personalUse") === "yes",
+    recorded: (r) => r.personalUse === "yes",
+  },
+};
+
+export const EVIDENCE_FILTER_KEYS = Object.keys(EVIDENCE_FILTERS) as EvidenceFilterKey[];
+
+/**
+ * `evidence: "recorded"` exists only for counting what the strict filters left
+ * out. Every caller that decides what to *show* uses the default.
+ */
+export function matchesFilters(
+  resource: Resource,
+  query: ResourceQuery,
+  { evidence = "confirmed" }: { evidence?: "confirmed" | "recorded" } = {},
+): boolean {
   if (!freeStatusDefinitions[resource.freeStatus].listable) return false;
 
   if (!matchesAny(query.freeStatuses, [resource.freeStatus])) return false;
@@ -33,11 +85,10 @@ export function matchesFilters(resource: Resource, query: ResourceQuery): boolea
   if (!matchesAny(query.categories, [resource.category, ...resource.subcategories])) return false;
   if (!matchesAny(query.tags, resource.tags)) return false;
 
-  if (query.openSourceOnly && !resource.openSource) return false;
-  if (query.noAccountOnly && resource.requiresAccount !== "no") return false;
-  if (query.noCreditCardOnly && resource.requiresCreditCard !== "no") return false;
-  if (query.commercialUseOnly && resource.commercialUse !== "yes") return false;
-  if (query.personalUseOnly && resource.personalUse !== "yes") return false;
+  for (const key of EVIDENCE_FILTER_KEYS) {
+    if (!query[key]) continue;
+    if (!EVIDENCE_FILTERS[key][evidence](resource)) return false;
+  }
 
   if (query.alternativeTo) {
     const target = normalizeText(query.alternativeTo);
@@ -106,6 +157,7 @@ export function computeFacets(resources: readonly Resource[], query: ResourceQue
     noAccount: 0,
     noCreditCard: 0,
     commercialUse: 0,
+    unconfirmed: { openSource: 0, noAccount: 0, noCreditCard: 0, commercialUse: 0 },
   };
 
   const without = <K extends keyof ResourceQuery>(key: K): ResourceQuery => {
@@ -133,17 +185,33 @@ export function computeFacets(resources: readonly Resource[], query: ResourceQue
       countInto(facets.categories, [resource.category, ...resource.subcategories]);
     }
 
-    if (matchesFilters(resource, without("openSourceOnly")) && resource.openSource) facets.openSource += 1;
-    if (matchesFilters(resource, without("noAccountOnly")) && resource.requiresAccount === "no") {
-      facets.noAccount += 1;
-    }
-    if (matchesFilters(resource, without("noCreditCardOnly")) && resource.requiresCreditCard === "no") {
-      facets.noCreditCard += 1;
-    }
-    if (matchesFilters(resource, without("commercialUseOnly")) && resource.commercialUse === "yes") {
-      facets.commercialUse += 1;
+    // Evidence facets count confirmed matches, and separately how many listings
+    // record the value without confirmation — shown as "N more not verified".
+    const evidenceFacets: [EvidenceFilterKey, "openSource" | "noAccount" | "noCreditCard" | "commercialUse"][] = [
+      ["openSourceOnly", "openSource"],
+      ["noAccountOnly", "noAccount"],
+      ["noCreditCardOnly", "noCreditCard"],
+      ["commercialUseOnly", "commercialUse"],
+    ];
+    for (const [key, facet] of evidenceFacets) {
+      if (!matchesFilters(resource, without(key))) continue;
+      const filter = EVIDENCE_FILTERS[key];
+      if (filter.confirmed(resource)) facets[facet] += 1;
+      else if (filter.recorded(resource)) facets.unconfirmed[facet] += 1;
     }
   }
 
   return facets;
+}
+
+/**
+ * How many listings an evidence filter left out because their value is recorded
+ * but not confirmed. The results page states this number instead of silently
+ * mixing unchecked listings in, or silently dropping them.
+ */
+export function countExcludedByEvidence(resources: readonly Resource[], query: ResourceQuery): number {
+  if (!EVIDENCE_FILTER_KEYS.some((key) => query[key])) return 0;
+  return resources.filter(
+    (resource) => matchesFilters(resource, query, { evidence: "recorded" }) && !matchesFilters(resource, query),
+  ).length;
 }

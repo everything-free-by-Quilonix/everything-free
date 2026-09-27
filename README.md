@@ -101,6 +101,8 @@ Verification is recorded **one check at a time**, not as a single judgement. For
 >
 > The work queue is [`docs/verification-backlog.md`](docs/verification-backlog.md), generated from the data and kept in sync by CI.
 
+**A recorded value is not a confirmed fact.** The badge describes the whole listing. Separately, every trust-sensitive fact (free status, account, credit card, commercial and personal use, open source, licence, platforms, limitations, free-tier limits, pricing) carries its own evidence state, derived from the recorded checks: **Confirmed**, **Not verified** (a value is recorded but nobody has checked it), **Needs re-checking**, **Not confirmed** (checked, could not be settled) or **Unknown**. Cards only state a value on their "Confirmed" line; everything else is named without a reassurance. Resource pages show each value next to its evidence, with the source, the date it was read and who checked it. Filters such as "No credit card" match **confirmed facts only**, and say how many listings they held back. See [Resource status and fact evidence](docs/verification.md#resource-status-and-fact-evidence).
+
 ---
 
 ## Features
@@ -117,7 +119,8 @@ Verification is recorded **one check at a time**, not as a single judgement. For
 **Search**
 - Weighted relevance scoring across name, alternatives, tags, category, description and features
 - **Explainable results** — every match states why it matched
-- Deterministic natural-language constraint extraction: *"free AI voice generator without a credit card"* becomes search terms plus a no-credit-card filter, shown to the user and removable
+- Deterministic natural-language constraint extraction: *"free AI voice generator without a credit card"* becomes search terms plus a confirmed-only no-credit-card filter, shown to the user and removable
+- Confirmed-fact filters (open source, no account, no credit card, commercial use, personal use) match only facts an official source confirms, and report how many listings record the value without confirmation
 - AND-first matching with an OR fallback, so a narrow query degrades to near misses rather than a dead end
 - Faceted filtering with live counts, entirely URL-driven — shareable and bookmarkable. Runs in the browser so the page stays static; the rest of the library works without JavaScript
 
@@ -182,7 +185,9 @@ src/
 
 **Categories are flat, groups are orderings.** Several categories legitimately belong under more than one heading — Books is both education and media; Music is both creative and entertainment. Nesting categories inside groups would force duplicate entries and therefore duplicate URLs for the same content. A flat set with many-to-many group membership gives exactly one canonical page per category.
 
-**Tri-state facts, not booleans.** `requiresAccount`, `commercialUse` and similar fields are `'yes' | 'no' | 'unknown'`. Storing `false` when nobody has checked is a claim the project cannot support, and the UI renders `'unknown'` as "Not verified" rather than silently as "No". Strict filters exclude unknowns deliberately.
+**Tri-state facts, not booleans.** `requiresAccount`, `commercialUse` and similar fields are `'yes' | 'no' | 'unknown'`. Storing `false` when nobody has checked is a claim the project cannot support, so the UI renders `'unknown'` as "Unknown" rather than silently as "No". A stored `'no'` is not treated as a confirmed no either: until its check is confirmed it reads "Recorded as no · Not verified". Confirmed-fact filters exclude both.
+
+**Evidence is derived, not stored.** Each fact's evidence state comes from exactly one recorded check ([`lib/resources/evidence.ts`](src/lib/resources/evidence.ts)), with no inference across checks, so the cards, pages, filters, structured data and link manifest cannot disagree about what is confirmed.
 
 **Derived values are not stored.** `browserAvailable`, `desktopAvailable` and `mobileAvailable` are computed from `platforms`, so the two can never contradict each other.
 
@@ -203,6 +208,7 @@ Invalid data fails `next build` rather than shipping. Validation covers:
 - **`VERIFIED` without a maintainer's `@handle`, a date, dated sources, or all ten required checks confirmed**
 - A confirmed check that cites no source, or cites a page missing from the entry's sources
 - Open-source entries with no recorded licence; non-HTTPS official URLs
+- **Impossible evidence states** — a confirmed check whose value is `unknown`, a confirmed free status of `UNKNOWN`, a confirmed licence or platform check with nothing recorded, `OPEN_SOURCE` with `openSource: false`, `PERSONAL_FREE` with commercial use `yes`, a tag such as `no-signup` that restates a fact without its evidence
 - Dangling `relatedResources` and collection references
 - Taxonomy contradictions — a group listing a category that does not claim it, or vice versa
 - **Tools declaring browser-local processing while also admitting data leaves the device**
@@ -211,7 +217,7 @@ Invalid data fails `next build` rather than shipping. Validation covers:
 
 ## Getting started
 
-Requires Node.js 20.9+.
+Requires Node.js 20.9+ to build, and 22.18+ for `npm test` (it uses Node's built-in test runner and TypeScript type stripping, so there is no test framework to install).
 
 ```bash
 npm install
@@ -224,8 +230,9 @@ npm run build:static   # fully static export to out/ — fails if any route need
 npm run start          # serve the production build
 npm run lint           # ESLint
 npm run typecheck      # tsc --noEmit
-npm run verify         # lint + typecheck + build
-npm run verify:static  # lint + typecheck + static export
+npm test               # unit tests: evidence states, confirmed-only filters, impossible-state rules
+npm run verify         # lint + typecheck + unit tests + build
+npm run verify:static  # lint + typecheck + unit tests + static export
 npm run test:browser   # loads the export in local Chrome: routes, CSP, navigation, tools, forms, mobile, no-JS
 ```
 

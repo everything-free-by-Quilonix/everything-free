@@ -50,7 +50,7 @@ export const developmentResources = defineResources([
   {
     slug: "github",
     name: "GitHub",
-    shortDescription: "Git hosting with unlimited public and private repositories on the free plan.",
+    shortDescription: "Git hosting with code review, issues and CI, on a free plan with metered extras.",
     longDescription:
       "GitHub hosts Git repositories with code review, issue tracking, project boards, CI/CD through Actions, package hosting and cloud development environments. The free plan covers unlimited public and private repositories, with metered allowances on the compute-based features.",
     whyListed:
@@ -94,7 +94,7 @@ export const developmentResources = defineResources([
   {
     slug: "cloudflare-pages",
     name: "Cloudflare Pages",
-    shortDescription: "Static and full-stack site hosting with unmetered bandwidth on the free plan.",
+    shortDescription: "Static and full-stack site hosting on Cloudflare's network, with a free plan.",
     longDescription:
       "Cloudflare Pages builds sites from a Git repository and serves them from Cloudflare's network. The free plan includes unmetered requests and bandwidth, with a monthly cap on builds, and integrates with Workers for server-side logic.",
     whyListed:
@@ -374,7 +374,7 @@ export const developmentResources = defineResources([
       "Third-party asset and plugin availability is smaller than the commercial ecosystems.",
       "Console export requires third-party services or self-managed porting.",
     ],
-    tags: ["game-engine", "game-dev", "2d", "3d", "no-royalties", "open-source"],
+    tags: ["game-engine", "game-dev", "2d", "3d", "no-royalties"],
     alternativeTo: ["Unity", "GameMaker", "Construct"],
     relatedResources: ["blender", "krita", "audacity"],
     verificationStatus: "UNVERIFIED",
@@ -384,11 +384,11 @@ export const developmentResources = defineResources([
   {
     slug: "excalidraw",
     name: "Excalidraw",
-    shortDescription: "Hand-drawn style whiteboard that works without an account.",
+    shortDescription: "Hand-drawn style whiteboard for diagrams, sketches and architecture drawings.",
     longDescription:
       "Excalidraw is a virtual whiteboard for diagrams, sketches and architecture drawings with a deliberately hand-drawn aesthetic. Drawings are stored locally by default, and collaborative sessions are end-to-end encrypted.",
     whyListed:
-      "Opens and works immediately with no sign-up, and keeps drawings local by default — a genuinely private default in a category where everything else is account-first.",
+      "Opens and works immediately with no sign-up, and keeps drawings local by default — a local-first default in a category where everything else is account-first.",
     category: "collaboration",
     subcategories: ["design", "developer-utilities", "open-source"],
     resourceType: "OPEN_SOURCE",
@@ -417,7 +417,7 @@ export const developmentResources = defineResources([
       "Browser-local storage means clearing site data removes unsaved drawings; export anything you need to keep.",
       "Persistent cloud workspaces, team libraries and permissions are part of the paid Excalidraw+ product.",
     ],
-    tags: ["whiteboard", "diagrams", "no-signup", "local-first", "developer", "collaboration"],
+    tags: ["whiteboard", "diagrams", "local-first", "developer", "collaboration"],
     alternativeTo: ["Miro", "Lucidchart", "Whimsical"],
     relatedResources: ["penpot", "vs-code"],
     verificationStatus: "UNVERIFIED",

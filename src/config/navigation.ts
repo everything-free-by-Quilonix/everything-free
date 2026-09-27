@@ -64,9 +64,10 @@ export const footerNav: FooterSection[] = [
     title: "Use",
     links: [
       { label: "Tools", href: "/tools" },
-      { label: "Open source only", href: "/resources?openSource=1" },
-      { label: "No signup needed", href: "/resources?noAccount=1" },
-      { label: "Commercial use allowed", href: "/resources?commercialUse=1" },
+      // These open confirmed-only filters, and the labels say so.
+      { label: "Open source (confirmed)", href: "/resources?openSource=1" },
+      { label: "No account needed (confirmed)", href: "/resources?noAccount=1" },
+      { label: "Commercial use allowed (confirmed)", href: "/resources?commercialUse=1" },
     ],
   },
   {

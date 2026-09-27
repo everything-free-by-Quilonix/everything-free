@@ -2,9 +2,11 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { Card, stretchedLink } from "@/components/ui/card";
 import { categoryName } from "@/config/categories";
-import { headlineLimitation, platformLabels, requirementSignals } from "@/lib/resources/derive";
+import { headlineLimitation, platformLabels } from "@/lib/resources/derive";
+import { isFactConfirmed } from "@/lib/resources/evidence";
 import { cn } from "@/lib/utils/cn";
 import type { Resource } from "@/types/resource";
+import { CardEvidence } from "./evidence";
 import { ResourceLogo } from "./resource-logo";
 import { FreeStatusBadge, LastVerified, VerificationBadge } from "./status-badges";
 
@@ -31,8 +33,8 @@ export function ResourceCard({
   className?: string;
 }) {
   const platforms = platformLabels(resource);
-  const signals = requirementSignals(resource).slice(0, 2);
   const limitation = headlineLimitation(resource);
+  const openSourceConfirmed = isFactConfirmed(resource, "openSource");
 
   return (
     <Card as="article" interactive className={cn("flex h-full flex-col p-5", className)}>
@@ -52,11 +54,18 @@ export function ResourceCard({
       <p className="mt-3 text-sm leading-relaxed text-fg-muted">{resource.shortDescription}</p>
 
       <div className="mt-3.5 flex flex-wrap gap-1.5">
-        <FreeStatusBadge status={resource.freeStatus} />
+        <FreeStatusBadge resource={resource} />
         {resource.openSource && resource.freeStatus !== "OPEN_SOURCE" ? (
-          <span className="inline-flex items-center gap-1 rounded-md bg-surface-raised px-2 py-0.5 text-xs text-fg-muted">
+          // A secondary claim, so it states its own evidence rather than leaning on
+          // the listing's badge.
+          <span
+            className="inline-flex items-center gap-1 rounded-md bg-surface-raised px-2 py-0.5 text-xs text-fg-muted"
+            data-fact="openSource"
+            data-evidence={openSourceConfirmed ? "confirmed" : "unconfirmed"}
+          >
             <Icon name="repo" size={12} />
             Open source
+            {openSourceConfirmed ? null : <span className="text-fg-subtle">· not verified</span>}
           </span>
         ) : null}
       </div>
@@ -68,20 +77,7 @@ export function ResourceCard({
         </p>
       ) : null}
 
-      {signals.length > 0 ? (
-        <ul className="mt-3 flex flex-col gap-1">
-          {signals.map((signal) => (
-            <li key={signal.label} className="flex items-center gap-1.5 text-xs">
-              <Icon
-                name={signal.tone === "positive" ? "check" : "info"}
-                size={13}
-                className={cn("shrink-0", signal.tone === "positive" ? "text-success-fg" : "text-fg-subtle")}
-              />
-              <span className={signal.tone === "positive" ? "text-fg-muted" : "text-fg-subtle"}>{signal.label}</span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      <CardEvidence resource={resource} />
 
       {limitation ? (
         <p className="mt-3 flex items-start gap-1.5 text-xs leading-relaxed text-fg-subtle">

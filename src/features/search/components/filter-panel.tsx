@@ -166,7 +166,10 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
             ) : null}
           </div>
 
-          <FilterGroup legend="What “free” means">
+          <FilterGroup
+            legend="What “free” means"
+            description="By each listing's recorded status. Each result shows whether its status is confirmed."
+          >
             {listableFreeStatuses.map((status) => (
               <FilterOption
                 key={status.id}
@@ -181,39 +184,56 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
             ))}
           </FilterGroup>
 
-          <FilterGroup legend="Requirements">
-            <FilterOption
-              name={PARAM.openSource}
-              value="1"
-              label="Open source"
-              count={facets.openSource}
-              checked={isFlagged(PARAM.openSource)}
-              onToggle={() => toggleFlagParam(PARAM.openSource)}
-            />
-            <FilterOption
-              name={PARAM.noAccount}
-              value="1"
-              label="No account needed"
-              count={facets.noAccount}
-              checked={isFlagged(PARAM.noAccount)}
-              onToggle={() => toggleFlagParam(PARAM.noAccount)}
-            />
+          {/*
+            Evidence filters. Each one only matches listings where an official
+            source confirms the fact; a recorded but unchecked value, or an unknown
+            one, never matches. The count of listings held back is shown beside each
+            option rather than hidden, and the group says the rule up front.
+          */}
+          <FilterGroup
+            legend="Confirmed facts"
+            description={
+              <>
+                <Icon name="check-circle" size={12} className="mr-1 inline text-success-fg" />
+                Confirmed only: a listing matches when an official source confirms the fact.
+              </>
+            }
+          >
             <FilterOption
               name={PARAM.noCreditCard}
               value="1"
               label="No credit card"
+              hint={unconfirmedHint(facets.unconfirmed.noCreditCard)}
               count={facets.noCreditCard}
               checked={isFlagged(PARAM.noCreditCard)}
               onToggle={() => toggleFlagParam(PARAM.noCreditCard)}
             />
             <FilterOption
+              name={PARAM.noAccount}
+              value="1"
+              label="No account needed"
+              hint={unconfirmedHint(facets.unconfirmed.noAccount)}
+              count={facets.noAccount}
+              checked={isFlagged(PARAM.noAccount)}
+              onToggle={() => toggleFlagParam(PARAM.noAccount)}
+            />
+            <FilterOption
               name={PARAM.commercialUse}
               value="1"
               label="Commercial use allowed"
-              hint="Only entries where this has been confirmed"
+              hint={unconfirmedHint(facets.unconfirmed.commercialUse)}
               count={facets.commercialUse}
               checked={isFlagged(PARAM.commercialUse)}
               onToggle={() => toggleFlagParam(PARAM.commercialUse)}
+            />
+            <FilterOption
+              name={PARAM.openSource}
+              value="1"
+              label="Open source"
+              hint={unconfirmedHint(facets.unconfirmed.openSource)}
+              count={facets.openSource}
+              checked={isFlagged(PARAM.openSource)}
+              onToggle={() => toggleFlagParam(PARAM.openSource)}
             />
           </FilterGroup>
 
@@ -301,13 +321,22 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
   );
 }
 
+/** "8 more record this, not verified" — what a confirmed-only filter holds back. */
+function unconfirmedHint(count: number): string | undefined {
+  if (count === 0) return undefined;
+  return `${count} more ${count === 1 ? "listing records" : "listings record"} this, not verified`;
+}
+
 function FilterGroup({
   legend,
+  description,
   children,
   collapsible = false,
   defaultOpen = true,
 }: {
   legend: string;
+  /** One line under the legend, stating how the group's filters decide a match. */
+  description?: ReactNode;
   children: ReactNode;
   collapsible?: boolean;
   defaultOpen?: boolean;
@@ -333,6 +362,7 @@ function FilterGroup({
   return (
     <fieldset>
       <legend className="text-xs font-semibold tracking-wide text-fg-muted uppercase">{legend}</legend>
+      {description ? <p className="mt-1.5 text-xs leading-snug text-fg-subtle">{description}</p> : null}
       <div className="mt-3 flex flex-col gap-2.5">{children}</div>
     </fieldset>
   );

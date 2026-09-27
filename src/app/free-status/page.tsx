@@ -8,7 +8,8 @@ import { Callout } from "@/components/ui/callout";
 import { Card } from "@/components/ui/card";
 import { Container, PageHeader } from "@/components/ui/layout";
 import { freeStatusList } from "@/config/free-status";
-import { getFacets } from "@/lib/repository";
+import { getAllResourcesForClient, getFacets } from "@/lib/repository";
+import { isFactConfirmed } from "@/lib/resources/evidence";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/structured-data";
 
@@ -28,7 +29,15 @@ export const metadata: Metadata = buildMetadata({
  * everywhere, by construction.
  */
 export default async function FreeStatusPage() {
-  const facets = await getFacets({});
+  const [facets, resources] = await Promise.all([getFacets({}), getAllResourcesForClient()]);
+  // The count links to every listing filed under a status. How many of those have
+  // had the classification itself confirmed is a different number, shown beside it.
+  const confirmedByStatus = new Map<string, number>();
+  for (const resource of resources) {
+    if (isFactConfirmed(resource, "freeStatus")) {
+      confirmedByStatus.set(resource.freeStatus, (confirmedByStatus.get(resource.freeStatus) ?? 0) + 1);
+    }
+  }
 
   return (
     <div className="pb-16">
@@ -63,12 +72,20 @@ export default async function FreeStatusPage() {
                   </Badge>
 
                   {status.listable ? (
-                    <Link
-                      href={`/resources?status=${status.id}`}
-                      className="text-xs text-fg-muted underline underline-offset-2 hover:text-fg"
-                    >
-                      {count} {count === 1 ? "resource" : "resources"} in the library
-                    </Link>
+                    <p className="text-xs text-fg-muted">
+                      <Link
+                        href={`/resources?status=${status.id}`}
+                        className="underline underline-offset-2 hover:text-fg"
+                      >
+                        {count} {count === 1 ? "resource" : "resources"} in the library
+                      </Link>
+                      {count > 0 ? (
+                        <span className="text-fg-subtle" data-testid="free-status-confirmed-count">
+                          {" "}
+                          · classification confirmed for {confirmedByStatus.get(status.id) ?? 0}
+                        </span>
+                      ) : null}
+                    </p>
                   ) : (
                     <span className="text-xs text-fg-subtle">Not listed in the library</span>
                   )}

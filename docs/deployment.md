@@ -157,7 +157,7 @@ npm run test:browser                                                       # ser
 npm run test:browser -- --url https://everything-free-by-quilonix.github.io/everything-free
 ```
 
-It drives the Chrome already installed on the machine (nothing is downloaded) and checks every route type directly and by client navigation, the custom 404, CSP violations, content types for the sitemap, `robots.txt` and OG images, search and filters, all three browser tools, the forms, the verification evidence disclosure, keyboard access, mobile layout, and no-JavaScript rendering. Any console error, failed request or CSP violation fails the check.
+It drives the Chrome already installed on the machine (nothing is downloaded) and checks every route type directly and by client navigation, the custom 404, CSP violations, content types for the sitemap, `robots.txt` and OG images, search and filters, that cards and confirmed-only filters never present an unconfirmed fact as confirmed (audited against the link manifest), all three browser tools, the forms, the verification evidence disclosure, keyboard access, mobile layout, and no-JavaScript rendering. Any console error, failed request or CSP violation fails the check.
 
 ---
 

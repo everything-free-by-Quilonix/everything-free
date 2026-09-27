@@ -46,7 +46,7 @@ export const aiResources = defineResources([
       "Model licences are separate from Ollama's and some prohibit commercial use.",
       "Command-line comfort helps, though graphical front-ends exist.",
     ],
-    tags: ["local-ai", "llm", "privacy", "offline", "developer", "no-signup"],
+    tags: ["local-ai", "llm", "privacy", "offline", "developer"],
     alternativeTo: ["ChatGPT Plus", "Claude Pro", "GitHub Copilot"],
     relatedResources: ["hugging-face", "whisper"],
     verificationStatus: "UNVERIFIED",

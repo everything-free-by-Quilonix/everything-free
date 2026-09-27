@@ -36,7 +36,8 @@ export function Hero({ resourceCount, toolCount }: { resourceCount: number; tool
           <p className="mt-4 text-lg text-fg-muted sm:text-xl">{site.shortDescription}</p>
 
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-fg-muted">
-            Discover free apps, websites, software, tools, learning resources and creative assets — all in one place.
+            Free apps, software, tools, learning resources and creative assets — each showing what &ldquo;free&rdquo;
+            means for it, its limits, and which of its facts an official source confirms.
           </p>
 
           <div className="mt-8">
@@ -58,7 +59,8 @@ export function Hero({ resourceCount, toolCount }: { resourceCount: number; tool
           </h2>
           <p className="mt-1.5 text-sm text-fg-muted">
             Search understands constraints written in plain language — things like “without a credit card”, “open
-            source”, or “alternative to Photoshop” — and turns them into filters you can see and change.
+            source”, or “alternative to Photoshop” — and turns them into filters you can see and change. Filters
+            such as “no credit card” match only where an official source confirms it.
           </p>
           <ul className="mt-4 flex flex-col gap-2">
             {intentExamples.map((example) => (

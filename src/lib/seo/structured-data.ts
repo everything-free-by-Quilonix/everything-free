@@ -1,5 +1,6 @@
 import { getFreeStatus } from "@/config/free-status";
 import { site, siteUrl } from "@/config/site";
+import { isFactConfirmed } from "@/lib/resources/evidence";
 import type { Resource } from "@/types/resource";
 import { absoluteUrl } from "./metadata";
 
@@ -77,7 +78,10 @@ export function resourceSchema(resource: Resource): JsonLd {
     schema.license = resource.license;
   }
 
-  if (UNCONDITIONALLY_FREE.has(resource.freeStatus)) {
+  // A zero-price offer is a claim search engines repeat, so it needs both an
+  // unconditional status and an official source confirming it.
+  const freeStatusConfirmed = isFactConfirmed(resource, "freeStatus");
+  if (UNCONDITIONALLY_FREE.has(resource.freeStatus) && freeStatusConfirmed) {
     schema.offers = {
       "@type": "Offer",
       price: "0",
@@ -87,7 +91,9 @@ export function resourceSchema(resource: Resource): JsonLd {
   } else {
     // For everything else, state the pricing situation in prose rather than
     // asserting a price that does not hold.
-    schema.disambiguatingDescription = `${status.label}: ${status.summary}`;
+    schema.disambiguatingDescription = freeStatusConfirmed
+      ? `${status.label}: ${status.summary}`
+      : `Listed as ${status.label.toLowerCase()}; not yet verified against the provider's own pages.`;
   }
 
   return schema;

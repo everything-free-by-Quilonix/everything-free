@@ -37,7 +37,8 @@ export function StaticLibrary({ resources }: { resources: Resource[] }) {
         <Container>
           <h1 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">Browse free resources</h1>
           <p className="mt-2 max-w-2xl text-sm text-fg-muted">
-            Every entry states what “free” means for it, what the limits are, and when it was last checked.
+            Every entry states what “free” means for it, what the limits are, and which of its facts an official source
+            confirms.
           </p>
 
           <div className="mt-6 max-w-2xl">

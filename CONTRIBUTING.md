@@ -117,6 +117,8 @@ The short version:
 6. Put your GitHub handle (`@name`) in `verifiedBy` and the date in `lastVerifiedAt`. Set `verificationStatus` to `PARTIALLY_VERIFIED` once `FREE_STATUS` is confirmed, and leave it `UNVERIFIED` until then. Notes from compiling a listing go in `compilationNotes`; they are not evidence.
 7. Run `npm run build:static && npm run backlog`, and commit the regenerated backlog with your change. CI fails if you forget.
 
+**What a confirmed check changes on the site.** Each fact on a listing rests on exactly one check. Confirming `CREDIT_CARD_REQUIREMENT` is what lets the card say "Confirmed: no credit card needed" and lets the entry match the "No credit card" filter; until then the stored value is shown as "Not verified" and the filter leaves it out. Nothing is inferred across checks, so a confirmed licence does not confirm commercial use. A confirmed check must agree with a real value: the build rejects a confirmed check next to `unknown`. See [resource status and fact evidence](docs/verification.md#resource-status-and-fact-evidence).
+
 **Confirming three checks and honestly recording the rest as unresolved or unchecked is a real contribution. Claiming all ten without looking is not.** The build rejects a confirmed check with no official source behind it.
 
 **Only a maintainer marks an entry `VERIFIED`**, after re-opening the sources themselves. The build requires the handle of a maintainer listed in `src/config/maintainers.ts` on every `VERIFIED` entry, and each maintainer adds their own handle there. It rejects a badge awarded by a script, bot or AI assistant. See [signing off](docs/verification.md#signing-off-maintainers).
@@ -141,10 +143,10 @@ npm run dev
 ### Before opening a pull request
 
 ```bash
-npm run build      # includes all data validation
-npm run lint
-npx tsc --noEmit
+npm run verify     # lint + typecheck + unit tests + build (includes all data validation)
 ```
+
+Or one at a time: `npm run lint`, `npx tsc --noEmit`, `npm test`, `npm run build`. `npm test` uses Node's built-in test runner (Node 22.18+) with no framework to install; tests live in `tests/`. If you change how a fact, filter or badge decides what is confirmed, add a case there.
 
 `npm run build` is the important one: it runs the integrity checks over the taxonomy, seed data, collections and tool registry. If you have added data, this is what tells you whether it is consistent.
 

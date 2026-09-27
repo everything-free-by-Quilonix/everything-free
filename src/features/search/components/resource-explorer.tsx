@@ -9,7 +9,7 @@ import { buttonClasses } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ResourceGrid } from "@/features/resources/components/resource-card";
-import { countActiveFilters } from "@/lib/search/filters";
+import { countActiveFilters, EVIDENCE_FILTER_KEYS } from "@/lib/search/filters";
 import { parseSearchParams, searchParamsToInput } from "@/lib/search/params";
 import { runSearch } from "@/lib/search/run-search";
 import { formatCount } from "@/lib/utils/format";
@@ -58,7 +58,8 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
     return { query: parsed, outcome: runSearch(resources, parsed) };
   }, [resources, searchParams]);
 
-  const { results, facets, effectiveQuery, inferredFilters } = outcome;
+  const { results, facets, effectiveQuery, inferredFilters, excludedByEvidence } = outcome;
+  const evidenceFilterActive = EVIDENCE_FILTER_KEYS.some((key) => effectiveQuery[key]);
 
   const items = results.items.map((match) => match.resource);
   const reasonsBySlug = Object.fromEntries(
@@ -84,7 +85,8 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             )}
           </h1>
           <p className="mt-2 max-w-2xl text-sm text-fg-muted">
-            Every entry states what “free” means for it, what the limits are, and when it was last checked.
+            Every entry states what “free” means for it, what the limits are, and which of its facts an official source
+            confirms.
           </p>
 
           <div className="mt-6 max-w-2xl">
@@ -127,6 +129,20 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
                 Your wording set {inferredFilters.length === 1 ? "a filter" : "some filters"} automatically:{" "}
                 {inferredFilters.map((filter) => filter.label).join(", ")}. Remove any that do not apply using the chips
                 above.
+              </Callout>
+            ) : null}
+
+            {evidenceFilterActive ? (
+              // A confirmed-only filter holds listings back. Saying how many — and
+              // why — is the difference between an honest filter and a thin one.
+              <Callout tone="neutral" icon="check-circle" className="mt-4">
+                <span data-testid="evidence-filter-notice">
+                  Filters marked <span className="font-medium text-fg">confirmed</span> only include listings where an
+                  official source confirms the fact.{" "}
+                  {excludedByEvidence > 0
+                    ? `${formatCount(excludedByEvidence)} more ${excludedByEvidence === 1 ? "listing records" : "listings record"} it but ${excludedByEvidence === 1 ? "has" : "have"} not been checked yet, so ${excludedByEvidence === 1 ? "it is" : "they are"} not shown. Remove the filter to see them, each with its evidence stated.`
+                    : "No other listing records it without confirmation."}
+                </span>
               </Callout>
             ) : null}
 

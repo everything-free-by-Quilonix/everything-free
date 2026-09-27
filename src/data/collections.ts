@@ -16,9 +16,9 @@ export const collections: Collection[] = [
     name: "Leaving a creative subscription",
     shortDescription: "Freely licensed replacements for the main pieces of a paid creative suite.",
     longDescription:
-      "Covers the jobs a creative subscription is usually bought for: raster editing, painting, vector work, video and audio. Each entry here permits commercial use, so work produced with them can be sold.",
+      "Covers the jobs a creative subscription is usually bought for: raster editing, painting, vector work, video and audio. Each entry records a licence that permits commercial use; each card says whether an official source has confirmed it.",
     rationale:
-      "Selected on two criteria only: the licence must permit commercial use, and the free version must export without watermarks or resolution caps. These are not claimed to be feature-equivalent to the paid tools they replace, and the limitations on each entry are worth reading before committing a project to one.",
+      "Selected on two recorded criteria only: the licence permits commercial use, and the free version exports without watermarks or resolution caps. These are not claimed to be feature-equivalent to the paid tools they replace, and the limitations on each entry are worth reading before committing a project to one.",
     icon: "palette",
     resourceSlugs: ["gimp", "krita", "inkscape", "davinci-resolve", "audacity", "photopea"],
     updatedAt: "2026-09-25",
@@ -27,7 +27,7 @@ export const collections: Collection[] = [
     id: "video-from-recording-to-export",
     slug: "video-from-recording-to-export",
     name: "A video pipeline, end to end",
-    shortDescription: "Record, edit, grade, caption and source footage without paying for any stage.",
+    shortDescription: "Record, edit, grade, caption and source footage with a tool recorded as free at every stage.",
     longDescription:
       "A working chain for producing video: capture the screen or camera, edit and grade, clean up the audio, generate captions, and fill gaps with licensed stock footage.",
     rationale:
@@ -40,11 +40,11 @@ export const collections: Collection[] = [
     id: "student-starter-kit",
     slug: "student-starter-kit",
     name: "A student's starting set",
-    shortDescription: "Write, cite, revise and learn — nothing here needs a student card or a trial.",
+    shortDescription: "Write, cite, revise and learn — none recorded as needing a student card or a trial.",
     longDescription:
       "Covers the practical needs of coursework: writing and formatting documents, managing references, revising effectively, checking your writing, and filling gaps in understanding.",
     rationale:
-      "Everything here is free without institutional access, a student verification step or an expiring academic licence, because those requirements exclude the people who most need free tools. Certification and accreditation limits are noted on the individual entries.",
+      "Chosen because each is recorded as free without institutional access, a student verification step or an expiring academic licence, because those requirements exclude the people who most need free tools. Certification and accreditation limits are noted on the individual entries.",
     icon: "graduation-cap",
     resourceSlugs: ["libreoffice", "zotero", "anki", "khan-academy", "languagetool", "obsidian", "project-gutenberg"],
     updatedAt: "2026-09-25",
@@ -53,11 +53,11 @@ export const collections: Collection[] = [
     id: "ship-a-site-for-nothing",
     slug: "ship-a-site-for-nothing",
     name: "Ship a real site for nothing",
-    shortDescription: "Editor, version control, database and hosting on permanent free plans.",
+    shortDescription: "Editor, version control, database and hosting, each recorded as having a permanent free plan.",
     longDescription:
-      "Enough to take a web project from an empty folder to a live URL with a real database behind it, using only free plans rather than trials.",
+      "Enough to take a web project from an empty folder to a live URL with a real database behind it, using free plans rather than trials.",
     rationale:
-      "Selected for free plans that are permanent rather than time-limited. Whether each one asks for a payment method at signup is recorded on its own entry, and for some it has not yet been established from an official source. The metered limits are listed on each entry — the database pause behaviour in particular matters if the project will have real users.",
+      "Selected for free plans recorded as permanent rather than time-limited. Whether each one asks for a payment method at signup is recorded on its own entry, and for some it has not yet been established from an official source. The metered limits are listed on each entry — the database pause behaviour in particular matters if the project will have real users.",
     icon: "bolt",
     resourceSlugs: ["vs-code", "github", "cloudflare-pages", "supabase", "excalidraw"],
     updatedAt: "2026-09-25",
@@ -66,11 +66,11 @@ export const collections: Collection[] = [
     id: "keep-your-data-on-your-machine",
     slug: "keep-your-data-on-your-machine",
     name: "Keep your data on your own machine",
-    shortDescription: "Capable tools that do their work locally instead of uploading your files.",
+    shortDescription: "Tools recorded as doing their work locally instead of uploading your files.",
     longDescription:
-      "For documents, notes, recordings and locations you would rather not hand to a service: these process data on hardware you control.",
+      "For documents, notes, recordings and locations you would rather not hand to a service: each is recorded as processing data on hardware you control.",
     rationale:
-      "Each entry either runs entirely locally or can be self-hosted, and none require an account for their core function. Where a hosted or public instance also exists, the entry says so, because using it undoes the reason to pick the tool.",
+      "Each entry is recorded as either running entirely locally or being self-hostable, and as not needing an account for its core function; each card says which of those facts an official source has confirmed. Where a hosted or public instance also exists, the entry says so, because using it undoes the reason to pick the tool.",
     icon: "lock",
     resourceSlugs: ["stirling-pdf", "ollama", "whisper", "obsidian", "organic-maps", "excalidraw", "libreoffice"],
     updatedAt: "2026-09-25",
@@ -78,10 +78,10 @@ export const collections: Collection[] = [
   {
     id: "assets-safe-for-client-work",
     slug: "assets-safe-for-client-work",
-    name: "Assets you can use in client work",
-    shortDescription: "Images, footage, typefaces and 3D output with commercial use permitted.",
+    name: "Assets for client work",
+    shortDescription: "Images, footage, typefaces and 3D output whose recorded licences permit commercial use.",
     longDescription:
-      "Free assets are only useful professionally if the licence survives contact with a client invoice. These permit commercial use, with the conditions stated.",
+      "Free assets are only useful professionally if the licence survives contact with a client invoice. Each of these records a licence that permits commercial use, with the conditions stated; each card says whether an official source has confirmed it.",
     rationale:
       "Included on the strength of their published licences permitting commercial use. Conditions that remain — attribution, share-alike, restrictions on reselling the asset itself, and separate releases for identifiable people or property — are recorded on each entry and are your responsibility to honour.",
     icon: "shield-check",

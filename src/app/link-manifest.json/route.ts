@@ -12,6 +12,7 @@ import {
   verificationStageLabels,
 } from "@/config/verification";
 import { getAllResourcesForClient } from "@/lib/repository";
+import { FACTS, factEvidence } from "@/lib/resources/evidence";
 
 /**
  * A machine-readable maintenance manifest, written once at build time.
@@ -63,6 +64,21 @@ export async function GET() {
       confirmedChecks: confirmedChecks(records),
       unresolvedChecks: unresolvedChecks(records),
       missingRequiredChecks: missingRequiredChecks(records),
+      // Fact-level evidence, as the site shows it. Lets the browser tests confirm
+      // that no page presents a fact more confidently than this.
+      facts: Object.fromEntries(
+        FACTS.map((fact) => {
+          const evidence = factEvidence(resource, fact);
+          return [fact, { state: evidence.state, reason: evidence.reason }];
+        }),
+      ),
+      values: {
+        requiresAccount: resource.requiresAccount,
+        requiresCreditCard: resource.requiresCreditCard,
+        commercialUse: resource.commercialUse,
+        personalUse: resource.personalUse,
+        openSource: resource.openSource,
+      },
       // The full worksheet: every check, including the ones nobody has looked at,
       // with the evidence and the source it rests on joined in. This is what lets a
       // maintainer see exactly what remains without reading the data file.

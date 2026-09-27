@@ -60,6 +60,64 @@ For maintainers, every listing also has a **stage**, derived from its evidence b
 
 ---
 
+## Resource status and fact evidence
+
+These are two different things, and the site never merges them.
+
+- **Resource status** (`VERIFIED`, `PARTIALLY_VERIFIED`, `UNVERIFIED`) describes the listing as a whole: how far its checklist has got, and whether a maintainer has signed it off. It is the badge.
+- **Fact evidence** describes one fact on the listing, such as "a credit card is not required". It answers a narrower question: has an official source confirmed *this* value?
+
+A value existing in the data is not evidence. Most listings were compiled from public documentation, so a field like `requiresCreditCard: "no"` is a claim until a check confirms it. Showing it the way a confirmed fact is shown (a tick, a "No credit card" chip, a strict filter match) would present the claim as evidence.
+
+### The three states
+
+`src/lib/resources/evidence.ts` derives every fact's state from the recorded checks. Nothing about evidence is stored separately, so it cannot drift from them.
+
+| State | Label | When |
+| --- | --- | --- |
+| Confirmed | **Confirmed** | The fact's check is `confirmed` and the pass is inside the 90-day window |
+| Unconfirmed | **Not verified** | A value is recorded but its check has never been done |
+| Unconfirmed | **Needs re-checking** | The check was confirmed, but the pass is older than 90 days |
+| Unknown | **Not confirmed** | The check was done and could not settle it (`unresolved`); the value is `unknown` |
+| Unknown | **Unknown** | No value is recorded and nothing has been checked |
+
+Each fact rests on exactly one check, and nothing is inferred across checks. Open source needs `OPEN_SOURCE_STATUS`; a confirmed free status of "Open source" does not confirm it. Commercial use needs `COMMERCIAL_USE`; a confirmed licence does not confirm it.
+
+`false` or `"no"` is never read as a confirmed no, and `true` or `"yes"` is never read as a confirmed yes. They are recorded values, shown as "Recorded as no · Not verified" until their check is confirmed.
+
+### Who confirmed it
+
+A confirmed check recorded by an agent-assisted pass counts as a confirmed fact. It rests on a dated official source that anyone can open, and the page says who recorded it ("Checked by …") and when. That is why a listing can show confirmed facts while its badge still says Partially verified or Unverified. `VERIFIED` remains the separate, human-only sign-off of the whole listing.
+
+### Where it shows
+
+- **Cards** show one short line per state, with a text label and an icon (never colour alone): "Confirmed: no credit card needed, commercial use allowed", "Not confirmed: credit card", "Not verified: free status, account". Values are stated only on the confirmed line. The free-status badge turns neutral with "(free status not verified)" for screen readers when the classification is unchecked, and the open-source chip reads "Open source · not verified".
+- **Resource pages** show every fact as its value *and* its evidence, side by side. "How we know" opens the check's evidence, the source it rests on, the date that source was read, and who checked it. The page title, link previews and search snippets say "(not verified)" when the free status is unchecked, and structured data only includes a price offer when it is confirmed.
+- **Comparison tables** on alternatives pages carry the evidence state in every fact cell.
+- **Collections** are chosen from what listings record. Each collection says so, and each card says what is confirmed.
+
+### Filters
+
+Two kinds of filter behave differently, and the filter panel says which is which.
+
+- **Classification filters** (free status, type, platform, category, tag) narrow by what a listing is filed under. Every result card shows how far that has been checked.
+- **Confirmed-fact filters** (open source, no account needed, no credit card, commercial use allowed, personal use allowed) are promises. They match only a confirmed fact. A recorded but unchecked "no" does not match "No credit card", and `unknown` never matches either "yes" or "no".
+
+The panel shows how many more listings record the value without confirmation, and the results say how many were held back, rather than quietly mixing them in or hiding that they exist. Plain-language search ("free AI tool without a credit card") applies the same confirmed-only filter and labels it "No credit card (confirmed only)".
+
+### What the build refuses
+
+Impossible evidence states fail `next build` (and `npm test`):
+
+- A confirmed account, card, commercial-use or personal-use check next to a value of `unknown` (a confirmation of nothing)
+- A confirmed `FREE_STATUS` with a free status of `UNKNOWN`
+- A confirmed `LICENSE` with no licence recorded; a confirmed `PLATFORM_AVAILABILITY` with no platforms
+- A free status of `OPEN_SOURCE` with `openSource: false`
+- A free status of `PERSONAL_FREE` (commercial use restricted) with `commercialUse: "yes"`
+- A tag that restates a fact (`no-signup`, `no-credit-card`, `commercial-use`, `open-source` and similar). Tags are topics and filter by their recorded value, so a fact-shaped tag would repeat the claim without its evidence and bypass the confirmed-only filter. Use the field.
+
+---
+
 ## The checklist
 
 Verification is not one judgement. It is a list of separate facts, each recorded individually so a resource page can show exactly what is known.
@@ -231,7 +289,7 @@ Entries ready for sign-off today: **Obsidian, GIMP, LibreOffice, KeePassXC**.
 
 ## What the build enforces
 
-In `src/data/resources/index.ts`, at module load, so `next build` fails:
+The rules live in `src/data/resources/validate.ts` and run from `src/data/resources/index.ts` at module load, so `next build` fails. `npm test` runs the same rules against the real data and against fixtures for each impossible state:
 
 - `VERIFIED` without all required checks confirmed, without a maintainer from the register, or resting on a source read more than 90 days before sign-off
 - `PARTIALLY_VERIFIED` without a confirmed `FREE_STATUS`; `UNVERIFIED` with one
@@ -243,6 +301,7 @@ In `src/data/resources/index.ts`, at module load, so `next build` fails:
 - A verification date in the future, or a source read after the pass's `lastVerifiedAt`
 - Non-HTTPS or undated sources, or sources with no label
 - A conditional free status with no documented limitations
+- The impossible evidence states listed [above](#what-the-build-refuses)
 
 Plus HTTPS URLs, unique slugs, known categories and platforms, no dangling cross-references, no self-contradicting tool privacy declarations and no tools declaring paid infrastructure.
 
@@ -253,6 +312,8 @@ Plus HTTPS URLs, unique slugs, known categories and platforms, no dangling cross
 ### Automated
 
 - **Build-time rules** above, on every pull request.
+- **Unit tests** (`npm test`, in CI): the evidence states, confirmed-only filters and impossible-state rules, against fixtures and the real data.
+- **Browser checks** (`npm run test:browser`, in CI; pass `--url` to run them against production): every card on the listing, home, category and audience pages is audited against the link manifest's fact evidence.
 - **Backlog sync** (`npm run backlog:check`, in CI).
 - **Verification freshness** (`.github/workflows/verification-freshness.yml`), monthly. Keeps one open issue whose description is always the current report: *Awaiting maintainer sign-off*, *Fully verified*, *Partially verified*, *Never verified*, *Past freshness window*. Makes no network requests.
 - **Link health** (`.github/workflows/link-health.yml`), monthly. See [below](#link-health).

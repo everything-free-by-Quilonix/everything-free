@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { Icon } from "@/components/icons";
 import { getFreeStatus } from "@/config/free-status";
 import { availabilityLabel, platformLabels } from "@/lib/resources/derive";
+import { factEvidence, type Fact, type TriStateFact } from "@/lib/resources/evidence";
 import { formatMonthYear } from "@/lib/utils/date";
 import type { Availability, Resource } from "@/types/resource";
+import { EvidenceTag } from "./evidence";
 
 /**
  * Factual comparison table.
@@ -18,63 +19,81 @@ import type { Availability, Resource } from "@/types/resource";
  * row and column, which is the entire value of a comparison.
  */
 
+/*
+ * Every cell shows the value and, underneath, its evidence state: "No" with
+ * "✓ Confirmed", or "No" with "– Not verified". A comparison is exactly where a
+ * reader would otherwise assume every cell was checked to the same standard.
+ */
 const COLUMNS: { key: string; label: string; render: (resource: Resource) => React.ReactNode }[] = [
   {
     key: "free-status",
     label: "Free status",
-    render: (resource) => getFreeStatus(resource.freeStatus).label,
+    render: (resource) => (
+      <Cell resource={resource} fact="freeStatus">
+        {getFreeStatus(resource.freeStatus).label}
+      </Cell>
+    ),
   },
   {
     key: "licence",
     label: "Licence",
-    render: (resource) => resource.license ?? <Unknown />,
+    render: (resource) => (
+      <Cell resource={resource} fact="license">
+        {resource.license ?? "Not recorded"}
+      </Cell>
+    ),
   },
   {
     key: "platforms",
     label: "Platforms",
     render: (resource) => {
       const platforms = platformLabels(resource);
-      return platforms.length > 0 ? platforms.join(", ") : <Unknown />;
+      return (
+        <Cell resource={resource} fact="platforms">
+          {platforms.length > 0 ? platforms.join(", ") : "Not recorded"}
+        </Cell>
+      );
     },
   },
   {
     key: "account",
     label: "Account needed",
-    render: (resource) => <TriState value={resource.requiresAccount} />,
+    render: (resource) => <TriState resource={resource} fact="requiresAccount" />,
   },
   {
     key: "card",
     label: "Card needed",
-    render: (resource) => <TriState value={resource.requiresCreditCard} />,
+    render: (resource) => <TriState resource={resource} fact="requiresCreditCard" />,
   },
   {
     key: "commercial",
     label: "Commercial use",
-    render: (resource) => <TriState value={resource.commercialUse} />,
+    render: (resource) => <TriState resource={resource} fact="commercialUse" />,
   },
   {
     key: "verified",
     label: "Last checked",
-    render: (resource) => formatMonthYear(resource.lastVerifiedAt) ?? <Unknown label="Never" />,
+    render: (resource) =>
+      formatMonthYear(resource.lastVerifiedAt) ?? <span className="text-fg-subtle">Never</span>,
   },
 ];
 
-function Unknown({ label = "Not recorded" }: { label?: string }) {
-  return <span className="text-fg-subtle">{label}</span>;
+function Cell({ resource, fact, children }: { resource: Resource; fact: Fact; children: React.ReactNode }) {
+  const evidence = factEvidence(resource, fact);
+  return (
+    <span className="flex flex-col gap-0.5" data-fact={fact}>
+      <span className={evidence.state === "confirmed" ? "text-fg" : "text-fg-muted"}>{children}</span>
+      <EvidenceTag evidence={evidence} className="text-[11px] font-normal" />
+    </span>
+  );
 }
 
-function TriState({ value }: { value: Availability }) {
-  if (value === "unknown") return <Unknown label="Not verified" />;
-
+function TriState({ resource, fact }: { resource: Resource; fact: TriStateFact }) {
+  const value: Availability = resource[fact];
   return (
-    <span className="inline-flex items-center gap-1.5">
-      <Icon
-        name={value === "yes" ? "check" : "close"}
-        size={13}
-        className={value === "yes" ? "text-success-fg" : "text-fg-subtle"}
-      />
+    <Cell resource={resource} fact={fact}>
       {availabilityLabel(value)}
-    </span>
+    </Cell>
   );
 }
 
@@ -88,7 +107,8 @@ export function AlternativeComparison({ resources }: { resources: Resource[] }) 
       <table className="w-full border-collapse text-sm">
         <caption className="sr-only">
           Factual comparison of free alternatives. Columns cover free status, licence, platforms, account and card
-          requirements, commercial use and verification date.
+          requirements, commercial use and the date of the last check. Each cell states whether an official source
+          confirms it.
         </caption>
         <thead>
           <tr className="border-b border-border bg-bg-subtle text-left">

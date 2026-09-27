@@ -69,40 +69,18 @@ export function headlineLimitation(resource: Resource): string | null {
   return resource.limitations[0] ?? null;
 }
 
-export interface RequirementSignal {
-  label: string;
-  /** `positive` renders as a reassurance, `caution` as something to note. */
-  tone: "positive" | "caution" | "unknown";
-}
+/*
+ * Requirement signals for cards ("No credit card", "Commercial use allowed") used
+ * to be derived here from the stored value alone, which put a reassurance on
+ * listings nobody had checked. They now come from `lib/resources/evidence.ts`,
+ * which only lets a confirmed fact make a claim.
+ */
 
 /**
- * Compact requirement signals for cards.
- *
- * Only returns a signal when the answer is actually known. An unchecked field
- * produces nothing rather than an implied "no", which is the whole reason
- * `Availability` is tri-state.
+ * The stored answer for a tri-state field, as a word. This is the *value* only;
+ * whether it has been confirmed is a separate question, answered by
+ * `factEvidence`, and every surface shows both.
  */
-export function requirementSignals(resource: Resource): RequirementSignal[] {
-  const signals: RequirementSignal[] = [];
-
-  const add = (value: Availability, positive: string, caution: string) => {
-    if (value === "no") signals.push({ label: positive, tone: "positive" });
-    else if (value === "yes") signals.push({ label: caution, tone: "caution" });
-  };
-
-  add(resource.requiresCreditCard, "No credit card", "Credit card required");
-  add(resource.requiresAccount, "No account needed", "Account required");
-
-  if (resource.commercialUse === "yes") {
-    signals.push({ label: "Commercial use allowed", tone: "positive" });
-  } else if (resource.commercialUse === "no") {
-    signals.push({ label: "Not for commercial use", tone: "caution" });
-  }
-
-  return signals;
-}
-
-/** Human answer for a tri-state field, never collapsing `unknown` to "No". */
 export function availabilityLabel(value: Availability): string {
   switch (value) {
     case "yes":
@@ -110,6 +88,6 @@ export function availabilityLabel(value: Availability): string {
     case "no":
       return "No";
     default:
-      return "Not verified";
+      return "Unknown";
   }
 }

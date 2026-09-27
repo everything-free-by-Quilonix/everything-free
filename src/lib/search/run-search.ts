@@ -2,7 +2,7 @@ import type { Resource, ResourceMatch } from "@/types/resource";
 import type { Paginated, ResourceFacets, ResourceQuery, ResourceQueryResult, SortOption } from "@/types/search";
 
 import { rankResources } from "./engine";
-import { computeFacets, matchesFilters } from "./filters";
+import { computeFacets, countExcludedByEvidence, matchesFilters } from "./filters";
 import { inferIntent, type InferredFilter } from "./intent";
 import { DEFAULT_PER_PAGE } from "./params";
 
@@ -123,6 +123,11 @@ export interface SearchOutcome {
   effectiveQuery: ResourceQuery;
   /** Constraints recognised in natural language, for display. */
   inferredFilters: InferredFilter[];
+  /**
+   * Listings left out by an evidence filter ("No credit card", "Commercial use")
+   * because the value is recorded but not confirmed. Reported, not hidden.
+   */
+  excludedByEvidence: number;
 }
 
 /**
@@ -152,5 +157,8 @@ export function runSearch(resources: readonly Resource[], query: ResourceQuery):
     facets: facetsFor(resources, effectiveQuery),
     effectiveQuery,
     inferredFilters: intent.applied,
+    // Counted without the text query: it answers "how many listings does this
+    // filter hold back", which should not depend on how well they rank.
+    excludedByEvidence: countExcludedByEvidence(resources, { ...effectiveQuery, q: undefined }),
   };
 }

@@ -49,6 +49,12 @@ jobs:
       - name: Type check
         run: npm run typecheck
 
+      # Node's built-in test runner against the TypeScript source — no test
+      # dependency. Covers fact-level evidence, the confirmed-only filters and the
+      # rules that make impossible evidence states fail the build.
+      - name: Unit tests
+        run: npm test
+
       - name: Build (includes all data validation)
         run: npm run build
 

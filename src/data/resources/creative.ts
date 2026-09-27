@@ -568,7 +568,7 @@ export const creativeResources = defineResources([
   {
     slug: "unsplash",
     name: "Unsplash",
-    shortDescription: "Photography library licensed for free use, including commercially.",
+    shortDescription: "Large photography library published under its own free-use licence.",
     longDescription:
       "Unsplash hosts a large library of photographs contributed by photographers under the Unsplash License, which permits free use for commercial and non-commercial purposes without requiring attribution. Downloads do not require an account.",
     whyListed:
@@ -600,7 +600,7 @@ export const creativeResources = defineResources([
       "Identifiable people and trademarks in photos may need separate permission for some uses.",
       "The developer API has rate limits and its own terms.",
     ],
-    tags: ["stock-photos", "images", "commercial-use", "no-attribution", "creator"],
+    tags: ["stock-photos", "images", "no-attribution", "creator"],
     alternativeTo: ["Adobe Stock", "Getty Images", "Shutterstock"],
     relatedResources: ["pexels", "google-fonts", "gimp"],
     verificationStatus: "UNVERIFIED",
@@ -641,7 +641,7 @@ export const creativeResources = defineResources([
       "The licence does not permit redistributing the media as your own stock library.",
       "Depth of coverage varies significantly by subject.",
     ],
-    tags: ["stock-photos", "stock-video", "commercial-use", "creator"],
+    tags: ["stock-photos", "stock-video", "creator"],
     alternativeTo: ["Shutterstock", "Adobe Stock", "Getty Images"],
     relatedResources: ["unsplash", "davinci-resolve", "shotcut"],
     verificationStatus: "UNVERIFIED",
@@ -651,7 +651,7 @@ export const creativeResources = defineResources([
   {
     slug: "google-fonts",
     name: "Google Fonts",
-    shortDescription: "Open-source typefaces free for commercial and personal use.",
+    shortDescription: "Library of open-source typefaces for websites, documents and design work.",
     longDescription:
       "Google Fonts is a catalogue of typeface families published under open-source licences, predominantly the SIL Open Font License. Fonts can be downloaded for desktop and print work or served directly to a website, and the catalogue metadata and many of the families are developed in the open.",
     whyListed:
@@ -685,7 +685,7 @@ export const creativeResources = defineResources([
       "Serving fonts from Google's CDN involves a third-party request, which has privacy and regulatory implications in some jurisdictions; self-hosting avoids this.",
       "Quality and language coverage vary across the catalogue.",
     ],
-    tags: ["fonts", "typography", "open-font-license", "commercial-use", "web"],
+    tags: ["fonts", "typography", "open-font-license", "web"],
     alternativeTo: ["Adobe Fonts", "Monotype"],
     relatedResources: ["penpot", "inkscape", "unsplash"],
     verificationStatus: "UNVERIFIED",
@@ -875,7 +875,7 @@ export const creativeResources = defineResources([
       "Historically prone to topological naming issues on complex parametric models, though this has improved.",
       "CAM support is less mature than dedicated commercial tools.",
     ],
-    tags: ["cad", "parametric", "engineering", "open-source", "commercial-use"],
+    tags: ["cad", "parametric", "engineering"],
     alternativeTo: ["SolidWorks", "Autodesk Fusion", "Autodesk Inventor"],
     relatedResources: ["autodesk-fusion-personal", "blender"],
     verificationStatus: "UNVERIFIED",

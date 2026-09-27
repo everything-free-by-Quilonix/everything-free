@@ -74,12 +74,14 @@ export function ActiveFilters({
     });
   }
 
+  // Evidence filters say "confirmed" in the chip itself, so the rule is visible
+  // wherever the filter is, not only in the sidebar.
   const flags: [keyof ResourceQuery, string][] = [
-    ["openSourceOnly", "Open source"],
-    ["noAccountOnly", "No account needed"],
-    ["noCreditCardOnly", "No credit card"],
-    ["commercialUseOnly", "Commercial use allowed"],
-    ["personalUseOnly", "Free for personal use"],
+    ["openSourceOnly", "Open source · confirmed"],
+    ["noAccountOnly", "No account needed · confirmed"],
+    ["noCreditCardOnly", "No credit card · confirmed"],
+    ["commercialUseOnly", "Commercial use allowed · confirmed"],
+    ["personalUseOnly", "Personal use allowed · confirmed"],
   ];
 
   for (const [key, label] of flags) {

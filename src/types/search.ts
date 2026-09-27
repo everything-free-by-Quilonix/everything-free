@@ -68,16 +68,30 @@ export interface ResourceQueryResult extends Paginated<ResourceMatch> {
   relaxedMatching: boolean;
 }
 
+/**
+ * Filters that promise a fact rather than narrow a classification. They match only
+ * when an official source confirms the fact — see `lib/search/filters.ts`.
+ */
+export type EvidenceFilterKey =
+  | "openSourceOnly"
+  | "noAccountOnly"
+  | "noCreditCardOnly"
+  | "commercialUseOnly"
+  | "personalUseOnly";
+
 /** Counts per facet value for the current result set, used to build filter UI. */
 export interface ResourceFacets {
   freeStatuses: Record<string, number>;
   resourceTypes: Record<string, number>;
   platforms: Record<string, number>;
   categories: Record<string, number>;
+  /** Evidence facets count confirmed matches only. */
   openSource: number;
   noAccount: number;
   noCreditCard: number;
   commercialUse: number;
+  /** Listings that record the value but have not had it confirmed. Never matched, only counted. */
+  unconfirmed: { openSource: number; noAccount: number; noCreditCard: number; commercialUse: number };
 }
 
 /** Field-level tri-state helper used by filter predicates. */

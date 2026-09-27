@@ -91,7 +91,7 @@ export const freeStatusDefinitions: Record<FreeStatus, FreeStatusDefinition> = {
   },
   LIMITED_FREE: {
     id: "LIMITED_FREE",
-    label: "Limited free",
+    label: "Limited free access",
     summary: "Genuinely free capability, but significant limits apply.",
     definition:
       "Something real can be accomplished without paying, but the limits are substantial enough that most people will hit them — for example watermarked output, hard export caps, or a small number of uses.",
@@ -126,7 +126,7 @@ export const freeStatusDefinitions: Record<FreeStatus, FreeStatusDefinition> = {
   },
   UNKNOWN: {
     id: "UNKNOWN",
-    label: "Unconfirmed",
+    label: "Free status unknown",
     summary: "Free status has not been established yet.",
     definition:
       "Nobody has established the free status to our standard yet. We would rather say so than guess.",

@@ -1,4 +1,5 @@
 import { getFreeStatus } from "@/config/free-status";
+import { isFactConfirmed } from "@/lib/resources/evidence";
 import { getResourceBySlug, listResourceIndexEntries } from "@/lib/repository";
 import { renderOgImage, SITE_OG_IMAGE } from "@/lib/seo/og-image";
 
@@ -47,8 +48,11 @@ export async function GET(_request: Request, { params }: { params: Promise<{ ima
   }
 
   const status = getFreeStatus(resource.freeStatus);
+  // Link previews travel without the page around them, so an unchecked status has
+  // to say so in the image itself.
+  const label = isFactConfirmed(resource, "freeStatus") ? status.label : `${status.label} (not verified)`;
   return renderOgImage({
     title: resource.name,
-    subtitle: `${status.label} · ${resource.shortDescription}`,
+    subtitle: `${label} · ${resource.shortDescription}`,
   });
 }

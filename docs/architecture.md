@@ -182,6 +182,26 @@ Two properties matter:
 
 Verification is manual by design. No automation in this repository marks anything verified.
 
+### Fact evidence
+
+The status above belongs to the listing. Each trust-sensitive fact on it has its own evidence state, derived on read:
+
+```
+resource.verificationChecks ──► factEvidence(resource, fact)   lib/resources/evidence.ts
+                                  │  one check per fact, no cross-inference,
+                                  │  expires with the 90-day window
+                                  ▼
+             confirmed │ unconfirmed (not checked / stale) │ unknown (unresolved / nothing recorded)
+                                  │
+      ┌──────────────┬────────────┼──────────────┬───────────────┬──────────────┐
+      ▼              ▼            ▼              ▼               ▼              ▼
+    cards      detail pages   comparison   confirmed-only    JSON-LD, OG,   link manifest
+ (one line    (value + tag +    cells      filters + facets  page titles    (facts, values)
+  per state)   "How we know")              (held-back count)
+```
+
+Nothing about evidence is stored, so no surface can disagree with the checks. `findDataProblems()` in `src/data/resources/validate.ts` rejects impossible combinations (a confirmed check with an `unknown` value, for example) at build time, and `npm test` exercises the same rules. Details: [`verification.md`](verification.md#resource-status-and-fact-evidence).
+
 ---
 
 ## Search architecture
@@ -193,7 +213,8 @@ parseSearchParams()       → ResourceQuery
       │
 inferIntent()             → extracts stated constraints from natural language
       │
-matchesFilters()          → predicates, AND across filters, OR within each
+matchesFilters()          → predicates, AND across filters, OR within each;
+                            fact filters match confirmed evidence only
       │
 rankResources()           → weighted scoring, term-count-first ordering
       │

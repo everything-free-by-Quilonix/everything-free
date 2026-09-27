@@ -22,7 +22,7 @@ export const audiences: Audience[] = [
     id: "creators",
     slug: "creators",
     name: "For creators",
-    description: "Editing, design, audio and stock media, with commercial-use terms stated.",
+    description: "Editing, design, audio and stock media, each showing whether its commercial-use terms are confirmed.",
     icon: "palette",
     categoryIds: ["design", "photography", "video", "audio", "music", "animation", "three-d", "stock-media", "fonts"],
     tags: ["creator", "content-creation"],

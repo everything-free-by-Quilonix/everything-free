@@ -38,7 +38,7 @@ export const lifeResources = defineResources([
       "The public tile servers on openstreetmap.org are for light use only, not for serving production traffic — use a tile provider or host your own.",
       "It is a data project, not a turn-by-turn navigation product.",
     ],
-    tags: ["maps", "geodata", "open-data", "travel", "commercial-use"],
+    tags: ["maps", "geodata", "open-data", "travel"],
     alternativeTo: ["Google Maps Platform", "Mapbox paid tiers"],
     relatedResources: ["organic-maps", "wikipedia"],
     verificationStatus: "UNVERIFIED",
@@ -48,7 +48,7 @@ export const lifeResources = defineResources([
   {
     slug: "organic-maps",
     name: "Organic Maps",
-    shortDescription: "Offline maps and navigation with no tracking and no account.",
+    shortDescription: "Offline maps and navigation built on OpenStreetMap data.",
     longDescription:
       "Organic Maps is a mobile mapping application built on OpenStreetMap data, designed to work fully offline after downloading regional map files. It offers walking, cycling and driving directions, and does not require an account or collect usage tracking.",
     whyListed:
@@ -80,7 +80,7 @@ export const lifeResources = defineResources([
       "Map quality depends on OpenStreetMap coverage in the area.",
       "Offline map files take up meaningful storage space.",
     ],
-    tags: ["maps", "offline", "navigation", "privacy", "travel", "no-signup"],
+    tags: ["maps", "offline", "navigation", "privacy", "travel"],
     alternativeTo: ["Google Maps", "Waze", "paid offline map apps"],
     relatedResources: ["openstreetmap"],
     verificationStatus: "UNVERIFIED",

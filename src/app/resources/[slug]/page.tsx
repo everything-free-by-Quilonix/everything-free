@@ -16,8 +16,10 @@ import { site } from "@/config/site";
 import { ResourceCard } from "@/features/resources/components/resource-card";
 import { ResourceFacts } from "@/features/resources/components/resource-facts";
 import { ResourceLogo } from "@/features/resources/components/resource-logo";
+import { EvidenceTag } from "@/features/resources/components/evidence";
 import { FreeStatusBadge, VerificationBadge } from "@/features/resources/components/status-badges";
 import { VerificationPanel } from "@/features/resources/components/verification-panel";
+import { FACTS, factEvidence } from "@/lib/resources/evidence";
 import { getResourceBySlug, getSimilarResources, listResourceIndexEntries, slugifyProductName } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, resourceSchema } from "@/lib/seo/structured-data";
@@ -53,10 +55,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const status = getFreeStatus(resource.freeStatus);
+  // Search results and link previews quote this, so an unchecked classification is
+  // labelled as one there too.
+  const confirmed = factEvidence(resource, "freeStatus").state === "confirmed";
 
   return buildMetadata({
-    title: `${resource.name} — ${status.label}`,
-    description: `${resource.shortDescription} ${status.summary}`,
+    title: confirmed ? `${resource.name} — ${status.label}` : `${resource.name} — ${status.label} (not verified)`,
+    description: confirmed
+      ? `${resource.shortDescription} ${status.summary}`
+      : `${resource.shortDescription} Listed as ${status.label.toLowerCase()}; not yet verified against the provider's own pages.`,
     path: `/resources/${resource.slug}`,
     type: "article",
     modifiedTime: resource.updatedAt,
@@ -73,6 +80,17 @@ export default async function ResourcePage({ params }: PageProps) {
   const status = getFreeStatus(resource.freeStatus);
   const similar = await getSimilarResources(resource, 4);
   const category = getCategory(resource.category);
+
+  const freeStatusEvidence = factEvidence(resource, "freeStatus");
+  const openSource = factEvidence(resource, "openSource");
+  const limitationsEvidence = factEvidence(resource, "limitations");
+  const confirmedCount = FACTS.filter((fact) => factEvidence(resource, fact).state === "confirmed").length;
+  const headerEvidenceSentence =
+    freeStatusEvidence.state === "confirmed"
+      ? `The free status is confirmed from an official source. ${confirmedCount} of ${FACTS.length} facts on this page are confirmed; each one below says whether it is.`
+      : confirmedCount > 0
+        ? `The free status has not been confirmed yet. ${confirmedCount} of ${FACTS.length} facts on this page are; each one below says whether it is.`
+        : "Nothing on this page has been confirmed from an official source yet. It was compiled from public documentation — treat it as a starting point.";
 
   const crumbs = [
     { label: "Home", href: "/" },
@@ -96,14 +114,18 @@ export default async function ResourcePage({ params }: PageProps) {
               <p className="mt-2 max-w-2xl text-base leading-relaxed text-fg-muted">{resource.shortDescription}</p>
 
               <div className="mt-4 flex flex-wrap items-center gap-2">
-                <FreeStatusBadge status={resource.freeStatus} size="md" />
+                <FreeStatusBadge resource={resource} size="md" />
                 <VerificationBadge resource={resource} size="md" />
                 {resource.openSource && resource.freeStatus !== "OPEN_SOURCE" ? (
-                  <Badge tone="primary" icon="repo" size="md">
+                  <Badge tone={openSource.state === "confirmed" ? "primary" : "neutral"} icon="repo" size="md">
                     Open source
+                    {openSource.state === "confirmed" ? null : <span className="font-normal">· not verified</span>}
                   </Badge>
                 ) : null}
               </div>
+              {/* Resource status and fact evidence are different things, and the
+                  header says so once, plainly, before any detail. */}
+              <p className="mt-3 max-w-2xl text-sm text-fg-subtle">{headerEvidenceSentence}</p>
             </div>
 
             <div className="flex shrink-0 flex-col gap-2 sm:w-52">
@@ -155,6 +177,16 @@ export default async function ResourcePage({ params }: PageProps) {
                 About {resource.name}
               </h2>
               <p className="mt-3 leading-relaxed text-fg-muted">{resource.longDescription}</p>
+              {/* Prose is a description, not evidence. Any fact it mentions — an
+                  account, a licence, a limit — is confirmed or not in the panel. */}
+              <p className="mt-2 text-xs text-fg-subtle" data-testid="description-evidence-note">
+                The description, reasons and feature list on this page are written from public documentation. Whether
+                each fact they mention is confirmed is shown in{" "}
+                <a href="#facts-heading" className="underline underline-offset-2 hover:text-fg">
+                  the facts panel
+                </a>
+                .
+              </p>
             </section>
 
             <section aria-labelledby="why-heading">
@@ -171,6 +203,14 @@ export default async function ResourcePage({ params }: PageProps) {
               <h2 id="limitations-heading" className="font-display text-xl font-semibold">
                 Limitations of the free offering
               </h2>
+              <div className="mt-2">
+                <EvidenceTag evidence={limitationsEvidence} />
+                <span className="ml-2 text-xs text-fg-subtle">
+                  {limitationsEvidence.state === "confirmed"
+                    ? "Checked against the provider's own pages."
+                    : "Compiled from public documentation; not yet checked against the provider's own pages."}
+                </span>
+              </div>
               {resource.limitations.length > 0 ? (
                 <ul className="mt-3 flex flex-col gap-2.5">
                   {resource.limitations.map((limitation) => (
@@ -181,10 +221,18 @@ export default async function ResourcePage({ params }: PageProps) {
                   ))}
                 </ul>
               ) : (
+                // An empty list is only a reassurance if someone checked. Otherwise
+                // it just means nothing has been written down.
                 <p className="mt-3 flex items-start gap-2.5 text-sm text-fg-muted">
-                  <Icon name="check-circle" size={15} className="mt-0.5 shrink-0 text-success-fg" />
-                  No limitations have been recorded for the free offering. If you find one, please report it so this
-                  entry can be corrected.
+                  <Icon
+                    name={limitationsEvidence.state === "confirmed" ? "check-circle" : "info"}
+                    size={15}
+                    className={`mt-0.5 shrink-0 ${limitationsEvidence.state === "confirmed" ? "text-success-fg" : "text-fg-subtle"}`}
+                  />
+                  {limitationsEvidence.state === "confirmed"
+                    ? "The provider's own pages document no significant limitations on the free offering."
+                    : "No limitations have been recorded, and nobody has checked yet whether there are any."}{" "}
+                  If you find one, please report it so this entry can be corrected.
                 </p>
               )}
 
@@ -201,10 +249,12 @@ export default async function ResourcePage({ params }: PageProps) {
                 <h2 id="features-heading" className="font-display text-xl font-semibold">
                   What it does
                 </h2>
+                {/* A description, not a set of confirmed claims: plain bullets, not
+                    green ticks, which on this site mean "confirmed". */}
                 <ul className="mt-3 grid gap-2.5 sm:grid-cols-2">
                   {resource.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5 text-sm">
-                      <Icon name="check" size={15} className="mt-0.5 shrink-0 text-success-fg" />
+                      <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-fg-subtle" />
                       <span className="text-fg-muted">{feature}</span>
                     </li>
                   ))}
@@ -218,7 +268,9 @@ export default async function ResourcePage({ params }: PageProps) {
                 Details
               </h2>
               <p className="mt-1.5 text-sm text-fg-subtle">
-                Recorded by Everything.Free. Always confirm anything critical on the provider&rsquo;s own site.
+                Each fact shows its value and whether an official source confirms it. Open &ldquo;How we know&rdquo; for
+                the source, the date it was read and who read it. Always confirm anything critical on the provider&rsquo;s
+                own site.
               </p>
               <div className="mt-3">
                 <ResourceFacts resource={resource} />
