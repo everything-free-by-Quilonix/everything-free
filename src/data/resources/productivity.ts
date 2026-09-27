@@ -14,7 +14,7 @@ export const productivityResources = defineResources([
     resourceType: "OPEN_SOURCE",
     officialUrl: "https://www.libreoffice.org",
     sourceUrl: "https://git.libreoffice.org/core",
-    licenseUrl: "https://www.libreoffice.org/about-us/licenses/",
+    licenseUrl: "https://www.libreoffice.org/licenses/",
     freeStatus: "OPEN_SOURCE",
     openSource: true,
     license: "MPL-2.0",
@@ -57,8 +57,9 @@ export const productivityResources = defineResources([
         retrievedAt: "2026-09-26",
       },
       {
-        url: "https://www.libreoffice.org/about-us/licenses/",
-        label: "Licences page: made available under MPL v2.0, based on Apache OpenOffice code, bundling other open-source components",
+        url: "https://www.libreoffice.org/licenses/",
+        label:
+          "Licences page: made available under MPL v2.0, based on Apache OpenOffice code, bundling other open-source components (the former /about-us/licenses/ address answers 301 here)",
         retrievedAt: "2026-09-26",
       },
       {
@@ -132,7 +133,7 @@ export const productivityResources = defineResources([
         result: "confirmed",
         evidence:
           "The licences page states LibreOffice is made available under the MPL v2.0, based on Apache-licensed OpenOffice code and bundling other open-source components. Matches the recorded MPL-2.0 and the licence note.",
-        sourceUrl: "https://www.libreoffice.org/about-us/licenses/",
+        sourceUrl: "https://www.libreoffice.org/licenses/",
       },
       {
         check: "PRICING_INFORMATION",
@@ -152,7 +153,7 @@ export const productivityResources = defineResources([
         check: "OPEN_SOURCE_STATUS",
         result: "confirmed",
         evidence: "Free and open source under the MPL 2.0, per the FAQ and the licences page. Matches openSource: true.",
-        sourceUrl: "https://www.libreoffice.org/about-us/licenses/",
+        sourceUrl: "https://www.libreoffice.org/licenses/",
       },
     ],
     editorialSpotlight: true,
