@@ -6,6 +6,7 @@ import { batch002Resources } from "./batch-002";
 import { batch003Resources } from "./batch-003";
 import { batch004Resources } from "./batch-004";
 import { batch005Resources } from "./batch-005";
+import { batch006Resources } from "./batch-006";
 import { creativeResources } from "./creative";
 import { developmentResources } from "./development";
 import { educationResources } from "./education";
@@ -32,6 +33,7 @@ const allSeedResources: Resource[] = [
   ...batch003Resources,
   ...batch004Resources,
   ...batch005Resources,
+  ...batch006Resources,
 ];
 
 /**

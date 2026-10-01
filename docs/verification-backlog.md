@@ -13,12 +13,12 @@ The order below is a **verification workflow, not a ranking** of the resources. 
 
 | | Count |
 | --- | --- |
-| Resources | 622 |
+| Resources | 726 |
 | Verified (signed off by a maintainer) | 0 |
 | Evidence complete, awaiting maintainer sign-off | 4 |
 | Partially verified (free status confirmed, checklist incomplete) | 2 |
 | Checks started, free status not yet confirmed | 4 |
-| Not verified yet (no checks recorded) | 612 |
+| Not verified yet (no checks recorded) | 716 |
 
 No maintainer is registered in `src/config/maintainers.ts` yet, so nothing can be signed off. A maintainer adds their own handle there first.
 
@@ -71,6 +71,7 @@ Open-source projects publish a licence file and usually a single project site, s
 
 | Resource | Status | Required checks confirmed | Remaining | Last checked | Checked by | Next action |
 | --- | --- | --- | --- | --- | --- | --- |
+| 0 A.D. `0-ad` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | 7-Zip `seven-zip` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Actual Budget `actual-budget` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | addy.io `addy-io` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -118,6 +119,7 @@ Open-source projects publish a licence file and usually a single project site, s
 | calibre `calibre` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Cantera `cantera` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Carbon `carbon` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Catima `catima` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Celestia `celestia` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Chatwoot `chatwoot` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Chroma `chroma` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -147,6 +149,7 @@ Open-source projects publish a licence file and usually a single project site, s
 | Docusaurus `docusaurus` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | DocuSeal `docuseal` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | draw.io `drawio` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| drip `drip` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Duplicati `duplicati` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Dust3D `dust3d` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | DWSIM `dwsim` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -164,11 +167,13 @@ Open-source projects publish a licence file and usually a single project site, s
 | Exercism `exercism` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | F-Droid `f-droid` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Falstad Circuit Simulator `falstad-circuit` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| farmOS `farmos` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | FastAPI `fastapi` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | fd `fd` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Feather Icons `feather-icons` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Feeder `feeder` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | FFmpeg `ffmpeg` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Fiji `fiji` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | FileZilla `filezilla` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Firefly III `firefly-iii` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Firefox `firefox` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -186,6 +191,7 @@ Open-source projects publish a licence file and usually a single project site, s
 | Fossify SMS Messenger `fossify-sms` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Frappe HR `frappe-hr` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | FreeCAD `freecad` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Freeplane `freeplane` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Freesound `freesound` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GCompris `gcompris` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GDAL `gdal` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -193,17 +199,21 @@ Open-source projects publish a licence file and usually a single project site, s
 | GeoServer `geoserver` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Ghidra `ghidra` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Ghost `ghost` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Git `git` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Gitea `gitea` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GitLab Community Edition `gitlab-community-edition` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Glaxnimate `glaxnimate` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GNU Octave `gnu-octave` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GNU PSPP `gnu-pspp` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GNU Radio `gnuradio` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| GnuCash `gnucash` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Gnumeric `gnumeric` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Godot Engine `godot` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Grafana `grafana` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GrapheneOS `grapheneos` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GRASS GIS `grass-gis` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Gretl `gretl` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Grist `grist` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GROMACS `gromacs` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | HandBrake `handbrake` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Haystack `haystack` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -213,9 +223,11 @@ Open-source projects publish a licence file and usually a single project site, s
 | Heroicons `heroicons` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Home Assistant `home-assistant` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Hoppscotch `hoppscotch` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Horilla HRMS `horilla` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Hydrogen `hydrogen` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | ImageMagick `imagemagick` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Immich `immich` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| IndicTrans2 `indictrans2` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Inkscape `inkscape` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Insomnia `insomnia` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Inter `inter-font` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -242,8 +254,12 @@ Open-source projects publish a licence file and usually a single project site, s
 | KDE Connect `kde-connect` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Kdenlive `kdenlive` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | KeePassDX `keepassdx` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Keycloak `keycloak` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Keyman `keyman` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | KiCad `kicad` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Kiwix `kiwix` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Kodi `kodi` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Kolibri `kolibri` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Kresus `kresus` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Krita `krita` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LangChain `langchain` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -254,7 +270,10 @@ Open-source projects publish a licence file and usually a single project site, s
 | LibreCAD `librecad` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LibrePCB `librepcb` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LibreWolf `librewolf` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Lichess `lichess` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| listmonk `listmonk` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LiteLLM `litellm` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Lively Wallpaper `lively-wallpaper` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | llama.cpp `llama-cpp` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LlamaIndex `llamaindex` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LMMS `lmms` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -273,6 +292,7 @@ Open-source projects publish a licence file and usually a single project site, s
 | Matrix `matrix-org` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Mattermost `mattermost` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Maxima `maxima` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Mealie `mealie` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Meilisearch `meilisearch` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Mermaid Live Editor `mermaid-live-editor` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MeshLab `meshlab` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -280,6 +300,7 @@ Open-source projects publish a licence file and usually a single project site, s
 | Milvus `milvus` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MinIO `minio` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | mitmproxy `mitmproxy` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Mixxx `mixxx` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MkDocs `mkdocs` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Mockoon `mockoon` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MoneyWallet `moneywallet` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -295,8 +316,11 @@ Open-source projects publish a licence file and usually a single project site, s
 | Nix `nix` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Nmap `nmap` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NocoDB `nocodb` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Node.js `nodejs` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Noto fonts `noto-fonts` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NVDA `nvda` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Odoo Community `odoo-community` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| ONLYOFFICE Desktop Editors `onlyoffice-desktop-editors` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | ONNX Runtime `onnx-runtime` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Open Babel `open-babel` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Open Food Facts `open-food-facts` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -313,6 +337,7 @@ Open-source projects publish a licence file and usually a single project site, s
 | OpenLayers `openlayers` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | OpenModelica `openmodelica` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | OpenProject `openproject` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| OpenRefine `openrefine` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | OpenSCAD `openscad` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | OpenSees `opensees` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | OpenShot `openshot` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -327,7 +352,9 @@ Open-source projects publish a licence file and usually a single project site, s
 | Pa11y `pa11y` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Paisa `paisa` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Pandoc `pandoc` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Paperless-ngx `paperless-ngx` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | PeaZip `peazip` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| PeerTube `peertube` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Pencil2D `pencil2d` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Penpot `penpot` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | pgAdmin 4 `pgadmin` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -346,10 +373,12 @@ Open-source projects publish a licence file and usually a single project site, s
 | Prettier `prettier` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | PrusaSlicer `prusa-slicer` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | PyMOL Open-Source `pymol-open-source` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Python `python` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | PyTorch `pytorch` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | QCAD Community Edition `qcad-community` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Qdrant `qdrant` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | QGIS `qgis` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Quarto `quarto` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Qucs-S `qucs-s` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | R `r-project` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | RabbitMQ `rabbitmq` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -357,6 +386,8 @@ Open-source projects publish a licence file and usually a single project site, s
 | Rasa `rasa` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | RawTherapee `rawtherapee` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | raylib `raylib` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| rclone `rclone` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Reactive Resume `reactive-resume` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Read Aloud `read-aloud` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Redmine `redmine` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | RedReader `redreader` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -382,7 +413,9 @@ Open-source projects publish a licence file and usually a single project site, s
 | SimpleLogin `simplelogin` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | SimpleScreenRecorder `simplescreenrecorder` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | SimulIDE `simulide` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Siril `siril` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Slidev `slidev` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| SMC Malayalam fonts `smc-malayalam-fonts` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | SolveSpace `solvespace` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | SoundConverter `soundconverter` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Sozi `sozi` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -410,8 +443,10 @@ Open-source projects publish a licence file and usually a single project site, s
 | Tabler Icons `tabler-icons` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Taiga `taiga` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | TensorFlow `tensorflow` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Tesseract OCR `tesseract-ocr` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Text Generation WebUI `text-generation-webui` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | The League of Moveable Type `the-league-of-moveable-type` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Thorium Reader `thorium-reader` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Tiled `tiled` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Tor Browser `tor-browser` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Traefik `traefik` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -422,10 +457,14 @@ Open-source projects publish a licence file and usually a single project site, s
 | Tusky `tusky` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Tux Paint `tuxpaint` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | TuxGuitar `tuxguitar` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Twenty `twenty-crm` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Twine `twine` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Typst `typst` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| uBlock Origin `ublock-origin` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | UGENE `ugene` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | UltiMaker Cura `ultimaker-cura` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Upscayl `upscayl` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Uptime Kuma `uptime-kuma` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Valgrind `valgrind` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Valkey `valkey` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Vaultwarden `vaultwarden` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -438,6 +477,7 @@ Open-source projects publish a licence file and usually a single project site, s
 | VSCodium `vscodium` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Webots `webots` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | WezTerm `wezterm` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| wger `wger` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Whisper `whisper` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | whisper.cpp `whisper-cpp` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Wikidata `wikidata` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -464,21 +504,34 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | Asana `asana` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Auth0 `auth0` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | axe DevTools `axe-devtools` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| BandLab `bandlab` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| BBC Sound Effects `bbc-sound-effects` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Calendly `calendly` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Canva `canva` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Carrd `carrd` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| ChatGPT `chatgpt` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Claude `claude` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Clerk `clerk` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Clockify `clockify` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Cloudflare `cloudflare` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Coda `coda` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | CodeSandbox `codesandbox` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Datawrapper `datawrapper` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Duolingo `duolingo` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Figma `figma` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Firebase `firebase` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | FutureLearn `futurelearn` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Gemini Notebook (formerly NotebookLM) `gemini-notebook` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GitHub `github` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GitHub Actions `github-actions` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| GitHub Copilot Free `github-copilot-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Glitch `glitch` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Google AI Studio `google-ai-studio` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Google Colab `google-colab` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Google Docs, Sheets and Slides `google-docs-editors` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Google Earth `google-earth` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Google Earth Engine `google-earth-engine` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Google Gemini `google-gemini` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | HTTPie Desktop `httpie-desktop` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | HubSpot Free Tools `hubspot-free-tools` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Hugging Face `hugging-face` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -486,6 +539,8 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | LanguageTool `languagetool` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LTspice `ltspice` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Mailchimp `mailchimp` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Mappls `mappls` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Microsoft 365 for the web (free) `microsoft-365-web` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Miro `miro` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Mural `mural` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Neon `neon` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -498,6 +553,7 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | Pocket Casts `pocket-casts` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | PostHog `posthog` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Proton Mail `proton-mail` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Proton VPN `proton-vpn` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | ReadEra `readera` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | remove.bg `remove-bg` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Render `render` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -507,6 +563,7 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | Shodan Free Tier `shodan-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Sketchfab Free 3D Models `sketchfab-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | StackBlitz `stackblitz` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Tailscale `tailscale` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Tally `tally` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | TinyPNG `tinypng` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Toggl Track `toggl-track` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -519,6 +576,7 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | Vercel `vercel` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Wanderlog `wanderlog` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Windy `windy` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| XnView MP `xnview-mp` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Zoho Free Tools `zoho-free-suite` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 
 ### 6. Remaining
@@ -532,29 +590,39 @@ Everything else not yet verified.
 | African Journals Online `ajol` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | African Storybook `african-storybook` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Agmarknet `agmarknet` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Aksharamukha `aksharamukha` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Alar `alar` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Allen Brain Map `allen-brain-map` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| AlphaFold Protein Structure Database `alphafold-protein-structure-database` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | ambientCG `ambient-cg` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Art Institute of Chicago Open Access `art-institute-chicago` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | arXiv `arxiv` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Autodesk Tinkercad `tinkercad` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Be My Eyes `be-my-eyes` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Bharat Skills `bharat-skills` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Bharatavani Portal `bharatavani` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | BHASHINI `bhashini` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Bhuvan `bhuvan` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Biodiversity Heritage Library `biodiversity-heritage-library` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Bookboon `bookboon` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | BrowserLeaks `browserleaks` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | ccMixter `ccmixter` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| CERN Open Data Portal `cern-open-data` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | CGIAR Open Access `cgiar-open-access` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | ChemRxiv `chemrxiv` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | ChemSpider `chemspider` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Chrome Music Lab `chrome-music-lab` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | CiNii Research `cinii-research` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | CircuitVerse `circuitverse` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | CK-12 `ck-12` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Climate TRACE `climate-trace` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Cologne Digital Sanskrit Dictionaries `cologne-sanskrit-dictionaries` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Color Oracle `color-oracle` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Colour Contrast Analyser `colour-contrast-analyser` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Consortium for Educational Communication `cec-ugc` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Coolors `coolors` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Copernicus Browser `copernicus-browser` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Copernicus Climate Data Store `copernicus-climate-data-store` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | CORE `core-ac-uk` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Crontab Guru `crontab-guru` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Crossref `crossref` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -562,8 +630,11 @@ Everything else not yet verified.
 | CSIR NIScPR Journals `csir-niscpr` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | DaFont `dafont-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | data.europa.eu `data-europa-eu` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| David Rumsey Map Collection `david-rumsey-map-collection` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Desmos Graphing Calculator `desmos-calculator` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Diffchecker `diffchecker` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| DigiLocker `digilocker` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Digital Earth Africa `digital-earth-africa` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Digital Public Library of America `digital-public-library-america` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | DIKSHA `diksha` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Directory of Open Access Journals `doaj` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -571,6 +642,7 @@ Everything else not yet verified.
 | DOAB `doab` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | e-PG Pathshala `e-pg-pathshala` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | e-ShodhSindhu `e-shodh-sindhu` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Edraak `edraak` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | eGyanKosh `ignou-egyankosh` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | EMSC `emsc-csem` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | eNAM `enam` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -580,6 +652,7 @@ Everything else not yet verified.
 | Font Squirrel `font-squirrel` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | foobar2000 `foobar2000` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Forvo `forvo` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| FOSSEE `fossee` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | freeCodeCamp `freecodecamp` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | FreeConvert `free-pdf-convert` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Full Stack Open `full-stack-open` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -590,35 +663,52 @@ Everything else not yet verified.
 | Global Biodiversity Information Facility `gbif` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Global Fishing Watch `global-fishing-watch` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Google Fonts `google-fonts` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Google Search Console `google-search-console` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Gyandarshan `gyandarshan` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | HAL Open Science `hal-science` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Harvard Online Free Courses `harvard-online-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Have I Been Pwned `haveibeenpwned` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Hindwi `hindwi` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | HTML5 UP `html5-up` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| iFixit `ifixit` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| IMSLP `imslp` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | iNaturalist `inaturalist` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Income Tax e-Filing portal `income-tax-e-filing` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Incompetech `incompetech` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| India Meteorological Department `india-meteorological-department` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Indian Academy of Sciences Journals `ias-open-access` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Internet Archive `internet-archive` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Kaggle `kaggle` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Kanaja Digital Knowledge Treasury `kanaja` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Karnataka Open Data `data-karnataka` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Kenney Assets `kenney-assets` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LaTeX Templates `latex-templates` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Let's Encrypt `lets-encrypt` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LibreTexts `libretexts` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| LibriVox `librivox` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | LM Studio `lm-studio` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Malayalam Lexicon `malayalam-lexicon` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Manager.io Desktop `manager-io` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MDN Web Docs `mdn-web-docs` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| MedlinePlus `medlineplus` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| MIT App Inventor `mit-app-inventor` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MIT OpenCourseWare `mit-opencourseware` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Mixkit `mixkit` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Mozilla Common Voice `mozilla-common-voice` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Muktabodha `muktabodha` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NASA APOD `nasa-apod` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NASA Image and Video Library `nasa-images` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NASA Open Data Portal `nasa-open-data` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| NASA POWER `nasa-power` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| National Career Service `national-career-service` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | National Digital Library of India `national-digital-library-india` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Natural Earth `natural-earth` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NCERT e-Books `ncert-books` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NPTEL `nptel` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Octopart `octopart` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| OEIS `oeis` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | OER Commons `oer-commons` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Olam `olam` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Open Culture `open-culture` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Open Education Global `open-education-global` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Open Government Data Platform India `data-gov-in` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -647,24 +737,33 @@ Everything else not yet verified.
 | PubMed Central `pubmed-central` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Quad9 `quad9-dns` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | RCSB Protein Data Bank `rcsb-pdb` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Redalyc `redalyc` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Regex101 `regex101` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Registry of Open Data on AWS `registry-open-data-aws` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Rekhta `rekhta` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Sakshat `sakshat` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Samarth `samarth` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| SATHEE `sathee` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Saylor Academy `saylor-academy` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | SciELO `scielo` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Scratch `scratch` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Seeing AI `seeing-ai` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Shodhganga `shodhganga` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | ShodhGangotri `shodhgangotri` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Shutter Encoder `shutter-encoder` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Siyavula open textbooks `siyavula-open-textbooks` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Smithsonian Open Access `smithsonian-open-access` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | SoilGrids `soilgrids` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Spoken Tutorial `spoken-tutorial` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Standard Ebooks `standard-ebooks` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Stanford Online Free Courses `stanford-online-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | STRING Database `string-db` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Surveillance Self-Defense `eff-surveillance-self-defense` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | SVG Repo `svg-repo` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | SWAYAM `swayam` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | SWAYAM PRABHA `swayam-prabha` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Tamil Virtual Academy `tamil-virtual-academy` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| The Man in Seat 61 `the-man-in-seat-61` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | The Met Open Access `met-open-access` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | The Odin Project `the-odin-project` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Traditional Knowledge Digital Library `tkdl-portal` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -676,6 +775,7 @@ Everything else not yet verified.
 | UniProt `uniprot` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Unsplash `unsplash` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | urlscan.io `urlscan-io` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| USDA FoodData Central `usda-fooddata-central` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | USGS EarthExplorer `usgs-earthexplorer` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | VESTA `vesta` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Vidwan `vidwan` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -683,14 +783,18 @@ Everything else not yet verified.
 | Virtual Labs `virtual-labs` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | VirusTotal `virustotal` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | W3Schools `w3schools` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| WAVE Web Accessibility Evaluation Tool `wave-accessibility-tool` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | WHO Global Health Observatory `who-gho` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Wikipedia `wikipedia` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Wikivoyage `wikivoyage` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Wiktionary `wiktionary` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Wolfram Alpha `wolfram-alpha` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Wolfram MathWorld `wolfram-mathworld` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | World Bank Open Data `world-bank-open-data` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | World Digital Library `world-digital-library` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | WorldClim `worldclim` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Wormhole `wormhole` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| Zerodha Varsity `zerodha-varsity` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 
 ## Worksheets
 
