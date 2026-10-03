@@ -11,6 +11,7 @@ import assert from "node:assert/strict";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import { describe, test } from "node:test";
+import { fileURLToPath } from "node:url";
 
 // ---------------------------------------------------------------------------
 // Owner lists and allow-lists
@@ -70,6 +71,8 @@ const DEFINITION_TONE_OWNERS = [
 const EVIDENCE_GLYPH_OWNER = "src/features/resources/components/evidence.tsx";
 /** `definition.icon` there is a platform glyph, none of them reserved. */
 const PLATFORM_ICON_OWNER = "src/features/resources/components/resource-facts.tsx";
+/** The icon set itself names every glyph. */
+const ICON_SET = "src/components/icons/index.tsx";
 const RESERVED = "(?:check-circle|help-circle|clock|minus-circle)";
 
 /**
@@ -93,7 +96,7 @@ const EMOJI_ALLOWED = new Set(["©", "®", "™"]);
 // File walk
 // ---------------------------------------------------------------------------
 
-const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 
 type SourceFile = { path: string; text: string };
 
@@ -225,6 +228,11 @@ describe("design guardrails", () => {
     assert.deepEqual(hits(tsx, new RegExp(`\\bicon:\\s*"${RESERVED}"`)), []);
     const configIcons = TSX.filter((f) => f.path !== PLATFORM_ICON_OWNER);
     assert.deepEqual(hits(configIcons, /\b(?:name|icon)=\{\s*(?:status|definition|verification)\.icon\s*\}/), []);
+  });
+
+  test("no reserved glyph name appears as a bare literal, including inside JSX expressions", () => {
+    const tsx = TSX.filter(notTool).filter((f) => f.path !== EVIDENCE_GLYPH_OWNER && f.path !== ICON_SET);
+    assert.deepEqual(hits(tsx, new RegExp(`"${RESERVED}"`)), []);
   });
 
   test("the serif appears only at the editorial sites", () => {

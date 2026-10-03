@@ -1,4 +1,6 @@
-@import "tailwindcss";
+/* Class detection is scoped to src/: design docs and scratch folders quote
+   banned utilities, and the shipped CSS must depend on committed source only. */
+@import "tailwindcss" source("..");
 @import "../styles/tokens.css";
 @import "../styles/materials.css";
 
