@@ -79,33 +79,28 @@ export default async function AboutPage() {
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               {[
                 {
-                  icon: "shield-check" as const,
                   title: "Precision over enthusiasm",
                   body: "Eight free-status classifications instead of one word. A trial is a trial.",
                   href: "/free-status",
                 },
                 {
-                  icon: "alert-triangle" as const,
                   title: "Limitations up front",
                   body: "Anything with conditions attached must document them. The build fails otherwise.",
                   href: "/free-status",
                 },
                 {
-                  icon: "clock" as const,
                   title: "Dated claims",
                   body: "Every entry shows when it was last checked, and goes stale visibly.",
                   href: "/verification",
                 },
                 {
-                  icon: "help-circle" as const,
                   title: "“Unknown” is an answer",
                   body: "Unchecked facts are marked unverified rather than guessed at.",
                   href: "/verification",
                 },
               ].map((item) => (
                 <Card key={item.title} className="p-5">
-                  <Icon name={item.icon} size={18} className="text-primary" />
-                  <h3 className="mt-3 font-display text-sm font-semibold">{item.title}</h3>
+                  <h3 className="font-display text-sm font-semibold">{item.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{item.body}</p>
                   <Link
                     href={item.href}
@@ -134,7 +129,7 @@ export default async function AboutPage() {
             <p className="mt-4">
               <ExternalLink
                 href={site.githubUrl}
-                className="text-sm text-fg underline underline-offset-2 hover:text-primary"
+                className="text-sm link-inline"
               >
                 View the project on GitHub
               </ExternalLink>

@@ -9,32 +9,48 @@ import { cn } from "@/lib/utils/cn";
  * Every badge carries text. Tone is an additional signal, never the only one —
  * a colour-blind user, a user in high-contrast mode and a screen-reader user all
  * get the same information (WCAG 1.4.1).
+ *
+ * Gold is never a badge colour, and info blue is retired: `primary` and `info`
+ * render exactly like `neutral`. `success` is for confirmed evidence only, and
+ * its callers gate it on that evidence.
+ *
+ * `appearance="ledger"` is the same anatomy with no fill, for the compact tokens
+ * that sit inside a record's facts zone.
  */
+
+const neutral = "border-border bg-surface text-fg-muted";
+const neutralLedger = "border-border bg-transparent text-fg-muted";
 
 const tones: Record<StatusTone, string> = {
   success: "bg-success-soft text-success-fg border-success/30",
-  info: "bg-info-soft text-info-fg border-info/30",
-  primary: "bg-primary-soft text-primary border-primary/30",
+  info: neutral,
+  primary: neutral,
   warning: "bg-warning-soft text-warning-fg border-warning/30",
   danger: "bg-danger-soft text-danger-fg border-danger/30",
-  neutral: "bg-surface-raised text-fg-muted border-border-strong",
+  neutral,
 };
+
+function toneClasses(tone: StatusTone, appearance: "badge" | "ledger"): string {
+  const classes = tones[tone];
+  return appearance === "ledger" && classes === neutral ? neutralLedger : classes;
+}
 
 export interface BadgeProps {
   tone?: StatusTone;
   icon?: IconName;
   size?: "sm" | "md";
+  appearance?: "badge" | "ledger";
   className?: string;
   children: ReactNode;
 }
 
-export function Badge({ tone = "neutral", icon, size = "sm", className, children }: BadgeProps) {
+export function Badge({ tone = "neutral", icon, size = "sm", appearance = "badge", className, children }: BadgeProps) {
   return (
     <span
       className={cn(
         "inline-flex items-center gap-1.5 rounded-xs border font-medium",
         size === "sm" ? "px-2 py-0.5 text-xs" : "px-2.5 py-1 text-sm",
-        tones[tone],
+        toneClasses(tone, appearance),
         className,
       )}
     >

@@ -78,7 +78,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
           <h1 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
             {isSearch ? (
               <>
-                Results for <span className="text-primary">“{query.q}”</span>
+                Results for <span className="text-fg">“{query.q}”</span>
               </>
             ) : (
               "Browse free resources"
@@ -125,7 +125,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             </div>
 
             {inferredFilters.length > 0 ? (
-              <Callout tone="info" icon="bolt" className="mt-4">
+              <Callout tone="neutral" icon={null} className="mt-4">
                 Your wording set {inferredFilters.length === 1 ? "a filter" : "some filters"} automatically:{" "}
                 {inferredFilters.map((filter) => filter.label).join(", ")}. Remove any that do not apply using the chips
                 above.
@@ -135,7 +135,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             {evidenceFilterActive ? (
               // A confirmed-only filter holds listings back. Saying how many — and
               // why — is the difference between an honest filter and a thin one.
-              <Callout tone="neutral" icon="check-circle" className="mt-4">
+              <Callout tone="neutral" icon={null} className="mt-4">
                 <span data-testid="evidence-filter-notice">
                   Filters marked <span className="font-medium text-fg">confirmed</span> only include listings where an
                   official source confirms the fact.{" "}

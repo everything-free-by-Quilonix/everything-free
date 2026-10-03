@@ -54,7 +54,7 @@ export default function ToolsPage() {
           </div>
 
           <aside className="flex flex-col gap-4 lg:sticky lg:top-24">
-            <Callout tone="success" icon="lock" title="Why these run locally">
+            <Callout tone="neutral" icon="lock" title="Why these run locally">
               <p>
                 Every available tool here processes your input in your own browser. You can verify that: open the network
                 panel while using one, or disconnect from the internet after the page loads — it will keep working.
@@ -68,7 +68,7 @@ export default function ToolsPage() {
               </p>
               <p className="mt-2">
                 For heavier work,{" "}
-                <Link href="/resources" className="text-fg underline underline-offset-2 hover:text-primary">
+                <Link href="/resources" className="link-inline">
                   the library
                 </Link>{" "}
                 lists established applications built for the job.

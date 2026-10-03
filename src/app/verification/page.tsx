@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { Icon } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
 import { Card } from "@/components/ui/card";
@@ -39,12 +38,7 @@ export default async function VerificationPage() {
   return (
     <div className="pb-16">
       <PageHeader
-        eyebrow={
-          <span className="inline-flex items-center gap-1.5">
-            <Icon name="shield-check" size={14} className="text-primary" />
-            Trust
-          </span>
-        }
+        eyebrow="Trust"
         title="How verification works"
         description="A directory is only as useful as your ability to tell how much of it to believe. Every listing carries a verification status and the date it was last checked."
       />
@@ -53,7 +47,7 @@ export default async function VerificationPage() {
         <div className="flex flex-col gap-5">
           {verificationList.map((status) => (
             <Card key={status.id} className="p-6">
-              <Badge tone={status.tone} icon={status.icon} size="md">
+              <Badge tone={status.tone} size="md">
                 {status.label}
               </Badge>
               <h2 className="mt-4 font-display text-lg font-semibold">{status.summary}</h2>
@@ -85,13 +79,11 @@ export default async function VerificationPage() {
 
           <ul className="mt-5 flex flex-col divide-y divide-border">
             {verificationCheckList.map((check) => (
-              <li key={check.id} className="flex items-start gap-3 py-3">
-                <Icon
-                  name={check.requiredForVerified ? "shield-check" : "info"}
-                  size={15}
-                  className={`mt-0.5 shrink-0 ${check.requiredForVerified ? "text-primary" : "text-fg-subtle"}`}
-                />
+              <li key={check.id} className="py-3">
                 <div className="min-w-0">
+                  {check.requiredForVerified ? (
+                    <p className="mb-0.5 text-xs font-medium text-fg-subtle">Required for Verified</p>
+                  ) : null}
                   <p className="text-sm font-medium text-fg">
                     {check.label}
                     {check.requiredForVerified ? null : (
@@ -193,12 +185,12 @@ export default async function VerificationPage() {
             The full process, including how to record evidence, is in{" "}
             <ExternalLink
               href={`${site.repositoryUrl}/blob/main/docs/verification.md`}
-              className="text-fg underline underline-offset-2 hover:text-primary"
+              className="link-inline"
             >
               docs/verification.md
             </ExternalLink>
             . Found something out of date?{" "}
-            <Link href="/report" className="text-fg underline underline-offset-2 hover:text-primary">
+            <Link href="/report" className="link-inline">
               Report it
             </Link>
             .

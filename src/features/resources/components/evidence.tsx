@@ -21,11 +21,14 @@ import type { Resource } from "@/types/resource";
  *
  * Every state has its own icon *and* its own word, so nothing depends on colour:
  *
- *   ✓ Confirmed          — an official source confirms it          (success)
- *   ? Not confirmed      — looked for, not settled                  (warning)
- *   ⏱ Needs re-checking  — was confirmed, the check has expired     (warning)
- *   – Not verified       — recorded, never checked                  (neutral)
- *   ? Unknown            — not established either way               (neutral)
+ *   check-circle  Confirmed          — an official source confirms it       (success)
+ *   help-circle   Not confirmed      — looked for, not settled               (warning)
+ *   clock         Needs re-checking  — was confirmed, the check has expired  (warning)
+ *   minus-circle  Not verified       — recorded, never checked               (neutral)
+ *   help-circle   Unknown            — not established either way            (neutral)
+ *
+ * These four glyphs are reserved: they are rendered only through `EvidenceMark`
+ * below, so the Legend is the single key for every evidence symbol on a page.
  *
  * Only `Confirmed` uses the success colour. A value that exists but has not been
  * checked is shown in the same muted style as an unknown one, so a reader cannot
@@ -40,6 +43,24 @@ const STYLE: Record<EvidenceReason, { icon: IconName; className: string }> = {
   "not-established": { icon: "help-circle", className: "text-fg-subtle" },
 };
 
+/**
+ * The glyph for one evidence reason, in its colour. The only way any surface
+ * draws an evidence symbol; it is never restyled by its caller, and it is always
+ * paired with the reason's word by that caller.
+ */
+export function EvidenceMark({
+  reason,
+  size = 12,
+  className,
+}: {
+  reason: EvidenceReason;
+  size?: number;
+  className?: string;
+}) {
+  const style = STYLE[reason];
+  return <Icon name={style.icon} size={size} className={cn("shrink-0", style.className, className)} />;
+}
+
 /** "✓ Confirmed", "– Not verified": the evidence state of one fact, as a small inline label. */
 export function EvidenceTag({ evidence, className }: { evidence: FactEvidence; className?: string }) {
   const style = STYLE[evidence.reason];
@@ -49,7 +70,7 @@ export function EvidenceTag({ evidence, className }: { evidence: FactEvidence; c
       data-evidence={evidence.state}
       data-evidence-reason={evidence.reason}
     >
-      <Icon name={style.icon} size={12} className="shrink-0" />
+      <EvidenceMark reason={evidence.reason} />
       {evidenceLabels[evidence.reason]}
     </span>
   );
@@ -73,14 +94,13 @@ export function CardEvidence({ resource }: { resource: Resource }) {
   return (
     <ul className="mt-3 flex flex-col gap-1" aria-label="What has been checked">
       {groups.map((group) => {
-        const style = STYLE[group.reason];
         return (
           <li
             key={group.reason}
             className="flex items-start gap-1.5 text-xs leading-snug"
             data-evidence-group={group.reason}
           >
-            <Icon name={style.icon} size={13} className={cn("mt-px shrink-0", style.className)} />
+            <EvidenceMark reason={group.reason} size={13} className="mt-px" />
             <span className={group.reason === "confirmed" ? "text-fg-muted" : "text-fg-subtle"}>
               <span className={cn("font-medium", group.reason === "confirmed" ? "text-fg" : "text-fg-muted")}>
                 {group.label}:
@@ -167,7 +187,7 @@ export function EvidenceDetails({ evidence }: { evidence: FactEvidence }) {
             <ExternalLink
               href={source.url}
               announceExternal={false}
-              className="text-fg-muted underline underline-offset-2 hover:text-primary"
+              className="link-inline"
             >
               {displayHost(source.url)}
             </ExternalLink>{" "}

@@ -16,7 +16,7 @@ import { site } from "@/config/site";
 import { ResourceCard } from "@/features/resources/components/resource-card";
 import { ResourceFacts } from "@/features/resources/components/resource-facts";
 import { ResourceLogo } from "@/features/resources/components/resource-logo";
-import { EvidenceTag } from "@/features/resources/components/evidence";
+import { EvidenceMark, EvidenceTag } from "@/features/resources/components/evidence";
 import { FreeStatusBadge, VerificationBadge } from "@/features/resources/components/status-badges";
 import { VerificationPanel } from "@/features/resources/components/verification-panel";
 import { FACTS, factEvidence } from "@/lib/resources/evidence";
@@ -82,6 +82,12 @@ export default async function ResourcePage({ params }: PageProps) {
   const category = getCategory(resource.category);
 
   const freeStatusEvidence = factEvidence(resource, "freeStatus");
+  // Only an unconfirmed success is muted; cautions keep their tone either way, and
+  // only a caution carries an icon (the warning triangle). The config's status
+  // icons reuse the reserved evidence glyphs, so they are not rendered.
+  const statusTone =
+    status.tone === "success" && freeStatusEvidence.state !== "confirmed" ? "neutral" : status.tone;
+  const statusIcon = status.caveat && (status.tone === "warning" || status.tone === "danger") ? "alert-triangle" : null;
   const openSource = factEvidence(resource, "openSource");
   const limitationsEvidence = factEvidence(resource, "limitations");
   const confirmedCount = FACTS.filter((fact) => factEvidence(resource, fact).state === "confirmed").length;
@@ -162,12 +168,12 @@ export default async function ResourcePage({ params }: PageProps) {
             {/* The caveat sits immediately under the status, before anything
                 persuasive, so the trade-off is read before the feature list. */}
             {status.caveat ? (
-              <Callout tone={status.tone} icon={status.icon} title={`${status.label} — what that means`}>
+              <Callout tone={statusTone} icon={statusIcon} title={`${status.label} — what that means`}>
                 <p>{status.definition}</p>
                 <p className="mt-1.5 font-medium text-fg">{status.caveat}</p>
               </Callout>
             ) : (
-              <Callout tone={status.tone} icon={status.icon} title={`${status.label} — what that means`}>
+              <Callout tone={statusTone} icon={statusIcon} title={`${status.label} — what that means`}>
                 {status.definition}
               </Callout>
             )}
@@ -193,7 +199,7 @@ export default async function ResourcePage({ params }: PageProps) {
               <h2 id="why-heading" className="font-display text-xl font-semibold">
                 Why it is listed
               </h2>
-              <Card className="mt-3 border-l-2 border-l-primary p-5">
+              <Card className="mt-3 p-5">
                 <p className="leading-relaxed text-fg-muted">{resource.whyListed}</p>
               </Card>
             </section>
@@ -224,11 +230,7 @@ export default async function ResourcePage({ params }: PageProps) {
                 // An empty list is only a reassurance if someone checked. Otherwise
                 // it just means nothing has been written down.
                 <p className="mt-3 flex items-start gap-2.5 text-sm text-fg-muted">
-                  <Icon
-                    name={limitationsEvidence.state === "confirmed" ? "check-circle" : "info"}
-                    size={15}
-                    className={`mt-0.5 shrink-0 ${limitationsEvidence.state === "confirmed" ? "text-success-fg" : "text-fg-subtle"}`}
-                  />
+                  <EvidenceMark reason={limitationsEvidence.reason} size={15} className="mt-0.5" />
                   {limitationsEvidence.state === "confirmed"
                     ? "The provider's own pages document no significant limitations on the free offering."
                     : "No limitations have been recorded, and nobody has checked yet whether there are any."}{" "}
@@ -329,8 +331,7 @@ export default async function ResourcePage({ params }: PageProps) {
             <Card className="p-5">
               <h2 className="font-display text-sm font-semibold">Where this information comes from</h2>
               <ul className="mt-3 flex flex-col gap-3 text-sm">
-                <li className="flex items-start gap-2.5">
-                  <Icon name="library" size={15} className="mt-0.5 shrink-0 text-primary" />
+                <li>
                   <span className="text-fg-muted">
                     <span className="font-medium text-fg">Everything.Free</span> writes the description, category,
                     limitations and verification notes on this page.

@@ -47,11 +47,11 @@ export function ToolCard({ tool }: { tool: Tool }) {
 
       <div className="mt-auto flex flex-wrap items-center gap-2 pt-4">
         {planned ? (
-          <Badge tone="neutral" icon="clock">
+          <Badge tone="neutral">
             Planned
           </Badge>
         ) : local ? (
-          <Badge tone="success" icon="lock">
+          <Badge tone="neutral" icon="lock">
             Runs in your browser
           </Badge>
         ) : (

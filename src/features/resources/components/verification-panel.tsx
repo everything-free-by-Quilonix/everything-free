@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Icon, type IconName } from "@/components/icons";
+import { Icon } from "@/components/icons";
 import { Card } from "@/components/ui/card";
 import { ExternalLink } from "@/components/ui/external-link";
 import {
@@ -11,9 +11,9 @@ import {
   verificationStage,
 } from "@/config/verification";
 import { effectiveVerification } from "@/lib/resources/derive";
-import { cn } from "@/lib/utils/cn";
 import { formatFullDate, formatMonthYear } from "@/lib/utils/date";
 import type { Resource, VerificationCheck, VerificationCheckRecord, VerificationSource } from "@/types/resource";
+import { EvidenceMark } from "./evidence";
 
 /**
  * The verification panel on a resource page.
@@ -33,10 +33,12 @@ import type { Resource, VerificationCheck, VerificationCheckRecord, Verification
 
 type RowState = "confirmed" | "unresolved" | "not-checked";
 
-const ROW_STATE: Record<RowState, { label: string; icon: IconName; className: string }> = {
-  confirmed: { label: "Confirmed", icon: "check-circle", className: "text-success-fg" },
-  unresolved: { label: "Could not confirm", icon: "help-circle", className: "text-warning-fg" },
-  "not-checked": { label: "Not yet checked", icon: "minus-circle", className: "text-fg-subtle" },
+// Labels only. The glyph and its colour come from `EvidenceMark`, whose reasons
+// share these three names.
+const ROW_STATE: Record<RowState, { label: string }> = {
+  confirmed: { label: "Confirmed" },
+  unresolved: { label: "Could not confirm" },
+  "not-checked": { label: "Not yet checked" },
 };
 
 interface Row {
@@ -103,10 +105,7 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
 
       {/* ------------------------------------------------------ summary */}
       <div className="mt-3 flex flex-col gap-3 text-sm">
-        <div className="flex items-center gap-2">
-          <Icon name={verification.icon} size={16} className="shrink-0 text-fg-subtle" />
-          <span className="font-medium text-fg">{verification.label}</span>
-        </div>
+        <p className="font-medium text-fg">{verification.label}</p>
 
         <ul className="flex flex-col gap-1.5 text-fg-muted">
           <li>
@@ -137,7 +136,7 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
         </ul>
 
         {awaitingSignOff ? (
-          <p className="rounded-sm border border-info/30 bg-info-soft px-3 py-2.5 text-xs leading-relaxed text-fg-muted">
+          <p className="rounded-sm border border-rule px-3 py-2.5 text-xs leading-relaxed text-fg-muted">
             <span className="font-medium text-fg">Evidence complete, awaiting sign-off.</span> Every required check is
             backed by an official source, but a maintainer has not yet reviewed it and put their name to it. Only then is a
             listing marked Verified.
@@ -181,8 +180,8 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
                       {definition.label}
                       {row.required ? null : <span className="ml-1 font-normal text-fg-subtle">(optional)</span>}
                     </span>
-                    <span className={cn("inline-flex shrink-0 items-center gap-1", state.className)}>
-                      <Icon name={state.icon} size={12} />
+                    <span className="inline-flex shrink-0 items-center gap-1 text-fg-muted">
+                      <EvidenceMark reason={row.state} />
                       {state.label}
                     </span>
                   </p>
@@ -197,7 +196,7 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
                     <p className="mt-1.5 text-xs text-fg-subtle">
                       <ExternalLink
                         href={row.source.url}
-                        className="text-fg-muted underline underline-offset-2 hover:text-primary"
+                        className="link-inline"
                         announceExternal={false}
                       >
                         {new URL(row.source.url).hostname.replace(/^www\./, "")}
@@ -220,7 +219,7 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
                   <li key={source.url} className="text-xs leading-relaxed">
                     <ExternalLink
                       href={source.url}
-                      className="text-fg-muted underline underline-offset-2 hover:text-primary"
+                      className="link-inline"
                       announceExternal={false}
                     >
                       {source.label}

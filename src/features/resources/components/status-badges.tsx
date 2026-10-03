@@ -8,8 +8,9 @@ import type { Resource } from "@/types/resource";
 /**
  * The free-status badge.
  *
- * Text and icon come from `config/free-status.ts`, so a status can be renamed once
- * and every surface follows. The label is never abbreviated: "Trial only" must not
+ * Text comes from `config/free-status.ts`, so a status can be renamed once and
+ * every surface follows. The badge is word-only: the config's icons reuse the
+ * reserved evidence glyphs, so they are not rendered. The label is never abbreviated: "Trial only" must not
  * be shortened to "Trial" anywhere, because the extra word is what stops it reading
  * as an endorsement.
  *
@@ -25,7 +26,7 @@ export function FreeStatusBadge({ resource, size = "sm" }: { resource: Resource;
   const confirmed = evidence.state === "confirmed";
   return (
     <span className="inline-flex" data-fact="freeStatus" data-evidence={evidence.state}>
-      <Badge tone={confirmed ? definition.tone : "neutral"} icon={definition.icon} size={size}>
+      <Badge tone={confirmed ? definition.tone : "neutral"} size={size}>
         {definition.label}
         {confirmed ? null : <span className="sr-only"> (free status not verified)</span>}
       </Badge>
@@ -43,7 +44,7 @@ export function FreeStatusBadge({ resource, size = "sm" }: { resource: Resource;
 export function VerificationBadge({ resource, size = "sm" }: { resource: Resource; size?: "sm" | "md" }) {
   const definition = effectiveVerification(resource);
   return (
-    <Badge tone={definition.tone} icon={definition.icon} size={size}>
+    <Badge tone={definition.tone} size={size}>
       {definition.label}
     </Badge>
   );
@@ -78,7 +79,7 @@ export function LastVerified({ resource, className }: { resource: Resource; clas
 
 export function OpenSourceBadge({ license }: { license?: string }) {
   return (
-    <Badge tone="primary" icon="repo">
+    <Badge tone="neutral" icon="repo">
       {license ?? "Open source"}
     </Badge>
   );

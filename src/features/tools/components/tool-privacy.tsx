@@ -17,7 +17,7 @@ export function ToolPrivacyNotice({ tool }: { tool: Tool }) {
 
   return (
     <Callout
-      tone={local ? "success" : "warning"}
+      tone={local ? "neutral" : "warning"}
       icon={local ? "lock" : "server"}
       title={local ? "Your files stay on your device" : "Your data is sent to a server"}
     >

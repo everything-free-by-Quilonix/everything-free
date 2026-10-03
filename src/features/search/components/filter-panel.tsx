@@ -10,6 +10,7 @@ import { withBasePath } from "@/config/deployment";
 import { listableFreeStatuses } from "@/config/free-status";
 import { filterablePlatforms } from "@/config/platforms";
 import { resourceTypeList } from "@/config/resource-types";
+import { EvidenceMark } from "@/features/resources/components/evidence";
 import { PARAM } from "@/lib/search/params";
 import { cn } from "@/lib/utils/cn";
 import type { ResourceFacets } from "@/types/search";
@@ -118,11 +119,7 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
         >
           <Icon name="filter" size={16} />
           Filters
-          {activeFilterCount > 0 ? (
-            <span className="ml-1 rounded-full bg-primary px-1.5 py-0.5 text-[11px] font-semibold text-primary-fg">
-              {activeFilterCount}
-            </span>
-          ) : null}
+          {activeFilterCount > 0 ? <span className="tabular-nums"> · {activeFilterCount}</span> : null}
         </Button>
       </div>
 
@@ -194,7 +191,7 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
             legend="Confirmed facts"
             description={
               <>
-                <Icon name="check-circle" size={12} className="mr-1 inline text-success-fg" />
+                <EvidenceMark reason="confirmed" size={12} className="mr-1 inline" />
                 Confirmed only: a listing matches when an official source confirms the fact.
               </>
             }
@@ -403,7 +400,7 @@ function FilterOption({
         checked={checked}
         disabled={disabled}
         onChange={onToggle}
-        className="mt-0.5 size-4 shrink-0 accent-primary"
+        className="mt-0.5 size-4 shrink-0"
       />
       <span className="min-w-0 flex-1">
         <span className="flex items-baseline justify-between gap-2">

@@ -126,7 +126,7 @@ export function AlternativeComparison({ resources }: { resources: Resource[] }) 
           {resources.map((resource) => (
             <tr key={resource.slug} className="border-b border-border last:border-b-0">
               <th scope="row" className="sticky left-0 bg-surface px-4 py-3 text-left font-medium whitespace-nowrap">
-                <Link href={`/resources/${resource.slug}`} className="rounded hover:text-primary hover:underline">
+                <Link href={`/resources/${resource.slug}`} className="link-inline rounded">
                   {resource.name}
                 </Link>
               </th>

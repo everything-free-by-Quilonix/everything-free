@@ -77,11 +77,11 @@ export default async function ToolPage({ params }: PageProps) {
 
               <div className="mt-4">
                 {tool.status === "planned" ? (
-                  <Badge tone="neutral" icon="clock" size="md">
+                  <Badge tone="neutral" size="md">
                     Planned — not available yet
                   </Badge>
                 ) : (
-                  <Badge tone="success" icon="lock" size="md">
+                  <Badge tone="neutral" icon="lock" size="md">
                     Runs in your browser
                   </Badge>
                 )}

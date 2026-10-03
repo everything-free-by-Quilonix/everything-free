@@ -22,12 +22,11 @@ export function Hero({ resourceCount, toolCount }: { resourceCount: number; tool
       <Container className="relative py-16 sm:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs text-fg-muted">
-            <Icon name="shield-check" size={13} className="text-primary" />
             Free status, limits and verification stated plainly
           </p>
 
           <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Everything<span className="text-primary">.</span>Free
+            Everything.Free
           </h1>
 
           <p className="mt-4 text-lg text-fg-muted sm:text-xl">{site.shortDescription}</p>
@@ -50,8 +49,7 @@ export function Hero({ resourceCount, toolCount }: { resourceCount: number; tool
         </div>
 
         <div className="mx-auto mt-14 max-w-3xl rounded-md border border-border bg-surface p-5">
-          <h2 className="flex items-center gap-2 text-sm font-medium text-fg">
-            <Icon name="bolt" size={15} className="text-primary" />
+          <h2 className="text-sm font-medium text-fg">
             Describe what you need
           </h2>
           <p className="mt-1.5 text-sm text-fg-muted">

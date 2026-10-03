@@ -32,6 +32,49 @@ const OUTLINE_SUPPRESSION_ALLOWED = ["src/app/layout.tsx", "src/features/search/
 const MATERIALS_FILE = "src/styles/materials.css";
 const MAX_FUNCTIONAL_FILES = 3;
 
+/**
+ * Gold is a closed list of five roles: brand dot, primary action (and the skip
+ * link), focus, selected or current indicators, text selection.
+ */
+const GOLD_TSX_OWNERS = [
+  "src/components/ui/button.tsx",
+  "src/components/layout/brand.tsx",
+  "src/components/layout/site-header.tsx",
+  "src/components/layout/nav-links.tsx",
+  "src/components/ui/segmented-control.tsx",
+  "src/features/palette/command-palette.tsx",
+  "src/features/search/components/pagination.tsx",
+  "src/features/resources/components/on-this-page.tsx",
+];
+const GOLD_CSS_OWNERS = ["src/styles/tokens.css", "src/styles/materials.css", "src/styles/motion.css", "src/app/globals.css"];
+const GOLD_CLASS =
+  /\b(?:text|bg|border(?:-[trblxyse])?|ring|outline|accent|decoration|fill|stroke|from|via|to|shadow|caret|divide)-primary(?!-fg)\b/;
+
+/** Success colour means confirmed evidence. These files own it. */
+const SUCCESS_OWNERS = [
+  "src/features/resources/components/evidence.tsx",
+  "src/components/ui/badge.tsx",
+  "src/components/ui/callout.tsx",
+  "src/features/resources/components/survey-bar.tsx",
+  "src/styles/tokens.css",
+  "src/styles/materials.css",
+];
+/** Files that may pass a tone taken from a definition (each gates it on evidence). */
+const DEFINITION_TONE_OWNERS = [
+  "src/features/resources/components/status-badges.tsx",
+  "src/app/resources/[slug]/page.tsx",
+  "src/app/verification/page.tsx",
+];
+
+/** The four evidence glyphs are drawn only by `EvidenceMark`. */
+const EVIDENCE_GLYPH_OWNER = "src/features/resources/components/evidence.tsx";
+/** `definition.icon` there is a platform glyph, none of them reserved. */
+const PLATFORM_ICON_OWNER = "src/features/resources/components/resource-facts.tsx";
+const RESERVED = "(?:check-circle|help-circle|clock|minus-circle)";
+
+/** Legal marks, which Unicode classes as pictographic but are not emoji. */
+const EMOJI_ALLOWED = new Set(["©", "®", "™"]);
+
 // ---------------------------------------------------------------------------
 // File walk
 // ---------------------------------------------------------------------------
@@ -140,6 +183,41 @@ describe("design guardrails", () => {
   test(`at most ${MAX_FUNCTIONAL_FILES} files apply the FUNCTIONAL material`, () => {
     const users = TSX.filter((f) => /\bmaterial-functional\b/.test(f.text)).map((f) => f.path);
     assert.ok(users.length <= MAX_FUNCTIONAL_FILES, `material-functional is applied in ${users.join(", ")}`);
+  });
+
+  test("gold appears only in its owners", () => {
+    const tsx = TSX.filter(notTool).filter((f) => !GOLD_TSX_OWNERS.includes(f.path));
+    assert.deepEqual(hits(tsx, GOLD_CLASS), []);
+    assert.deepEqual(hits(tsx, /var\(--primary/), []);
+    const css = CSS.filter((f) => !GOLD_CSS_OWNERS.includes(f.path));
+    assert.deepEqual(hits(css, /--primary/), []);
+  });
+
+  test("success colour appears only in its owners (rule 1)", () => {
+    const files = [...CODE, ...CSS].filter(notTool).filter((f) => !SUCCESS_OWNERS.includes(f.path));
+    assert.deepEqual(hits(files, /\b(?:text|bg|border|fill|stroke)-success\b|--success/), []);
+  });
+
+  test("success and definition tones only where evidence gates them (rule 2)", () => {
+    const tsx = TSX.filter(notTool);
+    assert.deepEqual(hits(tsx, /\btone="success"/), []);
+    const definitionTone = tsx.filter((f) => !DEFINITION_TONE_OWNERS.includes(f.path));
+    assert.deepEqual(hits(definitionTone, /\btone=\{[^}]*\b\w+\.tone\b[^}]*\}/), []);
+  });
+
+  test("the four evidence glyphs are drawn only through EvidenceMark", () => {
+    const tsx = TSX.filter(notTool).filter((f) => f.path !== EVIDENCE_GLYPH_OWNER);
+    assert.deepEqual(hits(tsx, new RegExp(`\\b(?:name|icon)="${RESERVED}"`)), []);
+    assert.deepEqual(hits(tsx, new RegExp(`\\bicon:\\s*"${RESERVED}"`)), []);
+    const configIcons = TSX.filter((f) => f.path !== PLATFORM_ICON_OWNER);
+    assert.deepEqual(hits(configIcons, /\b(?:name|icon)=\{\s*(?:status|definition|verification)\.icon\s*\}/), []);
+  });
+
+  test("no emoji anywhere in src", () => {
+    const found = hits([...CODE, ...byExt(".css")], /\p{Extended_Pictographic}/u).filter(
+      (hit) => !EMOJI_ALLOWED.has(hit.slice(hit.lastIndexOf(" ") + 1)),
+    );
+    assert.deepEqual(found, []);
   });
 
   test("globals.css declares no token and references no status colour", () => {
