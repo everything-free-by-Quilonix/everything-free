@@ -1,80 +1,99 @@
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { Container } from "@/components/ui/layout";
-import { intentExamples, searchExamples, site } from "@/config/site";
-import { SearchBox, SearchSuggestions } from "@/features/search/components/search-box";
-import { formatCount } from "@/lib/utils/format";
+import { intentExamples } from "@/config/site";
+import { countNoun, type LibraryCensus } from "@/features/home/census";
+import { Legend } from "@/features/resources/components/legend";
+import { SurveyBar, SurveySummary } from "@/features/resources/components/survey-bar";
+import { SearchBox } from "@/features/search/components/search-box";
 
 /**
- * Homepage hero.
+ * The Library introduction: the homepage's opening, as a library index rather
+ * than a pitch.
  *
- * The job of this block is to answer one question in the first second: "can I
- * find the free thing I need here?" So it leads with search rather than with a
- * pitch, and the example queries are real searches that return real results.
+ * When to use: the homepage only. When not to use: anywhere a number would have
+ * to be typed by hand; every figure here comes from `libraryCensus` at build.
  *
- * The only number shown is the library size, which we can count. There are no
- * user counts, download counts or "trusted by" claims, because we have no data to
- * support them.
+ * Keyboard: the search form and the text links, in reading order.
+ *
+ * Evidence: the title states the library's size and subjects, never that its
+ * contents are free as a confirmed fact; the Legend and Survey bar say how much
+ * of it an official source confirms, including when that is nothing.
  */
-export function Hero({ resourceCount, toolCount }: { resourceCount: number; toolCount: number }) {
+export function Hero({ census }: { census: LibraryCensus }) {
+  const empty = census.listings === 0;
+
   return (
-    <section className="relative overflow-hidden border-b border-border">
-      <Container className="relative py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs text-fg-muted">
-            Free status, limits and verification stated plainly
-          </p>
+    <section aria-labelledby="library-heading">
+      <Container className="py-16 lg:py-24">
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
+          <div className="min-w-0 lg:col-span-8">
+            <p className="kicker">Everything.Free · Library index</p>
 
-          <h1 className="mt-6 font-serif text-display font-medium">
-            Everything.Free
-          </h1>
+            <h1 id="library-heading" className="mt-4 max-w-4xl font-serif text-display font-medium">
+              {empty ? (
+                "The library has no listings yet."
+              ) : (
+                <>
+                  A library of <span className="tabular-nums">{countNoun(census.listings, "listing", "listings")}</span>{" "}
+                  of free resources, across{" "}
+                  <span className="tabular-nums">{countNoun(census.subjectsWithListings, "subject", "subjects")}</span>.
+                </>
+              )}
+            </h1>
 
-          <p className="mt-4 text-lg text-fg-muted sm:text-xl">{site.shortDescription}</p>
+            <p className="mt-6 max-w-(--measure-standfirst) text-lg text-fg-muted">
+              Each listing says what &ldquo;free&rdquo; means for it, what the free offering limits, and which of its
+              facts an official source confirms. Nothing is ranked by popularity, because nothing is tracked.
+            </p>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-fg-muted">
-            Free apps, software, tools, learning resources and creative assets — each showing what &ldquo;free&rdquo;
-            means for it, its limits, and which of its facts an official source confirms.
-          </p>
+            <div className="mt-8 max-w-2xl">
+              <SearchBox size="lg" label="Search the library" />
+            </div>
 
-          <div className="mt-8">
-            <SearchBox size="lg" label="Search free resources" />
+            {empty ? (
+              <p className="mt-4 text-sm text-fg-muted">
+                <Link href="/submit" className="link-inline">
+                  Submit a resource
+                </Link>
+              </p>
+            ) : (
+              <p className="mt-4 max-w-2xl text-sm text-fg-muted">
+                <span className="text-fg-subtle">Try: </span>
+                {intentExamples.map((example, index) => (
+                  <span key={example}>
+                    {index > 0 ? <span className="text-fg-subtle"> · </span> : null}
+                    <Link href={`/resources/?q=${encodeURIComponent(example)}`} className="link-inline">
+                      {example}
+                    </Link>
+                  </span>
+                ))}
+              </p>
+            )}
           </div>
 
-          <SearchSuggestions queries={searchExamples.slice(0, 5)} className="mt-5 justify-center" />
+          <div className="flex min-w-0 flex-col gap-12 lg:col-span-4">
+            <Legend variant="full" />
 
-          <p className="mt-8 text-sm text-fg-subtle">
-            {formatCount(resourceCount)} resources, each showing how much of it has been checked ·{" "}
-            {formatCount(toolCount)} tools you can use here
-          </p>
-        </div>
-
-        <div className="mx-auto mt-14 max-w-3xl rounded-md border border-border bg-surface p-5">
-          <h2 className="text-sm font-medium text-fg">
-            Describe what you need
-          </h2>
-          <p className="mt-1.5 text-sm text-fg-muted">
-            Search understands constraints written in plain language — things like “without a credit card”, “open
-            source”, or “alternative to Photoshop” — and turns them into filters you can see and change. Filters
-            such as “no credit card” match only where an official source confirms it.
-          </p>
-          <ul className="mt-4 flex flex-col gap-2">
-            {intentExamples.map((example) => (
-              <li key={example}>
+            {empty ? null : (
+              <div>
+                <p className="kicker">Survey</p>
+                <div className="mt-3">
+                  <SurveyBar survey={census.survey} size="sm" />
+                </div>
+                <div className="mt-3">
+                  <SurveySummary census={census} />
+                </div>
                 <Link
-                  href={`/resources?q=${encodeURIComponent(example)}`}
-                  className="group flex items-center gap-2 rounded-sm px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
+                  href="/verification"
+                  className="mt-3 inline-flex items-center gap-1 rounded text-sm font-medium text-fg-muted underline-offset-[0.2em] transition-colors hover:text-fg hover:underline"
                 >
-                  <Icon name="search" size={14} className="shrink-0 text-fg-subtle" />
-                  <span className="min-w-0 flex-1">“{example}”</span>
-                  <Icon
-                    name="arrow-right"
-                    size={14}
-                    className="shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
-                  />
+                  How verification works
+                  <Icon name="arrow-right" size={14} />
                 </Link>
-              </li>
-            ))}
-          </ul>
+              </div>
+            )}
+          </div>
         </div>
       </Container>
     </section>

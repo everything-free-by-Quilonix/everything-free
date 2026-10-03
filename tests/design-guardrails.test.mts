@@ -89,6 +89,10 @@ const SERIF_OWNERS = [
   /^src\/features\/collections\/components\/collection-card\.tsx$/,
 ];
 
+/** Where every homepage number must come from the census or a repository read. */
+const HOME_FEATURE = "src/features/home/";
+const HOME_PAGE = "src/app/page.tsx";
+
 /** Legal marks, which Unicode classes as pictographic but are not emoji. */
 const EMOJI_ALLOWED = new Set(["©", "®", "™"]);
 
@@ -245,6 +249,16 @@ describe("design guardrails", () => {
       (hit) => !EMOJI_ALLOWED.has(hit.slice(hit.lastIndexOf(" ") + 1)),
     );
     assert.deepEqual(found, []);
+  });
+
+  test("homepage copy states no count by hand", () => {
+    const files = CODE.filter((f) => f.path.startsWith(HOME_FEATURE) || f.path === HOME_PAGE);
+    assert.ok(files.length > 0);
+    assert.deepEqual(hits(files, /\b\d{2,}\s+(?:listings?|resources?|subjects?|tools?)\b/i), []);
+  });
+
+  test("no animation classes other than animate-none", () => {
+    assert.deepEqual(hits(CODE, /\banimate-(?!none\b)[a-z0-9[-]+/), []);
   });
 
   test("globals.css declares no token and references no status colour", () => {

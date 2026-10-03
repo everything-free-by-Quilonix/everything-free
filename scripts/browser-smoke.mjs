@@ -476,6 +476,17 @@ async function main() {
     /* ------------------------------------------------------- behaviour */
     console.log("\nBehaviour");
 
+    await check("homepage introduction states the library size from the data", async () => {
+      await desktop.goto(`${site}/`);
+      await desktop.waitFor(JS.hydrated);
+      // The same formatting as `formatCount`, so the h1 must carry the exact built count.
+      const count = new Intl.NumberFormat("en-GB").format(manifest.count);
+      const h1 = await desktop.evaluate(JS.h1);
+      assert(h1.includes(count), `h1 "${h1}" does not state ${count}`);
+      assert(!(await desktop.evaluate(`/thousands/i.test(document.body.innerText)`)), "homepage says \"thousands\"");
+      return h1;
+    });
+
     await check("client-side navigation from a resource card", async () => {
       await desktop.goto(`${site}/`);
       await desktop.waitFor(JS.hydrated);

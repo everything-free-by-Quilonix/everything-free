@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Icon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { withBasePath } from "@/config/deployment";
-import { searchExamples } from "@/config/site";
 import { cn } from "@/lib/utils/cn";
 
 /**
@@ -18,10 +17,12 @@ import { cn } from "@/lib/utils/cn";
  * `/resources`, which keeps that page static — so ranking the results does need
  * JavaScript, even though submitting the form does not.
  *
- * The rotating placeholder is suppressed entirely under `prefers-reduced-motion`,
- * since a placeholder that changes under the cursor is exactly the kind of
- * unrequested movement that preference exists to stop.
+ * The placeholder is fixed. A placeholder that changes under the cursor is
+ * unrequested movement, and the examples it would cycle through are shown as
+ * real links beside the field instead.
  */
+const PLACEHOLDER = "Try “free PDF tools” or “alternative to Photoshop”";
+
 export function SearchBox({
   defaultValue = "",
   size = "lg",
@@ -36,32 +37,12 @@ export function SearchBox({
   label?: string;
 }) {
   const router = useRouter();
-  const [exampleIndex, setExampleIndex] = useState(0);
-  const [rotate, setRotate] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setRotate(!media.matches);
-    update();
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
-  }, []);
-
-  useEffect(() => {
-    if (!rotate) return;
-    const timer = window.setInterval(() => {
-      setExampleIndex((index) => (index + 1) % searchExamples.length);
-    }, 3600);
-    return () => window.clearInterval(timer);
-  }, [rotate]);
 
   // Prefetching the results route makes the first search feel immediate without
   // preloading anything the user has not signalled intent for.
   useEffect(() => {
     router.prefetch("/resources");
   }, [router]);
-
-  const placeholder = rotate ? `Try “${searchExamples[exampleIndex]}”` : "What are you looking for?";
 
   return (
     <form
@@ -94,7 +75,7 @@ export function SearchBox({
           type="search"
           name="q"
           defaultValue={defaultValue}
-          placeholder={placeholder}
+          placeholder={PLACEHOLDER}
           autoFocus={autoFocus}
           autoComplete="off"
           enterKeyHint="search"

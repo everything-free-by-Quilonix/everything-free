@@ -56,6 +56,86 @@
   }
 }
 
+/* Survey bar partial fills: confirmed ink at reduced strength. Static values
+   first; the relative form only inside the feature query. */
+:root {
+  --survey-partial: oklch(0.8 0.13 160 / 0.55);
+  --survey-other: oklch(0.8 0.13 160 / 0.25);
+}
+
+.light {
+  --survey-partial: oklch(0.45 0.11 160 / 0.55);
+  --survey-other: oklch(0.45 0.11 160 / 0.25);
+}
+
+@supports (color: oklch(from red l c h)) {
+  :root,
+  .light {
+    --survey-partial: oklch(from var(--success-fg) l c h / 0.55);
+    --survey-other: oklch(from var(--success-fg) l c h / 0.25);
+  }
+}
+
+/* The Survey bar: one track, four exclusive segments sized by inline --w. A
+   non-zero segment is never thinner than 2px; segments carry no radius. */
+@layer components {
+  .survey-bar {
+    display: flex;
+    inline-size: 100%;
+    block-size: 8px;
+    overflow: hidden;
+    border-radius: var(--radius-xs);
+    background-color: var(--rule);
+  }
+
+  .survey-bar[data-size="lg"] {
+    block-size: 12px;
+  }
+
+  .survey-bar > span {
+    flex: none;
+    inline-size: var(--w);
+  }
+
+  .survey-bar > span:not([data-empty]) {
+    min-inline-size: 2px;
+  }
+
+  .survey-bar > [data-segment="verified"] {
+    background-color: var(--success-fg);
+  }
+
+  .survey-bar > [data-segment="partiallyVerified"] {
+    background-color: var(--survey-partial);
+  }
+
+  .survey-bar > [data-segment="otherConfirmedFact"] {
+    background-color: var(--survey-other);
+  }
+
+  .survey-bar > [data-segment="noConfirmedFact"] {
+    background-color: var(--rule);
+  }
+
+  @media (forced-colors: active) {
+    .survey-bar {
+      forced-color-adjust: none;
+      border: 1px solid CanvasText;
+      background-color: Canvas;
+    }
+
+    .survey-bar > [data-segment="verified"],
+    .survey-bar > [data-segment="partiallyVerified"],
+    .survey-bar > [data-segment="otherConfirmedFact"] {
+      background-color: CanvasText;
+    }
+
+    .survey-bar > [data-segment="noConfirmedFact"] {
+      background-color: Canvas;
+    }
+  }
+}
+
 /* Derived fills. Static value first; relative value only inside the query. */
 :root {
   --fill-pressed: var(--surface-hover);
