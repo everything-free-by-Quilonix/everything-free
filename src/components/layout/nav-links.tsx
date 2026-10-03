@@ -26,7 +26,7 @@ export function NavLinks({ items }: { items: NavLink[] }) {
               href={item.href}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "inline-flex h-10 items-center rounded-lg px-3 text-sm transition-colors",
+                "inline-flex h-10 items-center rounded-sm px-3 text-sm transition-colors",
                 active ? "bg-surface-raised font-medium text-fg" : "text-fg-muted hover:bg-surface-hover hover:text-fg",
               )}
             >

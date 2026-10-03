@@ -90,7 +90,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       type="button"
       onClick={() => apply(next)}
-      className={`inline-flex size-10 items-center justify-center rounded-lg text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg ${className ?? ""}`}
+      className={`inline-flex size-10 items-center justify-center rounded-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg ${className ?? ""}`}
       // The accessible name states what the button will do, which is what a
       // screen-reader user needs. `aria-pressed` would be ambiguous for a two-way swap.
       aria-label={`Switch to ${next} theme`}

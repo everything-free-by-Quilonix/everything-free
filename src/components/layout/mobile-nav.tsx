@@ -92,7 +92,7 @@ export function MobileNav() {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex size-10 items-center justify-center rounded-lg text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg lg:hidden"
+        className="inline-flex size-10 items-center justify-center rounded-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg lg:hidden"
         aria-label="Open menu"
         aria-expanded={open}
       >
@@ -100,7 +100,7 @@ export function MobileNav() {
       </button>
 
       {open ? (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-(--z-overlay) lg:hidden">
           {/* Decorative scrim. The close button below is the accessible control;
               this only handles pointer dismissal. */}
           <div className="absolute inset-0 bg-black/70" onClick={close} aria-hidden="true" />
@@ -117,7 +117,7 @@ export function MobileNav() {
               <button
                 type="button"
                 onClick={close}
-                className="inline-flex size-10 items-center justify-center rounded-lg text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
+                className="inline-flex size-10 items-center justify-center rounded-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
                 aria-label="Close menu"
               >
                 <Icon name="close" size={20} />
@@ -134,7 +134,7 @@ export function MobileNav() {
                         href={item.href}
                         onClick={close}
                         aria-current={active ? "page" : undefined}
-                        className={`flex items-start gap-3 rounded-lg px-3 py-3 transition-colors ${
+                        className={`flex items-start gap-3 rounded-sm px-3 py-3 transition-colors ${
                           active ? "bg-surface-raised text-fg" : "text-fg-muted hover:bg-surface-hover hover:text-fg"
                         }`}
                       >

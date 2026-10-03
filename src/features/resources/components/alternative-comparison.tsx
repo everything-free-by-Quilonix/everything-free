@@ -103,7 +103,7 @@ export function AlternativeComparison({ resources }: { resources: Resource[] }) 
   return (
     // Horizontally scrollable on narrow screens, and focusable so a keyboard user
     // can scroll it without a pointer.
-    <div className="overflow-x-auto rounded-xl border border-border" tabIndex={0} role="region" aria-label="Comparison table">
+    <div className="overflow-x-auto rounded-md border border-border" tabIndex={0} role="region" aria-label="Comparison table">
       <table className="w-full border-collapse text-sm">
         <caption className="sr-only">
           Factual comparison of free alternatives. Columns cover free status, licence, platforms, account and card

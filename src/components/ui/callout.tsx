@@ -49,7 +49,7 @@ export function Callout({
   return (
     <div
       role={assertive ? "alert" : undefined}
-      className={cn("flex gap-3 rounded-lg border px-4 py-3.5", styles.wrapper, className)}
+      className={cn("flex gap-3 rounded-sm border px-4 py-3.5", styles.wrapper, className)}
     >
       <Icon name={icon ?? defaultIcons[tone]} size={17} className={cn("mt-0.5 shrink-0", styles.icon)} />
       <div className="min-w-0 text-sm leading-relaxed">

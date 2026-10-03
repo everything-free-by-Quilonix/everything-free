@@ -137,7 +137,7 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
         </ul>
 
         {awaitingSignOff ? (
-          <p className="rounded-lg border border-info/30 bg-info-soft px-3 py-2.5 text-xs leading-relaxed text-fg-muted">
+          <p className="rounded-sm border border-info/30 bg-info-soft px-3 py-2.5 text-xs leading-relaxed text-fg-muted">
             <span className="font-medium text-fg">Evidence complete, awaiting sign-off.</span> Every required check is
             backed by an official source, but a maintainer has not yet reviewed it and put their name to it. Only then is a
             listing marked Verified.

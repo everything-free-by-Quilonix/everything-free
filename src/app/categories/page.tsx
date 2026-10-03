@@ -45,7 +45,7 @@ export default async function CategoriesPage() {
                 <div className="flex items-start gap-3">
                   <span
                     aria-hidden="true"
-                    className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-raised text-fg-muted"
+                    className="flex size-10 shrink-0 items-center justify-center rounded-sm border border-border bg-surface-raised text-fg-muted"
                   >
                     <Icon name={group.icon} size={19} />
                   </span>

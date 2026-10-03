@@ -49,7 +49,7 @@ export function Hero({ resourceCount, toolCount }: { resourceCount: number; tool
           </p>
         </div>
 
-        <div className="mx-auto mt-14 max-w-3xl rounded-xl border border-border bg-surface/70 p-5 backdrop-blur-sm">
+        <div className="mx-auto mt-14 max-w-3xl rounded-md border border-border bg-surface p-5">
           <h2 className="flex items-center gap-2 text-sm font-medium text-fg">
             <Icon name="bolt" size={15} className="text-primary" />
             Describe what you need
@@ -64,7 +64,7 @@ export function Hero({ resourceCount, toolCount }: { resourceCount: number; tool
               <li key={example}>
                 <Link
                   href={`/resources?q=${encodeURIComponent(example)}`}
-                  className="group flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
+                  className="group flex items-center gap-2 rounded-sm px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
                 >
                   <Icon name="search" size={14} className="shrink-0 text-fg-subtle" />
                   <span className="min-w-0 flex-1">“{example}”</span>

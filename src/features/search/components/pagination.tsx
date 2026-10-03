@@ -31,7 +31,7 @@ export function Pagination({
         <Link
           href={hrefFor(page - 1)}
           rel="prev"
-          className="inline-flex h-10 items-center gap-1 rounded-lg border border-border-strong px-3 text-sm transition-colors hover:bg-surface-hover"
+          className="inline-flex h-10 items-center gap-1 rounded-sm border border-border-strong px-3 text-sm transition-colors hover:bg-surface-hover"
         >
           <Icon name="arrow-left" size={15} />
           Previous
@@ -50,7 +50,7 @@ export function Pagination({
                 href={hrefFor(entry)}
                 aria-current={entry === page ? "page" : undefined}
                 className={cn(
-                  "inline-flex size-10 items-center justify-center rounded-lg text-sm transition-colors",
+                  "inline-flex size-10 items-center justify-center rounded-sm text-sm transition-colors",
                   entry === page
                     ? "bg-primary font-semibold text-primary-fg"
                     : "border border-border text-fg-muted hover:bg-surface-hover hover:text-fg",
@@ -68,7 +68,7 @@ export function Pagination({
         <Link
           href={hrefFor(page + 1)}
           rel="next"
-          className="inline-flex h-10 items-center gap-1 rounded-lg border border-border-strong px-3 text-sm transition-colors hover:bg-surface-hover"
+          className="inline-flex h-10 items-center gap-1 rounded-sm border border-border-strong px-3 text-sm transition-colors hover:bg-surface-hover"
         >
           Next
           <Icon name="arrow-right" size={15} />

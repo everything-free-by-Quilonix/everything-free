@@ -34,7 +34,7 @@ export function ResourceLogo({
         alt={logo.alt}
         width={logo.width}
         height={logo.height}
-        className={cn("shrink-0 rounded-lg border border-border object-contain", className)}
+        className={cn("shrink-0 rounded-sm border border-border object-contain", className)}
         style={{ width: size, height: size }}
       />
     );
@@ -46,7 +46,7 @@ export function ResourceLogo({
       // the initials again would only add noise.
       aria-hidden="true"
       className={cn(
-        "flex shrink-0 select-none items-center justify-center rounded-lg border border-border bg-surface-raised font-display font-semibold tracking-tight text-fg-muted",
+        "flex shrink-0 select-none items-center justify-center rounded-sm border border-border bg-surface-raised font-display font-semibold tracking-tight text-fg-muted",
         className,
       )}
       style={{ width: size, height: size, fontSize: Math.round(size * 0.36) }}

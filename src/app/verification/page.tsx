@@ -139,7 +139,7 @@ export default async function VerificationPage() {
               { term: "Partially verified", value: counts.partial },
               { term: "Free status not yet confirmed", value: counts.notStarted },
             ].map((item) => (
-              <div key={item.term} className="rounded-lg border border-border bg-surface p-4">
+              <div key={item.term} className="rounded-sm border border-border bg-surface p-4">
                 <dt className="text-xs text-fg-muted">{item.term}</dt>
                 <dd className="mt-1 font-display text-2xl font-semibold tabular-nums">
                   {item.value}

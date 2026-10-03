@@ -185,7 +185,7 @@ export function ImageConverter() {
           type="file"
           accept="image/*"
           onChange={(event) => void handleFile(event.target.files?.[0])}
-          className="w-full cursor-pointer rounded-lg border border-border-strong bg-bg p-2.5 text-sm text-fg-muted transition-colors file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-surface-raised file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-fg hover:border-fg-subtle"
+          className="w-full cursor-pointer rounded-lg border border-border-strong bg-bg p-2.5 text-sm text-fg-muted transition-colors file:mr-3 file:cursor-pointer file:rounded-sm file:border-0 file:bg-surface-raised file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-fg hover:border-fg-subtle"
         />
         <p className="text-xs text-fg-muted">
           Stays on your device. Nothing is uploaded.

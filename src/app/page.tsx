@@ -180,11 +180,11 @@ export default async function HomePage() {
               <li key={audience.slug}>
                 <Link
                   href={`/for/${audience.slug}`}
-                  className="group flex h-full items-start gap-3 rounded-xl border border-border bg-surface p-4 transition-colors hover:border-border-strong hover:bg-surface-raised"
+                  className="group flex h-full items-start gap-3 rounded-md border border-border bg-surface p-4 transition-colors hover:border-border-strong hover:bg-surface-raised"
                 >
                   <span
                     aria-hidden="true"
-                    className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-border bg-bg-subtle text-fg-muted"
+                    className="flex size-9 shrink-0 items-center justify-center rounded-sm border border-border bg-bg-subtle text-fg-muted"
                   >
                     <Icon name={audience.icon} size={17} />
                   </span>
@@ -217,7 +217,7 @@ export default async function HomePage() {
                   <li key={target.slug}>
                     <Link
                       href={`/alternatives/${target.slug}`}
-                      className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3.5 py-2.5 text-sm text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
+                      className="inline-flex items-center gap-2 rounded-sm border border-border bg-surface px-3.5 py-2.5 text-sm text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
                     >
                       <Icon name="refresh-cw" size={14} className="text-fg-subtle" />
                       {target.name}
@@ -245,7 +245,7 @@ export default async function HomePage() {
 
         {/* ----------------------------------------------------- community */}
         <Section id="contribute">
-          <div className="rounded-2xl border border-border bg-bg-subtle p-8 sm:p-12">
+          <div className="rounded-md border border-border bg-bg-subtle p-8 sm:p-12">
             <div className="max-w-2xl">
               <h2 className="font-display text-2xl font-semibold tracking-tight">Know something that belongs here?</h2>
               <p className="mt-3 leading-relaxed text-fg-muted">

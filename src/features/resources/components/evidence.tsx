@@ -158,7 +158,7 @@ export function EvidenceDetails({ evidence }: { evidence: FactEvidence }) {
           className="transition-transform group-open:rotate-180 motion-reduce:transition-none"
         />
       </summary>
-      <div className="mt-1.5 flex flex-col gap-1 rounded-md border border-border bg-bg-subtle px-2.5 py-2 leading-relaxed text-fg-muted">
+      <div className="mt-1.5 flex flex-col gap-1 rounded-xs border border-border bg-bg-subtle px-2.5 py-2 leading-relaxed text-fg-muted">
         <p>{evidenceExplanation(evidence)}</p>
         {record ? <p>{record.evidence}</p> : null}
         {source ? (

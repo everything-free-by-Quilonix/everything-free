@@ -37,7 +37,7 @@ export default function ErrorBoundary({ error, reset }: { error: Error & { diges
       </p>
 
       {error.digest ? (
-        <p className="mt-4 rounded-md bg-surface-raised px-3 py-1.5 font-mono text-xs text-fg-subtle">
+        <p className="mt-4 rounded-xs bg-surface-raised px-3 py-1.5 font-mono text-xs text-fg-subtle">
           Reference: {error.digest}
         </p>
       ) : null}

@@ -18,7 +18,7 @@ import { ThemeToggle } from "./theme";
  */
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur-md">
+    <header className="material-functional sticky top-0 z-(--z-header)">
       <Container>
         <div className="flex h-16 items-center gap-4">
           <Brand />
@@ -30,7 +30,7 @@ export function SiteHeader() {
           <div className="ml-auto flex items-center gap-1">
             <Link
               href="/resources"
-              className="inline-flex size-10 items-center justify-center rounded-lg text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
+              className="inline-flex size-10 items-center justify-center rounded-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
               aria-label="Search resources"
             >
               <Icon name="search" size={18} />
@@ -64,7 +64,7 @@ export function SkipLink() {
   return (
     <a
       href="#main"
-      className="sr-only rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-fg focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50"
+      className="sr-only rounded-sm bg-primary px-4 py-2 text-sm font-medium text-primary-fg focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-(--z-overlay)"
     >
       Skip to main content
     </a>

@@ -74,7 +74,7 @@ export default async function AudiencePage({ params }: PageProps) {
           <div className="mt-6 flex items-start gap-4">
             <span
               aria-hidden="true"
-              className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-border bg-surface text-fg-muted"
+              className="flex size-12 shrink-0 items-center justify-center rounded-md border border-border bg-surface text-fg-muted"
             >
               <Icon name={audience.icon} size={22} />
             </span>
@@ -93,7 +93,7 @@ export default async function AudiencePage({ params }: PageProps) {
               <li key={category!.id}>
                 <Link
                   href={`/categories/${category!.slug}`}
-                  className="inline-block rounded-md border border-border bg-surface px-2.5 py-1 text-xs text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
+                  className="inline-block rounded-xs border border-border bg-surface px-2.5 py-1 text-xs text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
                 >
                   {category!.name}
                 </Link>

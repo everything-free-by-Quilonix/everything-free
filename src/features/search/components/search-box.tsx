@@ -77,8 +77,10 @@ export function SearchBox({
     >
       <div
         className={cn(
-          "flex items-center gap-2 rounded-xl border border-border-strong bg-surface shadow-raised transition-colors",
-          "focus-within:border-primary",
+          "flex items-center gap-2 rounded-md border border-border-strong bg-surface shadow-raised transition-colors",
+          // The wrapper is the visible field, so it carries the keyboard focus ring;
+          // the inner input suppresses its own outline.
+          "has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-(--focus)",
           size === "lg" ? "p-2 pl-4" : "p-1.5 pl-3",
         )}
       >

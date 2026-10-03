@@ -148,7 +148,7 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
 
         <div
           className={cn(
-            "flex flex-col gap-6 rounded-xl border border-border bg-surface p-5 transition-opacity",
+            "flex flex-col gap-6 rounded-md border border-border bg-surface p-5 transition-opacity",
             isPending && "opacity-60",
           )}
           aria-busy={isPending}
@@ -294,7 +294,7 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
             JavaScript. Those are linked below.
           */}
           <noscript>
-            <div className="rounded-lg border border-warning/30 bg-warning-soft px-3.5 py-3 text-xs leading-relaxed text-fg-muted">
+            <div className="rounded-sm border border-warning/30 bg-warning-soft px-3.5 py-3 text-xs leading-relaxed text-fg-muted">
               <p className="font-medium text-fg">Filtering needs JavaScript</p>
               <p className="mt-1">
                 These filters run in your browser. You can still browse the whole library by topic — every category page

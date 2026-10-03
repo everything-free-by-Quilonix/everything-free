@@ -59,7 +59,7 @@ export function ResourceCard({
           // A secondary claim, so it states its own evidence rather than leaning on
           // the listing's badge.
           <span
-            className="inline-flex items-center gap-1 rounded-md bg-surface-raised px-2 py-0.5 text-xs text-fg-muted"
+            className="inline-flex items-center gap-1 rounded-xs bg-surface-raised px-2 py-0.5 text-xs text-fg-muted"
             data-fact="openSource"
             data-evidence={openSourceConfirmed ? "confirmed" : "unconfirmed"}
           >
@@ -94,7 +94,7 @@ export function ResourceCard({
           {matchReasons.map((reason) => (
             <li
               key={reason}
-              className="rounded-md border border-border bg-bg-subtle px-1.5 py-0.5 text-[11px] text-fg-subtle"
+              className="rounded-xs border border-border bg-bg-subtle px-1.5 py-0.5 text-[11px] text-fg-subtle"
             >
               {reason}
             </li>

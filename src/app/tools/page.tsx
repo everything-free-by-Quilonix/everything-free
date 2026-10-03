@@ -75,7 +75,7 @@ export default function ToolsPage() {
               </p>
             </Callout>
 
-            <div className="rounded-lg border border-border bg-surface p-4">
+            <div className="rounded-sm border border-border bg-surface p-4">
               <p className="text-sm font-medium text-fg">
                 {availableTools.length} {availableTools.length === 1 ? "tool" : "tools"} available
               </p>

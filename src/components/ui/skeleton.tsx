@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils/cn";
  * content is coming, without the movement.
  */
 export function Skeleton({ className }: { className?: string }) {
-  return <div className={cn("animate-pulse rounded-md bg-surface-raised", className)} aria-hidden="true" />;
+  return <div className={cn("animate-pulse rounded-xs bg-surface-raised", className)} aria-hidden="true" />;
 }
 
 /**
@@ -19,9 +19,9 @@ export function Skeleton({ className }: { className?: string }) {
  */
 export function ResourceCardSkeleton() {
   return (
-    <div className="rounded-xl border border-border bg-surface p-5">
+    <div className="rounded-md border border-border bg-surface p-5">
       <div className="flex items-start gap-3">
-        <Skeleton className="size-10 shrink-0 rounded-lg" />
+        <Skeleton className="size-10 shrink-0 rounded-sm" />
         <div className="min-w-0 flex-1">
           <Skeleton className="h-4 w-1/2" />
           <Skeleton className="mt-2 h-3 w-full" />

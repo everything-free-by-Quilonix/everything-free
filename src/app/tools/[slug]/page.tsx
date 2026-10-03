@@ -66,7 +66,7 @@ export default async function ToolPage({ params }: PageProps) {
           <div className="mt-6 flex items-start gap-4">
             <span
               aria-hidden="true"
-              className="flex size-14 shrink-0 items-center justify-center rounded-xl border border-border bg-surface text-fg-muted"
+              className="flex size-14 shrink-0 items-center justify-center rounded-md border border-border bg-surface text-fg-muted"
             >
               <Icon name={tool.icon} size={24} />
             </span>

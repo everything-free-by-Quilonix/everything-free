@@ -292,7 +292,7 @@ export default async function ResourcePage({ params }: PageProps) {
                     <li key={product}>
                       <Link
                         href={`/alternatives/${slugifyProductName(product)}`}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-2 text-sm text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
+                        className="inline-flex items-center gap-1.5 rounded-sm border border-border bg-surface px-3 py-2 text-sm text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
                       >
                         <Icon name="refresh-cw" size={14} className="text-fg-subtle" />
                         {product}
@@ -375,7 +375,7 @@ export default async function ResourcePage({ params }: PageProps) {
                     <li key={tag}>
                       <Link
                         href={`/resources?tag=${encodeURIComponent(tag)}`}
-                        className="inline-block rounded-md bg-surface-raised px-2 py-1 text-xs text-fg-muted transition-colors hover:text-fg"
+                        className="inline-block rounded-xs bg-surface-raised px-2 py-1 text-xs text-fg-muted transition-colors hover:text-fg"
                       >
                         {tag}
                       </Link>

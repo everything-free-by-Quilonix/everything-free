@@ -15,7 +15,7 @@ export function Brand({ className, showParent = false }: { className?: string; s
     <Link href="/" className={cn("group inline-flex items-center gap-2.5 rounded", className)}>
       <span
         aria-hidden="true"
-        className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary font-display text-sm font-bold text-primary-fg"
+        className="flex size-8 shrink-0 items-center justify-center rounded-sm bg-primary font-display text-sm font-bold text-primary-fg"
       >
         EF
       </span>

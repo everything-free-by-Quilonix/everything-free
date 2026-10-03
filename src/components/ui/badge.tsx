@@ -32,7 +32,7 @@ export function Badge({ tone = "neutral", icon, size = "sm", className, children
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-md border font-medium",
+        "inline-flex items-center gap-1.5 rounded-xs border font-medium",
         size === "sm" ? "px-2 py-0.5 text-xs" : "px-2.5 py-1 text-sm",
         tones[tone],
         className,
@@ -49,7 +49,7 @@ export function Chip({ children, className }: { children: ReactNode; className?:
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-md bg-surface-raised px-2 py-0.5 text-xs text-fg-muted",
+        "inline-flex items-center rounded-xs bg-surface-raised px-2 py-0.5 text-xs text-fg-muted",
         className,
       )}
     >

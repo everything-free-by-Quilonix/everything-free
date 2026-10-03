@@ -78,7 +78,7 @@ export function ReportResourceForm({ resourceNames }: { resourceNames: Record<st
           <ExternalLink
             href={state.url}
             showIcon={false}
-            className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-fg transition-colors hover:bg-primary-hover"
+            className="inline-flex h-11 items-center gap-2 rounded-sm bg-primary px-4 text-sm font-medium text-primary-fg transition-colors hover:bg-primary-hover"
           >
             Open the prefilled report
             <Icon name="external-link" size={15} />
@@ -92,7 +92,7 @@ export function ReportResourceForm({ resourceNames }: { resourceNames: Record<st
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
       <noscript>
-        <div className="rounded-lg border border-info/30 bg-info-soft px-4 py-3.5 text-sm leading-relaxed">
+        <div className="rounded-sm border border-info/30 bg-info-soft px-4 py-3.5 text-sm leading-relaxed">
           <p className="font-medium text-fg">This form needs JavaScript</p>
           <p className="mt-1 text-fg-muted">
             You can report the same problem through GitHub&rsquo;s issue form instead, which collects the identical

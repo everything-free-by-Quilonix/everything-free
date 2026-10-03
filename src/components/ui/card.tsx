@@ -28,9 +28,9 @@ export function Card({
     <Tag
       id={id}
       className={cn(
-        "relative rounded-xl border border-border bg-surface shadow-card",
+        "relative rounded-md border border-border bg-surface shadow-card",
         interactive &&
-          "transition-colors hover:border-border-strong hover:bg-surface-raised focus-within:border-primary/50",
+          "transition-colors hover:border-border-strong hover:bg-surface-raised",
         className,
       )}
     >

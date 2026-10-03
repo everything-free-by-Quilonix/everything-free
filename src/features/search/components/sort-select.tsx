@@ -48,7 +48,7 @@ export function SortSelect({ hasQuery }: { hasQuery: boolean }) {
           value={current}
           disabled={isPending}
           onChange={(event) => handleChange(event.target.value)}
-          className="appearance-none rounded-lg border border-border-strong bg-surface py-2 pr-8 pl-3 text-sm text-fg transition-colors hover:border-fg-subtle focus:border-primary focus:outline-none disabled:opacity-60"
+          className="appearance-none rounded-sm border border-border-strong bg-surface py-2 pr-8 pl-3 text-sm text-fg transition-colors hover:border-fg-subtle disabled:opacity-60"
         >
           {options.map((option) => (
             <option key={option.value} value={option.value}>

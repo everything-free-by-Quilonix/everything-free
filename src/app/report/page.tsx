@@ -67,7 +67,7 @@ export default async function ReportPage() {
                   </a>
                 </Callout>
               </noscript>
-              <Skeleton className="h-96 w-full rounded-xl" />
+              <Skeleton className="h-96 w-full rounded-md" />
             </>
           }
         >

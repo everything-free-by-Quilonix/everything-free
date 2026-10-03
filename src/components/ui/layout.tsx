@@ -81,7 +81,7 @@ export function SectionLink({ href, children }: { href: string; children: ReactN
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-1 rounded-md text-sm font-medium text-fg-muted transition-colors hover:text-fg"
+      className="inline-flex items-center gap-1 rounded-xs text-sm font-medium text-fg-muted transition-colors hover:text-fg"
     >
       {children}
       <Icon name="chevron-right" size={16} />

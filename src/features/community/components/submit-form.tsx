@@ -71,7 +71,7 @@ export function SubmitResourceForm() {
           <ExternalLink
             href={state.url}
             showIcon={false}
-            className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-fg transition-colors hover:bg-primary-hover"
+            className="inline-flex h-11 items-center gap-2 rounded-sm bg-primary px-4 text-sm font-medium text-primary-fg transition-colors hover:bg-primary-hover"
           >
             Open the prefilled submission
             <Icon name="external-link" size={15} />
@@ -98,7 +98,7 @@ export function SubmitResourceForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
       <noscript>
-        <div className="rounded-lg border border-info/30 bg-info-soft px-4 py-3.5 text-sm leading-relaxed">
+        <div className="rounded-sm border border-info/30 bg-info-soft px-4 py-3.5 text-sm leading-relaxed">
           <p className="font-medium text-fg">This form needs JavaScript</p>
           <p className="mt-1 text-fg-muted">
             It validates your submission in your browser before filing it. Without JavaScript you can submit the same

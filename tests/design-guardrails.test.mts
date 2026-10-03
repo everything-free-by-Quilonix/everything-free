@@ -19,6 +19,19 @@ import { describe, test } from "node:test";
 /** The only file that may touch client storage: the theme preference. */
 const STORAGE_OWNER = "src/components/layout/theme.tsx";
 
+/** Tool UIs keep their own styling and primary actions. */
+const TOOL_UIS = "src/features/tools/implementations/";
+
+/**
+ * Files that may suppress the focus outline: `#main` is a programmatic focus
+ * target only, and the search field draws its ring on the wrapper.
+ */
+const OUTLINE_SUPPRESSION_ALLOWED = ["src/app/layout.tsx", "src/features/search/components/search-box.tsx"];
+
+/** The single translucent recipe, and the most files that may apply it. */
+const MATERIALS_FILE = "src/styles/materials.css";
+const MAX_FUNCTIONAL_FILES = 3;
+
 // ---------------------------------------------------------------------------
 // File walk
 // ---------------------------------------------------------------------------
@@ -38,7 +51,9 @@ function walk(dir: string, out: SourceFile[] = []): SourceFile[] {
 
 const SRC = walk(join(ROOT, "src"));
 const byExt = (...exts: string[]) => SRC.filter((f) => exts.some((e) => f.path.endsWith(e)));
+const TSX = byExt(".tsx");
 const CODE = byExt(".ts", ".tsx");
+const notTool = (f: SourceFile) => !f.path.startsWith(TOOL_UIS);
 const CSS = byExt(".css").map((f) => ({ ...f, text: f.text.replace(/\/\*[\s\S]*?\*\//g, "") }));
 
 /** "path:line: match" for every match of `pattern` in `files`. */
@@ -103,6 +118,28 @@ describe("design guardrails", () => {
       }
     }
     assert.deepEqual(found, []);
+  });
+
+  test("no radius above 10px outside the tool UIs", () => {
+    const files = TSX.filter(notTool);
+    assert.deepEqual(hits(files, /\brounded(?:-[trblse]{1,2})?-(?:lg|xl|2xl|3xl|4xl)\b/), []);
+    assert.deepEqual(hits(files, /\brounded(?:-[trblse]{1,2})?-\[/), []);
+  });
+
+  test("focus outlines are suppressed only on the allow-list", () => {
+    const files = TSX.filter(notTool).filter((f) => !OUTLINE_SUPPRESSION_ALLOWED.includes(f.path));
+    assert.deepEqual(hits(files, /\boutline-(?:none|hidden)\b/), []);
+  });
+
+  test("blur exists only in materials.css", () => {
+    assert.deepEqual(hits(CODE, /\bbackdrop-(?:blur|filter)\b/), []);
+    const css = CSS.filter((f) => f.path !== MATERIALS_FILE);
+    assert.deepEqual(hits(css, /\bbackdrop-(?:blur|filter)\b/), []);
+  });
+
+  test(`at most ${MAX_FUNCTIONAL_FILES} files apply the FUNCTIONAL material`, () => {
+    const users = TSX.filter((f) => /\bmaterial-functional\b/.test(f.text)).map((f) => f.path);
+    assert.ok(users.length <= MAX_FUNCTIONAL_FILES, `material-functional is applied in ${users.join(", ")}`);
   });
 
   test("globals.css declares no token and references no status colour", () => {

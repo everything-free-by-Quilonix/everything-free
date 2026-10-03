@@ -95,7 +95,7 @@ export default async function FreeStatusPage() {
                 <p className="mt-2 leading-relaxed text-fg-muted">{status.definition}</p>
 
                 {status.caveat ? (
-                  <p className="mt-3 flex items-start gap-2 rounded-lg bg-bg-subtle px-3.5 py-3 text-sm">
+                  <p className="mt-3 flex items-start gap-2 rounded-sm bg-bg-subtle px-3.5 py-3 text-sm">
                     <Icon name="info" size={15} className="mt-0.5 shrink-0 text-fg-subtle" />
                     <span className="text-fg-muted">{status.caveat}</span>
                   </p>

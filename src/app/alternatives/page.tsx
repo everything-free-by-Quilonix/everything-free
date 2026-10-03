@@ -47,7 +47,7 @@ export default async function AlternativesPage() {
               <li key={target.slug}>
                 <Link
                   href={`/alternatives/${target.slug}`}
-                  className="group flex h-full items-center justify-between gap-3 rounded-xl border border-border bg-surface px-4 py-3.5 transition-colors hover:border-border-strong hover:bg-surface-raised"
+                  className="group flex h-full items-center justify-between gap-3 rounded-md border border-border bg-surface px-4 py-3.5 transition-colors hover:border-border-strong hover:bg-surface-raised"
                 >
                   <span className="min-w-0">
                     <span className="block truncate text-sm font-medium text-fg">{target.name}</span>

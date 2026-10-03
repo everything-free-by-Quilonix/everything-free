@@ -23,7 +23,7 @@ export function CategoryGroupCard({ group, previewCount = 5 }: { group: Category
       <div className="flex items-center gap-3">
         <span
           aria-hidden="true"
-          className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-raised text-fg-muted"
+          className="flex size-10 shrink-0 items-center justify-center rounded-sm border border-border bg-surface-raised text-fg-muted"
         >
           <Icon name={group.icon} size={19} />
         </span>
@@ -41,7 +41,7 @@ export function CategoryGroupCard({ group, previewCount = 5 }: { group: Category
           <li key={category.id}>
             <Link
               href={`/categories/${category.slug}`}
-              className="inline-block rounded-md border border-border bg-bg-subtle px-2 py-1 text-xs text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
+              className="inline-block rounded-xs border border-border bg-bg-subtle px-2 py-1 text-xs text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
             >
               {category.name}
             </Link>
@@ -60,7 +60,7 @@ export function CategoryLink({ category, count }: { category: Category; count?: 
   return (
     <Link
       href={`/categories/${category.slug}`}
-      className="group flex items-baseline justify-between gap-3 rounded-lg border border-border bg-surface px-3.5 py-3 transition-colors hover:border-border-strong hover:bg-surface-raised"
+      className="group flex items-baseline justify-between gap-3 rounded-sm border border-border bg-surface px-3.5 py-3 transition-colors hover:border-border-strong hover:bg-surface-raised"
     >
       <span className="min-w-0">
         <span className="block truncate text-sm font-medium text-fg">{category.name}</span>

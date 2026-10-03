@@ -15,9 +15,9 @@ import { cn } from "@/lib/utils/cn";
  */
 
 const controlClasses =
-  "w-full rounded-lg border border-border-strong bg-bg px-3 py-2.5 text-sm text-fg " +
+  "w-full rounded-sm border border-border-strong bg-bg px-3 py-2.5 text-sm text-fg " +
   "transition-colors placeholder:text-fg-subtle hover:border-fg-subtle " +
-  "focus:border-primary focus:outline-none disabled:cursor-not-allowed disabled:opacity-60 " +
+  "disabled:cursor-not-allowed disabled:opacity-60 " +
   "aria-[invalid=true]:border-danger";
 
 interface FieldContext {
@@ -156,7 +156,7 @@ export function Checkbox({
         id={id}
         type="checkbox"
         aria-describedby={descriptionId}
-        className="mt-0.5 size-4 shrink-0 cursor-pointer accent-primary"
+        className="mt-0.5 size-4 shrink-0 cursor-pointer"
         {...rest}
       />
       <div className="min-w-0">
