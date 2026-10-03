@@ -37,13 +37,22 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Headings are Inter 600 unless they are editorial: every h1, and h2s inside
+     an .editorial section, take the serif. An explicit font-display class keeps
+     a heading Inter. */
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    letter-spacing: -0.011em;
     text-wrap: balance;
+  }
+
+  h1,
+  .editorial h2 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
   }
 
   p {
@@ -121,6 +130,17 @@
 
 @utility hairline-t {
   border-top: 1px solid var(--rule);
+}
+
+/* A section's running head: small, uppercase, tracked, never a heading. */
+@utility kicker {
+  font-size: var(--text-2xs);
+  line-height: var(--text-2xs--line-height);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-feature-settings: "case";
+  color: var(--fg-subtle);
 }
 
 /* Inline text links: ink text with a quiet underline that darkens on hover.

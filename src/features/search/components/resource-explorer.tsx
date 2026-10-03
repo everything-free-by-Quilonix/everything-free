@@ -75,7 +75,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
     <>
       <div className="border-b border-border bg-bg-subtle py-8">
         <div className="mx-auto w-full max-w-(--container-content) px-4 sm:px-6 lg:px-8">
-          <h1 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h1 className="font-serif text-3xl font-semibold">
             {isSearch ? (
               <>
                 Results for <span className="text-fg">“{query.q}”</span>
@@ -105,7 +105,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             <div className="flex flex-wrap items-center justify-between gap-4">
               {/* Announced politely so the count is heard after a filter change
                   without the user having to go looking for it. */}
-              <p className="text-sm text-fg-muted" aria-live="polite">
+              <p className="text-sm text-fg-muted tabular-nums" aria-live="polite">
                 {results.total === 0
                   ? "No matching resources"
                   : `${formatCount(results.total)} ${results.total === 1 ? "resource" : "resources"}`}

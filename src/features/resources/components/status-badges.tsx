@@ -66,7 +66,7 @@ export function LastVerified({ resource, className }: { resource: Resource; clas
       {formatted ? (
         <>
           Last checked{" "}
-          <time dateTime={resource.lastVerifiedAt} className="text-fg-muted">
+          <time dateTime={resource.lastVerifiedAt} className="text-fg-muted tabular-nums">
             {formatted}
           </time>
         </>

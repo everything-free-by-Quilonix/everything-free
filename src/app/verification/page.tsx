@@ -57,7 +57,7 @@ export default async function VerificationPage() {
         </div>
 
         <section className="mt-14" aria-labelledby="freshness-heading">
-          <h2 id="freshness-heading" className="font-display text-xl font-semibold">
+          <h2 id="freshness-heading" className="font-serif text-2xl font-semibold">
             Verifications expire
           </h2>
           <p className="mt-3 leading-relaxed text-fg-muted">
@@ -68,7 +68,7 @@ export default async function VerificationPage() {
         </section>
 
         <section className="mt-14" aria-labelledby="checklist-heading">
-          <h2 id="checklist-heading" className="font-display text-xl font-semibold">
+          <h2 id="checklist-heading" className="font-serif text-2xl font-semibold">
             The checklist
           </h2>
           <p className="mt-3 leading-relaxed text-fg-muted">
@@ -106,7 +106,7 @@ export default async function VerificationPage() {
         </section>
 
         <section className="mt-12" aria-labelledby="human-heading">
-          <h2 id="human-heading" className="font-display text-xl font-semibold">
+          <h2 id="human-heading" className="font-serif text-2xl font-semibold">
             A person signs off every Verified badge
           </h2>
           <p className="mt-3 leading-relaxed text-fg-muted">
@@ -119,7 +119,7 @@ export default async function VerificationPage() {
         </section>
 
         <section className="mt-12" aria-labelledby="seed-heading">
-          <h2 id="seed-heading" className="font-display text-xl font-semibold">
+          <h2 id="seed-heading" className="font-serif text-2xl font-semibold">
             Where the library stands
           </h2>
           {/* Counted from the data at build time, so this cannot drift from what
@@ -158,7 +158,7 @@ export default async function VerificationPage() {
         </section>
 
         <section className="mt-12" aria-labelledby="help-heading">
-          <h2 id="help-heading" className="font-display text-xl font-semibold">
+          <h2 id="help-heading" className="font-serif text-2xl font-semibold">
             Verifying an entry
           </h2>
           <ol className="mt-4 flex list-none flex-col gap-3">

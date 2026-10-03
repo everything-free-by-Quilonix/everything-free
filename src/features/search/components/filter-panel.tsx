@@ -405,7 +405,7 @@ function FilterOption({
       <span className="min-w-0 flex-1">
         <span className="flex items-baseline justify-between gap-2">
           <span className="text-fg">{label}</span>
-          <span className="shrink-0 text-xs text-fg-subtle" aria-hidden="true">
+          <span className="shrink-0 text-xs text-fg-subtle tabular-nums" aria-hidden="true">
             {count}
           </span>
           <span className="sr-only">{count === 1 ? "1 result" : `${count} results`}</span>

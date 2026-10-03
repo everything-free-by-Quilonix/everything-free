@@ -31,7 +31,7 @@ export default function ErrorBoundary({ error, reset }: { error: Error & { diges
         <Icon name="alert-triangle" size={22} />
       </span>
 
-      <h1 className="mt-6 font-display text-2xl font-semibold tracking-tight sm:text-3xl">Something went wrong</h1>
+      <h1 className="mt-6 font-serif text-3xl font-semibold">Something went wrong</h1>
       <p className="mt-3 max-w-md text-fg-muted">
         This page failed to load. Trying again often works; if it does not, the problem is on our side.
       </p>

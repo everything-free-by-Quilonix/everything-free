@@ -105,7 +105,7 @@ export function PageHeader({
     <header className="border-b border-border bg-bg-subtle py-10 sm:py-14">
       <Container>
         {eyebrow ? <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-fg-muted">{eyebrow}</div> : null}
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h1>
+        <h1 className="font-serif text-3xl font-semibold">{title}</h1>
         {description ? <p className="mt-4 max-w-3xl text-base leading-relaxed text-fg-muted">{description}</p> : null}
         {children ? <div className="mt-6">{children}</div> : null}
       </Container>

@@ -263,7 +263,7 @@ No other configuration, no database and no API keys are required.
 | Language | TypeScript 5 (strict) |
 | Styling | Tailwind CSS 4 with CSS-variable design tokens |
 | Validation | Zod 4 — **only** at the untrusted-input boundary |
-| Fonts | Inter and Manrope, self-hosted via `next/font` |
+| Fonts | Inter and Source Serif 4, self-hosted via `next/font` |
 | Icons | Hand-authored inline SVG set |
 | Data | Typed modules in the Git repository — no database |
 | Hosting | GitHub Pages, static files only — portable to any static host |

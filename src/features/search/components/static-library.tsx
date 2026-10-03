@@ -35,7 +35,7 @@ export function StaticLibrary({ resources }: { resources: Resource[] }) {
     <>
       <div className="border-b border-border bg-bg-subtle py-8">
         <Container>
-          <h1 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">Browse free resources</h1>
+          <h1 className="font-serif text-3xl font-semibold">Browse free resources</h1>
           <p className="mt-2 max-w-2xl text-sm text-fg-muted">
             Every entry states what “free” means for it, what the limits are, and which of its facts an official source
             confirms.

@@ -25,7 +25,7 @@ export function Hero({ resourceCount, toolCount }: { resourceCount: number; tool
             Free status, limits and verification stated plainly
           </p>
 
-          <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 font-serif text-display font-medium">
             Everything.Free
           </h1>
 

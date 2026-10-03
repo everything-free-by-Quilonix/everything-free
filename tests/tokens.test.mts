@@ -137,7 +137,20 @@ for (const [name, theme] of Object.entries(themes)) {
 }
 
 describe("token file structure", () => {
+  const themeRule = rules.find(([prelude]) => prelude === "@theme inline");
+
   test("tokens.css holds the @theme inline block", () => {
-    assert.ok(rules.some(([prelude]) => prelude === "@theme inline"));
+    assert.ok(themeRule);
+  });
+
+  test("the serif stack starts from the self-hosted Source Serif 4 variable", () => {
+    const theme = declarations(themeRule?.[1] ?? "");
+    assert.equal(theme.get("--font-serif"), "var(--font-source-serif), ui-serif, Georgia, serif");
+  });
+
+  test("--font-display is the same Inter stack as --font-sans", () => {
+    const theme = declarations(themeRule?.[1] ?? "");
+    assert.ok(theme.get("--font-sans")?.startsWith("var(--font-inter)"));
+    assert.equal(theme.get("--font-display"), theme.get("--font-sans"));
   });
 });

@@ -116,7 +116,7 @@ export default async function ResourcePage({ params }: PageProps) {
             <ResourceLogo logo={resource.logo} size={64} className="sm:size-20" />
 
             <div className="min-w-0 flex-1">
-              <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">{resource.name}</h1>
+              <h1 className="font-serif text-3xl font-semibold">{resource.name}</h1>
               <p className="mt-2 max-w-2xl text-base leading-relaxed text-fg-muted">{resource.shortDescription}</p>
 
               <div className="mt-4 flex flex-wrap items-center gap-2">

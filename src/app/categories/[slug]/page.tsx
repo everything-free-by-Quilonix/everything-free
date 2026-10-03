@@ -64,7 +64,7 @@ export default async function CategoryPage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">{category.name}</h1>
+          <h1 className="mt-6 font-serif text-3xl font-semibold">{category.name}</h1>
           <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{category.description}</p>
 
           <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-fg-subtle">

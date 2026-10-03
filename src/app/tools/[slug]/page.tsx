@@ -72,7 +72,7 @@ export default async function ToolPage({ params }: PageProps) {
             </span>
 
             <div className="min-w-0">
-              <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">{tool.name}</h1>
+              <h1 className="font-serif text-3xl font-semibold">{tool.name}</h1>
               <p className="mt-2 max-w-2xl leading-relaxed text-fg-muted">{tool.longDescription}</p>
 
               <div className="mt-4">

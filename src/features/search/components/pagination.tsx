@@ -38,7 +38,7 @@ export function Pagination({
         </Link>
       ) : null}
 
-      <ul className="flex items-center gap-1">
+      <ul className="flex items-center gap-1 tabular-nums">
         {pages.map((entry, index) =>
           entry === "gap" ? (
             <li key={`gap-${index}`} className="px-1.5 text-sm text-fg-subtle" aria-hidden="true">

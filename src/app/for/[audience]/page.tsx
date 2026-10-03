@@ -79,7 +79,7 @@ export default async function AudiencePage({ params }: PageProps) {
               <Icon name={audience.icon} size={22} />
             </span>
             <div className="min-w-0">
-              <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">{audience.name}</h1>
+              <h1 className="font-serif text-3xl font-semibold">{audience.name}</h1>
               <p className="mt-2 max-w-2xl leading-relaxed text-fg-muted">{audience.description}</p>
               <p className="mt-4 text-sm text-fg-subtle">
                 {formatCount(results.total)} {results.total === 1 ? "resource" : "resources"} across{" "}

@@ -57,7 +57,7 @@ export default async function AlternativePage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="mt-6 font-serif text-3xl font-semibold">
             Free alternatives to {target.name}
           </h1>
           <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">

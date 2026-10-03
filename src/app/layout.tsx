@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader, SkipLink } from "@/components/layout/site-header";
@@ -13,21 +13,29 @@ import "./globals.css";
 /**
  * Typography.
  *
- * Inter for body text, Manrope for display. Both are loaded through `next/font`,
- * which self-hosts the files at build time — no runtime request to a font CDN, so
- * no third-party connection on first paint and no layout shift from a late swap.
+ * Inter is the interface: controls, labels, evidence, tables, body text. Source
+ * Serif 4 is the editorial voice, opted into with the serif utility class on page
+ * titles and editorial section titles only. Both are loaded through `next/font`, which
+ * self-hosts the files at build time — no runtime request to a font CDN, so no
+ * third-party connection on first paint and no layout shift from a late swap.
  * `display: swap` keeps text readable while the face loads.
+ *
+ * The serif's variable is deliberately named apart from the serif theme token in
+ * tokens.css, so that token never refers to itself.
  */
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+  axes: ["opsz"],
 });
 
-const manrope = Manrope({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-manrope",
+  variable: "--font-source-serif",
+  axes: ["opsz"],
+  style: ["normal"],
 });
 
 export const metadata: Metadata = {
@@ -75,7 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     // `suppressHydrationWarning` is required because ThemeScript mutates the
     // class list before React hydrates. It is scoped to this element only.
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>

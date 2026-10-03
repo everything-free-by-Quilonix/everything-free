@@ -28,7 +28,7 @@ export default function NotFound() {
         <Icon name="compass" size={22} />
       </span>
 
-      <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h1 className="mt-6 font-serif text-3xl font-semibold">
         This page does not exist
       </h1>
       <p className="mt-3 max-w-md text-fg-muted">

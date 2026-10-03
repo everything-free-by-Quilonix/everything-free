@@ -61,7 +61,7 @@ export default async function CollectionPage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">{collection.name}</h1>
+          <h1 className="mt-6 font-serif text-3xl font-semibold">{collection.name}</h1>
           <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{collection.longDescription}</p>
 
           <p className="mt-5 text-sm text-fg-subtle">

@@ -72,6 +72,20 @@ const EVIDENCE_GLYPH_OWNER = "src/features/resources/components/evidence.tsx";
 const PLATFORM_ICON_OWNER = "src/features/resources/components/resource-facts.tsx";
 const RESERVED = "(?:check-circle|help-circle|clock|minus-circle)";
 
+/**
+ * The serif is the editorial voice only: page titles, editorial section titles,
+ * the record-page name, Atlas Index group titles and the editorial collection row.
+ */
+const SERIF_OWNERS = [
+  /^src\/app\/(?:.+\/)?page\.tsx$/,
+  /^src\/app\/(?:not-found|error)\.tsx$/,
+  /^src\/features\/home\/components\/hero\.tsx$/,
+  /^src\/components\/ui\/layout\.tsx$/,
+  /^src\/features\/search\/components\/(?:resource-explorer|static-library)\.tsx$/,
+  /^src\/features\/categories\/components\/atlas-index\.tsx$/,
+  /^src\/features\/collections\/components\/collection-card\.tsx$/,
+];
+
 /** Legal marks, which Unicode classes as pictographic but are not emoji. */
 const EMOJI_ALLOWED = new Set(["©", "®", "™"]);
 
@@ -211,6 +225,11 @@ describe("design guardrails", () => {
     assert.deepEqual(hits(tsx, new RegExp(`\\bicon:\\s*"${RESERVED}"`)), []);
     const configIcons = TSX.filter((f) => f.path !== PLATFORM_ICON_OWNER);
     assert.deepEqual(hits(configIcons, /\b(?:name|icon)=\{\s*(?:status|definition|verification)\.icon\s*\}/), []);
+  });
+
+  test("the serif appears only at the editorial sites", () => {
+    const files = TSX.filter((f) => !SERIF_OWNERS.some((owner) => owner.test(f.path)));
+    assert.deepEqual(hits(files, /\bfont-serif\b/), []);
   });
 
   test("no emoji anywhere in src", () => {

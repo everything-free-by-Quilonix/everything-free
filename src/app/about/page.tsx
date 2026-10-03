@@ -30,7 +30,7 @@ export default async function AboutPage() {
       <Container width="prose" className="pt-10">
         <div className="flex flex-col gap-10">
           <section aria-labelledby="why-heading">
-            <h2 id="why-heading" className="font-display text-xl font-semibold">
+            <h2 id="why-heading" className="font-serif text-2xl font-semibold">
               Why this exists
             </h2>
             <div className="mt-3 flex flex-col gap-3 leading-relaxed text-fg-muted">
@@ -53,7 +53,7 @@ export default async function AboutPage() {
           </section>
 
           <section aria-labelledby="not-heading">
-            <h2 id="not-heading" className="font-display text-xl font-semibold">
+            <h2 id="not-heading" className="font-serif text-2xl font-semibold">
               What this is not
             </h2>
             <ul className="mt-4 flex flex-col gap-3">
@@ -73,7 +73,7 @@ export default async function AboutPage() {
           </section>
 
           <section aria-labelledby="principles-heading">
-            <h2 id="principles-heading" className="font-display text-xl font-semibold">
+            <h2 id="principles-heading" className="font-serif text-2xl font-semibold">
               How entries are written
             </h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -115,7 +115,7 @@ export default async function AboutPage() {
           </section>
 
           <section aria-labelledby="quilonix-heading">
-            <h2 id="quilonix-heading" className="font-display text-xl font-semibold">
+            <h2 id="quilonix-heading" className="font-serif text-2xl font-semibold">
               Everything.Free and {site.parent.name}
             </h2>
             <p className="mt-3 leading-relaxed text-fg-muted">
