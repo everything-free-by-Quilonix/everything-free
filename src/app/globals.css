@@ -1,170 +1,21 @@
 @import "tailwindcss";
+@import "../styles/tokens.css";
+@import "../styles/materials.css";
 
 /*
- * Everything.Free design system
+ * Everything.Free base layer
  * ---------------------------------------------------------------------------
- * Dark-first, restrained palette. All colour is expressed through *semantic*
- * tokens (bg / surface / fg / border / primary / status) rather than raw
- * values, so light mode is a token swap and components never hardcode a hue.
+ * Colour, shadow, layer and layout values live in src/styles/tokens.css; the
+ * five materials live in src/styles/materials.css. This file declares no
+ * colour token. It holds the base element rules, the single focus treatment
+ * and the few utilities shared by every page.
  *
- * Because the product is dark-first, the dark values live on :root. That means
- * the correct theme renders even before JavaScript runs, and with JS disabled.
- * The `.light` class opts into light mode; `.dark` is accepted as an explicit
- * alias so the `dark:` variant below stays usable for rare one-offs.
+ * Dark is the default on :root. The `.light` class opts into light mode;
+ * `.dark` is accepted as an explicit alias so the `dark:` variant below stays
+ * usable for rare one-offs.
  */
 
 @custom-variant dark (&:where(:root:not(.light), .dark, .dark *));
-
-:root,
-.dark {
-  color-scheme: dark;
-
-  /* Surfaces, from furthest back to closest to the reader. */
-  --bg: #0a0a0f;
-  --bg-subtle: #0d0d14;
-  --surface: #12121a;
-  --surface-raised: #181822;
-  --surface-hover: #1e1e2a;
-
-  /* Lines. `strong` is for interactive edges that must read as affordances. */
-  --border: #23232f;
-  --border-strong: #32323f;
-
-  /* Text. `muted` meets AA on --bg; `subtle` is reserved for non-essential
-     metadata that is always duplicated elsewhere or non-informational. */
-  --fg: #f5f5f5;
-  --fg-muted: #a6a6b4;
-  --fg-subtle: #74748a;
-
-  /* Brand. Gold on near-black; text on gold is always near-black. */
-  --primary: #d4af37;
-  --primary-hover: #e0bf51;
-  --primary-fg: #0a0a0f;
-  --primary-soft: rgb(212 175 55 / 0.12);
-  --primary-ring: rgb(212 175 55 / 0.42);
-
-  --secondary: #334155;
-  --secondary-fg: #f5f5f5;
-
-  /* Status. Foreground variants are lightened for contrast on dark surfaces. */
-  --success: #0faf78;
-  --success-fg: #3ddba4;
-  --success-soft: rgb(15 175 120 / 0.14);
-
-  --warning: #d99a00;
-  --warning-fg: #f0b93a;
-  --warning-soft: rgb(217 154 0 / 0.14);
-
-  --danger: #b42318;
-  --danger-fg: #f4796d;
-  --danger-soft: rgb(180 35 24 / 0.16);
-
-  --info: #3b6fd4;
-  --info-fg: #7ea6f0;
-  --info-soft: rgb(59 111 212 / 0.16);
-
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
-  --shadow-raised: 0 8px 24px -8px rgb(0 0 0 / 0.6);
-  --shadow-overlay: 0 24px 64px -16px rgb(0 0 0 / 0.75);
-}
-
-.light {
-  color-scheme: light;
-
-  --bg: #ffffff;
-  --bg-subtle: #f7f7f8;
-  --surface: #ffffff;
-  --surface-raised: #f5f5f6;
-  --surface-hover: #eeeef0;
-
-  --border: #e3e3e7;
-  --border-strong: #cdcdd4;
-
-  --fg: #15151c;
-  --fg-muted: #55555f;
-  --fg-subtle: #74748a;
-
-  /* Gold is lowered in light mode so that gold-on-white text clears AA. */
-  --primary: #8a6d12;
-  --primary-hover: #745c0f;
-  --primary-fg: #ffffff;
-  --primary-soft: rgb(138 109 18 / 0.1);
-  --primary-ring: rgb(138 109 18 / 0.4);
-
-  --secondary: #334155;
-  --secondary-fg: #ffffff;
-
-  --success: #0a7d56;
-  --success-fg: #07603f;
-  --success-soft: rgb(10 125 86 / 0.1);
-
-  --warning: #8a6300;
-  --warning-fg: #6d4e00;
-  --warning-soft: rgb(138 99 0 / 0.1);
-
-  --danger: #b42318;
-  --danger-fg: #94170e;
-  --danger-soft: rgb(180 35 24 / 0.08);
-
-  --info: #29509c;
-  --info-fg: #1e3d7d;
-  --info-soft: rgb(41 80 156 / 0.08);
-
-  --shadow-card: 0 1px 2px rgb(16 16 24 / 0.06);
-  --shadow-raised: 0 8px 24px -8px rgb(16 16 24 / 0.12);
-  --shadow-overlay: 0 24px 64px -16px rgb(16 16 24 / 0.2);
-}
-
-@theme inline {
-  --color-bg: var(--bg);
-  --color-bg-subtle: var(--bg-subtle);
-  --color-surface: var(--surface);
-  --color-surface-raised: var(--surface-raised);
-  --color-surface-hover: var(--surface-hover);
-
-  --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
-
-  --color-fg: var(--fg);
-  --color-fg-muted: var(--fg-muted);
-  --color-fg-subtle: var(--fg-subtle);
-
-  --color-primary: var(--primary);
-  --color-primary-hover: var(--primary-hover);
-  --color-primary-fg: var(--primary-fg);
-  --color-primary-soft: var(--primary-soft);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-fg: var(--secondary-fg);
-
-  --color-success: var(--success);
-  --color-success-fg: var(--success-fg);
-  --color-success-soft: var(--success-soft);
-
-  --color-warning: var(--warning);
-  --color-warning-fg: var(--warning-fg);
-  --color-warning-soft: var(--warning-soft);
-
-  --color-danger: var(--danger);
-  --color-danger-fg: var(--danger-fg);
-  --color-danger-soft: var(--danger-soft);
-
-  --color-info: var(--info);
-  --color-info-fg: var(--info-fg);
-  --color-info-soft: var(--info-soft);
-
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, sans-serif;
-
-  --shadow-card: var(--shadow-card);
-  --shadow-raised: var(--shadow-raised);
-  --shadow-overlay: var(--shadow-overlay);
-
-  /* Content measure: wide enough for a 4-up card grid, narrow enough to keep
-     prose line length readable on large displays. */
-  --container-content: 80rem;
-  --container-prose: 46rem;
-}
 
 @layer base {
   * {
@@ -204,9 +55,21 @@
    * not see rings, but every keyboard user always does. Never removed.
    */
   :focus-visible {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
     border-radius: 2px;
+  }
+
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline-color: Highlight;
+    }
+  }
+
+  /* Checkboxes and radios take the selected-indicator ink once, here. */
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--primary);
   }
 
   /* Honour the OS-level reduced-motion preference everywhere, including
@@ -257,14 +120,21 @@
 }
 
 @utility hairline-t {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--rule);
 }
 
-/* A low-contrast grid used only behind the hero. Purely decorative, so it is
-   hidden from assistive tech at the usage site and fades out at the edges. */
-@utility hero-grid {
-  background-image: linear-gradient(to right, var(--border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 10%, transparent 75%);
+/* Inline text links: ink text with a quiet underline that darkens on hover.
+   Gold is never a hover colour. */
+@utility link-inline {
+  color: var(--fg);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.2em;
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration-color: var(--fg);
+    }
+  }
 }

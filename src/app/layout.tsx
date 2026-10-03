@@ -65,8 +65,9 @@ export const viewport: Viewport = {
   // low-vision users (WCAG 1.4.4).
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0f" },
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    // sRGB equivalents of the two --bg tokens in src/styles/tokens.css.
+    { media: "(prefers-color-scheme: dark)", color: "#100e0b" },
+    { media: "(prefers-color-scheme: light)", color: "#fbfaf7" },
   ],
 };
 

@@ -1,0 +1,70 @@
+/*
+ * Everything.Free materials
+ * ---------------------------------------------------------------------------
+ * Five materials, each with one role. Components apply these utilities and
+ * never assemble backgrounds, borders, blur and shadow by hand.
+ *
+ *   BASE        the matte page and its alternate bands
+ *   CONTENT     opaque reading surfaces, structured by hairlines and space
+ *   ELEVATED    temporary or grouped objects above content (popover, dialog)
+ *   FUNCTIONAL  chrome that content scrolls under; the only translucent recipe,
+ *               used by exactly three sticky surfaces
+ *   FOCUS       the focus ring and anchor flash (global rules, no utility)
+ *
+ * Blur lives in this file and nowhere else. It is never decorative and never
+ * stacked, and text contrast is always computed against the opaque colour.
+ */
+
+@utility material-base {
+  background-color: var(--bg);
+}
+
+@utility material-content {
+  background-color: var(--surface);
+}
+
+@utility material-elevated {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-raised);
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+}
+
+@utility material-functional {
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--rule);
+
+  /* Translucent only where both relative colour and backdrop blur resolve. An
+     engine without either keeps the opaque value above. */
+  @supports (color: oklch(from red l c h)) and (backdrop-filter: blur(1px)) {
+    background-color: oklch(from var(--bg) l c h / 0.94);
+    backdrop-filter: blur(8px) saturate(1.1);
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--bg);
+    backdrop-filter: none;
+  }
+
+  @media (forced-colors: active) {
+    background-color: Canvas;
+    backdrop-filter: none;
+    border-bottom-color: CanvasText;
+  }
+}
+
+/* Derived fills. Static value first; relative value only inside the query. */
+:root {
+  --fill-pressed: var(--surface-hover);
+  --primary-pressed: var(--primary);
+}
+
+@supports (color: oklch(from red l c h)) {
+  :root {
+    --fill-pressed: oklch(from var(--surface-hover) calc(l - 0.02) c h);
+    --primary-pressed: oklch(from var(--primary) calc(l - 0.04) c h);
+  }
+}

@@ -1,0 +1,212 @@
+/*
+ * Everything.Free tokens
+ * ---------------------------------------------------------------------------
+ * "Paper and ink": warm, low-chroma neutrals with one gold ink, defined in
+ * OKLCH. Every colour, shadow, layer and layout dimension the interface uses is
+ * declared here and nowhere else, and tests/tokens.test.mts parses this file
+ * to assert the WCAG contrast pairs in both themes.
+ *
+ * Dark is the default on :root, so the right theme renders before JavaScript
+ * runs and with JavaScript disabled. `.light` opts into the paper theme.
+ *
+ * Relative colour (the `from` form of oklch) is only ever written inside an
+ * @supports block, with a static value declared outside it. A custom property
+ * accepts any token sequence, so declaring a value twice does not fall back in
+ * engines that cannot resolve it; the feature query is the fallback.
+ */
+
+:root,
+.dark {
+  color-scheme: dark;
+
+  /* Surfaces, from furthest back to closest to the reader. */
+  --bg: oklch(0.165 0.006 75);
+  --bg-subtle: oklch(0.185 0.006 75);
+  --surface: oklch(0.205 0.007 75);
+  --surface-raised: oklch(0.235 0.008 75);
+  --surface-hover: oklch(0.255 0.008 75);
+
+  /* Lines. --rule separates records; --border edges components; --border-strong
+     marks interactive edges only. */
+  --rule: oklch(0.27 0.008 75);
+  --border: oklch(0.3 0.008 75);
+  --border-strong: oklch(0.54 0.01 75);
+
+  /* Text. Every step, including subtle, clears 4.5:1 on every surface. */
+  --fg: oklch(0.95 0.006 85);
+  --fg-muted: oklch(0.77 0.01 80);
+  --fg-subtle: oklch(0.64 0.01 80);
+
+  /* Gold ink. A closed list of roles: brand dot, primary action, focus,
+     selected or current indicators, text selection. */
+  --primary: oklch(0.79 0.125 85);
+  --primary-hover: oklch(0.84 0.12 87);
+  --primary-fg: oklch(0.18 0.01 75);
+  --primary-soft: oklch(0.79 0.125 85 / 0.12);
+  --primary-ring: oklch(0.79 0.125 85 / 0.42);
+  --focus: var(--primary);
+
+  --secondary: oklch(0.3 0.008 75);
+  --secondary-fg: oklch(0.95 0.006 85);
+
+  /* Status. Success means confirmed evidence and nothing else. */
+  --success: oklch(0.8 0.13 160);
+  --success-fg: oklch(0.8 0.13 160);
+  --success-soft: oklch(0.8 0.13 160 / 0.12);
+
+  --warning: oklch(0.82 0.12 80);
+  --warning-fg: oklch(0.82 0.12 80);
+  --warning-soft: oklch(0.82 0.12 80 / 0.12);
+
+  --danger: oklch(0.72 0.15 28);
+  --danger-fg: oklch(0.72 0.15 28);
+  --danger-soft: oklch(0.72 0.15 28 / 0.12);
+
+  /* Info is retired from the interface; kept so nothing breaks at compile time. */
+  --info: oklch(0.77 0.01 80);
+  --info-fg: oklch(0.77 0.01 80);
+  --info-soft: oklch(0.77 0.01 80 / 0.12);
+
+  --scrim: oklch(0 0 0 / 0.6);
+
+  /* Shadows exist only on ELEVATED surfaces: a contact line plus one ambient layer. */
+  --shadow-card: none;
+  --shadow-raised: 0 1px 0 oklch(0 0 0 / 0.25), 0 8px 24px -12px oklch(0 0 0 / 0.5);
+  --shadow-overlay: 0 1px 0 oklch(0 0 0 / 0.3), 0 24px 64px -16px oklch(0 0 0 / 0.7);
+}
+
+.light {
+  color-scheme: light;
+
+  --bg: oklch(0.985 0.004 85);
+  --bg-subtle: oklch(0.965 0.005 85);
+  --surface: oklch(1 0 0);
+  --surface-raised: oklch(0.975 0.004 85);
+  --surface-hover: oklch(0.955 0.005 85);
+
+  --rule: oklch(0.91 0.006 85);
+  --border: oklch(0.88 0.006 85);
+  --border-strong: oklch(0.62 0.008 80);
+
+  --fg: oklch(0.22 0.01 75);
+  --fg-muted: oklch(0.42 0.01 75);
+  --fg-subtle: oklch(0.5 0.01 75);
+
+  --primary: oklch(0.5 0.1 80);
+  --primary-hover: oklch(0.44 0.095 80);
+  --primary-fg: oklch(0.99 0.004 85);
+  --primary-soft: oklch(0.5 0.1 80 / 0.12);
+  --primary-ring: oklch(0.5 0.1 80 / 0.4);
+  --focus: var(--primary);
+
+  --secondary: oklch(0.88 0.006 85);
+  --secondary-fg: oklch(0.22 0.01 75);
+
+  --success: oklch(0.45 0.11 160);
+  --success-fg: oklch(0.45 0.11 160);
+  --success-soft: oklch(0.45 0.11 160 / 0.12);
+
+  --warning: oklch(0.47 0.1 70);
+  --warning-fg: oklch(0.47 0.1 70);
+  --warning-soft: oklch(0.47 0.1 70 / 0.12);
+
+  --danger: oklch(0.47 0.16 28);
+  --danger-fg: oklch(0.47 0.16 28);
+  --danger-soft: oklch(0.47 0.16 28 / 0.12);
+
+  --info: oklch(0.42 0.01 75);
+  --info-fg: oklch(0.42 0.01 75);
+  --info-soft: oklch(0.42 0.01 75 / 0.12);
+
+  --scrim: oklch(0 0 0 / 0.6);
+
+  --shadow-card: none;
+  --shadow-raised: 0 1px 0 oklch(0.22 0.01 75 / 0.06), 0 8px 24px -12px oklch(0.22 0.01 75 / 0.16);
+  --shadow-overlay: 0 1px 0 oklch(0.22 0.01 75 / 0.08), 0 24px 64px -16px oklch(0.22 0.01 75 / 0.22);
+}
+
+/* Derive the soft fills from their ink where the engine can resolve it. */
+@supports (color: oklch(from red l c h)) {
+  :root,
+  .dark,
+  .light {
+    --primary-soft: oklch(from var(--primary) l c h / 0.12);
+    --success-soft: oklch(from var(--success-fg) l c h / 0.12);
+    --warning-soft: oklch(from var(--warning-fg) l c h / 0.12);
+    --danger-soft: oklch(from var(--danger-fg) l c h / 0.12);
+  }
+}
+
+/* Layers and chrome dimensions. Set on html so scroll-padding can read them. */
+html {
+  --z-content: 0;
+  --z-sticky: 30;
+  --z-header: 40;
+  --z-overlay: 50;
+
+  --header-h: 56px;
+}
+
+@media (min-width: 64rem) {
+  html {
+    --header-h: 64px;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-hover: var(--surface-hover);
+
+  --color-rule: var(--rule);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-soft: var(--primary-soft);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-fg: var(--secondary-fg);
+
+  --color-success: var(--success);
+  --color-success-fg: var(--success-fg);
+  --color-success-soft: var(--success-soft);
+
+  --color-warning: var(--warning);
+  --color-warning-fg: var(--warning-fg);
+  --color-warning-soft: var(--warning-soft);
+
+  --color-danger: var(--danger);
+  --color-danger-fg: var(--danger-fg);
+  --color-danger-soft: var(--danger-soft);
+
+  --color-info: var(--info);
+  --color-info-fg: var(--info-fg);
+  --color-info-soft: var(--info-soft);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --shadow-card: var(--shadow-card);
+  --shadow-raised: var(--shadow-raised);
+  --shadow-overlay: var(--shadow-overlay);
+
+  /* The radius scale. These deliberately override Tailwind's own xs/sm/md keys,
+     and nothing above 10px exists outside the tool UIs. */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  /* Content measure: wide enough for the results grid, narrow enough to keep
+     prose line length readable on large displays. */
+  --container-content: 80rem;
+  --container-prose: 46rem;
+}

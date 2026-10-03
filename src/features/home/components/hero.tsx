@@ -19,9 +19,6 @@ import { formatCount } from "@/lib/utils/format";
 export function Hero({ resourceCount, toolCount }: { resourceCount: number; toolCount: number }) {
   return (
     <section className="relative overflow-hidden border-b border-border">
-      {/* Purely decorative grid, faded at the edges. */}
-      <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
-
       <Container className="relative py-16 sm:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs text-fg-muted">
