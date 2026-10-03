@@ -40,7 +40,6 @@ export default async function CollectionsPage() {
           </ul>
         ) : (
           <EmptyState
-            icon="library"
             title="No collections yet"
             description="Collections are added when there is a real problem worth solving with a specific set of resources."
           />

@@ -1,14 +1,11 @@
 import { cn } from "@/lib/utils/cn";
 
 /**
- * Loading placeholder.
- *
- * The pulse animation is suppressed globally under `prefers-reduced-motion`
- * (see `globals.css`), which leaves a static block — still a useful signal that
- * content is coming, without the movement.
+ * Loading placeholder: a static block that mirrors the final layout. It never
+ * pulses or shimmers; the wrapper's `aria-busy` and status text carry the state.
  */
 export function Skeleton({ className }: { className?: string }) {
-  return <div className={cn("animate-pulse rounded-xs bg-surface-raised", className)} aria-hidden="true" />;
+  return <div className={cn("rounded-xs bg-surface-raised", className)} aria-hidden="true" />;
 }
 
 /**

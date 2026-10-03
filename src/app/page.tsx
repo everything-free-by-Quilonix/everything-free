@@ -90,7 +90,6 @@ export default async function HomePage() {
             <ResourceGrid resources={spotlight} label="Editorially selected resources" />
           ) : (
             <EmptyState
-              icon="library"
               title="No resources have been selected yet"
               description="Selections appear here once maintainers mark entries for the homepage."
               action={
@@ -113,7 +112,6 @@ export default async function HomePage() {
             <ResourceGrid resources={recentlyVerified} label="Recently checked resources" />
           ) : (
             <EmptyState
-              icon="shield-check"
               title="Nothing has been checked yet"
               description="Once contributors start confirming facts against official sources, the most recent checks will appear here."
               action={
@@ -142,7 +140,6 @@ export default async function HomePage() {
             </ul>
           ) : (
             <EmptyState
-              icon="sliders"
               title="No integrated tools yet"
               description="Tools are added only where running something here is genuinely better than linking to an existing one."
             />
@@ -165,7 +162,7 @@ export default async function HomePage() {
               ))}
             </ul>
           ) : (
-            <EmptyState icon="library" title="No collections yet" description="Curated sets will appear here." />
+            <EmptyState title="No collections yet" description="Curated sets will appear here." />
           )}
         </Section>
 
@@ -236,7 +233,6 @@ export default async function HomePage() {
             </>
           ) : (
             <EmptyState
-              icon="refresh-cw"
               title="No alternatives recorded yet"
               description="Alternatives appear here once listings record the paid products they can replace."
             />

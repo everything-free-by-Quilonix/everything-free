@@ -107,7 +107,6 @@ export default async function CategoryPage({ params }: PageProps) {
           </>
         ) : (
           <EmptyState
-            icon="compass"
             title={`Nothing in ${category.name} yet`}
             description={
               <>

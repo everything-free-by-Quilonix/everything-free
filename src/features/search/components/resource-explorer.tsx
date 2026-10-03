@@ -170,7 +170,6 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
                 </>
               ) : (
                 <EmptyState
-                  icon="search"
                   title={isSearch ? `Nothing matched “${query.q}”` : "No resources match these filters"}
                   description={
                     <div className="flex flex-col gap-3">

@@ -108,7 +108,6 @@ export default async function AudiencePage({ params }: PageProps) {
           <ResourceGrid resources={resources} label={`Resources ${audience.name.toLowerCase()}`} />
         ) : (
           <EmptyState
-            icon={audience.icon}
             title="Nothing here yet"
             description="This view draws from the categories listed above. It fills in as those categories grow."
             action={

@@ -27,6 +27,9 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    /* Anchors and focused elements land below the sticky chrome, never under it. */
+    scroll-padding-top: calc(var(--header-h) + var(--toolbar-h, 0px) + 16px);
+    scrollbar-gutter: stable;
   }
 
   body {

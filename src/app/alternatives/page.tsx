@@ -66,7 +66,6 @@ export default async function AlternativesPage() {
           </ul>
         ) : (
           <EmptyState
-            icon="refresh-cw"
             title="No alternatives recorded yet"
             description="This page is generated from the paid products that library entries record themselves as alternatives to. It fills up as the library grows."
           />

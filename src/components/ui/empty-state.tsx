@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Icon, type IconName } from "@/components/icons";
 import { cn } from "@/lib/utils/cn";
 
 /**
@@ -10,17 +9,16 @@ import { cn } from "@/lib/utils/cn";
  * library look larger than it is, so this component is a first-class part of the
  * design system rather than an afterthought.
  *
- * Every empty state should explain what would fill it and offer a next step.
+ * Text-led: no icon disc. Every empty state should explain what would fill it and
+ * offer a next step.
  */
 export function EmptyState({
-  icon = "compass",
   title,
   description,
   action,
   className,
   compact = false,
 }: {
-  icon?: IconName;
   title: string;
   description?: ReactNode;
   action?: ReactNode;
@@ -35,14 +33,8 @@ export function EmptyState({
         className,
       )}
     >
-      <span
-        className="mb-4 flex size-11 items-center justify-center rounded-full border border-border bg-surface text-fg-subtle"
-        aria-hidden="true"
-      >
-        <Icon name={icon} size={20} />
-      </span>
       <p className="text-base font-medium text-fg">{title}</p>
-      {description ? <div className="mt-2 max-w-md text-sm leading-relaxed text-fg-muted">{description}</div> : null}
+      {description ? <div className="mt-2 max-w-md text-sm text-fg-muted">{description}</div> : null}
       {action ? <div className="mt-6">{action}</div> : null}
     </div>
   );
