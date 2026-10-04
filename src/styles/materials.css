@@ -62,6 +62,18 @@ html:has(dialog[data-ef-modal][open]) {
   overflow: hidden;
 }
 
+/* The results toolbar sticks under the header, so anchors and focused records
+   scroll clear of both. A custom property set on a descendant cannot reach html,
+   so the height is declared from the root. When the row wraps the toolbar marks
+   itself and the offset follows: two 40px rows plus the 8px gap. */
+html:has([data-results-toolbar]) {
+  --toolbar-h: 48px;
+}
+
+html:has([data-results-toolbar][data-wrapped]) {
+  --toolbar-h: 88px;
+}
+
 /* Survey bar partial fills: confirmed ink at reduced strength. Static values
    first; the relative form only inside the feature query. */
 :root {
@@ -123,6 +135,16 @@ html:has(dialog[data-ef-modal][open]) {
     background-color: var(--rule);
   }
 
+  /* The Evidence Gate reuses the track: shown in muted ink, held back as the
+     bare track. A filter result, never a confirmation colour. */
+  .survey-bar[data-size="xs"] {
+    block-size: 6px;
+  }
+
+  .survey-bar > [data-segment="shown"] {
+    background-color: var(--fg-muted);
+  }
+
   @media (forced-colors: active) {
     .survey-bar {
       forced-color-adjust: none;
@@ -132,7 +154,8 @@ html:has(dialog[data-ef-modal][open]) {
 
     .survey-bar > [data-segment="verified"],
     .survey-bar > [data-segment="partiallyVerified"],
-    .survey-bar > [data-segment="otherConfirmedFact"] {
+    .survey-bar > [data-segment="otherConfirmedFact"],
+    .survey-bar > [data-segment="shown"] {
       background-color: CanvasText;
     }
 

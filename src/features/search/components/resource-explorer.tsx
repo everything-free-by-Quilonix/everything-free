@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback, useMemo, useTransition } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Icon } from "@/components/icons";
 import { buttonClasses } from "@/components/ui/button";
@@ -16,8 +16,10 @@ import { formatCount } from "@/lib/utils/format";
 import type { Resource } from "@/types/resource";
 
 import { ActiveFilters } from "./active-filters";
+import { EvidenceGate } from "./evidence-gate";
 import { FilterPanel } from "./filter-panel";
 import { Pagination } from "./pagination";
+import { ResultsToolbar } from "./results-toolbar";
 import { SearchBox } from "./search-box";
 import { SortSelect } from "./sort-select";
 
@@ -50,6 +52,15 @@ import { SortSelect } from "./sort-select";
  */
 export function ResourceExplorer({ resources }: { resources: Resource[] }) {
   const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // One transition for every filter and sort change, so the results region
+  // carries one pending state whichever control started it.
+  const [isPending, startTransition] = useTransition();
+  const navigate = useCallback(
+    (href: string) => startTransition(() => router.push(href, { scroll: false })),
+    [router],
+  );
 
   // Recomputed only when the URL changes. At this library size the full pipeline
   // is well under a frame, so there is no need for debouncing or a worker.
@@ -98,27 +109,29 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
       <div className="mx-auto w-full max-w-(--container-content) px-4 pt-8 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
           <aside aria-label="Filter resources">
-            <FilterPanel facets={facets} resultCount={results.total} activeFilterCount={activeCount} />
+            <FilterPanel
+              facets={facets}
+              resultCount={results.total}
+              activeFilterCount={activeCount}
+              isPending={isPending}
+              onNavigate={navigate}
+            />
           </aside>
 
           <div className="min-w-0">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              {/* Announced politely so the count is heard after a filter change
-                  without the user having to go looking for it. */}
-              <p className="text-sm text-fg-muted tabular-nums" aria-live="polite">
-                {results.total === 0
-                  ? "No matching resources"
-                  : `${formatCount(results.total)} ${results.total === 1 ? "resource" : "resources"}`}
-                {results.totalPages > 1 ? (
-                  <span className="text-fg-subtle">
-                    {" "}
-                    · page {results.page} of {results.totalPages}
-                  </span>
-                ) : null}
-              </p>
-
-              <SortSelect hasQuery={isSearch} />
-            </div>
+            <ResultsToolbar
+              total={results.total}
+              page={results.page}
+              totalPages={results.totalPages}
+              filtered={isSearch || activeCount > 0}
+              gate={
+                evidenceFilterActive ? (
+                  <EvidenceGate total={results.total} heldBack={excludedByEvidence} q={effectiveQuery.q} />
+                ) : null
+              }
+            >
+              <SortSelect hasQuery={isSearch} isPending={isPending} onNavigate={navigate} />
+            </ResultsToolbar>
 
             <div className="mt-4">
               <ActiveFilters query={effectiveQuery} inferredFilters={inferredFilters} />
@@ -135,7 +148,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             {evidenceFilterActive ? (
               // A confirmed-only filter holds listings back. Saying how many — and
               // why — is the difference between an honest filter and a thin one.
-              <Callout tone="neutral" icon={null} className="mt-4">
+              <Callout id="evidence-filter-notice" tone="neutral" icon={null} className="mt-4">
                 <span data-testid="evidence-filter-notice">
                   Filters marked <span className="font-medium text-fg">confirmed</span> only include listings where an
                   official source confirms the fact.{" "}
@@ -153,7 +166,9 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
               </Callout>
             ) : null}
 
-            <div className="mt-6">
+            {/* The results region carries the pending state: busy for assistive
+                technology, dimmed for sight, while the URL change is applied. */}
+            <div className={isPending ? "mt-6 opacity-60" : "mt-6"} aria-busy={isPending || undefined}>
               {items.length > 0 ? (
                 <>
                   <ResourceGrid

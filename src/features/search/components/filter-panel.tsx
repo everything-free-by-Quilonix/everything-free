@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useTransition, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Icon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { categoryList } from "@/config/categories";
@@ -40,12 +40,14 @@ interface FilterPanelProps {
   /** Total results for the current query, shown on the mobile toggle. */
   resultCount: number;
   activeFilterCount: number;
+  /** True while the explorer's navigation transition is pending. */
+  isPending: boolean;
+  /** Runs a client-side navigation inside the explorer's transition. */
+  onNavigate: (href: string) => void;
 }
 
-export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPanelProps) {
-  const router = useRouter();
+export function FilterPanel({ facets, resultCount, activeFilterCount, isPending, onNavigate }: FilterPanelProps) {
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
 
   const isChecked = (key: string, value: string) => searchParams.getAll(key).includes(value);
@@ -63,9 +65,7 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
     params.delete(PARAM.page);
 
     const queryString = params.toString();
-    startTransition(() => {
-      router.push(queryString ? `/resources?${queryString}` : "/resources", { scroll: false });
-    });
+    onNavigate(queryString ? `/resources?${queryString}` : "/resources");
   };
 
   const toggleValue = (key: string, value: string) => {
@@ -136,20 +136,15 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
           for (const [key, value] of formData.entries()) {
             if (typeof value === "string" && value.length > 0) params.append(key, value);
           }
-          startTransition(() => router.push(`/resources?${params.toString()}`, { scroll: false }));
+          onNavigate(`/resources?${params.toString()}`);
         }}
       >
         {/* Preserves the text query and sort order across a no-JavaScript submit. */}
         <input type="hidden" name={PARAM.q} value={searchParams.get(PARAM.q) ?? ""} />
         <input type="hidden" name={PARAM.sort} value={searchParams.get(PARAM.sort) ?? ""} />
 
-        <div
-          className={cn(
-            "flex flex-col gap-6 rounded-md border border-border bg-surface p-5 transition-opacity",
-            isPending && "opacity-60",
-          )}
-          aria-busy={isPending}
-        >
+        {/* The pending state lives on the results region, which the explorer owns. */}
+        <div className="flex flex-col gap-6 rounded-md border border-border bg-surface p-5">
           <div className="flex items-center justify-between gap-2">
             <h2 className="font-display text-sm font-semibold">Filters</h2>
             {activeFilterCount > 0 ? (
