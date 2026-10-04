@@ -13,7 +13,7 @@ import { Breadcrumbs, Container } from "@/components/ui/layout";
 import { getCategory } from "@/config/categories";
 import { getFreeStatus } from "@/config/free-status";
 import { site } from "@/config/site";
-import { ResourceCard } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { ResourceFacts } from "@/features/resources/components/resource-facts";
 import { ResourceLogo } from "@/features/resources/components/resource-logo";
 import { EvidenceMark, EvidenceTag } from "@/features/resources/components/evidence";
@@ -311,13 +311,9 @@ export default async function ResourcePage({ params }: PageProps) {
                 <h2 id="similar-heading" className="font-display text-xl font-semibold">
                   Similar resources
                 </h2>
-                <ul className="mt-4 grid list-none gap-4 sm:grid-cols-2">
-                  {similar.map((entry) => (
-                    <li key={entry.slug} className="flex">
-                      <ResourceCard resource={entry} className="w-full" />
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-4">
+                  <RecordList layout="grid" resources={similar} label="Similar listings" />
+                </div>
               </section>
             ) : null}
           </div>

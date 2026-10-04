@@ -726,6 +726,33 @@ async function main() {
       return `search ${field.style} ${field.width}, sort ${sort.style} ${sort.width}`;
     });
 
+    await check("every record's first fact is its free status, with evidence", async () => {
+      // The card audit reads the first [data-fact] in each article, so a record
+      // that reorders its zones must fail here rather than pass the audit by luck.
+      const audit = `(() => {
+        const bad = [];
+        // Records only: the homepage subject groups are articles too, until the Atlas Index.
+        const records = document.querySelectorAll('main article[data-record]');
+        for (const record of records) {
+          const first = record.querySelector('[data-fact]');
+          if (!first || first.dataset.fact !== 'freeStatus' || !first.hasAttribute('data-evidence')) {
+            bad.push(record.querySelector('h3 a')?.getAttribute('href') ?? '?');
+          }
+        }
+        return { count: records.length, bad };
+      })()`;
+      const counts = [];
+      for (const route of ["/", "/resources/"]) {
+        await desktop.goto(`${site}${route}`);
+        await desktop.waitFor(JS.hydrated);
+        assert(await desktop.waitFor(`document.querySelectorAll('main article[data-record]').length > 0`), `${route}: no records`);
+        const { count, bad } = await desktop.evaluate(audit);
+        assert(bad.length === 0, `${route}: first fact is not the free status in ${bad.slice(0, 3).join(", ")}`);
+        counts.push(`${route} ${count}`);
+      }
+      return counts.join(", ");
+    });
+
     await check("contrast checker computes a ratio", async () => {
       await desktop.goto(`${site}/tools/contrast-checker/`);
       await desktop.waitFor(JS.hydrated);

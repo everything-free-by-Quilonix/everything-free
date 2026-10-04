@@ -8,7 +8,7 @@ import { buttonClasses } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
 import { categories, getCategoryBySlug, getCategoryGroup } from "@/config/categories";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { getResourcesByCategory } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, collectionSchema } from "@/lib/seo/structured-data";
@@ -103,7 +103,7 @@ export default async function CategoryPage({ params }: PageProps) {
               </Link>
             </div>
 
-            <ResourceGrid resources={resources} label={`Free ${category.name} resources`} />
+            <RecordList layout="list" resources={resources} label={`Free ${category.name} resources`} />
           </>
         ) : (
           <EmptyState

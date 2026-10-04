@@ -8,7 +8,7 @@ import { Icon } from "@/components/icons";
 import { buttonClasses } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { EmptyState } from "@/components/ui/empty-state";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { countActiveFilters, EVIDENCE_FILTER_KEYS } from "@/lib/search/filters";
 import { parseSearchParams, searchParamsToInput } from "@/lib/search/params";
 import { runSearch } from "@/lib/search/run-search";
@@ -171,7 +171,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             <div className={isPending ? "mt-6 opacity-60" : "mt-6"} aria-busy={isPending || undefined}>
               {items.length > 0 ? (
                 <>
-                  <ResourceGrid
+                  <RecordList layout="list"
                     resources={items}
                     reasonsBySlug={reasonsBySlug}
                     label={isSearch ? `Search results for ${query.q}` : "All resources"}

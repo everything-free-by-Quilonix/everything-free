@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { JsonLdScript } from "@/components/seo/json-ld";
 import { Callout } from "@/components/ui/callout";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { AlternativeComparison } from "@/features/resources/components/alternative-comparison";
 import { getAlternativesFor, getAlternativeTargets } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -90,7 +90,7 @@ export default async function AlternativePage({ params }: PageProps) {
             The alternatives
           </h2>
           <div className="mt-4">
-            <ResourceGrid resources={target.resources} label={`Free alternatives to ${target.name}`} />
+            <RecordList layout="list" resources={target.resources} label={`Free alternatives to ${target.name}`} />
           </div>
         </section>
       </Container>

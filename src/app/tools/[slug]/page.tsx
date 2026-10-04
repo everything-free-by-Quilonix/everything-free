@@ -9,7 +9,7 @@ import { Callout } from "@/components/ui/callout";
 import { Card } from "@/components/ui/card";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
 import { getTool, getToolIntegration, tools } from "@/config/tools";
-import { ResourceCard } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { hasToolImplementation, ToolSurface } from "@/features/tools/components/tool-registry";
 import { ToolAttributions, ToolPrivacyNotice } from "@/features/tools/components/tool-privacy";
 import { getResourcesBySlugs } from "@/lib/repository";
@@ -140,13 +140,9 @@ export default async function ToolPage({ params }: PageProps) {
                 <p className="mt-1.5 text-sm text-fg-muted">
                   These established applications from the library go further than a browser tool can.
                 </p>
-                <ul className="mt-4 grid list-none gap-4 sm:grid-cols-2">
-                  {related.map((resource) => (
-                    <li key={resource.slug} className="flex">
-                      <ResourceCard resource={resource} className="w-full" />
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-4">
+                  <RecordList layout="grid" resources={related} label="Established applications for heavier work" />
+                </div>
               </section>
             ) : null}
           </div>

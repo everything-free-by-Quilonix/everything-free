@@ -13,7 +13,7 @@ import { CategoryGroupCard } from "@/features/categories/components/category-car
 import { CollectionCard } from "@/features/collections/components/collection-card";
 import { libraryCensus } from "@/features/home/census";
 import { Hero } from "@/features/home/components/hero";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import {
   getAlternativeTargets,
   getAllResourcesForClient,
@@ -95,7 +95,7 @@ export default async function HomePage() {
           action={<SectionLink href="/resources">Browse everything</SectionLink>}
         >
           {spotlight.length > 0 ? (
-            <ResourceGrid resources={spotlight} columns={2} label="Editorially selected resources" />
+            <RecordList layout="grid" resources={spotlight} label="Editorially selected resources" />
           ) : (
             <EmptyState
               title="No resources have been selected yet"
@@ -119,7 +119,7 @@ export default async function HomePage() {
           action={<SectionLink href="/resources?sort=recently-verified">See all by date</SectionLink>}
         >
           {recentlyVerified.length > 0 ? (
-            <ResourceGrid resources={recentlyVerified} columns={2} label="Recently checked resources" />
+            <RecordList layout="list" resources={recentlyVerified} label="Recently checked resources" />
           ) : (
             <EmptyState
               title="Nothing has been checked yet"

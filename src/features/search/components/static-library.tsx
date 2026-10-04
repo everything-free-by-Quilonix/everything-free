@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Callout } from "@/components/ui/callout";
 import { Container } from "@/components/ui/layout";
 import { plural } from "@/components/ui/count";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { formatCount } from "@/lib/utils/format";
 import type { Resource } from "@/types/resource";
 
@@ -67,7 +67,7 @@ export function StaticLibrary({ resources }: { resources: Resource[] }) {
         </p>
 
         <div className="mt-6">
-          <ResourceGrid resources={resources} label="All resources" />
+          <RecordList layout="list" resources={resources} label="All resources" />
         </div>
       </Container>
     </>

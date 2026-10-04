@@ -5,7 +5,7 @@ import { JsonLdScript } from "@/components/seo/json-ld";
 import { Callout } from "@/components/ui/callout";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
 import { collections } from "@/data/collections";
-import { ResourceCard } from "@/features/resources/components/resource-card";
+import { ResourceRecord } from "@/features/resources/components/resource-record";
 import { getCollectionBySlug, getCollectionResources } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, collectionSchema } from "@/lib/seo/structured-data";
@@ -82,16 +82,14 @@ export default async function CollectionPage({ params }: PageProps) {
 
         {/* Ordered list: the sequence is deliberate — it follows the order you
             would actually use these in. */}
-        <ol className="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="record-list" data-layout="list">
           {resources.map((resource, index) => (
-            <li key={resource.slug} className="flex">
-              <div className="flex w-full flex-col gap-2">
-                <p className="text-xs font-medium text-fg-subtle tabular-nums">
-                  Step {index + 1}
-                  <span className="sr-only">: {resource.name}</span>
-                </p>
-                <ResourceCard resource={resource} className="flex-1" />
-              </div>
+            <li key={resource.slug}>
+              <p className="kicker px-4 pt-4 tabular-nums">
+                Step {index + 1}
+                <span className="sr-only">: {resource.name}</span>
+              </p>
+              <ResourceRecord resource={resource} />
             </li>
           ))}
         </ol>

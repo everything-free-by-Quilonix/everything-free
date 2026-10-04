@@ -165,6 +165,122 @@ html:has([data-results-toolbar][data-wrapped]) {
   }
 }
 
+/* Fact meter unsettled fill: checked but not settled, at reduced strength. */
+:root {
+  --meter-unsettled: oklch(0.82 0.12 80 / 0.45);
+}
+
+.light {
+  --meter-unsettled: oklch(0.47 0.1 70 / 0.45);
+}
+
+@supports (color: oklch(from red l c h)) {
+  :root,
+  .light {
+    --meter-unsettled: oklch(from var(--warning-fg) l c h / 0.45);
+  }
+}
+
+@layer components {
+  /* Records: ruled, not boxed. A hairline between records, none above the
+     first; in a two-up grid the second record starts the first row too. */
+  .record-list {
+    display: grid;
+    column-gap: 1.5rem;
+  }
+
+  .record-list > li {
+    container: record / inline-size;
+  }
+
+  .record-list > li + li {
+    border-top: 1px solid var(--rule);
+  }
+
+  .record-list[data-layout="list"] > li {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 168px;
+  }
+
+  @media (min-width: 40rem) {
+    .record-list[data-layout="grid"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .record-list[data-layout="grid"] > li:nth-child(2) {
+      border-top: 0;
+    }
+  }
+
+  .record {
+    gap: 0.75rem;
+  }
+
+  /* Wide records put the facts zone beside the main zone. DOM order is the
+     visual order, so nothing is reordered. */
+  @container record (min-width: 44rem) {
+    .record {
+      grid-template-columns: minmax(0, 1fr) 17rem;
+      column-gap: 1.5rem;
+    }
+  }
+
+  .record:focus-within {
+    background-color: var(--surface-hover);
+  }
+
+  @media (hover: hover) {
+    .record:hover {
+      background-color: var(--surface-hover);
+    }
+
+    .record:hover h3 a {
+      text-decoration-line: underline;
+      text-underline-offset: 0.2em;
+    }
+  }
+
+  .record:has(h3 a:active) {
+    background-color: var(--fill-pressed);
+  }
+
+  /* Coordinates: each part wraps whole; the separator closes the part before. */
+  .coordinates > span {
+    white-space: nowrap;
+  }
+
+  .coordinates > span:not(:last-child)::after {
+    content: " ·";
+    color: var(--fg-subtle);
+  }
+
+  /* Fact meter: one element. Confirmed, then unsettled, then the rest, as hard
+     stops; the mask cuts --n cells of 6px with 2px gaps. */
+  .fact-meter {
+    --a: calc(var(--c) / var(--n) * 100%);
+    --b: calc((var(--c) + var(--u)) / var(--n) * 100%);
+    display: inline-block;
+    flex: none;
+    inline-size: calc(var(--n) * 8px - 2px);
+    block-size: 8px;
+    background: linear-gradient(
+      to right,
+      var(--success-fg) 0 var(--a),
+      var(--meter-unsettled) var(--a) var(--b),
+      var(--rule) var(--b) 100%
+    );
+    mask: repeating-linear-gradient(to right, #000 0 6px, transparent 6px 8px);
+  }
+
+  @media (forced-colors: active) {
+    .fact-meter {
+      forced-color-adjust: none;
+      border: 1px solid CanvasText;
+      mask: none;
+    }
+  }
+}
+
 /* Derived fills. Static value first; relative value only inside the query. */
 :root {
   --fill-pressed: var(--surface-hover);

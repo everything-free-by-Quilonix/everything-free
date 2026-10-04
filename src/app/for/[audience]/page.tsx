@@ -9,7 +9,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
 import { audiences, getAudience } from "@/config/audiences";
 import { getCategory } from "@/config/categories";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { getResources } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, collectionSchema } from "@/lib/seo/structured-data";
@@ -105,7 +105,7 @@ export default async function AudiencePage({ params }: PageProps) {
 
       <Container className="pt-8">
         {resources.length > 0 ? (
-          <ResourceGrid resources={resources} label={`Resources ${audience.name.toLowerCase()}`} />
+          <RecordList layout="list" resources={resources} label={`Resources ${audience.name.toLowerCase()}`} />
         ) : (
           <EmptyState
             title="Nothing here yet"
