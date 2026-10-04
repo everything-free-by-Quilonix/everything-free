@@ -15,6 +15,7 @@ import { CompareLink } from "@/features/compare/compare-link";
 import { CoordinatesLine } from "@/features/resources/components/coordinates-line";
 import { EvidenceMark, EvidenceTag } from "@/features/resources/components/evidence";
 import { Legend } from "@/features/resources/components/legend";
+import { MobileActionBar } from "@/features/resources/components/mobile-action-bar";
 import { OnThisPage, type PageSection } from "@/features/resources/components/on-this-page";
 import { ProvenanceRail } from "@/features/resources/components/provenance-rail";
 import { RecordList } from "@/features/resources/components/resource-record";
@@ -481,6 +482,8 @@ export default async function ResourcePage({ params }: PageProps) {
           </aside>
         </div>
       </Container>
+
+      <MobileActionBar href={resource.officialUrl} host={displayHost(resource.officialUrl)} />
 
       <JsonLdScript
         data={[

@@ -1157,6 +1157,17 @@ async function main() {
           assert(await page.waitFor(`document.activeElement?.getAttribute("aria-label") === "Open menu"`), "focus not returned to trigger");
         });
 
+        await check("mobile: the record action bar appears once the header actions scroll away, never over the footer", async () => {
+          await page.goto(`${site}/resources/supabase/`);
+          await page.waitFor(JS.hydrated);
+          const state = `(() => { const bar = document.querySelector('.action-bar'); return bar ? (bar.hasAttribute('data-visible') ? 'shown' : getComputedStyle(bar).visibility) : 'missing'; })()`;
+          assert((await page.evaluate(state)) === "hidden", `at the top the bar is ${await page.evaluate(state)}`);
+          await page.evaluate(`window.scrollTo(0, document.querySelector('[data-record-actions]').getBoundingClientRect().bottom + window.scrollY + 400)`);
+          assert(await page.waitFor(`${state} === 'shown'`), "bar did not appear after the header actions scrolled away");
+          await page.evaluate(`window.scrollTo(0, document.documentElement.scrollHeight)`);
+          assert(await page.waitFor(`${state} !== 'shown'`), "bar stays over the footer");
+        });
+
         await check("mobile: the Filters sheet holds the only filter form and returns focus", async () => {
           await page.goto(`${site}/resources/`);
           await page.waitFor(JS.hydrated);

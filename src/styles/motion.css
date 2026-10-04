@@ -122,6 +122,13 @@ dialog[data-ef-modal][data-closing] {
   }
 }
 
+/* The mobile action bar rises in and sinks out; visibility (discrete by
+   nature) flips at the end of EXIT, so the hidden bar leaves the tab order. */
+@utility motion-action-bar {
+  transition: opacity var(--dur-quick) var(--ease-standard), transform var(--dur-quick) var(--ease-standard),
+    visibility var(--dur-quick);
+}
+
 /* MOVE: disclosure chevrons rotate; the segmented indicator slides. */
 @utility motion-chevron {
   transition: rotate var(--dur-quick) var(--ease-standard);

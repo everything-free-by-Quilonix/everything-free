@@ -81,14 +81,24 @@ html:has([data-results-toolbar][data-wrapped]) {
   --toolbar-h: 88px;
 }
 
-/* While the compare tray is shown, the page ends above it and focused or
-   anchored elements scroll clear of it. No script measures it. */
-html:has([data-compare-tray]) {
+/* The record page's mobile action bar: hidden (and out of the tab order) until
+   it is marked visible; while visible the page ends above it. */
+.action-bar:not([data-visible]) {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(var(--dist-short));
+}
+
+/* While a bottom bar is shown (the record action bar, or the compare tray on
+   /resources; they never share a page), the page ends above it and focused or
+   anchored elements scroll clear of it. One height covers both bars, safe
+   area included. No script measures it. */
+html:has(.action-bar[data-visible], [data-compare-tray]) {
   scroll-padding-bottom: 5rem;
 }
 
-html:has([data-compare-tray]) main {
-  padding-bottom: 5rem;
+html:has(.action-bar[data-visible], [data-compare-tray]) main {
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
 }
 
 /* Survey bar partial fills: confirmed ink at reduced strength. Static values
@@ -375,8 +385,6 @@ html:has([data-compare-tray]) main {
 
     .palette-option[aria-selected="true"] {
       border-inline-start-color: Highlight;
-      outline: 1px solid Highlight;
-      outline-offset: -1px;
     }
   }
 
