@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Icon } from "@/components/icons";
 import { buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
 import { primaryNav } from "@/config/navigation";
+import { PaletteTrigger } from "@/features/palette/palette-trigger";
 import { Brand } from "./brand";
 import { MobileNav } from "./mobile-nav";
 import { NavLinks } from "./nav-links";
@@ -28,15 +28,9 @@ export function SiteHeader() {
           </nav>
 
           <div className="ml-auto flex items-center gap-1">
-            {/* The trigger slot for the command palette (increment 10). Without JS
-                it is, and stays, a working link to the library. */}
-            <Link
-              href="/resources"
-              className="inline-flex size-11 items-center justify-center rounded-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg active:bg-(--fill-pressed)"
-              aria-label="Search resources"
-            >
-              <Icon name="search" size={20} />
-            </Link>
+            {/* The command palette trigger. Without JS it is a working link to
+                the library. */}
+            <PaletteTrigger />
 
             <ThemeToggle />
 

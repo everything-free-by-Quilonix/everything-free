@@ -504,6 +504,71 @@ async function main() {
       return href;
     });
 
+    /* ------------------------------------------------- command palette */
+    const ctrlK = async (page) => {
+      for (const type of ["keyDown", "keyUp"]) {
+        await page.send("Input.dispatchKeyEvent", { type, key: "k", code: "KeyK", windowsVirtualKeyCode: 75, modifiers: 2 });
+      }
+    };
+    const palette = {
+      open: `!!document.querySelector('dialog[data-palette][open]')`,
+      closed: `!document.querySelector('[data-palette]')`,
+      input: `document.querySelector('[data-palette] [role="combobox"]')`,
+    };
+
+    await check("palette index loads and parses", async () => {
+      const response = await fetch(`${site}/palette-index.json`);
+      assert(response.ok, `HTTP ${response.status}`);
+      const index = await response.json();
+      assert(index.v === 1 && index.t > 0, "unexpected index header");
+      assert(index.resources.length === manifest.count, `${index.resources.length} listings, manifest has ${manifest.count}`);
+      assert(index.resources.every((r) => r.k + r.u <= index.t), "a listing counts more facts than the total");
+      return `${index.resources.length} listings, t=${index.t}`;
+    });
+
+    await check("Ctrl+K palette: type, Escape clears, Escape closes, Enter navigates in place", async () => {
+      const target = manifest.entries.find((e) => e.slug === "supabase") ?? manifest.entries[0];
+      await desktop.goto(`${site}/resources/`);
+      await desktop.waitFor(JS.hydrated);
+      await ctrlK(desktop);
+      assert(await desktop.waitFor(`${palette.open} && document.querySelector('[role="dialog"]') !== null`), "Ctrl+K did not open the palette");
+      assert(await desktop.waitFor(`document.activeElement === ${palette.input}`), "focus is not on the combobox");
+      await desktop.send("Input.insertText", { text: target.name });
+      const option = `[...document.querySelectorAll('[data-palette] [role="option"]')].find((o) => o.textContent.includes(${JSON.stringify(target.name)}))`;
+      assert(await desktop.waitFor(`!!${option}`), `${target.name} not offered`);
+      await desktop.key("Escape", "Escape", 27);
+      assert(await desktop.waitFor(`${palette.open} && ${palette.input}.value === ''`), "Escape with a query did not keep the palette open and clear it");
+      await desktop.key("Escape", "Escape", 27);
+      assert(await desktop.waitFor(palette.closed), "Escape on an empty query did not close");
+      assert(await desktop.waitFor(`!!document.activeElement && !document.activeElement.closest('dialog')`), "focus was not returned to the page");
+
+      await ctrlK(desktop);
+      assert(await desktop.waitFor(palette.open), "Ctrl+K did not reopen the palette");
+      await desktop.send("Input.insertText", { text: target.name });
+      assert(await desktop.waitFor(`${option}?.getAttribute('aria-selected') === 'true'`), `${target.name} is not the active row`);
+      await desktop.evaluate(`window.__noReload = true`);
+      await desktop.key("Enter", "Enter", 13);
+      assert(await desktop.waitFor(`location.pathname.endsWith('/resources/${target.slug}/')`), "Enter did not navigate");
+      assert(await desktop.waitFor(palette.closed), "palette still open after navigating");
+      assert(await desktop.evaluate(`window.__noReload === true`), "navigation fell back to a full page load");
+      assert(await desktop.waitFor(`document.activeElement?.id === 'main'`), "focus did not move to the main region");
+      return target.slug;
+    });
+
+    await check("palette opened without user activation still closes on Escape and reopens", async () => {
+      await desktop.goto(`${site}/`);
+      await desktop.waitFor(JS.hydrated);
+      // An untrusted click: no user activation reaches the dialog.
+      assert(await desktop.evaluate(JS.click('header a[aria-label="Search resources"]')), "palette trigger missing");
+      assert(await desktop.waitFor(palette.open), "trigger click did not open the palette");
+      await desktop.key("Escape", "Escape", 27);
+      assert(await desktop.waitFor(palette.closed), "Escape did not close a palette opened without activation");
+      await ctrlK(desktop);
+      assert(await desktop.waitFor(palette.open), "Ctrl+K did not reopen the palette");
+      await desktop.key("Escape", "Escape", 27);
+      assert(await desktop.waitFor(palette.closed), "palette did not close again");
+    });
+
     await check("verification evidence is summarised, then disclosed on demand", async () => {
       // Uses the manifest rather than a hard-coded slug, so the check follows the data:
       // pick any entry that has recorded per-check evidence.

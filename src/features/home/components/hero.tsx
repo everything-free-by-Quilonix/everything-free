@@ -5,6 +5,7 @@ import { intentExamples } from "@/config/site";
 import { countNoun, type LibraryCensus } from "@/features/home/census";
 import { Legend } from "@/features/resources/components/legend";
 import { SurveyBar, SurveySummary } from "@/features/resources/components/survey-bar";
+import { PaletteShortcutHint } from "@/features/palette/palette-trigger";
 import { SearchBox } from "@/features/search/components/search-box";
 
 /**
@@ -50,6 +51,7 @@ export function Hero({ census }: { census: LibraryCensus }) {
             <div className="mt-8 max-w-2xl">
               <SearchBox size="lg" label="Search the library" />
             </div>
+            {empty ? null : <PaletteShortcutHint className="mt-3 text-sm text-fg-subtle" />}
 
             {empty ? (
               <p className="mt-4 text-sm text-fg-muted">
