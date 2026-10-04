@@ -73,7 +73,7 @@ export function Legend(props: { variant: "full" } | { variant: "popover"; id: st
         popover="auto"
         data-legend="popover"
         style={{ positionAnchor: `--${id}` } as CSSProperties}
-        className="material-elevated rounded-md text-fg"
+        className="material-elevated motion-popover rounded-md text-fg"
       >
         <h4 className="kicker">How to read a listing</h4>
         <Key />

@@ -162,13 +162,13 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
 
       {/* ---------------------------------------------- full evidence */}
       {records.length > 0 ? (
-        <details className="group mt-4 border-t border-border pt-3">
+        <details className="motion-details group mt-4 border-t border-border pt-3">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xs text-sm font-medium text-fg [&::-webkit-details-marker]:hidden">
             View verification evidence
             <Icon
               name="chevron-down"
               size={15}
-              className="shrink-0 text-fg-subtle transition-transform group-open:rotate-180 motion-reduce:transition-none"
+              className="motion-chevron shrink-0 text-fg-subtle group-open:rotate-180"
             />
           </summary>
 

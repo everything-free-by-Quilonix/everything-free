@@ -1065,6 +1065,46 @@ async function main() {
       assert(await desktop.waitFor(`location.pathname.endsWith('/compare/') && document.querySelectorAll('table thead th a').length === 3`), "comparison did not open with three columns");
       assert(await desktop.evaluate(`window.__noReload === true`), "navigation fell back to a full page load");
     });
+
+    /* ------------------------------------------------- motion */
+    const reducedMotion = (on) =>
+      desktop.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: on ? "reduce" : "no-preference" }] });
+    const ms = `((v) => { const f = v.split(',')[0].trim(); const n = parseFloat(f); return f.endsWith('ms') ? n : n * 1000; })`;
+
+    await check("palette ENTER has a duration, and none under reduced motion", async () => {
+      const durations = [];
+      for (const on of [false, true]) {
+        await reducedMotion(on);
+        await desktop.goto(`${site}/`);
+        await desktop.waitFor(JS.hydrated);
+        await ctrlK(desktop);
+        assert(await desktop.waitFor(palette.open), "Ctrl+K did not open the palette");
+        durations.push(await desktop.evaluate(`${ms}(getComputedStyle(document.querySelector('dialog[data-palette]')).transitionDuration)`));
+        await desktop.key("Escape", "Escape", 27);
+        assert(await desktop.waitFor(palette.closed), "palette did not close");
+      }
+      await reducedMotion(false);
+      assert(durations[0] > 0, `no ENTER duration with motion allowed (${durations[0]}ms)`);
+      // Rounded: 0.01ms reads back as "1e-05s", which is not exact in binary.
+      assert(Math.round(durations[1] * 1000) / 1000 <= 0.01, `reduced motion leaves ${durations[1]}ms`);
+      return `${durations[0]}ms, reduced ${durations[1]}ms`;
+    });
+
+    await check("skip link leaves <main> untinted, with and without reduced motion", async () => {
+      for (const on of [false, true]) {
+        await reducedMotion(on);
+        await desktop.goto(`${site}/`);
+        await desktop.waitFor(JS.hydrated);
+        const before = await desktop.evaluate(`getComputedStyle(document.querySelector('main')).backgroundColor`);
+        await desktop.key("Tab", "Tab", 9);
+        await desktop.key("Enter", "Enter", 13);
+        assert(await desktop.waitFor(`location.hash === '#main'`), "skip link did not target #main");
+        const after = await desktop.evaluate(`(() => { const s = getComputedStyle(document.querySelector('main')); return { bg: s.backgroundColor, anim: s.animationName }; })()`);
+        assert(after.bg === before, `main background ${before} became ${after.bg}${on ? " (reduced motion)" : ""}`);
+        assert(after.anim === "none", `main animates: ${after.anim}`);
+      }
+      await reducedMotion(false);
+    });
     await desktop.close();
 
     /* ------------------------------------------------ viewports */

@@ -227,7 +227,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
 
             {/* The results region carries the pending state: busy for assistive
                 technology, dimmed for sight, while the URL change is applied. */}
-            <div className={isPending ? "mt-6 opacity-60" : "mt-6"} aria-busy={isPending || undefined}>
+            <div className={isPending ? "motion-pending mt-6 opacity-60" : "motion-pending mt-6"} aria-busy={isPending || undefined}>
               {items.length > 0 ? (
                 <>
                   <RecordList

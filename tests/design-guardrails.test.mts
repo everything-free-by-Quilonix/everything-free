@@ -29,6 +29,9 @@ const TOOL_UIS = "src/features/tools/implementations/";
  */
 const OUTLINE_SUPPRESSION_ALLOWED = ["src/app/layout.tsx", "src/features/search/components/search-box.tsx"];
 
+/** Every transition, animation and keyframe lives here. */
+const MOTION_FILE = "src/styles/motion.css";
+
 /** The single translucent recipe, and the most files that may apply it. */
 const MATERIALS_FILE = "src/styles/materials.css";
 const MAX_FUNCTIONAL_FILES = 3;
@@ -287,6 +290,30 @@ describe("design guardrails", () => {
 
   test("no animation classes other than animate-none", () => {
     assert.deepEqual(hits(CODE, /\banimate-(?!none\b)[a-z0-9[-]+/), []);
+  });
+
+  test("transition and animation declarations live only in motion.css", () => {
+    const found: string[] = [];
+    for (const file of CSS.filter((f) => f.path !== MOTION_FILE)) {
+      for (const { decl, line } of cssDeclarations(file.text)) {
+        if (/^(?:transition|animation)(?:-duration|-timing-function|-delay)?\s*:/.test(decl)) {
+          found.push(`${file.path}:${line}: ${decl}`);
+        }
+      }
+    }
+    assert.deepEqual(found, []);
+  });
+
+  test("@keyframes only in motion.css", () => {
+    assert.deepEqual(hits(CSS.filter((f) => f.path !== MOTION_FILE), /@keyframes\b/), []);
+  });
+
+  test("every :target in motion.css excludes #main, and no other stylesheet uses :target", () => {
+    const motion = CSS.filter((f) => f.path === MOTION_FILE);
+    assert.equal(motion.length, 1);
+    assert.ok(/:target:not\(#main\)/.test(motion[0].text), "motion.css has no :target flash");
+    assert.deepEqual(hits(motion, /:target(?!:not\(#main\))/), []);
+    assert.deepEqual(hits(CSS.filter((f) => f.path !== MOTION_FILE), /:target\b/), []);
   });
 
   test("globals.css declares no token and references no status colour", () => {

@@ -176,13 +176,15 @@ export function FactValue({
 export function EvidenceDetails({ evidence }: { evidence: FactEvidence }) {
   const { record, source } = evidence;
   return (
+    // Opens instantly (no motion-details): its text is read the moment it
+    // opens, by people scanning a row and by the detail-page smoke audit.
     <details className="group text-xs">
       <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-xs text-fg-subtle underline-offset-2 hover:text-fg hover:underline [&::-webkit-details-marker]:hidden">
         How we know
         <Icon
           name="chevron-down"
           size={12}
-          className="transition-transform group-open:rotate-180 motion-reduce:transition-none"
+          className="motion-chevron group-open:rotate-180"
         />
       </summary>
       <div className="mt-1.5 flex flex-col gap-1 rounded-xs border border-border bg-bg-subtle px-2.5 py-2 leading-relaxed text-fg-muted">

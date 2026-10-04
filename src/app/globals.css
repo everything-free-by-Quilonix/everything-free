@@ -1,12 +1,13 @@
 /* Class detection is scoped to src/: design docs and scratch folders quote
    banned utilities, and the shipped CSS must depend on committed source only. */
 @import "tailwindcss" source("..");
-/* Prose and code inside src/ (".filter(", "focus ring", "transition") read as
+/* Prose and code inside src/ (".filter(", "focus ring", "transition", "box-shadow") read as
    bare utilities. None is used as a class, and each one pulls in a block of
    @property fallbacks, so they are excluded by name. */
-@source not inline("ring filter transform transition");
+@source not inline("ring filter transform transition shadow");
 @import "../styles/tokens.css";
 @import "../styles/materials.css";
+@import "../styles/motion.css";
 
 /*
  * Everything.Free base layer
@@ -90,22 +91,8 @@
     accent-color: var(--primary);
   }
 
-  /* Honour the OS-level reduced-motion preference everywhere, including
-     third-party markup we do not control. */
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
+  /* The reduced-motion kill switch lives in src/styles/motion.css, with every
+     other motion declaration. */
 
   /* Keep native form controls legible in both themes. */
   ::placeholder {

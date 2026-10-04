@@ -18,7 +18,7 @@ import { ThemeToggle } from "./theme";
  */
 export function SiteHeader() {
   return (
-    <header className="material-functional sticky top-0 z-(--z-header)">
+    <header className="material-functional motion-scroll-hairline sticky top-0 z-(--z-header)">
       <Container>
         <div className="flex h-(--header-h) items-center gap-6">
           <Brand />

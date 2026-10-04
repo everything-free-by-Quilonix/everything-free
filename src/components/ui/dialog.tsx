@@ -26,13 +26,21 @@ import { cn } from "@/lib/utils/cn";
 
 export type DialogCloseReason = "escape" | "scrim";
 
+/** The first entry of a computed time list ("0.15s, 0.15s" or "150ms"), in ms. */
+function parseCssTime(value: string): number {
+  const first = value.split(",")[0]?.trim() ?? "";
+  const n = parseFloat(first);
+  if (!Number.isFinite(n)) return 0;
+  return first.endsWith("ms") ? n : n * 1000;
+}
+
 const PANEL: Record<DialogProps["variant"], string> = {
   "panel-right":
-    "m-0 ml-auto h-dvh max-h-dvh w-[min(20rem,100vw-3rem)] max-w-none border-y-0 border-r-0",
+    "motion-enter-panel m-0 ml-auto h-dvh max-h-dvh w-[min(20rem,100vw-3rem)] max-w-none border-y-0 border-r-0",
   "sheet-bottom":
-    "m-0 mt-auto h-[92dvh] max-h-[92dvh] w-full max-w-none rounded-t-md border-x-0 border-b-0",
+    "motion-enter-sheet m-0 mt-auto h-[92dvh] max-h-[92dvh] w-full max-w-none rounded-t-md border-x-0 border-b-0",
   "palette-top":
-    "mx-auto mt-2 w-[calc(100vw-1rem)] max-w-none rounded-md sm:mt-[12vh] sm:w-[min(40rem,100vw-2rem)]",
+    "motion-enter-palette mx-auto mt-2 w-[calc(100vw-1rem)] max-w-none rounded-md sm:mt-[12vh] sm:w-[min(40rem,100vw-2rem)]",
 };
 
 interface DialogProps {
@@ -106,8 +114,9 @@ export function Dialog({
       if (event.target === dialog) finish();
     };
     dialog.setAttribute("data-closing", "");
-    const duration = parseFloat(getComputedStyle(dialog).transitionDuration) || 0;
-    const timer = window.setTimeout(finish, duration * 1000 + 50);
+    // The computed duration, not the token: reduced motion collapses it to
+    // 0.01ms, and EXIT (motion.css) is the duration that now applies.
+    const timer = window.setTimeout(finish, parseCssTime(getComputedStyle(dialog).transitionDuration) + 50);
     dialog.addEventListener("transitionend", onTransitionEnd);
     return () => {
       window.clearTimeout(timer);

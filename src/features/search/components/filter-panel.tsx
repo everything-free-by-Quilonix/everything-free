@@ -357,7 +357,7 @@ function FilterGroup({
         <Icon
           name="chevron-down"
           size={14}
-          className="transition-transform group-open:rotate-180 motion-reduce:transition-none"
+          className="motion-chevron group-open:rotate-180"
         />
       </summary>
       <fieldset className="mt-2">
