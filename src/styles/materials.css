@@ -247,6 +247,17 @@ html:has([data-results-toolbar][data-wrapped]) {
     background-color: var(--fill-pressed);
   }
 
+  /* Provenance rail: a 1px rule joins each 7px station ring (top 4px) to the
+     next one, across the 1.25rem gap. */
+  .provenance > li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 3px;
+    top: 11px;
+    bottom: calc(-1.25rem - 4px);
+    border-inline-start: 1px solid var(--rule);
+  }
+
   /* Coordinates: each part wraps whole; the separator closes the part before. */
   .coordinates > span {
     white-space: nowrap;

@@ -546,6 +546,33 @@ async function main() {
       return unchecked.slug;
     });
 
+    await check("provenance rail states the panel's required-checks figure, or that none are recorded", async () => {
+      // Same picks as the two checks above, so the rail and the panel are read on
+      // the same pages: one listing with check records, one without.
+      const audited = manifest.entries.find((e) => e.confirmedChecks.length + e.unresolvedChecks.length > 0);
+      const unchecked = manifest.entries.find((e) => e.stage === "not-started");
+      assert(audited && unchecked, "no listing for one of the two branches");
+      const station = `document.querySelector('[aria-labelledby="provenance-heading"] [data-provenance="checks"]')?.textContent ?? ''`;
+      const panel = `[...document.querySelectorAll('h2')].find((h) => h.textContent.trim() === 'Verification')?.parentElement?.innerText ?? ''`;
+
+      await desktop.goto(`${site}/resources/${audited.slug}/`);
+      await desktop.waitFor(JS.hydrated);
+      const withChecks = await desktop.evaluate(station);
+      const pair = withChecks.match(/(\d+) of (\d+)/)?.[0];
+      assert(pair, `station 2 has no ratio: ${withChecks}`);
+      const panelText = await desktop.evaluate(panel);
+      assert(panelText.includes(`${pair} required checks confirmed`), `panel does not show ${pair}: ${panelText.slice(0, 160)}`);
+      const page = await desktop.evaluate(`document.body.innerText`);
+      assert(!/\bof 12\b/.test(page), "a third denominator ('of 12') appears on the record page");
+
+      await desktop.goto(`${site}/resources/${unchecked.slug}/`);
+      await desktop.waitFor(JS.hydrated);
+      const without = await desktop.evaluate(station);
+      assert(without.includes("No checks recorded yet"), `station 2 reads: ${without}`);
+      assert(!without.includes("required checks"), "station 2 shows a ratio with no check records");
+      return `${audited.slug}: ${pair}; ${unchecked.slug}: none recorded`;
+    });
+
     /* ------------------------------------------ fact-level evidence */
     const factsBySlug = Object.fromEntries(manifest.entries.map((entry) => [entry.slug, entry.facts]));
 

@@ -16,6 +16,7 @@ import { RecordList } from "@/features/resources/components/resource-record";
 import { ResourceFacts } from "@/features/resources/components/resource-facts";
 import { ResourceLogo } from "@/features/resources/components/resource-logo";
 import { EvidenceMark, EvidenceTag } from "@/features/resources/components/evidence";
+import { ProvenanceRail } from "@/features/resources/components/provenance-rail";
 import { ResourceSnapshot } from "@/features/resources/components/resource-snapshot";
 import { VerificationPanel } from "@/features/resources/components/verification-panel";
 import { FACTS, factEvidence } from "@/lib/resources/evidence";
@@ -153,9 +154,19 @@ export default async function ResourcePage({ params }: PageProps) {
       </header>
 
       <Container className="pt-10">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
+        {/* The rail comes first in reading order: below lg it follows the
+            header's snapshot; from lg it heads the second column, sticky inside a
+            row that takes the spare height, so the aside blocks sit at its foot
+            and never scroll up beneath it. */}
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:grid-rows-[1fr_auto]">
+          <div className="lg:col-start-2 lg:row-start-1">
+            <div className="lg:sticky lg:top-[calc(var(--header-h)+1rem)]">
+              <ProvenanceRail resource={resource} />
+            </div>
+          </div>
+
           {/* ----------------------------------------------- main column */}
-          <div className="flex min-w-0 flex-col gap-10">
+          <div className="flex min-w-0 flex-col gap-10 lg:col-start-1 lg:row-span-2 lg:row-start-1">
             {/* The caveat sits immediately under the status, before anything
                 persuasive, so the trade-off is read before the feature list. */}
             {status.caveat ? (
@@ -310,9 +321,11 @@ export default async function ResourcePage({ params }: PageProps) {
           </div>
 
           {/* ---------------------------------------------------- sidebar */}
-          <aside className="flex flex-col gap-6">
+          <aside className="flex flex-col gap-6 lg:col-start-2 lg:row-start-2">
             {/* ------------------------------------------ verification */}
-            <VerificationPanel resource={resource} />
+            <div id="verification">
+              <VerificationPanel resource={resource} />
+            </div>
 
             {/* --------------------------------------- source of truth */}
             <Card className="p-5">
