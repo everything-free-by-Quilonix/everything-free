@@ -43,7 +43,7 @@ export function ResourceCard({
 
         <div className="min-w-0 flex-1">
           <h3 className="font-display text-base leading-tight font-semibold">
-            <Link href={`/resources/${resource.slug}`} className={cn("rounded", stretchedLink)}>
+            <Link href={`/resources/${resource.slug}`} className={cn("rounded-xs", stretchedLink)}>
               {resource.name}
             </Link>
           </h3>

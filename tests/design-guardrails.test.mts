@@ -190,6 +190,11 @@ describe("design guardrails", () => {
     assert.deepEqual(hits(files, /\brounded(?:-[trblse]{1,2})?-\[/), []);
   });
 
+  test("no bare rounded (4px, off the 3/6/10 scale) outside the tool UIs", () => {
+    const files = TSX.filter(notTool);
+    assert.deepEqual(hits(files, /(?<![\w-])rounded(?:-[trblse]{1,2})?(?![\w-])/), []);
+  });
+
   test("focus outlines are suppressed only on the allow-list", () => {
     const files = TSX.filter(notTool).filter((f) => !OUTLINE_SUPPRESSION_ALLOWED.includes(f.path));
     assert.deepEqual(hits(files, /\boutline-(?:none|hidden)\b/), []);

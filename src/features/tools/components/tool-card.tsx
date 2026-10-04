@@ -35,7 +35,7 @@ export function ToolCard({ tool }: { tool: Tool }) {
             {planned ? (
               tool.name
             ) : (
-              <Link href={`/tools/${tool.slug}`} className={cn("rounded", stretchedLink)}>
+              <Link href={`/tools/${tool.slug}`} className={cn("rounded-xs", stretchedLink)}>
                 {tool.name}
               </Link>
             )}

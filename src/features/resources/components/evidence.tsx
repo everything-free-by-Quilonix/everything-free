@@ -170,7 +170,7 @@ export function EvidenceDetails({ evidence }: { evidence: FactEvidence }) {
   const { record, source } = evidence;
   return (
     <details className="group text-xs">
-      <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded text-fg-subtle underline-offset-2 hover:text-fg hover:underline [&::-webkit-details-marker]:hidden">
+      <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-xs text-fg-subtle underline-offset-2 hover:text-fg hover:underline [&::-webkit-details-marker]:hidden">
         How we know
         <Icon
           name="chevron-down"

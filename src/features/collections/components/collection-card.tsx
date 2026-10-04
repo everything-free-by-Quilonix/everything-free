@@ -22,7 +22,7 @@ export function CollectionCard({ collection }: { collection: Collection }) {
       <h3 className="font-serif text-xl font-semibold">
         <Link
           href={`/collections/${collection.slug}`}
-          className="rounded underline-offset-[0.2em] decoration-border-strong hover:underline"
+          className="rounded-xs underline-offset-[0.2em] decoration-border-strong hover:underline"
         >
           {collection.name}
         </Link>

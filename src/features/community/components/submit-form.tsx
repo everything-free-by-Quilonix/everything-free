@@ -86,7 +86,7 @@ export function SubmitResourceForm() {
           <button
             type="button"
             onClick={() => setState(idleState)}
-            className="rounded text-xs underline underline-offset-2 hover:text-fg"
+            className="rounded-xs text-xs underline underline-offset-2 hover:text-fg"
           >
             Submit another resource
           </button>

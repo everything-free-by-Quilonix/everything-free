@@ -86,7 +86,7 @@ export function Hero({ census }: { census: LibraryCensus }) {
                 </div>
                 <Link
                   href="/verification"
-                  className="mt-3 inline-flex items-center gap-1 rounded text-sm font-medium text-fg-muted underline-offset-[0.2em] transition-colors hover:text-fg hover:underline"
+                  className="mt-3 inline-flex items-center gap-1 rounded-xs text-sm font-medium text-fg-muted underline-offset-[0.2em] transition-colors hover:text-fg hover:underline"
                 >
                   How verification works
                   <Icon name="arrow-right" size={14} />

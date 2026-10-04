@@ -117,7 +117,7 @@ export function SectionLink({ href, children }: { href: string; children: ReactN
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-1 rounded text-sm font-medium text-fg-muted underline-offset-[0.2em] transition-colors hover:text-fg hover:underline"
+      className="inline-flex items-center gap-1 rounded-xs text-sm font-medium text-fg-muted underline-offset-[0.2em] transition-colors hover:text-fg hover:underline"
     >
       {children}
       <Icon name="arrow-right" size={14} />
@@ -175,7 +175,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
               {item.href && !isLast ? (
                 <Link
                   href={item.href}
-                  className="rounded underline-offset-[0.2em] transition-colors hover:text-fg hover:underline"
+                  className="rounded-xs underline-offset-[0.2em] transition-colors hover:text-fg hover:underline"
                 >
                   {item.label}
                 </Link>

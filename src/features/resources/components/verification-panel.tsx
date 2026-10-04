@@ -160,7 +160,7 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
       {/* ---------------------------------------------- full evidence */}
       {records.length > 0 ? (
         <details className="group mt-4 border-t border-border pt-3">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-2 rounded text-sm font-medium text-fg [&::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-2 rounded-xs text-sm font-medium text-fg [&::-webkit-details-marker]:hidden">
             View verification evidence
             <Icon
               name="chevron-down"

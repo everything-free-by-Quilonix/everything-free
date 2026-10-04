@@ -78,7 +78,7 @@ export default async function CategoryPage({ params }: PageProps) {
                   <Link
                     key={group!.id}
                     href={`/categories#${group!.id}`}
-                    className="rounded underline underline-offset-2 hover:text-fg"
+                    className="rounded-xs underline underline-offset-2 hover:text-fg"
                   >
                     {group!.name}
                   </Link>

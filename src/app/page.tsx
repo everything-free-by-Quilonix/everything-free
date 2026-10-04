@@ -30,7 +30,7 @@ export const metadata: Metadata = buildMetadata({
 });
 
 /** A chrome text link inside an index row: muted, ink and underlined on hover. */
-const indexLink = "rounded text-fg underline-offset-[0.2em] decoration-border-strong hover:underline";
+const indexLink = "rounded-xs text-fg underline-offset-[0.2em] decoration-border-strong hover:underline";
 
 /**
  * Homepage.
@@ -234,7 +234,7 @@ export default async function HomePage() {
                   <li key={target.slug} className="border-b border-rule">
                     <Link
                       href={`/alternatives/${target.slug}`}
-                      className="group flex items-baseline gap-3 rounded py-3 text-sm text-fg"
+                      className="group flex items-baseline gap-3 rounded-xs py-3 text-sm text-fg"
                     >
                       <span className="underline-offset-[0.2em] decoration-border-strong group-hover:underline">
                         {target.name}

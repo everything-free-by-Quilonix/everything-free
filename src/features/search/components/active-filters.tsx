@@ -128,7 +128,7 @@ export function ActiveFilters({
         <li>
           <Link
             href={buildResourcesHref({ q: query.q, sort: query.sort })}
-            className="rounded px-2 py-1 text-xs text-fg-muted underline underline-offset-2 transition-colors hover:text-fg"
+            className="rounded-xs px-2 py-1 text-xs text-fg-muted underline underline-offset-2 transition-colors hover:text-fg"
           >
             Clear all
           </Link>

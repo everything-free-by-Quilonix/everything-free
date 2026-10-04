@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils/cn";
  */
 export function Brand({ className, showParent = false }: { className?: string; showParent?: boolean }) {
   return (
-    <Link href="/" className={cn("inline-flex flex-col rounded leading-none", className)}>
+    <Link href="/" className={cn("inline-flex flex-col rounded-xs leading-none", className)}>
       <span className="text-base font-semibold tracking-[-0.011em] text-fg">
         Everything<span className="text-primary">.</span>Free
       </span>

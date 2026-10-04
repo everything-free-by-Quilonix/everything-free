@@ -88,7 +88,7 @@ export default function PrivacyPage() {
               privacy practices, not these — and many of them do track visitors.
             </p>
             <p className="mt-3 text-fg-muted">
-              Outbound links carry <code className="rounded bg-surface-raised px-1 py-0.5 text-xs">noreferrer</code>, so
+              Outbound links carry <code className="rounded-xs bg-surface-raised px-1 py-0.5 text-xs">noreferrer</code>, so
               the page you came from is not passed along. Fonts are self-hosted rather than loaded from a font CDN, which
               means visiting a page here does not create a request to a third party.
             </p>

@@ -28,7 +28,7 @@ export function CategoryGroupCard({ group, previewCount = 5 }: { group: Category
           <Icon name={group.icon} size={19} />
         </span>
         <h3 className="font-display text-base font-semibold">
-          <Link href={`/categories#${group.id}`} className={cn("rounded", stretchedLink)}>
+          <Link href={`/categories#${group.id}`} className={cn("rounded-xs", stretchedLink)}>
             {group.name}
           </Link>
         </h3>

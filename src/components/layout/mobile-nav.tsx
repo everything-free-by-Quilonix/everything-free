@@ -98,7 +98,7 @@ export function MobileNav() {
                 <Link
                   href={link.href}
                   onClick={close}
-                  className="flex h-10 items-center rounded text-sm text-fg-muted transition-colors hover:text-fg"
+                  className="flex h-10 items-center rounded-xs text-sm text-fg-muted transition-colors hover:text-fg"
                 >
                   {link.label}
                 </Link>

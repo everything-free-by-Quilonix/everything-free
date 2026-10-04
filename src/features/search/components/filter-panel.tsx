@@ -156,7 +156,7 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
               <button
                 type="button"
                 onClick={clearAll}
-                className="rounded text-xs text-fg-muted underline underline-offset-2 transition-colors hover:text-fg"
+                className="rounded-xs text-xs text-fg-muted underline underline-offset-2 transition-colors hover:text-fg"
               >
                 Clear all
               </button>
@@ -343,7 +343,7 @@ function FilterGroup({
       // `<details>` gives keyboard operation, correct expanded state and
       // find-in-page support with no JavaScript at all.
       <details open={defaultOpen} className="group">
-        <summary className="flex cursor-pointer items-center justify-between rounded text-xs font-semibold tracking-wide text-fg-muted uppercase">
+        <summary className="flex cursor-pointer items-center justify-between rounded-xs text-xs font-semibold tracking-wide text-fg-muted uppercase">
           {legend}
           <Icon
             name="chevron-down"
