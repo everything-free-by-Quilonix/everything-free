@@ -257,6 +257,10 @@ describe("design guardrails", () => {
     assert.deepEqual(hits(files, /\b\d{2,}\s+(?:listings?|resources?|subjects?|tools?)\b/i), []);
   });
 
+  test("no Escape veto: onEscape appears nowhere in src", () => {
+    assert.deepEqual(hits(CODE, /\bonEscape\b/), []);
+  });
+
   test("no animation classes other than animate-none", () => {
     assert.deepEqual(hits(CODE, /\banimate-(?!none\b)[a-z0-9[-]+/), []);
   });

@@ -56,6 +56,12 @@
   }
 }
 
+/* While a modal is open the page behind it does not scroll. scrollbar-gutter
+   on html keeps the layout from shifting when the scrollbar goes. */
+html:has(dialog[data-ef-modal][open]) {
+  overflow: hidden;
+}
+
 /* Survey bar partial fills: confirmed ink at reduced strength. Static values
    first; the relative form only inside the feature query. */
 :root {

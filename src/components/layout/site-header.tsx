@@ -20,7 +20,7 @@ export function SiteHeader() {
   return (
     <header className="material-functional sticky top-0 z-(--z-header)">
       <Container>
-        <div className="flex h-16 items-center gap-4">
+        <div className="flex h-(--header-h) items-center gap-6">
           <Brand />
 
           <nav aria-label="Main" className="hidden lg:block">
@@ -28,12 +28,14 @@ export function SiteHeader() {
           </nav>
 
           <div className="ml-auto flex items-center gap-1">
+            {/* The trigger slot for the command palette (increment 10). Without JS
+                it is, and stays, a working link to the library. */}
             <Link
               href="/resources"
-              className="inline-flex size-10 items-center justify-center rounded-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
+              className="inline-flex size-11 items-center justify-center rounded-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg active:bg-(--fill-pressed)"
               aria-label="Search resources"
             >
-              <Icon name="search" size={18} />
+              <Icon name="search" size={20} />
             </Link>
 
             <ThemeToggle />
