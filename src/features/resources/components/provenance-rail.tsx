@@ -121,8 +121,11 @@ export function ProvenanceRail({ resource }: { resource: Resource }) {
             {stale ? (
               <span className="text-warning-fg">
                 {" · "}
-                <EvidenceMark reason="stale" className="inline align-[-1px]" /> all need re-checking (older than{" "}
-                {VERIFICATION_FRESHNESS_DAYS} days)
+                <EvidenceMark reason="stale" className="inline align-[-1px]" />{" "}
+                {/* "All" only refers to recorded checks; without any, the date alone is stale. */}
+                {records.length > 0
+                  ? `all need re-checking (older than ${VERIFICATION_FRESHNESS_DAYS} days)`
+                  : `last checked more than ${VERIFICATION_FRESHNESS_DAYS} days ago`}
               </span>
             ) : null}
           </p>

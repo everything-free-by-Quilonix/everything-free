@@ -278,6 +278,20 @@ html:has([data-results-toolbar][data-wrapped]) {
     border-inline-start: 1px solid var(--rule);
   }
 
+  /* Palette rows: forced colours paint every transparent leading rule, so the
+     resting rule takes the canvas and the active row the system highlight. */
+  @media (forced-colors: active) {
+    .palette-option {
+      border-inline-start-color: Canvas;
+    }
+
+    .palette-option[aria-selected="true"] {
+      border-inline-start-color: Highlight;
+      outline: 1px solid Highlight;
+      outline-offset: -1px;
+    }
+  }
+
   /* Coordinates: each part wraps whole; the separator closes the part before. */
   .coordinates > span {
     white-space: nowrap;

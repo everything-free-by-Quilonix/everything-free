@@ -6,6 +6,7 @@
  * the browser will accept.
  */
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { describe, test } from "node:test";
 import { categoryGroups } from "@/config/categories";
 import { collections } from "@/data/collections";
@@ -14,8 +15,10 @@ import { buildPaletteIndex } from "@/features/palette/build-palette-index";
 import { paletteIndexSchema, type PaletteIndex } from "@/features/palette/palette-index-schema";
 import {
   cleanQuery,
+  filterRowLabel,
   flattenRows,
   GROUP_CAPS,
+  HOME_SECTIONS,
   MAX_QUERY,
   matchSpan,
   resultCount,
@@ -124,12 +127,50 @@ describe("palette scoring", () => {
     assert.ok(rows.filter((r) => !r.href.startsWith("/resources/krita")).every((r) => r.official === undefined));
   });
 
-  test("filter rows use the active-filter labels and the URL builder", () => {
+  test("filter rows read 'Show {label} listings', keep '· confirmed' and use the URL builder", () => {
     const rows = searchPalette(real, "credit card").find((g) => g.id === "filters")?.rows ?? [];
     assert.deepEqual(
       rows.map((r) => [r.label, r.href]),
-      [["No credit card · confirmed", "/resources?noCreditCard=1"]],
+      [["Show No credit card listings · confirmed", "/resources?noCreditCard=1"]],
     );
+    const windows = searchPalette(real, "windows").find((g) => g.id === "filters")?.rows ?? [];
+    assert.deepEqual(windows.map((r) => r.label), ["Show Windows listings"]);
+    assert.ok(windows.every((r) => r.secondary === undefined));
+  });
+
+  test("filterRowLabel words plain and evidence filters", () => {
+    assert.equal(filterRowLabel("Free tier"), "Show Free tier listings");
+    assert.equal(filterRowLabel("Open source · confirmed"), "Show Open source listings · confirmed");
+  });
+
+  test("homepage sections are offered under Go to, navigating to /#id away from home", () => {
+    const rows = searchPalette(real, "recently checked").find((g) => g.id === "pages")?.rows ?? [];
+    const row = rows.find((r) => r.label === "Recently checked");
+    assert.equal(row?.href, "/#recently-verified");
+    assert.equal(row?.anchor, undefined);
+    assert.equal(row?.secondary, "Homepage section");
+  });
+
+  test("on the homepage, the sections are in-page anchors", () => {
+    const rows = searchPalette(real, "subjects index", [], { onHome: true }).find((g) => g.id === "pages")?.rows ?? [];
+    const row = rows.find((r) => r.label === "Subjects index");
+    assert.equal(row?.href, "#categories");
+    assert.equal(row?.anchor, true);
+  });
+
+  test("on the homepage, an empty query lists its sections under On this page", () => {
+    const groups = searchPalette(real, "", [], { onHome: true });
+    assert.deepEqual(groups.map((g) => g.id), ["goto", "sections"]);
+    assert.deepEqual(
+      groups[1].rows.map((r) => r.href),
+      HOME_SECTIONS.map((s) => `#${s.id}`),
+    );
+    assert.deepEqual(searchPalette(real, "").map((g) => g.id), ["goto"]);
+  });
+
+  test("every homepage section id is rendered by app/page.tsx", () => {
+    const page = readFileSync(new URL("../src/app/page.tsx", import.meta.url), "utf8");
+    for (const section of HOME_SECTIONS) assert.ok(page.includes(`id="${section.id}"`), section.id);
   });
 });
 

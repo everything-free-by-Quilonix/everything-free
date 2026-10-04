@@ -27,7 +27,7 @@ import type { Collection } from "@/types/collection";
 import type { Resource } from "@/types/resource";
 
 import type { PaletteIndex } from "./palette-index-schema";
-import { PALETTE_PAGES } from "./palette-search";
+import { HOME_SECTIONS, PALETTE_PAGES } from "./palette-search";
 
 export function buildPaletteIndex(input: {
   resources: readonly Resource[];
@@ -67,7 +67,8 @@ export function buildPaletteIndex(input: {
     tools: availableTools.map((tool) => ({ s: tool.slug, n: tool.name, available: true })),
     audiences: audiences.map((audience) => ({ s: audience.slug, n: audience.name })),
     alternatives: alternatives.map((target) => ({ s: target.slug, n: target.name, count: target.count })),
-    pages: PALETTE_PAGES,
+    // The fixed pages, then the homepage sections as `/#{id}` (Decision 5).
+    pages: [...PALETTE_PAGES, ...HOME_SECTIONS.map((section) => ({ href: `/#${section.id}`, n: section.n }))],
     // Filter rows: the same labels the active-filter tokens print, with hrefs
     // from the unchanged URL builder. Evidence filters keep "· confirmed".
     filters: [

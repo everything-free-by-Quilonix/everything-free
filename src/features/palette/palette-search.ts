@@ -33,6 +33,43 @@ export const PALETTE_PAGES: { href: string; n: string }[] = [
   { href: "/submit/", n: "Submit a resource" },
 ];
 
+/**
+ * The homepage sections. The index builder adds them to `pages` as `/#{id}`,
+ * so they are matched by name under "Go to". On `/` they scroll to the section
+ * in place; anywhere else they navigate to `/#{id}`. The ids are the `Section`
+ * ids `app/page.tsx` renders (a unit test reads the page to keep them in step).
+ */
+export const HOME_SECTIONS: { id: string; n: string }[] = [
+  { id: "categories", n: "Subjects index" },
+  { id: "spotlight", n: "A starting selection" },
+  { id: "recently-verified", n: "Recently checked" },
+  { id: "tools", n: "Tools" },
+  { id: "collections", n: "Collections" },
+  { id: "alternatives", n: "Alternatives" },
+];
+
+/** A "Go to" row. A homepage section is an in-page anchor while on `/`. */
+function pageRow(page: { href: string; n: string }, onHome: boolean, match?: [number, number]): PaletteRow {
+  const row: PaletteRow = { id: `page-${page.href}`, label: page.n, href: page.href };
+  if (page.href.startsWith("/#")) {
+    row.secondary = "Homepage section";
+    if (onHome) Object.assign(row, { href: page.href.slice(1), anchor: true });
+  }
+  if (match) row.match = match;
+  return row;
+}
+
+/**
+ * A filter row reads "Show {label} listings"; an evidence filter keeps its
+ * "· confirmed" after the sentence, exactly as the active-filter token says it.
+ */
+export function filterRowLabel(label: string): string {
+  const suffix = " · confirmed";
+  return label.endsWith(suffix)
+    ? `Show ${label.slice(0, -suffix.length)} listings${suffix}`
+    : `Show ${label} listings`;
+}
+
 export const GROUP_CAPS = {
   listings: 6,
   subjects: 4,
@@ -154,10 +191,15 @@ export function searchPalette(
   index: PaletteIndex | null,
   raw: string,
   sections: readonly PaletteSection[] = [],
+  { onHome = false }: { onHome?: boolean } = {},
 ): PaletteGroup[] {
   const query = cleanQuery(raw);
 
   if (!query) {
+    // On the homepage its own sections are this page's sections.
+    if (onHome && sections.length === 0) {
+      sections = HOME_SECTIONS.map((section) => ({ id: section.id, label: section.n }));
+    }
     const groups: PaletteGroup[] = [
       {
         id: "goto",
@@ -255,23 +297,15 @@ export function searchPalette(
     {
       id: "filters",
       label: "Filter the library",
-      rows: ranked(index.filters, query, () => "", GROUP_CAPS.filters).map((f) => ({
-        id: `filter-${f.h}`,
-        label: f.n,
-        href: f.h,
-        secondary: "Show matching listings",
-        match: span(f.n),
-      })),
+      rows: ranked(index.filters, query, () => "", GROUP_CAPS.filters).map((f) => {
+        const label = filterRowLabel(f.n);
+        return { id: `filter-${f.h}`, label, href: f.h, match: span(label) };
+      }),
     },
     {
       id: "pages",
       label: "Go to",
-      rows: ranked(index.pages, query, () => "", GROUP_CAPS.pages).map((p) => ({
-        id: `page-${p.href}`,
-        label: p.n,
-        href: p.href,
-        match: span(p.n),
-      })),
+      rows: ranked(index.pages, query, () => "", GROUP_CAPS.pages).map((p) => pageRow(p, onHome, span(p.n))),
     },
   ].filter((group) => group.rows.length > 0) as PaletteGroup[];
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { Dialog } from "@/components/ui/dialog";
 import { Kbd } from "@/components/ui/kbd";
@@ -49,6 +49,18 @@ function readSections(): PaletteSection[] {
     .filter((section) => section.id && section.label);
 }
 
+/**
+ * Focus an in-page section after the hash scroll: its heading when it has one
+ * (`{id}-heading`, the `Section` convention), else the element itself. Neither
+ * is focusable by default, so it becomes a programmatic target (-1) first.
+ */
+function focusSection(id: string) {
+  const el = document.getElementById(`${id}-heading`) ?? document.getElementById(id);
+  if (!el) return;
+  if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
+  el.focus({ preventScroll: true });
+}
+
 function Highlighted({ label, match }: { label: string; match?: [number, number] }) {
   if (!match) return <>{label}</>;
   const [start, end] = match;
@@ -63,6 +75,7 @@ function Highlighted({ label, match }: { label: string; match?: [number, number]
 
 export function CommandPalette({ open, onClose }: { open: boolean; onClose: () => void }) {
   const router = useRouter();
+  const pathname = usePathname();
   const baseId = useId();
   const titleId = `${baseId}-title`;
   const listId = `${baseId}-list`;
@@ -113,9 +126,10 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
 
   // The page's own sections, read once per opening.
   const sections = useMemo(() => (open ? readSections() : []), [open]);
+  const onHome = pathname === "/";
 
   const index = load.state === "ready" ? load.index : null;
-  const groups = useMemo(() => searchPalette(index, query, sections), [index, query, sections]);
+  const groups = useMemo(() => searchPalette(index, query, sections, { onHome }), [index, query, sections, onHome]);
   const rows = useMemo(() => flattenRows(groups), [groups]);
   const activeIndex = rows.length === 0 ? -1 : Math.min(active, rows.length - 1);
   const optionId = (i: number) => `${baseId}-opt-${i}`;
@@ -149,7 +163,7 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
       const id = row.href.slice(1);
       afterClose.current = () => {
         window.location.hash = id;
-        document.getElementById(id)?.focus({ preventScroll: true });
+        focusSection(id);
       };
     } else {
       router.push(row.href);
@@ -258,8 +272,11 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => activate(row)}
                     className={cn(
-                      "mx-2 flex cursor-pointer items-center justify-between gap-4 rounded-sm px-2 py-2 text-sm",
-                      selected && "bg-surface-hover outline-2 -outline-offset-2 outline-(--focus)",
+                      // Selected, not focused: DOM focus stays in the input, which
+                      // holds the only focus ring. The active row takes the
+                      // selected role, a fill and a 2px gold leading rule.
+                      "palette-option mx-2 flex cursor-pointer items-center justify-between gap-4 rounded-e-sm border-s-2 border-transparent px-2 py-2 text-sm",
+                      selected && "border-s-primary bg-surface-hover",
                     )}
                   >
                     <span className="min-w-0">
