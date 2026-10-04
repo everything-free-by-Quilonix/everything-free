@@ -100,13 +100,20 @@ export function Dialog({
       finish();
       return;
     }
+    // Only the panel's own transition ends EXIT: `transitionend` bubbles, and a
+    // child control's colour transition must not unmount the layer early.
+    const onTransitionEnd = (event: TransitionEvent) => {
+      if (event.target === dialog) finish();
+    };
     dialog.setAttribute("data-closing", "");
     const duration = parseFloat(getComputedStyle(dialog).transitionDuration) || 0;
     const timer = window.setTimeout(finish, duration * 1000 + 50);
-    dialog.addEventListener("transitionend", finish, { once: true });
+    dialog.addEventListener("transitionend", onTransitionEnd);
     return () => {
       window.clearTimeout(timer);
-      dialog.removeEventListener("transitionend", finish);
+      dialog.removeEventListener("transitionend", onTransitionEnd);
+      // A reopen during EXIT must not leave the exit styling on an open layer.
+      dialog.removeAttribute("data-closing");
     };
   }, [open, mounted]);
 
