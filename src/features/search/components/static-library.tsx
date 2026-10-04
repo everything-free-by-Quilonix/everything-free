@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Callout } from "@/components/ui/callout";
 import { Container } from "@/components/ui/layout";
+import { plural } from "@/components/ui/count";
 import { ResourceGrid } from "@/features/resources/components/resource-card";
 import { formatCount } from "@/lib/utils/format";
 import type { Resource } from "@/types/resource";
@@ -49,17 +50,19 @@ export function StaticLibrary({ resources }: { resources: Resource[] }) {
 
       <Container className="pt-8">
         <noscript>
-          <Callout tone="warning" icon="info" title="Search and filters need JavaScript" className="mb-6">
+          {/* A plain statement of how the page works, not a warning: nothing is
+              wrong, and the whole library is still listed below. */}
+          <Callout tone="neutral" icon={null} title="Search and filters need JavaScript" className="mb-6">
             They run in your browser so this site needs no server. The full library is listed below, and every{" "}
-            <Link href="/categories" className="text-fg underline underline-offset-2">
+            <Link href="/categories" className="link-inline rounded-xs">
               category page
             </Link>{" "}
             works without JavaScript.
           </Callout>
         </noscript>
 
-        <p className="text-sm text-fg-muted">
-          {formatCount(resources.length)} {resources.length === 1 ? "resource" : "resources"}
+        <p className="text-sm text-fg-muted tabular-nums">
+          <span className="text-fg">{formatCount(resources.length)}</span> {plural(resources.length, "listing", "listings")}
           <span className="text-fg-subtle"> · most recently checked first</span>
         </p>
 

@@ -57,8 +57,9 @@ export function SearchBox({
       aria-label={label}
     >
       <div
+        data-search-field=""
         className={cn(
-          "flex items-center gap-2 rounded-md border border-border-strong bg-surface shadow-raised transition-colors",
+          "flex items-center gap-2 rounded-md border border-border-strong bg-bg transition-colors hover:border-fg-subtle",
           // The wrapper is the visible field, so it carries the keyboard focus ring;
           // the inner input suppresses its own outline.
           "has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-(--focus)",
@@ -85,7 +86,14 @@ export function SearchBox({
           )}
         />
 
-        <Button type="submit" size={size === "lg" ? "md" : "sm"} className="shrink-0">
+        {/* The large field is the homepage introduction's one primary action;
+            elsewhere the page keeps its primary for something else. */}
+        <Button
+          type="submit"
+          variant={size === "lg" ? "primary" : "secondary"}
+          size={size === "lg" ? "md" : "sm"}
+          className="shrink-0"
+        >
           Search
         </Button>
       </div>
@@ -101,15 +109,13 @@ export function SearchBox({
  */
 export function SearchSuggestions({ queries, className }: { queries: readonly string[]; className?: string }) {
   return (
-    <ul className={cn("flex flex-wrap items-center gap-2", className)}>
-      {queries.map((query) => (
+    <ul className={cn("flex flex-wrap items-baseline gap-x-1.5 text-sm text-fg-subtle", className)}>
+      {queries.map((query, index) => (
         <li key={query}>
+          {index > 0 ? <span aria-hidden="true">· </span> : null}
           {/* `Link`, not a raw anchor: it applies the base path, which a plain
               `href` would not. */}
-          <Link
-            href={`/resources/?q=${encodeURIComponent(query)}`}
-            className="inline-block rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
-          >
+          <Link href={`/resources/?q=${encodeURIComponent(query)}`} className="link-inline rounded-xs">
             {query}
           </Link>
         </li>

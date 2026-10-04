@@ -705,6 +705,27 @@ async function main() {
       assert(await desktop.evaluate(`document.querySelector('input[name="platform"][value="LINUX"]').checked`), "checkbox not checked");
     });
 
+    await check("keyboard focus is visible on the search field and the sort select", async () => {
+      // A text input always matches :focus-visible, and focus moved from it by
+      // script stays keyboard-modality, so both reads are the keyboard state.
+      await desktop.goto(`${site}/resources/`);
+      await desktop.waitFor(JS.hydrated);
+      const read = (target) => `(() => {
+        const el = ${target};
+        if (!el) return null;
+        el.focus();
+        const ring = el.closest('[data-search-field]') ?? el;
+        return { visible: el.matches(':focus-visible'), style: getComputedStyle(ring).outlineStyle, width: getComputedStyle(ring).outlineWidth };
+      })()`;
+      const field = await desktop.evaluate(read(`document.querySelector('[data-search-field] input[type="search"]')`));
+      assert(field, "search field missing");
+      assert(field.visible && field.style !== "none" && field.width !== "0px", `search wrapper outline ${field.style} ${field.width}`);
+      const sort = await desktop.evaluate(read(`document.querySelector('[data-results-toolbar] select')`));
+      assert(sort, "sort select missing from the results toolbar");
+      assert(sort.visible && sort.style !== "none" && sort.width !== "0px", `sort select outline ${sort.style} ${sort.width}`);
+      return `search ${field.style} ${field.width}, sort ${sort.style} ${sort.width}`;
+    });
+
     await check("contrast checker computes a ratio", async () => {
       await desktop.goto(`${site}/tools/contrast-checker/`);
       await desktop.waitFor(JS.hydrated);

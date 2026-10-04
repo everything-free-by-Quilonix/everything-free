@@ -50,10 +50,9 @@ export function Pagination({
                 href={hrefFor(entry)}
                 aria-current={entry === page ? "page" : undefined}
                 className={cn(
-                  "inline-flex size-10 items-center justify-center rounded-sm text-sm transition-colors",
-                  entry === page
-                    ? "bg-primary font-semibold text-primary-fg"
-                    : "border border-border text-fg-muted hover:bg-surface-hover hover:text-fg",
+                  "inline-flex size-11 items-center justify-center rounded-sm border border-border text-sm transition-colors pointer-fine:size-10 hover:bg-surface-hover hover:text-fg active:bg-(--fill-pressed)",
+                  // Current page: an indicator, not a fill. The gold rule sits inside the cell.
+                  entry === page ? "border-b-2 border-b-primary font-semibold text-fg" : "text-fg-muted",
                 )}
               >
                 <span className="sr-only">Page </span>

@@ -9,7 +9,7 @@ import type { InferredFilter } from "@/lib/search/intent";
 import type { ResourceQuery } from "@/types/search";
 
 /**
- * Removable chips for every active filter.
+ * Removable tokens for every active filter.
  *
  * Rendered server-side as links, each pointing at the query *without* that
  * filter. No JavaScript, correct semantics, and every chip is a shareable URL in
@@ -115,9 +115,10 @@ export function ActiveFilters({
           <li key={chip.key}>
             <Link
               href={chip.href}
-              className="group inline-flex items-center gap-1.5 rounded-full border border-border-strong bg-surface py-1 pr-2 pl-3 text-xs text-fg transition-colors hover:border-danger/50 hover:text-danger-fg"
+              className="group inline-flex h-8 items-center gap-1.5 rounded-xs border border-border-strong bg-surface pr-2 pl-2.5 text-xs text-fg transition-colors pointer-coarse:h-11 hover:border-danger/50 hover:text-danger-fg active:bg-(--fill-pressed)"
             >
-              {chip.inferred ? <Icon name="bolt" size={11} className="text-fg-subtle" /> : null}
+              {chip.inferred ? <span className="text-fg-muted">Inferred ·</span> : null}
+              {chip.inferred ? " " : null}
               {chip.label}
               <Icon name="close" size={12} className="opacity-60 group-hover:opacity-100" />
               <span className="sr-only">Remove this filter</span>
@@ -136,9 +137,8 @@ export function ActiveFilters({
       </ul>
 
       {hasInferred ? (
-        <p className="flex items-center gap-1.5 text-xs text-fg-subtle">
-          <Icon name="bolt" size={12} className="text-fg-subtle" />
-          Filters marked with this icon were taken from the wording of your search. Remove any that are wrong.
+        <p className="text-xs text-fg-subtle">
+          Filters marked “Inferred” were taken from the wording of your search. Remove any that are wrong.
         </p>
       ) : null}
     </div>
