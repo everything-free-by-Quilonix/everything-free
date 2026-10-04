@@ -56,7 +56,7 @@ export default async function AboutPage() {
             <h2 id="not-heading" className="font-serif text-2xl font-semibold">
               What this is not
             </h2>
-            <ul className="mt-4 flex flex-col gap-3">
+            <ul className="mt-4 divide-y divide-rule border-y border-rule">
               {[
                 "Not an affiliate site. There are no referral links, sponsored placements or paid listings.",
                 "Not a review site. No ratings, stars or scores — those would need data that is not collected.",
@@ -64,9 +64,8 @@ export default async function AboutPage() {
                 "Not a piracy resource. Nothing here circumvents payment, licensing or access controls.",
                 "Not the owner of anything it lists. Every resource belongs to whoever made it.",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed">
-                  <Icon name="close" size={16} className="mt-0.5 shrink-0 text-fg-subtle" />
-                  <span className="text-fg-muted">{item}</span>
+                <li key={item} className="py-2.5 text-sm leading-relaxed text-fg-muted">
+                  {item}
                 </li>
               ))}
             </ul>
@@ -104,7 +103,7 @@ export default async function AboutPage() {
                   <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{item.body}</p>
                   <Link
                     href={item.href}
-                    className="mt-3 inline-flex items-center gap-1 text-xs text-fg-muted underline underline-offset-2 hover:text-fg"
+                    className="link-inline mt-3 inline-flex items-center gap-1 text-xs"
                   >
                     More
                     <Icon name="chevron-right" size={12} />
@@ -136,14 +135,14 @@ export default async function AboutPage() {
             </p>
           </section>
 
-          <Callout tone="primary" icon="users" title="This only works with contributions">
+          <Callout tone="neutral" icon={null} title="This only works with contributions">
             <p>
               A library like this cannot be maintained by one person — free plans change too often.{" "}
-              <Link href="/submit" className="text-fg underline underline-offset-2">
+              <Link href="/submit" className="link-inline">
                 Adding a resource
               </Link>{" "}
               or{" "}
-              <Link href="/report" className="text-fg underline underline-offset-2">
+              <Link href="/report" className="link-inline">
                 correcting one
               </Link>{" "}
               is the most useful thing you can do here.

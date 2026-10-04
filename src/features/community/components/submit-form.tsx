@@ -86,7 +86,7 @@ export function SubmitResourceForm() {
           <button
             type="button"
             onClick={() => setState(idleState)}
-            className="rounded-xs text-xs underline underline-offset-2 hover:text-fg"
+            className="link-inline rounded-xs text-xs"
           >
             Submit another resource
           </button>
@@ -106,7 +106,7 @@ export function SubmitResourceForm() {
           </p>
           <a
             href={issueTemplateUrls.submission}
-            className="mt-2 inline-block text-fg underline underline-offset-2"
+            className="link-inline mt-2 inline-block"
             target="_blank"
             rel="noopener noreferrer"
           >

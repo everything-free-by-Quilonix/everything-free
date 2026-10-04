@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { Icon } from "@/components/icons";
 import { JsonLdScript } from "@/components/seo/json-ld";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
@@ -71,7 +70,7 @@ export default async function FreeStatusPage() {
                     <p className="text-xs text-fg-muted">
                       <Link
                         href={`/resources?status=${status.id}`}
-                        className="underline underline-offset-2 hover:text-fg"
+                        className="link-inline"
                       >
                         {count} {count === 1 ? "resource" : "resources"} in the library
                       </Link>
@@ -91,10 +90,7 @@ export default async function FreeStatusPage() {
                 <p className="mt-2 leading-relaxed text-fg-muted">{status.definition}</p>
 
                 {status.caveat ? (
-                  <p className="mt-3 flex items-start gap-2 rounded-sm bg-bg-subtle px-3.5 py-3 text-sm">
-                    <Icon name="info" size={15} className="mt-0.5 shrink-0 text-fg-subtle" />
-                    <span className="text-fg-muted">{status.caveat}</span>
-                  </p>
+                  <p className="mt-3 rounded-sm bg-bg-subtle px-3.5 py-3 text-sm text-fg-muted">{status.caveat}</p>
                 ) : null}
 
                 {status.requiresLimitations ? (

@@ -100,7 +100,7 @@ export function ReportResourceForm({ resourceNames }: { resourceNames: Record<st
           </p>
           <a
             href={issueTemplateUrls.correction}
-            className="mt-2 inline-block text-fg underline underline-offset-2"
+            className="link-inline mt-2 inline-block"
             target="_blank"
             rel="noopener noreferrer"
           >

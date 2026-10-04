@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { Icon } from "@/components/icons";
 import { Callout } from "@/components/ui/callout";
+import { plural } from "@/components/ui/count";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Container, PageHeader } from "@/components/ui/layout";
 import { getAlternativeTargets } from "@/lib/repository";
@@ -42,24 +42,22 @@ export default async function AlternativesPage() {
         </Callout>
 
         {targets.length > 0 ? (
-          <ul className="grid list-none gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          // An index with dotted leaders, the same rows as the homepage section.
+          <ul className="grid list-none border-t border-rule sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3">
             {targets.map((target) => (
-              <li key={target.slug}>
+              <li key={target.slug} className="border-b border-rule">
                 <Link
                   href={`/alternatives/${target.slug}`}
-                  className="group flex h-full items-center justify-between gap-3 rounded-md border border-border bg-surface px-4 py-3.5 transition-colors hover:border-border-strong hover:bg-surface-raised"
+                  className="group flex items-baseline gap-3 rounded-xs py-3 text-sm text-fg"
                 >
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm font-medium text-fg">{target.name}</span>
-                    <span className="mt-0.5 block text-xs text-fg-subtle">
-                      {target.count} {target.count === 1 ? "free alternative" : "free alternatives"}
-                    </span>
+                  <span className="min-w-0 underline-offset-[0.2em] decoration-border-strong group-hover:underline">
+                    {target.name}
                   </span>
-                  <Icon
-                    name="chevron-right"
-                    size={16}
-                    className="shrink-0 text-fg-subtle transition-transform group-hover:translate-x-0.5"
-                  />
+                  <span aria-hidden="true" className="hidden flex-1 border-b border-dotted border-rule sm:block" />
+                  <span className="ml-auto shrink-0 text-xs text-fg-muted tabular-nums sm:ml-0">
+                    {target.count}
+                    <span className="sr-only"> {plural(target.count, "free alternative", "free alternatives")}</span>
+                  </span>
                 </Link>
               </li>
             ))}

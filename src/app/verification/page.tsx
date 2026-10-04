@@ -3,18 +3,24 @@ import type { Metadata } from "next";
 
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
-import { Card } from "@/components/ui/card";
 import { ExternalLink } from "@/components/ui/external-link";
 import { Container, PageHeader } from "@/components/ui/layout";
 import { site } from "@/config/site";
 import {
   VERIFICATION_FRESHNESS_DAYS,
+  VERIFICATION_STAGES,
   verificationCheckList,
   verificationList,
   verificationStage,
+  verificationStageLabels,
+  type VerificationStage,
 } from "@/config/verification";
 import { getAllResourcesForClient } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { formatCount } from "@/lib/utils/format";
+
+/** The stages in the order a listing moves through them, first to last. */
+const STAGE_ORDER: readonly VerificationStage[] = [...VERIFICATION_STAGES].reverse();
 
 export const metadata: Metadata = buildMetadata({
   title: "How verification works",
@@ -26,14 +32,10 @@ export const metadata: Metadata = buildMetadata({
 export default async function VerificationPage() {
   const resources = await getAllResourcesForClient();
   const stages = resources.map((resource) => verificationStage(resource));
-  const count = (...wanted: ReturnType<typeof verificationStage>[]) => stages.filter((s) => wanted.includes(s)).length;
-  const counts = {
-    total: resources.length,
-    verified: count("verified"),
-    awaitingSignOff: count("awaiting-sign-off"),
-    partial: count("partial"),
-    notStarted: count("not-started", "started"),
-  };
+  const counts = { total: resources.length };
+  const stageCounts = Object.fromEntries(
+    STAGE_ORDER.map((stage) => [stage, stages.filter((s) => s === stage).length]),
+  ) as Record<VerificationStage, number>;
 
   return (
     <div className="pb-16">
@@ -44,15 +46,16 @@ export default async function VerificationPage() {
       />
 
       <Container width="prose" className="pt-10">
-        <div className="flex flex-col gap-5">
+        {/* The verification statuses as ruled entries, not boxes. */}
+        <div className="divide-y divide-rule border-y border-rule">
           {verificationList.map((status) => (
-            <Card key={status.id} className="p-6">
+            <div key={status.id} className="py-6">
               <Badge tone={status.tone} size="md">
                 {status.label}
               </Badge>
-              <h2 className="mt-4 font-display text-lg font-semibold">{status.summary}</h2>
+              <h2 className="mt-3 font-display text-lg font-semibold">{status.summary}</h2>
               <p className="mt-2 leading-relaxed text-fg-muted">{status.definition}</p>
-            </Card>
+            </div>
           ))}
         </div>
 
@@ -122,25 +125,24 @@ export default async function VerificationPage() {
           <h2 id="seed-heading" className="font-serif text-2xl font-semibold">
             Where the library stands
           </h2>
-          {/* Counted from the data at build time, so this cannot drift from what
-              the resource pages actually show. */}
-          <dl className="mt-4 grid gap-3 sm:grid-cols-2">
-            {[
-              { term: "Verified", value: counts.verified },
-              { term: "Evidence complete, awaiting sign-off", value: counts.awaitingSignOff },
-              { term: "Partially verified", value: counts.partial },
-              { term: "Free status not yet confirmed", value: counts.notStarted },
-            ].map((item) => (
-              <div key={item.term} className="rounded-sm border border-border bg-surface p-4">
-                <dt className="text-xs text-fg-muted">{item.term}</dt>
-                <dd className="mt-1 font-display text-2xl font-semibold tabular-nums">
-                  {item.value}
-                  <span className="ml-1 text-sm font-normal text-fg-subtle">of {counts.total}</span>
-                </dd>
-              </div>
+          <p className="mt-3 leading-relaxed text-fg-muted">
+            A listing moves through these stages in order. Each count is taken from the data when the site is built.
+          </p>
+          {/* A static diagram of the ordered stages, counted at build time, so it
+              cannot drift from what the resource pages show. No motion. */}
+          <ol aria-label="Verification stages, in order" className="mt-5 divide-y divide-rule border-y border-rule">
+            {STAGE_ORDER.map((stage, index) => (
+              <li key={stage} className="flex items-baseline gap-3 py-3 text-sm">
+                <span className="kicker w-14 shrink-0 tabular-nums">Stage {index + 1}</span>
+                <span className="font-medium text-fg">{verificationStageLabels[stage]}</span>
+                <span aria-hidden="true" className="hidden flex-1 border-b border-dotted border-rule sm:block" />
+                <span className="ml-auto shrink-0 text-fg-muted tabular-nums sm:ml-0">
+                  <span className="text-fg">{formatCount(stageCounts[stage])}</span> of {formatCount(counts.total)}
+                </span>
+              </li>
             ))}
-          </dl>
-          <Callout tone="info" icon="info" className="mt-4">
+          </ol>
+          <Callout tone="neutral" icon={null} className="mt-6">
             <p>
               The library was compiled from each project&rsquo;s own public documentation, which is a reasonable basis
               but not the same as working through the checklist above. Until a listing&rsquo;s checks are recorded it is

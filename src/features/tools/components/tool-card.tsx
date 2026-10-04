@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Icon } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
 import { Card, stretchedLink } from "@/components/ui/card";
 import { cn } from "@/lib/utils/cn";
@@ -22,26 +21,16 @@ export function ToolCard({ tool }: { tool: Tool }) {
       interactive={!planned}
       className={cn("flex h-full flex-col p-5", planned && "border-dashed opacity-80")}
     >
-      <div className="flex items-start gap-3">
-        <span
-          aria-hidden="true"
-          className="flex size-10 shrink-0 items-center justify-center rounded-sm border border-border bg-surface-raised text-fg-muted"
-        >
-          <Icon name={tool.icon} size={19} />
-        </span>
-
-        <div className="min-w-0 flex-1">
-          <h3 className="font-display text-base leading-tight font-semibold">
-            {planned ? (
-              tool.name
-            ) : (
-              <Link href={`/tools/${tool.slug}`} className={cn("rounded-xs", stretchedLink)}>
-                {tool.name}
-              </Link>
-            )}
-          </h3>
-        </div>
-      </div>
+      {/* No icon tile: the name leads, and the privacy position below says why. */}
+      <h3 className="font-display text-base leading-tight font-semibold">
+        {planned ? (
+          tool.name
+        ) : (
+          <Link href={`/tools/${tool.slug}`} className={cn("rounded-xs", stretchedLink)}>
+            {tool.name}
+          </Link>
+        )}
+      </h3>
 
       <p className="mt-3 text-sm leading-relaxed text-fg-muted">{tool.shortDescription}</p>
 
