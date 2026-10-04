@@ -30,7 +30,7 @@ export function CompareLink({ slug }: { slug: string }) {
   if (!hydrated) return null;
 
   return (
-    <Link href={compareHref([slug])} className="link-inline self-center text-sm">
+    <Link href={compareHref([slug])} className="link-inline self-center text-sm pointer-coarse:py-2">
       Compare with…
     </Link>
   );

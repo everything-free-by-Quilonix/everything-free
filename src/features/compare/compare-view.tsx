@@ -241,7 +241,7 @@ function CompareTable({
               </th>
               {entries.map((entry) => (
                 <th key={entry.s} scope="col" className="min-w-44 px-4 py-3 font-medium">
-                  <Link href={`/resources/${entry.s}/`} className="link-inline" translate="no">
+                  <Link href={`/resources/${entry.s}/`} className="link-inline inline-block pointer-coarse:py-2" translate="no">
                     {entry.n}
                   </Link>
                   <span className="mt-2 flex items-center gap-2">
@@ -261,7 +261,7 @@ function CompareTable({
                       target?.focus();
                       onRemove(entry.s);
                     }}
-                    className="mt-2 rounded-xs text-xs font-normal text-fg-muted underline-offset-[0.2em] hover:text-fg hover:underline"
+                    className="mt-2 rounded-xs text-xs font-normal text-fg-muted underline-offset-[0.2em] hover:text-fg hover:underline pointer-coarse:py-2"
                   >
                     Remove<span className="sr-only"> {entry.n}</span>
                   </button>
