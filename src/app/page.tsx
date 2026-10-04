@@ -6,10 +6,10 @@ import { Callout } from "@/components/ui/callout";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Container, Section, SectionLink } from "@/components/ui/layout";
 import { audiences } from "@/config/audiences";
-import { categoryGroups } from "@/config/categories";
 import { site } from "@/config/site";
 import { tools } from "@/config/tools";
-import { CategoryGroupCard } from "@/features/categories/components/category-cards";
+import { atlasGroups } from "@/features/categories/atlas-groups";
+import { AtlasIndex } from "@/features/categories/components/atlas-index";
 import { CollectionCard } from "@/features/collections/components/collection-card";
 import { libraryCensus } from "@/features/home/census";
 import { Hero } from "@/features/home/components/hero";
@@ -21,6 +21,7 @@ import {
   getRecentlyVerified,
   getSpotlightResources,
 } from "@/lib/repository";
+import { computeFacets } from "@/lib/search/filters";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -63,16 +64,10 @@ export default async function HomePage() {
           variant="editorial"
           kicker="Index"
           title="Browse by category"
-          description="Every subject in the library, grouped by area: everyday needs, study, creative work, AI, development, business, media and life."
+          description="Every subject in the library with the number of listings it holds, grouped by area. A subject with none yet is shown, not hidden."
           action={<SectionLink href="/categories">All categories</SectionLink>}
         >
-          <ul className="grid list-none gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {categoryGroups.map((group) => (
-              <li key={group.id} className="flex">
-                <CategoryGroupCard group={group} />
-              </li>
-            ))}
-          </ul>
+          <AtlasIndex groups={atlasGroups(computeFacets(allResources, {}).categories)} />
         </Section>
 
         {/* ----------------------------------------------------- spotlight */}

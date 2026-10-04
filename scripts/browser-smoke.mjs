@@ -966,6 +966,35 @@ async function main() {
       await desktop.key("Escape", "Escape", 27);
     });
 
+    await check("atlas index counts match each subject page, and Find a subject narrows", async () => {
+      await desktop.goto(`${site}/categories/`);
+      await desktop.waitFor(JS.hydrated);
+      const rows = await desktop.evaluate(
+        `[...document.querySelectorAll('main a[href*="/categories/"][aria-label]')].map((a) => ({ href: a.href, label: a.getAttribute('aria-label') }))`,
+      );
+      assert(rows.length > 0, "no atlas rows");
+      const picks = [...new Map(rows.map((r) => [r.href, r])).values()].slice(0, 3);
+      for (const row of picks) {
+        const n = Number(row.label.match(/, ([\d,]+) listings?$/)?.[1].replace(/,/g, ""));
+        // Absolute, so the base path is not added twice.
+        await desktop.goto(row.href.replace(/\/?$/, "/"));
+        await desktop.waitFor(JS.hydrated);
+        const header = await desktop.evaluate(`document.querySelector('main header')?.innerText ?? ''`);
+        const shown = Number(header.match(/([\d,]+) listings?/)?.[1].replace(/,/g, ""));
+        assert(n > 0 && n === shown, `${row.href}: index says ${n}, page says ${shown}`);
+      }
+      await desktop.goto(`${site}/categories/`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`!!document.querySelector('input[type="search"][maxlength="60"]')`), "Find a subject input missing");
+      await desktop.evaluate(JS.setValue('input[type="search"][maxlength="60"]', "photo"));
+      assert(await desktop.waitFor(`/^\\d+ subjects?$/.test(document.querySelector('main p[aria-live="polite"]')?.textContent.trim() ?? '')`), "no polite subject count");
+      const names = await desktop.evaluate(`[...document.querySelectorAll('main section li')].map((li) => li.textContent)`);
+      assert(names.length > 0 && names.every((t) => /photo/i.test(t)), `narrowing kept ${names.slice(0, 3).join(", ")}`);
+      const page = await desktop.evaluate(`document.body.innerHTML`);
+      assert(!/\b(?:countries|flag-icon|world map)\b/i.test(page), "geographic coverage markup on /categories/");
+      return `${picks.length} subjects, ${names.length} rows for "photo"`;
+    });
+
     /* ------------------------------------------------- quick compare */
     const comparePair = ["supabase", slugs.find((s) => s !== "supabase")];
     const compareRoute = `/compare/?r=${comparePair.join(",")}`;
