@@ -14,20 +14,11 @@ import { availableTools } from "@/config/tools";
 import { effectiveVerification } from "@/lib/resources/derive";
 import { FACTS, factEvidence } from "@/lib/resources/evidence";
 import { computeFacets } from "@/lib/search/filters";
-import { formatCount } from "@/lib/utils/format";
 import type { Resource } from "@/types/resource";
 
-const pluralRules = new Intl.PluralRules("en");
-
-/** The singular or plural form for a count, chosen by `Intl.PluralRules("en")`. */
-export function plural<T>(count: number, one: T, other: T): T {
-  return pluralRules.select(count) === "one" ? one : other;
-}
-
-/** A count through `formatCount`, followed by the noun form that agrees with it. */
-export function countNoun(count: number, one: string, other: string): string {
-  return `${formatCount(count)} ${plural(count, one, other)}`;
-}
+// The count copy helpers live in a data-free module so client components can
+// share them; re-exported here for the introduction's existing imports.
+export { countNoun, plural } from "@/components/ui/count";
 
 export interface LibraryCensus {
   listings: number;
