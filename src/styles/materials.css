@@ -247,6 +247,26 @@ html:has([data-results-toolbar][data-wrapped]) {
     background-color: var(--fill-pressed);
   }
 
+  /* Legend popover: ELEVATED, anchored under its trigger, flipped when it would
+     leave the viewport; pinned to the bottom edge where anchoring is missing. */
+  [data-legend="popover"] {
+    inset: auto;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-inline, flip-block;
+    margin: 6px 0 0;
+    inline-size: min(24rem, calc(100vw - 2rem));
+    padding: 1rem;
+  }
+
+  @supports not (position-area: block-end) {
+    [data-legend="popover"] {
+      position: fixed;
+      inset: auto 1rem 1rem;
+      inline-size: auto;
+      margin: 0;
+    }
+  }
+
   /* Provenance rail: a 1px rule joins each 7px station ring (top 4px) to the
      next one, across the 1.25rem gap. */
   .provenance > li:not(:last-child)::after {

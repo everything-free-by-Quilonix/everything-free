@@ -726,6 +726,14 @@ async function main() {
       return `${before} → ${await desktop.evaluate(total)} resources`;
     });
 
+    await check("desktop: exactly one filter form is mounted", async () => {
+      await desktop.goto(`${site}/resources/`);
+      await desktop.waitFor(JS.hydrated);
+      const forms = await desktop.evaluate(`[...document.querySelectorAll('form')].filter((f) => f.querySelector('input[name="openSource"]')).length`);
+      assert(forms === 1, `${forms} filter forms at 1366px`);
+      return "1 form";
+    });
+
     await check("URL-driven filter loads directly", async () => {
       await desktop.goto(`${site}/resources/?platform=LINUX`);
       assert(await desktop.waitFor(`[...document.querySelectorAll('[aria-label="Active filters"] a')].some(a => a.textContent.includes("Linux"))`), "Linux chip missing");
@@ -896,6 +904,26 @@ async function main() {
           await page.key("Escape", "Escape", 27);
           assert(await page.waitFor(`!document.querySelector('[role="dialog"]')`), "Escape did not close");
           assert(await page.waitFor(`document.activeElement?.getAttribute("aria-label") === "Open menu"`), "focus not returned to trigger");
+        });
+
+        await check("mobile: the Filters sheet holds the only filter form and returns focus", async () => {
+          await page.goto(`${site}/resources/`);
+          await page.waitFor(JS.hydrated);
+          const trigger = `[...document.querySelectorAll('[data-results-toolbar] button')].find((b) => b.textContent.trim().startsWith('Filters'))`;
+          const forms = `[...document.querySelectorAll('form')].filter((f) => f.querySelector('input[name="openSource"]')).length`;
+          assert(await page.evaluate(`!!${trigger}`), "no Filters button in the results toolbar");
+          await page.evaluate(`${trigger}.click()`);
+          assert(await page.waitFor(`!!document.querySelector('[role="dialog"][aria-modal="true"]')`), "sheet did not open");
+          assert(await page.waitFor(`${forms} === 1`), `${await page.evaluate(forms)} filter forms with the sheet open`);
+          assert(
+            await page.evaluate(`document.querySelector('[role="dialog"]').contains(document.querySelector('input[name="openSource"]'))`),
+            "the filter form is not inside the sheet",
+          );
+          const show = `[...document.querySelectorAll('[role="dialog"] button')].find((b) => /^Show \\d[\\d,]* results?$/.test(b.textContent.trim()))`;
+          assert(await page.evaluate(`!!${show}`), "no 'Show N results' button");
+          await page.evaluate(`${show}.click()`);
+          assert(await page.waitFor(`!document.querySelector('[role="dialog"]')`), "Show N results did not close the sheet");
+          assert(await page.waitFor(`document.activeElement === ${trigger}`), "focus not returned to the Filters button");
         });
       }
       await page.close();

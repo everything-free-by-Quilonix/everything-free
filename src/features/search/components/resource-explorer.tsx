@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useTransition } from "react";
+import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -17,7 +17,8 @@ import type { Resource } from "@/types/resource";
 
 import { ActiveFilters } from "./active-filters";
 import { EvidenceGate } from "./evidence-gate";
-import { FilterPanel } from "./filter-panel";
+import { clearFiltersHref, FilterPanel } from "./filter-panel";
+import { FilterSheet } from "./filter-sheet";
 import { Pagination } from "./pagination";
 import { ResultsToolbar } from "./results-toolbar";
 import { SearchBox } from "./search-box";
@@ -61,6 +62,19 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
     (href: string) => startTransition(() => router.push(href, { scroll: false })),
     [router],
   );
+
+  // One filter form at a time, by state rather than CSS: the sidebar form is
+  // unmounted while the sheet is open, and the sheet's only exists while open.
+  // Reaching lg closes the sheet, so the sidebar returns.
+  const [sheetOpen, setSheetOpen] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 64rem)");
+    const onChange = (event: MediaQueryListEvent) => {
+      if (event.matches) setSheetOpen(false);
+    };
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
+  }, []);
 
   // Recomputed only when the URL changes. At this library size the full pipeline
   // is well under a frame, so there is no need for debouncing or a worker.
@@ -108,15 +122,37 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
 
       <div className="mx-auto w-full max-w-(--container-content) px-4 pt-8 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
-          <aside aria-label="Filter resources">
+          {/* Sticky from lg with its own scroll, so long groups never push the
+              results away; below lg the sheet takes over. */}
+          <aside
+            aria-label="Filter resources"
+            className="hidden lg:sticky lg:top-[calc(var(--header-h)+16px)] lg:block lg:max-h-[calc(100dvh-var(--header-h)-32px)] lg:self-start lg:overflow-y-auto lg:overscroll-contain"
+          >
+            {sheetOpen ? null : (
+              <FilterPanel
+                facets={facets}
+                resultCount={results.total}
+                activeFilterCount={activeCount}
+                isPending={isPending}
+                onNavigate={navigate}
+              />
+            )}
+          </aside>
+          <FilterSheet
+            open={sheetOpen}
+            onClose={() => setSheetOpen(false)}
+            total={results.total}
+            onClearAll={activeCount > 0 ? () => navigate(clearFiltersHref(searchParams)) : undefined}
+          >
             <FilterPanel
               facets={facets}
               resultCount={results.total}
               activeFilterCount={activeCount}
               isPending={isPending}
               onNavigate={navigate}
+              presentation="sheet"
             />
-          </aside>
+          </FilterSheet>
 
           <div className="min-w-0">
             <ResultsToolbar
@@ -131,6 +167,20 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
               }
             >
               <SortSelect hasQuery={isSearch} isPending={isPending} onNavigate={navigate} />
+              <button
+                type="button"
+                onClick={(event) => {
+                  // Scripted clicks and Safari do not focus a clicked button;
+                  // focusing it makes it the element the sheet returns focus to.
+                  event.currentTarget.focus();
+                  setSheetOpen(true);
+                }}
+                aria-haspopup="dialog"
+                className={buttonClasses({ variant: "secondary", size: "md", className: "lg:hidden" })}
+              >
+                Filters
+                {activeCount > 0 ? <span className="tabular-nums"> · {activeCount}</span> : null}
+              </button>
             </ResultsToolbar>
 
             <div className="mt-4">

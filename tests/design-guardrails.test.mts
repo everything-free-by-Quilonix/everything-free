@@ -89,6 +89,16 @@ const SERIF_OWNERS = [
   /^src\/features\/collections\/components\/collection-card\.tsx$/,
 ];
 
+/**
+ * Every true circle outside the tool UIs, counted per file. A new circle, or a
+ * second one in a listed file, fails until this map is edited in review.
+ */
+const ROUNDED_FULL_ALLOWED: Record<string, number> = {
+  "src/app/resources/[slug]/page.tsx": 1, // feature bullet dot (size-1.5)
+  "src/app/verification/page.tsx": 1, // step numerals (size-6)
+  "src/features/resources/components/provenance-rail.tsx": 1, // neutral station marker (7px ring)
+};
+
 /** Where every homepage number must come from the census or a repository read. */
 const HOME_FEATURE = "src/features/home/";
 const HOME_PAGE = "src/app/page.tsx";
@@ -188,6 +198,15 @@ describe("design guardrails", () => {
     const files = TSX.filter(notTool);
     assert.deepEqual(hits(files, /\brounded(?:-[trblse]{1,2})?-(?:lg|xl|2xl|3xl|4xl)\b/), []);
     assert.deepEqual(hits(files, /\brounded(?:-[trblse]{1,2})?-\[/), []);
+  });
+
+  test("rounded-full appears exactly as the circle map allows", () => {
+    const counts: Record<string, number> = {};
+    for (const file of TSX.filter(notTool)) {
+      const n = (file.text.match(/\brounded-full\b/g) ?? []).length;
+      if (n > 0) counts[file.path] = n;
+    }
+    assert.deepEqual(counts, ROUNDED_FULL_ALLOWED);
   });
 
   test("no bare rounded (4px, off the 3/6/10 scale) outside the tool UIs", () => {
