@@ -74,7 +74,7 @@ export function AtlasIndex({
                       aria-label={`${subject.name}, ${formatCount(subject.count)} ${plural(subject.count, "listing", "listings")}`}
                       className={cn(row, "group rounded-xs text-fg")}
                     >
-                      <span className="min-w-0 underline-offset-[0.2em] decoration-border-strong group-hover:underline">
+                      <span className="min-w-0 underline-offset-[0.2em] group-hover:underline">
                         {subject.name}
                       </span>
                       {leader}

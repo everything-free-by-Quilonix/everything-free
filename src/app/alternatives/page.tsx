@@ -50,7 +50,7 @@ export default async function AlternativesPage() {
                   href={`/alternatives/${target.slug}`}
                   className="group flex items-baseline gap-3 rounded-xs py-3 text-sm text-fg"
                 >
-                  <span className="min-w-0 underline-offset-[0.2em] decoration-border-strong group-hover:underline">
+                  <span className="min-w-0 underline-offset-[0.2em] group-hover:underline">
                     {target.name}
                   </span>
                   <span aria-hidden="true" className="hidden flex-1 border-b border-dotted border-rule sm:block" />

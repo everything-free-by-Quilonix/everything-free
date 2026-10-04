@@ -4,7 +4,7 @@
 /* Prose and code inside src/ (".filter(", "focus ring", "transition", "box-shadow") read as
    bare utilities. None is used as a class, and each one pulls in a block of
    @property fallbacks, so they are excluded by name. */
-@source not inline("ring filter transform transition shadow");
+@source not inline("ring filter transform transition shadow collapse container lowercase resize static");
 @import "../styles/tokens.css";
 @import "../styles/materials.css";
 @import "../styles/motion.css";
