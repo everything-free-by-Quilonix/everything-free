@@ -78,7 +78,10 @@ export default async function CategoryPage({ params }: PageProps) {
               {groups.map((group, index) => (
                 <span key={group.id}>
                   {index > 0 ? " · " : null}
-                  <Link href={`/categories#${group.id}`} className="rounded-xs hover:text-fg hover:underline">
+                  <Link
+                    href={`/categories#${group.id}`}
+                    className="inline-block rounded-xs hover:text-fg hover:underline pointer-coarse:py-2"
+                  >
                     {group.name}
                   </Link>
                 </span>

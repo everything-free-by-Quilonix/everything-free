@@ -6,7 +6,8 @@ import { site } from "@/config/site";
 import { Brand } from "./brand";
 
 /** Chrome text link: muted, ink and underlined on hover. */
-const footerLink = "rounded-xs text-sm text-fg-muted underline-offset-[0.2em] transition-colors hover:text-fg hover:underline";
+const footerLink =
+  "inline-block rounded-xs text-sm text-fg-muted underline-offset-[0.2em] transition-colors hover:text-fg hover:underline pointer-coarse:py-2";
 
 /**
  * Site footer: four text columns and a colophon, ruled from the page above.

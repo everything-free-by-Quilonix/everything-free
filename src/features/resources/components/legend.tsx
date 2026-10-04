@@ -64,7 +64,7 @@ export function Legend(props: { variant: "full" } | { variant: "popover"; id: st
         type="button"
         popoverTarget={id}
         style={{ anchorName: `--${id}` } as CSSProperties}
-        className="self-start rounded-xs text-xs text-fg-muted underline underline-offset-2 hover:text-fg"
+        className="self-start rounded-xs text-xs text-fg-muted underline underline-offset-2 hover:text-fg pointer-coarse:py-2"
       >
         What the evidence marks mean
       </button>

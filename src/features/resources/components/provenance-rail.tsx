@@ -168,7 +168,7 @@ export function ProvenanceRail({ resource }: { resource: Resource }) {
             ) : null}
           </p>
           <p>
-            <a href="#verification" className="link-inline">
+            <a href="#verification" className="link-inline inline-block pointer-coarse:py-2">
               See the verification record
             </a>
           </p>

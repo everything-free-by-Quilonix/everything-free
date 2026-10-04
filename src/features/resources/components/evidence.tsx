@@ -179,7 +179,7 @@ export function EvidenceDetails({ evidence }: { evidence: FactEvidence }) {
     // Opens instantly (no motion-details): its text is read the moment it
     // opens, by people scanning a row and by the detail-page smoke audit.
     <details className="group text-xs">
-      <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-xs text-fg-subtle underline-offset-2 hover:text-fg hover:underline [&::-webkit-details-marker]:hidden">
+      <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-xs text-fg-subtle underline-offset-2 hover:text-fg hover:underline pointer-coarse:py-2 [&::-webkit-details-marker]:hidden">
         How we know
         <Icon
           name="chevron-down"

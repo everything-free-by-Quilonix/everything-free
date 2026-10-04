@@ -197,9 +197,10 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
 
                   {row.source ? (
                     <p className="mt-1.5 text-xs text-fg-subtle">
+                      {/* Host and path can be one unbroken string wider than a phone; it breaks anywhere. */}
                       <ExternalLink
                         href={row.source.url}
-                        className="link-inline"
+                        className="link-inline wrap-anywhere"
                         announceExternal={false}
                       >
                         {new URL(row.source.url).hostname.replace(/^www\./, "")}

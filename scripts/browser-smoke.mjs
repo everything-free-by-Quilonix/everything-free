@@ -1131,8 +1131,8 @@ async function main() {
         });
       }
 
-      // Added routes: the comparison table and the subject index.
-      for (const route of [compareRoute, "/categories/"]) {
+      // Added routes: the comparison table, the subject index, a subject page and the verification survey.
+      for (const route of [compareRoute, "/categories/", "/categories/photography/", "/verification/"]) {
         await check(`${name} ${route} has no horizontal overflow`, async () => {
           await page.goto(`${site}${route}`);
           await page.waitFor(JS.hydrated);
@@ -1177,6 +1177,18 @@ async function main() {
           assert(await page.waitFor(`${state} === 'shown'`), "bar did not appear after the header actions scrolled away");
           await page.evaluate(`window.scrollTo(0, document.documentElement.scrollHeight)`);
           assert(await page.waitFor(`${state} !== 'shown'`), "bar stays over the footer");
+        });
+
+        await check("mobile: every record-page link, evidence sources included, stays inside the viewport", async () => {
+          // A clipped link is lost content even when the document does not scroll sideways.
+          await page.goto(`${site}/resources/supabase/`);
+          await page.waitFor(JS.hydrated);
+          const outside = await page.evaluate(`(() => {
+            for (const d of document.querySelectorAll('main details')) d.open = true;
+            const scrolls = (el) => { for (let p = el.parentElement; p; p = p.parentElement) if (/auto|scroll/.test(getComputedStyle(p).overflowX)) return true; return false; };
+            return [...document.querySelectorAll('main a')].filter((a) => { const r = a.getBoundingClientRect(); return r.width > 0 && !scrolls(a) && (r.right > innerWidth + 1 || r.left < -1); }).map((a) => a.textContent.trim().slice(0, 40));
+          })()`);
+          assert(outside.length === 0, `links past the viewport edge: ${JSON.stringify(outside.slice(0, 3))}`);
         });
 
         await check("mobile: hiding the action bar at the footer does not move the page", async () => {
