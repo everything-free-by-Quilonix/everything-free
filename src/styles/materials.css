@@ -81,6 +81,16 @@ html:has([data-results-toolbar][data-wrapped]) {
   --toolbar-h: 88px;
 }
 
+/* While the compare tray is shown, the page ends above it and focused or
+   anchored elements scroll clear of it. No script measures it. */
+html:has([data-compare-tray]) {
+  scroll-padding-bottom: 5rem;
+}
+
+html:has([data-compare-tray]) main {
+  padding-bottom: 5rem;
+}
+
 /* Survey bar partial fills: confirmed ink at reduced strength. Static values
    first; the relative form only inside the feature query. */
 :root {
@@ -334,6 +344,25 @@ html:has([data-results-toolbar][data-wrapped]) {
     .record-layout [data-sticky="xl"] {
       position: sticky;
       top: calc(var(--header-h) + 1rem);
+    }
+  }
+
+  /* Segmented control: one 2px gold rule under the checked segment, placed by
+     the inline --i (index) and --n (count), so it moves rather than redraws. */
+  .segment-indicator {
+    position: absolute;
+    inset-inline-start: 0;
+    bottom: -1px;
+    inline-size: calc(100% / var(--n));
+    block-size: 2px;
+    background-color: var(--primary);
+    transform: translateX(calc(var(--i) * 100%));
+    pointer-events: none;
+  }
+
+  @media (forced-colors: active) {
+    .segment-indicator {
+      background-color: Highlight;
     }
   }
 

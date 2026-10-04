@@ -62,7 +62,14 @@ export function EvidenceMark({
 }
 
 /** "✓ Confirmed", "– Not verified": the evidence state of one fact, as a small inline label. */
-export function EvidenceTag({ evidence, className }: { evidence: FactEvidence; className?: string }) {
+export function EvidenceTag({
+  evidence,
+  className,
+}: {
+  /** Only the state and reason are read, so a build-time index cell can be passed as is. */
+  evidence: Pick<FactEvidence, "state" | "reason">;
+  className?: string;
+}) {
   const style = STYLE[evidence.reason];
   return (
     <span
