@@ -61,7 +61,8 @@ export function ResultsToolbar({
     >
       <p className="mr-auto text-sm text-fg-muted tabular-nums" aria-live="polite">
         <span className="text-fg">{formatCount(total)}</span> {plural(total, "listing", "listings")}
-        {filtered ? <span className="hidden sm:inline"> {plural(total, "matches", "match")}</span> : null}
+        {/* The verb shows at every width: without it a filtered count reads like the library total. */}
+        {filtered ? ` ${plural(total, "matches", "match")}` : null}
         {totalPages > 1 ? (
           <span className="hidden text-fg-subtle sm:inline">
             {" "}

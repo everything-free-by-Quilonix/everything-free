@@ -140,7 +140,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             {inferredFilters.length > 0 ? (
               <Callout tone="neutral" icon={null} className="mt-4">
                 Your wording set {inferredFilters.length === 1 ? "a filter" : "some filters"} automatically:{" "}
-                {inferredFilters.map((filter) => filter.label).join(", ")}. Remove any that do not apply using the chips
+                {inferredFilters.map((filter) => filter.label).join(", ")}. Remove any that do not apply using the filters
                 above.
               </Callout>
             ) : null}
@@ -162,7 +162,7 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             {results.relaxedMatching ? (
               <Callout tone="neutral" icon="info" className="mt-4">
                 Few resources matched every word, so results matching only part of your search are included below.
-                Closest matches come first, and each card shows why it matched.
+                Closest matches come first, and each listing shows why it matched.
               </Callout>
             ) : null}
 
