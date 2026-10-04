@@ -8,6 +8,11 @@ import { z } from "zod";
  * per listing, so a malformed index can never draw more confirmation than the
  * build computed.
  */
+// zod's fast path compiles object parsers with `new Function`, which the
+// strict CSP (no 'unsafe-eval') blocks and reports as a violation. The
+// interpreted path gives the same results.
+z.config({ jitless: true });
+
 const count = z.number().int().nonnegative();
 const slug = z.string().min(1);
 const name = z.string().min(1);

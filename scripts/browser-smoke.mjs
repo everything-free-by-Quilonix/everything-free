@@ -949,6 +949,22 @@ async function main() {
       assert(outline !== "none", "no focus outline");
       return `outline ${outline}`;
     });
+    await check("palette parses its index without a CSP violation", async () => {
+      // The index is validated in the browser; a validator that evals would be
+      // blocked and reported by the strict policy.
+      await desktop.goto(`${site}/`);
+      await desktop.waitFor(JS.hydrated);
+      desktop.events.errors.length = 0;
+      desktop.events.failedRequests.length = 0;
+      await ctrlK(desktop);
+      assert(await desktop.waitFor(palette.open), "Ctrl+K did not open the palette");
+      await desktop.send("Input.insertText", { text: "supabase" });
+      assert(await desktop.waitFor(`[...document.querySelectorAll('[data-palette] [role="option"]')].some((o) => o.textContent.includes('Supabase'))`), "index did not load");
+      await assertCleanLoad(desktop, "palette");
+      await desktop.key("Escape", "Escape", 27);
+      await desktop.key("Escape", "Escape", 27);
+    });
+
     await desktop.close();
 
     /* ------------------------------------------------ viewports */
