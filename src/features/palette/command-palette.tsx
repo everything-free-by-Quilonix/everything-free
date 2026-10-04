@@ -275,7 +275,7 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
                       // Selected, not focused: DOM focus stays in the input, which
                       // holds the only focus ring. The active row takes the
                       // selected role, a fill and a 2px gold leading rule.
-                      "palette-option mx-2 flex cursor-pointer items-center justify-between gap-4 rounded-e-sm border-s-2 border-transparent px-2 py-2 text-sm",
+                      "mx-2 flex cursor-pointer items-center justify-between gap-4 rounded-e-sm border-s-2 border-transparent px-2 py-2 text-sm",
                       selected && "border-s-primary bg-surface-hover",
                     )}
                   >

@@ -1105,6 +1105,17 @@ async function main() {
       }
       await reducedMotion(false);
     });
+
+    await check("desktop: the hidden mobile action bar reserves no space at 1366px", async () => {
+      await desktop.goto(`${site}/resources/supabase/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.evaluate(`window.scrollTo(0, document.querySelector('[data-record-actions]').getBoundingClientRect().bottom + window.scrollY + 400)`);
+      // The observer runs at every width; wait until it has marked the reservation.
+      assert(await desktop.waitFor(`document.querySelector('.action-bar')?.hasAttribute('data-reserved')`), "the action bar never marked its reservation");
+      const padding = await desktop.evaluate(`getComputedStyle(document.querySelector('main')).paddingBottom`);
+      assert(padding === "0px", `main has ${padding} of bottom padding on desktop`);
+      return `main padding-bottom ${padding}`;
+    });
     await desktop.close();
 
     /* ------------------------------------------------ viewports */
@@ -1166,6 +1177,25 @@ async function main() {
           assert(await page.waitFor(`${state} === 'shown'`), "bar did not appear after the header actions scrolled away");
           await page.evaluate(`window.scrollTo(0, document.documentElement.scrollHeight)`);
           assert(await page.waitFor(`${state} !== 'shown'`), "bar stays over the footer");
+        });
+
+        await check("mobile: hiding the action bar at the footer does not move the page", async () => {
+          await page.goto(`${site}/resources/supabase/`);
+          await page.waitFor(JS.hydrated);
+          const shown = `document.querySelector('.action-bar')?.hasAttribute('data-visible')`;
+          // The footer's document offset, independent of the scroll position.
+          const footerTop = `(() => { const f = [...document.querySelectorAll('footer')].at(-1); return Math.round(f.getBoundingClientRect().top + window.scrollY); })()`;
+          await page.evaluate(`window.scrollTo(0, document.querySelector('[data-record-actions]').getBoundingClientRect().bottom + window.scrollY + 400)`);
+          assert(await page.waitFor(shown), "bar did not appear after the header actions scrolled away");
+          const before = await page.evaluate(footerTop);
+          const padding = await page.evaluate(`parseFloat(getComputedStyle(document.querySelector('main')).paddingBottom)`);
+          assert(padding >= 80, `main reserves ${padding}px while the bar is shown`);
+          await page.evaluate(`window.scrollTo(0, document.documentElement.scrollHeight)`);
+          assert(await page.waitFor(`!${shown}`), "bar stays over the footer");
+          await page.evaluate(`new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))`);
+          const after = await page.evaluate(footerTop);
+          assert(after === before, `the footer moved from ${before}px to ${after}px when the bar hid`);
+          return `footer at ${after}px, ${padding}px reserved`;
         });
 
         await check("mobile: the Filters sheet holds the only filter form and returns focus", async () => {

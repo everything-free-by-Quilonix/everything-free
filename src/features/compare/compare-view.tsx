@@ -414,8 +414,11 @@ function Picker({
             onMouseDown={(event) => event.preventDefault()}
             onClick={() => pick(entry)}
             className={cn(
-              "flex cursor-pointer items-baseline justify-between gap-3 px-3 py-2 text-sm",
-              i === activeIndex && "bg-surface-hover",
+              // Selected, not focused: the input keeps DOM focus and the ring.
+              // As in the palette, the active option takes a fill and a 2px
+              // gold leading rule.
+              "flex cursor-pointer items-baseline justify-between gap-3 border-s-2 border-transparent px-3 py-2 text-sm",
+              i === activeIndex && "border-s-primary bg-surface-hover",
             )}
           >
             <span className="truncate text-fg" translate="no">

@@ -47,6 +47,8 @@ const GOLD_TSX_OWNERS = [
   "src/components/layout/nav-links.tsx",
   "src/components/ui/segmented-control.tsx",
   "src/features/palette/command-palette.tsx",
+  // The compare picker's active listbox option: the same selected rule as the palette.
+  "src/features/compare/compare-view.tsx",
   "src/features/search/components/pagination.tsx",
   "src/features/resources/components/on-this-page.tsx",
 ];

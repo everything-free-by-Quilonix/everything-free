@@ -89,16 +89,28 @@ html:has([data-results-toolbar][data-wrapped]) {
   transform: translateY(var(--dist-short));
 }
 
-/* While a bottom bar is shown (the record action bar, or the compare tray on
-   /resources; they never share a page), the page ends above it and focused or
-   anchored elements scroll clear of it. One height covers both bars, safe
-   area included. No script measures it. */
-html:has(.action-bar[data-visible], [data-compare-tray]) {
-  scroll-padding-bottom: 5rem;
+/* While a bottom bar holds its space (the compare tray on /resources, or the
+   record action bar below lg once reserved; they never share a page), the page
+   ends above it and focused or anchored elements scroll clear of it. The
+   action bar's reservation outlasts its hiding at the footer, so the page
+   never jumps. One height covers both bars, safe area included; unset, both
+   declarations fall back to their initial values. No script measures it. */
+html:has([data-compare-tray]) {
+  --bar-h: calc(5rem + env(safe-area-inset-bottom));
 }
 
-html:has(.action-bar[data-visible], [data-compare-tray]) main {
-  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+@media (width < 64rem) {
+  html:has(.action-bar[data-reserved]) {
+    --bar-h: calc(5rem + env(safe-area-inset-bottom));
+  }
+}
+
+html {
+  scroll-padding-bottom: var(--bar-h);
+}
+
+main {
+  padding-bottom: var(--bar-h);
 }
 
 /* Survey bar partial fills: confirmed ink at reduced strength. Static values
@@ -376,14 +388,15 @@ html:has(.action-bar[data-visible], [data-compare-tray]) main {
     }
   }
 
-  /* Palette rows: forced colours paint every transparent leading rule, so the
-     resting rule takes the canvas and the active row the system highlight. */
+  /* Listbox options (the palette and the compare picker): forced colours paint
+     every transparent leading rule, so the resting rule takes the canvas and
+     the active option the system highlight. */
   @media (forced-colors: active) {
-    .palette-option {
+    [role="option"] {
       border-inline-start-color: Canvas;
     }
 
-    .palette-option[aria-selected="true"] {
+    [role="option"][aria-selected="true"] {
       border-inline-start-color: Highlight;
     }
   }
