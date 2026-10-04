@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { Icon } from "@/components/icons";
-import { Card } from "@/components/ui/card";
 import { ExternalLink } from "@/components/ui/external-link";
 import {
   getVerificationCheck,
@@ -99,9 +98,13 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
   const rows = buildRows(resource);
   const lastChecked = formatMonthYear(resource.lastVerifiedAt);
 
+  // CONTENT, not a box: a hairline above and space. The h2 stays a direct child
+  // of the root, so the root holds the whole panel under its heading.
   return (
-    <Card className="p-5">
-      <h2 className="font-display text-sm font-semibold">Verification</h2>
+    <section id="verification" aria-labelledby="verification-heading" className="border-t border-rule pt-6">
+      <h2 id="verification-heading" className="font-display text-xl font-semibold">
+        Verification
+      </h2>
 
       {/* ------------------------------------------------------ summary */}
       <div className="mt-3 flex flex-col gap-3 text-sm">
@@ -259,6 +262,6 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
           <Icon name="chevron-right" size={12} />
         </Link>
       </div>
-    </Card>
+    </section>
   );
 }

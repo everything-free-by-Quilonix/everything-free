@@ -171,7 +171,8 @@ export function Dialog({
       data-variant={variant}
       data-palette={variant === "palette-top" ? "" : undefined}
       className={cn(
-        "material-elevated overflow-hidden p-0 text-fg shadow-overlay backdrop:bg-(--scrim)",
+        // The overlay shadow comes from materials.css ([data-ef-modal]).
+        "material-elevated overflow-hidden p-0 text-fg backdrop:bg-(--scrim)",
         PANEL[variant],
       )}
     >

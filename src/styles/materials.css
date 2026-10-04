@@ -62,6 +62,13 @@ html:has(dialog[data-ef-modal][open]) {
   overflow: hidden;
 }
 
+/* Modals are ELEVATED one step further: the overlay shadow. Unlayered, so it
+   wins over material-elevated's raised shadow. A plain declaration rather than
+   a shadow utility, which would ship Tailwind's whole shadow and ring chain. */
+dialog[data-ef-modal] {
+  box-shadow: var(--shadow-overlay);
+}
+
 /* The results toolbar sticks under the header, so anchors and focused records
    scroll clear of both. A custom property set on a descendant cannot reach html,
    so the height is declared from the root. When the row wraps the toolbar marks
@@ -276,6 +283,58 @@ html:has([data-results-toolbar][data-wrapped]) {
     top: 11px;
     bottom: calc(-1.25rem - 4px);
     border-inline-start: 1px solid var(--rule);
+  }
+
+  /* Record page: one stack below lg, in reading order (On this page, rail,
+     main, aside). From lg the rail heads a second column and sticks inside the
+     row that takes the spare height, so the aside blocks sit at its foot and
+     never scroll up beneath it. From xl On this page is a sticky left column. */
+  .record-layout {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-areas: "toc" "rail" "main" "aside";
+  }
+
+  .record-layout > [data-area="toc"] {
+    grid-area: toc;
+  }
+
+  .record-layout > [data-area="rail"] {
+    grid-area: rail;
+  }
+
+  .record-layout > [data-area="main"] {
+    grid-area: main;
+  }
+
+  .record-layout > [data-area="aside"] {
+    grid-area: aside;
+  }
+
+  @media (width >= 64rem) {
+    .record-layout {
+      grid-template-columns: minmax(0, 1fr) 20rem;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: "toc toc" "main rail" "main aside";
+    }
+
+    .record-layout [data-sticky="lg"] {
+      position: sticky;
+      top: calc(var(--header-h) + 1rem);
+    }
+  }
+
+  @media (width >= 80rem) {
+    .record-layout {
+      grid-template-columns: 11rem minmax(0, 1fr) 20rem;
+      grid-template-rows: 1fr auto;
+      grid-template-areas: "toc main rail" "toc main aside";
+    }
+
+    .record-layout [data-sticky="xl"] {
+      position: sticky;
+      top: calc(var(--header-h) + 1rem);
+    }
   }
 
   /* Palette rows: forced colours paint every transparent leading rule, so the

@@ -760,6 +760,25 @@ async function main() {
       return unchecked.slug;
     });
 
+    await check("record tags link to their tag listings", async () => {
+      // The record -> tag-listing path lives only in the aside's Tags block.
+      await desktop.goto(`${site}/resources/supabase/`);
+      await desktop.waitFor(JS.hydrated);
+      const tags = await desktop.evaluate(`(() => {
+        const heading = [...document.querySelectorAll('aside h2')].find((h) => h.textContent.trim() === 'Tags');
+        if (!heading) return null;
+        return [...heading.parentElement.querySelectorAll('a[href*="?tag="]')].map((a) => ({
+          text: a.textContent.trim(),
+          tag: new URL(a.href).searchParams.get('tag'),
+        }));
+      })()`);
+      assert(tags, "no Tags heading in the aside");
+      assert(tags.length > 0, "Tags heading has no tag links");
+      const wrong = tags.filter((t) => t.tag !== t.text);
+      assert(wrong.length === 0, `tag links point elsewhere: ${JSON.stringify(wrong.slice(0, 3))}`);
+      return `${tags.length} tags`;
+    });
+
     await check("search: natural-language constraint becomes a removable filter", async () => {
       await desktop.goto(`${site}/resources/?q=${encodeURIComponent("free AI voice generator without a credit card")}`);
       assert(await desktop.waitFor(`document.body.innerText.includes("set a filter automatically")`), "inferred-filter notice missing");

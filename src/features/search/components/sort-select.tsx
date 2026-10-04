@@ -69,7 +69,7 @@ export function SortSelect({
         <Icon
           name="chevron-down"
           size={15}
-          className="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 text-fg-subtle"
+          className="pointer-events-none absolute inset-y-0 right-2.5 my-auto text-fg-subtle"
         />
       </div>
     </div>

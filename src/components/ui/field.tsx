@@ -129,7 +129,7 @@ export function Select({
       <Icon
         name="chevron-down"
         size={16}
-        className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-fg-subtle"
+        className="pointer-events-none absolute inset-y-0 right-3 my-auto text-fg-subtle"
       />
     </div>
   );
