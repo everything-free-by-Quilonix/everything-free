@@ -949,6 +949,7 @@ async function main() {
       assert(outline !== "none", "no focus outline");
       return `outline ${outline}`;
     });
+
     await check("palette parses its index without a CSP violation", async () => {
       // The index is validated in the browser; a validator that evals would be
       // blocked and reported by the strict policy.
@@ -965,6 +966,76 @@ async function main() {
       await desktop.key("Escape", "Escape", 27);
     });
 
+    /* ------------------------------------------------- quick compare */
+    const comparePair = ["supabase", slugs.find((s) => s !== "supabase")];
+    const compareRoute = `/compare/?r=${comparePair.join(",")}`;
+
+    await check("compare index loads, parses and matches the manifest's evidence", async () => {
+      const response = await fetch(`${site}/compare-index.json`);
+      assert(response.ok, `HTTP ${response.status}`);
+      const index = await response.json();
+      assert(index.v === 1 && index.t > 0, "unexpected index header");
+      assert(index.entries.length === manifest.count, `${index.entries.length} listings, manifest has ${manifest.count}`);
+      const problems = [];
+      for (const entry of index.entries) {
+        const facts = factsBySlug[entry.s];
+        for (const [fact, cell] of Object.entries(entry.cells)) {
+          if (cell.state !== facts?.[fact]?.state || cell.reason !== facts?.[fact]?.reason) problems.push(`${entry.s} ${fact}`);
+        }
+      }
+      assert(problems.length === 0, `cells disagree with the manifest: ${problems.slice(0, 3).join("; ")}`);
+      return `${index.entries.length} listings`;
+    });
+
+    await check("compare table states each fact's evidence exactly as the manifest does", async () => {
+      await desktop.goto(`${site}${compareRoute}`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`document.querySelectorAll('table tbody td[data-fact]').length > 0`), "comparison table did not render");
+      const audit = await desktop.evaluate(`(() => {
+        const facts = ${JSON.stringify(factsBySlug)};
+        const cols = [...document.querySelectorAll('table thead th a')].map((a) => (a.getAttribute('href').split('/resources/')[1] ?? '').replace(/\\/$/, ''));
+        const problems = [];
+        let cells = 0;
+        for (const row of document.querySelectorAll('table tbody tr')) {
+          [...row.querySelectorAll('td')].forEach((td, i) => {
+            if (!td.dataset.fact) return;
+            cells += 1;
+            const shown = td.querySelector('[data-evidence]')?.dataset.evidence;
+            if (shown !== facts[cols[i]]?.[td.dataset.fact]?.state) problems.push(cols[i] + ' ' + td.dataset.fact + ' says ' + shown);
+          });
+        }
+        return { cols, cells, problems };
+      })()`);
+      assert(audit.cols.join(",") === comparePair.join(","), `columns ${audit.cols.join(",")}`);
+      assert(audit.cells === comparePair.length * 8, `${audit.cells} fact cells`);
+      assert(audit.problems.length === 0, audit.problems.slice(0, 3).join("; "));
+      await assertCleanLoad(desktop, "compare");
+      return `${audit.cells} cells`;
+    });
+
+    await check("compare: an unknown slug leaves the picker and says it was left out", async () => {
+      await desktop.goto(`${site}/compare/?r=not-a-real-slug`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`document.body.innerText.includes("Pick two or three listings to compare")`), "picker empty state missing");
+      assert(await desktop.evaluate(`document.body.innerText.includes("1 listing in this link was not found and was left out")`), "not-found notice missing");
+      assert(await desktop.evaluate(`!document.querySelector('table')`), "a table rendered with no listings");
+    });
+
+    await check("compare toggles on /resources fill the tray, stop at three and open the comparison", async () => {
+      await desktop.goto(`${site}/resources/`);
+      await desktop.waitFor(JS.hydrated);
+      const toggles = `[...document.querySelectorAll('main [data-compare-toggle]')]`;
+      assert(await desktop.waitFor(`${toggles}.length >= 4`), "no compare toggles on records");
+      for (const i of [0, 1, 2]) await desktop.evaluate(`${toggles}[${i}].click()`);
+      assert(await desktop.waitFor(`document.querySelector('[data-compare-tray]')?.innerText.includes('3 of 3 selected')`), "tray does not show 3 of 3");
+      assert(await desktop.evaluate(`${toggles}[3].getAttribute('aria-disabled') === 'true'`), "a fourth toggle is not disabled");
+      await desktop.evaluate(`${toggles}[3].click()`);
+      assert(await desktop.evaluate(`document.querySelector('[data-compare-tray]').innerText.includes('3 of 3 selected')`), "a fourth listing was added");
+      await desktop.evaluate(`window.__noReload = true`);
+      assert(await desktop.evaluate(JS.clickText("[data-compare-tray] a", "Compare 3 listings")), "no Compare link in the tray");
+      assert(await desktop.waitFor(`location.pathname.endsWith('/compare/') && document.querySelectorAll('table thead th a').length === 3`), "comparison did not open with three columns");
+      assert(await desktop.evaluate(`window.__noReload === true`), "navigation fell back to a full page load");
+    });
     await desktop.close();
 
     /* ------------------------------------------------ viewports */
@@ -975,6 +1046,17 @@ async function main() {
         await check(`${name} ${route} has no horizontal overflow`, async () => {
           await page.goto(`${site}${route}`);
           await page.waitFor(JS.hydrated);
+          const overflow = await page.evaluate(JS.overflow);
+          assert(overflow <= 1, `content ${overflow}px wider than the viewport`);
+        });
+      }
+
+      // Added routes: the comparison table and the subject index.
+      for (const route of [compareRoute, "/categories/"]) {
+        await check(`${name} ${route} has no horizontal overflow`, async () => {
+          await page.goto(`${site}${route}`);
+          await page.waitFor(JS.hydrated);
+          if (route === compareRoute) assert(await page.waitFor(`!!document.querySelector('table')`), "comparison table did not render");
           const overflow = await page.evaluate(JS.overflow);
           assert(overflow <= 1, `content ${overflow}px wider than the viewport`);
         });
@@ -1051,6 +1133,16 @@ async function main() {
       assert(await noJs.evaluate(`!!document.querySelector('a[href*="template=resource-submission"]')`), "submit fallback missing");
       await noJs.goto(`${site}/report/`);
       assert(await noJs.evaluate(`!!document.querySelector('a[href*="template=resource-correction"]')`), "report fallback missing");
+    });
+    await check("no-JS: no page offers Compare, and /compare/ says it needs JavaScript", async () => {
+      await noJs.goto(`${site}/resources/supabase/`);
+      assert(await noJs.evaluate(`!document.querySelector('a[href*="/compare/"]')`), "record page links to /compare/ without JavaScript");
+      await noJs.goto(`${site}/resources/`);
+      assert(await noJs.evaluate(`!document.querySelector('a[href*="/compare/"], [data-compare-toggle]')`), "/resources offers compare without JavaScript");
+      await noJs.goto(`${site}${compareRoute}`);
+      assert(await noJs.evaluate(`document.body.innerText.includes("Comparison needs JavaScript")`), "no-JS notice missing on /compare/");
+      const sitemap = await (await fetch(`${site}/sitemap.xml`)).text();
+      assert(!sitemap.includes("/compare"), "/compare/ is in the sitemap");
     });
     await noJs.close();
   } finally {

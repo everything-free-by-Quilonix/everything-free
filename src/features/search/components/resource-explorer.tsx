@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -8,6 +8,9 @@ import { Icon } from "@/components/icons";
 import { buttonClasses } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { EmptyState } from "@/components/ui/empty-state";
+import { compareSelection, MAX_COMPARE } from "@/features/compare/compare-params";
+import { CompareToggle } from "@/features/compare/compare-toggle";
+import { CompareTray } from "@/features/compare/compare-tray";
 import { RecordList } from "@/features/resources/components/resource-record";
 import { countActiveFilters, EVIDENCE_FILTER_KEYS } from "@/lib/search/filters";
 import { parseSearchParams, searchParamsToInput } from "@/lib/search/params";
@@ -75,6 +78,12 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
     query.addEventListener("change", onChange);
     return () => query.removeEventListener("change", onChange);
   }, []);
+
+  // The comparison selection: React state only, never stored, so it lives as
+  // long as the explorer stays mounted (across filter, sort and page changes).
+  // The three-item cap lives in the tested reducer.
+  const [compare, dispatchCompare] = useReducer(compareSelection, []);
+  const nameBySlug = useMemo(() => new Map(resources.map((r) => [r.slug, r.name])), [resources]);
 
   // Recomputed only when the URL changes. At this library size the full pipeline
   // is well under a frame, so there is no need for debouncing or a worker.
@@ -221,10 +230,19 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
             <div className={isPending ? "mt-6 opacity-60" : "mt-6"} aria-busy={isPending || undefined}>
               {items.length > 0 ? (
                 <>
-                  <RecordList layout="list"
+                  <RecordList
+                    layout="list"
                     resources={items}
                     reasonsBySlug={reasonsBySlug}
                     label={isSearch ? `Search results for ${query.q}` : "All resources"}
+                    renderCompare={(resource) => (
+                      <CompareToggle
+                        name={resource.name}
+                        selected={compare.includes(resource.slug)}
+                        full={compare.length >= MAX_COMPARE && !compare.includes(resource.slug)}
+                        onToggle={() => dispatchCompare({ type: "toggle", slug: resource.slug })}
+                      />
+                    )}
                   />
 
                   {results.totalPages > 1 ? (
@@ -269,6 +287,13 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
           </div>
         </div>
       </div>
+
+      {compare.length > 0 ? (
+        <CompareTray
+          selected={compare.map((slug) => ({ slug, name: nameBySlug.get(slug) ?? slug }))}
+          onClear={() => dispatchCompare({ type: "clear" })}
+        />
+      ) : null}
     </>
   );
 }

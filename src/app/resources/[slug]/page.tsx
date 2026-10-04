@@ -11,6 +11,7 @@ import { Breadcrumbs, Container } from "@/components/ui/layout";
 import { getCategory } from "@/config/categories";
 import { getFreeStatus } from "@/config/free-status";
 import { site } from "@/config/site";
+import { CompareLink } from "@/features/compare/compare-link";
 import { CoordinatesLine } from "@/features/resources/components/coordinates-line";
 import { EvidenceMark, EvidenceTag } from "@/features/resources/components/evidence";
 import { Legend } from "@/features/resources/components/legend";
@@ -211,6 +212,8 @@ export default async function ResourcePage({ params }: PageProps) {
                   Source code
                 </ExternalLink>
               ) : null}
+
+              <CompareLink slug={resource.slug} />
 
               <p className="text-center text-xs text-fg-subtle">Opens the provider&rsquo;s own site</p>
             </div>
