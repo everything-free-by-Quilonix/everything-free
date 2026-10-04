@@ -75,7 +75,7 @@ export function SegmentedControl<T extends string>({
               </label>
             );
           })}
-          <span aria-hidden="true" className="segment-indicator" />
+          <span aria-hidden="true" className="segment-indicator motion-segment" />
         </div>
       </fieldset>
       {disabled && disabledReason ? <p className="text-sm text-fg-muted">{disabledReason}</p> : null}

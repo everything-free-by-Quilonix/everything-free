@@ -39,7 +39,7 @@ export function CompareTray({
     <nav
       aria-label="Comparison"
       data-compare-tray=""
-      className="material-elevated fixed inset-x-0 bottom-0 z-(--z-sticky) border-x-0 border-b-0 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]"
+      className="material-elevated motion-tray fixed inset-x-0 bottom-0 z-(--z-sticky) border-x-0 border-b-0 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]"
     >
       <div className="mx-auto flex max-w-(--container-content) flex-wrap items-center gap-x-4 gap-y-2 sm:px-2 lg:px-4">
         <p aria-live="polite" className="line-clamp-2 min-w-0 flex-1 text-sm text-fg-muted tabular-nums">
