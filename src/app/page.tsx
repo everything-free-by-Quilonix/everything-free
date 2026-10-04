@@ -18,9 +18,11 @@ import { ToolCard } from "@/features/tools/components/tool-card";
 import {
   getAlternativeTargets,
   getCollections,
+  getMarqueeResources,
   getRecentlyVerified,
   getResourceCount,
   getSpotlightResources,
+  getVerifiedResourceCount,
 } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -38,8 +40,18 @@ export const metadata: Metadata = buildMetadata({
  * nothing to show, it says what would fill it and how to contribute.
  */
 export default async function HomePage() {
-  const [resourceCount, spotlight, recentlyVerified, collections, alternativeTargets] = await Promise.all([
+  const [
+    resourceCount,
+    verifiedCount,
+    marqueeResources,
+    spotlight,
+    recentlyVerified,
+    collections,
+    alternativeTargets,
+  ] = await Promise.all([
     getResourceCount(),
+    getVerifiedResourceCount(),
+    getMarqueeResources(14),
     getSpotlightResources(6),
     getRecentlyVerified(6),
     getCollections(),
@@ -50,7 +62,12 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero resourceCount={resourceCount} toolCount={availableTools.length} />
+      <Hero
+        resourceCount={resourceCount}
+        verifiedCount={verifiedCount}
+        toolCount={availableTools.length}
+        marqueeResources={marqueeResources}
+      />
 
       <Container>
         {/* ---------------------------------------------------- categories */}

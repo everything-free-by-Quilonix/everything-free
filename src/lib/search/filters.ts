@@ -1,3 +1,4 @@
+import { getCategoryGroup, type CategoryGroupId } from "@/config/categories";
 import { freeStatusDefinitions } from "@/config/free-status";
 import { confirmedAvailability, isFactConfirmed, type Fact } from "@/lib/resources/evidence";
 import type { Resource } from "@/types/resource";
@@ -27,6 +28,21 @@ import { normalizeText } from "./tokenize";
 function matchesAny<T>(selected: T[] | undefined, values: readonly T[]): boolean {
   if (!selected || selected.length === 0) return true;
   return selected.some((value) => values.includes(value));
+}
+
+function matchesCategories(
+  selected: string[] | undefined,
+  resourceCategories: readonly string[],
+): boolean {
+  if (!selected || selected.length === 0) return true;
+  return selected.some((value) => {
+    if (resourceCategories.includes(value)) return true;
+    const group = getCategoryGroup(value as CategoryGroupId);
+    if (group && resourceCategories.some((cat) => group.categoryIds.includes(cat))) {
+      return true;
+    }
+    return false;
+  });
 }
 
 /**
@@ -82,7 +98,7 @@ export function matchesFilters(
   if (!matchesAny(query.resourceTypes, [resource.resourceType])) return false;
   if (!matchesAny(query.platforms, resource.platforms)) return false;
   if (!matchesAny(query.verificationStatuses, [resource.verificationStatus])) return false;
-  if (!matchesAny(query.categories, [resource.category, ...resource.subcategories])) return false;
+  if (!matchesCategories(query.categories, [resource.category, ...resource.subcategories])) return false;
   if (!matchesAny(query.tags, resource.tags)) return false;
 
   for (const key of EVIDENCE_FILTER_KEYS) {

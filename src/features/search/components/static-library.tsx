@@ -34,15 +34,23 @@ export function StaticLibrary({ resources }: { resources: Resource[] }) {
   return (
     <>
       <div className="border-b border-border bg-bg-subtle py-8">
-        <Container>
-          <h1 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">Browse free resources</h1>
-          <p className="mt-2 max-w-2xl text-sm text-fg-muted">
-            Every entry states what “free” means for it, what the limits are, and which of its facts an official source
-            confirms.
+        <Container className="flex flex-col items-center text-center">
+          <span className="font-mono text-[11px] font-semibold tracking-widest uppercase text-fg-subtle">
+            Resources
+          </span>
+          <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl">
+            All free resources
+          </h1>
+          <p className="mt-2.5 max-w-2xl text-sm leading-relaxed text-fg-muted sm:text-base">
+            Browse the curated library of genuinely free software, tools, platforms and learning resources.
           </p>
 
-          <div className="mt-6 max-w-2xl">
-            <SearchBox size="md" label="Search free resources" />
+          <div className="mt-6 w-full max-w-2xl">
+            <SearchBox
+              size="md"
+              label="Search free resources, tools, and platforms"
+              placeholderText="Search free resources, tools, and platforms..."
+            />
           </div>
         </Container>
       </div>

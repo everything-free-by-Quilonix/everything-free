@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Icon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { categoryList } from "@/config/categories";
 import { withBasePath } from "@/config/deployment";
 import { listableFreeStatuses } from "@/config/free-status";
 import { filterablePlatforms } from "@/config/platforms";
@@ -39,13 +38,33 @@ interface FilterPanelProps {
   /** Total results for the current query, shown on the mobile toggle. */
   resultCount: number;
   activeFilterCount: number;
+  isOpen?: boolean;
+  onToggleOpen?: () => void;
+  className?: string;
 }
 
-export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPanelProps) {
+export function FilterPanel({
+  facets,
+  resultCount,
+  activeFilterCount,
+  isOpen: controlledOpen,
+  onToggleOpen,
+  className,
+}: FilterPanelProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
-  const [open, setOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen : internalOpen;
+  const setOpen = (val: boolean | ((prev: boolean) => boolean)) => {
+    if (onToggleOpen) {
+      onToggleOpen();
+    } else {
+      setInternalOpen(val);
+    }
+  };
 
   const isChecked = (key: string, value: string) => searchParams.getAll(key).includes(value);
   const isFlagged = (key: string) => searchParams.get(key) === "1";
@@ -88,49 +107,30 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
   const clearAll = () => {
     update((params) => {
       const query = params.get(PARAM.q);
+      const category = params.get(PARAM.category);
       const sort = params.get(PARAM.sort);
       for (const key of [...params.keys()]) params.delete(key);
       if (query) params.set(PARAM.q, query);
+      if (category) params.set(PARAM.category, category);
       if (sort) params.set(PARAM.sort, sort);
     });
   };
-
-  // Categories are long; show the ones that currently have matches, plus any the
-  // user has already selected so a selection never disappears from the panel.
-  const visibleCategories = categoryList
-    .filter((category) => (facets.categories[category.id] ?? 0) > 0 || isChecked(PARAM.category, category.id))
-    .sort((a, b) => (facets.categories[b.id] ?? 0) - (facets.categories[a.id] ?? 0) || a.name.localeCompare(b.name));
 
   const visibleTypes = resourceTypeList
     .filter((type) => (facets.resourceTypes[type.id] ?? 0) > 0 || isChecked(PARAM.type, type.id))
     .sort((a, b) => (facets.resourceTypes[b.id] ?? 0) - (facets.resourceTypes[a.id] ?? 0));
 
-  return (
-    <div>
-      <div className="flex items-center justify-between gap-3 lg:hidden">
-        <Button
-          variant="secondary"
-          size="md"
-          onClick={() => setOpen((value) => !value)}
-          aria-expanded={open}
-          aria-controls="filter-panel"
-          className="flex-1"
-        >
-          <Icon name="filter" size={16} />
-          Filters
-          {activeFilterCount > 0 ? (
-            <span className="ml-1 rounded-full bg-primary px-1.5 py-0.5 text-[11px] font-semibold text-primary-fg">
-              {activeFilterCount}
-            </span>
-          ) : null}
-        </Button>
-      </div>
+  if (!open) {
+    return null;
+  }
 
+  return (
+    <div className={cn("w-full animate-in fade-in duration-200", className)}>
       <form
         id="filter-panel"
         method="get"
         action={withBasePath("/resources/")}
-        className={cn("mt-4 lg:mt-0 lg:block", open ? "block" : "hidden")}
+        className="block"
         onSubmit={(event) => {
           // JavaScript is available, so keep the navigation client-side.
           event.preventDefault();
@@ -142,29 +142,52 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
           startTransition(() => router.push(`/resources?${params.toString()}`, { scroll: false }));
         }}
       >
-        {/* Preserves the text query and sort order across a no-JavaScript submit. */}
+        {/* Preserves the text query, category, and sort order across a no-JavaScript submit. */}
         <input type="hidden" name={PARAM.q} value={searchParams.get(PARAM.q) ?? ""} />
+        <input type="hidden" name={PARAM.category} value={searchParams.get(PARAM.category) ?? ""} />
         <input type="hidden" name={PARAM.sort} value={searchParams.get(PARAM.sort) ?? ""} />
 
         <div
           className={cn(
-            "flex flex-col gap-6 rounded-xl border border-border bg-surface p-5 transition-opacity",
+            "flex flex-col gap-6 rounded-xl border border-border bg-surface p-5 sm:p-6 shadow-raised transition-opacity",
             isPending && "opacity-60",
           )}
           aria-busy={isPending}
         >
-          <div className="flex items-center justify-between gap-2">
-            <h2 className="font-display text-sm font-semibold">Filters</h2>
-            {activeFilterCount > 0 ? (
+          <div className="flex items-center justify-between border-b border-border pb-4">
+            <div className="flex items-center gap-2.5">
+              <Icon name="sliders" size={16} className="text-fg-subtle" />
+              <h2 className="font-display text-sm font-semibold text-fg">Refine Filters</h2>
+              {activeFilterCount > 0 ? (
+                <span className="rounded-full bg-primary/15 px-2 py-0.5 text-xs font-semibold text-primary">
+                  {activeFilterCount} active
+                </span>
+              ) : null}
+            </div>
+
+            <div className="flex items-center gap-3">
+              {activeFilterCount > 0 ? (
+                <button
+                  type="button"
+                  onClick={clearAll}
+                  className="rounded text-xs font-medium text-fg-muted underline underline-offset-2 transition-colors hover:text-fg"
+                >
+                  Clear all
+                </button>
+              ) : null}
+
               <button
                 type="button"
-                onClick={clearAll}
-                className="rounded text-xs text-fg-muted underline underline-offset-2 transition-colors hover:text-fg"
+                onClick={() => setOpen(false)}
+                aria-label="Close filters"
+                className="flex size-7 items-center justify-center rounded-md text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
               >
-                Clear all
+                <Icon name="close" size={15} />
               </button>
-            ) : null}
+            </div>
           </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
           <FilterGroup
             legend="What “free” means"
@@ -266,22 +289,7 @@ export function FilterPanel({ facets, resultCount, activeFilterCount }: FilterPa
               ))}
             </FilterGroup>
           ) : null}
-
-          {visibleCategories.length > 0 ? (
-            <FilterGroup legend="Category" collapsible defaultOpen={false}>
-              {visibleCategories.map((category) => (
-                <FilterOption
-                  key={category.id}
-                  name={PARAM.category}
-                  value={category.id}
-                  label={category.name}
-                  count={facets.categories[category.id] ?? 0}
-                  checked={isChecked(PARAM.category, category.id)}
-                  onToggle={() => toggleValue(PARAM.category, category.id)}
-                />
-              ))}
-            </FilterGroup>
-          ) : null}
+          </div>
 
           {/*
             Filtering runs in the browser so that this route can be a static file

@@ -1,4 +1,4 @@
-import { isCategoryId } from "@/config/categories";
+import { isCategoryOrGroupId } from "@/config/categories";
 import { isFreeStatus } from "@/config/free-status";
 import { isPlatform } from "@/config/platforms";
 import { isResourceType } from "@/config/resource-types";
@@ -105,7 +105,7 @@ export function parseSearchParams(params: SearchParamsInput): ResourceQuery {
 
   return {
     q,
-    categories: readAll(params, PARAM.category).filter(isCategoryId),
+    categories: readAll(params, PARAM.category).filter(isCategoryOrGroupId),
     freeStatuses: readAll(params, PARAM.status).filter(isFreeStatus),
     resourceTypes: readAll(params, PARAM.type).filter(isResourceType),
     platforms: readAll(params, PARAM.platform).filter(isPlatform),

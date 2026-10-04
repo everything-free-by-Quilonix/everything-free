@@ -2,6 +2,7 @@
 
 import { useCallback, useSyncExternalStore } from "react";
 import { Icon } from "@/components/icons";
+import { cn } from "@/lib/utils/cn";
 
 export const THEME_STORAGE_KEY = "ef-theme";
 const THEME_EVENT = "ef-theme-change";
@@ -61,7 +62,14 @@ function getServerSnapshot(): Theme | null {
   return null;
 }
 
-export function ThemeToggle({ className }: { className?: string }) {
+/**
+ * Theme toggle.
+ *
+ * `icon` is the compact header control: deliberately quieter than Submit. `row`
+ * is the full-width version used in the mobile menu, with the action spelled out
+ * as visible text so the accessible name and the visible label are the same words.
+ */
+export function ThemeToggle({ className, variant = "icon" }: { className?: string; variant?: "icon" | "row" }) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const apply = useCallback((next: Theme) => {
@@ -79,24 +87,40 @@ export function ThemeToggle({ className }: { className?: string }) {
     window.dispatchEvent(new Event(THEME_EVENT));
   }, []);
 
+  const iconClasses =
+    "inline-flex size-11 shrink-0 items-center justify-center rounded-full text-fg-muted transition-colors duration-(--duration-hover) ease-(--ease-standard) hover:bg-surface-hover hover:text-fg lg:size-9";
+  const rowClasses =
+    "flex h-12 w-full items-center justify-between gap-3 rounded-2xl px-4 text-sm font-medium text-fg-muted transition-colors duration-(--duration-hover) ease-(--ease-standard) hover:bg-surface-hover hover:text-fg";
+
   if (theme === null) {
     // Reserves the button's footprint so the header does not shift on hydration.
-    return <span className={className} style={{ display: "inline-block", width: 40, height: 40 }} aria-hidden="true" />;
+    return <span className={cn(variant === "row" ? rowClasses : iconClasses, className)} aria-hidden="true" />;
   }
 
   const next: Theme = theme === "dark" ? "light" : "dark";
+  const label = `Switch to ${next} theme`;
+  const icon = <Icon name={theme === "dark" ? "sun" : "moon"} size={variant === "row" ? 18 : 17} />;
+
+  if (variant === "row") {
+    return (
+      <button type="button" onClick={() => apply(next)} className={cn(rowClasses, className)}>
+        {label}
+        {icon}
+      </button>
+    );
+  }
 
   return (
     <button
       type="button"
       onClick={() => apply(next)}
-      className={`inline-flex size-10 items-center justify-center rounded-lg text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg ${className ?? ""}`}
+      className={cn(iconClasses, className)}
       // The accessible name states what the button will do, which is what a
       // screen-reader user needs. `aria-pressed` would be ambiguous for a two-way swap.
-      aria-label={`Switch to ${next} theme`}
-      title={`Switch to ${next} theme`}
+      aria-label={label}
+      title={label}
     >
-      <Icon name={theme === "dark" ? "sun" : "moon"} size={18} />
+      {icon}
     </button>
   );
 }

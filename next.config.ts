@@ -30,6 +30,26 @@ const nextConfig: NextConfig = {
    */
   basePath,
 
+  /*
+   * Automatically redirect root '/' to basePath in dev mode so browsing to
+   * http://localhost:3000 directly lands on the homepage without needing
+   * manual typing of the project prefix.
+   */
+  ...(!isStaticExport && basePath
+    ? {
+        async redirects() {
+          return [
+            {
+              source: "/",
+              destination: `${basePath}/`,
+              basePath: false,
+              permanent: false,
+            },
+          ];
+        },
+      }
+    : {}),
+
   images: {
     /*
      * Image optimisation is a server feature, and on metered hosts it is billed per

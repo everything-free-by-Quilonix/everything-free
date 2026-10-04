@@ -1,87 +1,153 @@
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
-import { intentExamples, searchExamples, site } from "@/config/site";
-import { SearchBox, SearchSuggestions } from "@/features/search/components/search-box";
+import { intentExamples, searchExamples } from "@/config/site";
+import { SearchBox } from "@/features/search/components/search-box";
 import { formatCount } from "@/lib/utils/format";
+import type { Resource } from "@/types/resource";
+import { ResourceMarquee } from "./resource-marquee";
 
 /**
- * Homepage hero.
+ * Editorial Product Hero.
  *
- * The job of this block is to answer one question in the first second: "can I
- * find the free thing I need here?" So it leads with search rather than with a
- * pitch, and the example queries are real searches that return real results.
- *
- * The only number shown is the library size, which we can count. There are no
- * user counts, download counts or "trusted by" claims, because we have no data to
- * support them.
+ * Designed with editorial restraint and search-first usability:
+ * 1. Subtle Everything.Free brand eyebrow
+ * 2. High-impact, honest primary headline
+ * 3. Concise supporting positioning
+ * 4. Prominent, product-level search control with keyboard shortcut (⌘K)
+ * 5. Quick query prompts preserving natural-language intent search
+ * 6. Dual primary/secondary CTAs guiding users to resources and local tools
+ * 7. Evidence-based statistics row reflecting live repository facts
+ * 8. Continuous resource marquee showcasing genuine library tools with logos
  */
-export function Hero({ resourceCount, toolCount }: { resourceCount: number; toolCount: number }) {
+export function Hero({
+  resourceCount,
+  verifiedCount = 10,
+  toolCount,
+  marqueeResources = [],
+}: {
+  resourceCount: number;
+  verifiedCount?: number;
+  toolCount: number;
+  marqueeResources?: readonly Resource[];
+}) {
   return (
-    <section className="relative overflow-hidden border-b border-border">
-      {/* Purely decorative grid, faded at the edges. */}
-      <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+    <section className="relative overflow-hidden border-b border-border bg-bg" aria-labelledby="hero-heading">
+      {/* Subtle structural grid background */}
+      <div className="hero-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
 
-      <Container className="relative py-16 sm:py-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs text-fg-muted">
-            <Icon name="shield-check" size={13} className="text-primary" />
-            Free status, limits and verification stated plainly
+      <Container className="relative pt-12 pb-14 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-22">
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          {/* 01. Brand Eyebrow Label */}
+          <p className="font-mono text-[11px] font-semibold tracking-[0.24em] text-fg-subtle uppercase select-none">
+            EVERYTHING.FREE
           </p>
 
-          <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Everything<span className="text-primary">.</span>Free
+          {/* 02. Primary Headline */}
+          <h1
+            id="hero-heading"
+            className="mt-4 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.06]"
+          >
+            Find what&apos;s genuinely free.
           </h1>
 
-          <p className="mt-4 text-lg text-fg-muted sm:text-xl">{site.shortDescription}</p>
-
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-fg-muted">
-            Free apps, software, tools, learning resources and creative assets — each showing what &ldquo;free&rdquo;
-            means for it, its limits, and which of its facts an official source confirms.
+          {/* 03. Supporting Description */}
+          <p className="mt-4 max-w-xl text-base text-fg-muted sm:text-lg sm:leading-relaxed">
+            Software, tools and resources &mdash; without the usual guesswork.
           </p>
 
-          <div className="mt-8">
-            <SearchBox size="lg" label="Search free resources" />
+          {/* 04. Prominent Search Control */}
+          <div className="mt-8 w-full max-w-2xl lg:max-w-[720px]">
+            <SearchBox
+              size="lg"
+              variant="beam"
+              label="Search software, tools, resources..."
+              placeholderText="Search software, tools, resources..."
+            />
+
+            {/* Quick search intent pills */}
+            <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5 text-xs text-fg-subtle">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-fg-subtle select-none">
+                Try:
+              </span>
+              {searchExamples.slice(0, 3).map((query) => (
+                <Link
+                  key={query}
+                  href={`/resources/?q=${encodeURIComponent(query)}`}
+                  className="rounded-md border border-border/70 bg-surface/60 px-2 py-0.5 text-fg-muted transition-colors hover:border-border-strong hover:bg-surface-hover hover:text-fg"
+                >
+                  {query}
+                </Link>
+              ))}
+              {intentExamples.slice(1, 2).map((query) => (
+                <Link
+                  key={query}
+                  href={`/resources/?q=${encodeURIComponent(query)}`}
+                  className="hidden sm:inline-block rounded-md border border-border/70 bg-surface/60 px-2 py-0.5 text-fg-muted transition-colors hover:border-border-strong hover:bg-surface-hover hover:text-fg"
+                >
+                  “{query}”
+                </Link>
+              ))}
+            </div>
           </div>
 
-          <SearchSuggestions queries={searchExamples.slice(0, 5)} className="mt-5 justify-center" />
+          {/* 05. Primary & Secondary Actions */}
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/resources"
+              className={buttonClasses({ variant: "primary", size: "lg", shape: "pill" })}
+            >
+              <span>Explore resources</span>
+              <Icon name="arrow-right" size={16} data-arrow="true" className="btn-icon-shift" />
+            </Link>
+            <Link
+              href="/tools"
+              className={buttonClasses({ variant: "secondary", size: "lg", shape: "pill" })}
+            >
+              <Icon name="terminal" size={15} className="text-fg-subtle" />
+              <span>Explore tools</span>
+            </Link>
+          </div>
 
-          <p className="mt-8 text-sm text-fg-subtle">
-            {formatCount(resourceCount)} resources, each showing how much of it has been checked ·{" "}
-            {formatCount(toolCount)} tools you can use here
-          </p>
-        </div>
+          {/* 06. Trust / Statistics Row */}
+          <div className="mt-12 w-full max-w-xl border-t border-border/70 pt-8">
+            <div className="grid grid-cols-3 divide-x divide-border/80 text-center">
+              <div className="px-2 sm:px-6">
+                <div className="font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+                  {formatCount(resourceCount)}
+                </div>
+                <div className="mt-1 font-mono text-[10px] font-semibold tracking-[0.16em] text-fg-subtle uppercase sm:text-[11px]">
+                  Resources
+                </div>
+              </div>
+              <div className="px-2 sm:px-6">
+                <div className="font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+                  {formatCount(verifiedCount)}
+                </div>
+                <div className="mt-1 font-mono text-[10px] font-semibold tracking-[0.16em] text-fg-subtle uppercase sm:text-[11px]">
+                  Verified
+                </div>
+              </div>
+              <div className="px-2 sm:px-6">
+                <div className="font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+                  {formatCount(toolCount)}
+                </div>
+                <div className="mt-1 font-mono text-[10px] font-semibold tracking-[0.16em] text-fg-subtle uppercase sm:text-[11px]">
+                  Local Tools
+                </div>
+              </div>
+            </div>
 
-        <div className="mx-auto mt-14 max-w-3xl rounded-xl border border-border bg-surface/70 p-5 backdrop-blur-sm">
-          <h2 className="flex items-center gap-2 text-sm font-medium text-fg">
-            <Icon name="bolt" size={15} className="text-primary" />
-            Describe what you need
-          </h2>
-          <p className="mt-1.5 text-sm text-fg-muted">
-            Search understands constraints written in plain language — things like “without a credit card”, “open
-            source”, or “alternative to Photoshop” — and turns them into filters you can see and change. Filters
-            such as “no credit card” match only where an official source confirms it.
-          </p>
-          <ul className="mt-4 flex flex-col gap-2">
-            {intentExamples.map((example) => (
-              <li key={example}>
-                <Link
-                  href={`/resources?q=${encodeURIComponent(example)}`}
-                  className="group flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg"
-                >
-                  <Icon name="search" size={14} className="shrink-0 text-fg-subtle" />
-                  <span className="min-w-0 flex-1">“{example}”</span>
-                  <Icon
-                    name="arrow-right"
-                    size={14}
-                    className="shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
+            <p className="mt-4 text-center text-xs text-fg-subtle">
+              Every listing states its free tier limits, account rules, and official verification facts plainly.
+            </p>
+          </div>
         </div>
       </Container>
+
+      {/* 07. Resource Marquee Strip */}
+      <ResourceMarquee resources={marqueeResources} />
     </section>
   );
 }

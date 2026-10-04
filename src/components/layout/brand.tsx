@@ -10,9 +10,18 @@ import { cn } from "@/lib/utils/cn";
  * attention. The dot is styled rather than typed as punctuation so "Everything"
  * and "Free" read as one name.
  */
-export function Brand({ className, showParent = false }: { className?: string; showParent?: boolean }) {
+export function Brand({
+  className,
+  showParent = false,
+  onClick,
+}: {
+  className?: string;
+  showParent?: boolean;
+  /** Lets an overlay (the mobile menu) close itself when the brand navigates home. */
+  onClick?: () => void;
+}) {
   return (
-    <Link href="/" className={cn("group inline-flex items-center gap-2.5 rounded", className)}>
+    <Link href="/" onClick={onClick} className={cn("group inline-flex items-center gap-2.5 rounded-lg", className)}>
       <span
         aria-hidden="true"
         className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary font-display text-sm font-bold text-primary-fg"

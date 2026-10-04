@@ -17,11 +17,8 @@ The organising constraint is that the project must run **without paid infrastruc
 ┌─────────────────────────────────────────────────────────┐
 │  GitHub repository  ·  the content source               │
 │                                                         │
-│   src/data/resources/*.ts     typed resource entries    │
-│   src/data/collections.ts     curated sets              │
-│   src/config/*.ts             taxonomies, definitions   │
-└─────────────────────────────────────────────────────────┘
-                              │
+│   src/data/resources/*.ts     typed resource entries    
+
                     GitHub Actions — CI (free runners)
           lint · types · data validation · static export
           browser smoke test · backlog sync

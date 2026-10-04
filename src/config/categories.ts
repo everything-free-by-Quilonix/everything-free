@@ -1,5 +1,7 @@
 import type { Category, CategoryGroup, CategoryGroupId } from "@/types/category";
 
+export type { Category, CategoryGroup, CategoryGroupId };
+
 /**
  * The category taxonomy.
  *
@@ -701,6 +703,47 @@ export function getCategoriesInGroup(id: CategoryGroupId): Category[] {
 
 export function isCategoryId(value: string): boolean {
   return categoryById.has(value);
+}
+
+export function isCategoryGroupId(value: string): value is CategoryGroupId {
+  return groupById.has(value as CategoryGroupId);
+}
+
+export function isCategoryOrGroupId(value: string): boolean {
+  return categoryById.has(value) || groupById.has(value as CategoryGroupId);
+}
+
+export interface CategoryIdentity {
+  id: string;
+  name: string;
+  description: string;
+  isGroup: boolean;
+  groupId?: CategoryGroupId;
+  categoryIds?: string[];
+}
+
+export function getCategoryOrGroupInfo(id: string): CategoryIdentity | undefined {
+  if (groupById.has(id as CategoryGroupId)) {
+    const group = groupById.get(id as CategoryGroupId)!;
+    return {
+      id: group.id,
+      name: group.name,
+      description: group.description,
+      isGroup: true,
+      categoryIds: group.categoryIds,
+    };
+  }
+  const category = categoryById.get(id);
+  if (category) {
+    return {
+      id: category.id,
+      name: category.name,
+      description: category.description,
+      isGroup: false,
+      groupId: category.groups[0],
+    };
+  }
+  return undefined;
 }
 
 /* -------------------------------------------------------------------------- */
