@@ -184,9 +184,12 @@ html:has([data-results-toolbar][data-wrapped]) {
 @layer components {
   /* Records: ruled, not boxed. A hairline between records, none above the
      first; in a two-up grid the second record starts the first row too. */
+  /* The list bleeds by the record padding, so hover fills reach into the
+     gutter and record text shares the left edge of headings and the toolbar. */
   .record-list {
     display: grid;
     column-gap: 1.5rem;
+    margin-inline: -1rem;
   }
 
   .record-list > li {
