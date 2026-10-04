@@ -202,6 +202,7 @@ export function VerificationPanel({ resource }: { resource: Resource }) {
                         href={row.source.url}
                         className="link-inline wrap-anywhere"
                         announceExternal={false}
+                        translate="no"
                       >
                         {new URL(row.source.url).hostname.replace(/^www\./, "")}
                         {new URL(row.source.url).pathname.replace(/\/$/, "")}

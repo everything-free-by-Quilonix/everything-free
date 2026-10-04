@@ -182,7 +182,9 @@ export default async function ResourcePage({ params }: PageProps) {
               <p className="kicker tabular-nums">
                 Record · <span translate="no">{resource.slug}</span>
               </p>
-              <h1 className="mt-2 font-serif text-3xl font-semibold">{resource.name}</h1>
+              <h1 className="mt-2 font-serif text-3xl font-semibold" translate="no">
+                {resource.name}
+              </h1>
               <p className="mt-2 max-w-(--measure-standfirst) text-base leading-relaxed text-fg-muted">
                 {resource.shortDescription}
               </p>

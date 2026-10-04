@@ -197,6 +197,7 @@ export function EvidenceDetails({ evidence }: { evidence: FactEvidence }) {
               href={source.url}
               announceExternal={false}
               className="link-inline"
+              translate="no"
             >
               {displayHost(source.url)}
             </ExternalLink>{" "}

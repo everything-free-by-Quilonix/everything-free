@@ -204,7 +204,7 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
       <h2 id={titleId} className="sr-only">
         Jump to a listing or page
       </h2>
-      <div className="flex shrink-0 items-center border-b border-rule px-4">
+      <div className="flex shrink-0 items-center border-b border-rule px-2">
         <input
           ref={inputRef}
           type="text"
@@ -245,7 +245,9 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
               else activate(row);
             }
           }}
-          className="my-2 h-10 w-full rounded-xs bg-transparent text-base text-fg placeholder:text-fg-subtle"
+          // The inset keeps the typed text clear of the focus ring; text still
+          // aligns with the group labels at 1rem.
+          className="my-2 h-10 w-full rounded-xs bg-transparent px-2 text-base text-fg placeholder:text-fg-subtle"
         />
       </div>
 
