@@ -270,7 +270,7 @@ html:has([data-results-toolbar][data-wrapped]) {
       to right,
       var(--success-fg) 0 var(--a),
       var(--meter-unsettled) var(--a) var(--b),
-      var(--rule) var(--b) 100%
+      var(--border) var(--b) 100%
     );
     mask: repeating-linear-gradient(to right, #000 0 6px, transparent 6px 8px);
   }

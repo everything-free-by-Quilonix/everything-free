@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 
 import { Icon } from "@/components/icons";
 import { JsonLdScript } from "@/components/seo/json-ld";
-import { Badge } from "@/components/ui/badge";
 import { buttonClasses } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { Card } from "@/components/ui/card";
@@ -17,7 +16,7 @@ import { RecordList } from "@/features/resources/components/resource-record";
 import { ResourceFacts } from "@/features/resources/components/resource-facts";
 import { ResourceLogo } from "@/features/resources/components/resource-logo";
 import { EvidenceMark, EvidenceTag } from "@/features/resources/components/evidence";
-import { FreeStatusBadge, VerificationBadge } from "@/features/resources/components/status-badges";
+import { ResourceSnapshot } from "@/features/resources/components/resource-snapshot";
 import { VerificationPanel } from "@/features/resources/components/verification-panel";
 import { FACTS, factEvidence } from "@/lib/resources/evidence";
 import { getResourceBySlug, getSimilarResources, listResourceIndexEntries, slugifyProductName } from "@/lib/repository";
@@ -88,7 +87,6 @@ export default async function ResourcePage({ params }: PageProps) {
   const statusTone =
     status.tone === "success" && freeStatusEvidence.state !== "confirmed" ? "neutral" : status.tone;
   const statusIcon = status.caveat && (status.tone === "warning" || status.tone === "danger") ? "alert-triangle" : null;
-  const openSource = factEvidence(resource, "openSource");
   const limitationsEvidence = factEvidence(resource, "limitations");
   const confirmedCount = FACTS.filter((fact) => factEvidence(resource, fact).state === "confirmed").length;
   const headerEvidenceSentence =
@@ -118,20 +116,6 @@ export default async function ResourcePage({ params }: PageProps) {
             <div className="min-w-0 flex-1">
               <h1 className="font-serif text-3xl font-semibold">{resource.name}</h1>
               <p className="mt-2 max-w-2xl text-base leading-relaxed text-fg-muted">{resource.shortDescription}</p>
-
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                <FreeStatusBadge resource={resource} size="md" />
-                <VerificationBadge resource={resource} size="md" />
-                {resource.openSource && resource.freeStatus !== "OPEN_SOURCE" ? (
-                  <Badge tone={openSource.state === "confirmed" ? "primary" : "neutral"} icon="repo" size="md">
-                    Open source
-                    {openSource.state === "confirmed" ? null : <span className="font-normal">· not verified</span>}
-                  </Badge>
-                ) : null}
-              </div>
-              {/* Resource status and fact evidence are different things, and the
-                  header says so once, plainly, before any detail. */}
-              <p className="mt-3 max-w-2xl text-sm text-fg-subtle">{headerEvidenceSentence}</p>
             </div>
 
             <div className="flex shrink-0 flex-col gap-2 sm:w-52">
@@ -158,6 +142,13 @@ export default async function ResourcePage({ params }: PageProps) {
               <p className="text-center text-xs text-fg-subtle">Opens the provider&rsquo;s own site</p>
             </div>
           </div>
+
+          <div className="mt-8">
+            <ResourceSnapshot resource={resource} size="full" />
+          </div>
+          {/* Resource status and fact evidence are different things, and the
+              header says so once, plainly, before any detail. */}
+          <p className="mt-3 max-w-2xl text-sm text-fg-subtle">{headerEvidenceSentence}</p>
         </Container>
       </header>
 
