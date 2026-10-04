@@ -14,6 +14,7 @@ import { availableTools } from "@/config/tools";
 import { effectiveVerification } from "@/lib/resources/derive";
 import { FACTS, factEvidence } from "@/lib/resources/evidence";
 import { computeFacets } from "@/lib/search/filters";
+import type { CategoryGroupId } from "@/types/category";
 import type { Resource } from "@/types/resource";
 
 // The count copy helpers live in a data-free module so client components can
@@ -39,6 +40,39 @@ export interface LibraryCensus {
 /** Whether at least one of the listing's facts is confirmed by an official source. */
 export function hasConfirmedFact(resource: Resource, now: Date = new Date()): boolean {
   return FACTS.some((fact) => factEvidence(resource, fact, now).state === "confirmed");
+}
+
+export interface GroupSurvey {
+  groupId: CategoryGroupId;
+  listings: number;
+  withConfirmedFact: number;
+  partiallyVerified: number;
+  verified: number;
+}
+
+/**
+ * The survey by subject group on `/verification`: one row per entry of
+ * `categoryGroups`, in config order. Membership is by each listing's primary
+ * `category` only (the Atlas Index also counts subcategories), so a listing
+ * whose category sits in two groups counts in both rows. The three evidence
+ * columns use exactly `libraryCensus`'s predicates, staleness included.
+ */
+export function surveyByGroup(resources: readonly Resource[], now: Date = new Date()): GroupSurvey[] {
+  const read = resources.map((resource) => ({
+    category: resource.category,
+    status: effectiveVerification(resource, now).id,
+    confirmedFact: hasConfirmedFact(resource, now),
+  }));
+  return categoryGroups.map((group) => {
+    const members = read.filter((entry) => group.categoryIds.includes(entry.category));
+    return {
+      groupId: group.id,
+      listings: members.length,
+      withConfirmedFact: members.filter((entry) => entry.confirmedFact).length,
+      partiallyVerified: members.filter((entry) => entry.status === "PARTIALLY_VERIFIED").length,
+      verified: members.filter((entry) => entry.status === "VERIFIED").length,
+    };
+  });
 }
 
 export function libraryCensus(resources: readonly Resource[], now: Date = new Date()): LibraryCensus {

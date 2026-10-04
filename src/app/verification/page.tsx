@@ -5,7 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
 import { ExternalLink } from "@/components/ui/external-link";
 import { Container, PageHeader } from "@/components/ui/layout";
+import { categoryGroups } from "@/config/categories";
 import { site } from "@/config/site";
+import { libraryCensus, surveyByGroup } from "@/features/home/census";
+import { Legend } from "@/features/resources/components/legend";
+import { SurveyBar, SurveySummary } from "@/features/resources/components/survey-bar";
 import {
   VERIFICATION_FRESHNESS_DAYS,
   VERIFICATION_STAGES,
@@ -33,6 +37,9 @@ export default async function VerificationPage() {
   const resources = await getAllResourcesForClient();
   const stages = resources.map((resource) => verificationStage(resource));
   const counts = { total: resources.length };
+  const census = libraryCensus(resources);
+  const survey = surveyByGroup(resources);
+  const groupName = (id: string) => categoryGroups.find((group) => group.id === id)?.name ?? id;
   const stageCounts = Object.fromEntries(
     STAGE_ORDER.map((stage) => [stage, stages.filter((s) => s === stage).length]),
   ) as Record<VerificationStage, number>;
@@ -57,6 +64,11 @@ export default async function VerificationPage() {
               <p className="mt-2 leading-relaxed text-fg-muted">{status.definition}</p>
             </div>
           ))}
+        </div>
+
+        {/* The single key to every evidence mark in the library. */}
+        <div className="mt-14">
+          <Legend variant="full" />
         </div>
 
         <section className="mt-14" aria-labelledby="freshness-heading">
@@ -142,6 +154,10 @@ export default async function VerificationPage() {
               </li>
             ))}
           </ol>
+          <div className="mt-8 flex flex-col gap-3">
+            <SurveyBar survey={census.survey} size="lg" />
+            <SurveySummary census={census} />
+          </div>
           <Callout tone="neutral" icon={null} className="mt-6">
             <p>
               The library was compiled from each project&rsquo;s own public documentation, which is a reasonable basis
@@ -157,6 +173,61 @@ export default async function VerificationPage() {
               displaying.
             </p>
           </Callout>
+        </section>
+
+        <section className="mt-12" aria-labelledby="survey-heading">
+          <h2 id="survey-heading" className="font-serif text-2xl font-semibold">
+            Survey by subject group
+          </h2>
+          <p className="mt-3 leading-relaxed text-fg-muted">
+            How far each area of the library has been checked. Coverage is shown by subject because that is what the
+            data records; no listing records a country or region.
+          </p>
+          <div
+            role="region"
+            tabIndex={0}
+            aria-label="Survey by subject group"
+            className="mt-5 overflow-x-auto rounded-md border border-border"
+          >
+            <table className="w-full border-collapse text-sm tabular-nums">
+              <caption className="border-b border-rule px-4 py-3 text-left text-xs text-fg-subtle">
+                Counted by each listing&rsquo;s main subject only, so these totals differ from the subject counts in the
+                index. Some subjects sit in two groups, so rows can add up to more than the total.
+              </caption>
+              <thead>
+                <tr className="border-b border-border bg-bg-subtle text-left">
+                  <th scope="col" className="px-4 py-3 font-medium">
+                    Group
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right font-medium">
+                    Listings
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right font-medium">
+                    With a confirmed fact
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right font-medium">
+                    Partially verified
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right font-medium">
+                    Verified
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {survey.map((row) => (
+                  <tr key={row.groupId} className="border-b border-rule last:border-b-0">
+                    <th scope="row" className="px-4 py-2.5 text-left font-medium text-fg">
+                      {groupName(row.groupId)}
+                    </th>
+                    <td className="px-4 py-2.5 text-right text-fg">{formatCount(row.listings)}</td>
+                    <td className="px-4 py-2.5 text-right text-fg-muted">{formatCount(row.withConfirmedFact)}</td>
+                    <td className="px-4 py-2.5 text-right text-fg-muted">{formatCount(row.partiallyVerified)}</td>
+                    <td className="px-4 py-2.5 text-right text-fg-muted">{formatCount(row.verified)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <section className="mt-12" aria-labelledby="help-heading">

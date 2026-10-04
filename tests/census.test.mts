@@ -11,7 +11,7 @@ import { describe, test } from "node:test";
 import { categoryGroups, categoryList } from "@/config/categories";
 import { availableTools } from "@/config/tools";
 import { seedResources } from "@/data/resources";
-import { libraryCensus } from "@/features/home/census";
+import { libraryCensus, surveyByGroup } from "@/features/home/census";
 import { computeFacets } from "@/lib/search/filters";
 import type { Resource } from "@/types/resource";
 import { allRequiredConfirmed, confirmed, makeResource, TODAY, withPass } from "./fixtures.mjs";
@@ -106,5 +106,47 @@ describe("libraryCensus", () => {
     assert.equal(census.survey.partiallyVerified, census.partiallyVerified);
     assert.ok(census.survey.otherConfirmedFact <= census.withConfirmedFact);
     assert.ok(census.subjectsWithListings <= census.subjectsDefined);
+  });
+});
+
+describe("surveyByGroup", () => {
+  const row = (rows: ReturnType<typeof surveyByGroup>, id: string) => rows.find((r) => r.groupId === id)!;
+
+  test("one row per group, in config order", () => {
+    assert.deepEqual(surveyByGroup([], TODAY).map((r) => r.groupId), categoryGroups.map((g) => g.id));
+  });
+
+  test("membership is by primary category only; a subcategory does not count", () => {
+    const rows = surveyByGroup([makeResource({ slug: "a", category: "utilities", subcategories: ["photography"] })], TODAY);
+    assert.equal(row(rows, "general").listings, 1);
+    assert.equal(row(rows, "creative").listings, 0);
+  });
+
+  test("a category in two groups counts in both rows", () => {
+    const groups = categoryGroups.filter((g) => g.categoryIds.includes("books")).map((g) => g.id);
+    assert.ok(groups.length >= 2, "books is expected to sit in two groups");
+    const rows = surveyByGroup([makeResource({ slug: "b", category: "books" })], TODAY);
+    for (const id of groups) assert.equal(row(rows, id).listings, 1, id);
+  });
+
+  test("evidence columns use the census predicates, staleness included", () => {
+    const resources = [
+      verified({ category: "utilities" }),
+      partial({ category: "utilities" }),
+      oneConfirmedFact({ category: "utilities" }),
+      verified({ slug: "stale", category: "utilities" }, "2025-01-01"),
+    ];
+    const general = row(surveyByGroup(resources, TODAY), "general");
+    assert.deepEqual(
+      { ...general, groupId: undefined },
+      { groupId: undefined, listings: 4, withConfirmedFact: 3, partiallyVerified: 1, verified: 1 },
+    );
+  });
+
+  test("the shipped library: verified + partially verified never exceed a row's listings", () => {
+    for (const r of surveyByGroup(seedResources)) {
+      assert.ok(r.verified + r.partiallyVerified <= r.listings, r.groupId);
+      assert.ok(r.withConfirmedFact <= r.listings, r.groupId);
+    }
   });
 });
