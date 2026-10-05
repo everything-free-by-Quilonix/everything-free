@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { Icon } from "@/components/icons";
 import { buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
 import { primaryNav } from "@/config/navigation";
@@ -20,17 +19,8 @@ export const metadata = {
  */
 export default function NotFound() {
   return (
-    <Container className="flex min-h-[60vh] flex-col items-center justify-center py-20 text-center">
-      <span
-        aria-hidden="true"
-        className="flex size-12 items-center justify-center rounded-full border border-border bg-surface text-fg-subtle"
-      >
-        <Icon name="compass" size={22} />
-      </span>
-
-      <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-        This page does not exist
-      </h1>
+    <Container className="flex min-h-[60vh] flex-col items-center justify-center py-24 text-center">
+      <h1 className="font-serif text-3xl font-semibold">This page does not exist</h1>
       <p className="mt-3 max-w-md text-fg-muted">
         The link may be out of date, or the resource may have been removed from the library. Try searching for what you
         needed.

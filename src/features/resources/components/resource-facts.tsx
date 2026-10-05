@@ -182,7 +182,7 @@ export function ResourceFacts({ resource }: { resource: Resource }) {
     items.push({
       term: "Source code",
       value: (
-        <ExternalLink href={resource.sourceUrl} className="text-fg underline underline-offset-2 hover:text-primary">
+        <ExternalLink href={resource.sourceUrl} className="link-inline">
           View repository
         </ExternalLink>
       ),
@@ -193,7 +193,7 @@ export function ResourceFacts({ resource }: { resource: Resource }) {
     items.push({
       term: "Official pricing",
       value: (
-        <ExternalLink href={resource.pricingUrl} className="text-fg underline underline-offset-2 hover:text-primary">
+        <ExternalLink href={resource.pricingUrl} className="link-inline">
           Check current terms
         </ExternalLink>
       ),

@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { Icon } from "@/components/icons";
-import { Button } from "@/components/ui/button";
+import { Button, buttonClasses } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { ExternalLink } from "@/components/ui/external-link";
 import { Field, Select, TextArea, TextInput } from "@/components/ui/field";
@@ -72,13 +72,13 @@ export function ReportResourceForm({ resourceNames }: { resourceNames: Record<st
 
   if (state.status === "success") {
     return (
-      <Callout tone="success" icon="check-circle" title="Ready to file" assertive>
+      <Callout tone="neutral" icon={null} title="Ready to file" assertive>
         <p>{state.message}</p>
         <p className="mt-4">
           <ExternalLink
             href={state.url}
             showIcon={false}
-            className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-fg transition-colors hover:bg-primary-hover"
+            className={buttonClasses({ variant: "primary", size: "md" })}
           >
             Open the prefilled report
             <Icon name="external-link" size={15} />
@@ -92,7 +92,7 @@ export function ReportResourceForm({ resourceNames }: { resourceNames: Record<st
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
       <noscript>
-        <div className="rounded-lg border border-info/30 bg-info-soft px-4 py-3.5 text-sm leading-relaxed">
+        <div className="rounded-sm border border-rule px-4 py-3.5 text-sm leading-relaxed">
           <p className="font-medium text-fg">This form needs JavaScript</p>
           <p className="mt-1 text-fg-muted">
             You can report the same problem through GitHub&rsquo;s issue form instead, which collects the identical
@@ -100,7 +100,7 @@ export function ReportResourceForm({ resourceNames }: { resourceNames: Record<st
           </p>
           <a
             href={issueTemplateUrls.correction}
-            className="mt-2 inline-block text-fg underline underline-offset-2"
+            className="link-inline mt-2 inline-block"
             target="_blank"
             rel="noopener noreferrer"
           >

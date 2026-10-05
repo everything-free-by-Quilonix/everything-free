@@ -10,11 +10,11 @@ export default function StudentsLoading() {
           <div className="mx-auto max-w-3xl text-center">
             {/* Pill */}
             <div className="inline-flex justify-center">
-              <Skeleton className="h-6 w-44 rounded-full" />
+              <Skeleton className="h-6 w-44 rounded-xs" />
             </div>
 
             {/* Title */}
-            <Skeleton className="mx-auto mt-4 h-10 w-3/4 sm:h-12 rounded-xl" />
+            <Skeleton className="mx-auto mt-4 h-10 w-3/4 sm:h-12 rounded-md" />
 
             {/* Description */}
             <Skeleton className="mx-auto mt-3 h-4 w-5/6 rounded-md" />
@@ -22,16 +22,16 @@ export default function StudentsLoading() {
 
             {/* Search Box Skeleton */}
             <div className="mx-auto mt-8 max-w-xl">
-              <Skeleton className="h-12 w-full rounded-2xl" />
+              <Skeleton className="h-12 w-full rounded-md" />
             </div>
 
             {/* Category Pills */}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-              <Skeleton className="h-8 w-24 rounded-full" />
-              <Skeleton className="h-8 w-28 rounded-full" />
-              <Skeleton className="h-8 w-32 rounded-full" />
-              <Skeleton className="h-8 w-24 rounded-full" />
-              <Skeleton className="h-8 w-20 rounded-full" />
+              <Skeleton className="h-8 w-24 rounded-sm" />
+              <Skeleton className="h-8 w-28 rounded-sm" />
+              <Skeleton className="h-8 w-32 rounded-sm" />
+              <Skeleton className="h-8 w-24 rounded-sm" />
+              <Skeleton className="h-8 w-20 rounded-sm" />
             </div>
           </div>
         </Container>
@@ -41,7 +41,7 @@ export default function StudentsLoading() {
       <Container className="pt-10">
         <div className="mb-6 flex items-center justify-between">
           <Skeleton className="h-4 w-36 rounded-md" />
-          <Skeleton className="h-8 w-28 rounded-lg" />
+          <Skeleton className="h-8 w-28 rounded-md" />
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

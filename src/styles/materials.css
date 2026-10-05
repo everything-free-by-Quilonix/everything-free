@@ -1,0 +1,452 @@
+/*
+ * Everything.Free materials
+ * ---------------------------------------------------------------------------
+ * Five materials, each with one role. Components apply these utilities and
+ * never assemble backgrounds, borders, blur and shadow by hand.
+ *
+ *   BASE        the matte page and its alternate bands
+ *   CONTENT     opaque reading surfaces, structured by hairlines and space
+ *   ELEVATED    temporary or grouped objects above content (popover, dialog)
+ *   FUNCTIONAL  chrome that content scrolls under; the only translucent recipe,
+ *               used by exactly three sticky surfaces
+ *   FOCUS       the focus ring and anchor flash (global rules, no utility)
+ *
+ * Blur lives in this file and nowhere else. It is never decorative and never
+ * stacked, and text contrast is always computed against the opaque colour.
+ */
+
+@utility material-base {
+  background-color: var(--bg);
+}
+
+@utility material-content {
+  background-color: var(--surface);
+}
+
+@utility material-elevated {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-raised);
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+}
+
+@utility material-functional {
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--rule);
+
+  /* Translucent only where both relative colour and backdrop blur resolve. An
+     engine without either keeps the opaque value above. */
+  @supports (color: oklch(from red l c h)) and (backdrop-filter: blur(1px)) {
+    background-color: oklch(from var(--bg) l c h / 0.94);
+    backdrop-filter: blur(8px) saturate(1.1);
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--bg);
+    backdrop-filter: none;
+  }
+
+  @media (forced-colors: active) {
+    background-color: Canvas;
+    backdrop-filter: none;
+    border-bottom-color: CanvasText;
+  }
+}
+
+/* While a modal is open the page behind it does not scroll. scrollbar-gutter
+   on html keeps the layout from shifting when the scrollbar goes. */
+html:has(dialog[data-ef-modal][open]) {
+  overflow: hidden;
+}
+
+/* Modals are ELEVATED one step further: the overlay shadow. Unlayered, so it
+   wins over material-elevated's raised shadow. A plain declaration rather than
+   a shadow utility, which would ship Tailwind's whole shadow and ring chain. */
+dialog[data-ef-modal] {
+  box-shadow: var(--shadow-overlay);
+}
+
+/* The results toolbar sticks under the header, so anchors and focused records
+   scroll clear of both. A custom property set on a descendant cannot reach html,
+   so the height is declared from the root. When the row wraps the toolbar marks
+   itself and the offset follows: two 40px rows plus the 8px gap. */
+html:has([data-results-toolbar]) {
+  --toolbar-h: 48px;
+}
+
+html:has([data-results-toolbar][data-wrapped]) {
+  --toolbar-h: 88px;
+}
+
+/* The record page's mobile action bar: hidden (and out of the tab order) until
+   it is marked visible; while visible the page ends above it. */
+.action-bar:not([data-visible]) {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(var(--dist-short));
+}
+
+/* While a bottom bar holds its space (the compare tray on /resources, or the
+   record action bar below lg once reserved; they never share a page), the page
+   ends above it and focused or anchored elements scroll clear of it. The
+   action bar's reservation outlasts its hiding at the footer, so the page
+   never jumps. One height covers both bars, safe area included; unset, both
+   declarations fall back to their initial values. No script measures it. */
+html:has([data-compare-tray]) {
+  --bar-h: calc(5rem + env(safe-area-inset-bottom));
+}
+
+@media (width < 64rem) {
+  html:has(.action-bar[data-reserved]) {
+    --bar-h: calc(5rem + env(safe-area-inset-bottom));
+  }
+}
+
+html {
+  scroll-padding-bottom: var(--bar-h);
+}
+
+main {
+  padding-bottom: var(--bar-h);
+}
+
+/* Survey bar partial fills: confirmed ink at reduced strength. Static values
+   first; the relative form only inside the feature query. */
+:root {
+  --survey-partial: oklch(0.8 0.13 160 / 0.55);
+  --survey-other: oklch(0.8 0.13 160 / 0.25);
+}
+
+.light {
+  --survey-partial: oklch(0.45 0.11 160 / 0.55);
+  --survey-other: oklch(0.45 0.11 160 / 0.25);
+}
+
+@supports (color: oklch(from red l c h)) {
+  :root,
+  .light {
+    --survey-partial: oklch(from var(--success-fg) l c h / 0.55);
+    --survey-other: oklch(from var(--success-fg) l c h / 0.25);
+  }
+}
+
+/* The Survey bar: one track, four exclusive segments sized by inline --w. A
+   non-zero segment is never thinner than 2px; segments carry no radius. */
+@layer components {
+  .survey-bar {
+    display: flex;
+    inline-size: 100%;
+    block-size: 8px;
+    overflow: hidden;
+    border-radius: var(--radius-xs);
+    background-color: var(--rule);
+  }
+
+  .survey-bar[data-size="lg"] {
+    block-size: 12px;
+  }
+
+  .survey-bar > span {
+    flex: none;
+    inline-size: var(--w);
+  }
+
+  .survey-bar > span:not([data-empty]) {
+    min-inline-size: 2px;
+  }
+
+  .survey-bar > [data-segment="verified"] {
+    background-color: var(--success-fg);
+  }
+
+  .survey-bar > [data-segment="partiallyVerified"] {
+    background-color: var(--survey-partial);
+  }
+
+  .survey-bar > [data-segment="otherConfirmedFact"] {
+    background-color: var(--survey-other);
+  }
+
+  .survey-bar > [data-segment="noConfirmedFact"] {
+    background-color: var(--rule);
+  }
+
+  /* The Evidence Gate reuses the track: shown in muted ink, held back as the
+     bare track. A filter result, never a confirmation colour. */
+  .survey-bar[data-size="xs"] {
+    block-size: 6px;
+  }
+
+  .survey-bar > [data-segment="shown"] {
+    background-color: var(--fg-muted);
+  }
+
+  @media (forced-colors: active) {
+    .survey-bar {
+      forced-color-adjust: none;
+      border: 1px solid CanvasText;
+      background-color: Canvas;
+    }
+
+    .survey-bar > [data-segment="verified"],
+    .survey-bar > [data-segment="partiallyVerified"],
+    .survey-bar > [data-segment="otherConfirmedFact"],
+    .survey-bar > [data-segment="shown"] {
+      background-color: CanvasText;
+    }
+
+    .survey-bar > [data-segment="noConfirmedFact"] {
+      background-color: Canvas;
+    }
+  }
+}
+
+/* Fact meter unsettled fill: checked but not settled, at reduced strength. */
+:root {
+  --meter-unsettled: oklch(0.82 0.12 80 / 0.45);
+}
+
+.light {
+  --meter-unsettled: oklch(0.47 0.1 70 / 0.45);
+}
+
+@supports (color: oklch(from red l c h)) {
+  :root,
+  .light {
+    --meter-unsettled: oklch(from var(--warning-fg) l c h / 0.45);
+  }
+}
+
+@layer components {
+  /* Records: ruled, not boxed. A hairline between records, none above the
+     first; in a two-up grid the second record starts the first row too. */
+  /* The list bleeds by the record padding, so hover fills reach into the
+     gutter and record text shares the left edge of headings and the toolbar. */
+  .record-list {
+    display: grid;
+    column-gap: 1.5rem;
+    margin-inline: -1rem;
+  }
+
+  .record-list > li {
+    container: record / inline-size;
+  }
+
+  .record-list > li + li {
+    border-top: 1px solid var(--rule);
+  }
+
+  .record-list[data-layout="list"] > li {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 168px;
+  }
+
+  @media (min-width: 40rem) {
+    .record-list[data-layout="grid"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .record-list[data-layout="grid"] > li:nth-child(2) {
+      border-top: 0;
+    }
+  }
+
+  .record {
+    gap: 0.75rem;
+  }
+
+  /* Wide records put the facts zone beside the main zone. DOM order is the
+     visual order, so nothing is reordered. */
+  @container record (min-width: 44rem) {
+    .record {
+      grid-template-columns: minmax(0, 1fr) 17rem;
+      column-gap: 1.5rem;
+    }
+  }
+
+  .record:focus-within {
+    background-color: var(--surface-hover);
+  }
+
+  @media (hover: hover) {
+    .record:hover {
+      background-color: var(--surface-hover);
+    }
+
+    .record:hover h3 a {
+      text-decoration-line: underline;
+      text-underline-offset: 0.2em;
+    }
+  }
+
+  .record:has(h3 a:active) {
+    background-color: var(--fill-pressed);
+  }
+
+  /* Legend popover: ELEVATED, anchored under its trigger, flipped when it would
+     leave the viewport; pinned to the bottom edge where anchoring is missing. */
+  [data-legend="popover"] {
+    inset: auto;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-inline, flip-block;
+    margin: 6px 0 0;
+    inline-size: min(24rem, calc(100vw - 2rem));
+    padding: 1rem;
+  }
+
+  @supports not (position-area: block-end) {
+    [data-legend="popover"] {
+      position: fixed;
+      inset: auto 1rem 1rem;
+      inline-size: auto;
+      margin: 0;
+    }
+  }
+
+  /* Provenance rail: a 1px rule joins each 7px station ring (top 4px) to the
+     next one, across the 1.25rem gap. */
+  .provenance > li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 3px;
+    top: 11px;
+    bottom: calc(-1.25rem - 4px);
+    border-inline-start: 1px solid var(--rule);
+  }
+
+  /* Record page: one stack below lg, in reading order (On this page, rail,
+     main, aside). From lg the rail heads a second column and sticks inside the
+     row that takes the spare height, so the aside blocks sit at its foot and
+     never scroll up beneath it. From xl On this page is a sticky left column. */
+  .record-layout {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-areas: "toc" "rail" "main" "aside";
+  }
+
+  .record-layout > [data-area="toc"] {
+    grid-area: toc;
+  }
+
+  .record-layout > [data-area="rail"] {
+    grid-area: rail;
+  }
+
+  .record-layout > [data-area="main"] {
+    grid-area: main;
+  }
+
+  .record-layout > [data-area="aside"] {
+    grid-area: aside;
+  }
+
+  @media (width >= 64rem) {
+    .record-layout {
+      grid-template-columns: minmax(0, 1fr) 20rem;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: "toc toc" "main rail" "main aside";
+    }
+
+    .record-layout [data-sticky="lg"] {
+      position: sticky;
+      top: calc(var(--header-h) + 1rem);
+    }
+  }
+
+  @media (width >= 80rem) {
+    .record-layout {
+      grid-template-columns: 11rem minmax(0, 1fr) 20rem;
+      grid-template-rows: 1fr auto;
+      grid-template-areas: "toc main rail" "toc main aside";
+    }
+
+    .record-layout [data-sticky="xl"] {
+      position: sticky;
+      top: calc(var(--header-h) + 1rem);
+    }
+  }
+
+  /* Segmented control: one 2px gold rule under the checked segment, placed by
+     the inline --i (index) and --n (count), so it moves rather than redraws. */
+  .segment-indicator {
+    position: absolute;
+    inset-inline-start: 0;
+    bottom: -1px;
+    inline-size: calc(100% / var(--n));
+    block-size: 2px;
+    background-color: var(--primary);
+    transform: translateX(calc(var(--i) * 100%));
+    pointer-events: none;
+  }
+
+  @media (forced-colors: active) {
+    .segment-indicator {
+      background-color: Highlight;
+    }
+  }
+
+  /* Listbox options (the palette and the compare picker): forced colours paint
+     every transparent leading rule, so the resting rule takes the canvas and
+     the active option the system highlight. */
+  @media (forced-colors: active) {
+    [role="option"] {
+      border-inline-start-color: Canvas;
+    }
+
+    [role="option"][aria-selected="true"] {
+      border-inline-start-color: Highlight;
+    }
+  }
+
+  /* Coordinates: each part wraps whole; the separator closes the part before. */
+  .coordinates > span {
+    white-space: nowrap;
+  }
+
+  .coordinates > span:not(:last-child)::after {
+    content: " ·";
+    color: var(--fg-subtle);
+  }
+
+  /* Fact meter: one element. Confirmed, then unsettled, then the rest, as hard
+     stops; the mask cuts --n cells of 6px with 2px gaps. */
+  .fact-meter {
+    --a: calc(var(--c) / var(--n) * 100%);
+    --b: calc((var(--c) + var(--u)) / var(--n) * 100%);
+    display: inline-block;
+    flex: none;
+    inline-size: calc(var(--n) * 8px - 2px);
+    block-size: 8px;
+    background: linear-gradient(
+      to right,
+      var(--success-fg) 0 var(--a),
+      var(--meter-unsettled) var(--a) var(--b),
+      var(--border) var(--b) 100%
+    );
+    mask: repeating-linear-gradient(to right, #000 0 6px, transparent 6px 8px);
+  }
+
+  @media (forced-colors: active) {
+    .fact-meter {
+      forced-color-adjust: none;
+      border: 1px solid CanvasText;
+      mask: none;
+    }
+  }
+}
+
+/* Derived fills. Static value first; relative value only inside the query. */
+:root {
+  --fill-pressed: var(--surface-hover);
+  --primary-pressed: var(--primary);
+}
+
+@supports (color: oklch(from red l c h)) {
+  :root {
+    --fill-pressed: oklch(from var(--surface-hover) calc(l - 0.02) c h);
+    --primary-pressed: oklch(from var(--primary) calc(l - 0.04) c h);
+  }
+}

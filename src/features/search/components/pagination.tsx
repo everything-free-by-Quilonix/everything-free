@@ -31,14 +31,14 @@ export function Pagination({
         <Link
           href={hrefFor(page - 1)}
           rel="prev"
-          className="inline-flex h-10 items-center gap-1 rounded-lg border border-border-strong px-3 text-sm transition-colors hover:bg-surface-hover"
+          className="inline-flex h-10 items-center gap-1 rounded-sm border border-border-strong px-3 text-sm transition-colors hover:bg-surface-hover"
         >
           <Icon name="arrow-left" size={15} />
           Previous
         </Link>
       ) : null}
 
-      <ul className="flex items-center gap-1">
+      <ul className="flex items-center gap-1 tabular-nums">
         {pages.map((entry, index) =>
           entry === "gap" ? (
             <li key={`gap-${index}`} className="px-1.5 text-sm text-fg-subtle" aria-hidden="true">
@@ -50,10 +50,9 @@ export function Pagination({
                 href={hrefFor(entry)}
                 aria-current={entry === page ? "page" : undefined}
                 className={cn(
-                  "inline-flex size-10 items-center justify-center rounded-lg text-sm transition-colors",
-                  entry === page
-                    ? "bg-primary font-semibold text-primary-fg"
-                    : "border border-border text-fg-muted hover:bg-surface-hover hover:text-fg",
+                  "inline-flex size-11 items-center justify-center rounded-sm border border-border text-sm transition-colors pointer-fine:size-10 hover:bg-surface-hover hover:text-fg active:bg-(--fill-pressed)",
+                  // Current page: an indicator, not a fill. The gold rule sits inside the cell.
+                  entry === page ? "border-b-2 border-b-primary font-semibold text-fg" : "text-fg-muted",
                 )}
               >
                 <span className="sr-only">Page </span>
@@ -68,7 +67,7 @@ export function Pagination({
         <Link
           href={hrefFor(page + 1)}
           rel="next"
-          className="inline-flex h-10 items-center gap-1 rounded-lg border border-border-strong px-3 text-sm transition-colors hover:bg-surface-hover"
+          className="inline-flex h-10 items-center gap-1 rounded-sm border border-border-strong px-3 text-sm transition-colors hover:bg-surface-hover"
         >
           Next
           <Icon name="arrow-right" size={15} />

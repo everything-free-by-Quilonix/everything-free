@@ -7,9 +7,10 @@ import { JsonLdScript } from "@/components/seo/json-ld";
 import { buttonClasses } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
-import { categories, getCategoryBySlug, getCategoryGroup } from "@/config/categories";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
-import { getResourcesByCategory } from "@/lib/repository";
+import { plural } from "@/components/ui/count";
+import { categories, getCategoriesInGroup, getCategoryBySlug, getCategoryGroup } from "@/config/categories";
+import { RecordList } from "@/features/resources/components/resource-record";
+import { getFacets, getResourcesByCategory } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, collectionSchema } from "@/lib/seo/structured-data";
 import { formatCount } from "@/lib/utils/format";
@@ -50,7 +51,14 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const results = await getResourcesByCategory(category.id, { perPage: 60, sort: "recently-verified" });
   const resources = results.items.map((match) => match.resource);
-  const groups = category.groups.map(getCategoryGroup).filter(Boolean);
+  const groups = category.groups.flatMap((id) => getCategoryGroup(id) ?? []);
+  // Siblings in the same group(s), with the library-wide counts the Atlas Index
+  // shows; subjects with no listings are left out of the line.
+  const facets = await getFacets();
+  const nearby = [...new Map(groups.flatMap((group) => getCategoriesInGroup(group.id)).map((c) => [c.id, c])).values()]
+    .filter((sibling) => sibling.id !== category.id)
+    .map((sibling) => ({ id: sibling.id, slug: sibling.slug, name: sibling.name, count: facets.categories[sibling.id] ?? 0 }))
+    .filter((sibling) => sibling.count > 0);
 
   return (
     <div className="pb-16">
@@ -64,28 +72,56 @@ export default async function CategoryPage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">{category.name}</h1>
-          <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{category.description}</p>
-
-          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-fg-subtle">
-            <span>
-              {formatCount(results.total)} {results.total === 1 ? "resource" : "resources"}
-            </span>
-            {groups.length > 0 ? (
-              <span className="flex items-center gap-2">
-                Also under:
-                {groups.map((group) => (
+          {/* Chapter opening: the group as a running head, the subject as the title. */}
+          {groups.length > 0 ? (
+            <p className="kicker mt-6">
+              {groups.map((group, index) => (
+                <span key={group.id}>
+                  {index > 0 ? " · " : null}
                   <Link
-                    key={group!.id}
-                    href={`/categories#${group!.id}`}
-                    className="rounded underline underline-offset-2 hover:text-fg"
+                    href={`/categories#${group.id}`}
+                    className="inline-block rounded-xs hover:text-fg hover:underline pointer-coarse:py-2"
                   >
-                    {group!.name}
+                    {group.name}
                   </Link>
+                </span>
+              ))}
+            </p>
+          ) : null}
+          <h1 className="mt-3 font-serif text-3xl font-semibold">{category.name}</h1>
+          <p className="mt-3 max-w-(--measure-standfirst) text-lg leading-relaxed text-fg-muted">
+            {category.description}
+          </p>
+          <p className="mt-4 text-sm text-fg-subtle tabular-nums">
+            {formatCount(results.total)} {plural(results.total, "listing", "listings")}
+          </p>
+
+          {nearby.length > 0 ? (
+            <div className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-sm">
+              <span className="text-fg-subtle">Nearby subjects:</span>
+              <ul aria-label="Nearby subjects" className="contents">
+                {nearby.map((sibling, index) => (
+                  <li key={sibling.id}>
+                    <Link
+                      href={`/categories/${sibling.slug}`}
+                      className="rounded-xs text-fg-muted underline-offset-[0.2em] transition-colors hover:text-fg hover:underline"
+                    >
+                      {sibling.name}
+                    </Link>{" "}
+                    <span className="text-fg-subtle tabular-nums">
+                      {formatCount(sibling.count)}
+                      <span className="sr-only"> {plural(sibling.count, "listing", "listings")}</span>
+                    </span>
+                    {index < nearby.length - 1 ? (
+                      <span aria-hidden="true" className="pl-2 text-fg-subtle">
+                        ·
+                      </span>
+                    ) : null}
+                  </li>
                 ))}
-              </span>
-            ) : null}
-          </div>
+              </ul>
+            </div>
+          ) : null}
         </Container>
       </header>
 
@@ -103,11 +139,10 @@ export default async function CategoryPage({ params }: PageProps) {
               </Link>
             </div>
 
-            <ResourceGrid resources={resources} label={`Free ${category.name} resources`} />
+            <RecordList layout="list" resources={resources} label={`Free ${category.name} resources`} />
           </>
         ) : (
           <EmptyState
-            icon="compass"
             title={`Nothing in ${category.name} yet`}
             description={
               <>

@@ -1,7 +1,7 @@
 "use client";
 
-import { useId, useTransition } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useId } from "react";
+import { useSearchParams } from "next/navigation";
 import { Icon } from "@/components/icons";
 import { PARAM } from "@/lib/search/params";
 import type { SortOption } from "@/types/search";
@@ -20,12 +20,22 @@ const OPTIONS: { value: SortOption; label: string }[] = [
  * option that silently does nothing is worse than one that is absent. A native
  * `<select>` is used rather than a custom listbox so that platform conventions,
  * keyboard handling and mobile pickers all work without reimplementation.
+ *
+ * Navigation is owned by `ResourceExplorer`: a sort change runs through the same
+ * transition as a filter change, so the results region carries one pending state,
+ * and the select is disabled while it runs so it cannot fire twice.
  */
-export function SortSelect({ hasQuery }: { hasQuery: boolean }) {
+export function SortSelect({
+  hasQuery,
+  isPending,
+  onNavigate,
+}: {
+  hasQuery: boolean;
+  isPending: boolean;
+  onNavigate: (href: string) => void;
+}) {
   const id = useId();
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
 
   const options = hasQuery ? OPTIONS : OPTIONS.filter((option) => option.value !== "relevance");
   const current = searchParams.get(PARAM.sort) ?? (hasQuery ? "relevance" : "recently-verified");
@@ -34,7 +44,7 @@ export function SortSelect({ hasQuery }: { hasQuery: boolean }) {
     const params = new URLSearchParams(searchParams.toString());
     params.set(PARAM.sort, value);
     params.delete(PARAM.page);
-    startTransition(() => router.push(`/resources?${params.toString()}`, { scroll: false }));
+    onNavigate(`/resources?${params.toString()}`);
   };
 
   return (
@@ -48,7 +58,7 @@ export function SortSelect({ hasQuery }: { hasQuery: boolean }) {
           value={current}
           disabled={isPending}
           onChange={(event) => handleChange(event.target.value)}
-          className="appearance-none rounded-lg border border-border-strong bg-surface py-2 pr-8 pl-3 text-sm text-fg transition-colors hover:border-fg-subtle focus:border-primary focus:outline-none disabled:opacity-60"
+          className="max-w-36 appearance-none truncate rounded-sm border border-border-strong bg-surface py-2 pr-8 pl-3 text-sm text-fg transition-colors hover:border-fg-subtle disabled:opacity-60 sm:max-w-none"
         >
           {options.map((option) => (
             <option key={option.value} value={option.value}>
@@ -59,7 +69,7 @@ export function SortSelect({ hasQuery }: { hasQuery: boolean }) {
         <Icon
           name="chevron-down"
           size={15}
-          className="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 text-fg-subtle"
+          className="pointer-events-none absolute inset-y-0 right-2.5 my-auto text-fg-subtle"
         />
       </div>
     </div>

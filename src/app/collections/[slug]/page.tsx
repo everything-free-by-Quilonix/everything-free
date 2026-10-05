@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 
 import { JsonLdScript } from "@/components/seo/json-ld";
 import { Callout } from "@/components/ui/callout";
+import { countNoun } from "@/components/ui/count";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
 import { collections } from "@/data/collections";
-import { ResourceCard } from "@/features/resources/components/resource-card";
+import { ResourceRecord } from "@/features/resources/components/resource-record";
 import { getCollectionBySlug, getCollectionResources } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, collectionSchema } from "@/lib/seo/structured-data";
@@ -61,18 +62,22 @@ export default async function CollectionPage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">{collection.name}</h1>
-          <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{collection.longDescription}</p>
+          {/* Chapter opening: a running head, the serif title, the standfirst, the count. */}
+          <p className="kicker mt-6">Collection</p>
+          <h1 className="mt-3 font-serif text-3xl font-semibold">{collection.name}</h1>
+          <p className="mt-3 max-w-(--measure-standfirst) text-lg leading-relaxed text-fg-muted">
+            {collection.longDescription}
+          </p>
 
-          <p className="mt-5 text-sm text-fg-subtle">
-            {resources.length} {resources.length === 1 ? "resource" : "resources"} · Updated{" "}
+          <p className="mt-4 text-sm text-fg-subtle tabular-nums">
+            {countNoun(resources.length, "listing", "listings")} · Updated{" "}
             <time dateTime={collection.updatedAt}>{formatFullDate(collection.updatedAt)}</time>
           </p>
         </Container>
       </header>
 
       <Container className="pt-8">
-        <Callout tone="primary" icon="info" title="How these were chosen" className="mb-8">
+        <Callout tone="neutral" icon={null} title="How these were chosen" className="mb-8">
           <p>{collection.rationale}</p>
           <p className="mt-2" data-testid="collection-evidence-note">
             A collection is chosen from what each listing records. That is not the same as each fact being confirmed:
@@ -82,16 +87,14 @@ export default async function CollectionPage({ params }: PageProps) {
 
         {/* Ordered list: the sequence is deliberate — it follows the order you
             would actually use these in. */}
-        <ol className="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="record-list" data-layout="list">
           {resources.map((resource, index) => (
-            <li key={resource.slug} className="flex">
-              <div className="flex w-full flex-col gap-2">
-                <p className="text-xs font-medium text-fg-subtle tabular-nums">
-                  Step {index + 1}
-                  <span className="sr-only">: {resource.name}</span>
-                </p>
-                <ResourceCard resource={resource} className="flex-1" />
-              </div>
+            <li key={resource.slug}>
+              <p className="kicker px-4 pt-4 tabular-nums">
+                Step {index + 1}
+                <span className="sr-only">: {resource.name}</span>
+              </p>
+              <ResourceRecord resource={resource} />
             </li>
           ))}
         </ol>

@@ -8,8 +8,9 @@ import type { Resource } from "@/types/resource";
 /**
  * The free-status badge.
  *
- * Text and icon come from `config/free-status.ts`, so a status can be renamed once
- * and every surface follows. The label is never abbreviated: "Trial only" must not
+ * Text comes from `config/free-status.ts`, so a status can be renamed once and
+ * every surface follows. The badge is word-only: the config's icons reuse the
+ * reserved evidence glyphs, so they are not rendered. The label is never abbreviated: "Trial only" must not
  * be shortened to "Trial" anywhere, because the extra word is what stops it reading
  * as an endorsement.
  *
@@ -19,13 +20,26 @@ import type { Resource } from "@/types/resource";
  * classification never looks like a confirmed one. The card beside it lists
  * "free status" under *Not verified* in words.
  */
-export function FreeStatusBadge({ resource, size = "sm" }: { resource: Resource; size?: "sm" | "md" }) {
+export function FreeStatusBadge({
+  resource,
+  size = "sm",
+  variant = "badge",
+}: {
+  resource: Resource;
+  size?: "sm" | "md";
+  /** "token": the same wrapper and words, as a transparent ledger token inside a record. */
+  variant?: "badge" | "token";
+}) {
   const definition = getFreeStatus(resource.freeStatus);
   const evidence = factEvidence(resource, "freeStatus");
   const confirmed = evidence.state === "confirmed";
   return (
     <span className="inline-flex" data-fact="freeStatus" data-evidence={evidence.state}>
-      <Badge tone={confirmed ? definition.tone : "neutral"} icon={definition.icon} size={size}>
+      <Badge
+        tone={confirmed ? definition.tone : "neutral"}
+        size={size}
+        appearance={variant === "token" ? "ledger" : "badge"}
+      >
         {definition.label}
         {confirmed ? null : <span className="sr-only"> (free status not verified)</span>}
       </Badge>
@@ -43,7 +57,7 @@ export function FreeStatusBadge({ resource, size = "sm" }: { resource: Resource;
 export function VerificationBadge({ resource, size = "sm" }: { resource: Resource; size?: "sm" | "md" }) {
   const definition = effectiveVerification(resource);
   return (
-    <Badge tone={definition.tone} icon={definition.icon} size={size}>
+    <Badge tone={definition.tone} size={size}>
       {definition.label}
     </Badge>
   );
@@ -65,7 +79,7 @@ export function LastVerified({ resource, className }: { resource: Resource; clas
       {formatted ? (
         <>
           Last checked{" "}
-          <time dateTime={resource.lastVerifiedAt} className="text-fg-muted">
+          <time dateTime={resource.lastVerifiedAt} className="text-fg-muted tabular-nums">
             {formatted}
           </time>
         </>
@@ -76,10 +90,33 @@ export function LastVerified({ resource, className }: { resource: Resource; clas
   );
 }
 
-export function OpenSourceBadge({ license }: { license?: string }) {
+/**
+ * Open source, as a classification: always neutral, never a tone.
+ *
+ * `variant="token"` is the record's secondary claim. It states its own evidence
+ * rather than leaning on the free-status token: `data-evidence` is the fact's
+ * state from `factEvidence` (so `unknown` and `unconfirmed` are both carried),
+ * and an unconfirmed value says "not verified" in visible words.
+ */
+export function OpenSourceBadge(
+  props: { variant?: "badge"; license?: string } | { variant: "token"; resource: Resource },
+) {
+  if (props.variant !== "token") {
+    return (
+      <Badge tone="neutral" icon="repo">
+        {props.license ?? "Open source"}
+      </Badge>
+    );
+  }
+
+  const evidence = factEvidence(props.resource, "openSource");
+  const confirmed = evidence.state === "confirmed";
   return (
-    <Badge tone="primary" icon="repo">
-      {license ?? "Open source"}
-    </Badge>
+    <span className="inline-flex" data-fact="openSource" data-evidence={evidence.state}>
+      <Badge tone="neutral" appearance="ledger">
+        Open source
+        {confirmed ? null : <span className="text-fg-subtle">· not verified</span>}
+      </Badge>
+    </span>
   );
 }

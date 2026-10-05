@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Icon } from "@/components/icons";
-import { Button } from "@/components/ui/button";
+import { Button, buttonClasses } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { ExternalLink } from "@/components/ui/external-link";
 import { Field, Select, TextArea, TextInput } from "@/components/ui/field";
@@ -65,13 +65,13 @@ export function SubmitResourceForm() {
 
   if (state.status === "success") {
     return (
-      <Callout tone="success" icon="check-circle" title="Ready to file" assertive>
+      <Callout tone="neutral" icon={null} title="Ready to file" assertive>
         <p>{state.message}</p>
         <p className="mt-4">
           <ExternalLink
             href={state.url}
             showIcon={false}
-            className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-fg transition-colors hover:bg-primary-hover"
+            className={buttonClasses({ variant: "primary", size: "md" })}
           >
             Open the prefilled submission
             <Icon name="external-link" size={15} />
@@ -86,7 +86,7 @@ export function SubmitResourceForm() {
           <button
             type="button"
             onClick={() => setState(idleState)}
-            className="rounded text-xs underline underline-offset-2 hover:text-fg"
+            className="link-inline rounded-xs text-xs"
           >
             Submit another resource
           </button>
@@ -98,7 +98,7 @@ export function SubmitResourceForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
       <noscript>
-        <div className="rounded-lg border border-info/30 bg-info-soft px-4 py-3.5 text-sm leading-relaxed">
+        <div className="rounded-sm border border-rule px-4 py-3.5 text-sm leading-relaxed">
           <p className="font-medium text-fg">This form needs JavaScript</p>
           <p className="mt-1 text-fg-muted">
             It validates your submission in your browser before filing it. Without JavaScript you can submit the same
@@ -106,7 +106,7 @@ export function SubmitResourceForm() {
           </p>
           <a
             href={issueTemplateUrls.submission}
-            className="mt-2 inline-block text-fg underline underline-offset-2"
+            className="link-inline mt-2 inline-block"
             target="_blank"
             rel="noopener noreferrer"
           >

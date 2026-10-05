@@ -476,6 +476,17 @@ async function main() {
     /* ------------------------------------------------------- behaviour */
     console.log("\nBehaviour");
 
+    await check("homepage introduction states the library size from the data", async () => {
+      await desktop.goto(`${site}/`);
+      await desktop.waitFor(JS.hydrated);
+      // The same formatting as `formatCount`, so the h1 must carry the exact built count.
+      const count = new Intl.NumberFormat("en-GB").format(manifest.count);
+      const h1 = await desktop.evaluate(JS.h1);
+      assert(h1.includes(count), `h1 "${h1}" does not state ${count}`);
+      assert(!(await desktop.evaluate(`/thousands/i.test(document.body.innerText)`)), "homepage says \"thousands\"");
+      return h1;
+    });
+
     await check("client-side navigation from a resource card", async () => {
       await desktop.goto(`${site}/`);
       await desktop.waitFor(JS.hydrated);
@@ -491,6 +502,71 @@ async function main() {
       assert(await desktop.evaluate(`window.__noReload === true`), "navigation fell back to a full page load");
       await assertCleanLoad(desktop, "after client navigation");
       return href;
+    });
+
+    /* ------------------------------------------------- command palette */
+    const ctrlK = async (page) => {
+      for (const type of ["keyDown", "keyUp"]) {
+        await page.send("Input.dispatchKeyEvent", { type, key: "k", code: "KeyK", windowsVirtualKeyCode: 75, modifiers: 2 });
+      }
+    };
+    const palette = {
+      open: `!!document.querySelector('dialog[data-palette][open]')`,
+      closed: `!document.querySelector('[data-palette]')`,
+      input: `document.querySelector('[data-palette] [role="combobox"]')`,
+    };
+
+    await check("palette index loads and parses", async () => {
+      const response = await fetch(`${site}/palette-index.json`);
+      assert(response.ok, `HTTP ${response.status}`);
+      const index = await response.json();
+      assert(index.v === 1 && index.t > 0, "unexpected index header");
+      assert(index.resources.length === manifest.count, `${index.resources.length} listings, manifest has ${manifest.count}`);
+      assert(index.resources.every((r) => r.k + r.u <= index.t), "a listing counts more facts than the total");
+      return `${index.resources.length} listings, t=${index.t}`;
+    });
+
+    await check("Ctrl+K palette: type, Escape clears, Escape closes, Enter navigates in place", async () => {
+      const target = manifest.entries.find((e) => e.slug === "supabase") ?? manifest.entries[0];
+      await desktop.goto(`${site}/resources/`);
+      await desktop.waitFor(JS.hydrated);
+      await ctrlK(desktop);
+      assert(await desktop.waitFor(`${palette.open} && document.querySelector('[role="dialog"]') !== null`), "Ctrl+K did not open the palette");
+      assert(await desktop.waitFor(`document.activeElement === ${palette.input}`), "focus is not on the combobox");
+      await desktop.send("Input.insertText", { text: target.name });
+      const option = `[...document.querySelectorAll('[data-palette] [role="option"]')].find((o) => o.textContent.includes(${JSON.stringify(target.name)}))`;
+      assert(await desktop.waitFor(`!!${option}`), `${target.name} not offered`);
+      await desktop.key("Escape", "Escape", 27);
+      assert(await desktop.waitFor(`${palette.open} && ${palette.input}.value === ''`), "Escape with a query did not keep the palette open and clear it");
+      await desktop.key("Escape", "Escape", 27);
+      assert(await desktop.waitFor(palette.closed), "Escape on an empty query did not close");
+      assert(await desktop.waitFor(`!!document.activeElement && !document.activeElement.closest('dialog')`), "focus was not returned to the page");
+
+      await ctrlK(desktop);
+      assert(await desktop.waitFor(palette.open), "Ctrl+K did not reopen the palette");
+      await desktop.send("Input.insertText", { text: target.name });
+      assert(await desktop.waitFor(`${option}?.getAttribute('aria-selected') === 'true'`), `${target.name} is not the active row`);
+      await desktop.evaluate(`window.__noReload = true`);
+      await desktop.key("Enter", "Enter", 13);
+      assert(await desktop.waitFor(`location.pathname.endsWith('/resources/${target.slug}/')`), "Enter did not navigate");
+      assert(await desktop.waitFor(palette.closed), "palette still open after navigating");
+      assert(await desktop.evaluate(`window.__noReload === true`), "navigation fell back to a full page load");
+      assert(await desktop.waitFor(`document.activeElement?.id === 'main'`), "focus did not move to the main region");
+      return target.slug;
+    });
+
+    await check("palette opened without user activation still closes on Escape and reopens", async () => {
+      await desktop.goto(`${site}/`);
+      await desktop.waitFor(JS.hydrated);
+      // An untrusted click: no user activation reaches the dialog.
+      assert(await desktop.evaluate(JS.click('header a[aria-label="Search resources"]')), "palette trigger missing");
+      assert(await desktop.waitFor(palette.open), "trigger click did not open the palette");
+      await desktop.key("Escape", "Escape", 27);
+      assert(await desktop.waitFor(palette.closed), "Escape did not close a palette opened without activation");
+      await ctrlK(desktop);
+      assert(await desktop.waitFor(palette.open), "Ctrl+K did not reopen the palette");
+      await desktop.key("Escape", "Escape", 27);
+      assert(await desktop.waitFor(palette.closed), "palette did not close again");
     });
 
     await check("verification evidence is summarised, then disclosed on demand", async () => {
@@ -533,6 +609,33 @@ async function main() {
       assert(!text.includes("View verification evidence"), "offers evidence that does not exist");
       assert(text.includes("How this listing was compiled"), "compilation notes are not labelled");
       return unchecked.slug;
+    });
+
+    await check("provenance rail states the panel's required-checks figure, or that none are recorded", async () => {
+      // Same picks as the two checks above, so the rail and the panel are read on
+      // the same pages: one listing with check records, one without.
+      const audited = manifest.entries.find((e) => e.confirmedChecks.length + e.unresolvedChecks.length > 0);
+      const unchecked = manifest.entries.find((e) => e.stage === "not-started");
+      assert(audited && unchecked, "no listing for one of the two branches");
+      const station = `document.querySelector('[aria-labelledby="provenance-heading"] [data-provenance="checks"]')?.textContent ?? ''`;
+      const panel = `[...document.querySelectorAll('h2')].find((h) => h.textContent.trim() === 'Verification')?.parentElement?.innerText ?? ''`;
+
+      await desktop.goto(`${site}/resources/${audited.slug}/`);
+      await desktop.waitFor(JS.hydrated);
+      const withChecks = await desktop.evaluate(station);
+      const pair = withChecks.match(/(\d+) of (\d+)/)?.[0];
+      assert(pair, `station 2 has no ratio: ${withChecks}`);
+      const panelText = await desktop.evaluate(panel);
+      assert(panelText.includes(`${pair} required checks confirmed`), `panel does not show ${pair}: ${panelText.slice(0, 160)}`);
+      const page = await desktop.evaluate(`document.body.innerText`);
+      assert(!/\bof 12\b/.test(page), "a third denominator ('of 12') appears on the record page");
+
+      await desktop.goto(`${site}/resources/${unchecked.slug}/`);
+      await desktop.waitFor(JS.hydrated);
+      const without = await desktop.evaluate(station);
+      assert(without.includes("No checks recorded yet"), `station 2 reads: ${without}`);
+      assert(!without.includes("required checks"), "station 2 shows a ratio with no check records");
+      return `${audited.slug}: ${pair}; ${unchecked.slug}: none recorded`;
     });
 
     /* ------------------------------------------ fact-level evidence */
@@ -657,6 +760,25 @@ async function main() {
       return unchecked.slug;
     });
 
+    await check("record tags link to their tag listings", async () => {
+      // The record -> tag-listing path lives only in the aside's Tags block.
+      await desktop.goto(`${site}/resources/supabase/`);
+      await desktop.waitFor(JS.hydrated);
+      const tags = await desktop.evaluate(`(() => {
+        const heading = [...document.querySelectorAll('aside h2')].find((h) => h.textContent.trim() === 'Tags');
+        if (!heading) return null;
+        return [...heading.parentElement.querySelectorAll('a[href*="?tag="]')].map((a) => ({
+          text: a.textContent.trim(),
+          tag: new URL(a.href).searchParams.get('tag'),
+        }));
+      })()`);
+      assert(tags, "no Tags heading in the aside");
+      assert(tags.length > 0, "Tags heading has no tag links");
+      const wrong = tags.filter((t) => t.tag !== t.text);
+      assert(wrong.length === 0, `tag links point elsewhere: ${JSON.stringify(wrong.slice(0, 3))}`);
+      return `${tags.length} tags`;
+    });
+
     await check("search: natural-language constraint becomes a removable filter", async () => {
       await desktop.goto(`${site}/resources/?q=${encodeURIComponent("free AI voice generator without a credit card")}`);
       assert(await desktop.waitFor(`document.body.innerText.includes("set a filter automatically")`), "inferred-filter notice missing");
@@ -688,10 +810,66 @@ async function main() {
       return `${before} → ${await desktop.evaluate(total)} resources`;
     });
 
+    await check("desktop: exactly one filter form is mounted", async () => {
+      await desktop.goto(`${site}/resources/`);
+      await desktop.waitFor(JS.hydrated);
+      const forms = await desktop.evaluate(`[...document.querySelectorAll('form')].filter((f) => f.querySelector('input[name="openSource"]')).length`);
+      assert(forms === 1, `${forms} filter forms at 1366px`);
+      return "1 form";
+    });
+
     await check("URL-driven filter loads directly", async () => {
       await desktop.goto(`${site}/resources/?platform=LINUX`);
       assert(await desktop.waitFor(`[...document.querySelectorAll('[aria-label="Active filters"] a')].some(a => a.textContent.includes("Linux"))`), "Linux chip missing");
       assert(await desktop.evaluate(`document.querySelector('input[name="platform"][value="LINUX"]').checked`), "checkbox not checked");
+    });
+
+    await check("keyboard focus is visible on the search field and the sort select", async () => {
+      // A text input always matches :focus-visible, and focus moved from it by
+      // script stays keyboard-modality, so both reads are the keyboard state.
+      await desktop.goto(`${site}/resources/`);
+      await desktop.waitFor(JS.hydrated);
+      const read = (target) => `(() => {
+        const el = ${target};
+        if (!el) return null;
+        el.focus();
+        const ring = el.closest('[data-search-field]') ?? el;
+        return { visible: el.matches(':focus-visible'), style: getComputedStyle(ring).outlineStyle, width: getComputedStyle(ring).outlineWidth };
+      })()`;
+      const field = await desktop.evaluate(read(`document.querySelector('[data-search-field] input[type="search"]')`));
+      assert(field, "search field missing");
+      assert(field.visible && field.style !== "none" && field.width !== "0px", `search wrapper outline ${field.style} ${field.width}`);
+      const sort = await desktop.evaluate(read(`document.querySelector('[data-results-toolbar] select')`));
+      assert(sort, "sort select missing from the results toolbar");
+      assert(sort.visible && sort.style !== "none" && sort.width !== "0px", `sort select outline ${sort.style} ${sort.width}`);
+      return `search ${field.style} ${field.width}, sort ${sort.style} ${sort.width}`;
+    });
+
+    await check("every record's first fact is its free status, with evidence", async () => {
+      // The card audit reads the first [data-fact] in each article, so a record
+      // that reorders its zones must fail here rather than pass the audit by luck.
+      const audit = `(() => {
+        const bad = [];
+        // Records only: the homepage subject groups are articles too, until the Atlas Index.
+        const records = document.querySelectorAll('main article[data-record]');
+        for (const record of records) {
+          const first = record.querySelector('[data-fact]');
+          if (!first || first.dataset.fact !== 'freeStatus' || !first.hasAttribute('data-evidence')) {
+            bad.push(record.querySelector('h3 a')?.getAttribute('href') ?? '?');
+          }
+        }
+        return { count: records.length, bad };
+      })()`;
+      const counts = [];
+      for (const route of ["/", "/resources/"]) {
+        await desktop.goto(`${site}${route}`);
+        await desktop.waitFor(JS.hydrated);
+        assert(await desktop.waitFor(`document.querySelectorAll('main article[data-record]').length > 0`), `${route}: no records`);
+        const { count, bad } = await desktop.evaluate(audit);
+        assert(bad.length === 0, `${route}: first fact is not the free status in ${bad.slice(0, 3).join(", ")}`);
+        counts.push(`${route} ${count}`);
+      }
+      return counts.join(", ");
     });
 
     await check("contrast checker computes a ratio", async () => {
@@ -771,6 +949,173 @@ async function main() {
       assert(outline !== "none", "no focus outline");
       return `outline ${outline}`;
     });
+
+    await check("palette parses its index without a CSP violation", async () => {
+      // The index is validated in the browser; a validator that evals would be
+      // blocked and reported by the strict policy.
+      await desktop.goto(`${site}/`);
+      await desktop.waitFor(JS.hydrated);
+      desktop.events.errors.length = 0;
+      desktop.events.failedRequests.length = 0;
+      await ctrlK(desktop);
+      assert(await desktop.waitFor(palette.open), "Ctrl+K did not open the palette");
+      await desktop.send("Input.insertText", { text: "supabase" });
+      assert(await desktop.waitFor(`[...document.querySelectorAll('[data-palette] [role="option"]')].some((o) => o.textContent.includes('Supabase'))`), "index did not load");
+      await assertCleanLoad(desktop, "palette");
+      await desktop.key("Escape", "Escape", 27);
+      await desktop.key("Escape", "Escape", 27);
+    });
+
+    await check("atlas index counts match each subject page, and Find a subject narrows", async () => {
+      await desktop.goto(`${site}/categories/`);
+      await desktop.waitFor(JS.hydrated);
+      const rows = await desktop.evaluate(
+        `[...document.querySelectorAll('main a[href*="/categories/"][aria-label]')].map((a) => ({ href: a.href, label: a.getAttribute('aria-label') }))`,
+      );
+      assert(rows.length > 0, "no atlas rows");
+      const picks = [...new Map(rows.map((r) => [r.href, r])).values()].slice(0, 3);
+      for (const row of picks) {
+        const n = Number(row.label.match(/, ([\d,]+) listings?$/)?.[1].replace(/,/g, ""));
+        // Absolute, so the base path is not added twice.
+        await desktop.goto(row.href.replace(/\/?$/, "/"));
+        await desktop.waitFor(JS.hydrated);
+        const header = await desktop.evaluate(`document.querySelector('main header')?.innerText ?? ''`);
+        const shown = Number(header.match(/([\d,]+) listings?/)?.[1].replace(/,/g, ""));
+        assert(n > 0 && n === shown, `${row.href}: index says ${n}, page says ${shown}`);
+      }
+      await desktop.goto(`${site}/categories/`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`!!document.querySelector('input[type="search"][maxlength="60"]')`), "Find a subject input missing");
+      await desktop.evaluate(JS.setValue('input[type="search"][maxlength="60"]', "photo"));
+      assert(await desktop.waitFor(`/^\\d+ subjects?$/.test(document.querySelector('main p[aria-live="polite"]')?.textContent.trim() ?? '')`), "no polite subject count");
+      const names = await desktop.evaluate(`[...document.querySelectorAll('main section li')].map((li) => li.textContent)`);
+      assert(names.length > 0 && names.every((t) => /photo/i.test(t)), `narrowing kept ${names.slice(0, 3).join(", ")}`);
+      const page = await desktop.evaluate(`document.body.innerHTML`);
+      assert(!/\b(?:countries|flag-icon|world map)\b/i.test(page), "geographic coverage markup on /categories/");
+      return `${picks.length} subjects, ${names.length} rows for "photo"`;
+    });
+
+    /* ------------------------------------------------- quick compare */
+    const comparePair = ["supabase", slugs.find((s) => s !== "supabase")];
+    const compareRoute = `/compare/?r=${comparePair.join(",")}`;
+
+    await check("compare index loads, parses and matches the manifest's evidence", async () => {
+      const response = await fetch(`${site}/compare-index.json`);
+      assert(response.ok, `HTTP ${response.status}`);
+      const index = await response.json();
+      assert(index.v === 1 && index.t > 0, "unexpected index header");
+      assert(index.entries.length === manifest.count, `${index.entries.length} listings, manifest has ${manifest.count}`);
+      const problems = [];
+      for (const entry of index.entries) {
+        const facts = factsBySlug[entry.s];
+        for (const [fact, cell] of Object.entries(entry.cells)) {
+          if (cell.state !== facts?.[fact]?.state || cell.reason !== facts?.[fact]?.reason) problems.push(`${entry.s} ${fact}`);
+        }
+      }
+      assert(problems.length === 0, `cells disagree with the manifest: ${problems.slice(0, 3).join("; ")}`);
+      return `${index.entries.length} listings`;
+    });
+
+    await check("compare table states each fact's evidence exactly as the manifest does", async () => {
+      await desktop.goto(`${site}${compareRoute}`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`document.querySelectorAll('table tbody td[data-fact]').length > 0`), "comparison table did not render");
+      const audit = await desktop.evaluate(`(() => {
+        const facts = ${JSON.stringify(factsBySlug)};
+        const cols = [...document.querySelectorAll('table thead th a')].map((a) => (a.getAttribute('href').split('/resources/')[1] ?? '').replace(/\\/$/, ''));
+        const problems = [];
+        let cells = 0;
+        for (const row of document.querySelectorAll('table tbody tr')) {
+          [...row.querySelectorAll('td')].forEach((td, i) => {
+            if (!td.dataset.fact) return;
+            cells += 1;
+            const shown = td.querySelector('[data-evidence]')?.dataset.evidence;
+            if (shown !== facts[cols[i]]?.[td.dataset.fact]?.state) problems.push(cols[i] + ' ' + td.dataset.fact + ' says ' + shown);
+          });
+        }
+        return { cols, cells, problems };
+      })()`);
+      assert(audit.cols.join(",") === comparePair.join(","), `columns ${audit.cols.join(",")}`);
+      assert(audit.cells === comparePair.length * 8, `${audit.cells} fact cells`);
+      assert(audit.problems.length === 0, audit.problems.slice(0, 3).join("; "));
+      await assertCleanLoad(desktop, "compare");
+      return `${audit.cells} cells`;
+    });
+
+    await check("compare: an unknown slug leaves the picker and says it was left out", async () => {
+      await desktop.goto(`${site}/compare/?r=not-a-real-slug`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`document.body.innerText.includes("Pick two or three listings to compare")`), "picker empty state missing");
+      assert(await desktop.evaluate(`document.body.innerText.includes("1 listing in this link was not found and was left out")`), "not-found notice missing");
+      assert(await desktop.evaluate(`!document.querySelector('table')`), "a table rendered with no listings");
+    });
+
+    await check("compare toggles on /resources fill the tray, stop at three and open the comparison", async () => {
+      await desktop.goto(`${site}/resources/`);
+      await desktop.waitFor(JS.hydrated);
+      const toggles = `[...document.querySelectorAll('main [data-compare-toggle]')]`;
+      assert(await desktop.waitFor(`${toggles}.length >= 4`), "no compare toggles on records");
+      for (const i of [0, 1, 2]) await desktop.evaluate(`${toggles}[${i}].click()`);
+      assert(await desktop.waitFor(`document.querySelector('[data-compare-tray]')?.innerText.includes('3 of 3 selected')`), "tray does not show 3 of 3");
+      assert(await desktop.evaluate(`${toggles}[3].getAttribute('aria-disabled') === 'true'`), "a fourth toggle is not disabled");
+      await desktop.evaluate(`${toggles}[3].click()`);
+      assert(await desktop.evaluate(`document.querySelector('[data-compare-tray]').innerText.includes('3 of 3 selected')`), "a fourth listing was added");
+      await desktop.evaluate(`window.__noReload = true`);
+      assert(await desktop.evaluate(JS.clickText("[data-compare-tray] a", "Compare 3 listings")), "no Compare link in the tray");
+      assert(await desktop.waitFor(`location.pathname.endsWith('/compare/') && document.querySelectorAll('table thead th a').length === 3`), "comparison did not open with three columns");
+      assert(await desktop.evaluate(`window.__noReload === true`), "navigation fell back to a full page load");
+    });
+
+    /* ------------------------------------------------- motion */
+    const reducedMotion = (on) =>
+      desktop.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: on ? "reduce" : "no-preference" }] });
+    const ms = `((v) => { const f = v.split(',')[0].trim(); const n = parseFloat(f); return f.endsWith('ms') ? n : n * 1000; })`;
+
+    await check("palette ENTER has a duration, and none under reduced motion", async () => {
+      const durations = [];
+      for (const on of [false, true]) {
+        await reducedMotion(on);
+        await desktop.goto(`${site}/`);
+        await desktop.waitFor(JS.hydrated);
+        await ctrlK(desktop);
+        assert(await desktop.waitFor(palette.open), "Ctrl+K did not open the palette");
+        durations.push(await desktop.evaluate(`${ms}(getComputedStyle(document.querySelector('dialog[data-palette]')).transitionDuration)`));
+        await desktop.key("Escape", "Escape", 27);
+        assert(await desktop.waitFor(palette.closed), "palette did not close");
+      }
+      await reducedMotion(false);
+      assert(durations[0] > 0, `no ENTER duration with motion allowed (${durations[0]}ms)`);
+      // Rounded: 0.01ms reads back as "1e-05s", which is not exact in binary.
+      assert(Math.round(durations[1] * 1000) / 1000 <= 0.01, `reduced motion leaves ${durations[1]}ms`);
+      return `${durations[0]}ms, reduced ${durations[1]}ms`;
+    });
+
+    await check("skip link leaves <main> untinted, with and without reduced motion", async () => {
+      for (const on of [false, true]) {
+        await reducedMotion(on);
+        await desktop.goto(`${site}/`);
+        await desktop.waitFor(JS.hydrated);
+        const before = await desktop.evaluate(`getComputedStyle(document.querySelector('main')).backgroundColor`);
+        await desktop.key("Tab", "Tab", 9);
+        await desktop.key("Enter", "Enter", 13);
+        assert(await desktop.waitFor(`location.hash === '#main'`), "skip link did not target #main");
+        const after = await desktop.evaluate(`(() => { const s = getComputedStyle(document.querySelector('main')); return { bg: s.backgroundColor, anim: s.animationName }; })()`);
+        assert(after.bg === before, `main background ${before} became ${after.bg}${on ? " (reduced motion)" : ""}`);
+        assert(after.anim === "none", `main animates: ${after.anim}`);
+      }
+      await reducedMotion(false);
+    });
+
+    await check("desktop: the hidden mobile action bar reserves no space at 1366px", async () => {
+      await desktop.goto(`${site}/resources/supabase/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.evaluate(`window.scrollTo(0, document.querySelector('[data-record-actions]').getBoundingClientRect().bottom + window.scrollY + 400)`);
+      // The observer runs at every width; wait until it has marked the reservation.
+      assert(await desktop.waitFor(`document.querySelector('.action-bar')?.hasAttribute('data-reserved')`), "the action bar never marked its reservation");
+      const padding = await desktop.evaluate(`getComputedStyle(document.querySelector('main')).paddingBottom`);
+      assert(padding === "0px", `main has ${padding} of bottom padding on desktop`);
+      return `main padding-bottom ${padding}`;
+    });
     await desktop.close();
 
     /* ------------------------------------------------ viewports */
@@ -781,6 +1126,17 @@ async function main() {
         await check(`${name} ${route} has no horizontal overflow`, async () => {
           await page.goto(`${site}${route}`);
           await page.waitFor(JS.hydrated);
+          const overflow = await page.evaluate(JS.overflow);
+          assert(overflow <= 1, `content ${overflow}px wider than the viewport`);
+        });
+      }
+
+      // Added routes: the comparison table, the subject index, a subject page and the verification survey.
+      for (const route of [compareRoute, "/categories/", "/categories/photography/", "/verification/"]) {
+        await check(`${name} ${route} has no horizontal overflow`, async () => {
+          await page.goto(`${site}${route}`);
+          await page.waitFor(JS.hydrated);
+          if (route === compareRoute) assert(await page.waitFor(`!!document.querySelector('table')`), "comparison table did not render");
           const overflow = await page.evaluate(JS.overflow);
           assert(overflow <= 1, `content ${overflow}px wider than the viewport`);
         });
@@ -811,6 +1167,68 @@ async function main() {
           assert(await page.waitFor(`!document.querySelector('[role="dialog"]')`), "Escape did not close");
           assert(await page.waitFor(`document.activeElement?.getAttribute("aria-label") === "Open menu"`), "focus not returned to trigger");
         });
+
+        await check("mobile: the record action bar appears once the header actions scroll away, never over the footer", async () => {
+          await page.goto(`${site}/resources/supabase/`);
+          await page.waitFor(JS.hydrated);
+          const state = `(() => { const bar = document.querySelector('.action-bar'); return bar ? (bar.hasAttribute('data-visible') ? 'shown' : getComputedStyle(bar).visibility) : 'missing'; })()`;
+          assert((await page.evaluate(state)) === "hidden", `at the top the bar is ${await page.evaluate(state)}`);
+          await page.evaluate(`window.scrollTo(0, document.querySelector('[data-record-actions]').getBoundingClientRect().bottom + window.scrollY + 400)`);
+          assert(await page.waitFor(`${state} === 'shown'`), "bar did not appear after the header actions scrolled away");
+          await page.evaluate(`window.scrollTo(0, document.documentElement.scrollHeight)`);
+          assert(await page.waitFor(`${state} !== 'shown'`), "bar stays over the footer");
+        });
+
+        await check("mobile: every record-page link, evidence sources included, stays inside the viewport", async () => {
+          // A clipped link is lost content even when the document does not scroll sideways.
+          await page.goto(`${site}/resources/supabase/`);
+          await page.waitFor(JS.hydrated);
+          const outside = await page.evaluate(`(() => {
+            for (const d of document.querySelectorAll('main details')) d.open = true;
+            const scrolls = (el) => { for (let p = el.parentElement; p; p = p.parentElement) if (/auto|scroll/.test(getComputedStyle(p).overflowX)) return true; return false; };
+            return [...document.querySelectorAll('main a')].filter((a) => { const r = a.getBoundingClientRect(); return r.width > 0 && !scrolls(a) && (r.right > innerWidth + 1 || r.left < -1); }).map((a) => a.textContent.trim().slice(0, 40));
+          })()`);
+          assert(outside.length === 0, `links past the viewport edge: ${JSON.stringify(outside.slice(0, 3))}`);
+        });
+
+        await check("mobile: hiding the action bar at the footer does not move the page", async () => {
+          await page.goto(`${site}/resources/supabase/`);
+          await page.waitFor(JS.hydrated);
+          const shown = `document.querySelector('.action-bar')?.hasAttribute('data-visible')`;
+          // The footer's document offset, independent of the scroll position.
+          const footerTop = `(() => { const f = [...document.querySelectorAll('footer')].at(-1); return Math.round(f.getBoundingClientRect().top + window.scrollY); })()`;
+          await page.evaluate(`window.scrollTo(0, document.querySelector('[data-record-actions]').getBoundingClientRect().bottom + window.scrollY + 400)`);
+          assert(await page.waitFor(shown), "bar did not appear after the header actions scrolled away");
+          const before = await page.evaluate(footerTop);
+          const padding = await page.evaluate(`parseFloat(getComputedStyle(document.querySelector('main')).paddingBottom)`);
+          assert(padding >= 80, `main reserves ${padding}px while the bar is shown`);
+          await page.evaluate(`window.scrollTo(0, document.documentElement.scrollHeight)`);
+          assert(await page.waitFor(`!${shown}`), "bar stays over the footer");
+          await page.evaluate(`new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))`);
+          const after = await page.evaluate(footerTop);
+          assert(after === before, `the footer moved from ${before}px to ${after}px when the bar hid`);
+          return `footer at ${after}px, ${padding}px reserved`;
+        });
+
+        await check("mobile: the Filters sheet holds the only filter form and returns focus", async () => {
+          await page.goto(`${site}/resources/`);
+          await page.waitFor(JS.hydrated);
+          const trigger = `[...document.querySelectorAll('[data-results-toolbar] button')].find((b) => b.textContent.trim().startsWith('Filters'))`;
+          const forms = `[...document.querySelectorAll('form')].filter((f) => f.querySelector('input[name="openSource"]')).length`;
+          assert(await page.evaluate(`!!${trigger}`), "no Filters button in the results toolbar");
+          await page.evaluate(`${trigger}.click()`);
+          assert(await page.waitFor(`!!document.querySelector('[role="dialog"][aria-modal="true"]')`), "sheet did not open");
+          assert(await page.waitFor(`${forms} === 1`), `${await page.evaluate(forms)} filter forms with the sheet open`);
+          assert(
+            await page.evaluate(`document.querySelector('[role="dialog"]').contains(document.querySelector('input[name="openSource"]'))`),
+            "the filter form is not inside the sheet",
+          );
+          const show = `[...document.querySelectorAll('[role="dialog"] button')].find((b) => /^Show \\d[\\d,]* results?$/.test(b.textContent.trim()))`;
+          assert(await page.evaluate(`!!${show}`), "no 'Show N results' button");
+          await page.evaluate(`${show}.click()`);
+          assert(await page.waitFor(`!document.querySelector('[role="dialog"]')`), "Show N results did not close the sheet");
+          assert(await page.waitFor(`document.activeElement === ${trigger}`), "focus not returned to the Filters button");
+        });
       }
       await page.close();
     }
@@ -837,6 +1255,16 @@ async function main() {
       assert(await noJs.evaluate(`!!document.querySelector('a[href*="template=resource-submission"]')`), "submit fallback missing");
       await noJs.goto(`${site}/report/`);
       assert(await noJs.evaluate(`!!document.querySelector('a[href*="template=resource-correction"]')`), "report fallback missing");
+    });
+    await check("no-JS: no page offers Compare, and /compare/ says it needs JavaScript", async () => {
+      await noJs.goto(`${site}/resources/supabase/`);
+      assert(await noJs.evaluate(`!document.querySelector('a[href*="/compare/"]')`), "record page links to /compare/ without JavaScript");
+      await noJs.goto(`${site}/resources/`);
+      assert(await noJs.evaluate(`!document.querySelector('a[href*="/compare/"], [data-compare-toggle]')`), "/resources offers compare without JavaScript");
+      await noJs.goto(`${site}${compareRoute}`);
+      assert(await noJs.evaluate(`document.body.innerText.includes("Comparison needs JavaScript")`), "no-JS notice missing on /compare/");
+      const sitemap = await (await fetch(`${site}/sitemap.xml`)).text();
+      assert(!sitemap.includes("/compare"), "/compare/ is in the sitemap");
     });
     await noJs.close();
   } finally {

@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 
 import { JsonLdScript } from "@/components/seo/json-ld";
 import { Callout } from "@/components/ui/callout";
+import { countNoun } from "@/components/ui/count";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { AlternativeComparison } from "@/features/resources/components/alternative-comparison";
 import { getAlternativesFor, getAlternativeTargets } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -57,12 +58,11 @@ export default async function AlternativePage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="mt-6 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            Free alternatives to {target.name}
-          </h1>
-          <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">
-            {target.resources.length} {target.resources.length === 1 ? "resource" : "resources"} in the library cover
-            similar ground. Compare the facts below rather than taking any of them as a like-for-like swap.
+          <p className="kicker mt-6">Alternatives</p>
+          <h1 className="mt-3 font-serif text-3xl font-semibold">Free alternatives to {target.name}</h1>
+          <p className="mt-3 max-w-(--measure-standfirst) text-lg leading-relaxed text-fg-muted">
+            <span className="tabular-nums">{countNoun(target.resources.length, "listing", "listings")}</span> in the
+            library cover similar ground. Compare the facts below rather than taking any of them as a like-for-like swap.
           </p>
         </Container>
       </header>
@@ -90,7 +90,7 @@ export default async function AlternativePage({ params }: PageProps) {
             The alternatives
           </h2>
           <div className="mt-4">
-            <ResourceGrid resources={target.resources} label={`Free alternatives to ${target.name}`} />
+            <RecordList layout="list" resources={target.resources} label={`Free alternatives to ${target.name}`} />
           </div>
         </section>
       </Container>

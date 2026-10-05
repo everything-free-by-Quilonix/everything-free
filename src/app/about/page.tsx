@@ -30,7 +30,7 @@ export default async function AboutPage() {
       <Container width="prose" className="pt-10">
         <div className="flex flex-col gap-10">
           <section aria-labelledby="why-heading">
-            <h2 id="why-heading" className="font-display text-xl font-semibold">
+            <h2 id="why-heading" className="font-serif text-2xl font-semibold">
               Why this exists
             </h2>
             <div className="mt-3 flex flex-col gap-3 leading-relaxed text-fg-muted">
@@ -53,10 +53,10 @@ export default async function AboutPage() {
           </section>
 
           <section aria-labelledby="not-heading">
-            <h2 id="not-heading" className="font-display text-xl font-semibold">
+            <h2 id="not-heading" className="font-serif text-2xl font-semibold">
               What this is not
             </h2>
-            <ul className="mt-4 flex flex-col gap-3">
+            <ul className="mt-4 divide-y divide-rule border-y border-rule">
               {[
                 "Not an affiliate site. There are no referral links, sponsored placements or paid listings.",
                 "Not a review site. No ratings, stars or scores — those would need data that is not collected.",
@@ -64,52 +64,46 @@ export default async function AboutPage() {
                 "Not a piracy resource. Nothing here circumvents payment, licensing or access controls.",
                 "Not the owner of anything it lists. Every resource belongs to whoever made it.",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed">
-                  <Icon name="close" size={16} className="mt-0.5 shrink-0 text-fg-subtle" />
-                  <span className="text-fg-muted">{item}</span>
+                <li key={item} className="py-2.5 text-sm leading-relaxed text-fg-muted">
+                  {item}
                 </li>
               ))}
             </ul>
           </section>
 
           <section aria-labelledby="principles-heading">
-            <h2 id="principles-heading" className="font-display text-xl font-semibold">
+            <h2 id="principles-heading" className="font-serif text-2xl font-semibold">
               How entries are written
             </h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               {[
                 {
-                  icon: "shield-check" as const,
                   title: "Precision over enthusiasm",
                   body: "Eight free-status classifications instead of one word. A trial is a trial.",
                   href: "/free-status",
                 },
                 {
-                  icon: "alert-triangle" as const,
                   title: "Limitations up front",
                   body: "Anything with conditions attached must document them. The build fails otherwise.",
                   href: "/free-status",
                 },
                 {
-                  icon: "clock" as const,
                   title: "Dated claims",
                   body: "Every entry shows when it was last checked, and goes stale visibly.",
                   href: "/verification",
                 },
                 {
-                  icon: "help-circle" as const,
                   title: "“Unknown” is an answer",
                   body: "Unchecked facts are marked unverified rather than guessed at.",
                   href: "/verification",
                 },
               ].map((item) => (
                 <Card key={item.title} className="p-5">
-                  <Icon name={item.icon} size={18} className="text-primary" />
-                  <h3 className="mt-3 font-display text-sm font-semibold">{item.title}</h3>
+                  <h3 className="font-display text-sm font-semibold">{item.title}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{item.body}</p>
                   <Link
                     href={item.href}
-                    className="mt-3 inline-flex items-center gap-1 text-xs text-fg-muted underline underline-offset-2 hover:text-fg"
+                    className="link-inline mt-3 inline-flex items-center gap-1 text-xs"
                   >
                     More
                     <Icon name="chevron-right" size={12} />
@@ -120,7 +114,7 @@ export default async function AboutPage() {
           </section>
 
           <section aria-labelledby="quilonix-heading">
-            <h2 id="quilonix-heading" className="font-display text-xl font-semibold">
+            <h2 id="quilonix-heading" className="font-serif text-2xl font-semibold">
               Everything.Free and {site.parent.name}
             </h2>
             <p className="mt-3 leading-relaxed text-fg-muted">
@@ -134,21 +128,21 @@ export default async function AboutPage() {
             <p className="mt-4">
               <ExternalLink
                 href={site.githubUrl}
-                className="text-sm text-fg underline underline-offset-2 hover:text-primary"
+                className="text-sm link-inline"
               >
                 View the project on GitHub
               </ExternalLink>
             </p>
           </section>
 
-          <Callout tone="primary" icon="users" title="This only works with contributions">
+          <Callout tone="neutral" icon={null} title="This only works with contributions">
             <p>
               A library like this cannot be maintained by one person — free plans change too often.{" "}
-              <Link href="/submit" className="text-fg underline underline-offset-2">
+              <Link href="/submit" className="link-inline">
                 Adding a resource
               </Link>{" "}
               or{" "}
-              <Link href="/report" className="text-fg underline underline-offset-2">
+              <Link href="/report" className="link-inline">
                 correcting one
               </Link>{" "}
               is the most useful thing you can do here.

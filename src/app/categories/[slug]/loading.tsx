@@ -10,18 +10,18 @@ export default function CategoryDetailLoading() {
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2">
             <Skeleton className="h-4 w-14 rounded-md" />
-            <Skeleton className="size-3 rounded-full" />
+            <Skeleton className="size-3 rounded-xs" />
             <Skeleton className="h-4 w-20 rounded-md" />
-            <Skeleton className="size-3 rounded-full" />
+            <Skeleton className="size-3 rounded-xs" />
             <Skeleton className="h-4 w-28 rounded-md" />
           </div>
 
           <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-2">
-              <Skeleton className="h-9 w-60 sm:h-10 sm:w-80 rounded-xl" />
+              <Skeleton className="h-9 w-60 sm:h-10 sm:w-80 rounded-md" />
               <Skeleton className="h-4 w-full max-w-xl rounded-md" />
             </div>
-            <Skeleton className="h-6 w-24 rounded-full" />
+            <Skeleton className="h-6 w-24 rounded-xs" />
           </div>
         </Container>
       </div>
@@ -30,7 +30,7 @@ export default function CategoryDetailLoading() {
       <Container className="pt-8">
         <div className="mb-6 flex items-center justify-between">
           <Skeleton className="h-4 w-32 rounded-md" />
-          <Skeleton className="h-8 w-28 rounded-lg" />
+          <Skeleton className="h-8 w-28 rounded-md" />
         </div>
 
         <ResourceGridSkeleton count={6} />

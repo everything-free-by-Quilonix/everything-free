@@ -2,7 +2,8 @@ import Link from "next/link";
 
 import { Callout } from "@/components/ui/callout";
 import { Container } from "@/components/ui/layout";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
+import { plural } from "@/components/ui/count";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { formatCount } from "@/lib/utils/format";
 import type { Resource } from "@/types/resource";
 
@@ -34,45 +35,39 @@ export function StaticLibrary({ resources }: { resources: Resource[] }) {
   return (
     <>
       <div className="border-b border-border bg-bg-subtle py-8">
-        <Container className="flex flex-col items-center text-center">
-          <span className="font-mono text-[11px] font-semibold tracking-widest uppercase text-fg-subtle">
-            Resources
-          </span>
-          <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl">
-            All free resources
-          </h1>
-          <p className="mt-2.5 max-w-2xl text-sm leading-relaxed text-fg-muted sm:text-base">
-            Browse the curated library of genuinely free software, tools, platforms and learning resources.
+        <Container>
+          <h1 className="font-serif text-3xl font-semibold">Browse free resources</h1>
+          <p className="mt-2 max-w-2xl text-sm text-fg-muted">
+            Every entry states what “free” means for it, what the limits are, and which of its facts an official source
+            confirms.
           </p>
 
-          <div className="mt-6 w-full max-w-2xl">
-            <SearchBox
-              size="md"
-              label="Search free resources, tools, and platforms"
-              placeholderText="Search free resources, tools, and platforms..."
-            />
+          <div className="mt-6 max-w-2xl">
+            <SearchBox size="md" label="Search free resources" />
           </div>
         </Container>
       </div>
 
       <Container className="pt-8">
         <noscript>
-          <Callout tone="warning" icon="info" title="Search and filters need JavaScript" className="mb-6">
+          {/* A plain statement of how the page works, not a warning: nothing is
+              wrong, and the whole library is still listed below. */}
+          <Callout tone="neutral" icon={null} title="Search and filters need JavaScript" className="mb-6">
             They run in your browser so this site needs no server. The full library is listed below, and every{" "}
-            <Link href="/categories" className="text-fg underline underline-offset-2">
+            <Link href="/categories" className="link-inline rounded-xs">
               category page
             </Link>{" "}
             works without JavaScript.
           </Callout>
         </noscript>
 
-        <p className="text-sm text-fg-muted">
-          {formatCount(resources.length)} {resources.length === 1 ? "resource" : "resources"}
+        <p className="text-sm text-fg-muted tabular-nums">
+          <span className="text-fg">{formatCount(resources.length)}</span> {plural(resources.length, "listing", "listings")}
           <span className="text-fg-subtle"> · most recently checked first</span>
         </p>
 
         <div className="mt-6">
-          <ResourceGrid resources={resources} label="All resources" />
+          <RecordList layout="list" resources={resources} label="All resources" />
         </div>
       </Container>
     </>

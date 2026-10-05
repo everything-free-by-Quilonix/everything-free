@@ -66,7 +66,7 @@ export default function SubmitPage() {
 
             <Callout tone="neutral" icon="info">
               Unsure how a status should be classified?{" "}
-              <Link href="/free-status" className="text-fg underline underline-offset-2 hover:text-primary">
+              <Link href="/free-status" className="link-inline">
                 Read the definitions
               </Link>
               .

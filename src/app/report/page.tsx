@@ -38,7 +38,7 @@ export default async function ReportPage() {
       />
 
       <Container width="prose" className="pt-10">
-        <Callout tone="info" icon="info" className="mb-8">
+        <Callout tone="neutral" icon={null} className="mb-8">
           Free plans change without notice, and this library will always lag behind reality somewhere. Reports are how
           that gap gets closed.
         </Callout>
@@ -54,12 +54,12 @@ export default async function ReportPage() {
           fallback={
             <>
               <noscript>
-                <Callout tone="info" icon="info" title="This form needs JavaScript">
+                <Callout tone="neutral" icon={null} title="This form needs JavaScript">
                   You can report the same problem through GitHub&rsquo;s issue form instead, which collects the identical
                   fields.{" "}
                   <a
                     href={issueTemplateUrls.correction}
-                    className="text-fg underline underline-offset-2"
+                    className="link-inline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -67,7 +67,7 @@ export default async function ReportPage() {
                   </a>
                 </Callout>
               </noscript>
-              <Skeleton className="h-96 w-full rounded-xl" />
+              <Skeleton className="h-96 w-full rounded-md" />
             </>
           }
         >

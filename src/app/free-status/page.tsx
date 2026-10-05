@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { Icon } from "@/components/icons";
 import { JsonLdScript } from "@/components/seo/json-ld";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
@@ -42,12 +41,7 @@ export default async function FreeStatusPage() {
   return (
     <div className="pb-16">
       <PageHeader
-        eyebrow={
-          <span className="inline-flex items-center gap-1.5">
-            <Icon name="shield-check" size={14} className="text-primary" />
-            Trust
-          </span>
-        }
+        eyebrow="Trust"
         title="What “free” means here"
         description="“Free” hides a lot of different arrangements. Everything.Free classifies every resource into one of eight statuses so you know which arrangement you are dealing with before you invest time in something."
       />
@@ -67,7 +61,8 @@ export default async function FreeStatusPage() {
             return (
               <Card key={status.id} id={status.id} className="scroll-mt-24 p-6">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <Badge tone={status.tone} icon={status.icon} size="md">
+                  {/* A classification, not evidence, so it never takes a status colour. */}
+                  <Badge tone="neutral" size="md">
                     {status.label}
                   </Badge>
 
@@ -75,7 +70,7 @@ export default async function FreeStatusPage() {
                     <p className="text-xs text-fg-muted">
                       <Link
                         href={`/resources?status=${status.id}`}
-                        className="underline underline-offset-2 hover:text-fg"
+                        className="link-inline"
                       >
                         {count} {count === 1 ? "resource" : "resources"} in the library
                       </Link>
@@ -95,10 +90,7 @@ export default async function FreeStatusPage() {
                 <p className="mt-2 leading-relaxed text-fg-muted">{status.definition}</p>
 
                 {status.caveat ? (
-                  <p className="mt-3 flex items-start gap-2 rounded-lg bg-bg-subtle px-3.5 py-3 text-sm">
-                    <Icon name="info" size={15} className="mt-0.5 shrink-0 text-fg-subtle" />
-                    <span className="text-fg-muted">{status.caveat}</span>
-                  </p>
+                  <p className="mt-3 rounded-sm bg-bg-subtle px-3.5 py-3 text-sm text-fg-muted">{status.caveat}</p>
                 ) : null}
 
                 {status.requiresLimitations ? (
@@ -116,7 +108,7 @@ export default async function FreeStatusPage() {
           <h2 id="principles-heading" className="font-display text-xl font-semibold">
             The commitments behind the labels
           </h2>
-          <ul className="mt-4 flex flex-col gap-3">
+          <ul className="mt-4 flex flex-col divide-y divide-rule border-y border-rule">
             {[
               "A trial is never presented as a free product.",
               "Limitations are shown, including the ones that make a resource less appealing.",
@@ -125,9 +117,8 @@ export default async function FreeStatusPage() {
               "Official sources are preferred, and links point to the provider rather than a mirror.",
               "No ratings, review counts or usage figures are shown, because none are collected.",
             ].map((principle) => (
-              <li key={principle} className="flex items-start gap-2.5 text-sm leading-relaxed">
-                <Icon name="check" size={16} className="mt-0.5 shrink-0 text-success-fg" />
-                <span className="text-fg-muted">{principle}</span>
+              <li key={principle} className="py-3 text-sm leading-relaxed text-fg-muted">
+                {principle}
               </li>
             ))}
           </ul>
@@ -135,7 +126,7 @@ export default async function FreeStatusPage() {
 
         <Callout tone="neutral" icon="flag" title="Think a status is wrong?" className="mt-10">
           Classifications are judgements and some are genuinely arguable.{" "}
-          <Link href="/report" className="text-fg underline underline-offset-2 hover:text-primary">
+          <Link href="/report" className="link-inline">
             Report it
           </Link>{" "}
           and it will be reviewed against the definitions on this page.

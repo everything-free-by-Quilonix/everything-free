@@ -59,7 +59,7 @@ export default function TermsPage() {
             <p className="mt-3 text-fg-muted">
               Everything.Free accepts no liability for decisions made on the basis of information here. If you find an
               error,{" "}
-              <Link href="/report" className="text-fg underline underline-offset-2 hover:text-primary">
+              <Link href="/report" className="link-inline">
                 reporting it
               </Link>{" "}
               is the fastest way to get it fixed.
@@ -92,7 +92,7 @@ export default function TermsPage() {
             </p>
             <p className="mt-3 text-fg-muted">
               If you own a listed resource and want its entry corrected or removed,{" "}
-              <Link href={site.contactUrl} className="text-fg underline underline-offset-2 hover:text-primary">
+              <Link href={site.contactUrl} className="link-inline">
                 open an issue
               </Link>{" "}
               and it will be dealt with.
@@ -106,7 +106,7 @@ export default function TermsPage() {
             <p className="mt-3 text-fg-muted">
               The tools on this site run in your browser and are provided as-is. Keep your originals: a converter that
               runs locally is still software, and software has bugs. See{" "}
-              <Link href="/privacy" className="text-fg underline underline-offset-2 hover:text-primary">
+              <Link href="/privacy" className="link-inline">
                 Privacy
               </Link>{" "}
               for exactly how your files are handled.

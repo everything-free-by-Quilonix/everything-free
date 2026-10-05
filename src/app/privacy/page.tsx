@@ -38,7 +38,7 @@ export default function PrivacyPage() {
       />
 
       <Container width="prose" className="pt-10">
-        <Callout tone="success" icon="lock" title="The short version">
+        <Callout tone="neutral" icon="lock" title="The short version">
           No analytics, no tracking scripts, no advertising, no accounts, and no third-party embeds. All{" "}
           {localToolCount} available tools run entirely in your browser, so the files and text you put into them never
           reach a server.
@@ -88,7 +88,7 @@ export default function PrivacyPage() {
               privacy practices, not these — and many of them do track visitors.
             </p>
             <p className="mt-3 text-fg-muted">
-              Outbound links carry <code className="rounded bg-surface-raised px-1 py-0.5 text-xs">noreferrer</code>, so
+              Outbound links carry <code className="rounded-xs bg-surface-raised px-1 py-0.5 text-xs">noreferrer</code>, so
               the page you came from is not passed along. Fonts are self-hosted rather than loaded from a font CDN, which
               means visiting a page here does not create a request to a third party.
             </p>
@@ -100,11 +100,11 @@ export default function PrivacyPage() {
             </h2>
             <p className="mt-3 text-fg-muted">
               The{" "}
-              <Link href="/submit" className="text-fg underline underline-offset-2 hover:text-primary">
+              <Link href="/submit" className="link-inline">
                 submission
               </Link>{" "}
               and{" "}
-              <Link href="/report" className="text-fg underline underline-offset-2 hover:text-primary">
+              <Link href="/report" className="link-inline">
                 report
               </Link>{" "}
               forms check what you enter in your own browser and then hand you back a prefilled issue for the public
@@ -139,7 +139,7 @@ export default function PrivacyPage() {
             </p>
             <p className="mt-3 text-fg-muted">
               Questions or concerns can be raised on{" "}
-              <Link href={site.contactUrl} className="text-fg underline underline-offset-2 hover:text-primary">
+              <Link href={site.contactUrl} className="link-inline">
                 the project issue tracker
               </Link>
               .

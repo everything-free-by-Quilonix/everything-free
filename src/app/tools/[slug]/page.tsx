@@ -9,7 +9,7 @@ import { Callout } from "@/components/ui/callout";
 import { Card } from "@/components/ui/card";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
 import { getTool, getToolIntegration, tools } from "@/config/tools";
-import { ResourceCard } from "@/features/resources/components/resource-card";
+import { RecordList } from "@/features/resources/components/resource-record";
 import { hasToolImplementation, ToolSurface } from "@/features/tools/components/tool-registry";
 import { ToolAttributions, ToolPrivacyNotice } from "@/features/tools/components/tool-privacy";
 import { getResourcesBySlugs } from "@/lib/repository";
@@ -63,25 +63,18 @@ export default async function ToolPage({ params }: PageProps) {
             items={[{ label: "Home", href: "/" }, { label: "Tools", href: "/tools" }, { label: tool.name }]}
           />
 
-          <div className="mt-6 flex items-start gap-4">
-            <span
-              aria-hidden="true"
-              className="flex size-14 shrink-0 items-center justify-center rounded-xl border border-border bg-surface text-fg-muted"
-            >
-              <Icon name={tool.icon} size={24} />
-            </span>
-
+          <div className="mt-6">
             <div className="min-w-0">
-              <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">{tool.name}</h1>
+              <h1 className="font-serif text-3xl font-semibold">{tool.name}</h1>
               <p className="mt-2 max-w-2xl leading-relaxed text-fg-muted">{tool.longDescription}</p>
 
               <div className="mt-4">
                 {tool.status === "planned" ? (
-                  <Badge tone="neutral" icon="clock" size="md">
+                  <Badge tone="neutral" size="md">
                     Planned — not available yet
                   </Badge>
                 ) : (
-                  <Badge tone="success" icon="lock" size="md">
+                  <Badge tone="neutral" icon="lock" size="md">
                     Runs in your browser
                   </Badge>
                 )}
@@ -110,7 +103,7 @@ export default async function ToolPage({ params }: PageProps) {
                 </p>
                 <Link
                   href="/tools"
-                  className="mt-5 inline-flex items-center gap-1 text-sm text-fg-muted underline underline-offset-2 hover:text-fg"
+                  className="link-inline mt-5 inline-flex items-center gap-1 text-sm"
                 >
                   Tools that are available now
                   <Icon name="chevron-right" size={14} />
@@ -122,11 +115,10 @@ export default async function ToolPage({ params }: PageProps) {
               <h2 id="tool-limitations" className="font-display text-lg font-semibold">
                 What it will not do
               </h2>
-              <ul className="mt-3 flex flex-col gap-2.5">
+              <ul className="mt-3 divide-y divide-rule border-y border-rule">
                 {tool.limitations.map((limitation) => (
-                  <li key={limitation} className="flex items-start gap-2.5 text-sm leading-relaxed">
-                    <Icon name="info" size={15} className="mt-0.5 shrink-0 text-fg-subtle" />
-                    <span className="text-fg-muted">{limitation}</span>
+                  <li key={limitation} className="py-2.5 text-sm leading-relaxed text-fg-muted">
+                    {limitation}
                   </li>
                 ))}
               </ul>
@@ -140,13 +132,9 @@ export default async function ToolPage({ params }: PageProps) {
                 <p className="mt-1.5 text-sm text-fg-muted">
                   These established applications from the library go further than a browser tool can.
                 </p>
-                <ul className="mt-4 grid list-none gap-4 sm:grid-cols-2">
-                  {related.map((resource) => (
-                    <li key={resource.slug} className="flex">
-                      <ResourceCard resource={resource} className="w-full" />
-                    </li>
-                  ))}
-                </ul>
+                <div className="mt-4">
+                  <RecordList layout="grid" resources={related} label="Established applications for heavier work" />
+                </div>
               </section>
             ) : null}
           </div>

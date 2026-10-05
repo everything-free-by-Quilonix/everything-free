@@ -1,181 +1,82 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Icon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { withBasePath } from "@/config/deployment";
-import { searchExamples } from "@/config/site";
 import { cn } from "@/lib/utils/cn";
 
-const emptySubscribe = () => () => {};
-
-function getShortcutSnapshot() {
-  if (typeof navigator === "undefined") return "⌘K";
-  const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent || navigator.platform);
-  return isMac ? "⌘K" : "Ctrl K";
-}
-
-function getShortcutServerSnapshot() {
-  return "⌘K";
-}
-
 /**
- * Beam Search Bar & Primary Search Box.
+ * The primary search entry point.
  *
- * Integrated with the 21st.dev / Spectrum UI Beam Search interaction pattern:
- * - Subtle animated beam traveling along the bottom edge when focused.
- * - Platform-adaptive keyboard shortcut indicator (`⌘K` on macOS, `Ctrl K` on Windows/Linux).
- * - Interactive clear button (`×`) when query text is present.
- * - Semantic form submission (`GET /resources/?q=...`) preserving URL routing and history.
- * - Full reduced-motion fallback to a calm static accent.
+ * Built as a real `<form method="get" action="/resources">`, so submitting it is
+ * an ordinary navigation that puts the query in the URL, and browser history and
+ * autofill behave normally. The results themselves are computed in the browser on
+ * `/resources`, which keeps that page static — so ranking the results does need
+ * JavaScript, even though submitting the form does not.
+ *
+ * The placeholder is fixed. A placeholder that changes under the cursor is
+ * unrequested movement, and the examples it would cycle through are shown as
+ * real links beside the field instead.
  */
+const PLACEHOLDER = "Try “free PDF tools” or “alternative to Photoshop”";
+
 export function SearchBox({
   defaultValue = "",
   size = "lg",
-  variant = "beam",
   autoFocus = false,
   className,
-  label = "Search software, tools, resources...",
-  placeholderText,
-  onChange,
-  onClear,
+  label = "Search free resources",
 }: {
   defaultValue?: string;
   size?: "md" | "lg";
-  variant?: "default" | "beam";
   autoFocus?: boolean;
   className?: string;
   label?: string;
-  placeholderText?: string;
-  onChange?: (value: string) => void;
-  onClear?: () => void;
 }) {
   const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [query, setQuery] = useState(defaultValue);
-  const [isFocused, setIsFocused] = useState(false);
-  const [exampleIndex, setExampleIndex] = useState(0);
-  const [rotate, setRotate] = useState(false);
-  const shortcutLabel = useSyncExternalStore(emptySubscribe, getShortcutSnapshot, getShortcutServerSnapshot);
 
-  // Global ⌘K / Ctrl+K keyboard shortcut listener
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        if (inputRef.current) {
-          inputRef.current.focus();
-          inputRef.current.select();
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // Motion preference detection
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setRotate(!media.matches);
-    update();
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
-  }, []);
-
-  // Rotating placeholder
-  useEffect(() => {
-    if (!rotate || placeholderText) return;
-    const timer = window.setInterval(() => {
-      setExampleIndex((index) => (index + 1) % searchExamples.length);
-    }, 3600);
-    return () => window.clearInterval(timer);
-  }, [rotate, placeholderText]);
-
-  // Route prefetching for instant results
+  // Prefetching the results route makes the first search feel immediate without
+  // preloading anything the user has not signalled intent for.
   useEffect(() => {
     router.prefetch("/resources");
   }, [router]);
 
-  const placeholder =
-    placeholderText ?? (rotate ? `Try “${searchExamples[exampleIndex]}”` : "Search software, tools, resources...");
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setQuery(value);
-    onChange?.(value);
-  };
-
-  const handleClear = () => {
-    setQuery("");
-    if (inputRef.current) {
-      inputRef.current.value = "";
-      inputRef.current.focus();
-    }
-    onClear?.();
-    onChange?.("");
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Escape" && query.length > 0) {
-      e.preventDefault();
-      handleClear();
-    }
-  };
-
   return (
     <form
+      // A plain form action bypasses Next's router, so the base path has to be
+      // applied by hand or this submits to the domain root on a project site.
       action={withBasePath("/resources/")}
       method="get"
       role="search"
       className={cn("w-full", className)}
+      // `aria-label` names the landmark so a screen-reader user scanning regions
+      // can find it directly.
       aria-label={label}
     >
       <div
+        data-search-field=""
         className={cn(
-          "group relative flex items-center gap-2.5 transition-all duration-200",
-          variant === "beam"
-            ? cn(
-                "rounded-2xl border bg-surface/90 backdrop-blur-md shadow-raised",
-                isFocused
-                  ? "border-primary/60 ring-2 ring-primary-soft"
-                  : "border-border-strong/80 hover:border-border-strong",
-              )
-            : cn(
-                "rounded-xl border border-border-strong bg-surface",
-                "focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20",
-              ),
-          size === "lg" ? "p-2 pl-4 sm:pl-5" : "p-1.5 pl-3.5",
+          "flex items-center gap-2 rounded-md border border-border-strong bg-bg transition-colors hover:border-fg-subtle",
+          // The wrapper is the visible field, so it carries the keyboard focus ring;
+          // the inner input suppresses its own outline.
+          "has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-(--focus)",
+          size === "lg" ? "p-2 pl-4" : "p-1.5 pl-3",
         )}
       >
-        {/* Leading Search Icon */}
-        <Icon
-          name="search"
-          size={size === "lg" ? 20 : 18}
-          className={cn(
-            "shrink-0 transition-colors duration-150",
-            isFocused ? "text-primary" : "text-fg-subtle group-hover:text-fg-muted",
-          )}
-        />
+        <Icon name="search" size={size === "lg" ? 20 : 18} className="shrink-0 text-fg-subtle" />
 
         <label htmlFor="resource-search" className="sr-only">
           {label}
         </label>
-
-        {/* Search Input */}
         <input
-          ref={inputRef}
           id="resource-search"
           type="search"
           name="q"
-          value={query}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          placeholder={placeholder}
+          defaultValue={defaultValue}
+          placeholder={PLACEHOLDER}
           autoFocus={autoFocus}
           autoComplete="off"
           enterKeyHint="search"
@@ -185,58 +86,16 @@ export function SearchBox({
           )}
         />
 
-        {/* Clear Button (appears when input has content) */}
-        {query.length > 0 && (
-          <button
-            type="button"
-            onClick={handleClear}
-            aria-label="Clear search input"
-            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-fg-subtle transition-colors hover:bg-surface-hover hover:text-fg focus-visible:outline-2 focus-visible:outline-primary"
-          >
-            <Icon name="close" size={14} />
-          </button>
-        )}
-
-        {/* Trailing Section: Keyboard Shortcut & Submit Button */}
-        <div className="flex items-center gap-2 shrink-0">
-          <kbd
-            className="hidden sm:inline-flex items-center rounded-lg border border-border/80 bg-surface-raised/80 px-2 py-1 text-[11px] font-mono font-medium text-fg-subtle select-none shadow-xs"
-            title={shortcutLabel === "⌘K" ? "Press ⌘K to search" : "Press Ctrl+K to search"}
-          >
-            {shortcutLabel}
-          </kbd>
-
-          <Button
-            type="submit"
-            variant="primary"
-            size={size === "lg" ? "md" : "sm"}
-            shape="pill"
-            className="shrink-0 font-medium"
-          >
-            Search
-          </Button>
-        </div>
-
-        {/* 21st.dev Traveling Beam Animation along the bottom edge */}
-        {variant === "beam" && (
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-px left-3 right-3 h-[2px] overflow-hidden rounded-full"
-          >
-            <div
-              className={cn(
-                "h-full w-44 rounded-full transition-opacity duration-300",
-                isFocused ? "opacity-100 animate-beam-travel" : "opacity-0",
-                "motion-reduce:animate-none motion-reduce:w-full motion-reduce:left-0 motion-reduce:translate-x-0 motion-reduce:opacity-80",
-              )}
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent 0%, var(--primary-soft) 25%, var(--primary) 50%, var(--primary-soft) 75%, transparent 100%)",
-                filter: "drop-shadow(0 0 6px var(--primary-ring))",
-              }}
-            />
-          </div>
-        )}
+        {/* The large field is the homepage introduction's one primary action;
+            elsewhere the page keeps its primary for something else. */}
+        <Button
+          type="submit"
+          variant={size === "lg" ? "primary" : "secondary"}
+          size={size === "lg" ? "md" : "sm"}
+          className="shrink-0"
+        >
+          Search
+        </Button>
       </div>
     </form>
   );
@@ -250,13 +109,13 @@ export function SearchBox({
  */
 export function SearchSuggestions({ queries, className }: { queries: readonly string[]; className?: string }) {
   return (
-    <ul className={cn("flex flex-wrap items-center gap-2", className)}>
-      {queries.map((query) => (
+    <ul className={cn("flex flex-wrap items-baseline gap-x-1.5 text-sm text-fg-subtle", className)}>
+      {queries.map((query, index) => (
         <li key={query}>
-          <Link
-            href={`/resources/?q=${encodeURIComponent(query)}`}
-            className="inline-block rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
-          >
+          {index > 0 ? <span aria-hidden="true">· </span> : null}
+          {/* `Link`, not a raw anchor: it applies the base path, which a plain
+              `href` would not. */}
+          <Link href={`/resources/?q=${encodeURIComponent(query)}`} className="link-inline rounded-xs">
             {query}
           </Link>
         </li>

@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 
-import { Suspense } from "react";
-import { RouteProgress } from "@/components/layout/route-progress";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader, SkipLink } from "@/components/layout/site-header";
 import { ThemeScript } from "@/components/layout/theme";
@@ -15,21 +13,29 @@ import "./globals.css";
 /**
  * Typography.
  *
- * Inter for body text, Manrope for display. Both are loaded through `next/font`,
- * which self-hosts the files at build time — no runtime request to a font CDN, so
- * no third-party connection on first paint and no layout shift from a late swap.
+ * Inter is the interface: controls, labels, evidence, tables, body text. Source
+ * Serif 4 is the editorial voice, opted into with the serif utility class on page
+ * titles and editorial section titles only. Both are loaded through `next/font`, which
+ * self-hosts the files at build time — no runtime request to a font CDN, so no
+ * third-party connection on first paint and no layout shift from a late swap.
  * `display: swap` keeps text readable while the face loads.
+ *
+ * The serif's variable is deliberately named apart from the serif theme token in
+ * tokens.css, so that token never refers to itself.
  */
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+  axes: ["opsz"],
 });
 
-const manrope = Manrope({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-manrope",
+  variable: "--font-source-serif",
+  axes: ["opsz"],
+  style: ["normal"],
 });
 
 export const metadata: Metadata = {
@@ -47,29 +53,20 @@ export const metadata: Metadata = {
   creator: site.parent.name,
   publisher: site.parent.name,
   formatDetection: { telephone: false, address: false },
-  // No canonical here on purpose. A relative canonical is resolved against the
-  // origin, which drops the GitHub Pages base path; and anything set here is
-  // inherited by pages that forget their own, making them all claim to be the
-  // homepage. Every page sets an absolute canonical through `buildMetadata`.
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     siteName: site.name,
     locale: "en",
     url: siteUrl,
   },
-  icons: {
-    icon: [
-      { url: "/brand/logo-dark.png", media: "(prefers-color-scheme: dark)" },
-      { url: "/brand/logo-light.png", media: "(prefers-color-scheme: light)" },
-      { url: "/favicon.ico" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png" }],
-    shortcut: "/favicon.ico",
-  },
   twitter: { card: "summary_large_image" },
-  // Search Console / Bing Webmaster Tools ownership tokens. Optional and public by
-  // design (they are printed in the page); unset means no tag is emitted. Bing
-  // matters beyond Bing: ChatGPT search and Copilot draw on its index.
   verification: {
     ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
       ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
@@ -87,8 +84,9 @@ export const viewport: Viewport = {
   // low-vision users (WCAG 1.4.4).
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0f" },
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    // sRGB equivalents of the two --bg tokens in src/styles/tokens.css.
+    { media: "(prefers-color-scheme: dark)", color: "#100e0b" },
+    { media: "(prefers-color-scheme: light)", color: "#fbfaf7" },
   ],
 };
 
@@ -96,14 +94,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     // `suppressHydrationWarning` is required because ThemeScript mutates the
     // class list before React hydrates. It is scoped to this element only.
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
       <body className="flex min-h-dvh flex-col">
-        <Suspense fallback={null}>
-          <RouteProgress />
-        </Suspense>
         <SkipLink />
         <SiteHeader />
         {/* `tabIndex={-1}` makes the skip link's target programmatically focusable. */}

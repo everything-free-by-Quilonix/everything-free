@@ -1,21 +1,30 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-import { Icon } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
-import { Card } from "@/components/ui/card";
 import { ExternalLink } from "@/components/ui/external-link";
 import { Container, PageHeader } from "@/components/ui/layout";
+import { categoryGroups } from "@/config/categories";
 import { site } from "@/config/site";
+import { libraryCensus, surveyByGroup } from "@/features/home/census";
+import { Legend } from "@/features/resources/components/legend";
+import { SurveyBar, SurveySummary } from "@/features/resources/components/survey-bar";
 import {
   VERIFICATION_FRESHNESS_DAYS,
+  VERIFICATION_STAGES,
   verificationCheckList,
   verificationList,
   verificationStage,
+  verificationStageLabels,
+  type VerificationStage,
 } from "@/config/verification";
 import { getAllResourcesForClient } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { formatCount } from "@/lib/utils/format";
+
+/** The stages in the order a listing moves through them, first to last. */
+const STAGE_ORDER: readonly VerificationStage[] = [...VERIFICATION_STAGES].reverse();
 
 export const metadata: Metadata = buildMetadata({
   title: "How verification works",
@@ -27,43 +36,43 @@ export const metadata: Metadata = buildMetadata({
 export default async function VerificationPage() {
   const resources = await getAllResourcesForClient();
   const stages = resources.map((resource) => verificationStage(resource));
-  const count = (...wanted: ReturnType<typeof verificationStage>[]) => stages.filter((s) => wanted.includes(s)).length;
-  const counts = {
-    total: resources.length,
-    verified: count("verified"),
-    awaitingSignOff: count("awaiting-sign-off"),
-    partial: count("partial"),
-    notStarted: count("not-started", "started"),
-  };
+  const counts = { total: resources.length };
+  const census = libraryCensus(resources);
+  const survey = surveyByGroup(resources);
+  const groupName = (id: string) => categoryGroups.find((group) => group.id === id)?.name ?? id;
+  const stageCounts = Object.fromEntries(
+    STAGE_ORDER.map((stage) => [stage, stages.filter((s) => s === stage).length]),
+  ) as Record<VerificationStage, number>;
 
   return (
     <div className="pb-16">
       <PageHeader
-        eyebrow={
-          <span className="inline-flex items-center gap-1.5">
-            <Icon name="shield-check" size={14} className="text-primary" />
-            Trust
-          </span>
-        }
+        eyebrow="Trust"
         title="How verification works"
         description="A directory is only as useful as your ability to tell how much of it to believe. Every listing carries a verification status and the date it was last checked."
       />
 
       <Container width="prose" className="pt-10">
-        <div className="flex flex-col gap-5">
+        {/* The verification statuses as ruled entries, not boxes. */}
+        <div className="divide-y divide-rule border-y border-rule">
           {verificationList.map((status) => (
-            <Card key={status.id} className="p-6">
-              <Badge tone={status.tone} icon={status.icon} size="md">
+            <div key={status.id} className="py-6">
+              <Badge tone={status.tone} size="md">
                 {status.label}
               </Badge>
-              <h2 className="mt-4 font-display text-lg font-semibold">{status.summary}</h2>
+              <h2 className="mt-3 font-display text-lg font-semibold">{status.summary}</h2>
               <p className="mt-2 leading-relaxed text-fg-muted">{status.definition}</p>
-            </Card>
+            </div>
           ))}
         </div>
 
+        {/* The single key to every evidence mark in the library. */}
+        <div className="mt-14">
+          <Legend variant="full" />
+        </div>
+
         <section className="mt-14" aria-labelledby="freshness-heading">
-          <h2 id="freshness-heading" className="font-display text-xl font-semibold">
+          <h2 id="freshness-heading" className="font-serif text-2xl font-semibold">
             Verifications expire
           </h2>
           <p className="mt-3 leading-relaxed text-fg-muted">
@@ -74,7 +83,7 @@ export default async function VerificationPage() {
         </section>
 
         <section className="mt-14" aria-labelledby="checklist-heading">
-          <h2 id="checklist-heading" className="font-display text-xl font-semibold">
+          <h2 id="checklist-heading" className="font-serif text-2xl font-semibold">
             The checklist
           </h2>
           <p className="mt-3 leading-relaxed text-fg-muted">
@@ -85,13 +94,11 @@ export default async function VerificationPage() {
 
           <ul className="mt-5 flex flex-col divide-y divide-border">
             {verificationCheckList.map((check) => (
-              <li key={check.id} className="flex items-start gap-3 py-3">
-                <Icon
-                  name={check.requiredForVerified ? "shield-check" : "info"}
-                  size={15}
-                  className={`mt-0.5 shrink-0 ${check.requiredForVerified ? "text-primary" : "text-fg-subtle"}`}
-                />
+              <li key={check.id} className="py-3">
                 <div className="min-w-0">
+                  {check.requiredForVerified ? (
+                    <p className="mb-0.5 text-xs font-medium text-fg-subtle">Required for Verified</p>
+                  ) : null}
                   <p className="text-sm font-medium text-fg">
                     {check.label}
                     {check.requiredForVerified ? null : (
@@ -114,7 +121,7 @@ export default async function VerificationPage() {
         </section>
 
         <section className="mt-12" aria-labelledby="human-heading">
-          <h2 id="human-heading" className="font-display text-xl font-semibold">
+          <h2 id="human-heading" className="font-serif text-2xl font-semibold">
             A person signs off every Verified badge
           </h2>
           <p className="mt-3 leading-relaxed text-fg-muted">
@@ -127,28 +134,31 @@ export default async function VerificationPage() {
         </section>
 
         <section className="mt-12" aria-labelledby="seed-heading">
-          <h2 id="seed-heading" className="font-display text-xl font-semibold">
+          <h2 id="seed-heading" className="font-serif text-2xl font-semibold">
             Where the library stands
           </h2>
-          {/* Counted from the data at build time, so this cannot drift from what
-              the resource pages actually show. */}
-          <dl className="mt-4 grid gap-3 sm:grid-cols-2">
-            {[
-              { term: "Verified", value: counts.verified },
-              { term: "Evidence complete, awaiting sign-off", value: counts.awaitingSignOff },
-              { term: "Partially verified", value: counts.partial },
-              { term: "Free status not yet confirmed", value: counts.notStarted },
-            ].map((item) => (
-              <div key={item.term} className="rounded-lg border border-border bg-surface p-4">
-                <dt className="text-xs text-fg-muted">{item.term}</dt>
-                <dd className="mt-1 font-display text-2xl font-semibold tabular-nums">
-                  {item.value}
-                  <span className="ml-1 text-sm font-normal text-fg-subtle">of {counts.total}</span>
-                </dd>
-              </div>
+          <p className="mt-3 leading-relaxed text-fg-muted">
+            A listing moves through these stages in order. Each count is taken from the data when the site is built.
+          </p>
+          {/* A static diagram of the ordered stages, counted at build time, so it
+              cannot drift from what the resource pages show. No motion. */}
+          <ol aria-label="Verification stages, in order" className="mt-5 divide-y divide-rule border-y border-rule">
+            {STAGE_ORDER.map((stage, index) => (
+              <li key={stage} className="flex items-baseline gap-3 py-3 text-sm">
+                <span className="kicker w-14 shrink-0 tabular-nums">Stage {index + 1}</span>
+                <span className="font-medium text-fg">{verificationStageLabels[stage]}</span>
+                <span aria-hidden="true" className="hidden flex-1 border-b border-dotted border-rule sm:block" />
+                <span className="ml-auto shrink-0 text-fg-muted tabular-nums sm:ml-0">
+                  <span className="text-fg">{formatCount(stageCounts[stage])}</span> of {formatCount(counts.total)}
+                </span>
+              </li>
             ))}
-          </dl>
-          <Callout tone="info" icon="info" className="mt-4">
+          </ol>
+          <div className="mt-8 flex flex-col gap-3">
+            <SurveyBar survey={census.survey} size="lg" />
+            <SurveySummary census={census} />
+          </div>
+          <Callout tone="neutral" icon={null} className="mt-6">
             <p>
               The library was compiled from each project&rsquo;s own public documentation, which is a reasonable basis
               but not the same as working through the checklist above. Until a listing&rsquo;s checks are recorded it is
@@ -165,8 +175,63 @@ export default async function VerificationPage() {
           </Callout>
         </section>
 
+        <section className="mt-12" aria-labelledby="survey-heading">
+          <h2 id="survey-heading" className="font-serif text-2xl font-semibold">
+            Survey by subject group
+          </h2>
+          <p className="mt-3 leading-relaxed text-fg-muted">
+            How far each area of the library has been checked. Coverage is shown by subject because that is what the
+            data records; no listing records a country or region.
+          </p>
+          <div
+            role="region"
+            tabIndex={0}
+            aria-label="Survey by subject group"
+            className="mt-5 overflow-x-auto rounded-md border border-border"
+          >
+            <table className="w-full border-collapse text-sm tabular-nums">
+              <caption className="border-b border-rule px-4 py-3 text-left text-xs text-fg-subtle">
+                Counted by each listing&rsquo;s main subject only, so these totals differ from the subject counts in the
+                index. Some subjects sit in two groups, so rows can add up to more than the total.
+              </caption>
+              <thead>
+                <tr className="border-b border-border bg-bg-subtle text-left">
+                  <th scope="col" className="px-4 py-3 font-medium">
+                    Group
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right font-medium">
+                    Listings
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right font-medium">
+                    With a confirmed fact
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right font-medium">
+                    Partially verified
+                  </th>
+                  <th scope="col" className="px-4 py-3 text-right font-medium">
+                    Verified
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {survey.map((row) => (
+                  <tr key={row.groupId} className="border-b border-rule last:border-b-0">
+                    <th scope="row" className="px-4 py-2.5 text-left font-medium text-fg">
+                      {groupName(row.groupId)}
+                    </th>
+                    <td className="px-4 py-2.5 text-right text-fg">{formatCount(row.listings)}</td>
+                    <td className="px-4 py-2.5 text-right text-fg-muted">{formatCount(row.withConfirmedFact)}</td>
+                    <td className="px-4 py-2.5 text-right text-fg-muted">{formatCount(row.partiallyVerified)}</td>
+                    <td className="px-4 py-2.5 text-right text-fg-muted">{formatCount(row.verified)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <section className="mt-12" aria-labelledby="help-heading">
-          <h2 id="help-heading" className="font-display text-xl font-semibold">
+          <h2 id="help-heading" className="font-serif text-2xl font-semibold">
             Verifying an entry
           </h2>
           <ol className="mt-4 flex list-none flex-col gap-3">
@@ -193,12 +258,12 @@ export default async function VerificationPage() {
             The full process, including how to record evidence, is in{" "}
             <ExternalLink
               href={`${site.repositoryUrl}/blob/main/docs/verification.md`}
-              className="text-fg underline underline-offset-2 hover:text-primary"
+              className="link-inline"
             >
               docs/verification.md
             </ExternalLink>
             . Found something out of date?{" "}
-            <Link href="/report" className="text-fg underline underline-offset-2 hover:text-primary">
+            <Link href="/report" className="link-inline">
               Report it
             </Link>
             .

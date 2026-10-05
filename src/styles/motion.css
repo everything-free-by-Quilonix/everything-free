@@ -1,0 +1,227 @@
+/*
+ * Everything.Free motion
+ * ---------------------------------------------------------------------------
+ * Every transition, animation and keyframe in the product lives in this file
+ * (a guardrail test fails on one anywhere else). Motion only explains a state
+ * change: a surface opened or closed, something moved, a target was reached,
+ * or input was acknowledged. Nothing animates on load or on scroll, nothing
+ * repeats, nothing exceeds 300ms except the anchor flash, and reduced motion
+ * removes all of it.
+ *
+ *   ENTER / EXIT  dialogs (palette, sheet, menu), Legend popover, compare tray
+ *   MOVE          segmented indicator, disclosure chevrons
+ *   MORPH         <details class="motion-details"> where interpolate-size exists
+ *   FOCUS         the :target flash (never on #main, the skip-link target)
+ *   FEEDBACK      colour transitions through the default tokens; pending dim
+ */
+
+:root {
+  --dur-instant: 90ms;
+  --dur-quick: 150ms;
+  --dur-move: 220ms;
+  --dur-sheet: 260ms;
+  --dur-flash: 900ms;
+  --dist-short: 6px;
+  --dist-panel: 24px;
+  --dist-sheet: 40px;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  /* Critically damped, 1 - (1 + wt)e^(-wt) with w = 9, sampled: no overshoot. */
+  --ease-spring: linear(0, 0.075 5%, 0.228 10%, 0.391 15%, 0.537 20%, 0.751 30%, 0.874 40%, 0.939 50%, 0.971 60%, 0.994 80%, 1);
+}
+
+/* Shorter distances and durations on small screens. */
+@media (max-width: 39.99rem) {
+  :root {
+    --dur-quick: 130ms;
+    --dur-move: 180ms;
+    --dur-sheet: 220ms;
+    --dist-short: 4px;
+    --dist-panel: 16px;
+    --dist-sheet: 24px;
+  }
+}
+
+/* Tailwind's transition-colors and friends use the FEEDBACK tokens. */
+@theme inline {
+  --default-transition-duration: var(--dur-instant);
+  --default-transition-timing-function: var(--ease-standard);
+}
+
+/* ENTER and EXIT for the three Dialog variants. Each utility sets only the
+   direction of travel; the shared rule below moves along it. Entry comes from
+   @starting-style; EXIT runs while the primitive holds `data-closing`, then it
+   calls close(). Exit mirrors entry, faster and accelerating. */
+@utility motion-enter-palette {
+  --from: translateY(calc(-1 * var(--dist-short)));
+}
+
+@utility motion-enter-sheet {
+  --from: translateY(var(--dist-sheet));
+  --dur-enter: var(--dur-sheet);
+}
+
+@utility motion-enter-panel {
+  --from: translateX(var(--dist-panel));
+}
+
+dialog[data-ef-modal],
+dialog[data-ef-modal]::backdrop {
+  transition: opacity var(--dur-enter, var(--dur-move)) var(--ease-spring),
+    transform var(--dur-enter, var(--dur-move)) var(--ease-spring);
+}
+
+dialog[data-ef-modal][data-closing],
+dialog[data-ef-modal][data-closing]::backdrop {
+  opacity: 0;
+  transition-duration: var(--dur-quick);
+  transition-timing-function: var(--ease-exit);
+}
+
+dialog[data-ef-modal][data-closing] {
+  transform: var(--from);
+}
+
+@starting-style {
+  dialog[data-ef-modal][open] {
+    opacity: 0;
+    transform: var(--from);
+  }
+
+  dialog[data-ef-modal][open]::backdrop {
+    opacity: 0;
+  }
+}
+
+/* The Legend popover: opacity only. The popover hides itself natively, so
+   display and overlay transition discretely to let EXIT finish. */
+@utility motion-popover {
+  opacity: 0;
+  transition: opacity var(--dur-quick) var(--ease-standard), display var(--dur-quick) allow-discrete,
+    overlay var(--dur-quick) allow-discrete;
+
+  &:popover-open {
+    opacity: 1;
+  }
+}
+
+@starting-style {
+  .motion-popover:popover-open {
+    opacity: 0;
+  }
+}
+
+/* The compare tray: ENTER only, a short rise and fade. It unmounts on Clear,
+   so it leaves instantly and there is no EXIT. */
+@utility motion-tray {
+  transition: opacity var(--dur-move) var(--ease-spring), transform var(--dur-move) var(--ease-spring);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(var(--dist-short));
+  }
+}
+
+/* The mobile action bar rises in and sinks out; visibility (discrete by
+   nature) flips at the end of EXIT, so the hidden bar leaves the tab order. */
+@utility motion-action-bar {
+  transition: opacity var(--dur-quick) var(--ease-standard), transform var(--dur-quick) var(--ease-standard),
+    visibility var(--dur-quick);
+}
+
+/* MOVE: disclosure chevrons rotate; the segmented indicator slides. */
+@utility motion-chevron {
+  transition: rotate var(--dur-quick) var(--ease-standard);
+}
+
+@utility motion-segment {
+  transition: transform var(--dur-quick) var(--ease-standard);
+}
+
+/* FEEDBACK: the results region dims while a URL change is applied. */
+@utility motion-pending {
+  transition: opacity var(--dur-quick) var(--ease-standard);
+}
+
+/* The header's hairline appears once the page has scrolled, driven by scroll
+   position rather than script. Without scroll timelines it is always shown. */
+@keyframes ef-hairline {
+  from {
+    border-bottom-color: transparent;
+  }
+}
+
+@utility motion-scroll-hairline {
+  @supports (animation-timeline: scroll()) {
+    animation: ef-hairline linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 64px;
+  }
+}
+
+/* MORPH: disclosures open and close by height where the engine can animate to
+   auto; elsewhere they snap. content-visibility transitions discretely so
+   closing animates too. */
+@supports (interpolate-size: allow-keywords) {
+  details.motion-details {
+    interpolate-size: allow-keywords;
+  }
+
+  details.motion-details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size var(--dur-quick) var(--ease-standard),
+      content-visibility var(--dur-quick) allow-discrete;
+  }
+
+  details.motion-details[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* FOCUS: an anchored target flashes the selection tint once and returns to
+   its own background (a from-only keyframe). Never #main: the skip link makes
+   it the target, and the whole page must not wash gold. */
+@keyframes ef-flash {
+  from {
+    background-color: var(--primary-soft);
+  }
+}
+
+:target:not(#main) {
+  animation: ef-flash var(--dur-flash) var(--ease-standard);
+}
+
+@layer base {
+  /* Honour the OS-level reduced-motion preference everywhere, including
+     third-party markup we do not control. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Reduced motion also removes every distance, and the flash becomes a static
+   tint for as long as the element is the target; #main stays untinted. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dist-short: 0px;
+    --dist-panel: 0px;
+    --dist-sheet: 0px;
+  }
+
+  :target:not(#main) {
+    animation: none;
+    background-color: var(--primary-soft);
+  }
+}

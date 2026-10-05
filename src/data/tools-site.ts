@@ -224,7 +224,7 @@ export const toolsSiteCatalog: unknown = {
     },
     {
       "slug": "csv-json",
-      "name": "CSV ↔ JSON Converter",
+      "name": "CSV <-> JSON Converter",
       "description": "Convert tabular CSV data to JSON objects and arrays bidirectionally.",
       "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/tools/csv-json/",
       "category": "data",
@@ -507,7 +507,7 @@ export const toolsSiteCatalog: unknown = {
     },
     {
       "slug": "json-yaml",
-      "name": "JSON ↔ YAML Converter",
+      "name": "JSON <-> YAML Converter",
       "description": "Convert between JSON and YAML formats bidirectionally without uploading.",
       "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/tools/json-yaml/",
       "category": "data",
@@ -1139,7 +1139,7 @@ export const toolsSiteCatalog: unknown = {
     },
     {
       "slug": "xml-json",
-      "name": "XML ↔ JSON Converter",
+      "name": "XML <-> JSON Converter",
       "description": "Convert between XML and JSON documents bidirectionally in your browser.",
       "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/tools/xml-json/",
       "category": "data",

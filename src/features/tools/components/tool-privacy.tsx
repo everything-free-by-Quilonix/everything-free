@@ -1,4 +1,3 @@
-import { Icon } from "@/components/icons";
 import { Callout } from "@/components/ui/callout";
 import { ExternalLink } from "@/components/ui/external-link";
 import type { Tool } from "@/types/tool";
@@ -17,7 +16,7 @@ export function ToolPrivacyNotice({ tool }: { tool: Tool }) {
 
   return (
     <Callout
-      tone={local ? "success" : "warning"}
+      tone={local ? "neutral" : "warning"}
       icon={local ? "lock" : "server"}
       title={local ? "Your files stay on your device" : "Your data is sent to a server"}
     >
@@ -26,7 +25,7 @@ export function ToolPrivacyNotice({ tool }: { tool: Tool }) {
       {processing.thirdParty ? (
         <p className="mt-2">
           Processed by{" "}
-          <ExternalLink href={processing.thirdParty.url} className="font-medium text-fg underline underline-offset-2">
+          <ExternalLink href={processing.thirdParty.url} className="link-inline font-medium">
             {processing.thirdParty.name}
           </ExternalLink>
           {processing.thirdParty.privacyPolicyUrl ? (
@@ -34,7 +33,7 @@ export function ToolPrivacyNotice({ tool }: { tool: Tool }) {
               {" — "}
               <ExternalLink
                 href={processing.thirdParty.privacyPolicyUrl}
-                className="underline underline-offset-2 hover:text-fg"
+                className="link-inline"
               >
                 their privacy policy
               </ExternalLink>
@@ -64,10 +63,9 @@ export function ToolAttributions({ tool }: { tool: Tool }) {
       </h2>
       <ul className="mt-3 flex flex-col gap-2.5">
         {tool.attributions.map((attribution) => (
-          <li key={attribution.url} className="flex items-start gap-2.5 text-sm">
-            <Icon name="repo" size={15} className="mt-0.5 shrink-0 text-fg-subtle" />
+          <li key={attribution.url} className="text-sm">
             <span>
-              <ExternalLink href={attribution.url} className="font-medium text-fg hover:underline">
+              <ExternalLink href={attribution.url} className="link-inline font-medium">
                 {attribution.name}
               </ExternalLink>
               <span className="text-fg-muted"> — {attribution.license}</span>

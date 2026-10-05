@@ -83,7 +83,7 @@ function Cell({ resource, fact, children }: { resource: Resource; fact: Fact; ch
   return (
     <span className="flex flex-col gap-0.5" data-fact={fact}>
       <span className={evidence.state === "confirmed" ? "text-fg" : "text-fg-muted"}>{children}</span>
-      <EvidenceTag evidence={evidence} className="text-[11px] font-normal" />
+      <EvidenceTag evidence={evidence} className="text-2xs font-normal" />
     </span>
   );
 }
@@ -103,8 +103,8 @@ export function AlternativeComparison({ resources }: { resources: Resource[] }) 
   return (
     // Horizontally scrollable on narrow screens, and focusable so a keyboard user
     // can scroll it without a pointer.
-    <div className="overflow-x-auto rounded-xl border border-border" tabIndex={0} role="region" aria-label="Comparison table">
-      <table className="w-full border-collapse text-sm">
+    <div className="overflow-x-auto rounded-md border border-border" tabIndex={0} role="region" aria-label="Comparison table">
+      <table className="w-full border-collapse text-sm tabular-nums">
         <caption className="sr-only">
           Factual comparison of free alternatives. Columns cover free status, licence, platforms, account and card
           requirements, commercial use and the date of the last check. Each cell states whether an official source
@@ -124,9 +124,9 @@ export function AlternativeComparison({ resources }: { resources: Resource[] }) 
         </thead>
         <tbody>
           {resources.map((resource) => (
-            <tr key={resource.slug} className="border-b border-border last:border-b-0">
+            <tr key={resource.slug} className="border-b border-rule last:border-b-0">
               <th scope="row" className="sticky left-0 bg-surface px-4 py-3 text-left font-medium whitespace-nowrap">
-                <Link href={`/resources/${resource.slug}`} className="rounded hover:text-primary hover:underline">
+                <Link href={`/resources/${resource.slug}`} className="link-inline rounded-xs">
                   {resource.name}
                 </Link>
               </th>

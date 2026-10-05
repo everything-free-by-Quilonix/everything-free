@@ -31,16 +31,15 @@ export default async function CollectionsPage() {
         </Callout>
 
         {collections.length > 0 ? (
-          <ul className="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid list-none border-t border-rule sm:grid-cols-2 sm:gap-x-8">
             {collections.map((collection) => (
-              <li key={collection.slug} className="flex">
+              <li key={collection.slug} className="border-b border-rule">
                 <CollectionCard collection={collection} />
               </li>
             ))}
           </ul>
         ) : (
           <EmptyState
-            icon="library"
             title="No collections yet"
             description="Collections are added when there is a real problem worth solving with a specific set of resources."
           />

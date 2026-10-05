@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { Icon } from "@/components/icons";
-import { cn } from "@/lib/utils/cn";
+import { buttonClasses } from "@/components/ui/button";
 import { STUDENT_OFFERS, type StudentOffer } from "@/data/students/campus-key";
+import { cn } from "@/lib/utils/cn";
 
 // Categories mapped to clean display names
 const CATEGORIES = [
@@ -79,33 +80,33 @@ export function StudentExplorer() {
     <div className="mx-auto w-full max-w-(--container-content) px-4 pt-6 pb-20 sm:px-6 lg:px-8">
       {/* 1. Header & Value Stats */}
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-medium text-primary">
+        <span className="inline-flex items-center gap-1.5 rounded-xs border border-border bg-surface-raised px-3 py-1 text-xs font-medium text-fg-muted">
           <Icon name="graduation-cap" size={14} />
           CampusKey · Verified Student Directory
         </span>
 
-        <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-fg sm:text-5xl">
-          Free Software & Perks for <span className="text-primary">Students</span>
+        <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-fg sm:text-5xl">
+          Free Software & Perks for Students
         </h1>
 
         <p className="mt-3.5 max-w-2xl text-sm leading-relaxed text-fg-muted sm:text-base">
-          Claim over <span className="font-semibold text-fg">$10,000+</span> in genuine free developer packs, cloud infrastructure, AI models, professional IDEs, and campus software with your student status.
+          Claim genuine free developer packs, cloud infrastructure, AI models, professional IDEs, and campus software with your student status.
         </p>
 
         {/* Stats strip */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-8 rounded-2xl border border-border/70 bg-surface/60 px-6 py-3.5 backdrop-blur-md">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-8 rounded-sm border border-border bg-surface px-6 py-3.5">
           <div className="text-center">
             <span className="font-display text-xl sm:text-2xl font-bold text-fg">90+</span>
             <p className="text-[11px] font-medium text-fg-subtle uppercase tracking-wider">Verified Perks</p>
           </div>
-          <div className="h-8 w-px bg-border/60" />
+          <div className="h-8 w-px bg-border" />
           <div className="text-center">
-            <span className="font-display text-xl sm:text-2xl font-bold text-emerald-500">$10,000+</span>
+            <span className="font-display text-xl sm:text-2xl font-bold text-fg">$10,000+</span>
             <p className="text-[11px] font-medium text-fg-subtle uppercase tracking-wider">Software Value</p>
           </div>
-          <div className="h-8 w-px bg-border/60" />
+          <div className="h-8 w-px bg-border" />
           <div className="text-center">
-            <span className="font-display text-xl sm:text-2xl font-bold text-primary">100% Free</span>
+            <span className="font-display text-xl sm:text-2xl font-bold text-fg">100% Free</span>
             <p className="text-[11px] font-medium text-fg-subtle uppercase tracking-wider">Zero Tuition Cost</p>
           </div>
         </div>
@@ -122,15 +123,15 @@ export function StudentExplorer() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search 90+ student tools (e.g. GitHub Pack, JetBrains, Azure, Figma)..."
-              className="h-12 w-full rounded-2xl border border-border/80 bg-surface pl-11 pr-10 text-sm text-fg shadow-xs transition-colors placeholder:text-fg-subtle/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+              placeholder="Search student tools (GitHub Pack, JetBrains, Azure, Figma)..."
+              className="h-11 w-full rounded-sm border border-border-strong bg-surface pl-11 pr-10 text-sm text-fg shadow-xs placeholder:text-fg-subtle"
             />
             {search ? (
               <button
                 type="button"
                 onClick={() => setSearch("")}
                 aria-label="Clear search"
-                className="absolute right-3.5 rounded-lg p-1 text-fg-subtle hover:bg-surface-raised hover:text-fg"
+                className="absolute right-3.5 rounded-xs p-1 text-fg-subtle hover:bg-surface-hover hover:text-fg"
               >
                 <Icon name="close" size={14} />
               </button>
@@ -141,7 +142,7 @@ export function StudentExplorer() {
 
       {/* 3. Category Filter Tabs */}
       <div className="mt-8 flex flex-col items-center">
-        <div className="flex max-w-full items-center gap-1.5 overflow-x-auto rounded-2xl border border-border/70 bg-surface/60 p-1.5 shadow-xs backdrop-blur-md scrollbar-none">
+        <div className="flex max-w-full items-center gap-1.5 overflow-x-auto rounded-sm border border-border bg-surface p-1.5 scrollbar-none">
           {CATEGORIES.map((cat) => {
             const isSelected = selectedCategory === cat;
             const count = categoryCounts[cat] ?? 0;
@@ -152,19 +153,14 @@ export function StudentExplorer() {
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
                 className={cn(
-                  "inline-flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-medium transition-all duration-150",
+                  "flex shrink-0 items-center gap-1.5 rounded-xs px-3 py-1.5 text-xs font-medium transition-colors",
                   isSelected
-                    ? "bg-primary text-primary-fg shadow-xs"
-                    : "text-fg-muted hover:bg-surface-raised hover:text-fg",
+                    ? "bg-surface-raised font-semibold text-fg"
+                    : "text-fg-muted hover:bg-surface-hover hover:text-fg",
                 )}
               >
-                <span>{cat === "All" ? "All Perks" : cat}</span>
-                <span
-                  className={cn(
-                    "tabular-nums text-[10.5px]",
-                    isSelected ? "text-primary-fg/80" : "text-fg-subtle",
-                  )}
-                >
+                <span>{cat}</span>
+                <span className="rounded-xs bg-surface px-1.5 py-0.2 text-[10px] tabular-nums text-fg-subtle">
                   {count}
                 </span>
               </button>
@@ -177,19 +173,19 @@ export function StudentExplorer() {
           <span className="text-fg-subtle text-[11px] font-medium mr-1">Filter by requirement:</span>
           {[
             { id: "All", label: "All" },
-            { id: "college email", label: "🎓 College Email (.edu / .ac)" },
-            { id: "github", label: "⚡ GitHub Student Pack" },
-            { id: "id card", label: "🪪 Student ID Card" },
+            { id: "college email", label: "College Email (.edu / .ac)" },
+            { id: "github", label: "GitHub Student Pack" },
+            { id: "id card", label: "Student ID Card" },
           ].map((req) => (
             <button
               key={req.id}
               type="button"
               onClick={() => setSelectedReq(req.id)}
               className={cn(
-                "rounded-lg px-2.5 py-1 font-medium transition-colors",
+                "rounded-xs px-2.5 py-1 font-medium transition-colors",
                 selectedReq === req.id
-                  ? "border border-primary/40 bg-primary/10 text-primary"
-                  : "border border-border/60 bg-surface/40 text-fg-muted hover:border-border hover:text-fg",
+                  ? "border border-border-strong bg-surface-raised text-fg"
+                  : "border border-border bg-surface text-fg-muted hover:border-border-strong hover:text-fg",
               )}
             >
               {req.label}
@@ -198,11 +194,13 @@ export function StudentExplorer() {
         </div>
       </div>
 
-      {/* 4. Offers Grid */}
-      <div className="mt-8">
-        <div className="mb-4 flex items-center justify-between text-xs text-fg-subtle">
+      {/* 4. Results Grid */}
+      <div className="mt-10">
+        <div className="mb-4 flex items-center justify-between text-xs text-fg-muted">
           <span>
-            Showing <strong className="text-fg">{filteredOffers.length}</strong> student perks
+            Showing <strong className="text-fg">{filteredOffers.length}</strong> perks
+            {selectedCategory !== "All" ? ` in ${selectedCategory}` : ""}
+            {selectedReq !== "All" ? ` requiring ${selectedReq}` : ""}
           </span>
           {search || selectedCategory !== "All" || selectedReq !== "All" ? (
             <button
@@ -212,18 +210,20 @@ export function StudentExplorer() {
                 setSelectedCategory("All");
                 setSelectedReq("All");
               }}
-              className="text-primary hover:underline"
+              className="text-fg-muted underline hover:text-fg cursor-pointer"
             >
-              Reset filters
+              Reset all filters
             </button>
           ) : null}
         </div>
 
         {filteredOffers.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border p-12 text-center">
+          <div className="flex flex-col items-center justify-center rounded-sm border border-dashed border-border py-16 text-center">
             <Icon name="search" size={28} className="text-fg-subtle" />
-            <h3 className="mt-3 font-display text-base font-semibold text-fg">No student perks match your filter</h3>
-            <p className="mt-1 text-xs text-fg-muted">Try clearing your search terms or selecting another category.</p>
+            <h2 className="mt-3 text-sm font-semibold text-fg">No student perks match your query</h2>
+            <p className="mt-1 text-xs text-fg-muted max-w-sm">
+              Try searching for something else or clearing the requirement filter.
+            </p>
             <button
               type="button"
               onClick={() => {
@@ -231,29 +231,29 @@ export function StudentExplorer() {
                 setSelectedCategory("All");
                 setSelectedReq("All");
               }}
-              className="mt-4 rounded-xl bg-primary px-4 py-2 text-xs font-medium text-primary-fg"
+              className="mt-4 rounded-xs border border-border bg-surface px-3 py-1.5 text-xs font-medium text-fg hover:bg-surface-hover"
             >
-              View all 90 student perks
+              Clear filters
             </button>
           </div>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {filteredOffers.map((offer) => {
               const domain = getDomain(offer.url);
               const logoUrl = domain
                 ? `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=128`
                 : null;
-              const initials = offer.provider.slice(0, 2).toUpperCase();
+              const initials = offer.name.slice(0, 2).toUpperCase();
 
               return (
                 <article
                   key={offer.slug}
-                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border/70 bg-surface/80 dark:bg-surface/50 p-4 sm:p-5 backdrop-blur-xs transition-all duration-200 hover:-translate-y-1 hover:border-primary/50 hover:bg-surface-raised/95 hover:shadow-[0_12px_28px_-6px_rgba(0,0,0,0.12)]"
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-sm border border-border bg-surface p-4 sm:p-5"
                 >
                   <div>
                     {/* Top Header: Logo + Provider & Category */}
                     <div className="flex items-start gap-3">
-                      <div className="relative flex size-10 shrink-0 select-none items-center justify-center overflow-hidden rounded-xl border border-border/70 bg-surface-raised/80 p-1 shadow-2xs">
+                      <div className="relative flex size-10 shrink-0 select-none items-center justify-center overflow-hidden rounded-xs border border-border bg-surface-raised p-1">
                         <span aria-hidden="true" className="absolute font-display text-xs font-semibold text-fg-muted">
                           {initials}
                         </span>
@@ -265,7 +265,7 @@ export function StudentExplorer() {
                             width={36}
                             height={36}
                             loading="lazy"
-                            className="relative size-full rounded-md object-contain"
+                            className="relative size-full rounded-xs object-contain"
                             onError={(e) => {
                               (e.target as HTMLElement).style.display = "none";
                             }}
@@ -275,14 +275,14 @@ export function StudentExplorer() {
 
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center justify-between gap-1">
-                          <span className="text-[11px] font-semibold tracking-wider uppercase text-primary">
+                          <span className="text-[11px] font-semibold tracking-wider uppercase text-fg-subtle">
                             {offer.provider}
                           </span>
-                          <span className="rounded-md border border-border/60 bg-surface-raised px-2 py-0.5 text-[10px] font-medium text-fg-subtle truncate max-w-[120px]">
+                          <span className="rounded-xs border border-border bg-surface-raised px-1.5 py-0.5 text-[10px] font-medium text-fg-subtle truncate max-w-[120px]">
                             {offer.category}
                           </span>
                         </div>
-                        <h3 className="font-display text-[15px] font-semibold leading-snug tracking-tight text-fg transition-colors group-hover:text-primary mt-0.5">
+                        <h3 className="font-display text-[15px] font-semibold leading-snug tracking-tight text-fg mt-0.5">
                           {offer.name}
                         </h3>
                       </div>
@@ -295,7 +295,7 @@ export function StudentExplorer() {
 
                     {/* Value Badge */}
                     <div className="mt-3 flex flex-wrap items-center gap-1.5">
-                      <span className="inline-flex items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+                      <span className="inline-flex items-center gap-1 rounded-xs border border-border bg-surface-raised px-2 py-0.5 text-[11px] font-medium text-fg">
                         <Icon name="check" size={10} className="shrink-0" />
                         {offer.value.length > 35 ? `${offer.value.slice(0, 35)}…` : offer.value}
                       </span>
@@ -306,7 +306,7 @@ export function StudentExplorer() {
                       {offer.verification.map((v) => (
                         <span
                           key={v}
-                          className="rounded border border-border/50 bg-bg-subtle/80 px-1.5 py-0.5 text-[10px] text-fg-subtle"
+                          className="rounded-xs border border-border bg-bg-subtle px-1.5 py-0.5 text-[10px] text-fg-subtle"
                         >
                           {v}
                         </span>
@@ -315,11 +315,11 @@ export function StudentExplorer() {
                   </div>
 
                   {/* Footer Actions: How to Claim & Direct Portal Link */}
-                  <div className="mt-4 flex items-center justify-between border-t border-border/40 pt-3">
+                  <div className="mt-4 flex items-center justify-between border-t border-border pt-3">
                     <button
                       type="button"
                       onClick={() => setSelectedOffer(offer)}
-                      className="inline-flex items-center gap-1 text-xs font-medium text-fg-muted hover:text-primary transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-fg-muted hover:text-fg transition-colors cursor-pointer"
                     >
                       <Icon name="info" size={13} />
                       How to claim
@@ -329,7 +329,7 @@ export function StudentExplorer() {
                       href={offer.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-lg border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-fg"
+                      className="inline-flex items-center gap-1 rounded-xs border border-border bg-surface-raised px-2.5 py-1 text-xs font-semibold text-fg transition-colors hover:bg-surface-hover"
                     >
                       Claim Offer
                       <Icon name="arrow-up-right" size={12} />
@@ -347,17 +347,17 @@ export function StudentExplorer() {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60"
           onClick={() => setSelectedOffer(null)}
         >
           <div
-            className="relative w-full max-w-xl max-h-[85vh] overflow-y-auto rounded-2xl border border-border bg-surface p-6 shadow-2xl"
+            className="relative w-full max-w-xl max-h-[85vh] overflow-y-auto rounded-sm border border-border bg-surface p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex items-start justify-between gap-4">
               <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                <span className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
                   {selectedOffer.provider} · {selectedOffer.category}
                 </span>
                 <h2 className="mt-1 font-display text-xl font-bold tracking-tight text-fg">
@@ -368,14 +368,14 @@ export function StudentExplorer() {
                 type="button"
                 onClick={() => setSelectedOffer(null)}
                 aria-label="Close modal"
-                className="rounded-lg p-1 text-fg-subtle hover:bg-surface-raised hover:text-fg"
+                className="rounded-xs p-1 text-fg-subtle hover:bg-surface-raised hover:text-fg"
               >
                 <Icon name="close" size={18} />
               </button>
             </div>
 
             {/* What you get */}
-            <div className="mt-4 rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-3.5 text-xs text-emerald-700 dark:text-emerald-300">
+            <div className="mt-4 rounded-xs border border-border bg-surface-raised p-3.5 text-xs text-fg">
               <strong className="font-semibold block mb-0.5">What students get:</strong>
               {selectedOffer.offer} ({selectedOffer.value})
             </div>
@@ -393,7 +393,7 @@ export function StudentExplorer() {
                 {selectedOffer.verification.map((v) => (
                   <span
                     key={v}
-                    className="rounded-md border border-border bg-surface-raised px-2 py-1 text-xs font-medium text-fg-muted"
+                    className="rounded-xs border border-border bg-surface-raised px-2 py-1 text-xs font-medium text-fg-muted"
                   >
                     {v}
                   </span>
@@ -409,7 +409,7 @@ export function StudentExplorer() {
               <ol className="flex flex-col gap-2.5 text-xs leading-relaxed text-fg-muted">
                 {selectedOffer.steps.map((step, idx) => (
                   <li key={idx} className="flex items-start gap-2.5">
-                    <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/10 font-mono text-[11px] font-semibold text-primary">
+                    <span className="flex size-5 shrink-0 items-center justify-center rounded-xs bg-surface-raised font-mono text-[11px] font-semibold text-fg">
                       {idx + 1}
                     </span>
                     <span className="pt-0.5">{step}</span>
@@ -420,8 +420,8 @@ export function StudentExplorer() {
 
             {/* Notes if any */}
             {selectedOffer.notes ? (
-              <div className="mt-4 rounded-xl border border-warning-border/40 bg-warning-surface/30 p-3 text-[11.5px] leading-relaxed text-fg-subtle">
-                <strong className="font-medium text-warning-fg block mb-0.5">Important note:</strong>
+              <div className="mt-4 rounded-xs border border-border bg-surface-raised p-3 text-[11.5px] leading-relaxed text-fg-subtle">
+                <strong className="font-medium text-fg block mb-0.5">Important note:</strong>
                 {selectedOffer.notes}
               </div>
             ) : null}
@@ -431,7 +431,7 @@ export function StudentExplorer() {
               <button
                 type="button"
                 onClick={() => setSelectedOffer(null)}
-                className="rounded-xl border border-border px-4 py-2 text-xs font-medium text-fg-muted hover:bg-surface-raised hover:text-fg"
+                className="rounded-xs border border-border px-4 py-2 text-xs font-medium text-fg-muted hover:bg-surface-raised hover:text-fg"
               >
                 Close
               </button>
@@ -439,7 +439,7 @@ export function StudentExplorer() {
                 href={selectedOffer.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-fg shadow-xs hover:bg-primary-hover"
+                className={buttonClasses({ variant: "secondary", size: "sm" })}
               >
                 Go to Official Claim Portal
                 <Icon name="arrow-up-right" size={13} />

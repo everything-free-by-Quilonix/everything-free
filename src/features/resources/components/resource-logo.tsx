@@ -51,7 +51,7 @@ export function ResourceLogo({
     return (
       <div
         className={cn(
-          "relative flex shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/70 bg-surface-raised/60 p-1 shadow-2xs transition-all duration-200",
+          "relative flex shrink-0 items-center justify-center overflow-hidden rounded-sm border border-border bg-surface-raised p-1",
           className,
         )}
         style={{ width: size, height: size }}
@@ -61,7 +61,7 @@ export function ResourceLogo({
           alt={logo.alt || `${name || "Resource"} logo`}
           width={logo.width || size}
           height={logo.height || size}
-          className="size-full rounded-md object-contain"
+          className="size-full rounded-xs object-contain"
           onError={() => setImgError(true)}
         />
       </div>
@@ -84,7 +84,7 @@ export function ResourceLogo({
   return (
     <div
       className={cn(
-        "relative flex shrink-0 select-none items-center justify-center overflow-hidden rounded-lg border border-border/70 bg-surface-raised/70 p-1 shadow-2xs transition-all duration-200 group-hover:scale-105 group-hover:border-border-strong",
+        "relative flex shrink-0 select-none items-center justify-center overflow-hidden rounded-sm border border-border bg-surface-raised p-1",
         className,
       )}
       style={{ width: size, height: size }}
@@ -93,7 +93,7 @@ export function ResourceLogo({
       <span
         aria-hidden="true"
         className={cn(
-          "absolute inset-0 flex items-center justify-center font-display font-semibold tracking-tight text-fg-muted transition-opacity duration-200",
+          "absolute inset-0 flex items-center justify-center font-display font-semibold tracking-tight text-fg-muted transition-opacity",
           imgLoaded && !imgError ? "opacity-0 pointer-events-none" : "opacity-100",
         )}
         style={{ fontSize: Math.max(10, Math.round(size * 0.38)) }}
@@ -114,7 +114,7 @@ export function ResourceLogo({
           onLoad={() => setImgLoaded(true)}
           onError={() => setImgError(true)}
           className={cn(
-            "relative size-full rounded-md object-contain transition-opacity duration-300",
+            "relative size-full rounded-xs object-contain transition-opacity",
             imgLoaded ? "opacity-100" : "opacity-0",
           )}
         />
@@ -122,4 +122,3 @@ export function ResourceLogo({
     </div>
   );
 }
-
