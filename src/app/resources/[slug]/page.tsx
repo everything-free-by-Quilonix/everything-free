@@ -107,7 +107,13 @@ export default async function ResourcePage({ params }: PageProps) {
           <Breadcrumbs items={crumbs} />
 
           <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start">
-            <ResourceLogo logo={resource.logo} size={64} className="sm:size-20" />
+            <ResourceLogo
+              logo={resource.logo}
+              officialUrl={resource.officialUrl}
+              name={resource.name}
+              size={64}
+              className="sm:size-20"
+            />
 
             <div className="min-w-0 flex-1">
               <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">{resource.name}</h1>

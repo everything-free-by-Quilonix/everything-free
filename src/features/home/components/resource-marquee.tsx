@@ -45,7 +45,13 @@ export function ResourceMarquee({
                   href={`/resources/${resource.slug}`}
                   className="group flex items-center gap-2.5 rounded-lg border border-border/80 bg-surface/90 px-3.5 py-2 text-fg transition-all duration-150 hover:border-border-strong hover:bg-surface-hover hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
-                  <ResourceLogo logo={resource.logo} size={22} className="rounded-md" />
+                  <ResourceLogo
+                    logo={resource.logo}
+                    officialUrl={resource.officialUrl}
+                    name={resource.name}
+                    size={22}
+                    className="rounded-md"
+                  />
                   <span className="whitespace-nowrap text-xs font-medium text-fg-muted transition-colors group-hover:text-fg">
                     {resource.name}
                   </span>
@@ -63,7 +69,13 @@ export function ResourceMarquee({
                   tabIndex={-1}
                   className="group flex items-center gap-2.5 rounded-lg border border-border/80 bg-surface/90 px-3.5 py-2 text-fg transition-all duration-150 hover:border-border-strong hover:bg-surface-hover hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
-                  <ResourceLogo logo={resource.logo} size={22} className="rounded-md" />
+                  <ResourceLogo
+                    logo={resource.logo}
+                    officialUrl={resource.officialUrl}
+                    name={resource.name}
+                    size={22}
+                    className="rounded-md"
+                  />
                   <span className="whitespace-nowrap text-xs font-medium text-fg-muted transition-colors group-hover:text-fg">
                     {resource.name}
                   </span>

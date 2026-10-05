@@ -51,8 +51,8 @@ export function buildPolicy(scriptHashes) {
     "style-src-elem 'self'",
     "style-src-attr 'unsafe-inline'",
     // blob: is the image converter's locally generated result; data: covers inline
-    // SVG data URIs.
-    "img-src 'self' data: blob:",
+    // SVG data URIs; https: allows authentic tool brand marks and favicons.
+    "img-src 'self' data: blob: https:",
     "font-src 'self'",
     // Client-side navigation fetches the pre-rendered RSC payload files from the
     // same origin. Nothing else is ever fetched.

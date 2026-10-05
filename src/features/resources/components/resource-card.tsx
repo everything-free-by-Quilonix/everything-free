@@ -72,6 +72,8 @@ export function ResourceCard({
         <div className="mt-3 flex items-start gap-3">
           <ResourceLogo
             logo={resource.logo}
+            officialUrl={resource.officialUrl}
+            name={resource.name}
             size={38}
             className="shrink-0 rounded-[8px] border border-border/60 bg-surface-raised/40 p-0.5"
           />
