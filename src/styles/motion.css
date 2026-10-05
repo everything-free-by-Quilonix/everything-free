@@ -225,3 +225,17 @@ dialog[data-ef-modal][data-closing] {
     background-color: var(--primary-soft);
   }
 }
+
+/* MARQUEE: calm, continuous ambient showcase of real library items */
+@keyframes ef-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.motion-marquee {
+  animation: ef-marquee 45s linear infinite;
+}
