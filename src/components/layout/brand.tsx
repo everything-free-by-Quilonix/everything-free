@@ -1,14 +1,14 @@
 import Link from "next/link";
+import { withBasePath } from "@/config/deployment";
 import { site } from "@/config/site";
 import { cn } from "@/lib/utils/cn";
 
 /**
  * The brand lockup.
  *
- * Everything.Free is the product; Quilonix is the parent and is deliberately
- * secondary in the interface — present for provenance, never competing for
- * attention. The dot is styled rather than typed as punctuation so "Everything"
- * and "Free" read as one name.
+ * Faithfully matches the official Everything.Free brand assets:
+ * 1. Squircle icon with lowercase 'e' and signature architectural gold square
+ * 2. Wordmark with square golden period between Everything and Free
  */
 export function Brand({
   className,
@@ -21,16 +21,38 @@ export function Brand({
   onClick?: () => void;
 }) {
   return (
-    <Link href="/" onClick={onClick} className={cn("group inline-flex items-center gap-2.5 rounded-lg", className)}>
+    <Link href="/" onClick={onClick} className={cn("group inline-flex items-center gap-2.5 rounded-lg select-none", className)}>
+      {/* Authentic 'e.' squircle brand mark matching uploaded assets */}
       <span
         aria-hidden="true"
-        className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary font-display text-sm font-bold text-primary-fg"
+        className="relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-border/60 bg-surface shadow-xs transition-transform duration-200 group-hover:scale-105"
       >
-        EF
+        {/* Light mode brand icon */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={withBasePath("/brand/logo-light.png")}
+          alt=""
+          width={32}
+          height={32}
+          className="size-full object-cover dark:hidden"
+        />
+        {/* Dark mode brand icon */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={withBasePath("/brand/logo-dark.png")}
+          alt=""
+          width={32}
+          height={32}
+          className="hidden size-full object-cover dark:block"
+        />
       </span>
+
       <span className="flex flex-col leading-none">
-        <span className="font-display text-[15px] font-semibold tracking-tight">
-          Everything<span className="text-primary">.</span>Free
+        <span className="flex items-center font-display text-[15.5px] font-bold tracking-tight text-fg transition-colors group-hover:text-fg">
+          Everything
+          {/* Signature golden square period from brand asset 02/03 */}
+          <span className="mx-0.5 inline-block size-[5.5px] rounded-[1px] bg-primary self-center" />
+          Free
         </span>
         {showParent ? (
           <span className="mt-0.5 text-[11px] font-normal text-fg-subtle">by {site.parent.name}</span>

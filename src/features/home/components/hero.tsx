@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
-import { intentExamples, searchExamples } from "@/config/site";
 import { SearchBox } from "@/features/search/components/search-box";
 import { formatCount } from "@/lib/utils/format";
 import type { Resource } from "@/types/resource";
@@ -23,8 +22,6 @@ import { ResourceMarquee } from "./resource-marquee";
  */
 export function Hero({
   resourceCount,
-  verifiedCount = 10,
-  toolCount,
   marqueeResources = [],
 }: {
   resourceCount: number;
@@ -34,13 +31,13 @@ export function Hero({
 }) {
   return (
     <section className="relative overflow-hidden border-b border-border/60 bg-bg" aria-labelledby="hero-heading">
-      {/* 01. Dynamic Apple-style Atmospheric Ambient Glow Mesh */}
+      {/* 01. Dynamic Apple-style Atmospheric Ambient Glow Mesh matching brand gold & obsidian */}
       <div
-        className="pointer-events-none absolute inset-x-0 -top-40 h-[600px] overflow-hidden opacity-45 dark:opacity-60"
+        className="pointer-events-none absolute inset-x-0 -top-40 h-[600px] overflow-hidden opacity-50 dark:opacity-65"
         aria-hidden="true"
       >
-        <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[480px] w-[800px] max-w-full rounded-full bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.18),rgba(99,102,241,0.12),transparent_70%)] blur-3xl" />
-        <div className="absolute left-1/3 top-20 h-[360px] w-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.12),transparent_70%)] blur-2xl" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[480px] w-[800px] max-w-full rounded-full bg-[radial-gradient(ellipse_at_center,rgba(217,155,38,0.18),rgba(217,155,38,0.03),transparent_70%)] blur-3xl" />
+        <div className="absolute left-1/3 top-24 h-[320px] w-[450px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(250,247,242,0.05),transparent_70%)] blur-2xl" />
       </div>
 
       {/* Structural grid background with soft fade */}
@@ -51,11 +48,11 @@ export function Hero({
           {/* 02. Interactive Apple-style Announcement Capsule */}
           <Link
             href="/students"
-            className="group inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium text-fg backdrop-blur-md transition-all duration-300 hover:border-primary/60 hover:bg-primary/15 hover:shadow-[0_0_24px_rgba(212,175,55,0.22)]"
+            className="group inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium text-fg backdrop-blur-md transition-all duration-300 hover:border-primary/60 hover:bg-primary/15 hover:shadow-[0_0_24px_rgba(217,155,38,0.22)]"
           >
             <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-primary" />
             </span>
             <span className="font-semibold text-primary">New:</span>
             <span className="text-fg-muted group-hover:text-fg transition-colors">
@@ -182,12 +179,12 @@ export function Hero({
               </div>
 
               {/* Metric 2 */}
-              <div className="group relative overflow-hidden rounded-2xl border border-border/60 bg-surface/60 dark:bg-surface/30 p-4.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg text-left">
+              <div className="group relative overflow-hidden rounded-2xl border border-border/60 bg-surface/60 dark:bg-surface/30 p-4.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg text-left">
                 <div className="flex items-center justify-between">
-                  <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-emerald-500">
+                  <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-primary">
                     $10,000+
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-500">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary">
                     CampusKey
                   </span>
                 </div>

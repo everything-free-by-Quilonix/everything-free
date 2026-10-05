@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Icon } from "@/components/icons";
-import { Card, stretchedLink } from "@/components/ui/card";
+import { stretchedLink } from "@/components/ui/card";
 import { getCategoriesInGroup } from "@/config/categories";
 import { cn } from "@/lib/utils/cn";
 import type { Category, CategoryGroup } from "@/types/category";

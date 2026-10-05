@@ -19,110 +19,110 @@
 .dark {
   color-scheme: dark;
 
-  /* Surfaces, from furthest back to closest to the reader. */
-  --bg: #0a0a0f;
-  --bg-subtle: #0d0d14;
-  --surface: #12121a;
-  --surface-raised: #181822;
-  --surface-hover: #1e1e2a;
+  /* Surfaces: Deep obsidian pitch matching brand asset media_1791200947701.png */
+  --bg: #0c0d12;
+  --bg-subtle: #111218;
+  --surface: #15161f;
+  --surface-raised: #1c1d27;
+  --surface-hover: #242532;
 
-  /* Lines. `strong` is for interactive edges that must read as affordances. */
-  --border: #23232f;
-  --border-strong: #32323f;
+  /* Lines */
+  --border: #242531;
+  --border-strong: #363748;
 
-  /* Text. `muted` meets AA on --bg; `subtle` is reserved for non-essential
-     metadata that is always duplicated elsewhere or non-informational. */
-  --fg: #f5f5f5;
-  --fg-muted: #a6a6b4;
-  --fg-subtle: #74748a;
+  /* Text: Warm Cream Ivory matching the 'e' glyph in brand assets */
+  --fg: #faf7f2;
+  --fg-muted: #aca89e;
+  --fg-subtle: #79766d;
 
-  /* Brand. Gold on near-black; text on gold is always near-black. */
-  --primary: #d4af37;
-  --primary-hover: #e0bf51;
-  --primary-fg: #0a0a0f;
-  --primary-soft: rgb(212 175 55 / 0.12);
-  --primary-ring: rgb(212 175 55 / 0.42);
+  /* Brand: Architectural Warm Gold matching the signature square period */
+  --primary: #d99b26;
+  --primary-hover: #e5a734;
+  --primary-fg: #0c0d12;
+  --primary-soft: rgb(217 155 38 / 0.14);
+  --primary-ring: rgb(217 155 38 / 0.45);
 
-  --secondary: #334155;
-  --secondary-fg: #f5f5f5;
+  --secondary: #252631;
+  --secondary-fg: #faf7f2;
 
   /* Status. Foreground variants are lightened for contrast on dark surfaces. */
-  --success: #0faf78;
-  --success-fg: #3ddba4;
-  --success-soft: rgb(15 175 120 / 0.14);
+  --success: #10b981;
+  --success-fg: #34d399;
+  --success-soft: rgb(16 185 129 / 0.14);
 
-  --warning: #d99a00;
+  --warning: #d99b26;
   --warning-fg: #f0b93a;
-  --warning-soft: rgb(217 154 0 / 0.14);
+  --warning-soft: rgb(217 155 38 / 0.14);
 
   --danger: #b42318;
   --danger-fg: #f4796d;
   --danger-soft: rgb(180 35 24 / 0.16);
 
-  --info: #3b6fd4;
-  --info-fg: #7ea6f0;
-  --info-soft: rgb(59 111 212 / 0.16);
+  --info: #3b82f6;
+  --info-fg: #60a5fa;
+  --info-soft: rgb(59 130 246 / 0.16);
 
   --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
   --shadow-raised: 0 8px 24px -8px rgb(0 0 0 / 0.6);
   --shadow-overlay: 0 24px 64px -16px rgb(0 0 0 / 0.75);
 
-  /* Floating header capsule. Opaque enough that scrolled content never competes
-     with the navigation text; the blur only softens what shows at the edges. */
-  --capsule-surface: rgb(20 20 29 / 0.86);
-  --capsule-border: rgb(255 255 255 / 0.07);
-  --capsule-shadow: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 6px 20px -10px rgb(0 0 0 / 0.7);
-  --capsule-shadow-scrolled: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 12px 32px -14px rgb(0 0 0 / 0.85);
-  --panel-surface: #14141d;
-  --scrim: rgb(0 0 0 / 0.6);
+  /* Floating header capsule. */
+  --capsule-surface: rgb(20 21 30 / 0.88);
+  --capsule-border: rgb(255 255 255 / 0.08);
+  --capsule-shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 6px 20px -10px rgb(0 0 0 / 0.7);
+  --capsule-shadow-scrolled: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -14px rgb(0 0 0 / 0.85);
+  --panel-surface: #14151e;
+  --scrim: rgb(0 0 0 / 0.65);
 
   /* Liquid Glass Button Tokens (Dark Mode) */
-  --btn-glass-primary-bg: #f4f4f7;
-  --btn-glass-primary-fg: #0a0a0f;
+  --btn-glass-primary-bg: #faf7f2;
+  --btn-glass-primary-fg: #0c0d12;
   --btn-glass-primary-border: rgba(255, 255, 255, 0.45);
   --btn-glass-primary-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.12);
   --btn-glass-primary-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 18px -3px rgba(0, 0, 0, 0.55);
   --btn-glass-primary-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 24px -4px rgba(0, 0, 0, 0.65);
   --btn-glass-primary-shadow-active: 0 1px 2px rgba(0, 0, 0, 0.45), inset 0 1px 2px rgba(0, 0, 0, 0.2);
 
-  --btn-glass-secondary-bg: rgba(26, 26, 36, 0.82);
-  --btn-glass-secondary-fg: #f5f5f5;
-  --btn-glass-secondary-border: rgba(255, 255, 255, 0.14);
+  --btn-glass-secondary-bg: rgba(28, 29, 39, 0.85);
+  --btn-glass-secondary-fg: #faf7f2;
+  --btn-glass-secondary-border: rgba(255, 255, 255, 0.12);
   --btn-glass-secondary-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.16), inset 0 -1px 0 0 rgba(0, 0, 0, 0.25);
   --btn-glass-secondary-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 14px -2px rgba(0, 0, 0, 0.45);
   --btn-glass-secondary-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 8px 18px -2px rgba(0, 0, 0, 0.55);
   --btn-glass-secondary-shadow-active: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.3);
 
-  --btn-glass-accent-bg: #d4af37;
-  --btn-glass-accent-fg: #0a0a0f;
+  --btn-glass-accent-bg: #d99b26;
+  --btn-glass-accent-fg: #0c0d12;
   --btn-glass-accent-border: rgba(255, 255, 255, 0.4);
   --btn-glass-accent-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.7), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.2);
-  --btn-glass-accent-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 18px -3px rgba(212, 175, 55, 0.35);
-  --btn-glass-accent-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 24px -3px rgba(212, 175, 55, 0.45);
+  --btn-glass-accent-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 18px -3px rgba(217, 155, 38, 0.35);
+  --btn-glass-accent-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 10px 24px -3px rgba(217, 155, 38, 0.45);
 }
 
 .light {
   color-scheme: light;
 
-  --bg: #ffffff;
-  --bg-subtle: #f7f7f8;
+  /* Surfaces: Warm linen ivory cream matching brand asset media_1791200947721.png */
+  --bg: #faf7f2;
+  --bg-subtle: #f3ede2;
   --surface: #ffffff;
-  --surface-raised: #f5f5f6;
-  --surface-hover: #eeeef0;
+  --surface-raised: #f7f2ea;
+  --surface-hover: #eee7dc;
 
-  --border: #e3e3e7;
-  --border-strong: #cdcdd4;
+  --border: #e4ddd0;
+  --border-strong: #cfc5b4;
 
-  --fg: #15151c;
-  --fg-muted: #55555f;
-  --fg-subtle: #74748a;
+  /* Text: Obsidian pitch black matching brand asset typography */
+  --fg: #111215;
+  --fg-muted: #5e5b54;
+  --fg-subtle: #89857c;
 
-  /* Gold is lowered in light mode so that gold-on-white text clears AA. */
-  --primary: #8a6d12;
-  --primary-hover: #745c0f;
+  /* Gold matching the brand mark square period on light canvas */
+  --primary: #b87e14;
+  --primary-hover: #a36e0f;
   --primary-fg: #ffffff;
-  --primary-soft: rgb(138 109 18 / 0.1);
-  --primary-ring: rgb(138 109 18 / 0.4);
+  --primary-soft: rgb(184 126 20 / 0.12);
+  --primary-ring: rgb(184 126 20 / 0.4);
 
   --secondary: #334155;
   --secondary-fg: #ffffff;
@@ -131,9 +131,9 @@
   --success-fg: #07603f;
   --success-soft: rgb(10 125 86 / 0.1);
 
-  --warning: #8a6300;
-  --warning-fg: #6d4e00;
-  --warning-soft: rgb(138 99 0 / 0.1);
+  --warning: #b87e14;
+  --warning-fg: #8a6300;
+  --warning-soft: rgb(184 126 20 / 0.1);
 
   --danger: #b42318;
   --danger-fg: #94170e;

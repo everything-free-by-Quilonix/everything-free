@@ -20,21 +20,21 @@ const TOP_STUDENT_BRANDS: FeaturedStudentBrand[] = [
 
 export function StudentBanner() {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-surface/80 to-primary/10 p-6 sm:p-8 lg:p-10 backdrop-blur-xl shadow-xl">
-      {/* Specular ambient top glow */}
-      <div className="pointer-events-none absolute -top-24 right-1/4 h-64 w-96 rounded-full bg-emerald-500/15 blur-3xl" />
+    <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/10 via-surface/85 to-surface-raised/80 p-6 sm:p-8 lg:p-10 backdrop-blur-xl shadow-xl">
+      {/* Specular ambient top glow matching brand warm gold */}
+      <div className="pointer-events-none absolute -top-24 right-1/4 h-64 w-96 rounded-full bg-primary/15 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 left-10 h-64 w-80 rounded-full bg-primary/10 blur-3xl" />
 
       <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
         {/* Left Column: Value Proposition */}
         <div className="lg:col-span-7">
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/15 px-3.5 py-1 text-xs font-semibold text-primary">
             <Icon name="graduation-cap" size={14} />
-            <span>CampusKey · College & Student Perks</span>
+            <span>CampusKey · College & Student Directory</span>
           </div>
 
           <h3 className="mt-3.5 font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl lg:text-4xl leading-tight">
-            Claim Over <span className="text-emerald-500 dark:text-emerald-400">$10,000+</span> in Free Pro Software.
+            Claim Over <span className="text-primary">$10,000+</span> in Free Pro Software.
           </h3>
 
           <p className="mt-3 text-sm leading-relaxed text-fg-muted sm:text-base">
@@ -44,7 +44,7 @@ export function StudentBanner() {
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link
               href="/students"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-xs font-semibold text-white shadow-md transition-all hover:bg-emerald-500 hover:scale-105 hover:shadow-lg dark:bg-emerald-500 dark:text-black dark:hover:bg-emerald-400"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs font-bold text-primary-fg shadow-md transition-all hover:bg-primary-hover hover:scale-105 hover:shadow-lg"
             >
               <span>Explore 90+ Student Perks</span>
               <Icon name="arrow-right" size={14} />
