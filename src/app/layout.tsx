@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 
+import { Suspense } from "react";
+import { RouteProgress } from "@/components/layout/route-progress";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader, SkipLink } from "@/components/layout/site-header";
 import { ThemeScript } from "@/components/layout/theme";
@@ -79,6 +81,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeScript />
       </head>
       <body className="flex min-h-dvh flex-col">
+        <Suspense fallback={null}>
+          <RouteProgress />
+        </Suspense>
         <SkipLink />
         <SiteHeader />
         {/* `tabIndex={-1}` makes the skip link's target programmatically focusable. */}

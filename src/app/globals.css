@@ -593,3 +593,34 @@
 @utility animate-beam-travel {
   animation: beam-travel 3.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* Shimmer wave animation for luxury skeleton screens */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@utility animate-shimmer {
+  animation: shimmer 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Route buffer progress indeterminate bar */
+@keyframes buffer-indeterminate {
+  0% {
+    transform: translateX(-100%) scaleX(0.2);
+  }
+  50% {
+    transform: translateX(30%) scaleX(0.7);
+  }
+  100% {
+    transform: translateX(200%) scaleX(0.2);
+  }
+}
+
+@utility animate-buffer {
+  animation: buffer-indeterminate 1.4s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
