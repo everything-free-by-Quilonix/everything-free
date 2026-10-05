@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { Icon } from "@/components/icons";
 import { Container } from "@/components/ui/layout";
 import { primaryNav } from "@/config/navigation";
+import { site } from "@/config/site";
 import { cn } from "@/lib/utils/cn";
 import { Brand } from "./brand";
 import { ThemeToggle } from "./theme";
@@ -217,19 +218,21 @@ export function MobileNav() {
           <div className="mx-4 h-px shrink-0 bg-border" aria-hidden="true" />
 
           <div className="flex flex-col gap-1 p-2">
-            <Link
-              href="/submit"
+            <a
+              href={site.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={close}
-              className="group flex h-12 items-center justify-between rounded-2xl bg-primary px-4 text-sm font-medium text-primary-fg transition-colors duration-(--duration-hover) hover:bg-primary-hover"
+              className="group flex h-12 items-center justify-between rounded-2xl bg-primary px-4 text-sm font-semibold text-primary-fg transition-colors duration-(--duration-hover) hover:bg-primary-hover"
             >
-              Submit a resource
+              Submit on GitHub
               <Icon
-                name="arrow-right"
+                name="arrow-up-right"
                 size={16}
                 strokeWidth={2}
                 className="transition-transform duration-(--duration-hover) group-hover:translate-x-0.5"
               />
-            </Link>
+            </a>
             <ThemeToggle variant="row" />
           </div>
         </div>

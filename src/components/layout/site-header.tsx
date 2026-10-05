@@ -3,6 +3,7 @@ import { Icon } from "@/components/icons";
 import { buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
 import { primaryNav } from "@/config/navigation";
+import { site } from "@/config/site";
 import { Brand } from "./brand";
 import { HeaderScrollSentinel } from "./header-scroll";
 import { HeaderSearch } from "./header-search";
@@ -48,8 +49,10 @@ export function SiteHeader() {
 
               <span aria-hidden="true" className="mx-1.5 hidden h-5 w-px bg-border lg:block" />
 
-              <Link
-                href="/submit"
+              <a
+                href={site.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={buttonClasses({
                   variant: "accent",
                   size: "sm",
@@ -59,13 +62,13 @@ export function SiteHeader() {
               >
                 <span>Submit</span>
                 <Icon
-                  name="arrow-right"
+                  name="arrow-up-right"
                   size={14}
                   strokeWidth={2}
                   className="btn-icon-shift"
                   data-arrow="true"
                 />
-              </Link>
+              </a>
 
               <MobileNav />
             </div>

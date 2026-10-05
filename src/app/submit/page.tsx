@@ -1,9 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import { Icon } from "@/components/icons";
+import { buttonClasses } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { Card } from "@/components/ui/card";
 import { Container, PageHeader } from "@/components/ui/layout";
+import { site } from "@/config/site";
 import { SubmitResourceForm } from "@/features/community/components/submit-form";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -20,7 +23,19 @@ export default function SubmitPage() {
       <PageHeader
         title="Submit a resource"
         description="The library is built by the people who use it. Good submissions take a few minutes and save everyone else an hour."
-      />
+      >
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <a
+            href={site.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonClasses({ variant: "primary", size: "sm" })}
+          >
+            <span>Visit Everything.Free on GitHub</span>
+            <Icon name="arrow-up-right" size={14} />
+          </a>
+        </div>
+      </PageHeader>
 
       <Container className="pt-10">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">

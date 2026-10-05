@@ -274,9 +274,15 @@ export default async function HomePage() {
                 an honest account of the limitations — that last part is what makes the library worth trusting.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/submit" className={buttonClasses({ variant: "primary", size: "md" })}>
-                  Submit a resource
-                </Link>
+                <a
+                  href={site.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonClasses({ variant: "primary", size: "md" })}
+                >
+                  <span>Submit a resource</span>
+                  <Icon name="arrow-up-right" size={14} className="ml-1" />
+                </a>
                 <Link href="/report" className={buttonClasses({ variant: "secondary", size: "md" })}>
                   Report a problem
                 </Link>
