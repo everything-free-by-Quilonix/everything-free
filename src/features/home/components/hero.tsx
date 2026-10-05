@@ -33,120 +33,191 @@ export function Hero({
   marqueeResources?: readonly Resource[];
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-bg" aria-labelledby="hero-heading">
-      {/* Subtle structural grid background */}
-      <div className="hero-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
+    <section className="relative overflow-hidden border-b border-border/60 bg-bg" aria-labelledby="hero-heading">
+      {/* 01. Dynamic Apple-style Atmospheric Ambient Glow Mesh */}
+      <div
+        className="pointer-events-none absolute inset-x-0 -top-40 h-[600px] overflow-hidden opacity-45 dark:opacity-60"
+        aria-hidden="true"
+      >
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[480px] w-[800px] max-w-full rounded-full bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.18),rgba(99,102,241,0.12),transparent_70%)] blur-3xl" />
+        <div className="absolute left-1/3 top-20 h-[360px] w-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.12),transparent_70%)] blur-2xl" />
+      </div>
 
-      <Container className="relative pt-12 pb-14 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-22">
+      {/* Structural grid background with soft fade */}
+      <div className="hero-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" />
+
+      <Container className="relative pt-12 pb-16 sm:pt-20 sm:pb-22 lg:pt-24 lg:pb-24">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          {/* 01. Brand Eyebrow Label */}
-          <p className="font-mono text-[11px] font-semibold tracking-[0.24em] text-fg-subtle uppercase select-none">
-            EVERYTHING.FREE
-          </p>
+          {/* 02. Interactive Apple-style Announcement Capsule */}
+          <Link
+            href="/students"
+            className="group inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium text-fg backdrop-blur-md transition-all duration-300 hover:border-primary/60 hover:bg-primary/15 hover:shadow-[0_0_24px_rgba(212,175,55,0.22)]"
+          >
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+            </span>
+            <span className="font-semibold text-primary">New:</span>
+            <span className="text-fg-muted group-hover:text-fg transition-colors">
+              90+ Verified Student Perks ($10,000+ Value)
+            </span>
+            <Icon
+              name="arrow-right"
+              size={12}
+              className="text-primary transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </Link>
 
-          {/* 02. Primary Headline */}
+          {/* 03. Primary Headline with Apple Gradient Typography */}
           <h1
             id="hero-heading"
-            className="mt-4 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.06]"
+            className="mt-6 font-display text-4xl font-bold tracking-tight text-fg sm:text-6xl md:text-7xl lg:text-[4.5rem] leading-[1.05]"
           >
-            Find what&apos;s genuinely free.
+            Find what&apos;s{" "}
+            <span className="bg-gradient-to-r from-fg via-fg/95 to-primary bg-clip-text text-transparent">
+              genuinely free.
+            </span>
           </h1>
 
-          {/* 03. Supporting Description */}
-          <p className="mt-4 max-w-xl text-base text-fg-muted sm:text-lg sm:leading-relaxed">
-            Software, tools and resources &mdash; without the usual guesswork.
+          {/* 04. Supporting Description with Generous Breathing Room */}
+          <p className="mt-5 max-w-2xl text-base text-fg-muted sm:text-lg sm:leading-relaxed">
+            The open, evidence-backed directory of genuine free developer tools, creative suites, cloud tiers, student perks, and browser utilities &mdash; with zero trial traps.
           </p>
 
-          {/* 04. Prominent Search Control */}
+          {/* 05. Prominent Beam Search Bar */}
           <div className="mt-8 w-full max-w-2xl lg:max-w-[720px]">
             <SearchBox
               size="lg"
               variant="beam"
               label="Search software, tools, resources..."
-              placeholderText="Search software, tools, resources..."
+              placeholderText="Search software, tools, resources, or student perks..."
             />
 
-            {/* Quick search intent pills */}
-            <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5 text-xs text-fg-subtle">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-fg-subtle select-none">
-                Try:
+            {/* Quick Interactive Category Intent Pills */}
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5 text-xs">
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-fg-subtle select-none mr-0.5">
+                Quick:
               </span>
-              {searchExamples.slice(0, 3).map((query) => (
-                <Link
-                  key={query}
-                  href={`/resources/?q=${encodeURIComponent(query)}`}
-                  className="rounded-md border border-border/70 bg-surface/60 px-2 py-0.5 text-fg-muted transition-colors hover:border-border-strong hover:bg-surface-hover hover:text-fg"
-                >
-                  {query}
-                </Link>
-              ))}
-              {intentExamples.slice(1, 2).map((query) => (
-                <Link
-                  key={query}
-                  href={`/resources/?q=${encodeURIComponent(query)}`}
-                  className="hidden sm:inline-block rounded-md border border-border/70 bg-surface/60 px-2 py-0.5 text-fg-muted transition-colors hover:border-border-strong hover:bg-surface-hover hover:text-fg"
-                >
-                  “{query}”
-                </Link>
-              ))}
+              <Link
+                href="/students"
+                className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 transition-all hover:bg-emerald-500/20 hover:scale-105"
+              >
+                <Icon name="graduation-cap" size={12} />
+                Student Perks
+              </Link>
+              <Link
+                href="/categories/developer-tools"
+                className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-surface/70 px-2.5 py-1 text-xs font-medium text-fg-muted transition-all hover:border-border-strong hover:bg-surface-raised hover:text-fg hover:scale-105"
+              >
+                <Icon name="terminal" size={12} className="text-primary" />
+                Dev & Cloud
+              </Link>
+              <Link
+                href="/categories/creative-design"
+                className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-surface/70 px-2.5 py-1 text-xs font-medium text-fg-muted transition-all hover:border-border-strong hover:bg-surface-raised hover:text-fg hover:scale-105"
+              >
+                <Icon name="sliders" size={12} className="text-info" />
+                Design & 3D
+              </Link>
+              <Link
+                href="/categories/ai-productivity"
+                className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-surface/70 px-2.5 py-1 text-xs font-medium text-fg-muted transition-all hover:border-border-strong hover:bg-surface-raised hover:text-fg hover:scale-105"
+              >
+                <Icon name="cpu" size={12} className="text-warning" />
+                AI Models
+              </Link>
+              <Link
+                href="/tools"
+                className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-surface/70 px-2.5 py-1 text-xs font-medium text-fg-muted transition-all hover:border-border-strong hover:bg-surface-raised hover:text-fg hover:scale-105"
+              >
+                <Icon name="terminal" size={12} className="text-fg-subtle" />
+                Local Tools
+              </Link>
             </div>
           </div>
 
-          {/* 05. Primary & Secondary Actions */}
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+          {/* 06. Action Buttons */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/resources"
               className={buttonClasses({ variant: "primary", size: "lg", shape: "pill" })}
             >
-              <span>Explore resources</span>
+              <span>Explore all resources</span>
               <Icon name="arrow-right" size={16} data-arrow="true" className="btn-icon-shift" />
             </Link>
             <Link
-              href="/tools"
+              href="/students"
               className={buttonClasses({ variant: "secondary", size: "lg", shape: "pill" })}
             >
-              <Icon name="terminal" size={15} className="text-fg-subtle" />
-              <span>Explore tools</span>
+              <Icon name="graduation-cap" size={16} className="text-emerald-500" />
+              <span>Student Directory</span>
+            </Link>
+            <Link
+              href="/tools"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-surface/50 px-4 py-2 text-sm font-medium text-fg-muted backdrop-blur-xs transition-colors hover:border-border-strong hover:bg-surface-raised hover:text-fg"
+            >
+              <Icon name="terminal" size={14} className="text-fg-subtle" />
+              <span>Browser tools</span>
             </Link>
           </div>
 
-          {/* 06. Trust / Statistics Row */}
-          <div className="mt-12 w-full max-w-xl border-t border-border/70 pt-8">
-            <div className="grid grid-cols-3 divide-x divide-border/80 text-center">
-              <div className="px-2 sm:px-6">
-                <div className="font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-                  {formatCount(resourceCount)}
+          {/* 07. Apple Glass Metric Tiles (Replacing the flat divide line) */}
+          <div className="mt-12 w-full max-w-3xl">
+            <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-3">
+              {/* Metric 1 */}
+              <div className="group relative overflow-hidden rounded-2xl border border-border/60 bg-surface/60 dark:bg-surface/30 p-4.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg text-left">
+                <div className="flex items-center justify-between">
+                  <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-fg">
+                    {formatCount(resourceCount)}+
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-500">
+                    <span className="size-1.5 rounded-full bg-emerald-500" />
+                    Verified
+                  </span>
                 </div>
-                <div className="mt-1 font-mono text-[10px] font-semibold tracking-[0.16em] text-fg-subtle uppercase sm:text-[11px]">
-                  Resources
-                </div>
+                <h3 className="mt-1 font-display text-sm font-semibold text-fg">Free Software Catalogue</h3>
+                <p className="mt-0.5 text-xs text-fg-subtle">
+                  Curated across 8 categories with 0 trial surprises.
+                </p>
               </div>
-              <div className="px-2 sm:px-6">
-                <div className="font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-                  {formatCount(verifiedCount)}
+
+              {/* Metric 2 */}
+              <div className="group relative overflow-hidden rounded-2xl border border-border/60 bg-surface/60 dark:bg-surface/30 p-4.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg text-left">
+                <div className="flex items-center justify-between">
+                  <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-emerald-500">
+                    $10,000+
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-500">
+                    CampusKey
+                  </span>
                 </div>
-                <div className="mt-1 font-mono text-[10px] font-semibold tracking-[0.16em] text-fg-subtle uppercase sm:text-[11px]">
-                  Verified
-                </div>
+                <h3 className="mt-1 font-display text-sm font-semibold text-fg">Free for Students</h3>
+                <p className="mt-0.5 text-xs text-fg-subtle">
+                  GitHub Pack, Azure, JetBrains, Figma & AWS.
+                </p>
               </div>
-              <div className="px-2 sm:px-6">
-                <div className="font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-                  {formatCount(toolCount)}
+
+              {/* Metric 3 */}
+              <div className="group relative overflow-hidden rounded-2xl border border-border/60 bg-surface/60 dark:bg-surface/30 p-4.5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg text-left">
+                <div className="flex items-center justify-between">
+                  <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-fg">
+                    $0 / No Card
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-medium text-primary">
+                    100% Free
+                  </span>
                 </div>
-                <div className="mt-1 font-mono text-[10px] font-semibold tracking-[0.16em] text-fg-subtle uppercase sm:text-[11px]">
-                  Local Tools
-                </div>
+                <h3 className="mt-1 font-display text-sm font-semibold text-fg">Zero Paywalls</h3>
+                <p className="mt-0.5 text-xs text-fg-subtle">
+                  Clear free-tier limits stated upfront on every card.
+                </p>
               </div>
             </div>
-
-            <p className="mt-4 text-center text-xs text-fg-subtle">
-              Every listing states its free tier limits, account rules, and official verification facts plainly.
-            </p>
           </div>
         </div>
       </Container>
 
-      {/* 07. Resource Marquee Strip */}
+      {/* 08. Resource Marquee Strip */}
       <ResourceMarquee resources={marqueeResources} />
     </section>
   );

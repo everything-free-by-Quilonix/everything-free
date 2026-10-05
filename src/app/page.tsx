@@ -12,10 +12,12 @@ import { site } from "@/config/site";
 import { availableTools, tools } from "@/config/tools";
 import { CategoryGroupCard } from "@/features/categories/components/category-cards";
 import { CollectionCard } from "@/features/collections/components/collection-card";
+import { DynamicShowcase } from "@/features/home/components/dynamic-showcase";
 import { Hero } from "@/features/home/components/hero";
-import { ResourceGrid } from "@/features/resources/components/resource-card";
+import { StudentBanner } from "@/features/home/components/student-banner";
 import { ToolCard } from "@/features/tools/components/tool-card";
 import {
+  getAllResourcesForClient,
   getAlternativeTargets,
   getCollections,
   getMarqueeResources,
@@ -33,11 +35,10 @@ export const metadata: Metadata = buildMetadata({
 });
 
 /**
- * Homepage.
+ * Apple-Level Editorial Homepage.
  *
- * Every section reads from the repository and handles an empty result honestly.
- * None of them are padded with invented entries to look fuller — if a section has
- * nothing to show, it says what would fill it and how to contribute.
+ * Combines atmospheric keynote lighting, dynamic interactive category switching,
+ * verified student perks showcase, and clean Apple-level minimalist card previews.
  */
 export default async function HomePage() {
   const [
@@ -46,6 +47,7 @@ export default async function HomePage() {
     marqueeResources,
     spotlight,
     recentlyVerified,
+    allResources,
     collections,
     alternativeTargets,
   ] = await Promise.all([
@@ -54,14 +56,54 @@ export default async function HomePage() {
     getMarqueeResources(14),
     getSpotlightResources(6),
     getRecentlyVerified(6),
+    getAllResourcesForClient(),
     getCollections(),
     getAlternativeTargets(),
   ]);
+
+  // Curate top resources for dynamic live tabs
+  const studentResources = allResources
+    .filter((r) => r.category === "students" || r.tags.includes("students"))
+    .slice(0, 6);
+
+  const developerResources = allResources
+    .filter(
+      (r) =>
+        r.category === "developer-tools" ||
+        r.tags.includes("developer") ||
+        r.tags.includes("hosting") ||
+        r.tags.includes("database") ||
+        r.category === "databases",
+    )
+    .slice(0, 6);
+
+  const designResources = allResources
+    .filter(
+      (r) =>
+        r.category === "3d" ||
+        r.category === "vector" ||
+        r.category === "raster" ||
+        r.tags.includes("design") ||
+        r.tags.includes("creative") ||
+        r.tags.includes("video"),
+    )
+    .slice(0, 6);
+
+  const aiResources = allResources
+    .filter(
+      (r) =>
+        r.tags.includes("ai") ||
+        r.tags.includes("llm") ||
+        r.tags.includes("machine-learning") ||
+        r.category === "productivity",
+    )
+    .slice(0, 6);
 
   const topAlternatives = alternativeTargets.slice(0, 10);
 
   return (
     <>
+      {/* 01. Apple-Level Hero with Atmospheric Lighting & Floating Glass Tiles */}
       <Hero
         resourceCount={resourceCount}
         verifiedCount={verifiedCount}
@@ -69,12 +111,29 @@ export default async function HomePage() {
         marqueeResources={marqueeResources}
       />
 
-      <Container>
-        {/* ---------------------------------------------------- categories */}
+      <Container className="space-y-16 sm:space-y-20 py-12 sm:py-16">
+        {/* 02. CampusKey Student Spotlight Bento Banner */}
+        <section aria-label="Student Perks Spotlight">
+          <StudentBanner />
+        </section>
+
+        {/* 03. Interactive Dynamic Category Showcase (Segmented Controls) */}
+        <section id="explore-showcase" aria-label="Interactive Resource Discovery">
+          <DynamicShowcase
+            spotlightResources={spotlight}
+            studentResources={studentResources}
+            developerResources={developerResources}
+            designResources={designResources}
+            aiResources={aiResources}
+            recentlyCheckedResources={recentlyVerified}
+          />
+        </section>
+
+        {/* 04. Browse by Category (Elevated Squircle Cards) */}
         <Section
           id="categories"
           title="Browse by category"
-          description="Eight areas covering everyday needs, study, creative work, AI, development, business, media and life."
+          description="Explore all eight curated domain areas covering developer tools, student perks, creative suites, AI, utilities, and daily essentials."
           action={<SectionLink href="/categories">All categories</SectionLink>}
         >
           <ul className="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -84,62 +143,6 @@ export default async function HomePage() {
               </li>
             ))}
           </ul>
-        </Section>
-
-        {/* ----------------------------------------------------- spotlight */}
-        <Section
-          id="spotlight"
-          // "Popular" would imply measured demand. No usage is tracked, so the
-          // heading says what this actually is: a selection.
-          title="A starting selection"
-          description={
-            <>
-              Chosen by the people maintaining this library as a place to start.{" "}
-              <span className="text-fg-subtle">
-                Everything.Free does not track usage, so this is not a ranking and nothing here is claimed to be the best
-                option.
-              </span>
-            </>
-          }
-          action={<SectionLink href="/resources">Browse everything</SectionLink>}
-        >
-          {spotlight.length > 0 ? (
-            <ResourceGrid resources={spotlight} label="Editorially selected resources" />
-          ) : (
-            <EmptyState
-              icon="library"
-              title="No resources have been selected yet"
-              description="Selections appear here once maintainers mark entries for the homepage."
-              action={
-                <Link href="/resources" className={buttonClasses({ variant: "secondary" })}>
-                  Browse the library
-                </Link>
-              }
-            />
-          )}
-        </Section>
-
-        {/* ---------------------------------------------- recently checked */}
-        <Section
-          id="recently-verified"
-          title="Recently checked"
-          description="Free plans change. These entries had facts checked against official sources most recently. The badge on each says how far that checking got."
-          action={<SectionLink href="/resources?sort=recently-verified">See all by date</SectionLink>}
-        >
-          {recentlyVerified.length > 0 ? (
-            <ResourceGrid resources={recentlyVerified} label="Recently checked resources" />
-          ) : (
-            <EmptyState
-              icon="shield-check"
-              title="Nothing has been checked yet"
-              description="Once contributors start confirming facts against official sources, the most recent checks will appear here."
-              action={
-                <Link href="/verification" className={buttonClasses({ variant: "secondary" })}>
-                  How verification works
-                </Link>
-              }
-            />
-          )}
         </Section>
 
         {/* --------------------------------------------------------- tools */}

@@ -13,45 +13,93 @@ import type { Category, CategoryGroup } from "@/types/category";
  * group heading is the stretched link and the inner links are raised above it with
  * `relative`. Both remain independently focusable and announced.
  */
+const GROUP_THEMES: Record<string, { iconBg: string; text: string; border: string }> = {
+  everyday: { iconBg: "bg-emerald-500/10", text: "text-emerald-500", border: "border-emerald-500/20" },
+  study: { iconBg: "bg-blue-500/10", text: "text-blue-500", border: "border-blue-500/20" },
+  work: { iconBg: "bg-amber-500/10", text: "text-amber-500", border: "border-amber-500/20" },
+  developer: { iconBg: "bg-indigo-500/10", text: "text-indigo-400", border: "border-indigo-500/20" },
+  creative: { iconBg: "bg-purple-500/10", text: "text-purple-400", border: "border-purple-500/20" },
+  business: { iconBg: "bg-sky-500/10", text: "text-sky-400", border: "border-sky-500/20" },
+  media: { iconBg: "bg-orange-500/10", text: "text-orange-400", border: "border-orange-500/20" },
+  life: { iconBg: "bg-teal-500/10", text: "text-teal-400", border: "border-teal-500/20" },
+};
+
 export function CategoryGroupCard({ group, previewCount = 5 }: { group: CategoryGroup; previewCount?: number }) {
   const categories = getCategoriesInGroup(group.id);
   const preview = categories.slice(0, previewCount);
   const remaining = categories.length - preview.length;
+  const theme = GROUP_THEMES[group.id] ?? {
+    iconBg: "bg-primary/10",
+    text: "text-primary",
+    border: "border-primary/20",
+  };
 
   return (
-    <Card as="article" interactive className="flex h-full flex-col p-5">
-      <div className="flex items-center gap-3">
-        <span
-          aria-hidden="true"
-          className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-raised text-fg-muted"
-        >
-          <Icon name={group.icon} size={19} />
-        </span>
-        <h3 className="font-display text-base font-semibold">
-          <Link href={`/categories#${group.id}`} className={cn("rounded", stretchedLink)}>
-            {group.name}
-          </Link>
-        </h3>
+    <article
+      className={cn(
+        "group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl",
+        "border border-border/60 bg-surface/75 dark:bg-surface/35 p-5 backdrop-blur-md",
+        "transition-all duration-300 ease-out",
+        "hover:-translate-y-1 hover:border-primary/40 hover:bg-surface-raised/90",
+        "hover:shadow-[0_16px_36px_-10px_rgba(0,0,0,0.12)]",
+        "dark:hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7)]",
+      )}
+    >
+      <div>
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className={cn(
+                "flex size-11 shrink-0 items-center justify-center rounded-xl border shadow-2xs transition-transform duration-300 group-hover:scale-105",
+                theme.iconBg,
+                theme.text,
+                theme.border,
+              )}
+            >
+              <Icon name={group.icon} size={20} />
+            </span>
+            <div>
+              <h3 className="font-display text-base font-semibold leading-snug tracking-tight text-fg transition-colors group-hover:text-primary">
+                <Link href={`/categories#${group.id}`} className={cn("rounded outline-none", stretchedLink)}>
+                  {group.name}
+                </Link>
+              </h3>
+              <p className="text-[11px] font-medium text-fg-subtle">
+                {categories.length} categories
+              </p>
+            </div>
+          </div>
+
+          <div
+            aria-hidden="true"
+            className="flex size-7 shrink-0 items-center justify-center rounded-full text-fg-subtle/40 transition-all duration-300 group-hover:bg-primary/10 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          >
+            <Icon name="arrow-up-right" size={13} />
+          </div>
+        </div>
+
+        <p className="mt-3 text-xs leading-relaxed text-fg-muted">{group.description}</p>
       </div>
 
-      <p className="mt-3 text-sm text-fg-muted">{group.description}</p>
-
-      <ul className="relative mt-4 flex flex-wrap gap-1.5">
+      <ul className="relative mt-4 flex flex-wrap gap-1.5 pt-2">
         {preview.map((category) => (
           <li key={category.id}>
             <Link
               href={`/categories/${category.slug}`}
-              className="inline-block rounded-md border border-border bg-bg-subtle px-2 py-1 text-xs text-fg-muted transition-colors hover:border-border-strong hover:text-fg"
+              className="inline-block rounded-md border border-border/50 bg-bg-subtle/80 px-2 py-0.5 text-[11px] font-medium text-fg-muted transition-colors hover:border-primary/40 hover:text-fg"
             >
               {category.name}
             </Link>
           </li>
         ))}
         {remaining > 0 ? (
-          <li className="inline-flex items-center px-1 text-xs text-fg-subtle">+{remaining} more</li>
+          <li className="inline-flex items-center px-1 text-[11px] font-medium text-fg-subtle">
+            +{remaining} more
+          </li>
         ) : null}
       </ul>
-    </Card>
+    </article>
   );
 }
 
