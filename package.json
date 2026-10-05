@@ -14,6 +14,7 @@
     "verify": "npm run lint && npm run typecheck && npm test && npm run build",
     "verify:static": "npm run lint && npm run typecheck && npm test && npm run build:static",
     "test:browser": "node scripts/browser-smoke.mjs",
+    "sync:tools": "node scripts/sync-tools-catalog.mjs",
     "check:links": "node .github/scripts/check-links.mjs out/link-manifest.json --triage .github/link-triage.json",
     "check:verification": "node .github/scripts/check-verification-freshness.mjs out/link-manifest.json",
     "backlog": "node scripts/verification-backlog.mjs out/link-manifest.json --write docs/verification-backlog.md",

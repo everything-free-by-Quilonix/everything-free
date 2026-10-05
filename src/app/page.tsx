@@ -9,13 +9,14 @@ import { Container, Section, SectionLink } from "@/components/ui/layout";
 import { audiences } from "@/config/audiences";
 import { categoryGroups } from "@/config/categories";
 import { site } from "@/config/site";
-import { availableTools, tools } from "@/config/tools";
+import { availableTools } from "@/config/tools";
 import { CategoryGroupCard } from "@/features/categories/components/category-cards";
 import { CollectionCard } from "@/features/collections/components/collection-card";
 import { DynamicShowcase } from "@/features/home/components/dynamic-showcase";
 import { Hero } from "@/features/home/components/hero";
 import { StudentBanner } from "@/features/home/components/student-banner";
-import { ToolCard } from "@/features/tools/components/tool-card";
+import { featuredToolsSiteTools, toolsSite } from "@/config/tools-site";
+import { ToolsSiteCard } from "@/features/tools/components/tools-site";
 import {
   getAllResourcesForClient,
   getAlternativeTargets,
@@ -107,7 +108,7 @@ export default async function HomePage() {
       <Hero
         resourceCount={resourceCount}
         verifiedCount={verifiedCount}
-        toolCount={availableTools.length}
+        toolCount={availableTools.length + toolsSite.tools.length}
         marqueeResources={marqueeResources}
       />
 
@@ -148,15 +149,15 @@ export default async function HomePage() {
         {/* --------------------------------------------------------- tools */}
         <Section
           id="tools"
-          title="Free tools you can use here"
-          description="Small, focused jobs that run entirely in your browser. Your files are not uploaded."
+          title="Free tools you can use now"
+          description={`${toolsSite.tools.length + availableTools.length} browser tools for everyday jobs. Your files are not uploaded.`}
           action={<SectionLink href="/tools">All tools</SectionLink>}
         >
-          {tools.length > 0 ? (
-            <ul className="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {tools.slice(0, 4).map((tool) => (
+          {toolsSite.tools.length > 0 ? (
+            <ul className="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {featuredToolsSiteTools(6).map((tool) => (
                 <li key={tool.slug} className="flex">
-                  <ToolCard tool={tool} />
+                  <ToolsSiteCard tool={tool} />
                 </li>
               ))}
             </ul>

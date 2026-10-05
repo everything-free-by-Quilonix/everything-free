@@ -57,7 +57,27 @@ export const metadata: Metadata = {
     locale: "en",
     url: siteUrl,
   },
+  icons: {
+    icon: [
+      { url: "/brand/logo-dark.png", media: "(prefers-color-scheme: dark)" },
+      { url: "/brand/logo-light.png", media: "(prefers-color-scheme: light)" },
+      { url: "/favicon.ico" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
+    shortcut: "/favicon.ico",
+  },
   twitter: { card: "summary_large_image" },
+  // Search Console / Bing Webmaster Tools ownership tokens. Optional and public by
+  // design (they are printed in the page); unset means no tag is emitted. Bing
+  // matters beyond Bing: ChatGPT search and Copilot draw on its index.
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }
+      : {}),
+  },
 };
 
 export const viewport: Viewport = {

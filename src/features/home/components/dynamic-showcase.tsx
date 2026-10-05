@@ -44,7 +44,7 @@ const TABS: ShowcaseTab[] = [
     shortLabel: "Developer",
     icon: "terminal",
     description: "Generous free cloud tiers, databases, dev environments, and command-line toolchains.",
-    viewAllHref: "/categories/developer-tools",
+    viewAllHref: "/categories/developer-utilities",
     viewAllLabel: "Explore developer tools",
   },
   {
@@ -53,7 +53,7 @@ const TABS: ShowcaseTab[] = [
     shortLabel: "Design",
     icon: "palette",
     description: "World-class 3D modeling, vector editors, and creative suites with zero subscriptions.",
-    viewAllHref: "/categories/creative-design",
+    viewAllHref: "/categories/design",
     viewAllLabel: "Explore creative & design tools",
   },
   {

@@ -42,7 +42,7 @@ export function renderOgImage({ title, subtitle }: { title: string; subtitle?: s
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#0a0a0f",
+          background: "#0c0d12",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
@@ -55,18 +55,40 @@ export function renderOgImage({ title, subtitle }: { title: string; subtitle?: s
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "#d4af37",
-              borderRadius: 14,
-              color: "#0a0a0f",
-              fontSize: 26,
-              fontWeight: 700,
+              background: "#15161f",
+              border: "1px solid rgba(255, 255, 255, 0.12)",
+              borderRadius: 16,
+              color: "#faf7f2",
+              fontSize: 32,
+              fontWeight: 800,
+              position: "relative",
             }}
           >
-            EF
+            e
+            <div
+              style={{
+                width: 7,
+                height: 7,
+                background: "#d99b26",
+                borderRadius: 1.5,
+                marginLeft: 2,
+                marginTop: 8,
+              }}
+            />
           </div>
-          <div style={{ display: "flex", fontSize: 28, color: "#f5f5f5", fontWeight: 600 }}>
+          <div style={{ display: "flex", alignItems: "center", fontSize: 28, color: "#faf7f2", fontWeight: 700 }}>
             Everything
-            <span style={{ color: "#d4af37" }}>.</span>
+            <div
+              style={{
+                width: 7,
+                height: 7,
+                background: "#d99b26",
+                borderRadius: 1.5,
+                marginLeft: 4,
+                marginRight: 4,
+                alignSelf: "center",
+              }}
+            />
             Free
           </div>
         </div>

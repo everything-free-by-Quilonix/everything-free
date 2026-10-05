@@ -103,14 +103,14 @@ export function Hero({
                 Student Perks
               </Link>
               <Link
-                href="/categories/developer-tools"
+                href="/categories/developer-utilities"
                 className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-surface/70 px-2.5 py-1 text-xs font-medium text-fg-muted transition-all hover:border-border-strong hover:bg-surface-raised hover:text-fg hover:scale-105"
               >
                 <Icon name="terminal" size={12} className="text-primary" />
                 Dev & Cloud
               </Link>
               <Link
-                href="/categories/creative-design"
+                href="/categories/design"
                 className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-surface/70 px-2.5 py-1 text-xs font-medium text-fg-muted transition-all hover:border-border-strong hover:bg-surface-raised hover:text-fg hover:scale-105"
               >
                 <Icon name="sliders" size={12} className="text-info" />
