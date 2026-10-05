@@ -21,7 +21,24 @@ export const DEFAULT_SITE_URL = "https://everything-free-by-quilonix.github.io/e
 
 function readSiteUrl(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  return (raw && raw.length > 0 ? raw : DEFAULT_SITE_URL).replace(/\/+$/, "");
+  if (raw && raw.length > 0) {
+    return raw.replace(/\/+$/, "");
+  }
+
+  // When deployed on Vercel, serve from the root domain:
+  if (process.env.VERCEL === "1" || process.env.NEXT_PUBLIC_VERCEL_URL || process.env.VERCEL_URL) {
+    const host =
+      process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ||
+      process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+      process.env.NEXT_PUBLIC_VERCEL_URL ||
+      process.env.VERCEL_URL;
+    if (host) {
+      return `https://${host.replace(/^https?:\/\//, "").replace(/\/+$/, "")}`;
+    }
+    return "https://everything-free.vercel.app";
+  }
+
+  return DEFAULT_SITE_URL.replace(/\/+$/, "");
 }
 
 /** Public URL of the site, with no trailing slash. */
