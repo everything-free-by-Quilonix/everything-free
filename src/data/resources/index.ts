@@ -13,6 +13,7 @@ import { developmentResources } from "./development";
 import { educationResources } from "./education";
 import { lifeResources } from "./life";
 import { productivityResources } from "./productivity";
+import { studentResources } from "./students";
 import { findDataProblems } from "./validate";
 
 /**
@@ -26,6 +27,7 @@ const allSeedResources: Resource[] = [
   ...creativeResources,
   ...developmentResources,
   ...educationResources,
+  ...studentResources,
   ...aiResources,
   ...productivityResources,
   ...lifeResources,

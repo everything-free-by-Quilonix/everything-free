@@ -82,6 +82,13 @@ export const categories: Category[] = [
 
   /* -------------------------------------------------------------- education */
   {
+    id: "students",
+    slug: "students",
+    name: "Student perks & software",
+    description: "Verified student developer packs, free cloud credits, pro licenses and educational discounts you can claim.",
+    groups: ["education"],
+  },
+  {
     id: "courses",
     slug: "courses",
     name: "Courses",
@@ -560,6 +567,7 @@ export const categoryGroups: CategoryGroup[] = [
     description: "Learning something, or teaching it.",
     icon: "graduation-cap",
     categoryIds: [
+      "students",
       "courses",
       "learning",
       "study-tools",

@@ -6,7 +6,7 @@ import { effectiveVerification, headlineLimitation, platformLabels } from "@/lib
 import { cn } from "@/lib/utils/cn";
 import type { Resource } from "@/types/resource";
 import { ResourceLogo } from "./resource-logo";
-import { FreeStatusBadge, LastVerified } from "./status-badges";
+import { FreeStatusBadge } from "./status-badges";
 
 /**
  * The resource card.

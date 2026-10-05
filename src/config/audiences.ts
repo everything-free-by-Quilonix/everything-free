@@ -15,7 +15,7 @@ export const audiences: Audience[] = [
     name: "For students",
     description: "Courses, study tools, research and writing help that do not need a budget.",
     icon: "graduation-cap",
-    categoryIds: ["courses", "learning", "study-tools", "research", "books", "exams", "mathematics", "languages"],
+    categoryIds: ["students", "courses", "learning", "study-tools", "research", "books", "exams", "mathematics", "languages"],
     tags: ["students", "education"],
   },
   {

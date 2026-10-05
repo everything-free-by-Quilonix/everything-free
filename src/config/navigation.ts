@@ -25,6 +25,12 @@ export const primaryNav: NavLink[] = [
     icon: "layers",
   },
   {
+    label: "Students",
+    href: "/students",
+    description: "Free student software, developer packs and campus perks.",
+    icon: "graduation-cap",
+  },
+  {
     label: "Tools",
     href: "/tools",
     description: "Tools you can use here, without uploading your files.",
