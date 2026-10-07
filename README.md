@@ -250,8 +250,12 @@ npm run check:links          # external link health (paced, honours robots.txt, 
 | Variable | Purpose | Default |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Public URL of the site. Sets canonicals, the sitemap, OpenGraph URLs **and the base path** the build is served under | `https://everything-free-by-quilonix.github.io/everything-free` |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Google Search Console ownership token (optional; public by design) | unset |
+| `NEXT_PUBLIC_BING_SITE_VERIFICATION` | Bing Webmaster Tools ownership token (optional; Bing's index also feeds ChatGPT search and Copilot) | unset |
 
-No other configuration, no database and no API keys are required.
+The build also writes [`/llms.txt`](https://llmstxt.org) and `/llms-full.txt`: a Markdown digest of the library, with every fact's evidence state, for AI assistants.
+
+No API keys or database are required.
 
 ---
 

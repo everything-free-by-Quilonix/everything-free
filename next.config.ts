@@ -30,6 +30,39 @@ const nextConfig: NextConfig = {
    */
   basePath,
 
+  /*
+   * When on GitHub Pages with a basePath, redirect '/' to basePath in dev mode.
+   * When on a root domain (like Vercel), redirect legacy '/everything-free' paths to root.
+   */
+  ...(!isStaticExport
+    ? {
+        async redirects() {
+          if (basePath) {
+            return [
+              {
+                source: "/",
+                destination: `${basePath}/`,
+                basePath: false,
+                permanent: false,
+              },
+            ];
+          }
+          return [
+            {
+              source: "/everything-free",
+              destination: "/",
+              permanent: false,
+            },
+            {
+              source: "/everything-free/:path*",
+              destination: "/:path*",
+              permanent: false,
+            },
+          ];
+        },
+      }
+    : {}),
+
   images: {
     /*
      * Image optimisation is a server feature, and on metered hosts it is billed per

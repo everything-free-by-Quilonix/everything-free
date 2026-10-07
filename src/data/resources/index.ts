@@ -7,11 +7,14 @@ import { batch003Resources } from "./batch-003";
 import { batch004Resources } from "./batch-004";
 import { batch005Resources } from "./batch-005";
 import { batch006Resources } from "./batch-006";
+import { batch007Resources } from "./batch-007";
+import { batch008Resources } from "./batch-008";
 import { creativeResources } from "./creative";
 import { developmentResources } from "./development";
 import { educationResources } from "./education";
 import { lifeResources } from "./life";
 import { productivityResources } from "./productivity";
+import { studentResources } from "./students";
 import { findDataProblems } from "./validate";
 
 /**
@@ -25,6 +28,7 @@ const allSeedResources: Resource[] = [
   ...creativeResources,
   ...developmentResources,
   ...educationResources,
+  ...studentResources,
   ...aiResources,
   ...productivityResources,
   ...lifeResources,
@@ -34,6 +38,8 @@ const allSeedResources: Resource[] = [
   ...batch004Resources,
   ...batch005Resources,
   ...batch006Resources,
+  ...batch007Resources,
+  ...batch008Resources,
 ];
 
 /**

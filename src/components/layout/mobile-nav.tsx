@@ -7,12 +7,13 @@ import { Icon } from "@/components/icons";
 import { buttonClasses } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { footerNav, primaryNav } from "@/config/navigation";
+import { site } from "@/config/site";
 import { cn } from "@/lib/utils/cn";
 
 /**
  * Mobile navigation, on the shared `Dialog` (`panel-right`).
  *
- * When to use: below `lg`, where the five text nav items do not fit the header.
+ * When to use: below `lg`, where the text nav items do not fit the header.
  * When not to use: on desktop; the header carries the same links inline.
  *
  * Keyboard: "Open menu" opens it with focus on the first control; Tab cycles
@@ -44,6 +45,7 @@ export function MobileNav() {
         className="inline-flex size-11 items-center justify-center rounded-sm text-fg-muted transition-colors hover:bg-surface-hover hover:text-fg active:bg-(--fill-pressed) lg:hidden"
         aria-label="Open menu"
         aria-expanded={open}
+        aria-haspopup="dialog"
       >
         <Icon name="menu" size={20} />
       </button>
@@ -108,13 +110,16 @@ export function MobileNav() {
         ) : null}
 
         <div className="mt-auto border-t border-rule p-4">
-          <Link
-            href="/submit"
+          <a
+            href={site.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={close}
-            className={buttonClasses({ variant: "secondary", size: "md", className: "w-full" })}
+            className={buttonClasses({ variant: "secondary", size: "md", className: "w-full flex items-center justify-center gap-1.5" })}
           >
-            Submit a resource
-          </Link>
+            <span>Submit on GitHub</span>
+            <Icon name="arrow-up-right" size={14} />
+          </a>
         </div>
       </Dialog>
     </>

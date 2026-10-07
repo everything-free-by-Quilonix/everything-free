@@ -176,7 +176,13 @@ export default async function ResourcePage({ params }: PageProps) {
           <Breadcrumbs items={crumbs} />
 
           <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start">
-            <ResourceLogo logo={resource.logo} size={56} className="sm:size-16" />
+            <ResourceLogo
+              logo={resource.logo}
+              officialUrl={resource.officialUrl}
+              name={resource.name}
+              size={56}
+              className="sm:size-16"
+            />
 
             <div className="min-w-0 flex-1">
               <p className="kicker tabular-nums">

@@ -53,10 +53,13 @@ export const metadata: Metadata = {
   creator: site.parent.name,
   publisher: site.parent.name,
   formatDetection: { telephone: false, address: false },
-  // No canonical here on purpose. A relative canonical is resolved against the
-  // origin, which drops the GitHub Pages base path; and anything set here is
-  // inherited by pages that forget their own, making them all claim to be the
-  // homepage. Every page sets an absolute canonical through `buildMetadata`.
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     siteName: site.name,
@@ -64,6 +67,14 @@ export const metadata: Metadata = {
     url: siteUrl,
   },
   twitter: { card: "summary_large_image" },
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }
+      : {}),
+  },
 };
 
 export const viewport: Viewport = {

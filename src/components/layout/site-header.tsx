@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
 import { primaryNav } from "@/config/navigation";
+import { site } from "@/config/site";
 import { PaletteTrigger } from "@/features/palette/palette-trigger";
 import { Brand } from "./brand";
 import { MobileNav } from "./mobile-nav";
@@ -34,12 +34,14 @@ export function SiteHeader() {
 
             <ThemeToggle />
 
-            <Link
-              href="/submit"
+            <a
+              href={site.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className={buttonClasses({ variant: "secondary", size: "sm", className: "hidden sm:inline-flex" })}
             >
               Submit
-            </Link>
+            </a>
 
             <MobileNav />
           </div>

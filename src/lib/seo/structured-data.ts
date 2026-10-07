@@ -24,8 +24,12 @@ export function organizationSchema(): JsonLd {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: site.name,
+    alternateName: ["Everything Free", site.legalName],
     url: siteUrl,
+    // Square, 1024×1024, self-hosted. Used by search engines for the knowledge panel.
+    logo: absoluteUrl("/brand/logo-dark.png"),
     description: site.description,
+    sameAs: [site.githubUrl, site.repositoryUrl],
     parentOrganization: {
       "@type": "Organization",
       name: site.parent.name,

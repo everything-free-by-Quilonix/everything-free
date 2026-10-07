@@ -45,6 +45,18 @@ export const getResourcesBySlugs = cache(async (slugs: readonly string[]): Promi
 
 export const getResourceCount = cache(async (): Promise<number> => source.count());
 
+/** Resources with confirmed verification checks or verified status. */
+export const getVerifiedResourceCount = cache(async (): Promise<number> => {
+  const all = await source.listAllForClient();
+  return all.filter(
+    (resource) =>
+      resource.verificationStatus === "VERIFIED" ||
+      resource.verificationStatus === "PARTIALLY_VERIFIED" ||
+      (resource.verificationChecks && resource.verificationChecks.length > 0) ||
+      Boolean(resource.lastVerifiedAt),
+  ).length;
+});
+
 export const getFacets = cache(async (query: ResourceQuery = {}): Promise<ResourceFacets> => source.facets(query));
 
 /* -------------------------------------------------------------------------- */
@@ -167,6 +179,43 @@ export const getSpotlightResources = cache(async (limit = 6): Promise<Resource[]
 export const getRecentlyVerified = cache(async (limit = 6): Promise<Resource[]> => {
   const results = await source.query({ sort: "recently-verified", perPage: limit });
   return results.items.map((match) => match.resource);
+});
+
+/**
+ * Prominent, recognizable library resources for the hero marquee strip.
+ *
+ * Reads real, existing resources from the library with verified marks.
+ */
+export const getMarqueeResources = cache(async (limit = 14): Promise<Resource[]> => {
+  const preferredSlugs = [
+    "github",
+    "blender",
+    "gimp",
+    "obsidian",
+    "vlc",
+    "vs-code",
+    "supabase",
+    "davinci-resolve",
+    "obs-studio",
+    "ollama",
+    "firefox",
+    "krita",
+    "handbrake",
+    "audacity",
+  ];
+  const items = await source.getManyBySlugs(preferredSlugs);
+  if (items.length >= limit) return items.slice(0, limit);
+
+  const spotlight = await getSpotlightResources(limit);
+  const seen = new Set(items.map((r) => r.slug));
+  for (const resource of spotlight) {
+    if (items.length >= limit) break;
+    if (!seen.has(resource.slug)) {
+      seen.add(resource.slug);
+      items.push(resource);
+    }
+  }
+  return items.slice(0, limit);
 });
 
 /* -------------------------------------------------------------------------- */
