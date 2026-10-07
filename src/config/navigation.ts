@@ -70,6 +70,8 @@ export const footerNav: FooterSection[] = [
     title: "Use",
     links: [
       { label: "Tools", href: "/tools" },
+      { label: "Free-trial cancel reminder", href: "/tools/trial-reminder" },
+      { label: "Subscription audit", href: "/tools/subscription-audit" },
       // These open confirmed-only filters, and the labels say so.
       { label: "Open source (confirmed)", href: "/resources?openSource=1" },
       { label: "No account needed (confirmed)", href: "/resources?noAccount=1" },

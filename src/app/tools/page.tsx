@@ -4,13 +4,15 @@ import type { Metadata } from "next";
 import { Callout } from "@/components/ui/callout";
 import { Container, PageHeader } from "@/components/ui/layout";
 import { availableTools, getPopulatedToolGroups } from "@/config/tools";
+import { toolsSite, toolsSiteByCategory } from "@/config/tools-site";
 import { ToolCard } from "@/features/tools/components/tool-card";
+import { ToolsSiteCategoryList } from "@/features/tools/components/tools-site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
   title: "Tools you can use here",
   description:
-    "Small, focused tools that run entirely in your browser — image conversion, contrast checking and text utilities. Your files are never uploaded.",
+    "Small, focused tools that run entirely in your browser — free-trial reminders, a subscription audit, image conversion, contrast checking and text utilities. Nothing you enter is uploaded.",
   path: "/tools",
 });
 
@@ -51,6 +53,30 @@ export default function ToolsPage() {
                 </ul>
               </section>
             ))}
+
+            {toolsSite.tools.length > 0 ? (
+              <section aria-labelledby="tools-site-heading">
+                <h2 id="tools-site-heading" className="font-display text-lg font-semibold">
+                  More on Everything.Free Tools
+                </h2>
+                <p className="mt-1 text-sm text-fg-muted">
+                  <span className="tabular-nums">{toolsSite.tools.length}</span> more browser tools on our sister site,
+                  for developer, data, PDF, image, security and everyday jobs. Same rules: no account, and files stay on
+                  your device.{" "}
+                  <a href={toolsSite.url} className="link-inline">
+                    Open Everything.Free Tools
+                  </a>
+                </p>
+
+                <ul className="mt-4 grid list-none gap-4 sm:grid-cols-2">
+                  {toolsSiteByCategory().map(({ category, tools: categoryTools }) => (
+                    <li key={category.slug} className="flex">
+                      <ToolsSiteCategoryList category={category} tools={categoryTools} limit={categoryTools.length} />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
           </div>
 
           <aside className="flex flex-col gap-4 lg:sticky lg:top-24">
@@ -77,10 +103,10 @@ export default function ToolsPage() {
 
             <div className="rounded-sm border border-border bg-surface p-4">
               <p className="text-sm font-medium text-fg">
-                {availableTools.length} {availableTools.length === 1 ? "tool" : "tools"} available
+                <span className="tabular-nums">{availableTools.length + toolsSite.tools.length}</span> tools available
               </p>
               <p className="mt-1 text-xs text-fg-muted">
-                Entries marked <span className="text-fg">Planned</span> are on the roadmap and are not interactive yet.
+                {availableTools.length} on this site and {toolsSite.tools.length} on Everything.Free Tools.
               </p>
             </div>
           </aside>

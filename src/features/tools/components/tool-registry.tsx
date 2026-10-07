@@ -1,6 +1,9 @@
 import { ContrastChecker } from "../implementations/contrast-checker";
 import { ImageConverter } from "../implementations/image-converter";
+import { SubscriptionAudit } from "../implementations/subscription-audit";
 import { TextToolkit } from "../implementations/text-toolkit";
+import { TrialReminder } from "../implementations/trial-reminder";
+import type { AlternativeTarget } from "../logic/subscription-audit";
 
 /**
  * Renders the implementation for a tool slug.
@@ -16,8 +19,18 @@ import { TextToolkit } from "../implementations/text-toolkit";
  *
  * Returns `null` for any slug without an implementation, which is how entries
  * marked `status: "planned"` behave.
+ *
+ * `alternativeTargets` is read from the repository at build time by the page and
+ * only consumed by the subscription audit, which matches what the user types
+ * against the library's "free alternatives to X" pages.
  */
-export function ToolSurface({ slug }: { slug: string }) {
+export function ToolSurface({
+  slug,
+  alternativeTargets = [],
+}: {
+  slug: string;
+  alternativeTargets?: readonly AlternativeTarget[];
+}) {
   switch (slug) {
     case "image-converter":
       return <ImageConverter />;
@@ -25,14 +38,29 @@ export function ToolSurface({ slug }: { slug: string }) {
       return <ContrastChecker />;
     case "text-toolkit":
       return <TextToolkit />;
+    case "trial-reminder":
+      return <TrialReminder />;
+    case "subscription-audit":
+      return <SubscriptionAudit targets={alternativeTargets} />;
     default:
       return null;
   }
 }
 
 /** Slugs with a working implementation. Kept in sync with the switch above. */
-const IMPLEMENTED = new Set(["image-converter", "contrast-checker", "text-toolkit"]);
+const IMPLEMENTED = new Set([
+  "image-converter",
+  "contrast-checker",
+  "text-toolkit",
+  "trial-reminder",
+  "subscription-audit",
+]);
 
 export function hasToolImplementation(slug: string): boolean {
   return IMPLEMENTED.has(slug);
+}
+
+/** Tools whose surface needs the library's alternative targets. */
+export function toolNeedsAlternativeTargets(slug: string): boolean {
+  return slug === "subscription-audit";
 }

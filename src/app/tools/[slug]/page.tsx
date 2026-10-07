@@ -10,9 +10,13 @@ import { Card } from "@/components/ui/card";
 import { Breadcrumbs, Container } from "@/components/ui/layout";
 import { getTool, getToolIntegration, tools } from "@/config/tools";
 import { RecordList } from "@/features/resources/components/resource-record";
-import { hasToolImplementation, ToolSurface } from "@/features/tools/components/tool-registry";
+import {
+  hasToolImplementation,
+  toolNeedsAlternativeTargets,
+  ToolSurface,
+} from "@/features/tools/components/tool-registry";
 import { ToolAttributions, ToolPrivacyNotice } from "@/features/tools/components/tool-privacy";
-import { getResourcesBySlugs } from "@/lib/repository";
+import { getAlternativeTargets, getResourcesBySlugs } from "@/lib/repository";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema } from "@/lib/seo/structured-data";
 
@@ -54,6 +58,7 @@ export default async function ToolPage({ params }: PageProps) {
 
   const isInteractive = tool.status === "available" && hasToolImplementation(tool.slug);
   const related = await getResourcesBySlugs(tool.relatedResources);
+  const alternativeTargets = toolNeedsAlternativeTargets(tool.slug) ? await getAlternativeTargets() : [];
 
   return (
     <article className="pb-16">
@@ -92,7 +97,7 @@ export default async function ToolPage({ params }: PageProps) {
             {isInteractive ? (
               <Card className="p-5 sm:p-6">
                 <h2 className="sr-only">{tool.name}</h2>
-                <ToolSurface slug={tool.slug} />
+                <ToolSurface slug={tool.slug} alternativeTargets={alternativeTargets} />
               </Card>
             ) : (
               <Card className="border-dashed p-8 text-center">

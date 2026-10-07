@@ -102,7 +102,9 @@ const ROUNDED_FULL_ALLOWED: Record<string, number> = {
   "src/app/resources/[slug]/page.tsx": 1, // feature bullet dot (size-1.5)
   "src/app/verification/page.tsx": 1, // step numerals (size-6)
   "src/features/resources/components/provenance-rail.tsx": 1, // neutral station marker (7px ring)
+  "src/components/ui/button.tsx": 1, // capsule button
 };
+
 
 /** Where every homepage number must come from the census or a repository read. */
 const HOME_FEATURE = "src/features/home/";

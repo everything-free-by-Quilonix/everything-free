@@ -60,8 +60,8 @@ function slim(catalog) {
     })),
     tools: catalog.tools.map(({ slug, name, description, url, category, alsoIn, processing, formats, tags }) => ({
       slug,
-      name,
-      description,
+      name: plainText(name),
+      description: plainText(description),
       url,
       category,
       alsoIn,
@@ -70,6 +70,15 @@ function slim(catalog) {
       tags,
     })),
   };
+}
+
+/**
+ * This site allows no pictographic characters in src (design guardrail), and
+ * Unicode classes arrows such as "↔" as pictographic. "CSV ↔ JSON" reads the
+ * same as "CSV and JSON", so the snapshot says it that way.
+ */
+function plainText(text) {
+  return text.replace(/\s*[↔⇄⇆]\s*/g, " and ");
 }
 
 function render(catalog) {

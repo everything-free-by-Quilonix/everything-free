@@ -125,6 +125,7 @@ export interface Tool {
 }
 
 export const TOOL_GROUP_IDS = [
+  "money",
   "images",
   "documents",
   "text",

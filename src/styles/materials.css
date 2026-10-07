@@ -56,6 +56,30 @@
   }
 }
 
+@utility capsule-header {
+  border-radius: 9999px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px -4px oklch(0 0 0 / 0.08), 0 1px 2px 0 oklch(0 0 0 / 0.04);
+
+  @supports (color: oklch(from red l c h)) and (backdrop-filter: blur(1px)) {
+    background-color: oklch(from var(--surface) l c h / 0.9);
+    backdrop-filter: blur(12px) saturate(1.1);
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--surface);
+    backdrop-filter: none;
+  }
+
+  @media (forced-colors: active) {
+    background-color: Canvas;
+    backdrop-filter: none;
+    border-color: CanvasText;
+  }
+}
+
+
 /* While a modal is open the page behind it does not scroll. scrollbar-gutter
    on html keeps the layout from shifting when the scrollbar goes. */
 html:has(dialog[data-ef-modal][open]) {

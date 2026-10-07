@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 
+import { RouteProgress } from "@/components/layout/route-progress";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader, SkipLink } from "@/components/layout/site-header";
 import { ThemeScript } from "@/components/layout/theme";
@@ -53,13 +54,6 @@ export const metadata: Metadata = {
   creator: site.parent.name,
   publisher: site.parent.name,
   formatDetection: { telephone: false, address: false },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png", sizes: "32x32" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-  },
   openGraph: {
     type: "website",
     siteName: site.name,
@@ -100,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="flex min-h-dvh flex-col">
         <SkipLink />
+        <RouteProgress />
         <SiteHeader />
         {/* `tabIndex={-1}` makes the skip link's target programmatically focusable. */}
         <main id="main" tabIndex={-1} className="flex-1 outline-none">

@@ -431,6 +431,8 @@ async function main() {
       "/tools/image-converter/",
       "/tools/contrast-checker/",
       "/tools/text-toolkit/",
+      "/tools/trial-reminder/",
+      "/tools/subscription-audit/",
       "/submit/",
       "/report/",
       "/free-status/",
@@ -886,6 +888,31 @@ async function main() {
       await desktop.evaluate(JS.setValue("textarea", "hello world"));
       assert(await desktop.waitFor(JS.clickText("button", "UPPERCASE")), "UPPERCASE button not found");
       assert(await desktop.waitFor(`document.querySelector("textarea").value === "HELLO WORLD"`), "text not transformed");
+    });
+
+    await check("trial reminder schedules a trial and builds a calendar file", async () => {
+      await desktop.goto(`${site}/tools/trial-reminder/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.evaluate(JS.setValue('input[placeholder^="e.g. a streaming"]', "Smoke Test Service"));
+      assert(await desktop.waitFor(`/Converts to paid on/.test(document.body.innerText)`), "no schedule preview");
+      assert(await desktop.waitFor(JS.clickText("button", "Add trial")), "Add trial button not found");
+      assert(await desktop.waitFor(JS.clickText("button", "Download calendar file (.ics)")), "no download button");
+      assert(await desktop.waitFor(`/Calendar file with 1 trial/.test(document.body.innerText)`), "download not announced");
+      await assertCleanLoad(desktop, "trial reminder");
+    });
+
+    await check("subscription audit totals and links to an alternatives page", async () => {
+      await desktop.goto(`${site}/tools/subscription-audit/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.evaluate(JS.setValue('input[placeholder="Product name"]', "Adobe Photoshop"));
+      await desktop.evaluate(JS.setValue('input[placeholder="0.00"]', "22.99"));
+      assert(await desktop.waitFor(`/\\$275\\.88/.test(document.body.innerText)`), "yearly total not shown");
+      assert(
+        await desktop.waitFor(`!!document.querySelector('a[href*="/alternatives/adobe-photoshop"]')`),
+        "no alternatives link",
+      );
+      await assertCleanLoad(desktop, "subscription audit");
+      return "22.99/month → $275.88/year";
     });
 
     await check("image converter runs locally and renders a blob: result", async () => {

@@ -154,12 +154,16 @@ Convenience is not permission. An endpoint that responds to requests, or an ifra
 
 | Tool | Type | Cost | Data leaves device | Built on |
 | --- | --- | --- | --- | --- |
+| Free-trial cancel reminder | `BROWSER_LOCAL` | none | No | iCalendar (RFC 5545), Blob download |
+| Subscription audit & free swaps | `BROWSER_LOCAL` | none | No | Alternative targets baked in at build time |
 | Image converter & compressor | `BROWSER_LOCAL` | none | No | Canvas API |
 | Colour contrast checker | `BROWSER_LOCAL` | none | No | WCAG 2.1 formulas (W3C) |
 | Text toolkit | `BROWSER_LOCAL` | none | No | Web standards |
 | PDF merge *(planned)* | `BROWSER_LOCAL` | none | No | `pdf-lib` (MIT) |
 
-Four tools, three working. That is deliberately a short list, and the tools index says so — the library is where breadth belongs.
+Six tools, five working. That is deliberately a short list, and the tools index says so — the library is where breadth belongs.
+
+The two "Keep it free" tools exist because they protect the thing this project is about. Surveys in 2025–26 found that roughly half to four in five US adults have been charged after forgetting to cancel a free trial, and that people underestimate their subscription spend by around 2.5×. Neither tool records a price or a provider's terms: the trial reminder computes dates from what the user enters, and the audit totals the user's own amounts and matches product names against the library's `/alternatives/` pages with the same `slugifyProductName` that generates them, so a match always links to a page that exists.
 
 ---
 
