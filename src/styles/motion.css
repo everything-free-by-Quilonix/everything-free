@@ -358,5 +358,96 @@ dialog[data-ef-modal][data-closing] {
   }
 }
 
+/* HERO: global-level ambient background and entrance motion */
+.motion-hero-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 12%, color-mix(in oklch, var(--primary) 14%, transparent), transparent 75%),
+    radial-gradient(circle 35% at 50% 30%, color-mix(in oklch, var(--primary) 6%, transparent), transparent 70%);
+  opacity: 0.9;
+}
+
+.motion-hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--border) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--border) 45%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black 20%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black 20%, transparent 85%);
+  opacity: 0.65;
+}
+
+@keyframes ef-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.motion-hero-enter-1 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.04s;
+}
+
+.motion-hero-enter-2 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.12s;
+}
+
+.motion-hero-enter-3 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.20s;
+}
+
+.motion-hero-enter-4 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.28s;
+}
+
+.motion-hero-enter-5 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.36s;
+}
+
+@keyframes ef-pulse-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.45;
+  }
+}
+
+.motion-pulse-dot {
+  animation: ef-pulse-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-hero-enter-1,
+  .motion-hero-enter-2,
+  .motion-hero-enter-3,
+  .motion-hero-enter-4,
+  .motion-hero-enter-5 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .motion-pulse-dot {
+    animation: none;
+  }
+}
+
 
 

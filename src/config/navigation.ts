@@ -43,6 +43,12 @@ export const primaryNav: NavLink[] = [
     icon: "library",
   },
   {
+    label: "AI Prompts",
+    href: "/ai-prompts",
+    description: "Discover prompts from open and community-driven AI prompt libraries.",
+    icon: "image",
+  },
+  {
     label: "Alternatives",
     href: "/alternatives",
     description: "Free replacements for paid products.",
@@ -62,6 +68,8 @@ export const footerNav: FooterSection[] = [
       { label: "Browse all resources", href: "/resources" },
       { label: "Categories", href: "/categories" },
       { label: "Collections", href: "/collections" },
+      { label: "AI prompts aggregator", href: "/ai-prompts" },
+      { label: "AI image prompt commands", href: "/ai-image-commands" },
       { label: "Free alternatives", href: "/alternatives" },
       { label: "Recently checked", href: "/resources?sort=recently-verified" },
     ],
