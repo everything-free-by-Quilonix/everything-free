@@ -433,6 +433,8 @@ async function main() {
       "/tools/text-toolkit/",
       "/tools/trial-reminder/",
       "/tools/subscription-audit/",
+      "/tools/photo-metadata/",
+      "/tools/palette-extractor/",
       "/submit/",
       "/report/",
       "/free-status/",
@@ -933,6 +935,43 @@ async function main() {
       assert(await desktop.waitFor(`!!document.querySelector('a[download][href^="blob:"]')`), "no download link");
       assert(await desktop.waitFor(`(() => { const img = document.querySelector('img[src^="blob:"]'); return img && img.complete && img.naturalWidth > 0; })()`), "blob: preview did not render (CSP img-src?)");
       await assertCleanLoad(desktop, "image converter");
+    });
+
+    await check("palette extractor finds the colour of a local image", async () => {
+      await desktop.goto(`${site}/tools/palette-extractor/`);
+      await desktop.waitFor(JS.hydrated);
+      const loaded = await desktop.evaluate(`(async () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 32; canvas.height = 32;
+        const ctx = canvas.getContext("2d"); ctx.fillStyle = "#d4af37"; ctx.fillRect(0, 0, 32, 32);
+        const blob = await new Promise((r) => canvas.toBlob(r, "image/png"));
+        const input = document.querySelector('input[type="file"]');
+        const dt = new DataTransfer(); dt.items.add(new File([blob], "swatch.png", { type: "image/png" }));
+        input.files = dt.files; input.dispatchEvent(new Event("change", { bubbles: true }));
+        return true;
+      })()`);
+      assert(loaded, "could not supply a file");
+      assert(await desktop.waitFor(`/#d4af37/.test(document.body.innerText)`), "extracted colour not shown");
+      await assertCleanLoad(desktop, "palette extractor");
+    });
+
+    await check("photo metadata tool reads a local JPEG", async () => {
+      await desktop.goto(`${site}/tools/photo-metadata/`);
+      await desktop.waitFor(JS.hydrated);
+      const loaded = await desktop.evaluate(`(async () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 16; canvas.height = 16;
+        canvas.getContext("2d").fillRect(0, 0, 16, 16);
+        const blob = await new Promise((r) => canvas.toBlob(r, "image/jpeg"));
+        const input = document.querySelector('input[type="file"]');
+        const dt = new DataTransfer(); dt.items.add(new File([blob], "photo.jpg", { type: "image/jpeg" }));
+        input.files = dt.files; input.dispatchEvent(new Event("change", { bubbles: true }));
+        return true;
+      })()`);
+      assert(loaded, "could not supply a file");
+      // A canvas-encoded JPEG carries no EXIF, so the honest answer is "nothing to clean".
+      assert(await desktop.waitFor(`/No metadata found/.test(document.body.innerText)`), "no result shown");
+      await assertCleanLoad(desktop, "photo metadata");
     });
 
     await check("submit form: empty submission shows errors", async () => {

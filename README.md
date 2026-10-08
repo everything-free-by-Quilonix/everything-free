@@ -125,7 +125,7 @@ Verification is recorded **one check at a time**, not as a single judgement. For
 - Faceted filtering with live counts, entirely URL-driven — shareable and bookmarkable. Runs in the browser so the page stays static; the rest of the library works without JavaScript
 
 **Tools**
-- Five working utilities that run **entirely in your browser**: free-trial cancel reminder (calendar file), subscription audit with free-alternative matching, image converter/compressor, WCAG contrast checker, text toolkit
+- Seven working utilities that run **entirely in your browser**: free-trial cancel reminder (calendar file), subscription audit with free-alternative matching, image converter/compressor, photo metadata (EXIF/GPS) viewer and lossless remover, colour palette extractor, WCAG contrast checker, text toolkit
 - Privacy disclosure generated from declared processing metadata, validated at build time so a tool cannot claim local processing while sending data away
 
 **Platform**

@@ -157,11 +157,12 @@ Convenience is not permission. An endpoint that responds to requests, or an ifra
 | Free-trial cancel reminder | `BROWSER_LOCAL` | none | No | iCalendar (RFC 5545), Blob download |
 | Subscription audit & free swaps | `BROWSER_LOCAL` | none | No | Alternative targets baked in at build time |
 | Image converter & compressor | `BROWSER_LOCAL` | none | No | Canvas API |
+| Photo metadata viewer & remover | `BROWSER_LOCAL` | none | No | Exif 2.32 and PNG specifications; lossless segment removal |
 | Colour contrast checker | `BROWSER_LOCAL` | none | No | WCAG 2.1 formulas (W3C) |
+| Colour palette extractor | `BROWSER_LOCAL` | none | No | Canvas API, median cut (Heckbert, 1982) |
 | Text toolkit | `BROWSER_LOCAL` | none | No | Web standards |
-| PDF merge *(planned)* | `BROWSER_LOCAL` | none | No | `pdf-lib` (MIT) |
 
-Six tools, five working. That is deliberately a short list, and the tools index says so — the library is where breadth belongs.
+Seven tools, all working. That is deliberately a short list, and the tools index says so — the library is where breadth belongs. PDF merge, QR codes and most developer utilities live on the sister site, Everything.Free Tools, and are linked from the index rather than duplicated here.
 
 The two "Keep it free" tools exist because they protect the thing this project is about. Surveys in 2025–26 found that roughly half to four in five US adults have been charged after forgetting to cancel a free trial, and that people underestimate their subscription spend by around 2.5×. Neither tool records a price or a provider's terms: the trial reminder computes dates from what the user enters, and the audit totals the user's own amounts and matches product names against the library's `/alternatives/` pages with the same `slugifyProductName` that generates them, so a match always links to a page that exists.
 
@@ -173,10 +174,7 @@ Only where they clear the bar above:
 
 | Idea | Likely mechanism | Note |
 | --- | --- | --- |
-| PDF merge / page tools | `BROWSER_LOCAL` + `pdf-lib` | Already registered as planned |
-| QR code generator | `BROWSER_LOCAL` | Small, self-contained, genuinely useful |
 | Audio transcription | `BROWSER_LOCAL` via WASM Whisper | Large model download; needs care on mobile |
-| EXIF viewer / stripper | `BROWSER_LOCAL` | Strong privacy argument for local processing |
-| Colour palette extractor | `BROWSER_LOCAL` | Canvas-based |
+| WebP / HEIC metadata removal | `BROWSER_LOCAL` | Extends the photo metadata tool; HEIC needs an ISO-BMFF parser |
 
 Explicitly **not** planned: anything requiring a paid API, anything needing an account, or anything that would duplicate a mature application better served by a listing.

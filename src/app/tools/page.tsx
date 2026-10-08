@@ -12,7 +12,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "Tools you can use here",
   description:
-    "Small, focused tools that run entirely in your browser — free-trial reminders, a subscription audit, image conversion, contrast checking and text utilities. Nothing you enter is uploaded.",
+    "Small, focused tools that run entirely in your browser — free-trial reminders, a subscription audit, image conversion, photo metadata removal, colour palettes, contrast checking and text utilities. Nothing you enter is uploaded.",
   path: "/tools",
 });
 

@@ -253,7 +253,9 @@ features/tools/components/
       ▼
 features/tools/implementations/
       image-converter.tsx          Canvas API
+      photo-metadata.tsx           lossless EXIF/XMP/text removal (logic/photo-metadata.ts)
       contrast-checker.tsx         WCAG 2.1 arithmetic
+      palette-extractor.tsx        median-cut quantisation (logic/palette.ts)
       text-toolkit.tsx             string transforms
 ```
 

@@ -1,5 +1,7 @@
 import { ContrastChecker } from "../implementations/contrast-checker";
 import { ImageConverter } from "../implementations/image-converter";
+import { PaletteExtractor } from "../implementations/palette-extractor";
+import { PhotoMetadata } from "../implementations/photo-metadata";
 import { SubscriptionAudit } from "../implementations/subscription-audit";
 import { TextToolkit } from "../implementations/text-toolkit";
 import { TrialReminder } from "../implementations/trial-reminder";
@@ -42,6 +44,10 @@ export function ToolSurface({
       return <TrialReminder />;
     case "subscription-audit":
       return <SubscriptionAudit targets={alternativeTargets} />;
+    case "photo-metadata":
+      return <PhotoMetadata />;
+    case "palette-extractor":
+      return <PaletteExtractor />;
     default:
       return null;
   }
@@ -54,6 +60,8 @@ const IMPLEMENTED = new Set([
   "text-toolkit",
   "trial-reminder",
   "subscription-audit",
+  "photo-metadata",
+  "palette-extractor",
 ]);
 
 export function hasToolImplementation(slug: string): boolean {

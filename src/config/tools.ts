@@ -200,6 +200,48 @@ export const tools: Tool[] = [
     tags: ["image", "convert", "compress", "resize", "webp", "privacy"],
   },
   {
+    id: "photo-metadata",
+    slug: "photo-metadata",
+    name: "Photo metadata viewer & remover",
+    shortDescription: "See the location, dates and camera details hidden in a photo, and save a copy without them.",
+    longDescription:
+      "Photos from phones and cameras usually carry hidden metadata: often the GPS position where they were taken, the date and time, the device model and serial number, and sometimes a thumbnail of the uncropped original. This tool shows what a JPEG or PNG contains and saves a copy with that metadata left out. The picture itself is copied unchanged, so there is no loss of quality, and the cleaned copy is read back to confirm nothing is left.",
+    icon: "map-pin",
+    group: "images",
+    status: "available",
+    integrationType: "BROWSER_LOCAL",
+    infrastructureCost: "none",
+    processing: {
+      location: "browser",
+      leavesDevice: false,
+      explanation:
+        "The point of this tool is to stop a photo giving away where you were, so it would be self-defeating to upload it. The file is read into this page's memory and taken apart by JavaScript on your device; the cleaned copy is assembled there and saved straight to your device. Nothing is sent to Everything.Free or anyone else. You can confirm this in your browser's network panel, or by going offline after the page loads.",
+    },
+    attributions: [
+      {
+        name: "Exif 2.32 specification (JEITA CP-3451D / CIPA DC-008)",
+        url: "https://home.jeita.or.jp/tsc/std-pdf/CP-3451D.pdf",
+        license: "Published specification",
+        required: false,
+      },
+      {
+        name: "PNG specification (W3C)",
+        url: "https://www.w3.org/TR/png/",
+        license: "W3C Software and Document Notice and License",
+        required: false,
+      },
+    ],
+    limitations: [
+      "JPEG and PNG only. WebP, HEIC, AVIF, GIF and camera raw files are not supported; converting them to JPEG or PNG with the image converter also produces a file without this metadata.",
+      "Shows the details most likely to identify you (location, dates, people, device). Hundreds of technical camera settings, and vendor maker notes, are removed without being listed.",
+      "Extra images some phones append to a photo, such as depth maps and HDR gain maps, are removed too. The cleaned photo can look slightly flatter on an HDR display.",
+      "It removes metadata, not what is in the picture. Faces, street signs, screens and reflections can still reveal who or where you are.",
+      "Many sites strip metadata when you upload, but not all do, and messaging apps differ. Cleaning first means you do not have to rely on them.",
+    ],
+    relatedResources: ["digikam", "gimp", "darktable"],
+    tags: ["exif", "metadata", "gps", "location", "photo", "privacy", "strip", "jpeg", "png"],
+  },
+  {
     id: "contrast-checker",
     slug: "contrast-checker",
     name: "Colour contrast checker",
@@ -232,6 +274,41 @@ export const tools: Tool[] = [
     ],
     relatedResources: ["penpot", "inkscape"],
     tags: ["accessibility", "wcag", "contrast", "colour", "design"],
+  },
+  {
+    id: "palette-extractor",
+    slug: "palette-extractor",
+    name: "Colour palette extractor",
+    shortDescription: "Pull the main colours out of an image as hex codes, ready to copy as a list or CSS variables.",
+    longDescription:
+      "Choose an image and get its dominant colours, each with its hex and RGB value and how much of the image it covers. Copy one colour, the whole list, or a block of CSS custom properties. Useful for building a theme from a photo, a logo or a mood board. The image is analysed inside this page.",
+    icon: "palette",
+    group: "design",
+    status: "available",
+    integrationType: "BROWSER_LOCAL",
+    infrastructureCost: "none",
+    processing: {
+      location: "browser",
+      leavesDevice: false,
+      explanation:
+        "Your image is decoded by your own browser and its pixels are counted by JavaScript on your device. No file, and no part of a file, is sent to Everything.Free or anyone else. You can confirm this in your browser's network panel, or by going offline after the page loads.",
+    },
+    attributions: [
+      {
+        name: "Median cut colour quantisation (Heckbert, 1982)",
+        url: "https://publications.ri.cmu.edu/color-image-quantization-for-frame-buffer-display",
+        license: "Published algorithm",
+        required: false,
+      },
+    ],
+    limitations: [
+      "The image is scaled down to 256 pixels on its longest side before analysis. That keeps it fast and does not change the main colours, but a detail covering only a few pixels may not get its own swatch.",
+      "Each swatch is the average of a group of similar pixels, so a gradient becomes a few steps rather than every shade in it.",
+      "Mostly transparent pixels are ignored. Colours are read as sRGB; wide-gamut colours in the source are mapped into sRGB by your browser.",
+      "It reports colours, not a finished design system. Check text and background pairings for contrast before using them.",
+    ],
+    relatedResources: ["coolors", "penpot", "inkscape"],
+    tags: ["colour", "color", "palette", "design", "hex", "css", "image", "theme"],
   },
   {
     id: "text-toolkit",

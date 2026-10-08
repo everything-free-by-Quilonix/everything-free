@@ -88,6 +88,45 @@ export const collections: Collection[] = [
     resourceSlugs: ["unsplash", "pexels", "google-fonts", "blender"],
     updatedAt: "2026-09-25",
   },
+  {
+    id: "legal-free-movies-and-cinema",
+    slug: "legal-free-movies-and-cinema",
+    name: "Stream movies and cinema legally for zero cost",
+    shortDescription: "Legitimate, 100% free streaming platforms for movies, TV series, indie cinema, and public domain classics.",
+    longDescription:
+      "Tired of costly streaming price hikes and risky piracy sites: each of these platforms is fully licensed and legally free. Watch on-demand Hollywood movies, public domain cinema, live channels, and festival documentaries without subscriptions or credit cards.",
+    rationale:
+      "Selected on strict legal criteria: completely licensed distribution, no payment info requested at signup, and no subscription paywalls. Includes ad-supported major studio catalogues (Tubi, Pluto TV), library card perks (Kanopy), and historical archives (Internet Archive).",
+    icon: "film",
+    resourceSlugs: ["tubi", "pluto-tv", "kanopy", "internet-archive-movies", "plex-free", "documentary-plus", "popcornflix", "justwatch"],
+    updatedAt: "2026-10-08",
+  },
+  {
+    id: "rare-internet-goldmines",
+    slug: "rare-internet-goldmines",
+    name: "Rare internet goldmines & viral utilities",
+    shortDescription: "Hard-to-find web tools that do extraordinary things without ads, telemetry, or subscriptions.",
+    longDescription:
+      "A hand-picked collection of catchy, clever web utilities that feel like magic: ad-free media downloaders, in-browser vector editors, live global radio exploration, local image compression, and keyless creative AI.",
+    rationale:
+      "Chosen for utility, privacy, and exceptional execution. Every tool here runs either client-side or without predatory dark patterns, replacing shady ad-ridden websites with clean, fast, and transparent alternatives.",
+    icon: "compass",
+    resourceSlugs: ["cobalt", "vectorpea", "cyberchef", "radio-garden", "squoosh", "caesium", "pollinations-ai", "archive-today"],
+    updatedAt: "2026-10-08",
+  },
+  {
+    id: "viral-subscription-killers",
+    slug: "viral-subscription-killers",
+    name: "Escape the SaaS subscription trap",
+    shortDescription: "Open-source and free replacements for expensive services like Zapier, Heroku, Notion, and Spotify.",
+    longDescription:
+      "Software subscriptions add up to thousands of dollars per year. These production-grade open-source and fair-code tools replace costly SaaS products with self-hosted control, privacy, and unlimited local power.",
+    rationale:
+      "Selected because each one solves a major subscription pain point with genuine open-source freedom or free self-hosting: n8n replaces Zapier, Coolify replaces Heroku/Vercel, AppFlowy replaces Notion, and Spotube delivers ad-free music.",
+    icon: "bolt",
+    resourceSlugs: ["coolify", "n8n", "appflowy", "anytype", "spotube", "freetube"],
+    updatedAt: "2026-10-08",
+  },
 ];
 
 /** Fails the build if a collection points at a resource that does not exist. */
