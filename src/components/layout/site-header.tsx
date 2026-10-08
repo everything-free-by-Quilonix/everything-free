@@ -45,7 +45,7 @@ export function SiteHeader() {
               className={buttonClasses({
                 variant: "secondary",
                 size: "sm",
-                className: "hidden sm:inline-flex",
+                className: "hidden md:inline-flex",
               })}
             >
               Submit
