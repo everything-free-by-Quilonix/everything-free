@@ -21,12 +21,12 @@ export function NavLinks({ items }: { items: NavLink[] }) {
         const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
         return (
-          <li key={item.href} className="flex">
+          <li key={item.href} className="flex shrink-0">
             <Link
               href={item.href}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "inline-flex items-center px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-colors",
+                "inline-flex items-center whitespace-nowrap px-2 py-1 rounded-md text-xs font-medium transition-colors xl:px-2.5 xl:py-1.5 xl:text-sm",
                 active
                   ? "bg-surface-raised text-fg font-medium shadow-2xs"
                   : "text-fg-muted hover:text-fg hover:bg-surface-hover/60",

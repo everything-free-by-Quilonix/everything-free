@@ -25,14 +25,14 @@ export function SiteHeader() {
     >
       <HeaderScrollSentinel />
       <div className="mx-auto w-full max-w-[1240px] pointer-events-auto">
-        <div className="capsule-header flex h-13 sm:h-14 items-center gap-3 sm:gap-6 px-3.5 sm:px-6 transition-[height,box-shadow]">
+        <div className="capsule-header flex h-13 sm:h-14 items-center gap-2 sm:gap-3 xl:gap-5 px-3 sm:px-4 xl:px-6 transition-[height,box-shadow]">
           <Brand />
 
-          <nav aria-label="Main" className="hidden lg:block ml-1">
+          <nav aria-label="Main" className="hidden lg:flex items-center min-w-0">
             <NavLinks items={primaryNav} />
           </nav>
 
-          <div className="ml-auto flex items-center gap-1 sm:gap-2">
+          <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-1.5 xl:gap-2">
             {/* Command palette search trigger */}
             <PaletteTrigger />
 

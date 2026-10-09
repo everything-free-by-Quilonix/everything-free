@@ -151,6 +151,7 @@ export const TOOL_GROUP_IDS = [
   "developer",
   "design",
   "converters",
+  "entertainment",
 ] as const;
 
 export type ToolGroupId = (typeof TOOL_GROUP_IDS)[number];

@@ -1,4 +1,5 @@
 import { ContrastChecker } from "../implementations/contrast-checker";
+import { Game2048 } from "../implementations/game-2048";
 import { ImageConverter } from "../implementations/image-converter";
 import { PaletteExtractor } from "../implementations/palette-extractor";
 import { PhotoMetadata } from "../implementations/photo-metadata";
@@ -51,6 +52,8 @@ export function ToolSurface({
       return <PaletteExtractor />;
     case "private-ai-chat":
       return <PrivateAiChat />;
+    case "play-2048":
+      return <Game2048 />;
     default:
       return null;
   }
@@ -66,6 +69,7 @@ const IMPLEMENTED = new Set([
   "photo-metadata",
   "palette-extractor",
   "private-ai-chat",
+  "play-2048",
 ]);
 
 export function hasToolImplementation(slug: string): boolean {

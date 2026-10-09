@@ -109,6 +109,11 @@ export const toolGroups: ToolGroup[] = [
   { id: "developer", name: "Developer", description: "Small utilities for building things." },
   { id: "design", name: "Design", description: "Checks and helpers for visual work." },
   { id: "converters", name: "Converters", description: "Move data between formats." },
+  {
+    id: "entertainment",
+    name: "Entertainment & Play",
+    description: "Classic puzzles, games and creative distractions. 100% browser-local, ad-free and tracker-free.",
+  },
 ];
 
 export const tools: Tool[] = [
@@ -404,6 +409,39 @@ export const tools: Tool[] = [
     ],
     relatedResources: ["languagetool", "libreoffice"],
     tags: ["text", "case", "slug", "word-count", "privacy"],
+  },
+  {
+    id: "play-2048",
+    slug: "play-2048",
+    name: "2048 puzzle",
+    shortDescription: "Slide numbered tiles on a 4×4 grid to reach the 2048 tile. Completely ad-free and runs offline.",
+    longDescription:
+      "The classic numbers puzzle: use arrow keys, swipe gestures or on-screen controls to slide tiles across a 4×4 board. Matching tiles merge and double in value. Reach 2048 to win, or keep playing for high scores. Runs entirely in your browser with zero advertisements, zero tracking cookies, and saved high scores in local storage.",
+    icon: "gamepad",
+    group: "entertainment",
+    status: "available",
+    integrationType: "BROWSER_LOCAL",
+    infrastructureCost: "none",
+    processing: {
+      location: "browser",
+      leavesDevice: false,
+      explanation:
+        "Game board state, current score and best score are processed by JavaScript on your device and saved to browser local storage. Nothing is sent to Everything.Free or any external server.",
+    },
+    attributions: [
+      {
+        name: "2048 by Gabriele Cirulli",
+        url: "https://github.com/gabrielecirulli/2048",
+        license: "MIT",
+        required: true,
+      },
+    ],
+    limitations: [
+      "High scores and board state are stored in your current browser only. Clearing cookies or site storage will reset your best score.",
+      "Designed for keyboard arrow keys, touch swiping, or on-screen directional buttons.",
+    ],
+    relatedResources: [],
+    tags: ["game", "puzzle", "2048", "offline", "entertainment", "numbers", "casual"],
   },
 ];
 

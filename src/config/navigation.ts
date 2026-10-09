@@ -60,6 +60,12 @@ export const primaryNav: NavLink[] = [
     description: "Free replacements for paid products.",
     icon: "refresh-cw",
   },
+  {
+    label: "Entertainment",
+    href: "/entertainment",
+    description: "Watch legal cartoons & cinema, listen to live radio, and play games on-site.",
+    icon: "gamepad",
+  },
 ];
 
 export interface FooterSection {
@@ -74,6 +80,7 @@ export const footerNav: FooterSection[] = [
       { label: "Browse all resources", href: "/resources" },
       { label: "Categories", href: "/categories" },
       { label: "Collections", href: "/collections" },
+      { label: "Entertainment & Media", href: "/entertainment" },
       { label: "AI prompts aggregator", href: "/ai-prompts" },
       { label: "AI image prompt commands", href: "/ai-image-commands" },
       { label: "Free alternatives", href: "/alternatives" },
@@ -84,6 +91,7 @@ export const footerNav: FooterSection[] = [
     title: "Use",
     links: [
       { label: "Tools", href: "/tools" },
+      { label: "Entertainment & Play", href: "/entertainment" },
       { label: "Private AI chat", href: "/tools/private-ai-chat" },
       { label: "Which free AI?", href: "/ai" },
       { label: "Free-trial cancel reminder", href: "/tools/trial-reminder" },
