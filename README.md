@@ -125,7 +125,8 @@ Verification is recorded **one check at a time**, not as a single judgement. For
 - Faceted filtering with live counts, entirely URL-driven — shareable and bookmarkable. Runs in the browser so the page stays static; the rest of the library works without JavaScript
 
 **Tools**
-- Three working utilities that run **entirely in your browser**: image converter/compressor, WCAG contrast checker, text toolkit
+- Eight working utilities that run **entirely in your browser**: a private AI chat (open-source models under 500 MB running on your own device via WebLLM; nothing you type leaves it), free-trial cancel reminder (calendar file), subscription audit with free-alternative matching, image converter/compressor, photo metadata (EXIF/GPS) viewer and lossless remover, colour palette extractor, WCAG contrast checker, text toolkit
+- **"Which free AI should I use?"** at `/ai`: pick the job, and the finder shows the library's AI listings for it, with confirmed-only "no credit card / no account / open source" filters
 - Privacy disclosure generated from declared processing metadata, validated at build time so a tool cannot claim local processing while sending data away
 
 **Platform**
@@ -272,9 +273,9 @@ No API keys or database are required.
 | Data | Typed modules in the Git repository — no database |
 | Hosting | GitHub Pages, static files only — portable to any static host |
 
-Runtime dependencies: React, Next.js and Zod. That is the whole list. Icons, class-name joining, theming, date formatting and the tools are all implemented directly rather than pulled in, which keeps the JavaScript shipped to a reader close to the minimum and the supply chain small enough to audit.
+Runtime dependencies: React, Next.js, Zod, and WebLLM for the private AI chat only (loaded on demand, never on other pages). Icons, class-name joining, theming, date formatting and the other tools are all implemented directly rather than pulled in, which keeps the JavaScript shipped to a reader close to the minimum and the supply chain small enough to audit.
 
-No page makes a third-party network request.
+No page makes a third-party network request on load. The private AI chat downloads its model from Hugging Face and GitHub when the visitor presses Download, and that page's CSP allows exactly those origins.
 
 ---
 

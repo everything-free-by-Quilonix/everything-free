@@ -43,6 +43,18 @@ export const primaryNav: NavLink[] = [
     icon: "library",
   },
   {
+    label: "Free AI",
+    href: "/ai",
+    description: "Find a free AI for the job, or chat privately with one that runs on your device.",
+    icon: "cpu",
+  },
+  {
+    label: "AI Prompts",
+    href: "/ai-prompts",
+    description: "Discover prompts from open and community-driven AI prompt libraries.",
+    icon: "image",
+  },
+  {
     label: "Alternatives",
     href: "/alternatives",
     description: "Free replacements for paid products.",
@@ -62,6 +74,8 @@ export const footerNav: FooterSection[] = [
       { label: "Browse all resources", href: "/resources" },
       { label: "Categories", href: "/categories" },
       { label: "Collections", href: "/collections" },
+      { label: "AI prompts aggregator", href: "/ai-prompts" },
+      { label: "AI image prompt commands", href: "/ai-image-commands" },
       { label: "Free alternatives", href: "/alternatives" },
       { label: "Recently checked", href: "/resources?sort=recently-verified" },
     ],
@@ -70,6 +84,10 @@ export const footerNav: FooterSection[] = [
     title: "Use",
     links: [
       { label: "Tools", href: "/tools" },
+      { label: "Private AI chat", href: "/tools/private-ai-chat" },
+      { label: "Which free AI?", href: "/ai" },
+      { label: "Free-trial cancel reminder", href: "/tools/trial-reminder" },
+      { label: "Subscription audit", href: "/tools/subscription-audit" },
       // These open confirmed-only filters, and the labels say so.
       { label: "Open source (confirmed)", href: "/resources?openSource=1" },
       { label: "No account needed (confirmed)", href: "/resources?noAccount=1" },

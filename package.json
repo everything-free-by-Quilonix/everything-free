@@ -15,6 +15,7 @@
     "verify:static": "npm run lint && npm run typecheck && npm test && npm run build:static",
     "test:browser": "node scripts/browser-smoke.mjs",
     "sync:tools": "node scripts/sync-tools-catalog.mjs",
+    "ai:manifest": "node scripts/ai-model-manifest.mjs",
     "check:links": "node .github/scripts/check-links.mjs out/link-manifest.json --triage .github/link-triage.json",
     "check:verification": "node .github/scripts/check-verification-freshness.mjs out/link-manifest.json",
     "backlog": "node scripts/verification-backlog.mjs out/link-manifest.json --write docs/verification-backlog.md",
@@ -23,6 +24,7 @@
     "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/test/register.mjs --test \"tests/**/*.test.mts\""
   },
   "dependencies": {
+    "@mlc-ai/web-llm": "0.2.85",
     "motion": "^14.0.0",
     "next": "16.3.6",
     "react": "19.2.8",

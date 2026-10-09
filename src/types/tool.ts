@@ -28,6 +28,24 @@ export interface ToolProcessing {
   explanation: string;
   /** Named third party that receives data, when one does. */
   thirdParty?: { name: string; url: string; privacyPolicyUrl?: string };
+  /**
+   * Files the tool downloads from another origin, on request, to do its work —
+   * for example a model's weights. Downloads carry none of the user's input, so
+   * they do not make a tool leave the device; they are still declared so the page
+   * can say where they come from, and so the page's CSP can allow exactly these
+   * origins and no others (`scripts/csp.mjs`).
+   */
+  downloads?: ToolDownload[];
+}
+
+export interface ToolDownload {
+  /** What is downloaded, in plain words. */
+  what: string;
+  /** Who serves it. */
+  from: string;
+  url: string;
+  /** HTTPS origins the browser connects to for it, including CDN redirects. */
+  origins: string[];
 }
 
 export interface ToolAttribution {
@@ -125,6 +143,8 @@ export interface Tool {
 }
 
 export const TOOL_GROUP_IDS = [
+  "ai",
+  "money",
   "images",
   "documents",
   "text",

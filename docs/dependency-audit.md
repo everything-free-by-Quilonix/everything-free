@@ -34,6 +34,11 @@ No `fetch()` call exists anywhere in `src/`. The only environment variable read 
 | `react` | UI | Yes | Free, MIT | No |
 | `react-dom` | DOM renderer | Yes | Free, MIT | No |
 | `zod` | Runtime validation of submitted form input | Yes | Free, MIT | Could be hand-written; not worth it |
+| `@mlc-ai/web-llm` (0.2.85, exact) | Runs open-weight language models in the browser for the private AI chat (`/tools/private-ai-chat`) | Only for that tool | Free, Apache-2.0 | Yes: delete the tool and the rest of the site is unaffected |
+
+`@mlc-ai/web-llm` is the one runtime dependency added for a feature rather than for the site itself. The argument for it: running a model on WebGPU means a compiler runtime, tokenizers and a model cache, which is not something to hand-write. Its only dependency is `loglevel` (MIT). Its 6 MB of JavaScript is never part of a page's initial scripts: the chat page imports it on demand and runs it in a worker, so it downloads only when a visitor starts a model or already has one saved.
+
+**Third-party requests it makes.** When the visitor presses Download, and only then, the worker fetches the model's weights from Hugging Face (`huggingface.co`, redirected to `*.hf.co`) and its compiled WebGPU library from `raw.githubusercontent.com`. No user input is sent; the chat page's CSP allows exactly these origins (`scripts/csp.mjs`, checked against the tool's declared downloads by `tests/ai.test.mts`). If either host is down or changes, the chat cannot download new models and says so; models already saved keep working, and nothing else on the site is affected. Neither host is paid for by the project.
 
 That is the entire runtime dependency list. Icons, class-name joining, theming, date formatting and all three browser tools are implemented directly rather than pulled in — each was a deliberate decision to avoid a dependency for something small.
 

@@ -93,6 +93,16 @@ export function getToolIntegration(id: ToolIntegrationType): ToolIntegrationDefi
 }
 
 export const toolGroups: ToolGroup[] = [
+  {
+    id: "ai",
+    name: "Private AI",
+    description: "AI that runs on your own device. Nothing you type is sent anywhere.",
+  },
+  {
+    id: "money",
+    name: "Keep it free",
+    description: "Stop free trials and forgotten subscriptions from quietly charging you.",
+  },
   { id: "images", name: "Images", description: "Convert, resize and compress pictures." },
   { id: "documents", name: "Documents", description: "Work with PDFs and text documents." },
   { id: "text", name: "Text", description: "Clean up, reformat and measure text." },
@@ -102,6 +112,132 @@ export const toolGroups: ToolGroup[] = [
 ];
 
 export const tools: Tool[] = [
+  {
+    id: "private-ai-chat",
+    slug: "private-ai-chat",
+    name: "Private AI chat",
+    shortDescription: "Chat with an open-source AI model that runs on your own device. No account, no key, and your messages never leave it.",
+    longDescription:
+      "Choose a small open-source model, download it once, and chat with it entirely inside your browser. The model runs on your own graphics chip, so there is no account, no API key, no usage limit and no one reading your messages. Each model is under 500 MB and is saved in this browser for next time; you can delete it here whenever you like. Small models are far less capable than ChatGPT or Gemini, and the page says so.",
+    icon: "lock",
+    group: "ai",
+    status: "available",
+    integrationType: "BROWSER_LOCAL",
+    infrastructureCost: "none",
+    processing: {
+      location: "browser",
+      leavesDevice: false,
+      explanation:
+        "Your messages are processed by a model running on your own device and are never sent to Everything.Free, the model's makers or anyone else. They are kept only in this page's memory and are gone when you close the tab. The one thing that comes from outside is the model itself: when you press Download, your browser fetches its files from Hugging Face and its graphics code from GitHub. Those services see that the files were downloaded, as with any download, and nothing more. After that the chat works offline.",
+      downloads: [
+        {
+          what: "Model weights and tokenizer",
+          from: "Hugging Face",
+          url: "https://huggingface.co/mlc-ai",
+          origins: ["https://huggingface.co", "https://*.huggingface.co", "https://*.hf.co"],
+        },
+        {
+          what: "Compiled WebGPU model library",
+          from: "GitHub (mlc-ai/binary-mlc-llm-libs)",
+          url: "https://github.com/mlc-ai/binary-mlc-llm-libs",
+          origins: ["https://raw.githubusercontent.com"],
+        },
+      ],
+    },
+    attributions: [
+      {
+        name: "WebLLM (MLC AI)",
+        url: "https://github.com/mlc-ai/web-llm",
+        license: "Apache-2.0",
+        required: true,
+      },
+      {
+        name: "Qwen2.5, Qwen2.5 Coder, Qwen3 and Qwen3.5 models (Alibaba Qwen)",
+        url: "https://huggingface.co/Qwen",
+        license: "Apache-2.0",
+        required: true,
+      },
+      {
+        name: "SmolLM2 (Hugging Face)",
+        url: "https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct",
+        license: "Apache-2.0",
+        required: true,
+      },
+    ],
+    limitations: [
+      "Needs WebGPU: recent Chrome or Edge on a computer works best. Most phones, and older browsers, cannot run it yet; the page says so before downloading anything.",
+      "These are small models, a few hundred million parameters against hundreds of billions for the big online assistants. They make mistakes, invent facts and lose track of long conversations. Do not rely on them for anything important.",
+      "The first download is 213–453 MB depending on the model. Later visits load it from your browser's storage in seconds.",
+      "The model is saved in this browser only. Clearing site data, a private window closing, or the browser freeing space can remove it, and Safari removes it after seven days of browser use without visiting this site. It then downloads again.",
+      "No access to the internet, files or images: it answers from what it learned in training, which stopped at a fixed date.",
+      "Conversations are not saved. Use Copy conversation to keep one.",
+    ],
+    relatedResources: ["jan", "ollama", "lm-studio", "open-webui"],
+    tags: ["ai", "chat", "chatbot", "llm", "private", "offline", "local", "webgpu", "open-source", "no-account"],
+  },
+  {
+    id: "trial-reminder",
+    slug: "trial-reminder",
+    name: "Free-trial cancel reminder",
+    shortDescription: "Work out when each free trial starts charging, and get a calendar reminder before it does.",
+    longDescription:
+      "Enter the free trials you have started. The tool works out the date each one converts to a paid plan and builds a calendar file with a reminder a few days earlier, plus the cancellation link if you have it. Import it once into Apple Calendar, Google Calendar or Outlook. The file is built inside this page; nothing is uploaded and there is no account.",
+    icon: "flag",
+    group: "money",
+    status: "available",
+    integrationType: "BROWSER_LOCAL",
+    infrastructureCost: "none",
+    processing: {
+      location: "browser",
+      leavesDevice: false,
+      explanation:
+        "The trial names, dates and links you enter stay in this page. The calendar file is generated by JavaScript on your device and saved straight to it; nothing is sent to Everything.Free, to a calendar provider or to anyone else. Close the tab and the list is gone. You can confirm this in your browser's network panel.",
+    },
+    attributions: [
+      {
+        name: "iCalendar format (RFC 5545, IETF)",
+        url: "https://www.rfc-editor.org/rfc/rfc5545",
+        license: "IETF Trust Legal Provisions",
+        required: false,
+      },
+    ],
+    limitations: [
+      "The charge date is the start date plus the trial length. Providers differ: some charge at the start of the last day, some count the sign-up day, and some bill in another time zone. Check the provider's own terms, which is why the reminder defaults to two days early.",
+      "Nothing is remembered between visits. Download the calendar file before closing the tab.",
+      "Google Calendar may ignore the built-in alert time when importing a file, and use your default notification settings instead.",
+      "It reminds you; it cannot cancel anything. Cancelling still happens in the provider's account settings.",
+    ],
+    relatedResources: ["thunderbird", "actual-budget"],
+    tags: ["trial", "subscription", "reminder", "calendar", "ics", "money", "privacy"],
+  },
+  {
+    id: "subscription-audit",
+    slug: "subscription-audit",
+    name: "Subscription audit & free swaps",
+    shortDescription: "Add up what your subscriptions really cost a year, and see which ones have free alternatives listed.",
+    longDescription:
+      "List the paid products you subscribe to and what you pay for them. The tool totals the monthly and yearly cost, then checks each product against the library's free-alternatives pages, so you can see how much of your spending has a free option worth looking at. Prices are only ever the ones you type in.",
+    icon: "wallet",
+    group: "money",
+    status: "available",
+    integrationType: "BROWSER_LOCAL",
+    infrastructureCost: "none",
+    processing: {
+      location: "browser",
+      leavesDevice: false,
+      explanation:
+        "What you pay for, and how much, is personal. Everything you type stays in this page and is added up by JavaScript on your device. The list of products with free alternatives was built into the page when the site was published, so matching does not make any request. Nothing is stored or sent.",
+    },
+    attributions: [],
+    limitations: [
+      "Everything.Free records no prices. Totals are only as accurate as the amounts you enter, and currencies are labels: nothing is converted.",
+      "Matching is by product name against the library's free-alternatives pages. A product listed under a different name will show as having no alternative; searching the library may still find one.",
+      "A listed alternative is not a promise of a like-for-like replacement. Open the alternatives page and check each one's limitations before cancelling anything.",
+      "Nothing is remembered between visits. Use Copy summary to keep a record.",
+    ],
+    relatedResources: ["actual-budget", "firefly-iii", "gnucash"],
+    tags: ["subscription", "budget", "money", "alternatives", "savings", "privacy"],
+  },
   {
     id: "image-converter",
     slug: "image-converter",
@@ -130,6 +266,48 @@ export const tools: Tool[] = [
     ],
     relatedResources: ["gimp", "krita", "photopea"],
     tags: ["image", "convert", "compress", "resize", "webp", "privacy"],
+  },
+  {
+    id: "photo-metadata",
+    slug: "photo-metadata",
+    name: "Photo metadata viewer & remover",
+    shortDescription: "See the location, dates and camera details hidden in a photo, and save a copy without them.",
+    longDescription:
+      "Photos from phones and cameras usually carry hidden metadata: often the GPS position where they were taken, the date and time, the device model and serial number, and sometimes a thumbnail of the uncropped original. This tool shows what a JPEG or PNG contains and saves a copy with that metadata left out. The picture itself is copied unchanged, so there is no loss of quality, and the cleaned copy is read back to confirm nothing is left.",
+    icon: "map-pin",
+    group: "images",
+    status: "available",
+    integrationType: "BROWSER_LOCAL",
+    infrastructureCost: "none",
+    processing: {
+      location: "browser",
+      leavesDevice: false,
+      explanation:
+        "The point of this tool is to stop a photo giving away where you were, so it would be self-defeating to upload it. The file is read into this page's memory and taken apart by JavaScript on your device; the cleaned copy is assembled there and saved straight to your device. Nothing is sent to Everything.Free or anyone else. You can confirm this in your browser's network panel, or by going offline after the page loads.",
+    },
+    attributions: [
+      {
+        name: "Exif 2.32 specification (JEITA CP-3451D / CIPA DC-008)",
+        url: "https://home.jeita.or.jp/tsc/std-pdf/CP-3451D.pdf",
+        license: "Published specification",
+        required: false,
+      },
+      {
+        name: "PNG specification (W3C)",
+        url: "https://www.w3.org/TR/png/",
+        license: "W3C Software and Document Notice and License",
+        required: false,
+      },
+    ],
+    limitations: [
+      "JPEG and PNG only. WebP, HEIC, AVIF, GIF and camera raw files are not supported; converting them to JPEG or PNG with the image converter also produces a file without this metadata.",
+      "Shows the details most likely to identify you (location, dates, people, device). Hundreds of technical camera settings, and vendor maker notes, are removed without being listed.",
+      "Extra images some phones append to a photo, such as depth maps and HDR gain maps, are removed too. The cleaned photo can look slightly flatter on an HDR display.",
+      "It removes metadata, not what is in the picture. Faces, street signs, screens and reflections can still reveal who or where you are.",
+      "Many sites strip metadata when you upload, but not all do, and messaging apps differ. Cleaning first means you do not have to rely on them.",
+    ],
+    relatedResources: ["digikam", "gimp", "darktable"],
+    tags: ["exif", "metadata", "gps", "location", "photo", "privacy", "strip", "jpeg", "png"],
   },
   {
     id: "contrast-checker",
@@ -166,6 +344,41 @@ export const tools: Tool[] = [
     tags: ["accessibility", "wcag", "contrast", "colour", "design"],
   },
   {
+    id: "palette-extractor",
+    slug: "palette-extractor",
+    name: "Colour palette extractor",
+    shortDescription: "Pull the main colours out of an image as hex codes, ready to copy as a list or CSS variables.",
+    longDescription:
+      "Choose an image and get its dominant colours, each with its hex and RGB value and how much of the image it covers. Copy one colour, the whole list, or a block of CSS custom properties. Useful for building a theme from a photo, a logo or a mood board. The image is analysed inside this page.",
+    icon: "palette",
+    group: "design",
+    status: "available",
+    integrationType: "BROWSER_LOCAL",
+    infrastructureCost: "none",
+    processing: {
+      location: "browser",
+      leavesDevice: false,
+      explanation:
+        "Your image is decoded by your own browser and its pixels are counted by JavaScript on your device. No file, and no part of a file, is sent to Everything.Free or anyone else. You can confirm this in your browser's network panel, or by going offline after the page loads.",
+    },
+    attributions: [
+      {
+        name: "Median cut colour quantisation (Heckbert, 1982)",
+        url: "https://publications.ri.cmu.edu/color-image-quantization-for-frame-buffer-display",
+        license: "Published algorithm",
+        required: false,
+      },
+    ],
+    limitations: [
+      "The image is scaled down to 256 pixels on its longest side before analysis. That keeps it fast and does not change the main colours, but a detail covering only a few pixels may not get its own swatch.",
+      "Each swatch is the average of a group of similar pixels, so a gradient becomes a few steps rather than every shade in it.",
+      "Mostly transparent pixels are ignored. Colours are read as sRGB; wide-gamut colours in the source are mapped into sRGB by your browser.",
+      "It reports colours, not a finished design system. Check text and background pairings for contrast before using them.",
+    ],
+    relatedResources: ["coolors", "penpot", "inkscape"],
+    tags: ["colour", "color", "palette", "design", "hex", "css", "image", "theme"],
+  },
+  {
     id: "text-toolkit",
     slug: "text-toolkit",
     name: "Text toolkit",
@@ -191,41 +404,6 @@ export const tools: Tool[] = [
     ],
     relatedResources: ["languagetool", "libreoffice"],
     tags: ["text", "case", "slug", "word-count", "privacy"],
-  },
-  {
-    id: "pdf-merge",
-    slug: "pdf-merge",
-    name: "PDF merge & page tools",
-    shortDescription: "Combine PDFs and reorder or remove pages, without uploading them.",
-    longDescription:
-      "Planned. The intention is to merge PDFs and reorder, rotate or delete pages entirely in the browser, so that documents never leave your device. The plan is to integrate the existing MIT-licensed pdf-lib library rather than writing PDF handling from scratch.",
-    icon: "file-text",
-    group: "documents",
-    status: "planned",
-    // Classified by where the work will happen, not by the origin of the code. The
-    // pdf-lib dependency is recorded under `attributions`.
-    integrationType: "BROWSER_LOCAL",
-    infrastructureCost: "none",
-    processing: {
-      location: "browser",
-      leavesDevice: false,
-      explanation:
-        "Not yet available. When it ships it will process documents entirely in your browser; if that ever changes, this notice will change with it before the tool goes live.",
-    },
-    attributions: [
-      {
-        name: "pdf-lib",
-        url: "https://github.com/Hopding/pdf-lib",
-        license: "MIT",
-        required: false,
-      },
-    ],
-    limitations: [
-      "Not built yet — this entry documents the intended approach rather than a working tool.",
-      "Browser-based processing will be limited by available memory, so very large documents will be better handled by a desktop or self-hosted tool.",
-    ],
-    relatedResources: ["stirling-pdf", "libreoffice"],
-    tags: ["pdf", "merge", "documents", "planned"],
   },
 ];
 
@@ -330,6 +508,22 @@ function assertToolIntegrity(): void {
 
     if (tool.integrationType === "OPEN_SOURCE" && tool.attributions.length === 0) {
       problems.push(`Tool "${tool.slug}" is classified OPEN_SOURCE but credits no project.`);
+    }
+
+    // A download is allowed, but it has to be declared precisely enough to build a
+    // CSP from: secure origins only, and never a wildcard for the whole web.
+    for (const download of tool.processing.downloads ?? []) {
+      if (!download.url.startsWith("https://")) {
+        problems.push(`Tool "${tool.slug}" declares a non-HTTPS download URL "${download.url}".`);
+      }
+      if (download.origins.length === 0) {
+        problems.push(`Tool "${tool.slug}" declares a download from ${download.from} with no origins.`);
+      }
+      for (const origin of download.origins) {
+        if (!/^https:\/\/(\*\.)?[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(origin)) {
+          problems.push(`Tool "${tool.slug}" declares an invalid download origin "${origin}".`);
+        }
+      }
     }
   }
 

@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useReducer, useState, useTransition } from "react";
+import { useCallback, useMemo, useReducer, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+
 
 import { Icon } from "@/components/icons";
 import { buttonClasses } from "@/components/ui/button";
@@ -11,14 +12,15 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { compareSelection, MAX_COMPARE } from "@/features/compare/compare-params";
 import { CompareToggle } from "@/features/compare/compare-toggle";
 import { CompareTray } from "@/features/compare/compare-tray";
-import { RecordList } from "@/features/resources/components/resource-record";
 import { countActiveFilters, EVIDENCE_FILTER_KEYS } from "@/lib/search/filters";
-import { parseSearchParams, searchParamsToInput } from "@/lib/search/params";
+import { buildResourcesHref, parseSearchParams, searchParamsToInput } from "@/lib/search/params";
 import { runSearch } from "@/lib/search/run-search";
 import { formatCount } from "@/lib/utils/format";
 import type { Resource } from "@/types/resource";
 
 import { ActiveFilters } from "./active-filters";
+import { AnimatedResourceGrid } from "./animated-resource-grid";
+import { CategoryFilterBar } from "./category-filter-bar";
 import { EvidenceGate } from "./evidence-gate";
 import { clearFiltersHref, FilterPanel } from "./filter-panel";
 import { FilterSheet } from "./filter-sheet";
@@ -28,65 +30,30 @@ import { SearchBox } from "./search-box";
 import { SortSelect } from "./sort-select";
 
 /**
- * The browse and search experience, executed in the browser.
+ * Editorial Resource Catalogue.
  *
- * Why this is a client component rather than a server-rendered page:
- *
- * Reading `searchParams` on the server forces the route to be rendered per
- * request, which means the application needs a running server — and a running
- * server means a hosting bill, or dependence on a provider's free-tier limits.
- * Doing the filtering here instead makes `/resources` a static file that any free
- * static host can serve, and removes the possibility of runtime cost entirely.
- *
- * What this costs, stated plainly:
- *
- * - Filtering requires JavaScript. Without it, this page shows the unfiltered
- *   library rather than applying URL filters. The rest of the library — every
- *   resource, category, collection and alternatives page — is static HTML and
- *   works with JavaScript disabled.
- * - Search result titles are no longer per-query. Those pages were already
- *   `noIndex`, so nothing indexable was lost.
- * - The whole listable library is sent to the browser. That is the honest
- *   scaling limit of this approach, and it is the same threshold at which a
- *   database starts being worthwhile. See `docs/architecture.md`.
- *
- * What this does *not* cost: search behaviour. The ranking runs through the same
- * `runSearch` used by the repository, so results are identical to what a
- * server-rendered version would produce.
+ * Implements the redesigned catalogue architecture:
+ * 1. Clean, focused header with RESOURCES eyebrow and concise description
+ * 2. Premium search field with beam feedback
+ * 3. Dynamic category filter row with live counts and segmented styling
+ * 4. Quiet results count and secondary sorting control
+ * 5. Animated grid reflow reorganizing cards smoothly across category transitions
+ * 6. Clean pagination and full URL state synchronization
  */
 export function ResourceExplorer({ resources }: { resources: Resource[] }) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // One transition for every filter and sort change, so the results region
-  // carries one pending state whichever control started it.
   const [isPending, startTransition] = useTransition();
   const navigate = useCallback(
     (href: string) => startTransition(() => router.push(href, { scroll: false })),
     [router],
   );
 
-  // One filter form at a time, by state rather than CSS: the sidebar form is
-  // unmounted while the sheet is open, and the sheet's only exists while open.
-  // Reaching lg closes the sheet, so the sidebar returns.
   const [sheetOpen, setSheetOpen] = useState(false);
-  useEffect(() => {
-    const query = window.matchMedia("(min-width: 64rem)");
-    const onChange = (event: MediaQueryListEvent) => {
-      if (event.matches) setSheetOpen(false);
-    };
-    query.addEventListener("change", onChange);
-    return () => query.removeEventListener("change", onChange);
-  }, []);
-
-  // The comparison selection: React state only, never stored, so it lives as
-  // long as the explorer stays mounted (across filter, sort and page changes).
-  // The three-item cap lives in the tested reducer.
   const [compare, dispatchCompare] = useReducer(compareSelection, []);
   const nameBySlug = useMemo(() => new Map(resources.map((r) => [r.slug, r.name])), [resources]);
 
-  // Recomputed only when the URL changes. At this library size the full pipeline
-  // is well under a frame, so there is no need for debouncing or a worker.
   const { query, outcome } = useMemo(() => {
     const parsed = parseSearchParams(searchParamsToInput(new URLSearchParams(searchParams.toString())));
     return { query: parsed, outcome: runSearch(resources, parsed) };
@@ -104,35 +71,117 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
 
   const activeCount = countActiveFilters(effectiveQuery);
   const isSearch = Boolean(query.q);
+  const activeCategoryId = effectiveQuery.categories?.[0] ?? "all";
+
+  const handleSelectCategory = (categoryId: string) => {
+    const nextCategories = categoryId === "all" ? [] : [categoryId];
+    const nextQuery = { ...effectiveQuery, categories: nextCategories, page: 1 };
+    navigate(buildResourcesHref(nextQuery));
+  };
 
   return (
     <>
-      <div className="border-b border-border bg-bg-subtle py-8">
+      {/* 01. Editorial Catalogue Header */}
+      <div className="border-b border-border bg-bg-subtle/60 py-8 sm:py-10">
         <div className="mx-auto w-full max-w-(--container-content) px-4 sm:px-6 lg:px-8">
-          <h1 className="font-serif text-3xl font-semibold">
+          <div className="text-2xs font-semibold uppercase tracking-widest text-fg-subtle">
+            RESOURCES
+          </div>
+
+          <h1 className="mt-2 font-serif text-3xl sm:text-4xl font-semibold text-fg tracking-tight">
             {isSearch ? (
               <>
                 Results for <span className="text-fg">“{query.q}”</span>
               </>
             ) : (
-              "Browse free resources"
+              "All free resources"
             )}
           </h1>
-          <p className="mt-2 max-w-2xl text-sm text-fg-muted">
-            Every entry states what “free” means for it, what the limits are, and which of its facts an official source
-            confirms.
+
+          <p className="mt-2.5 max-w-2xl text-sm sm:text-base text-fg-muted leading-relaxed">
+            Browse the curated library of genuinely free software, tools, platforms and learning resources.
           </p>
 
+          {/* 02. Resources Search Bar */}
           <div className="mt-6 max-w-2xl">
-            <SearchBox key={query.q ?? ""} defaultValue={query.q ?? ""} size="md" label="Search free resources" />
+            <SearchBox
+              key={query.q ?? ""}
+              defaultValue={query.q ?? ""}
+              size="md"
+              variant="beam"
+              placeholder="Search free resources, tools, and platforms..."
+              label="Search free resources"
+            />
           </div>
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-(--container-content) px-4 pt-8 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
-          {/* Sticky from lg with its own scroll, so long groups never push the
-              results away; below lg the sheet takes over. */}
+      {/* 03. Catalogue Main Area */}
+      <div className="mx-auto w-full max-w-(--container-content) px-4 pt-6 sm:px-6 lg:px-8">
+        {/* Dynamic Category Filter Bar */}
+        <div className="border-b border-border/80 pb-4">
+          <CategoryFilterBar
+            resources={resources}
+            activeCategoryId={activeCategoryId}
+            onSelectCategory={handleSelectCategory}
+            disabled={isPending}
+          />
+        </div>
+
+        {/* Results Toolbar: Result count + EvidenceGate + Quiet Sort + Filters Button */}
+        <ResultsToolbar
+          total={results.total}
+          page={results.page}
+          totalPages={results.totalPages}
+          filtered={isSearch || activeCount > 0}
+          gate={
+            evidenceFilterActive ? (
+              <EvidenceGate total={results.total} heldBack={excludedByEvidence} q={effectiveQuery.q} />
+            ) : null
+          }
+        >
+          <SortSelect hasQuery={isSearch} isPending={isPending} onNavigate={navigate} />
+
+          <button
+            type="button"
+            onClick={(event) => {
+              event.currentTarget.focus();
+              setSheetOpen(true);
+            }}
+            aria-haspopup="dialog"
+            className={buttonClasses({
+              variant: "secondary",
+              size: "sm",
+              className: "inline-flex items-center gap-1.5",
+            })}
+          >
+            <Icon name="sliders" size={14} className="text-fg-subtle" />
+            <span>Filters</span>
+            {activeCount > 0 ? (
+              <span className="tabular-nums font-semibold"> · {activeCount}</span>
+            ) : null}
+          </button>
+        </ResultsToolbar>
+
+        {/* Filter Sheet for secondary filters (licence, platform, account, etc.) */}
+        <FilterSheet
+          open={sheetOpen}
+          onClose={() => setSheetOpen(false)}
+          total={results.total}
+          onClearAll={activeCount > 0 ? () => navigate(clearFiltersHref(searchParams)) : undefined}
+        >
+          <FilterPanel
+            facets={facets}
+            resultCount={results.total}
+            activeFilterCount={activeCount}
+            isPending={isPending}
+            onNavigate={navigate}
+            presentation="sheet"
+          />
+        </FilterSheet>
+
+        {/* 04. Catalogue Grid Area with Secondary Filter Sidebar on Desktop */}
+        <div className="mt-6 grid gap-8 lg:grid-cols-[16rem_minmax(0,1fr)]">
           <aside
             aria-label="Filter resources"
             className="hidden lg:sticky lg:top-[calc(var(--header-h)+16px)] lg:block lg:max-h-[calc(100dvh-var(--header-h)-32px)] lg:self-start lg:overflow-y-auto lg:overscroll-contain"
@@ -147,146 +196,106 @@ export function ResourceExplorer({ resources }: { resources: Resource[] }) {
               />
             )}
           </aside>
-          <FilterSheet
-            open={sheetOpen}
-            onClose={() => setSheetOpen(false)}
-            total={results.total}
-            onClearAll={activeCount > 0 ? () => navigate(clearFiltersHref(searchParams)) : undefined}
-          >
-            <FilterPanel
-              facets={facets}
-              resultCount={results.total}
-              activeFilterCount={activeCount}
-              isPending={isPending}
-              onNavigate={navigate}
-              presentation="sheet"
-            />
-          </FilterSheet>
 
           <div className="min-w-0">
-            <ResultsToolbar
-              total={results.total}
-              page={results.page}
-              totalPages={results.totalPages}
-              filtered={isSearch || activeCount > 0}
-              gate={
-                evidenceFilterActive ? (
-                  <EvidenceGate total={results.total} heldBack={excludedByEvidence} q={effectiveQuery.q} />
-                ) : null
-              }
-            >
-              <SortSelect hasQuery={isSearch} isPending={isPending} onNavigate={navigate} />
-              <button
-                type="button"
-                onClick={(event) => {
-                  // Scripted clicks and Safari do not focus a clicked button;
-                  // focusing it makes it the element the sheet returns focus to.
-                  event.currentTarget.focus();
-                  setSheetOpen(true);
-                }}
-                aria-haspopup="dialog"
-                className={buttonClasses({ variant: "secondary", size: "md", className: "lg:hidden" })}
-              >
-                Filters
-                {activeCount > 0 ? <span className="tabular-nums"> · {activeCount}</span> : null}
-              </button>
-            </ResultsToolbar>
+            {/* Active Filters Display */}
+            {activeCount > 0 ? (
+              <div>
+                <ActiveFilters query={effectiveQuery} inferredFilters={inferredFilters} />
+              </div>
+            ) : null}
 
-            <div className="mt-4">
-              <ActiveFilters query={effectiveQuery} inferredFilters={inferredFilters} />
-            </div>
-
+            {/* Inferred query feedback */}
             {inferredFilters.length > 0 ? (
               <Callout tone="neutral" icon={null} className="mt-4">
-                Your wording set {inferredFilters.length === 1 ? "a filter" : "some filters"} automatically:{" "}
-                {inferredFilters.map((filter) => filter.label).join(", ")}. Remove any that do not apply using the filters
-                above.
+                Your search set {inferredFilters.length === 1 ? "a filter" : "some filters"} automatically:{" "}
+                {inferredFilters.map((filter) => filter.label).join(", ")}. Remove any that do not apply above.
               </Callout>
             ) : null}
 
+            {/* Evidence gate notice */}
             {evidenceFilterActive ? (
-              // A confirmed-only filter holds listings back. Saying how many — and
-              // why — is the difference between an honest filter and a thin one.
               <Callout id="evidence-filter-notice" tone="neutral" icon={null} className="mt-4">
                 <span data-testid="evidence-filter-notice">
                   Filters marked <span className="font-medium text-fg">confirmed</span> only include listings where an
                   official source confirms the fact.{" "}
                   {excludedByEvidence > 0
-                    ? `${formatCount(excludedByEvidence)} more ${excludedByEvidence === 1 ? "listing records" : "listings record"} it but ${excludedByEvidence === 1 ? "has" : "have"} not been checked yet, so ${excludedByEvidence === 1 ? "it is" : "they are"} not shown. Remove the filter to see them, each with its evidence stated.`
+                    ? `${formatCount(excludedByEvidence)} more ${excludedByEvidence === 1 ? "listing records" : "listings record"} it but ${excludedByEvidence === 1 ? "has" : "have"} not been checked yet.`
                     : "No other listing records it without confirmation."}
                 </span>
               </Callout>
             ) : null}
 
+            {/* Relaxed search matching warning */}
             {results.relaxedMatching ? (
               <Callout tone="neutral" icon="info" className="mt-4">
-                Few resources matched every word, so results matching only part of your search are included below.
-                Closest matches come first, and each listing shows why it matched.
+                Few resources matched every word, so results matching part of your search are included below. Closest matches come first.
               </Callout>
             ) : null}
 
-            {/* The results region carries the pending state: busy for assistive
-                technology, dimmed for sight, while the URL change is applied. */}
-            <div className={isPending ? "motion-pending mt-6 opacity-60" : "motion-pending mt-6"} aria-busy={isPending || undefined}>
-              {items.length > 0 ? (
-                <>
-                  <RecordList
-                    layout="list"
-                    resources={items}
-                    reasonsBySlug={reasonsBySlug}
-                    label={isSearch ? `Search results for ${query.q}` : "All resources"}
-                    renderCompare={(resource) => (
-                      <CompareToggle
-                        name={resource.name}
-                        selected={compare.includes(resource.slug)}
-                        full={compare.length >= MAX_COMPARE && !compare.includes(resource.slug)}
-                        onToggle={() => dispatchCompare({ type: "toggle", slug: resource.slug })}
-                      />
-                    )}
+            {/* Animated Resource Grid */}
+            <div
+              className={isPending ? "motion-pending mt-6 opacity-60" : "motion-pending mt-6"}
+              aria-busy={isPending || undefined}
+            >
+          {items.length > 0 ? (
+            <>
+              <AnimatedResourceGrid
+                resources={items}
+                reasonsBySlug={reasonsBySlug}
+                label={isSearch ? `Search results for ${query.q}` : "All resources"}
+                renderCompare={(resource) => (
+                  <CompareToggle
+                    name={resource.name}
+                    selected={compare.includes(resource.slug)}
+                    full={compare.length >= MAX_COMPARE && !compare.includes(resource.slug)}
+                    onToggle={() => dispatchCompare({ type: "toggle", slug: resource.slug })}
                   />
+                )}
+              />
 
-                  {results.totalPages > 1 ? (
-                    <div className="mt-10">
-                      <Pagination query={effectiveQuery} page={results.page} totalPages={results.totalPages} />
-                    </div>
+              {results.totalPages > 1 ? (
+                <div className="mt-12">
+                  <Pagination query={effectiveQuery} page={results.page} totalPages={results.totalPages} />
+                </div>
+              ) : null}
+            </>
+          ) : (
+            <EmptyState
+              title={isSearch ? `Nothing matched “${query.q}”` : "No resources match these filters"}
+              description={
+                <div className="flex flex-col gap-3">
+                  <p>
+                    The library is deliberately curated rather than scraped, so there are genuine gaps.
+                    Try clearing a filter, or searching for a broader term.
+                  </p>
+                  <p className="text-fg-subtle">
+                    If you know something genuinely free that belongs here, submit it in minutes.
+                  </p>
+                </div>
+              }
+              action={
+                <div className="flex flex-wrap justify-center gap-3">
+                  {activeCount > 0 ? (
+                    <Link
+                      href={query.q ? `/resources?q=${encodeURIComponent(query.q)}` : "/resources"}
+                      className={buttonClasses({ variant: "secondary" })}
+                    >
+                      Clear filters
+                    </Link>
                   ) : null}
-                </>
-              ) : (
-                <EmptyState
-                  title={isSearch ? `Nothing matched “${query.q}”` : "No resources match these filters"}
-                  description={
-                    <div className="flex flex-col gap-3">
-                      <p>
-                        The library is still small and deliberately curated rather than scraped, so there are genuine
-                        gaps. Two things usually help: remove a filter, or use a broader term.
-                      </p>
-                      <p className="text-fg-subtle">
-                        If you know something free that belongs here, adding it takes a couple of minutes.
-                      </p>
-                    </div>
-                  }
-                  action={
-                    <div className="flex flex-wrap justify-center gap-3">
-                      {activeCount > 0 ? (
-                        <Link
-                          href={query.q ? `/resources?q=${encodeURIComponent(query.q)}` : "/resources"}
-                          className={buttonClasses({ variant: "secondary" })}
-                        >
-                          Clear filters
-                        </Link>
-                      ) : null}
-                      <Link href="/submit" className={buttonClasses({ variant: "primary" })}>
-                        <Icon name="plus" size={16} />
-                        Submit a resource
-                      </Link>
-                    </div>
-                  }
-                />
-              )}
-            </div>
-          </div>
+                  <Link href="/submit" className={buttonClasses({ variant: "primary" })}>
+                    <Icon name="plus" size={16} />
+                    Submit a resource
+                  </Link>
+                </div>
+              }
+            />
+          )}
         </div>
       </div>
+    </div>
+  </div>
 
       {compare.length > 0 ? (
         <CompareTray

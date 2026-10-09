@@ -14,7 +14,15 @@ export const toolsSiteCatalog: unknown = {
       "tagline": "Resize & convert",
       "description": "Compress, resize, crop and convert pictures.",
       "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/categories/image/",
-      "toolCount": 4
+      "toolCount": 5
+    },
+    {
+      "slug": "pdf",
+      "name": "PDF",
+      "tagline": "Merge & transform",
+      "description": "Work with PDF documents.",
+      "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/categories/pdf/",
+      "toolCount": 3
     },
     {
       "slug": "text",
@@ -46,7 +54,7 @@ export const toolsSiteCatalog: unknown = {
       "tagline": "Inspect & fingerprint",
       "description": "Inspect and fingerprint files.",
       "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/categories/files/",
-      "toolCount": 2
+      "toolCount": 4
     },
     {
       "slug": "security",
@@ -224,7 +232,7 @@ export const toolsSiteCatalog: unknown = {
     },
     {
       "slug": "csv-json",
-      "name": "CSV <-> JSON Converter",
+      "name": "CSV and JSON Converter",
       "description": "Convert tabular CSV data to JSON objects and arrays bidirectionally.",
       "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/tools/csv-json/",
       "category": "data",
@@ -506,8 +514,37 @@ export const toolsSiteCatalog: unknown = {
       ]
     },
     {
+      "slug": "image-to-pdf",
+      "name": "Image to PDF",
+      "description": "Turn photos and scans into one PDF, one image per page.",
+      "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/tools/image-to-pdf/",
+      "category": "pdf",
+      "alsoIn": [
+        "image"
+      ],
+      "processing": "local",
+      "formats": [
+        "jpeg",
+        "png",
+        "webp",
+        "pdf"
+      ],
+      "tags": [
+        "pdf",
+        "image",
+        "jpg to pdf",
+        "photo to pdf",
+        "scan",
+        "png to pdf",
+        "photos",
+        "scans",
+        "documents",
+        "a4"
+      ]
+    },
+    {
       "slug": "json-yaml",
-      "name": "JSON <-> YAML Converter",
+      "name": "JSON and YAML Converter",
       "description": "Convert between JSON and YAML formats bidirectionally without uploading.",
       "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/tools/json-yaml/",
       "category": "data",
@@ -755,6 +792,52 @@ export const toolsSiteCatalog: unknown = {
         "entropy",
         "generator",
         "credentials"
+      ]
+    },
+    {
+      "slug": "pdf-merge",
+      "name": "PDF Merge",
+      "description": "Combine several PDFs into one, in the order you choose.",
+      "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/tools/pdf-merge/",
+      "category": "pdf",
+      "alsoIn": [
+        "files"
+      ],
+      "processing": "local",
+      "formats": [
+        "pdf"
+      ],
+      "tags": [
+        "pdf",
+        "merge",
+        "combine",
+        "join",
+        "pdf merger",
+        "append",
+        "documents"
+      ]
+    },
+    {
+      "slug": "pdf-split",
+      "name": "PDF Split & Extract Pages",
+      "description": "Take out the pages you need, or split a PDF into several files.",
+      "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/tools/pdf-split/",
+      "category": "pdf",
+      "alsoIn": [
+        "files"
+      ],
+      "processing": "local",
+      "formats": [
+        "pdf"
+      ],
+      "tags": [
+        "pdf",
+        "split",
+        "extract",
+        "pages",
+        "pdf splitter",
+        "separate",
+        "page range"
       ]
     },
     {
@@ -1139,7 +1222,7 @@ export const toolsSiteCatalog: unknown = {
     },
     {
       "slug": "xml-json",
-      "name": "XML <-> JSON Converter",
+      "name": "XML and JSON Converter",
       "description": "Convert between XML and JSON documents bidirectionally in your browser.",
       "url": "https://everything-free-by-quilonix.github.io/everything-free-tools/tools/xml-json/",
       "category": "data",

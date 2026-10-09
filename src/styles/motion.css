@@ -239,3 +239,215 @@ dialog[data-ef-modal][data-closing] {
 .motion-marquee {
   animation: ef-marquee 45s linear infinite;
 }
+
+/* BEAM: subtle traveling light along the lower edge on focus */
+@keyframes ef-beam {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.motion-beam-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  animation: ef-beam 2.8s var(--ease-standard) infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-beam-line {
+    animation: none;
+    width: 100%;
+    background: var(--primary);
+  }
+}
+
+/* SHIMMER: 21st.dev optical light sweep for skeleton loading states */
+@keyframes ef-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.motion-shimmer {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklch, var(--fg) 5%, transparent) 50%,
+    transparent 100%
+  );
+  animation: ef-shimmer 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-shimmer {
+    animation: none;
+    display: none;
+  }
+}
+
+/* ROUTE BUFFER: 21st.dev sleek optical top route progress bar */
+@keyframes ef-route-buffer {
+  0% {
+    transform: scaleX(0.08);
+  }
+  30% {
+    transform: scaleX(0.45);
+  }
+  65% {
+    transform: scaleX(0.75);
+  }
+  90% {
+    transform: scaleX(0.88);
+  }
+  100% {
+    transform: scaleX(0.92);
+  }
+}
+
+.motion-route-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+  background: color-mix(in oklch, var(--primary) 15%, transparent);
+  transition: opacity var(--dur-move) var(--ease-standard);
+}
+
+.motion-route-progress {
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--primary) 40%, transparent) 0%,
+    var(--primary) 80%,
+    var(--primary) 100%
+  );
+  box-shadow: 0 0 10px color-mix(in oklch, var(--primary) 70%, transparent);
+  animation: ef-route-buffer 8s cubic-bezier(0.1, 0.4, 0.2, 1) forwards;
+}
+
+.motion-route-done {
+  transform: scaleX(1) !important;
+  transition: transform var(--dur-quick) var(--ease-standard) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-route-progress {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+/* HERO: global-level ambient background and entrance motion */
+.motion-hero-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 12%, color-mix(in oklch, var(--primary) 14%, transparent), transparent 75%),
+    radial-gradient(circle 35% at 50% 30%, color-mix(in oklch, var(--primary) 6%, transparent), transparent 70%);
+  opacity: 0.9;
+}
+
+.motion-hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--border) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--border) 45%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black 20%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 30%, black 20%, transparent 85%);
+  opacity: 0.65;
+}
+
+@keyframes ef-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.motion-hero-enter-1 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.04s;
+}
+
+.motion-hero-enter-2 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.12s;
+}
+
+.motion-hero-enter-3 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.20s;
+}
+
+.motion-hero-enter-4 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.28s;
+}
+
+.motion-hero-enter-5 {
+  animation: ef-hero-rise 0.5s var(--ease-spring) both;
+  animation-delay: 0.36s;
+}
+
+@keyframes ef-pulse-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.45;
+  }
+}
+
+.motion-pulse-dot {
+  animation: ef-pulse-dot 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-hero-enter-1,
+  .motion-hero-enter-2,
+  .motion-hero-enter-3,
+  .motion-hero-enter-4,
+  .motion-hero-enter-5 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .motion-pulse-dot {
+    animation: none;
+  }
+}
+
+
+

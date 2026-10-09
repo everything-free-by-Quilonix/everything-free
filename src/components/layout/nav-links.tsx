@@ -16,7 +16,7 @@ export function NavLinks({ items }: { items: NavLink[] }) {
   const pathname = usePathname();
 
   return (
-    <ul className="flex h-(--header-h) items-stretch gap-1">
+    <ul className="flex h-full items-center gap-0.5">
       {items.map((item) => {
         const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
@@ -26,8 +26,10 @@ export function NavLinks({ items }: { items: NavLink[] }) {
               href={item.href}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "inline-flex items-center border-y-2 border-transparent px-3 text-sm font-medium transition-colors",
-                active ? "border-b-primary text-fg" : "text-fg-muted hover:text-fg",
+                "inline-flex items-center px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-colors",
+                active
+                  ? "bg-surface-raised text-fg font-medium shadow-2xs"
+                  : "text-fg-muted hover:text-fg hover:bg-surface-hover/60",
               )}
             >
               {item.label}
@@ -38,3 +40,4 @@ export function NavLinks({ items }: { items: NavLink[] }) {
     </ul>
   );
 }
+

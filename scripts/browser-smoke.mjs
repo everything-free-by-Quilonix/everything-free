@@ -431,6 +431,12 @@ async function main() {
       "/tools/image-converter/",
       "/tools/contrast-checker/",
       "/tools/text-toolkit/",
+      "/tools/trial-reminder/",
+      "/tools/subscription-audit/",
+      "/tools/photo-metadata/",
+      "/tools/palette-extractor/",
+      "/tools/private-ai-chat/",
+      "/ai/",
       "/submit/",
       "/report/",
       "/free-status/",
@@ -888,6 +894,31 @@ async function main() {
       assert(await desktop.waitFor(`document.querySelector("textarea").value === "HELLO WORLD"`), "text not transformed");
     });
 
+    await check("trial reminder schedules a trial and builds a calendar file", async () => {
+      await desktop.goto(`${site}/tools/trial-reminder/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.evaluate(JS.setValue('input[placeholder^="e.g. a streaming"]', "Smoke Test Service"));
+      assert(await desktop.waitFor(`/Converts to paid on/.test(document.body.innerText)`), "no schedule preview");
+      assert(await desktop.waitFor(JS.clickText("button", "Add trial")), "Add trial button not found");
+      assert(await desktop.waitFor(JS.clickText("button", "Download calendar file (.ics)")), "no download button");
+      assert(await desktop.waitFor(`/Calendar file with 1 trial/.test(document.body.innerText)`), "download not announced");
+      await assertCleanLoad(desktop, "trial reminder");
+    });
+
+    await check("subscription audit totals and links to an alternatives page", async () => {
+      await desktop.goto(`${site}/tools/subscription-audit/`);
+      await desktop.waitFor(JS.hydrated);
+      await desktop.evaluate(JS.setValue('input[placeholder="Product name"]', "Adobe Photoshop"));
+      await desktop.evaluate(JS.setValue('input[placeholder="0.00"]', "22.99"));
+      assert(await desktop.waitFor(`/\\$275\\.88/.test(document.body.innerText)`), "yearly total not shown");
+      assert(
+        await desktop.waitFor(`!!document.querySelector('a[href*="/alternatives/adobe-photoshop"]')`),
+        "no alternatives link",
+      );
+      await assertCleanLoad(desktop, "subscription audit");
+      return "22.99/month → $275.88/year";
+    });
+
     await check("image converter runs locally and renders a blob: result", async () => {
       await desktop.goto(`${site}/tools/image-converter/`);
       await desktop.waitFor(JS.hydrated);
@@ -906,6 +937,79 @@ async function main() {
       assert(await desktop.waitFor(`!!document.querySelector('a[download][href^="blob:"]')`), "no download link");
       assert(await desktop.waitFor(`(() => { const img = document.querySelector('img[src^="blob:"]'); return img && img.complete && img.naturalWidth > 0; })()`), "blob: preview did not render (CSP img-src?)");
       await assertCleanLoad(desktop, "image converter");
+    });
+
+    await check("palette extractor finds the colour of a local image", async () => {
+      await desktop.goto(`${site}/tools/palette-extractor/`);
+      await desktop.waitFor(JS.hydrated);
+      const loaded = await desktop.evaluate(`(async () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 32; canvas.height = 32;
+        const ctx = canvas.getContext("2d"); ctx.fillStyle = "#d4af37"; ctx.fillRect(0, 0, 32, 32);
+        const blob = await new Promise((r) => canvas.toBlob(r, "image/png"));
+        const input = document.querySelector('input[type="file"]');
+        const dt = new DataTransfer(); dt.items.add(new File([blob], "swatch.png", { type: "image/png" }));
+        input.files = dt.files; input.dispatchEvent(new Event("change", { bubbles: true }));
+        return true;
+      })()`);
+      assert(loaded, "could not supply a file");
+      assert(await desktop.waitFor(`/#d4af37/.test(document.body.innerText)`), "extracted colour not shown");
+      await assertCleanLoad(desktop, "palette extractor");
+    });
+
+    await check("photo metadata tool reads a local JPEG", async () => {
+      await desktop.goto(`${site}/tools/photo-metadata/`);
+      await desktop.waitFor(JS.hydrated);
+      const loaded = await desktop.evaluate(`(async () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 16; canvas.height = 16;
+        canvas.getContext("2d").fillRect(0, 0, 16, 16);
+        const blob = await new Promise((r) => canvas.toBlob(r, "image/jpeg"));
+        const input = document.querySelector('input[type="file"]');
+        const dt = new DataTransfer(); dt.items.add(new File([blob], "photo.jpg", { type: "image/jpeg" }));
+        input.files = dt.files; input.dispatchEvent(new Event("change", { bubbles: true }));
+        return true;
+      })()`);
+      assert(loaded, "could not supply a file");
+      // A canvas-encoded JPEG carries no EXIF, so the honest answer is "nothing to clean".
+      assert(await desktop.waitFor(`/No metadata found/.test(document.body.innerText)`), "no result shown");
+      await assertCleanLoad(desktop, "photo metadata");
+    });
+
+    await check("free AI finder lists options and narrows by confirmed facts", async () => {
+      await desktop.goto(`${site}/ai/`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`/free options? for/.test(document.body.innerText)`), "no results heading");
+      const before = await desktop.evaluate(`document.querySelectorAll('main article[data-record]').length`);
+      assert(before > 0, "no listings shown");
+      assert(await desktop.waitFor(JS.click('input[value="coding"]')), "coding option not found");
+      assert(await desktop.waitFor(`/for “help with code”|No listings match/.test(document.body.innerText)`), "job did not change");
+      assert(await desktop.waitFor(JS.clickText("label", "No credit card")), "promise filter not found");
+      const after = await desktop.evaluate(`document.querySelectorAll('main article[data-record]').length`);
+      await assertCleanLoad(desktop, "AI finder");
+      return `${before} chat listings; coding + confirmed no card: ${after}`;
+    });
+
+    await check("private AI chat downloads nothing until asked", async () => {
+      await desktop.goto(`${site}/tools/private-ai-chat/`);
+      await desktop.waitFor(JS.hydrated);
+      const ready = await desktop.waitFor(
+        `/Choose a model|cannot run the chat/.test(document.body.innerText)`,
+      );
+      assert(ready, "neither the model picker nor the unsupported notice appeared");
+      const outcome = await desktop.evaluate(
+        `/Choose a model/.test(document.body.innerText) ? "WebGPU available: model picker shown" : "no WebGPU: honest notice shown"`,
+      );
+      const thirdParty = await desktop.evaluate(
+        `performance.getEntriesByType("resource").map((e) => e.name).filter((u) => !u.startsWith(location.origin))`,
+      );
+      assert(thirdParty.length === 0, `requested before any click: ${thirdParty.slice(0, 3).join(", ")}`);
+      const csp = await desktop.evaluate(
+        `document.querySelector('meta[http-equiv="Content-Security-Policy"]').content`,
+      );
+      assert(csp.includes("connect-src 'self' https://huggingface.co"), "chat page CSP lacks the declared origins");
+      await assertCleanLoad(desktop, "private AI chat");
+      return outcome;
     });
 
     await check("submit form: empty submission shows errors", async () => {

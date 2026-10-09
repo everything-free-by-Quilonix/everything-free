@@ -4,6 +4,8 @@ import { audiences } from "@/config/audiences";
 import { categories } from "@/config/categories";
 import { tools } from "@/config/tools";
 import { collections } from "@/data/collections";
+import { aiImageCommands } from "@/data/ai-image-commands";
+import { getActivePrompts } from "@/data/ai-prompts/normalized-prompts";
 import { getAlternativeTargets, listResourceIndexEntries } from "@/lib/repository";
 import { absoluteUrl } from "@/lib/seo/metadata";
 
@@ -34,6 +36,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: url("/"), lastModified: now, changeFrequency: "daily", priority: 1 },
     { url: url("/resources"), lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: url("/ai"), lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: url("/ai-prompts"), lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: url("/ai-image-commands"), lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: url("/categories"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: url("/collections"), lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: url("/tools"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
@@ -94,6 +99,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.6,
+    })),
+
+    ...aiImageCommands.map((cmd) => ({
+      url: url(`/ai-image-commands/${cmd.id}`),
+      lastModified: new Date(`${cmd.verification.lastChecked}T00:00:00Z`),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
+
+    ...getActivePrompts().map((p) => ({
+      url: url(`/ai-prompts/${p.id}`),
+      lastModified: new Date(`${p.provenance.lastVerified}T00:00:00Z`),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
     })),
   ];
 }
