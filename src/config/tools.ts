@@ -94,6 +94,11 @@ export function getToolIntegration(id: ToolIntegrationType): ToolIntegrationDefi
 
 export const toolGroups: ToolGroup[] = [
   {
+    id: "ai",
+    name: "Private AI",
+    description: "AI that runs on your own device. Nothing you type is sent anywhere.",
+  },
+  {
     id: "money",
     name: "Keep it free",
     description: "Stop free trials and forgotten subscriptions from quietly charging you.",
@@ -107,6 +112,69 @@ export const toolGroups: ToolGroup[] = [
 ];
 
 export const tools: Tool[] = [
+  {
+    id: "private-ai-chat",
+    slug: "private-ai-chat",
+    name: "Private AI chat",
+    shortDescription: "Chat with an open-source AI model that runs on your own device. No account, no key, and your messages never leave it.",
+    longDescription:
+      "Choose a small open-source model, download it once, and chat with it entirely inside your browser. The model runs on your own graphics chip, so there is no account, no API key, no usage limit and no one reading your messages. Each model is under 500 MB and is saved in this browser for next time; you can delete it here whenever you like. Small models are far less capable than ChatGPT or Gemini, and the page says so.",
+    icon: "lock",
+    group: "ai",
+    status: "available",
+    integrationType: "BROWSER_LOCAL",
+    infrastructureCost: "none",
+    processing: {
+      location: "browser",
+      leavesDevice: false,
+      explanation:
+        "Your messages are processed by a model running on your own device and are never sent to Everything.Free, the model's makers or anyone else. They are kept only in this page's memory and are gone when you close the tab. The one thing that comes from outside is the model itself: when you press Download, your browser fetches its files from Hugging Face and its graphics code from GitHub. Those services see that the files were downloaded, as with any download, and nothing more. After that the chat works offline.",
+      downloads: [
+        {
+          what: "Model weights and tokenizer",
+          from: "Hugging Face",
+          url: "https://huggingface.co/mlc-ai",
+          origins: ["https://huggingface.co", "https://*.huggingface.co", "https://*.hf.co"],
+        },
+        {
+          what: "Compiled WebGPU model library",
+          from: "GitHub (mlc-ai/binary-mlc-llm-libs)",
+          url: "https://github.com/mlc-ai/binary-mlc-llm-libs",
+          origins: ["https://raw.githubusercontent.com"],
+        },
+      ],
+    },
+    attributions: [
+      {
+        name: "WebLLM (MLC AI)",
+        url: "https://github.com/mlc-ai/web-llm",
+        license: "Apache-2.0",
+        required: true,
+      },
+      {
+        name: "Qwen2.5, Qwen2.5 Coder, Qwen3 and Qwen3.5 models (Alibaba Qwen)",
+        url: "https://huggingface.co/Qwen",
+        license: "Apache-2.0",
+        required: true,
+      },
+      {
+        name: "SmolLM2 (Hugging Face)",
+        url: "https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct",
+        license: "Apache-2.0",
+        required: true,
+      },
+    ],
+    limitations: [
+      "Needs WebGPU: recent Chrome or Edge on a computer works best. Most phones, and older browsers, cannot run it yet; the page says so before downloading anything.",
+      "These are small models, a few hundred million parameters against hundreds of billions for the big online assistants. They make mistakes, invent facts and lose track of long conversations. Do not rely on them for anything important.",
+      "The first download is 213–453 MB depending on the model. Later visits load it from your browser's storage in seconds.",
+      "The model is saved in this browser only. Clearing site data, a private window closing, or the browser freeing space can remove it, and Safari removes it after seven days of browser use without visiting this site. It then downloads again.",
+      "No access to the internet, files or images: it answers from what it learned in training, which stopped at a fixed date.",
+      "Conversations are not saved. Use Copy conversation to keep one.",
+    ],
+    relatedResources: ["jan", "ollama", "lm-studio", "open-webui"],
+    tags: ["ai", "chat", "chatbot", "llm", "private", "offline", "local", "webgpu", "open-source", "no-account"],
+  },
   {
     id: "trial-reminder",
     slug: "trial-reminder",
@@ -440,6 +508,22 @@ function assertToolIntegrity(): void {
 
     if (tool.integrationType === "OPEN_SOURCE" && tool.attributions.length === 0) {
       problems.push(`Tool "${tool.slug}" is classified OPEN_SOURCE but credits no project.`);
+    }
+
+    // A download is allowed, but it has to be declared precisely enough to build a
+    // CSP from: secure origins only, and never a wildcard for the whole web.
+    for (const download of tool.processing.downloads ?? []) {
+      if (!download.url.startsWith("https://")) {
+        problems.push(`Tool "${tool.slug}" declares a non-HTTPS download URL "${download.url}".`);
+      }
+      if (download.origins.length === 0) {
+        problems.push(`Tool "${tool.slug}" declares a download from ${download.from} with no origins.`);
+      }
+      for (const origin of download.origins) {
+        if (!/^https:\/\/(\*\.)?[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(origin)) {
+          problems.push(`Tool "${tool.slug}" declares an invalid download origin "${origin}".`);
+        }
+      }
     }
   }
 

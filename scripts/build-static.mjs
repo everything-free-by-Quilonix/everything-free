@@ -27,6 +27,7 @@ import { resolve } from "node:path";
 
 import { applyCsp } from "./csp.mjs";
 import { fixRscPaths } from "./fix-rsc-paths.mjs";
+import { writeChatServiceWorker } from "./offline-chat.mjs";
 
 function run(command, args, env) {
   return new Promise((resolvePromise, reject) => {
@@ -48,8 +49,12 @@ try {
   const { copied } = await fixRscPaths(resolve("out"));
   console.log(`\n✓ Navigation payloads: ${copied} segment files copied to the paths the router requests (vercel/next.js#85374)`);
 
-  const { pages, hashed } = await applyCsp(resolve("out"));
+  const { pages, hashed, widened } = await applyCsp(resolve("out"));
   console.log(`\n✓ Content Security Policy written into ${pages} pages (${hashed} inline scripts hashed, no 'unsafe-inline' for scripts)`);
+  if (widened.length > 0) console.log(`  connect-src widened, as declared, on: ${widened.join(", ")}`);
+
+  const offline = await writeChatServiceWorker(resolve("out"));
+  console.log(`\n✓ Offline copy of the private AI chat: ${offline.files} files, ${offline.megabytes.toFixed(1)} MB (version ${offline.version})`);
 } catch (error) {
   console.error(`\n✗ ${error instanceof Error ? error.message : error}`);
   process.exit(1);

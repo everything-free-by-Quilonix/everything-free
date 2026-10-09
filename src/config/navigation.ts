@@ -43,6 +43,12 @@ export const primaryNav: NavLink[] = [
     icon: "library",
   },
   {
+    label: "Free AI",
+    href: "/ai",
+    description: "Find a free AI for the job, or chat privately with one that runs on your device.",
+    icon: "cpu",
+  },
+  {
     label: "AI Prompts",
     href: "/ai-prompts",
     description: "Discover prompts from open and community-driven AI prompt libraries.",
@@ -78,6 +84,8 @@ export const footerNav: FooterSection[] = [
     title: "Use",
     links: [
       { label: "Tools", href: "/tools" },
+      { label: "Private AI chat", href: "/tools/private-ai-chat" },
+      { label: "Which free AI?", href: "/ai" },
       { label: "Free-trial cancel reminder", href: "/tools/trial-reminder" },
       { label: "Subscription audit", href: "/tools/subscription-audit" },
       // These open confirmed-only filters, and the labels say so.

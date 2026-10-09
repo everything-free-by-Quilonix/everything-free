@@ -435,6 +435,8 @@ async function main() {
       "/tools/subscription-audit/",
       "/tools/photo-metadata/",
       "/tools/palette-extractor/",
+      "/tools/private-ai-chat/",
+      "/ai/",
       "/submit/",
       "/report/",
       "/free-status/",
@@ -972,6 +974,42 @@ async function main() {
       // A canvas-encoded JPEG carries no EXIF, so the honest answer is "nothing to clean".
       assert(await desktop.waitFor(`/No metadata found/.test(document.body.innerText)`), "no result shown");
       await assertCleanLoad(desktop, "photo metadata");
+    });
+
+    await check("free AI finder lists options and narrows by confirmed facts", async () => {
+      await desktop.goto(`${site}/ai/`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`/free options? for/.test(document.body.innerText)`), "no results heading");
+      const before = await desktop.evaluate(`document.querySelectorAll('main article[data-record]').length`);
+      assert(before > 0, "no listings shown");
+      assert(await desktop.waitFor(JS.click('input[value="coding"]')), "coding option not found");
+      assert(await desktop.waitFor(`/for “help with code”|No listings match/.test(document.body.innerText)`), "job did not change");
+      assert(await desktop.waitFor(JS.clickText("label", "No credit card")), "promise filter not found");
+      const after = await desktop.evaluate(`document.querySelectorAll('main article[data-record]').length`);
+      await assertCleanLoad(desktop, "AI finder");
+      return `${before} chat listings; coding + confirmed no card: ${after}`;
+    });
+
+    await check("private AI chat downloads nothing until asked", async () => {
+      await desktop.goto(`${site}/tools/private-ai-chat/`);
+      await desktop.waitFor(JS.hydrated);
+      const ready = await desktop.waitFor(
+        `/Choose a model|cannot run the chat/.test(document.body.innerText)`,
+      );
+      assert(ready, "neither the model picker nor the unsupported notice appeared");
+      const outcome = await desktop.evaluate(
+        `/Choose a model/.test(document.body.innerText) ? "WebGPU available: model picker shown" : "no WebGPU: honest notice shown"`,
+      );
+      const thirdParty = await desktop.evaluate(
+        `performance.getEntriesByType("resource").map((e) => e.name).filter((u) => !u.startsWith(location.origin))`,
+      );
+      assert(thirdParty.length === 0, `requested before any click: ${thirdParty.slice(0, 3).join(", ")}`);
+      const csp = await desktop.evaluate(
+        `document.querySelector('meta[http-equiv="Content-Security-Policy"]').content`,
+      );
+      assert(csp.includes("connect-src 'self' https://huggingface.co"), "chat page CSP lacks the declared origins");
+      await assertCleanLoad(desktop, "private AI chat");
+      return outcome;
     });
 
     await check("submit form: empty submission shows errors", async () => {

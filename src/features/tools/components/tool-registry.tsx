@@ -2,6 +2,7 @@ import { ContrastChecker } from "../implementations/contrast-checker";
 import { ImageConverter } from "../implementations/image-converter";
 import { PaletteExtractor } from "../implementations/palette-extractor";
 import { PhotoMetadata } from "../implementations/photo-metadata";
+import { PrivateAiChat } from "../implementations/private-ai-chat";
 import { SubscriptionAudit } from "../implementations/subscription-audit";
 import { TextToolkit } from "../implementations/text-toolkit";
 import { TrialReminder } from "../implementations/trial-reminder";
@@ -48,6 +49,8 @@ export function ToolSurface({
       return <PhotoMetadata />;
     case "palette-extractor":
       return <PaletteExtractor />;
+    case "private-ai-chat":
+      return <PrivateAiChat />;
     default:
       return null;
   }
@@ -62,6 +65,7 @@ const IMPLEMENTED = new Set([
   "subscription-audit",
   "photo-metadata",
   "palette-extractor",
+  "private-ai-chat",
 ]);
 
 export function hasToolImplementation(slug: string): boolean {

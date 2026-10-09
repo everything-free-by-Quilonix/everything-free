@@ -42,6 +42,22 @@ export function ToolPrivacyNotice({ tool }: { tool: Tool }) {
           .
         </p>
       ) : null}
+
+      {processing.downloads && processing.downloads.length > 0 ? (
+        <div className="mt-2">
+          <p>Downloaded only when you ask, and carrying none of your input:</p>
+          <ul className="mt-1 list-disc pl-5">
+            {processing.downloads.map((download) => (
+              <li key={download.url}>
+                {download.what} from{" "}
+                <ExternalLink href={download.url} className="link-inline font-medium">
+                  {download.from}
+                </ExternalLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </Callout>
   );
 }

@@ -74,6 +74,13 @@ export function Hero({
             <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5 text-xs">
               <span className="text-[11px] font-medium text-fg-subtle select-none mr-1">Quick:</span>
               <Link
+                href="/tools/private-ai-chat"
+                className="inline-flex items-center gap-1 rounded-sm border border-border bg-surface-raised/80 px-2.5 py-1 text-xs font-medium text-fg-muted transition-colors hover:border-border-strong hover:text-fg shadow-2xs"
+              >
+                <Icon name="lock" size={12} className="text-fg-subtle" />
+                Private AI chat
+              </Link>
+              <Link
                 href="/students"
                 className="inline-flex items-center gap-1 rounded-sm border border-border bg-surface-raised/80 px-2.5 py-1 text-xs font-medium text-fg-muted transition-colors hover:border-border-strong hover:text-fg shadow-2xs"
               >

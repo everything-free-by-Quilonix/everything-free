@@ -34,13 +34,35 @@
 
 import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { join, relative, sep } from "node:path";
 
 const INLINE_SCRIPT = /<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)<\/script>/g;
 const DATA_BLOCK = /type=["']?application\/(ld\+)?json/i;
 
+/**
+ * Extra `connect-src` origins, per page, keyed by the page's path in the export.
+ *
+ * Every other page connects to its own origin only. The private AI chat is the one
+ * exception: when the visitor presses Download it fetches a model from Hugging Face
+ * and its compiled library from GitHub. These must equal the origins the tool
+ * declares in `config/tools.ts` (`processing.downloads`), which
+ * `tests/ai.test.mts` checks, so the policy cannot quietly widen.
+ *
+ * The download itself runs in a dedicated worker, which a `<meta>` policy does not
+ * govern. Allowing the origins here keeps the page's policy an honest description
+ * of what the page does, and covers hosts that send the policy as a header.
+ */
+export const PAGE_CONNECT_SOURCES = {
+  "tools/private-ai-chat/index.html": [
+    "https://huggingface.co",
+    "https://*.huggingface.co",
+    "https://*.hf.co",
+    "https://raw.githubusercontent.com",
+  ],
+};
+
 /** Builds the policy string for one page, given its inline script hashes. */
-export function buildPolicy(scriptHashes) {
+export function buildPolicy(scriptHashes, extraConnectSources = []) {
   const scriptSources = ["'self'", ...scriptHashes.map((hash) => `'sha256-${hash}'`)];
 
   return [
@@ -55,8 +77,9 @@ export function buildPolicy(scriptHashes) {
     "img-src 'self' data: blob: https:",
     "font-src 'self'",
     // Client-side navigation fetches the pre-rendered RSC payload files from the
-    // same origin. Nothing else is ever fetched.
-    "connect-src 'self'",
+    // same origin. Nothing else is fetched, except on the pages listed in
+    // PAGE_CONNECT_SOURCES.
+    `connect-src ${["'self'", ...extraConnectSources].join(" ")}`,
     "manifest-src 'self'",
     "object-src 'none'",
     "base-uri 'self'",
@@ -86,6 +109,7 @@ export async function applyCsp(outDir) {
   let pages = 0;
   let hashed = 0;
   const problems = [];
+  const widened = [];
 
   for await (const file of htmlFiles(outDir)) {
     let html = await readFile(file, "utf8");
@@ -112,7 +136,10 @@ export async function applyCsp(outDir) {
       hashes.add(sha256Base64(content));
     }
 
-    const meta = `<meta http-equiv="Content-Security-Policy" content="${buildPolicy([...hashes])}"/>`;
+    const page = relative(outDir, file).split(sep).join("/");
+    const extra = PAGE_CONNECT_SOURCES[page] ?? [];
+    if (extra.length > 0) widened.push(page);
+    const meta = `<meta http-equiv="Content-Security-Policy" content="${buildPolicy([...hashes], extra)}"/>`;
 
     // A meta policy only governs content parsed after it, so it must come before
     // any script. `<meta charset>` is first in Next's head; insert straight after it.
@@ -131,9 +158,14 @@ export async function applyCsp(outDir) {
     hashed += hashes.size;
   }
 
+  // A listed page that no longer exists means the exception outlived its reason.
+  for (const page of Object.keys(PAGE_CONNECT_SOURCES)) {
+    if (!widened.includes(page)) problems.push(`${page}: listed in PAGE_CONNECT_SOURCES but not in the export`);
+  }
+
   if (problems.length > 0) {
     throw new Error(`Could not apply a strict CSP:\n  - ${problems.join("\n  - ")}`);
   }
 
-  return { pages, hashed };
+  return { pages, hashed, widened };
 }

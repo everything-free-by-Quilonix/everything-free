@@ -14,6 +14,7 @@ import { CategoryGroupCard } from "@/features/categories/components/category-car
 import { CollectionCard } from "@/features/collections/components/collection-card";
 import { DynamicShowcase } from "@/features/home/components/dynamic-showcase";
 import { Hero } from "@/features/home/components/hero";
+import { PrivateAiFeature } from "@/features/home/components/private-ai-feature";
 import { StudentBanner } from "@/features/home/components/student-banner";
 import { featuredToolsSiteTools, toolsSite } from "@/config/tools-site";
 import { ToolsSiteCard } from "@/features/tools/components/tools-site";
@@ -30,7 +31,7 @@ import {
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: `${site.name} — ${site.shortDescription}`,
+  title: `${site.name} â€” ${site.shortDescription}`,
   description: site.description,
   path: "/",
 });
@@ -113,12 +114,15 @@ export default async function HomePage() {
       />
 
       <Container className="space-y-16 sm:space-y-20 py-12 sm:py-16">
-        {/* 02. CampusKey Student Spotlight Bento Banner */}
+        {/* 02. Private AI chat and free AI finder */}
+        <PrivateAiFeature />
+
+        {/* 03. CampusKey Student Spotlight Bento Banner */}
         <section aria-label="Student Perks Spotlight">
           <StudentBanner />
         </section>
 
-        {/* 03. Interactive Dynamic Category Showcase (Segmented Controls) */}
+        {/* 04. Interactive Dynamic Category Showcase (Segmented Controls) */}
         <section id="spotlight" aria-label="Interactive Resource Discovery" className="relative scroll-mt-20">
           <div id="recently-verified" className="absolute -top-20" />
           <DynamicShowcase
@@ -131,7 +135,7 @@ export default async function HomePage() {
           />
         </section>
 
-        {/* 04. Browse by Category (Elevated Squircle Cards) */}
+        {/* 05. Browse by Category (Elevated Squircle Cards) */}
         <Section
           id="categories"
           title="Browse by category"
@@ -270,7 +274,7 @@ export default async function HomePage() {
               <h2 className="font-display text-2xl font-semibold tracking-tight">Know something that belongs here?</h2>
               <p className="mt-3 leading-relaxed text-fg-muted">
                 This library is built by the people who use it. Submissions need a working link, a clear free status and
-                an honest account of the limitations — that last part is what makes the library worth trusting.
+                an honest account of the limitations â€” that last part is what makes the library worth trusting.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
@@ -286,7 +290,7 @@ export default async function HomePage() {
                   Report a problem
                 </Link>
                 <Link href="/free-status" className={buttonClasses({ variant: "ghost", size: "md" })}>
-                  What “free” means here
+                  What â€œfreeâ€ means here
                 </Link>
               </div>
             </div>

@@ -115,6 +115,8 @@ GitHub Pages cannot send response headers, so the policy travels inside each pag
 | `style-src-attr` | `'unsafe-inline'` | React renders `style={{…}}` as attributes, which hashes cannot cover. The documented residual gap — style injection is far weaker than script injection |
 | `img-src` | `'self' data: blob:` | `blob:` is the image converter's local output |
 | `connect-src` | `'self'` | Client navigation fetches pre-rendered payloads from the same origin, nothing else |
+
+**One page is widened.** `tools/private-ai-chat/` also allows `https://huggingface.co`, `https://*.huggingface.co`, `https://*.hf.co` and `https://raw.githubusercontent.com`, for the model download a visitor starts by pressing Download. The list lives in `PAGE_CONNECT_SOURCES` in `scripts/csp.mjs`; a unit test fails if it differs from the tool's declared `processing.downloads`, and the build fails if a listed page no longer exists. The download runs in a dedicated worker, which a `<meta>` policy does not govern; the origins are listed anyway so the page's policy describes what it does, and so a host sending the policy as a header does not block it.
 | `object-src` / `base-uri` / `form-action` | `'none'` / `'self'` / `'self'` | |
 
 Hashes are recomputed on every build, so framework upgrades cannot silently invalidate them. A wrong hash disables all interactivity without any visible error, which is why CI loads real pages in a browser and fails on any CSP violation.
