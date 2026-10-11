@@ -13,10 +13,10 @@ The order below is a **verification workflow, not a ranking** of the resources. 
 
 | | Count |
 | --- | --- |
-| Resources | 1080 |
+| Resources | 1085 |
 | Verified (signed off by a maintainer) | 0 |
 | Evidence complete, awaiting maintainer sign-off | 4 |
-| Partially verified (free status confirmed, checklist incomplete) | 124 |
+| Partially verified (free status confirmed, checklist incomplete) | 129 |
 | Checks started, free status not yet confirmed | 5 |
 | Not verified yet (no checks recorded) | 947 |
 
@@ -76,6 +76,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Battle for Wesnoth](#battle-for-wesnoth-battle-for-wesnoth) `battle-for-wesnoth` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [BBC Audio on BBC.com (outside the UK)](#bbc-audio-on-bbccom-outside-the-uk-bbc-audio-international) `bbc-audio-international` | Partially verified | 3/10 | Official URL, Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Blender Studio open movies](#blender-studio-open-movies-blender-studio-open-movies) `blender-studio-open-movies` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Brawlhalla](#brawlhalla-brawlhalla) `brawlhalla` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Bridge Base Online](#bridge-base-online-bridge-base-online) `bridge-base-online` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Candy Box 2](#candy-box-2-candy-box-2) `candy-box-2` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Castro](#castro-castro-podcasts) `castro-podcasts` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -139,6 +140,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [NHK WORLD-JAPAN](#nhk-world-japan-nhk-world-japan-tv) `nhk-world-japan-tv` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [NPR Podcasts & Shows](#npr-podcasts--shows-npr-podcasts) `npr-podcasts` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [NTS Radio](#nts-radio-nts-radio) `nts-radio` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Old School RuneScape](#old-school-runescape-old-school-runescape) `old-school-runescape` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Open Library lending](#open-library-lending-open-library-lending) `open-library-lending` | Partially verified | 5/10 | Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [OpenLoco](#openloco-openloco) `openloco` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [OpenMW](#openmw-openmw) `openmw` | Partially verified | 3/10 | Official URL (unresolved), Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Official URL, Platform availability from an official source |
@@ -146,6 +148,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [OpenRCT2](#openrct2-openrct2) `openrct2` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [OpenTTD](#openttd-openttd) `openttd` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Overcast](#overcast-overcast) `overcast` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Path of Exile](#path-of-exile-path-of-exile) `path-of-exile` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Pepper&Carrot](#peppercarrot-pepper-and-carrot) `pepper-and-carrot` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [PlayingCards.io](#playingcardsio-playingcards-io) `playingcards-io` | Partially verified | 3/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [PlayStrategy](#playstrategy-playstrategy) `playstrategy` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -183,6 +186,8 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Unciv](#unciv-unciv) `unciv` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [VCMI](#vcmi-vcmi) `vcmi` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [VLC media player](#vlc-media-player-vlc) `vlc` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
+| [War Thunder](#war-thunder-war-thunder) `war-thunder` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Warframe](#warframe-warframe) `warframe` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Warzone 2100](#warzone-2100-warzone-2100) `warzone-2100` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [WAVES (Prasar Bharati)](#waves-prasar-bharati-waves-prasar-bharati) `waves-prasar-bharati` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [WFMU](#wfmu-wfmu) `wfmu` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -1459,6 +1464,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Brawlhalla `brawlhalla`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | brawlhalla.com is the developer's official site. | [Official site: 'Brawlhalla is a free 2D platform fighting game', up to 8 players, cross-play on PC, PS, Xbox, Switch, iOS, Android; ESRB 'In-Game Purchases (Includes Random Items)'; battle pass](https://www.brawlhalla.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Brawlhalla is a free 2D platform fighting game' and is labelled Free to Play. | [Official site: 'Brawlhalla is a free 2D platform fighting game', up to 8 players, cross-play on PC, PS, Xbox, Switch, iOS, Android; ESRB 'In-Game Purchases (Includes Random Items)'; battle pass](https://www.brawlhalla.com/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | ESRB descriptor 'In-Game Purchases (Includes Random Items)'; Battle Pass seasons; regional chest changes. | [Official site: 'Brawlhalla is a free 2D platform fighting game', up to 8 players, cross-play on PC, PS, Xbox, Switch, iOS, Android; ESRB 'In-Game Purchases (Includes Random Items)'; battle pass](https://www.brawlhalla.com/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | Desktop via Steam, Ubisoft Connect and Epic; PlayStation, Xbox, Switch; Android and iOS. | [Official site: 'Brawlhalla is a free 2D platform fighting game', up to 8 players, cross-play on PC, PS, Xbox, Switch, iOS, Android; ESRB 'In-Game Purchases (Includes Random Items)'; battle pass](https://www.brawlhalla.com/) | 2026-10-11 |
+
 ### Bridge Base Online `bridge-base-online`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2618,6 +2642,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The page links the NTS iOS and Android apps alongside the website. | [About NTS: two live channels 24/7, archive of hundreds of thousands of hours, no on-air advertising; 'Free. No Ads. 24/7'; Supporters unlock tracklists](https://www.nts.live/about) | 2026-10-11 |
 
+### Old School RuneScape `old-school-runescape`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | oldschool.runescape.com is Jagex's official site for the game. | [Official Old School RuneScape homepage: 'Try Free' and 'Become a Member'; download and mobile links; PEGI 16, in-game purchases (includes random items)](https://oldschool.runescape.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | The homepage offers 'Try Free' alongside a paid 'Become a Member' option: a free tier. | [Official Old School RuneScape homepage: 'Try Free' and 'Become a Member'; download and mobile links; PEGI 16, in-game purchases (includes random items)](https://oldschool.runescape.com/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | PEGI notice: 'In-game Purchases (Includes Random Items)'; membership is sold separately. | [Official Old School RuneScape homepage: 'Try Free' and 'Become a Member'; download and mobile links; PEGI 16, in-game purchases (includes random items)](https://oldschool.runescape.com/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Open Library lending `open-library-lending`
 
 **Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2750,6 +2793,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | An annual subscription offers bonus features and can optionally hide the ads. | [Home page: the free tier, ads and annual subscription](https://overcast.fm/) | 2026-10-11 |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The page describes Overcast as a podcast player for iPhone, iPad and Apple Watch. | [Home page: the free tier, ads and annual subscription](https://overcast.fm/) | 2026-10-11 |
+
+### Path of Exile `path-of-exile`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | pathofexile.com is Grinding Gear Games' official site. | [Official game page: 'The game is completely free and will never be pay to win'; PC, Mac, Xbox One, PS4; shop with packs, Kirac's Vault Pass, microtransactions; language versions](https://www.pathofexile.com/game) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'The game is completely free and will never be "pay to win".' | [Official game page: 'The game is completely free and will never be pay to win'; PC, Mac, Xbox One, PS4; shop with packs, Kirac's Vault Pass, microtransactions; language versions](https://www.pathofexile.com/game) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | Play starts by creating an account (Sign Up). | [Official game page: 'The game is completely free and will never be pay to win'; PC, Mac, Xbox One, PS4; shop with packs, Kirac's Vault Pass, microtransactions; language versions](https://www.pathofexile.com/game) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | The site's Shop sells packs, a vault pass, microtransactions and a mystery box. | [Official game page: 'The game is completely free and will never be pay to win'; PC, Mac, Xbox One, PS4; shop with packs, Kirac's Vault Pass, microtransactions; language versions](https://www.pathofexile.com/game) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### Pepper&Carrot `pepper-and-carrot`
 
@@ -3415,6 +3477,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The site says that to use VCMI you need to own the original data files. | [Official site: open-source Heroes III engine, original data required, platforms](https://vcmi.eu/) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The site lists Windows, Linux, macOS, iOS and Android. | [Official site: open-source Heroes III engine, original data required, platforms](https://vcmi.eu/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The site states VCMI is an open-source engine for Heroes III. | [Official site: open-source Heroes III engine, original data required, platforms](https://vcmi.eu/) | 2026-10-11 |
+
+### War Thunder `war-thunder`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | warthunder.com is Gaijin's official site for the game. | [Official About page + FAQ: free-to-play cross-platform MMO for Windows, Linux, Mac, PS4/5, Xbox; free to download and play without restrictions or subscription fees; online only; system requirements](https://warthunder.com/en/game/about/) | 2026-10-11 |
+| Free status | ✅ Confirmed | FAQ: 'You are free to download and play the game right away without any restrictions or subscription fees.' | [Official About page + FAQ: free-to-play cross-platform MMO for Windows, Linux, Mac, PS4/5, Xbox; free to download and play without restrictions or subscription fees; online only; system requirements](https://warthunder.com/en/game/about/) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | The page's primary action is 'Register now!' before downloading. | [Official About page + FAQ: free-to-play cross-platform MMO for Windows, Linux, Mac, PS4/5, Xbox; free to download and play without restrictions or subscription fees; online only; system requirements](https://warthunder.com/en/game/about/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | FAQ: 'you need a permanent internet connection'; minimum client 22 GB, full client up to 76 GB. | [Official About page + FAQ: free-to-play cross-platform MMO for Windows, Linux, Mac, PS4/5, Xbox; free to download and play without restrictions or subscription fees; online only; system requirements](https://warthunder.com/en/game/about/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | Windows, Linux, Mac, PlayStation 4/5, Xbox One and Series X\|S, with system requirements per OS. | [Official About page + FAQ: free-to-play cross-platform MMO for Windows, Linux, Mac, PS4/5, Xbox; free to download and play without restrictions or subscription fees; online only; system requirements](https://warthunder.com/en/game/about/) | 2026-10-11 |
+
+### Warframe `warframe`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | warframe.com is Digital Extremes' official site for the game. | [Official About page: 'Play Free Now'; PC, Steam, Xbox, PlayStation, Switch, Epic, Apple, Google Play; cross-platform; store with Platinum; rating 'In-Game Purchases'](https://www.warframe.com/game/about) | 2026-10-11 |
+| Free status | ✅ Confirmed | Every call to action reads 'Play Free Now', linking to free sign-up. | [Official About page: 'Play Free Now'; PC, Steam, Xbox, PlayStation, Switch, Epic, Apple, Google Play; cross-platform; store with Platinum; rating 'In-Game Purchases'](https://www.warframe.com/game/about) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | 'Play Free Now' leads to account sign-up. | [Official About page: 'Play Free Now'; PC, Steam, Xbox, PlayStation, Switch, Epic, Apple, Google Play; cross-platform; store with Platinum; rating 'In-Game Purchases'](https://www.warframe.com/game/about) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | The rating notes 'In-Game Purchases'; the store sells Platinum, bundles and Prime Access. | [Official About page: 'Play Free Now'; PC, Steam, Xbox, PlayStation, Switch, Epic, Apple, Google Play; cross-platform; store with Platinum; rating 'In-Game Purchases'](https://www.warframe.com/game/about) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### Warzone 2100 `warzone-2100`
 
