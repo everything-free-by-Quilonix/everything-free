@@ -82,6 +82,7 @@ the project cannot support:
 | British Library Sounds | Offline since the 2023 cyber-attack, no return date |
 | BBC Sounds outside the UK | Closed internationally in July 2025; BBC audio outside the UK is listed instead |
 | Studio Ghibli | No legal free streaming |
+| Crunchyroll | Ended free ad-supported viewing on 31 December 2025; a paid plan is now required (Muse India is listed instead) |
 | iptv-org/iptv (GitHub) | Popular on social media, but its own Legal section says links are user-submitted and only "to the best of our knowledge" published by the rights holders; nobody checks permission. The stricter Free-TV/IPTV list is listed instead, as a guide |
 | "Free movies" GitHub web apps, Cloudstream/Stremio-style extension repos | They scrape or aggregate unlicensed streaming sites; providing a player does not make the source legal |
 | NFDC Cinemas of India | Moved to a paid Prime Video add-on (₹199/year, per press reports) |
