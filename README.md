@@ -124,6 +124,13 @@ Verification is recorded **one check at a time**, not as a single judgement. For
 - AND-first matching with an OR fallback, so a narrow query degrades to near misses rather than a dead end
 - Faceted filtering with live counts, entirely URL-driven — shareable and bookmarkable. Runs in the browser so the page stays static; the rest of the library works without JavaScript
 
+**Entertainment**
+- `/entertainment`: free films, series, games, music, podcasts, comics and culture, as ordinary library listings with an entertainment profile — what exactly is free (14 access types, never a free/paid binary), whether it is the content or a guide to it, ads, region (India first), and the licence of the *content* separately from the software
+- Shelves with URL-driven search and filters (format, access, language, device, genre, "available in India", "reuse allowed"), each matching recorded facts only
+- Card buttons derived from the evidence: "Watch free" only for content that is free, "Find where to watch" for guides, "Play in browser" only where the page itself is playable
+- Labels are rules with dated evidence; there is no "Trending" because no legitimate trend source exists yet
+- A small on-site hub (three local games, public-domain films, live radio) that loads nothing third-party until asked
+
 **Tools**
 - Eight working utilities that run **entirely in your browser**: a private AI chat (open-source models under 500 MB running on your own device via WebLLM; nothing you type leaves it), free-trial cancel reminder (calendar file), subscription audit with free-alternative matching, image converter/compressor, photo metadata (EXIF/GPS) viewer and lossless remover, colour palette extractor, WCAG contrast checker, text toolkit
 - **"Which free AI should I use?"** at `/ai`: pick the job, and the finder shows the library's AI listings for it, with confirmed-only "no credit card / no account / open source" filters
@@ -150,6 +157,9 @@ Full detail in [`docs/architecture.md`](docs/architecture.md). In brief: contrib
 | [`docs/verification-backlog.md`](docs/verification-backlog.md) | Generated verification work queue |
 | [`docs/tool-integration.md`](docs/tool-integration.md) | Integration classification and rules for adding a tool |
 | [`docs/dependency-audit.md`](docs/dependency-audit.md) | Every dependency and service, and what happens without it |
+| [`docs/entertainment-research.md`](docs/entertainment-research.md) | How entertainment listings are researched, classified and imported |
+| [`docs/entertainment-signals.md`](docs/entertainment-signals.md) | Discovery labels, the GitHub signal file, APIs evaluated |
+| [`docs/entertainment-backlog.md`](docs/entertainment-backlog.md) | What the entertainment catalogue covers, what was rejected, what is open |
 
 ```
 src/

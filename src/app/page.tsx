@@ -8,6 +8,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { Container, Section, SectionLink } from "@/components/ui/layout";
 import { audiences } from "@/config/audiences";
 import { categoryGroups } from "@/config/categories";
+import { shelves } from "@/config/media";
 import { site } from "@/config/site";
 import { availableTools } from "@/config/tools";
 import { CategoryGroupCard } from "@/features/categories/components/category-cards";
@@ -121,6 +122,31 @@ export default async function HomePage() {
         <section aria-label="Student Perks Spotlight">
           <StudentBanner />
         </section>
+
+        {/* 03b. Free entertainment shelves */}
+        <Section
+          id="entertainment"
+          title="Free entertainment, legally"
+          description="Films, Indian cartoons, live TV, games, music, radio and comics — every listing says what is free, where, and which official page says so."
+          action={<SectionLink href="/entertainment">All entertainment</SectionLink>}
+        >
+          <ul className="grid list-none gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {shelves.map((shelf) => (
+              <li key={shelf.slug}>
+                <Link
+                  href={`/entertainment/${shelf.slug}`}
+                  className="group flex h-full items-start gap-3 rounded-md border border-border bg-surface p-4 transition-colors hover:border-border-strong hover:bg-surface-hover"
+                >
+                  <Icon name={shelf.icon} size={18} className="mt-0.5 shrink-0 text-fg-subtle group-hover:text-fg" />
+                  <span className="min-w-0">
+                    <span className="block text-sm font-medium text-fg">{shelf.name}</span>
+                    <span className="mt-0.5 block text-xs leading-relaxed text-fg-muted line-clamp-2">{shelf.description}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
 
         {/* 04. Interactive Dynamic Category Showcase (Segmented Controls) */}
         <section id="spotlight" aria-label="Interactive Resource Discovery" className="relative scroll-mt-20">

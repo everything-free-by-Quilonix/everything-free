@@ -55,6 +55,11 @@ jobs:
       - name: Unit tests
         run: npm test
 
+      # Offline: fails on an expired time-limited offer or an invalid signal file,
+      # and prints counts and overdue reviews. No network requests.
+      - name: Entertainment catalogue health
+        run: npm run check:entertainment -- --strict
+
       - name: Build (includes all data validation)
         run: npm run build
 

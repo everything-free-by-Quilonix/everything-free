@@ -39,11 +39,11 @@ export const batch009Resources = defineResources([
   seed({
     slug: "tubi",
     name: "Tubi TV",
-    shortDescription: "Stream over 50,000 on-demand movies and television shows with no subscription required.",
+    shortDescription: "Ad-supported on-demand films and TV series from licensed studios, in the countries where Tubi operates.",
     longDescription:
-      "Tubi is a fully licensed, 100% legal ad-supported streaming service offering a massive catalogue of over 50,000 films and TV series from major Hollywood studios including MGM, Paramount, Lionsgate, and Warner Bros. It requires no credit card and can be watched completely without an account.",
+      "Tubi is an ad-supported streaming service (owned by Fox) with a large catalogue of licensed films and TV series. Its help centre lists the countries it operates in — the US, Canada, Mexico, Australia, the UK, Puerto Rico and some Latin American countries — and says the library differs by country. Outside those countries the site shows that Tubi is not available.",
     whyListed:
-      "The largest completely legal on-demand movie and TV library on the web that never requires payment info or mandatory signup.",
+      "One of the largest licensed free catalogues of films and TV, with no subscription, in the countries it serves.",
     category: "movies",
     subcategories: ["streaming"],
     resourceType: "SERVICE",
@@ -56,14 +56,36 @@ export const batch009Resources = defineResources([
     commercialUse: "no",
     personalUse: "yes",
     features: [
-      "50,000+ legal on-demand movies and TV series",
-      "No payment info or credit card ever requested",
-      "Available across browsers, mobile devices, and smart TVs",
-      "Subtitles and multi-genre curated categories",
+      "Large catalogue of licensed on-demand films and TV series",
+      "Ad-supported: no subscription fee",
+      "Apps for phones, TVs and consoles, plus the web, in supported countries",
+      "Subtitles and genre collections",
+    ],
+    limitations: [
+      "Ad-supported.",
+      "Only available in some countries (US, Canada, Mexico, Australia, UK, Puerto Rico and parts of Latin America, per Tubi's help centre); not in India.",
+      "The catalogue differs by country because of regional licensing.",
     ],
     tags: ["movies", "streaming", "films", "tv-shows", "avod"],
     alternativeTo: ["Netflix", "Hulu", "Amazon Prime Video"],
     relatedResources: ["jellyfin", "kodi"],
+    media: {
+      formats: ["film", "series"],
+      access: ["free_with_ads", "free_streaming"],
+      offering: "full-content",
+      contentScope: "selected-works",
+      provider: "Tubi, Inc. (Fox Corporation)",
+      containsAds: "yes",
+      hasPaidFeatures: "no",
+      genres: ["drama", "action", "comedy", "horror", "documentary"],
+      contentLanguages: ["en", "es"],
+      region: {
+        india: "unknown",
+        availableIn: [],
+        notes:
+          "Tubi's help centre lists the US, Canada, Mexico, Australia, the UK, Puerto Rico and five Latin American countries. Fetched from India, its pages say Tubi is not available in your area. Not recorded as a dated check yet.",
+      },
+    },
   }),
 
   seed({
@@ -94,6 +116,19 @@ export const batch009Resources = defineResources([
     tags: ["live-tv", "streaming", "movies", "television", "channels"],
     alternativeTo: ["Cable TV", "Sling TV", "YouTube TV"],
     relatedResources: ["kodi", "jellyfin"],
+    limitations: ["Ad-supported, with commercial breaks.", "Channels and on-demand titles vary by country."],
+    media: {
+      formats: ["live-tv", "film", "series"],
+      access: ["free_with_ads", "free_streaming"],
+      offering: "full-content",
+      contentScope: "selected-works",
+      provider: "Pluto Inc. (Paramount)",
+      containsAds: "yes",
+      hasPaidFeatures: "no",
+      genres: ["news", "comedy", "drama", "reality"],
+      contentLanguages: ["en", "es"],
+      region: { india: "unknown", availableIn: [] },
+    },
   }),
 
   seed({
@@ -124,6 +159,22 @@ export const batch009Resources = defineResources([
     tags: ["cinema", "indie-film", "criterion", "documentaries", "library-perk"],
     alternativeTo: ["Criterion Channel", "MUBI", "CuriosityStream"],
     relatedResources: ["jellyfin"],
+    limitations: [
+      "Needs a card from a participating public library or university; availability depends on your library.",
+      "Libraries can cap how many titles you may watch each month.",
+    ],
+    media: {
+      formats: ["film", "documentary"],
+      access: ["library_access", "free_streaming"],
+      offering: "full-content",
+      contentScope: "selected-works",
+      provider: "Kanopy, with participating libraries",
+      containsAds: "unknown",
+      hasPaidFeatures: "unknown",
+      genres: ["indie", "world-cinema", "documentary", "classics"],
+      contentLanguages: ["en", "multi"],
+      region: { india: "unknown", availableIn: [] },
+    },
   }),
 
   seed({
@@ -139,23 +190,39 @@ export const batch009Resources = defineResources([
     resourceType: "WEBSITE",
     officialUrl: "https://archive.org/details/movies",
     freeStatus: "FREE",
-    openSource: true,
-    license: "Public Domain & Open Licences",
+    openSource: false,
+    licenseNotes:
+      "Each item states its own rights: many are public domain, some carry Creative Commons licences, and some are uploaded without a stated licence. Check the item page before reusing.",
     platforms: ["BROWSER"],
     requiresAccount: "no",
     requiresCreditCard: "no",
-    commercialUse: "yes",
+    commercialUse: "unknown",
     personalUse: "yes",
     features: [
-      "Tens of thousands of full-length classic and public-domain movies",
-      "Multiple format downloads (MPEG4, OGG, ProRes, torrent)",
-      "Classic film noir, horror, sci-fi, and silent movie collections",
-      "Zero paywalls, subscriptions, or DRM restrictions",
+      "Large collections of classic, silent and public-domain feature films",
+      "Multiple download formats on most items",
+      "Film noir, horror, science-fiction and silent-cinema collections",
+      "No subscription",
+    ],
+    limitations: [
+      "Rights vary by item and by country; an item being on the archive is not proof it is public domain where you live.",
     ],
     downloadAvailable: true,
     tags: ["public-domain", "classic-cinema", "film-archive", "film-noir"],
     alternativeTo: ["Turner Classic Movies", "Criterion Channel"],
     relatedResources: ["kodi", "jellyfin"],
+    media: {
+      formats: ["film", "documentary", "animation"],
+      access: ["free_streaming", "free_download"],
+      offering: "full-content",
+      contentScope: "complete-works",
+      provider: "Internet Archive",
+      containsAds: "unknown",
+      hasPaidFeatures: "no",
+      genres: ["classics", "film-noir", "silent", "horror", "sci-fi"],
+      contentLanguages: ["en", "multi"],
+      region: { india: "unknown", availableIn: [] },
+    },
   }),
 
   seed({
@@ -186,6 +253,19 @@ export const batch009Resources = defineResources([
     tags: ["movies", "streaming", "live-tv", "films"],
     alternativeTo: ["Netflix", "Roku Channel", "Pluto TV"],
     relatedResources: ["jellyfin", "kodi"],
+    limitations: ["Ad-supported.", "The free catalogue and live channels vary by country."],
+    media: {
+      formats: ["film", "series", "live-tv"],
+      access: ["free_with_ads", "free_streaming"],
+      offering: "full-content",
+      contentScope: "selected-works",
+      provider: "Plex, Inc.",
+      containsAds: "yes",
+      hasPaidFeatures: "yes",
+      genres: ["drama", "action", "comedy", "documentary"],
+      contentLanguages: ["en"],
+      region: { india: "unknown", availableIn: [] },
+    },
   }),
 
   seed({
@@ -251,11 +331,11 @@ export const batch009Resources = defineResources([
   seed({
     slug: "justwatch",
     name: "JustWatch Free Filter",
-    shortDescription: "Streaming search engine with dedicated filters showing which movies and shows are free to stream legally.",
+    shortDescription: "Streaming guide that shows which services carry a film or show in your country, including free and ad-supported ones.",
     longDescription:
-      "JustWatch indexes virtually all movies and TV shows across global streaming providers. Its dedicated Free and Ad-supported filters allow viewers to immediately discover what is legally watchable for zero dollars across services like Tubi, Pluto TV, Freevee, and library platforms.",
+      "JustWatch indexes films and TV shows across streaming providers country by country. Its price filters can narrow results to free and ad-supported offers, which makes it a starting point for finding where a title can be watched without a subscription. JustWatch itself does not stream anything: it links out to the services.",
     whyListed:
-      "Solves the fragmentation problem by identifying exactly where any movie or show is currently streaming 100% free.",
+      "Answers 'where can I watch this legally?' for a specific title, including whether any free service carries it in your country.",
     category: "movies",
     subcategories: ["utilities", "everyday"],
     resourceType: "WEB_APP",
@@ -279,6 +359,18 @@ export const batch009Resources = defineResources([
     tags: ["streaming-guide", "movie-search", "legal-streaming", "films"],
     alternativeTo: ["Reelgood", "Letterboxd Pro"],
     relatedResources: ["tubi", "pluto-tv"],
+    media: {
+      formats: ["film", "series"],
+      access: ["free_discovery"],
+      offering: "discovery",
+      contentScope: "information-only",
+      provider: "JustWatch GmbH",
+      containsAds: "unknown",
+      hasPaidFeatures: "yes",
+      genres: [],
+      contentLanguages: [],
+      region: { india: "unknown", availableIn: [] },
+    },
   }),
 
   /* ------------------------------------------------------------- Viral Catchy Tools & Rare Hidden Web Gems */

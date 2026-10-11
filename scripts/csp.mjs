@@ -61,8 +61,25 @@ export const PAGE_CONNECT_SOURCES = {
   ],
 };
 
+/**
+ * Extra directives, per page, for the one page that plays third-party media on
+ * request: `/entertainment/on-site/`.
+ *
+ * - `frame-src https://archive.org` — the Internet Archive film player, created
+ *   only after the visitor presses "Load player".
+ * - `media-src 'self' https:` — live radio streams, connected only after the
+ *   visitor presses Play. Stations redirect to rotating CDN hosts, so the origins
+ *   cannot be listed exhaustively; the page only ever sets an `<audio>` source
+ *   from its own committed station list, so this widens playback, not scripting.
+ *
+ * Every other page keeps `default-src 'self'` for frames and media.
+ */
+export const PAGE_EXTRA_DIRECTIVES = {
+  "entertainment/on-site/index.html": ["frame-src https://archive.org", "media-src 'self' https:"],
+};
+
 /** Builds the policy string for one page, given its inline script hashes. */
-export function buildPolicy(scriptHashes, extraConnectSources = []) {
+export function buildPolicy(scriptHashes, extraConnectSources = [], extraDirectives = []) {
   const scriptSources = ["'self'", ...scriptHashes.map((hash) => `'sha256-${hash}'`)];
 
   return [
@@ -81,6 +98,7 @@ export function buildPolicy(scriptHashes, extraConnectSources = []) {
     // PAGE_CONNECT_SOURCES.
     `connect-src ${["'self'", ...extraConnectSources].join(" ")}`,
     "manifest-src 'self'",
+    ...extraDirectives,
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -138,8 +156,9 @@ export async function applyCsp(outDir) {
 
     const page = relative(outDir, file).split(sep).join("/");
     const extra = PAGE_CONNECT_SOURCES[page] ?? [];
-    if (extra.length > 0) widened.push(page);
-    const meta = `<meta http-equiv="Content-Security-Policy" content="${buildPolicy([...hashes], extra)}"/>`;
+    const directives = PAGE_EXTRA_DIRECTIVES[page] ?? [];
+    if (extra.length > 0 || directives.length > 0) widened.push(page);
+    const meta = `<meta http-equiv="Content-Security-Policy" content="${buildPolicy([...hashes], extra, directives)}"/>`;
 
     // A meta policy only governs content parsed after it, so it must come before
     // any script. `<meta charset>` is first in Next's head; insert straight after it.
@@ -159,8 +178,8 @@ export async function applyCsp(outDir) {
   }
 
   // A listed page that no longer exists means the exception outlived its reason.
-  for (const page of Object.keys(PAGE_CONNECT_SOURCES)) {
-    if (!widened.includes(page)) problems.push(`${page}: listed in PAGE_CONNECT_SOURCES but not in the export`);
+  for (const page of [...Object.keys(PAGE_CONNECT_SOURCES), ...Object.keys(PAGE_EXTRA_DIRECTIVES)]) {
+    if (!widened.includes(page)) problems.push(`${page}: listed in the CSP exceptions but not in the export`);
   }
 
   if (problems.length > 0) {

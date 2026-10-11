@@ -1,114 +1,144 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+
 import { Icon } from "@/components/icons";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { ExternalLink } from "@/components/ui/external-link";
 import {
   CLASSIC_BOOKS,
   ENTERTAINMENT_FILMS,
   FREE_ENTERTAINMENT_PORTALS,
   RADIO_STATIONS,
-  RETRO_EMULATED_GAMES,
   type ClassicBook,
   type EntertainmentMedia,
   type RadioStation,
-  type RetroGame,
 } from "@/data/entertainment";
 import { Game2048 } from "@/features/tools/implementations/game-2048";
 import { GameMinesweeper } from "@/features/tools/implementations/game-minesweeper";
 import { GameSnake } from "@/features/tools/implementations/game-snake";
+import { cn } from "@/lib/utils/cn";
+
+/**
+ * Things you can watch, play, hear and read on this page.
+ *
+ * Privacy and consent: nothing third-party loads until the visitor asks for it.
+ * A film's Internet Archive player is created only after "Load player" is
+ * pressed, with the notice that it connects to archive.org; a radio stream
+ * connects only on "Play". This page's CSP allows exactly those origins
+ * (scripts/csp.mjs), and no other page does.
+ *
+ * The three games are this project's own code and run entirely in the browser.
+ * Commercial games emulated from archives were removed: an archive hosting a copy
+ * is not the rights holder's permission.
+ */
 
 type HubTab = "watch" | "play" | "listen" | "read" | "portals";
 type BuiltinGame = "2048" | "snake" | "minesweeper";
 
+const TABS: { id: HubTab; label: string; icon: "film" | "gamepad" | "music" | "book-open" | "globe" }[] = [
+  { id: "watch", label: "Public-domain films", icon: "film" },
+  { id: "play", label: "Games", icon: "gamepad" },
+  { id: "listen", label: "Live radio", icon: "music" },
+  { id: "read", label: "Classic books", icon: "book-open" },
+  { id: "portals", label: "Archives", icon: "globe" },
+];
+
+const FILM_CATEGORIES = [
+  { id: "all", label: "All" },
+  { id: "cartoons", label: "Cartoons" },
+  { id: "comedy", label: "Comedy" },
+  { id: "noir", label: "Film noir" },
+  { id: "horror", label: "Horror" },
+  { id: "cinema", label: "Sci-fi & drama" },
+];
+
+const GAMES: { id: BuiltinGame; label: string; description: string }[] = [
+  { id: "2048", label: "2048", description: "Slide numbered tiles with the arrow keys or by swiping to reach 2048." },
+  { id: "snake", label: "Snake", description: "Eat pellets and grow, without hitting the walls or your own tail." },
+  { id: "minesweeper", label: "Minesweeper", description: "Uncover every safe tile. The first click is always safe." },
+];
+
+function SelectCard({
+  selected,
+  onSelect,
+  children,
+}: {
+  selected: boolean;
+  onSelect: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={selected}
+      onClick={onSelect}
+      className={cn(
+        "flex h-full w-full flex-col justify-between rounded-md border p-4 text-left transition-colors hover:bg-surface-hover",
+        selected ? "border-border-strong bg-surface-raised" : "border-border bg-bg-subtle",
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+
 export function EntertainmentHub() {
   const [activeTab, setActiveTab] = useState<HubTab>("watch");
 
-  // Cinema state
-  const [selectedFilm, setSelectedFilm] = useState<EntertainmentMedia | null>(ENTERTAINMENT_FILMS[0]);
-  const [filmCategory, setFilmCategory] = useState<string>("all");
+  const [selectedFilm, setSelectedFilm] = useState<EntertainmentMedia>(ENTERTAINMENT_FILMS[0]);
+  const [playerLoaded, setPlayerLoaded] = useState(false);
+  const [filmCategory, setFilmCategory] = useState("all");
 
-  // Radio state
   const [activeStation, setActiveStation] = useState<RadioStation>(RADIO_STATIONS[0]);
   const [isPlayingRadio, setIsPlayingRadio] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
+  const [radioError, setRadioError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Book reader state
   const [selectedBook, setSelectedBook] = useState<ClassicBook>(CLASSIC_BOOKS[0]);
   const [chapterIndex, setChapterIndex] = useState(0);
   const [readerFontSize, setReaderFontSize] = useState<"sm" | "base" | "lg">("base");
 
-  // Game state
-  const [gameMode, setGameMode] = useState<"builtin" | "emulated">("builtin");
-  const [activeBuiltinGame, setActiveBuiltinGame] = useState<BuiltinGame>("2048");
-  const [activeEmulatedGame, setActiveEmulatedGame] = useState<RetroGame | null>(RETRO_EMULATED_GAMES[0]);
+  const [activeGame, setActiveGame] = useState<BuiltinGame>("2048");
 
-  // Handle radio streaming
   const toggleRadio = (station: RadioStation) => {
-    if (!audioRef.current) return;
-
+    const audio = audioRef.current;
+    if (!audio) return;
     if (activeStation.id === station.id && isPlayingRadio) {
-      audioRef.current.pause();
-      setIsPlayingRadio(false);
-      setIsBuffering(false);
-    } else {
-      setIsBuffering(true);
-      setActiveStation(station);
-      audioRef.current.src = station.streamUrl;
-      audioRef.current
-        .play()
-        .then(() => {
-          setIsPlayingRadio(true);
-          setIsBuffering(false);
-        })
-        .catch(() => {
-          setIsPlayingRadio(false);
-          setIsBuffering(false);
-        });
+      audio.pause();
+      return;
     }
+    setRadioError(null);
+    setIsBuffering(true);
+    setActiveStation(station);
+    audio.src = station.streamUrl;
+    audio.play().catch(() => {
+      setIsBuffering(false);
+      setIsPlayingRadio(false);
+      setRadioError(`${station.name} could not be reached. The station may be offline; try another.`);
+    });
   };
 
   useEffect(() => {
     const audio = audioRef.current;
-    return () => {
-      if (audio) {
-        audio.pause();
-      }
-    };
+    return () => audio?.pause();
   }, []);
 
   const filteredFilms =
-    filmCategory === "all"
-      ? ENTERTAINMENT_FILMS
-      : ENTERTAINMENT_FILMS.filter((f) => f.category === filmCategory);
-
-  const categories = [
-    { id: "all", label: "All Titles" },
-    { id: "cartoons", label: "Cartoons & Animation" },
-    { id: "comedy", label: "Classic Comedy" },
-    { id: "noir", label: "Film Noir & Thrillers" },
-    { id: "horror", label: "Horror & Cult" },
-    { id: "cinema", label: "Sci-Fi & Cinema" },
-  ];
+    filmCategory === "all" ? ENTERTAINMENT_FILMS : ENTERTAINMENT_FILMS.filter((f) => f.category === filmCategory);
 
   return (
     <div className="flex flex-col gap-8">
-      {/* Hidden Persistent Audio Player */}
       <audio
         ref={audioRef}
         preload="none"
-        onPlay={() => {
-          setIsPlayingRadio(true);
-          setIsBuffering(false);
-        }}
-        onWaiting={() => setIsBuffering(true)}
         onPlaying={() => {
           setIsPlayingRadio(true);
           setIsBuffering(false);
         }}
+        onWaiting={() => setIsBuffering(true)}
         onPause={() => {
           setIsPlayingRadio(false);
           setIsBuffering(false);
@@ -119,136 +149,75 @@ export function EntertainmentHub() {
         }}
       />
 
-      {/* Main Mode Navigation Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
-        <div className="flex flex-wrap items-center gap-1.5 rounded-md border border-border bg-bg-subtle p-1">
+      <div role="tablist" aria-label="On-site entertainment" className="flex flex-wrap gap-1.5 border-b border-border pb-4">
+        {TABS.map((tab) => (
           <Button
+            key={tab.id}
+            role="tab"
+            id={`hub-tab-${tab.id}`}
+            aria-selected={activeTab === tab.id}
+            aria-controls={`hub-panel-${tab.id}`}
             size="sm"
-            variant={activeTab === "watch" ? "primary" : "ghost"}
-            onClick={() => setActiveTab("watch")}
+            variant={activeTab === tab.id ? "primary" : "ghost"}
+            onClick={() => setActiveTab(tab.id)}
           >
-            <Icon name="film" size={16} />
-            Watch Cinema & Cartoons ({ENTERTAINMENT_FILMS.length})
+            <Icon name={tab.icon} size={16} />
+            {tab.label}
           </Button>
-
-          <Button
-            size="sm"
-            variant={activeTab === "play" ? "primary" : "ghost"}
-            onClick={() => setActiveTab("play")}
-          >
-            <Icon name="gamepad" size={16} />
-            Play Games
-          </Button>
-
-          <Button
-            size="sm"
-            variant={activeTab === "listen" ? "primary" : "ghost"}
-            onClick={() => setActiveTab("listen")}
-          >
-            <Icon name="music" size={16} />
-            Live Radio ({RADIO_STATIONS.length})
-          </Button>
-
-          <Button
-            size="sm"
-            variant={activeTab === "read" ? "primary" : "ghost"}
-            onClick={() => setActiveTab("read")}
-          >
-            <Icon name="book-open" size={16} />
-            Classic Reader ({CLASSIC_BOOKS.length})
-          </Button>
-
-          <Button
-            size="sm"
-            variant={activeTab === "portals" ? "primary" : "ghost"}
-            onClick={() => setActiveTab("portals")}
-          >
-            <Icon name="globe" size={16} />
-            Free Media Vaults
-          </Button>
-        </div>
-
-        {/* Global Radio Bar Indicator */}
-        <div className="flex items-center gap-3 rounded-md border border-border bg-bg-subtle px-3 py-1.5 text-xs">
-          <span className="text-fg-muted">Audio stream:</span>
-          <span className="max-w-[140px] truncate font-medium text-fg sm:max-w-none">
-            {activeStation.name}
-          </span>
-          <Button
-            size="sm"
-            variant="secondary"
-            className="h-7 px-2.5 text-xs"
-            onClick={() => toggleRadio(activeStation)}
-          >
-            <Icon name={isPlayingRadio ? "close" : "play-circle"} size={14} />
-            {isBuffering ? "Connecting..." : isPlayingRadio ? "Stop" : "Tune in"}
-          </Button>
-        </div>
+        ))}
       </div>
 
-      {/* ========================================================================= */}
-      {/* 1. WATCH: Public Domain Cartoons & Cinema                                 */}
-      {/* ========================================================================= */}
-      {activeTab === "watch" && (
-        <div className="flex flex-col gap-6">
-          {/* Active Theater Screen */}
-          {selectedFilm && (
-            <Card className="overflow-hidden p-0 shadow-sm">
-              <div className="aspect-video w-full bg-black">
+      {activeTab === "watch" ? (
+        <div role="tabpanel" id="hub-panel-watch" aria-labelledby="hub-tab-watch" className="flex flex-col gap-6">
+          <div className="overflow-hidden rounded-md border border-border">
+            <div className="aspect-video w-full bg-black">
+              {playerLoaded ? (
                 <iframe
+                  key={selectedFilm.id}
                   src={`https://archive.org/embed/${selectedFilm.embedId}`}
-                  title={selectedFilm.title}
+                  title={`${selectedFilm.title} — Internet Archive player`}
                   className="h-full w-full border-0"
+                  allow="fullscreen"
                   allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
-              </div>
-
-              <div className="flex flex-col gap-2 p-5 sm:p-6">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <Badge size="sm" tone="info">
-                      {selectedFilm.year}
-                    </Badge>
-                    <span className="text-xs font-medium uppercase tracking-wider text-fg-muted">
-                      {selectedFilm.duration}
-                    </span>
-                    <span className="text-xs text-fg-muted">•</span>
-                    <span className="text-xs text-fg-muted capitalize">{selectedFilm.category}</span>
-                  </div>
-
-                  <span className="text-xs text-fg-muted">
-                    License: <strong className="font-medium text-fg">{selectedFilm.license}</strong>
-                  </span>
+              ) : (
+                <div className="flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
+                  <p className="font-display text-xl font-semibold text-white">{selectedFilm.title}</p>
+                  <p className="max-w-md text-sm text-white/75">
+                    The film plays in the Internet Archive&rsquo;s player. Loading it connects your browser to archive.org,
+                    which has its own privacy policy.
+                  </p>
+                  <Button variant="primary" onClick={() => setPlayerLoaded(true)}>
+                    <Icon name="play-circle" size={16} />
+                    Load player
+                  </Button>
                 </div>
+              )}
+            </div>
+            <div className="flex flex-col gap-2 p-5">
+              <p className="text-xs text-fg-muted">
+                {selectedFilm.year} · {selectedFilm.duration} · {selectedFilm.creator}
+              </p>
+              <h2 className="font-display text-2xl font-bold text-fg">{selectedFilm.title}</h2>
+              <p className="text-sm leading-relaxed text-fg">{selectedFilm.description}</p>
+              <p className="text-xs text-fg-muted">
+                Status as described by the Internet Archive item: {selectedFilm.license}. Public-domain status is
+                country-specific; check yours before reusing.{" "}
+                <ExternalLink href={`https://archive.org/details/${selectedFilm.embedId}`} className="link-inline rounded-xs">
+                  Open on archive.org
+                </ExternalLink>
+              </p>
+            </div>
+          </div>
 
-                <h2 className="font-display text-2xl font-bold text-fg sm:text-3xl">
-                  {selectedFilm.title}
-                </h2>
-                <p className="text-sm text-fg-muted">
-                  Directed / Produced by {selectedFilm.creator}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-fg">{selectedFilm.description}</p>
-
-                <div className="mt-3 flex flex-wrap gap-1.5 pt-3 border-t border-border">
-                  {selectedFilm.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-xs bg-bg-subtle px-2 py-0.5 text-[11px] font-mono text-fg-muted"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Card>
-          )}
-
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 pt-2">
-            {categories.map((cat) => (
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Film category">
+            {FILM_CATEGORIES.map((cat) => (
               <Button
                 key={cat.id}
                 size="sm"
+                aria-pressed={filmCategory === cat.id}
                 variant={filmCategory === cat.id ? "primary" : "secondary"}
                 onClick={() => setFilmCategory(cat.id)}
               >
@@ -257,317 +226,113 @@ export function EntertainmentHub() {
             ))}
           </div>
 
-          {/* Media Catalog Grid */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredFilms.map((film) => {
-              const isSelected = selectedFilm?.id === film.id;
-              return (
-                <div
-                  key={film.id}
-                  onClick={() => setSelectedFilm(film)}
-                  className={`flex cursor-pointer flex-col justify-between rounded-md border p-4 transition-colors hover:bg-surface-hover ${
-                    isSelected
-                      ? "border-border-strong bg-surface-raised shadow-xs"
-                      : "border-border bg-bg-subtle"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between text-xs text-fg-muted">
+          <ul className="grid list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredFilms.map((film) => (
+              <li key={film.id}>
+                <SelectCard selected={selectedFilm.id === film.id} onSelect={() => setSelectedFilm(film)}>
+                  <span>
+                    <span className="flex justify-between text-xs text-fg-muted">
                       <span className="capitalize">{film.category}</span>
                       <span>{film.duration}</span>
-                    </div>
-                    <h3 className="mt-1.5 font-display text-base font-semibold text-fg">
-                      {film.title}
-                    </h3>
-                    <p className="mt-1 text-xs text-fg-muted line-clamp-2">{film.description}</p>
-                  </div>
-
-                  <div className="mt-4 flex items-center justify-between pt-3 border-t border-border">
-                    <span className="text-[11px] font-medium text-fg-muted">
-                      {film.creator} ({film.year})
                     </span>
-                    <Button
-                      size="sm"
-                      variant={isSelected ? "primary" : "ghost"}
-                      className="h-7 px-2 text-xs"
-                    >
-                      <Icon name="play-circle" size={14} />
-                      {isSelected ? "Watching" : "Watch"}
-                    </Button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                    <span className="mt-1.5 block font-display text-base font-semibold text-fg">{film.title}</span>
+                    <span className="mt-1 block text-xs text-fg-muted line-clamp-2">{film.description}</span>
+                  </span>
+                  <span className="mt-3 border-t border-border pt-2 text-2xs text-fg-subtle">
+                    {film.creator} ({film.year})
+                  </span>
+                </SelectCard>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
+      ) : null}
 
-      {/* ========================================================================= */}
-      {/* 2. PLAY: In-Browser Retro & Casual Games                                 */}
-      {/* ========================================================================= */}
-      {activeTab === "play" && (
-        <div className="flex flex-col gap-6">
-          {/* Sub-Mode Header */}
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-border bg-bg-subtle p-3">
-            <div className="flex items-center gap-2">
+      {activeTab === "play" ? (
+        <div role="tabpanel" id="hub-panel-play" aria-labelledby="hub-tab-play" className="flex flex-col gap-6">
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Choose a game">
+            {GAMES.map((game) => (
               <Button
+                key={game.id}
                 size="sm"
-                variant={gameMode === "builtin" ? "primary" : "ghost"}
-                onClick={() => setGameMode("builtin")}
+                aria-pressed={activeGame === game.id}
+                variant={activeGame === game.id ? "secondary" : "ghost"}
+                onClick={() => setActiveGame(game.id)}
               >
-                Instant Local Games
+                {game.label}
               </Button>
-              <Button
-                size="sm"
-                variant={gameMode === "emulated" ? "primary" : "ghost"}
-                onClick={() => setGameMode("emulated")}
-              >
-                MS-DOS & Arcade Classics
-              </Button>
-            </div>
-
-            {gameMode === "builtin" && (
-              <div className="flex items-center gap-1.5">
-                <Button
-                  size="sm"
-                  variant={activeBuiltinGame === "2048" ? "secondary" : "ghost"}
-                  className="h-7 px-2 text-xs"
-                  onClick={() => setActiveBuiltinGame("2048")}
-                >
-                  2048
-                </Button>
-                <Button
-                  size="sm"
-                  variant={activeBuiltinGame === "snake" ? "secondary" : "ghost"}
-                  className="h-7 px-2 text-xs"
-                  onClick={() => setActiveBuiltinGame("snake")}
-                >
-                  Retro Snake
-                </Button>
-                <Button
-                  size="sm"
-                  variant={activeBuiltinGame === "minesweeper" ? "secondary" : "ghost"}
-                  className="h-7 px-2 text-xs"
-                  onClick={() => setActiveBuiltinGame("minesweeper")}
-                >
-                  Minesweeper
-                </Button>
-              </div>
-            )}
+            ))}
           </div>
-
-          {/* Built-in Games Container */}
-          {gameMode === "builtin" && (
-            <div className="flex flex-col gap-6">
-              {activeBuiltinGame === "2048" && (
-                <div>
-                  <div className="mb-6 rounded-md border border-border bg-bg-subtle p-4 text-center">
-                    <h3 className="font-display text-lg font-bold text-fg">2048 Tile Puzzle</h3>
-                    <p className="mt-1 text-xs text-fg-muted">
-                      Slide numbered tiles with arrow keys or swipe to reach 2048. Runs 100% locally with zero ads.
-                    </p>
-                  </div>
-                  <Game2048 />
-                </div>
-              )}
-
-              {activeBuiltinGame === "snake" && (
-                <div>
-                  <div className="mb-6 rounded-md border border-border bg-bg-subtle p-4 text-center">
-                    <h3 className="font-display text-lg font-bold text-fg">Classic Retro Snake</h3>
-                    <p className="mt-1 text-xs text-fg-muted">
-                      Eat red pellets, grow your snake, and avoid running into the walls or your own tail.
-                    </p>
-                  </div>
-                  <GameSnake />
-                </div>
-              )}
-
-              {activeBuiltinGame === "minesweeper" && (
-                <div>
-                  <div className="mb-6 rounded-md border border-border bg-bg-subtle p-4 text-center">
-                    <h3 className="font-display text-lg font-bold text-fg">Classic Minesweeper</h3>
-                    <p className="mt-1 text-xs text-fg-muted">
-                      Uncover all safe tiles without hitting any hidden mines. First click is guaranteed safe.
-                    </p>
-                  </div>
-                  <GameMinesweeper />
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Emulated Retro Games Container */}
-          {gameMode === "emulated" && (
-            <div className="flex flex-col gap-6">
-              {activeEmulatedGame && (
-                <Card className="overflow-hidden p-0 shadow-sm">
-                  <div className="aspect-video w-full bg-black">
-                    <iframe
-                      src={`https://archive.org/embed/${activeEmulatedGame.embedId}`}
-                      title={activeEmulatedGame.title}
-                      className="h-full w-full border-0"
-                      allowFullScreen
-                    />
-                  </div>
-
-                  <div className="flex flex-col gap-2 p-5">
-                    <div className="flex items-center gap-2">
-                      <Badge size="sm" tone="info">
-                        {activeEmulatedGame.platform}
-                      </Badge>
-                      <span className="text-xs text-fg-muted">{activeEmulatedGame.year}</span>
-                      <span className="text-xs text-fg-muted">•</span>
-                      <span className="text-xs text-fg-muted">{activeEmulatedGame.genre}</span>
-                    </div>
-
-                    <h3 className="font-display text-2xl font-bold text-fg">
-                      {activeEmulatedGame.title}
-                    </h3>
-                    <p className="text-xs text-fg-muted">
-                      Developer: {activeEmulatedGame.developer} • Emulated via Internet Archive DOSBox in WebAssembly
-                    </p>
-                    <p className="mt-1 text-sm text-fg">{activeEmulatedGame.description}</p>
-                  </div>
-                </Card>
-              )}
-
-              {/* Game selection cards */}
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {RETRO_EMULATED_GAMES.map((game) => {
-                  const isCurrent = activeEmulatedGame?.id === game.id;
-                  return (
-                    <div
-                      key={game.id}
-                      onClick={() => setActiveEmulatedGame(game)}
-                      className={`flex cursor-pointer flex-col justify-between rounded-md border p-4 transition-colors hover:bg-surface-hover ${
-                        isCurrent
-                          ? "border-border-strong bg-surface-raised shadow-xs"
-                          : "border-border bg-bg-subtle"
-                      }`}
-                    >
-                      <div>
-                        <div className="flex items-center justify-between text-xs text-fg-muted">
-                          <span>{game.platform}</span>
-                          <span>{game.year}</span>
-                        </div>
-                        <h4 className="mt-1.5 font-display text-base font-semibold text-fg">
-                          {game.title}
-                        </h4>
-                        <p className="mt-1 text-xs text-fg-muted line-clamp-2">{game.description}</p>
-                      </div>
-
-                      <div className="mt-4 flex items-center justify-between pt-3 border-t border-border">
-                        <span className="text-xs text-fg-muted">{game.developer}</span>
-                        <Button
-                          size="sm"
-                          variant={isCurrent ? "primary" : "secondary"}
-                          className="h-7 px-2 text-xs"
-                        >
-                          <Icon name="gamepad" size={14} />
-                          {isCurrent ? "Playing" : "Launch"}
-                        </Button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
+          <p className="text-sm text-fg-muted">
+            {GAMES.find((g) => g.id === activeGame)?.description} Written for this site; runs entirely in your browser with no
+            ads and nothing sent anywhere. For thousands more, see the{" "}
+            <Link href="/entertainment/games" className="link-inline rounded-xs">
+              games shelf
+            </Link>
+            .
+          </p>
+          {activeGame === "2048" ? <Game2048 /> : null}
+          {activeGame === "snake" ? <GameSnake /> : null}
+          {activeGame === "minesweeper" ? <GameMinesweeper /> : null}
         </div>
-      )}
+      ) : null}
 
-      {/* ========================================================================= */}
-      {/* 3. LISTEN: Live Radio Streams & Soundscapes                              */}
-      {/* ========================================================================= */}
-      {activeTab === "listen" && (
-        <div className="flex flex-col gap-6">
-          {/* Active Audio Banner */}
-          <div className="flex flex-col gap-4 rounded-md border border-border bg-surface-raised p-6 shadow-xs sm:flex-row sm:items-center sm:justify-between">
+      {activeTab === "listen" ? (
+        <div role="tabpanel" id="hub-panel-listen" aria-labelledby="hub-tab-listen" className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 rounded-md border border-border bg-surface-raised p-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <div className="flex items-center gap-2">
-                <Badge size="sm" tone={isBuffering ? "neutral" : isPlayingRadio ? "success" : "neutral"}>
-                  {isBuffering ? "Connecting..." : isPlayingRadio ? "Streaming live" : "Ready"}
-                </Badge>
-                <span className="text-xs text-fg-muted">{activeStation.genre}</span>
-              </div>
-              <h2 className="mt-2 font-display text-2xl font-bold text-fg">{activeStation.name}</h2>
+              <p className="text-xs text-fg-muted" aria-live="polite">
+                {isBuffering ? "Connecting…" : isPlayingRadio ? "Playing live" : "Stopped"} · {activeStation.genre}
+              </p>
+              <h2 className="mt-1 font-display text-2xl font-bold text-fg">{activeStation.name}</h2>
               <p className="mt-1 text-xs text-fg-muted">
-                {activeStation.location} • {activeStation.description}
+                {activeStation.location} · {activeStation.description}
+              </p>
+              <p className="mt-2 text-2xs text-fg-subtle">
+                Pressing play connects your browser directly to the station&rsquo;s public stream.
               </p>
             </div>
-
-            <Button
-              size="md"
-              variant="primary"
-              className="h-11 px-5"
-              onClick={() => toggleRadio(activeStation)}
-            >
+            <Button variant="primary" onClick={() => toggleRadio(activeStation)}>
               <Icon name={isPlayingRadio ? "close" : "play-circle"} size={18} />
-              {isBuffering ? "Connecting..." : isPlayingRadio ? "Stop stream" : "Play stream"}
+              {isPlayingRadio ? "Stop" : "Play"}
             </Button>
           </div>
-
-          {/* Station Selection Cards */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {RADIO_STATIONS.map((station) => {
-              const isCurrent = activeStation.id === station.id;
-              const isPlaying = isCurrent && isPlayingRadio;
-
-              return (
-                <div
-                  key={station.id}
-                  onClick={() => toggleRadio(station)}
-                  className={`flex cursor-pointer flex-col justify-between rounded-md border p-5 transition-colors hover:bg-surface-hover ${
-                    isCurrent
-                      ? "border-border-strong bg-surface-raised shadow-xs"
-                      : "border-border bg-bg-subtle"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between text-xs text-fg-muted">
+          {radioError ? (
+            <p role="status" className="text-sm text-fg-muted">
+              {radioError}
+            </p>
+          ) : null}
+          <ul className="grid list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {RADIO_STATIONS.map((station) => (
+              <li key={station.id}>
+                <SelectCard selected={activeStation.id === station.id} onSelect={() => toggleRadio(station)}>
+                  <span>
+                    <span className="flex justify-between text-xs text-fg-muted">
                       <span>{station.genre}</span>
                       <span>{station.location}</span>
-                    </div>
-                    <h3 className="mt-2 font-display text-lg font-semibold text-fg">
-                      {station.name}
-                    </h3>
-                    <p className="mt-1 text-xs text-fg-muted">{station.description}</p>
-                  </div>
-
-                  <div className="mt-4 flex items-center justify-between pt-3 border-t border-border">
-                    <span className="text-xs text-fg-muted">Direct public stream</span>
-                    <Button
-                      size="sm"
-                      variant={isPlaying ? "primary" : "secondary"}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleRadio(station);
-                      }}
-                    >
-                      <Icon name={isPlaying ? "close" : "play-circle"} size={14} />
-                      {isPlaying ? (isBuffering ? "Connecting..." : "Playing") : "Listen"}
-                    </Button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                    </span>
+                    <span className="mt-1.5 block font-display text-base font-semibold text-fg">{station.name}</span>
+                    <span className="mt-1 block text-xs text-fg-muted">{station.description}</span>
+                  </span>
+                  <span className="mt-3 border-t border-border pt-2 text-2xs text-fg-subtle">
+                    {activeStation.id === station.id && isPlayingRadio ? "Playing — press to stop" : "Press to play"}
+                  </span>
+                </SelectCard>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
+      ) : null}
 
-      {/* ========================================================================= */}
-      {/* 4. READ: Public Domain Book Reader                                       */}
-      {/* ========================================================================= */}
-      {activeTab === "read" && (
-        <div className="flex flex-col gap-6">
-          {/* Book Selector Header */}
+      {activeTab === "read" ? (
+        <div role="tabpanel" id="hub-panel-read" aria-labelledby="hub-tab-read" className="flex flex-col gap-6">
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-border bg-bg-subtle p-4">
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Choose a book">
               {CLASSIC_BOOKS.map((book) => (
                 <Button
                   key={book.id}
                   size="sm"
+                  aria-pressed={selectedBook.id === book.id}
                   variant={selectedBook.id === book.id ? "primary" : "ghost"}
                   onClick={() => {
                     setSelectedBook(book);
@@ -578,129 +343,81 @@ export function EntertainmentHub() {
                 </Button>
               ))}
             </div>
-
-            {/* Font Size Selector */}
-            <div className="flex items-center gap-1 text-xs text-fg-muted">
-              <span>Text size:</span>
-              <Button
-                size="sm"
-                variant={readerFontSize === "sm" ? "secondary" : "ghost"}
-                className="h-7 px-2 text-xs"
-                onClick={() => setReaderFontSize("sm")}
-              >
-                A-
-              </Button>
-              <Button
-                size="sm"
-                variant={readerFontSize === "base" ? "secondary" : "ghost"}
-                className="h-7 px-2 text-xs"
-                onClick={() => setReaderFontSize("base")}
-              >
-                A
-              </Button>
-              <Button
-                size="sm"
-                variant={readerFontSize === "lg" ? "secondary" : "ghost"}
-                className="h-7 px-2 text-xs"
-                onClick={() => setReaderFontSize("lg")}
-              >
-                A+
-              </Button>
+            <div className="flex items-center gap-1 text-xs text-fg-muted" role="group" aria-label="Text size">
+              {(["sm", "base", "lg"] as const).map((size) => (
+                <Button
+                  key={size}
+                  size="sm"
+                  aria-pressed={readerFontSize === size}
+                  variant={readerFontSize === size ? "secondary" : "ghost"}
+                  onClick={() => setReaderFontSize(size)}
+                >
+                  {size === "sm" ? "A−" : size === "base" ? "A" : "A+"}
+                  <span className="sr-only">{size === "sm" ? " smaller text" : size === "base" ? " normal text" : " larger text"}</span>
+                </Button>
+              ))}
             </div>
           </div>
-
-          {/* Book Content Viewer */}
-          <div className="rounded-md border border-border bg-surface p-6 sm:p-10 shadow-xs">
-            <div className="border-b border-border pb-6">
-              <span className="text-xs text-fg-muted">Public Domain Literature</span>
+          <article className="rounded-md border border-border bg-surface p-6 sm:p-10">
+            <header className="border-b border-border pb-6">
+              <p className="text-xs text-fg-muted">Public-domain text · excerpt</p>
               <h2 className="mt-1 font-display text-3xl font-bold text-fg">{selectedBook.title}</h2>
               <p className="mt-1 text-sm text-fg-muted">
-                By {selectedBook.author} ({selectedBook.year}) • {selectedBook.wordCount}
+                {selectedBook.author} · {selectedBook.year < 0 ? `c. ${-selectedBook.year} BCE` : selectedBook.year}
               </p>
-            </div>
-
-            {/* Chapter Selection if available */}
-            {selectedBook.chapters.length > 1 && (
-              <div className="mt-6 flex flex-wrap gap-2">
-                {selectedBook.chapters.map((ch, idx) => (
+            </header>
+            {selectedBook.chapters.length > 1 ? (
+              <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label="Chapter">
+                {selectedBook.chapters.map((chapter, index) => (
                   <Button
-                    key={ch.title}
+                    key={chapter.title}
                     size="sm"
-                    variant={chapterIndex === idx ? "primary" : "secondary"}
-                    onClick={() => setChapterIndex(idx)}
+                    aria-pressed={chapterIndex === index}
+                    variant={chapterIndex === index ? "primary" : "secondary"}
+                    onClick={() => setChapterIndex(index)}
                   >
-                    {ch.title}
+                    {chapter.title}
                   </Button>
                 ))}
               </div>
-            )}
-
-            {/* Reading Body */}
+            ) : null}
             <div
-              className={`mt-8 leading-relaxed text-fg whitespace-pre-line ${
-                readerFontSize === "sm"
-                  ? "text-sm leading-6"
-                  : readerFontSize === "base"
-                    ? "text-base leading-7"
-                    : "text-lg leading-8"
-              }`}
+              className={cn(
+                "mt-8 max-w-(--measure-standfirst) whitespace-pre-line text-fg",
+                readerFontSize === "sm" ? "text-sm leading-6" : readerFontSize === "base" ? "text-base leading-7" : "text-lg leading-8",
+              )}
             >
               {selectedBook.chapters[chapterIndex]?.text ?? selectedBook.firstParagraph}
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* ========================================================================= */}
-      {/* 5. PORTALS: Curated Free Media Repositories                               */}
-      {/* ========================================================================= */}
-      {activeTab === "portals" && (
-        <div className="flex flex-col gap-6">
-          <div className="rounded-md border border-border bg-bg-subtle p-6">
-            <h2 className="font-display text-2xl font-bold text-fg">Curated Free Media Portals</h2>
-            <p className="mt-1 text-sm text-fg-muted">
-              Access the largest public domain and non-commercial digital repositories in human history. Over 100 million free books, historical films, open audiobooks, and preserved retro computer software.
+            <p className="mt-8 text-sm text-fg-muted">
+              The full text is free on{" "}
+              <ExternalLink href="https://www.gutenberg.org/" className="link-inline rounded-xs">
+                Project Gutenberg
+              </ExternalLink>
+              .
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {FREE_ENTERTAINMENT_PORTALS.map((portal) => (
-              <div
-                key={portal.name}
-                className="flex flex-col justify-between rounded-md border border-border bg-surface p-5 shadow-xs transition-colors hover:bg-surface-hover"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <Badge size="sm" tone="neutral">
-                      {portal.category}
-                    </Badge>
-                    <span className="text-xs font-mono text-fg-muted">{portal.freeScope}</span>
-                  </div>
-
-                  <h3 className="mt-3 font-display text-lg font-semibold text-fg">
-                    {portal.name}
-                  </h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-fg-muted">
-                    {portal.description}
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-3 border-t border-border">
-                  <a
-                    href={portal.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-fg hover:underline"
-                  >
-                    Launch portal
-                    <Icon name="arrow-right" size={13} />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+          </article>
         </div>
-      )}
+      ) : null}
+
+      {activeTab === "portals" ? (
+        <div role="tabpanel" id="hub-panel-portals" aria-labelledby="hub-tab-portals">
+          <ul className="grid list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {FREE_ENTERTAINMENT_PORTALS.map((portal) => (
+              <li key={portal.name} className="flex flex-col justify-between rounded-md border border-border bg-surface p-5">
+                <div>
+                  <p className="text-xs text-fg-muted">{portal.freeScope}</p>
+                  <h3 className="mt-2 font-display text-lg font-semibold text-fg">{portal.name}</h3>
+                  <p className="mt-1.5 text-sm text-fg-muted">{portal.description}</p>
+                </div>
+                <ExternalLink href={portal.url} className="link-inline mt-4 rounded-xs text-sm">
+                  Visit {portal.name}
+                </ExternalLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </div>
   );
 }

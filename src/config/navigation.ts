@@ -63,7 +63,7 @@ export const primaryNav: NavLink[] = [
   {
     label: "Entertainment",
     href: "/entertainment",
-    description: "Watch legal cartoons & cinema, listen to live radio, and play games on-site.",
+    description: "Free films, series, anime, games, music, podcasts and audiobooks — each listing says what is free, where, and from which source.",
     icon: "gamepad",
   },
 ];
@@ -91,7 +91,7 @@ export const footerNav: FooterSection[] = [
     title: "Use",
     links: [
       { label: "Tools", href: "/tools" },
-      { label: "Entertainment & Play", href: "/entertainment" },
+      { label: "Play and watch here", href: "/entertainment/on-site" },
       { label: "Private AI chat", href: "/tools/private-ai-chat" },
       { label: "Which free AI?", href: "/ai" },
       { label: "Free-trial cancel reminder", href: "/tools/trial-reminder" },

@@ -14,6 +14,7 @@ import { batch010Resources } from "./batch-010";
 import { creativeResources } from "./creative";
 import { developmentResources } from "./development";
 import { educationResources } from "./education";
+import { entertainmentResources } from "./entertainment";
 import { lifeResources } from "./life";
 import { productivityResources } from "./productivity";
 import { studentResources } from "./students";
@@ -44,6 +45,7 @@ const allSeedResources: Resource[] = [
   ...batch008Resources,
   ...batch009Resources,
   ...batch010Resources,
+  ...entertainmentResources,
 ];
 
 /**

@@ -23,6 +23,7 @@ import { ResourceFacts } from "@/features/resources/components/resource-facts";
 import { ResourceLogo } from "@/features/resources/components/resource-logo";
 import { ResourceSnapshot } from "@/features/resources/components/resource-snapshot";
 import { VerificationPanel } from "@/features/resources/components/verification-panel";
+import { AccessPanel } from "@/features/entertainment/components/access-panel";
 import { FACTS, factEvidence } from "@/lib/resources/evidence";
 import {
   getCollections,
@@ -153,6 +154,7 @@ export default async function ResourcePage({ params }: PageProps) {
 
   const sections: PageSection[] = [
     { id: "about-heading", label: "About" },
+    ...(resource.media ? [{ id: "access-heading", label: "What is free here" }] : []),
     { id: "why-heading", label: "Why it is listed" },
     { id: "catch-heading", label: "The catch" },
     ...(hasFeatures ? [{ id: "features-heading", label: "What it does" }] : []),
@@ -289,6 +291,8 @@ export default async function ResourcePage({ params }: PageProps) {
                 .
               </p>
             </section>
+
+            <AccessPanel resource={resource} />
 
             <section aria-labelledby="why-heading">
               <h2 id="why-heading" className="font-display text-xl font-semibold">

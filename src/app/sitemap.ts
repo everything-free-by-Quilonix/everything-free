@@ -2,11 +2,13 @@ import type { MetadataRoute } from "next";
 
 import { audiences } from "@/config/audiences";
 import { categories } from "@/config/categories";
+import { MIN_SHELF_LISTINGS, shelves } from "@/config/media";
 import { tools } from "@/config/tools";
 import { collections } from "@/data/collections";
 import { aiImageCommands } from "@/data/ai-image-commands";
 import { getActivePrompts } from "@/data/ai-prompts/normalized-prompts";
-import { getAlternativeTargets, listResourceIndexEntries } from "@/lib/repository";
+import { getAlternativeTargets, getAllResourcesForClient, listResourceIndexEntries } from "@/lib/repository";
+import { shelfResources } from "@/lib/entertainment/query";
 import { absoluteUrl } from "@/lib/seo/metadata";
 
 /**
@@ -28,7 +30,11 @@ import { absoluteUrl } from "@/lib/seo/metadata";
 export const dynamic = "force-static";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [resources, alternativeTargets] = await Promise.all([listResourceIndexEntries(), getAlternativeTargets()]);
+  const [resources, alternativeTargets, allResources] = await Promise.all([
+    listResourceIndexEntries(),
+    getAlternativeTargets(),
+    getAllResourcesForClient(),
+  ]);
 
   const now = new Date();
   const url = absoluteUrl;
@@ -42,6 +48,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: url("/categories"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: url("/collections"), lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: url("/tools"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: url("/entertainment"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: url("/entertainment/browse"), lastModified: now, changeFrequency: "weekly", priority: 0.6 },
+    { url: url("/entertainment/on-site"), lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    ...shelves
+      .filter((shelf) => shelfResources(allResources, shelf.slug).length >= MIN_SHELF_LISTINGS)
+      .map((shelf) => ({
+      url: url(`/entertainment/${shelf.slug}`),
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
     { url: url("/alternatives"), lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: url("/free-status"), lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: url("/verification"), lastModified: now, changeFrequency: "monthly", priority: 0.6 },

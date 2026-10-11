@@ -21,6 +21,9 @@
     "backlog": "node scripts/verification-backlog.mjs out/link-manifest.json --write docs/verification-backlog.md",
     "backlog:check": "node scripts/verification-backlog.mjs out/link-manifest.json --check docs/verification-backlog.md",
     "worksheet": "node scripts/verification-worksheet.mjs out/link-manifest.json",
+    "check:entertainment": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/test/register.mjs scripts/check-entertainment.mts",
+    "check:media-file": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/test/register.mjs scripts/check-media-file.mts",
+    "signals:entertainment": "node scripts/fetch-entertainment-signals.mjs",
     "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/test/register.mjs --test \"tests/**/*.test.mts\""
   },
   "dependencies": {

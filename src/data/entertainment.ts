@@ -31,17 +31,6 @@ export interface ClassicBook {
   chapters: { title: string; text: string }[];
 }
 
-export interface RetroGame {
-  id: string;
-  title: string;
-  year: number;
-  platform: string;
-  developer: string;
-  genre: string;
-  description: string;
-  embedId: string;
-}
-
 export interface EntertainmentPortal {
   name: string;
   description: string;
@@ -548,64 +537,6 @@ export const RADIO_STATIONS: RadioStation[] = [
   },
 ];
 
-export const RETRO_EMULATED_GAMES: RetroGame[] = [
-  {
-    id: "prince-of-persia",
-    title: "Prince of Persia",
-    year: 1989,
-    platform: "MS-DOS",
-    developer: "Jordan Mechner / Broderbund",
-    genre: "Cinematic Platformer",
-    description:
-      "The groundbreaking rotoscoped adventure. Run, leap spikes, parry guards, and navigate the Sultan's dungeon in 60 minutes.",
-    embedId: "msdos_Prince_of_Persia_1989",
-  },
-  {
-    id: "simcity-classic",
-    title: "SimCity",
-    year: 1989,
-    platform: "MS-DOS",
-    developer: "Will Wright / Maxis",
-    genre: "City Simulation",
-    description:
-      "Zone residential, commercial and industrial districts, lay transit, balance budgets, and weather natural disasters.",
-    embedId: "msdos_SimCity_1989",
-  },
-  {
-    id: "oregon-trail",
-    title: "The Oregon Trail",
-    year: 1990,
-    platform: "MS-DOS",
-    developer: "MECC",
-    genre: "Historical Adventure",
-    description:
-      "Lead a pioneer wagon team from Independence, Missouri to Oregon's Willamette Valley across rivers, plains and wilderness.",
-    embedId: "msdos_Oregon_Trail_The_1990",
-  },
-  {
-    id: "lemmings",
-    title: "Lemmings",
-    year: 1991,
-    platform: "MS-DOS",
-    developer: "DMA Design / Psygnosis",
-    genre: "Puzzle Strategy",
-    description:
-      "Assign climbing, digging, blocking and parachuting tasks to guide wandering creatures safely past lethal hazards to the exit.",
-    embedId: "msdos_Lemmings_1991",
-  },
-  {
-    id: "pacman-arcade",
-    title: "Pac-Man",
-    year: 1980,
-    platform: "Arcade",
-    developer: "Namco",
-    genre: "Arcade Maze",
-    description:
-      "Chomp dots, evade ghosts Blinky, Pinky, Inky and Clyde, and grab Power Pellets in the most iconic coin-op arcade maze of all time.",
-    embedId: "arcade_pacman",
-  },
-];
-
 export const CLASSIC_BOOKS: ClassicBook[] = [
   {
     id: "sherlock-holmes",
@@ -753,13 +684,6 @@ export const FREE_ENTERTAINMENT_PORTALS: EntertainmentPortal[] = [
     url: "https://librivox.org",
     freeScope: "100% Free Public Domain Audiobooks",
     category: "audio",
-  },
-  {
-    name: "Internet Archive: MS-DOS & Arcade",
-    description: "Thousands of vintage MS-DOS PC games and arcade titles emulated in-browser with zero install.",
-    url: "https://archive.org/details/softwarelibrary_msdos_games",
-    freeScope: "In-browser emulated shareware & classics",
-    category: "gaming",
   },
   {
     name: "NASA Media & Video Archive",

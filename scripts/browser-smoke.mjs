@@ -206,7 +206,8 @@ async function openPage(browser, { viewport = VIEWPORTS.desktop, javascript = tr
       events.errors.push(`exception: ${params.exceptionDetails.exception?.description ?? params.exceptionDetails.text}`);
     }
     if (method === "Log.entryAdded" && params.entry.level === "error") {
-      events.errors.push(`${params.entry.source}: ${params.entry.text}`);
+      // Include the URL, so a network error can be matched to the request that caused it.
+      events.errors.push(`${params.entry.source}: ${params.entry.text}${params.entry.url ? ` ${params.entry.url}` : ""}`);
     }
     if (method === "Runtime.consoleAPICalled" && params.type === "error") {
       events.errors.push(`console: ${params.args.map((a) => a.value ?? a.description).join(" ")}`);
@@ -444,6 +445,16 @@ async function main() {
       "/about/",
       "/privacy/",
       "/terms/",
+      "/entertainment/",
+      "/entertainment/browse/",
+      "/entertainment/watch/",
+      "/entertainment/anime/",
+      "/entertainment/games/",
+      "/entertainment/listen/",
+      "/entertainment/read/",
+      "/entertainment/explore/",
+      "/entertainment/on-site/",
+      "/resources/pepper-and-carrot/",
     ];
 
     /* ------------------------------------------------ direct loads, desktop */
@@ -805,7 +816,8 @@ async function main() {
     await check("filters update the URL and the results", async () => {
       // The total count, not the number of cards: results are paginated, so a
       // filter that still matches a full page would look unchanged by card count.
-      const total = `Number((document.querySelector('p[aria-live="polite"]')?.textContent.match(/\\d+/) ?? [0])[0])`;
+      // Counts are formatted ("1,049"), so separators are stripped before parsing.
+      const total = `Number((document.querySelector('p[aria-live="polite"]')?.textContent.replace(/[,\\s]/g, "").match(/\\d+/) ?? [0])[0])`;
       await desktop.goto(`${site}/resources/`);
       await desktop.waitFor(JS.hydrated);
       assert(await desktop.waitFor(`${total} > 0`), "no result count shown");
@@ -822,6 +834,42 @@ async function main() {
       const forms = await desktop.evaluate(`[...document.querySelectorAll('form')].filter((f) => f.querySelector('input[name="openSource"]')).length`);
       assert(forms === 1, `${forms} filter forms at 1366px`);
       return "1 form";
+    });
+
+    await check("entertainment: shelf filters update the URL and the results", async () => {
+      const count = `Number((document.querySelector('p[aria-live="polite"]')?.textContent.replace(/[,\\s]/g, "").match(/\\d+/) ?? [0])[0])`;
+      await desktop.goto(`${site}/entertainment/games/`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`${count} > 0`), "no result count shown");
+      const before = await desktop.evaluate(count);
+      assert(await desktop.evaluate(JS.clickText("button", "Plays in browser")), "browser-play filter not found");
+      assert(await desktop.waitFor(`location.search.includes("browser=1")`), "URL did not update");
+      assert(await desktop.waitFor(`${count} > 0 && ${count} < ${before}`), "result total did not change");
+      const actions = await desktop.evaluate(`[...document.querySelectorAll('[data-action]')].map((a) => a.dataset.action)`);
+      assert(actions.length > 0 && actions.every((a) => a === "play-browser"), `actions under the browser filter: ${[...new Set(actions)].join(", ")}`);
+      return `${before} → ${await desktop.evaluate(count)} listings`;
+    });
+
+    await check("entertainment: a filtered URL loads directly, and guides never say 'Watch free'", async () => {
+      await desktop.goto(`${site}/entertainment/browse/?q=chess`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`document.querySelectorAll('[data-record]').length > 0`), "no results for ?q=chess");
+      await desktop.goto(`${site}/entertainment/watch/`);
+      await desktop.waitFor(JS.hydrated);
+      const bad = await desktop.evaluate(
+        `[...document.querySelectorAll('[data-offering="discovery"] [data-action]')].filter((a) => /watch free|play in browser|listen free/i.test(a.textContent)).length`,
+      );
+      assert(bad === 0, `${bad} discovery cards with a content action`);
+    });
+
+    await check("entertainment: on-site player loads nothing third-party until asked", async () => {
+      await desktop.goto(`${site}/entertainment/on-site/`);
+      await desktop.waitFor(JS.hydrated);
+      assert((await desktop.evaluate(`document.querySelectorAll('iframe').length`)) === 0, "an iframe loaded before Load player");
+      assert(await desktop.evaluate(JS.clickText("button", "Load player")), "Load player button missing");
+      assert(await desktop.waitFor(`document.querySelector('iframe[src^="https://archive.org/embed/"]') !== null`), "player did not load");
+      const violations = await desktop.evaluate(JS.violations);
+      assert(violations.length === 0, `CSP violations ${JSON.stringify(violations)}`);
     });
 
     await check("URL-driven filter loads directly", async () => {
@@ -1236,7 +1284,16 @@ async function main() {
       }
 
       // Added routes: the comparison table, the subject index, a subject page and the verification survey.
-      for (const route of [compareRoute, "/categories/", "/categories/photography/", "/verification/"]) {
+      for (const route of [
+        compareRoute,
+        "/categories/",
+        "/categories/photography/",
+        "/verification/",
+        "/entertainment/",
+        "/entertainment/games/",
+        "/entertainment/on-site/",
+        "/resources/pepper-and-carrot/",
+      ]) {
         await check(`${name} ${route} has no horizontal overflow`, async () => {
           await page.goto(`${site}${route}`);
           await page.waitFor(JS.hydrated);

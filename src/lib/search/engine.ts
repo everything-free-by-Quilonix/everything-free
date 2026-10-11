@@ -1,4 +1,5 @@
 import { categoryName } from "@/config/categories";
+import { accessTypeDefinitions, formatDefinitions, languageName } from "@/config/media";
 import { getResourceType } from "@/config/resource-types";
 import type { Resource, ResourceMatch } from "@/types/resource";
 import { containsTerm, normalizeText, tokenize, type QueryTerm } from "./tokenize";
@@ -83,6 +84,44 @@ function fieldsFor(resource: Resource): FieldRule[] {
       value: resource.license ?? "",
       weight: 5,
       reason: (term) => `Licence mentions “${term}”`,
+    },
+    ...mediaFields(resource),
+  ];
+}
+
+/**
+ * Entertainment facts as searchable text: genre, provider, format and access
+ * labels, and content-language names, so "kannada films", "free with ads" or
+ * "browser games" find the right listings from the main search too.
+ */
+function mediaFields(resource: Resource): FieldRule[] {
+  const media = resource.media;
+  if (!media) return [];
+  return [
+    {
+      value: media.genres.join(" "),
+      weight: 30,
+      reason: (term) => `Genre: ${term}`,
+    },
+    {
+      value: media.formats.map((f) => formatDefinitions[f].label).join(" "),
+      weight: 26,
+      reason: (term) => `Format matches “${term}”`,
+    },
+    {
+      value: media.provider,
+      weight: 22,
+      reason: (term) => `Provided by ${titleCase(term)}`,
+    },
+    {
+      value: media.contentLanguages.map(languageName).join(" "),
+      weight: 22,
+      reason: (term) => `Content in ${titleCase(term)}`,
+    },
+    {
+      value: media.access.map((a) => accessTypeDefinitions[a].label).join(" "),
+      weight: 12,
+      reason: (term) => `Access: ${term}`,
     },
   ];
 }

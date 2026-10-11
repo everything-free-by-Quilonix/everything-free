@@ -1,0 +1,385 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-11T07:30:07.938Z",
+  "notes": "GitHub repository metadata (stars, last push, archived) for 42 open-source entertainment listings, from the public GitHub REST API. 0 request(s) failed and kept their previous value where one existed.",
+  "github": [
+    {
+      "repo": "00-Evan/shattered-pixel-dungeon",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 6649,
+      "pushedAt": "2026-10-07T16:13:50Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/00-Evan/shattered-pixel-dungeon"
+    },
+    {
+      "repo": "Anuken/Mindustry",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 29314,
+      "pushedAt": "2026-10-11T00:14:07Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/Anuken/Mindustry"
+    },
+    {
+      "repo": "bvschaik/julius",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 3395,
+      "pushedAt": "2026-09-12T12:22:23Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/bvschaik/julius"
+    },
+    {
+      "repo": "CorsixTH/CorsixTH",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 4587,
+      "pushedAt": "2026-10-10T20:11:56Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/CorsixTH/CorsixTH"
+    },
+    {
+      "repo": "diasurgical/DevilutionX",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 9813,
+      "pushedAt": "2026-10-10T18:20:43Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/diasurgical/DevilutionX"
+    },
+    {
+      "repo": "doublespeakgames/adarkroom",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 8328,
+      "pushedAt": "2025-05-23T15:33:06Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/doublespeakgames/adarkroom"
+    },
+    {
+      "repo": "endless-sky/endless-sky",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 7627,
+      "pushedAt": "2026-10-11T01:29:18Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/endless-sky/endless-sky"
+    },
+    {
+      "repo": "Free-TV/IPTV",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 21035,
+      "pushedAt": "2026-10-10T02:09:42Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/Free-TV/IPTV"
+    },
+    {
+      "repo": "freeciv/freeciv",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 1602,
+      "pushedAt": "2026-10-11T06:14:57Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/freeciv/freeciv"
+    },
+    {
+      "repo": "freeciv/freeciv-web",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 2206,
+      "pushedAt": "2026-03-27T00:10:21Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/freeciv/freeciv-web"
+    },
+    {
+      "repo": "FreeCol/freecol",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 712,
+      "pushedAt": "2026-10-08T12:04:48Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/FreeCol/freecol"
+    },
+    {
+      "repo": "FunkinCrew/Funkin",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 3790,
+      "pushedAt": "2026-10-08T21:17:34Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/FunkinCrew/Funkin"
+    },
+    {
+      "repo": "gabrielecirulli/2048",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 13423,
+      "pushedAt": "2024-10-24T13:06:19Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/gabrielecirulli/2048"
+    },
+    {
+      "repo": "gbtami/pychess-variants",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 315,
+      "pushedAt": "2026-10-10T23:25:16Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/pychess/pychess-variants"
+    },
+    {
+      "repo": "gotson/komga",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 6731,
+      "pushedAt": "2026-10-08T06:47:28Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/gotson/komga"
+    },
+    {
+      "repo": "gpodder/gpodder",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 1451,
+      "pushedAt": "2026-09-20T12:21:11Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/gpodder/gpodder"
+    },
+    {
+      "repo": "hedgewars/hw",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 567,
+      "pushedAt": "2026-09-26T00:00:27Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/hedgewars/hw"
+    },
+    {
+      "repo": "Hextris/hextris",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 2441,
+      "pushedAt": "2023-05-13T16:26:15Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/Hextris/hextris"
+    },
+    {
+      "repo": "ihhub/fheroes2",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 3499,
+      "pushedAt": "2026-10-10T11:44:48Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/ihhub/fheroes2"
+    },
+    {
+      "repo": "Interkarma/daggerfall-unity",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 3517,
+      "pushedAt": "2026-09-14T07:28:24Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/Interkarma/daggerfall-unity"
+    },
+    {
+      "repo": "Keriew/augustus",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 2111,
+      "pushedAt": "2026-10-10T18:00:12Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/Keriew/augustus"
+    },
+    {
+      "repo": "luanti-org/luanti",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 13710,
+      "pushedAt": "2026-10-10T12:06:24Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/luanti-org/luanti"
+    },
+    {
+      "repo": "meditohq/medito-app",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 1324,
+      "pushedAt": "2026-10-09T13:36:32Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/meditohq/medito-app"
+    },
+    {
+      "repo": "Mind-Sports-Games/lila",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 21,
+      "pushedAt": "2026-10-09T14:01:55Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/Mind-Sports-Games/lila"
+    },
+    {
+      "repo": "monkeytypegame/monkeytype",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 20862,
+      "pushedAt": "2026-10-09T17:38:54Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/monkeytypegame/monkeytype"
+    },
+    {
+      "repo": "OpenLoco/OpenLoco",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 1936,
+      "pushedAt": "2026-10-06T20:17:28Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/OpenLoco/OpenLoco"
+    },
+    {
+      "repo": "OpenRA/OpenRA",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 17532,
+      "pushedAt": "2026-10-09T13:43:24Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/OpenRA/OpenRA"
+    },
+    {
+      "repo": "OpenRCT2/OpenRCT2",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 16411,
+      "pushedAt": "2026-10-10T21:34:12Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/OpenRCT2/OpenRCT2"
+    },
+    {
+      "repo": "OpenTTD/OpenTTD",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 8355,
+      "pushedAt": "2026-10-08T21:18:03Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/OpenTTD/OpenTTD"
+    },
+    {
+      "repo": "podverse/podverse-rn",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 286,
+      "pushedAt": "2025-04-14T20:57:56Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/podverse/podverse-rn"
+    },
+    {
+      "repo": "scummvm/scummvm",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 2836,
+      "pushedAt": "2026-10-10T21:55:12Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/scummvm/scummvm"
+    },
+    {
+      "repo": "stuntrally/stuntrally3",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 219,
+      "pushedAt": "2026-04-18T21:51:46Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/stuntrally/stuntrally3"
+    },
+    {
+      "repo": "SuperTux/supertux",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 3164,
+      "pushedAt": "2026-10-10T11:40:55Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/SuperTux/supertux"
+    },
+    {
+      "repo": "supertuxkart/stk-code",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 5417,
+      "pushedAt": "2026-10-06T21:26:02Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/supertuxkart/stk-code"
+    },
+    {
+      "repo": "vcmi/vcmi",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 5934,
+      "pushedAt": "2026-10-10T14:50:09Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/vcmi/vcmi"
+    },
+    {
+      "repo": "WandererXII/lishogi",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 357,
+      "pushedAt": "2026-10-07T23:00:28Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/WandererXII/lishogi"
+    },
+    {
+      "repo": "Warzone2100/warzone2100",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 3994,
+      "pushedAt": "2026-10-07T13:34:17Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/Warzone2100/warzone2100"
+    },
+    {
+      "repo": "wesnoth/wesnoth",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 6930,
+      "pushedAt": "2026-10-11T04:20:07Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/wesnoth/wesnoth"
+    },
+    {
+      "repo": "widelands/widelands",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 3099,
+      "pushedAt": "2026-10-08T09:04:15Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/widelands/widelands"
+    },
+    {
+      "repo": "YACReader/yacreader",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 1401,
+      "pushedAt": "2026-10-09T15:30:17Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/YACReader/yacreader"
+    },
+    {
+      "repo": "yairm210/Unciv",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 11419,
+      "pushedAt": "2026-10-11T04:39:50Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/yairm210/Unciv"
+    },
+    {
+      "repo": "ZeroK-RTS/Zero-K",
+      "source": "github-rest-api",
+      "observedAt": "2026-10-11",
+      "stars": 864,
+      "pushedAt": "2026-10-08T21:50:05Z",
+      "archived": false,
+      "evidenceUrl": "https://github.com/ZeroK-RTS/Zero-K"
+    }
+  ]
+}

@@ -11,6 +11,7 @@ import {
 } from "@/config/verification";
 import { FACT_CHECK, TRI_STATE_FACTS } from "@/lib/resources/evidence";
 import { VERIFICATION_CHECK_RESULTS, type Resource } from "@/types/resource";
+import { findDuplicateMediaUrls, findMediaProblems } from "./validate-media";
 
 /**
  * The library's data rules.
@@ -303,7 +304,11 @@ export function findDataProblems(resources: readonly Resource[], options: Valida
         problems.push(`${where} has the tag "${tag}", which restates the ${fact} fact without its evidence; use the field instead`);
       }
     }
+
+    problems.push(...findMediaProblems(resource));
   }
+
+  problems.push(...findDuplicateMediaUrls(resources));
 
   // Cross-references are checked after every slug is known, so order in the
   // data files does not matter.

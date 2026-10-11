@@ -21,6 +21,8 @@
  *    count. We do not collect that data, so we do not model it.
  */
 
+import type { MediaProfile } from "./media";
+
 /** ISO 8601 date, `YYYY-MM-DD`. Kept as a string so data stays serialisable. */
 export type IsoDate = string;
 
@@ -350,6 +352,12 @@ export interface Resource {
 
   submittedAt: IsoDate;
   updatedAt: IsoDate;
+
+  /**
+   * Entertainment facts: access model, formats, region, content licence. Present on
+   * things to watch, play, listen to or read. See `types/media.ts`.
+   */
+  media?: MediaProfile;
 
   /**
    * Editorial selection for homepage surfacing.
