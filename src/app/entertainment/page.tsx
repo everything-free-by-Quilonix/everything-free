@@ -43,8 +43,16 @@ export default async function EntertainmentPage() {
   const content = all.filter((r) => r.media!.offering !== "discovery").length;
   const discovery = all.filter((r) => r.media!.offering === "discovery").length;
   const software = all.filter((r) => r.media!.offering === "software").length;
+  const adFree = all.filter((r) => r.media!.containsAds === "no").length;
 
   const rows = [
+    {
+      id: "no-ads",
+      title: "No ads",
+      description: "A page read during research says there is no advertising. Ad status nobody has checked is never shown as ad-free.",
+      href: "/entertainment/browse?noads=1",
+      items: row(all, (r) => r.media!.containsAds === "no", byName),
+    },
     {
       id: "play-now",
       title: "Play in your browser",
@@ -144,6 +152,13 @@ export default async function EntertainmentPage() {
             {formatCount(all.length)} {plural(all.length, "listing", "listings")}: {formatCount(content - software)} provide the
             content itself, {formatCount(discovery)} {plural(discovery, "is a guide", "are guides")} to where it is,{" "}
             {formatCount(software)} {plural(software, "is", "are")} software you run yourself.
+          </p>
+          <p className="mt-2 max-w-(--measure-standfirst) text-sm text-fg-muted">
+            This site has no ads, no trackers and no affiliate links. Some free services we list do show ads. Each card says
+            so, and ad-free listings come first.{" "}
+            <Link href="/entertainment/browse?noads=1" className="font-medium text-fg underline underline-offset-2">
+              Show only ad-free ({formatCount(adFree)})
+            </Link>
           </p>
         </Container>
       </header>

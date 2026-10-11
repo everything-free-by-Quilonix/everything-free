@@ -18,6 +18,7 @@ const ok = (check: VerificationCheck, sourceUrl: string, evidence: string): Veri
 const src = (url: string, label: string): ResearchSource => ({ url, label });
 
 const PC = "https://www.peppercarrot.com/en/about/index.html";
+const PC_PHILOSOPHY = "https://www.peppercarrot.com/en/philosophy/index.html";
 const XKCD = "https://xkcd.com/license.html";
 const CBP = "https://comicbookplus.com/?cbplus=about";
 const GCX = "https://globalcomix.com/support/faq";
@@ -63,8 +64,8 @@ export const readExplore1Resources: Resource[] = defineMediaList([
       offering: "full-content",
       contentScope: "complete-works",
       provider: "David Revoy",
-      containsAds: "unknown",
-      hasPaidFeatures: "unknown",
+      containsAds: "no",
+      hasPaidFeatures: "no",
       genres: ["fantasy", "comedy"],
       contentLanguages: ["multi", "en", "fr"],
       region: { india: "unknown", availableIn: [] },
@@ -79,15 +80,19 @@ export const readExplore1Resources: Resource[] = defineMediaList([
     },
     research: {
       date: DATE,
-      sources: [src(PC, "About page, licence section: CC BY 4.0 for webcomics, translations and artworks; MiniFantasyTheater CC BY-SA 4.0; AI derivation prohibited; 69 language list")],
+      sources: [
+        src(PC, "About page, licence section: CC BY 4.0 for webcomics, translations and artworks; MiniFantasyTheater CC BY-SA 4.0; AI derivation prohibited; 69 language list"),
+        src(PC_PHILOSOPHY, "Philosophy page: patron-funded so it 'never [has] to resort to advertising'; no paywall or subscription for any content"),
+      ],
       checks: [
         ok("OFFICIAL_URL", PC, "The About page on peppercarrot.com is the author's own site, with the webcomic, credits and licence."),
         ok("FREE_STATUS", PC, "The webcomic is published on the site under CC BY 4.0, which lets anyone read and share it without payment."),
         ok("COMMERCIAL_USE", PC, "CC BY 4.0, the stated licence, permits commercial use with attribution; the only added restriction is AI derivation."),
         ok("PERSONAL_USE", PC, "The CC BY 4.0 licence on the About page permits personal reading and sharing."),
         ok("LIMITATIONS", PC, "The licence section notes 'unless otherwise noted (eg. fan-arts)' and an 'AI derivation prohibited' notice."),
+        ok("PRICING_INFORMATION", PC_PHILOSOPHY, "'Pepper&Carrot will never ask you to pay anything or to get a subscription'; supported by patrons so it can 'never have to resort to advertising'."),
       ],
-      notes: "Licence settled from the author's About page. Whether the site shows ads or needs an account was not checked; downloads were not checked.",
+      notes: "Licence settled from the About page; no ads and no paywall from the Philosophy page. Account requirement and downloads were not checked.",
     },
   },
   {

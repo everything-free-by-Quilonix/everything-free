@@ -74,6 +74,11 @@ export function MediaCard({
         <p className="mt-2 text-sm leading-relaxed text-fg-muted line-clamp-2">{resource.shortDescription}</p>
 
         <ul aria-label="What is free" className="mt-2.5 flex flex-wrap gap-1">
+          {media.containsAds === "no" ? (
+            <li className="rounded-xs border border-border-strong px-1.5 py-0.5 text-2xs font-medium text-fg">No ads</li>
+          ) : media.containsAds === "yes" ? (
+            <li className="rounded-xs border border-border px-1.5 py-0.5 text-2xs text-fg-subtle">Has ads</li>
+          ) : null}
           {isDiscovery ? (
             <li className="rounded-xs border border-border-strong px-1.5 py-0.5 text-2xs font-medium text-fg">
               Discovery only — links elsewhere

@@ -37,6 +37,7 @@ import { MediaGrid } from "./media-card";
  */
 
 const FLAG_FILTERS: { key: keyof MediaQuery; label: string; hint: string }[] = [
+  { key: "noAds", label: "No ads", hint: "A source read during research says there is no advertising." },
   { key: "browserPlay", label: "Plays in browser", hint: "The listing's own page is where the game is played; nothing to install." },
   { key: "india", label: "Available in India", hint: "A source read during verification says it works in India." },
   { key: "download", label: "Free download", hint: "The content can legally be downloaded at no cost." },

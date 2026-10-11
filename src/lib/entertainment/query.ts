@@ -32,6 +32,8 @@ export interface MediaQuery {
   openSource?: boolean;
   noAccount?: boolean;
   creatorUse?: boolean;
+  /** Only listings whose sources say they carry no advertising. */
+  noAds?: boolean;
   /** Hide discovery-only guides. */
   contentOnly?: boolean;
   sort: MediaSort;
@@ -52,6 +54,7 @@ const FLAG_KEYS = {
   oss: "openSource",
   noAccount: "noAccount",
   reuse: "creatorUse",
+  noads: "noAds",
   content: "contentOnly",
 } as const;
 
@@ -139,7 +142,17 @@ export function matchesMediaQuery(resource: Resource, query: MediaQuery): boolea
     if (license.creatorUse !== "allowed" && license.creatorUse !== "allowed-with-attribution") return false;
   }
   if (query.contentOnly && media.offering === "discovery") return false;
+  if (query.noAds && media.containsAds !== "no") return false;
   return true;
+}
+
+/**
+ * Ad-free first: 0 = recorded as no ads, 1 = not known, 2 = carries ads.
+ * Used by the default order so the cleanest experiences come first.
+ */
+export function adRank(resource: Resource): number {
+  const ads = resource.media?.containsAds;
+  return ads === "no" ? 0 : ads === "yes" ? 2 : 1;
 }
 
 export interface MediaFacetCounts {
@@ -190,9 +203,10 @@ export function runMediaQuery(resources: readonly Resource[], query: MediaQuery)
   else if (query.sort === "recently-verified") {
     items.sort((a, b) => (b.lastVerifiedAt ?? "").localeCompare(a.lastVerifiedAt ?? "") || byName(a, b));
   } else if (!query.q) {
-    // Default browse order: the content itself before guides to it, then name.
+    // Default browse order: the content itself before guides to it, ad-free
+    // before ad-supported, then name.
     const rank = (r: Resource) => (r.media!.offering === "discovery" ? 1 : 0);
-    items.sort((a, b) => rank(a) - rank(b) || byName(a, b));
+    items.sort((a, b) => rank(a) - rank(b) || adRank(a) - adRank(b) || byName(a, b));
   }
 
   return { items, reasonsBySlug, total: items.length };

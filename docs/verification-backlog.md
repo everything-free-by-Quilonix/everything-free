@@ -159,7 +159,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [OpenTTD](#openttd-openttd) `openttd` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Overcast](#overcast-overcast) `overcast` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Path of Exile](#path-of-exile-path-of-exile) `path-of-exile` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
-| [Pepper&Carrot](#peppercarrot-pepper-and-carrot) `pepper-and-carrot` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Pepper&Carrot](#peppercarrot-pepper-and-carrot) `pepper-and-carrot` | Partially verified | 6/10 | Free-tier limits, Account requirement, Credit-card requirement, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [PlayingCards.io](#playingcardsio-playingcards-io) `playingcards-io` | Partially verified | 3/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [PlayStrategy](#playstrategy-playstrategy) `playstrategy` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Podcast Addict](#podcast-addict-podcast-addict) `podcast-addict` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -3024,7 +3024,7 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 
 ### Pepper&Carrot `pepper-and-carrot`
 
-**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+**Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
 
 | Check | Result | Evidence | Source | Read on |
 | --- | --- | --- | --- | --- |
@@ -3032,12 +3032,12 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
 | Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
 | Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
-| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
 | Official URL | ✅ Confirmed | The About page on peppercarrot.com is the author's own site, with the webcomic, credits and licence. | [About page, licence section: CC BY 4.0 for webcomics, translations and artworks; MiniFantasyTheater CC BY-SA 4.0; AI derivation prohibited; 69 language list](https://www.peppercarrot.com/en/about/index.html) | 2026-10-11 |
 | Free status | ✅ Confirmed | The webcomic is published on the site under CC BY 4.0, which lets anyone read and share it without payment. | [About page, licence section: CC BY 4.0 for webcomics, translations and artworks; MiniFantasyTheater CC BY-SA 4.0; AI derivation prohibited; 69 language list](https://www.peppercarrot.com/en/about/index.html) | 2026-10-11 |
 | Commercial use | ✅ Confirmed | CC BY 4.0, the stated licence, permits commercial use with attribution; the only added restriction is AI derivation. | [About page, licence section: CC BY 4.0 for webcomics, translations and artworks; MiniFantasyTheater CC BY-SA 4.0; AI derivation prohibited; 69 language list](https://www.peppercarrot.com/en/about/index.html) | 2026-10-11 |
 | Personal use | ✅ Confirmed | The CC BY 4.0 licence on the About page permits personal reading and sharing. | [About page, licence section: CC BY 4.0 for webcomics, translations and artworks; MiniFantasyTheater CC BY-SA 4.0; AI derivation prohibited; 69 language list](https://www.peppercarrot.com/en/about/index.html) | 2026-10-11 |
 | Major limitations | ✅ Confirmed | The licence section notes 'unless otherwise noted (eg. fan-arts)' and an 'AI derivation prohibited' notice. | [About page, licence section: CC BY 4.0 for webcomics, translations and artworks; MiniFantasyTheater CC BY-SA 4.0; AI derivation prohibited; 69 language list](https://www.peppercarrot.com/en/about/index.html) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | 'Pepper&Carrot will never ask you to pay anything or to get a subscription'; supported by patrons so it can 'never have to resort to advertising'. | [Philosophy page: patron-funded so it 'never [has] to resort to advertising'; no paywall or subscription for any content](https://www.peppercarrot.com/en/philosophy/index.html) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 

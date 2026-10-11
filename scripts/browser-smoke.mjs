@@ -850,6 +850,18 @@ async function main() {
       return `${before} → ${await desktop.evaluate(count)} listings`;
     });
 
+    await check("entertainment: the No ads filter shows only ad-free cards", async () => {
+      await desktop.goto(`${site}/entertainment/browse/?noads=1`);
+      await desktop.waitFor(JS.hydrated);
+      assert(await desktop.waitFor(`document.querySelectorAll('[data-record]').length > 0`), "no ad-free results");
+      const cards = await desktop.evaluate(`document.querySelectorAll('[data-record]').length`);
+      const withAds = await desktop.evaluate(
+        `[...document.querySelectorAll('[data-record]')].filter((c) => ![...c.querySelectorAll('li')].some((li) => li.textContent.trim() === "No ads")).length`,
+      );
+      assert(withAds === 0, `${withAds} of ${cards} cards under ?noads=1 are not labelled No ads`);
+      return `${cards} ad-free listings`;
+    });
+
     await check("entertainment: a filtered URL loads directly, and guides never say 'Watch free'", async () => {
       await desktop.goto(`${site}/entertainment/browse/?q=chess`);
       await desktop.waitFor(JS.hydrated);
