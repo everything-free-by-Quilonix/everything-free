@@ -15,6 +15,7 @@ import { creativeResources } from "./creative";
 import { developmentResources } from "./development";
 import { educationResources } from "./education";
 import { entertainmentResources } from "./entertainment";
+import { expansionResources } from "./expansion";
 import { lifeResources } from "./life";
 import { productivityResources } from "./productivity";
 import { applyResearch, researchOverlays } from "./research";
@@ -47,6 +48,7 @@ const compiledResources: Resource[] = [
   ...batch009Resources,
   ...batch010Resources,
   ...entertainmentResources,
+  ...expansionResources,
 ];
 
 /** Dated research passes over compiled listings (see `research/`), applied before validation. */

@@ -13,11 +13,11 @@ The order below is a **verification workflow, not a ranking** of the resources. 
 
 | | Count |
 | --- | --- |
-| Resources | 1085 |
+| Resources | 1167 |
 | Verified (signed off by a maintainer) | 0 |
 | Evidence complete, awaiting maintainer sign-off | 4 |
-| Partially verified (free status confirmed, checklist incomplete) | 142 |
-| Checks started, free status not yet confirmed | 5 |
+| Partially verified (free status confirmed, checklist incomplete) | 222 |
+| Checks started, free status not yet confirmed | 7 |
 | Not verified yet (no checks recorded) | 934 |
 
 No maintainer is registered in `src/config/maintainers.ts` yet, so nothing can be signed off. A maintainer adds their own handle there first.
@@ -67,16 +67,25 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [2048 (original by Gabriele Cirulli)](#2048-original-by-gabriele-cirulli-2048-original) `2048-original` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [8 Ball Pool (web)](#8-ball-pool-web-8-ball-pool-web) `8-ball-pool-web` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [A Dark Room](#a-dark-room-a-dark-room) `a-dark-room` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Activepieces](#activepieces-activepieces) `activepieces` | Partially verified | 7/10 | Account requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 3 remaining required check(s) |
+| [AdventureLog](#adventurelog-adventurelog) `adventurelog` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Amazon MX Player](#amazon-mx-player-amazon-mx-player) `amazon-mx-player` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Anek (Ek Type)](#anek-ek-type-ek-type-anek) `ek-type-anek` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Apple Podcasts](#apple-podcasts-apple-podcasts) `apple-podcasts` | Partially verified | 2/10 | Official URL, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Arkadium](#arkadium-arkadium) `arkadium` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Armor Games](#armor-games-armor-games) `armor-games` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Atkinson Hyperlegible](#atkinson-hyperlegible-atkinson-hyperlegible) `atkinson-hyperlegible` | Partially verified | 6/10 | Free-tier limits, Account requirement, Credit-card requirement, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
+| [AudioCraft (MusicGen)](#audiocraft-musicgen-audiocraft) `audiocraft` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Augustus](#augustus-augustus-caesar-3) `augustus-caesar-3` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Autodesk Fusion for Personal Use](#autodesk-fusion-for-personal-use-autodesk-fusion-personal) `autodesk-fusion-personal` | Partially verified | 9/10 | Credit-card requirement (unresolved) | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Settle Credit-card requirement from an official source |
+| [Avidemux](#avidemux-avidemux) `avidemux` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Battle for Wesnoth](#battle-for-wesnoth-battle-for-wesnoth) `battle-for-wesnoth` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [BBC Audio on BBC.com (outside the UK)](#bbc-audio-on-bbccom-outside-the-uk-bbc-audio-international) `bbc-audio-international` | Partially verified | 3/10 | Official URL, Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Beszel](#beszel-beszel) `beszel` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Blender Studio open movies](#blender-studio-open-movies-blender-studio-open-movies) `blender-studio-open-movies` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Blockbench](#blockbench-blockbench) `blockbench` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Bolt.new](#boltnew-bolt-new) `bolt-new` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Bootstrap Icons](#bootstrap-icons-bootstrap-icons) `bootstrap-icons` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Brawlhalla](#brawlhalla-brawlhalla) `brawlhalla` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Bridge Base Online](#bridge-base-online-bridge-base-online) `bridge-base-online` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Candy Box 2](#candy-box-2-candy-box-2) `candy-box-2` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
@@ -88,8 +97,10 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Cloudflare Pages](#cloudflare-pages-cloudflare-pages) `cloudflare-pages` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
 | [Comic Book Plus](#comic-book-plus-comic-book-plus) `comic-book-plus` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Coolmath Games](#coolmath-games-coolmath-games) `coolmath-games` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Coqui TTS (Idiap fork)](#coqui-tts-idiap-fork-coqui-tts) `coqui-tts` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Cornell Lab Bird Cams](#cornell-lab-bird-cams-cornell-lab-bird-cams) `cornell-lab-bird-cams` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [CorsixTH](#corsixth-corsixth) `corsixth` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Coverr](#coverr-coverr) `coverr` | Partially verified | 7/10 | Account requirement, Credit-card requirement, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 3 remaining required check(s) |
 | [CrazyGames](#crazygames-crazygames) `crazygames` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Daggerfall Unity](#daggerfall-unity-daggerfall-unity) `daggerfall-unity` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Dan Carlin's Hardcore History](#dan-carlins-hardcore-history-hardcore-history) `hardcore-history` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -98,54 +109,99 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [DevilutionX](#devilutionx-devilutionx) `devilutionx` | Partially verified | 6/10 | Free-tier limits, Account requirement, Credit-card requirement, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Dice Media](#dice-media-dice-media) `dice-media` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Doki Doki Literature Club!](#doki-doki-literature-club-doki-doki-literature-club) `doki-doki-literature-club` | Partially verified | 4/10 | Free-tier limits, Account requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Dokploy](#dokploy-dokploy) `dokploy` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Dolibarr ERP & CRM](#dolibarr-erp--crm-dolibarr) `dolibarr` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Dozzle](#dozzle-dozzle) `dozzle` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [DW (Deutsche Welle) Live TV](#dw-deutsche-welle-live-tv-dw-live-tv) `dw-live-tv` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [ElevenLabs](#elevenlabs-elevenlabs) `elevenlabs` | Partially verified | 6/10 | Account requirement, Credit-card requirement, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Endless Sky](#endless-sky-endless-sky) `endless-sky` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Escape Pod](#escape-pod-escape-pod) `escape-pod` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [EtherCalc](#ethercalc-ethercalc) `ethercalc` | Partially verified | 5/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Etherpad](#etherpad-etherpad) `etherpad` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [fheroes2](#fheroes2-fheroes2) `fheroes2` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [FramePack](#framepack-framepack) `framepack` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Free Music Archive](#free-music-archive-free-music-archive) `free-music-archive` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Free-TV IPTV playlist](#free-tv-iptv-playlist-free-tv-iptv-playlist) `free-tv-iptv-playlist` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Freeciv](#freeciv-freeciv) `freeciv` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Freeciv-web](#freeciv-web-freeciv-web) `freeciv-web` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [FreeCol](#freecol-freecol) `freecol` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Friday Night Funkin'](#friday-night-funkin-friday-night-funkin) `friday-night-funkin` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Gatus](#gatus-gatus) `gatus` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [GeoGuessr](#geoguessr-geoguessr) `geoguessr` | Partially verified | 4/10 | Account requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Getty Open Content](#getty-open-content-getty-open-content) `getty-open-content` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [GitHub Copilot Free](#github-copilot-free-github-copilot-free) `github-copilot-free` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [GlobalComix](#globalcomix-globalcomix) `globalcomix` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [GNOME Podcasts](#gnome-podcasts-gnome-podcasts) `gnome-podcasts` | Unverified | 2/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
+| [GoatCounter](#goatcounter-goatcounter) `goatcounter` | Partially verified | 6/10 | Account requirement, Credit-card requirement, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Goldmines TV channels](#goldmines-tv-channels-goldmines-tv) `goldmines-tv` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Google AI Studio](#google-ai-studio-google-ai-studio) `google-ai-studio` | Partially verified | 3/10 | Official URL, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Google Gemini](#google-gemini-google-gemini) `google-gemini` | Partially verified | 6/10 | Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
+| [Goxel](#goxel-goxel) `goxel` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [gPodder](#gpodder-gpodder) `gpodder` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Grammarly](#grammarly-grammarly) `grammarly` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Graphite](#graphite-graphite-editor) `graphite-editor` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Green Gold TV (Chhota Bheem)](#green-gold-tv-chhota-bheem-green-gold-tv-youtube) `green-gold-tv-youtube` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Green Gold TV on Samsung TV Plus](#green-gold-tv-on-samsung-tv-plus-green-gold-tv-samsung-fast) `green-gold-tv-samsung-fast` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Grocy](#grocy-grocy) `grocy` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Groq](#groq-groq) `groq` | Partially verified | 3/10 | Free-tier limits (unresolved), Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Free-tier limits from an official source |
+| [GST Returns Offline Tool](#gst-returns-offline-tool-gst-returns-offline-tool) `gst-returns-offline-tool` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Haystack News](#haystack-news-haystack-news) `haystack-news` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Headscale](#headscale-headscale) `headscale` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Hedgewars](#hedgewars-hedgewars) `hedgewars` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Hextris](#hextris-hextris) `hextris` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Homarr](#homarr-homarr) `homarr` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Homepage (gethomepage)](#homepage-gethomepage-gethomepage) `gethomepage` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Hugin](#hugin-hugin) `hugin` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [HunyuanVideo](#hunyuanvideo-hunyuanvideo) `hunyuanvideo` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Iconoir](#iconoir-iconoir) `iconoir` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Ideogram](#ideogram-ideogram) `ideogram` | Partially verified | 6/10 | Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
+| [impress.js](#impressjs-impress-js) `impress-js` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Indic Parler-TTS](#indic-parler-tts-indic-parler-tts) `indic-parler-tts` | Partially verified | 5/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Infobells](#infobells-infobells-rhymes) `infobells-rhymes` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Ionicons](#ionicons-ionicons) `ionicons` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [itch.io browser games](#itchio-browser-games-itch-io-browser-games) `itch-io-browser-games` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [itch.io free games](#itchio-free-games-itch-io-free-games) `itch-io-free-games` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [itch.io game jams](#itchio-game-jams-itch-io-game-jams) `itch-io-game-jams` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Julius](#julius-julius-caesar-3) `julius-caesar-3` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Kanboard](#kanboard-kanboard) `kanboard` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Kasts](#kasts-kasts) `kasts` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Kimai](#kimai-kimai) `kimai` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [KitchenOwl](#kitchenowl-kitchenowl) `kitchenowl` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Kokoro TTS](#kokoro-tts-kokoro-tts) `kokoro-tts` | Partially verified | 6/10 | Free-tier limits, Account requirement, Credit-card requirement, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Komga](#komga-komga) `komga` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Kongregate](#kongregate-kongregate) `kongregate` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
+| [Kopia](#kopia-kopia) `kopia` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Krayin CRM](#krayin-crm-krayin-crm) `krayin-crm` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Krita AI Diffusion](#krita-ai-diffusion-krita-ai-diffusion) `krita-ai-diffusion` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Lahari Music](#lahari-music-lahari-music) `lahari-music` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Leonardo.Ai](#leonardoai-leonardo-ai) `leonardo-ai` | Partially verified | 6/10 | Account requirement, Credit-card requirement, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Libby](#libby-libby-library-app) `libby-library-app` | Partially verified | 5/10 | Free-tier limits, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Library of Congress Free to Use and Reuse](#library-of-congress-free-to-use-and-reuse-loc-free-to-use) `loc-free-to-use` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Lishogi](#lishogi-lishogi) `lishogi` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Listen Notes](#listen-notes-listen-notes) `listen-notes` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Lit2Go](#lit2go-lit2go) `lit2go` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
+| [Loop Habit Tracker](#loop-habit-tracker-loop-habit-tracker) `loop-habit-tracker` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Luanti (formerly Minetest)](#luanti-formerly-minetest-luanti) `luanti` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Lunacy](#lunacy-lunacy) `lunacy` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Material Maker](#material-maker-material-maker) `material-maker` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Material Symbols](#material-symbols-material-symbols) `material-symbols` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Mautic](#mautic-mautic) `mautic` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Medito](#medito-medito) `medito` | Partially verified | 5/10 | Free-tier limits, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Microsoft PowerToys](#microsoft-powertoys-microsoft-powertoys) `microsoft-powertoys` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Mindustry](#mindustry-mindustry) `mindustry` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information (unresolved) | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Pricing information from an official source |
 | [Mistral Le Chat](#mistral-le-chat-mistral-le-chat) `mistral-le-chat` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [MKVToolNix](#mkvtoolnix-mkvtoolnix) `mkvtoolnix` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Monkeytype](#monkeytype-monkeytype) `monkeytype` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Muse India (YouTube)](#muse-india-youtube-muse-india-anime) `muse-india-anime` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [MusicBrainz Picard](#musicbrainz-picard-musicbrainz-picard) `musicbrainz-picard` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [myAadhaar (UIDAI)](#myaadhaar-uidai-myaadhaar-uidai) `myaadhaar-uidai` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [MyGov](#mygov-mygov-india) `mygov-india` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
+| [MyPaint](#mypaint-mypaint) `mypaint` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [n8n](#n8n-n8n) `n8n` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use (unresolved), Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Commercial use from an official source |
 | [National Film Board of Canada](#national-film-board-of-canada-nfb-films) `nfb-films` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [National Gallery of Art Open Access](#national-gallery-of-art-open-access-national-gallery-of-art-open-access) `national-gallery-of-art-open-access` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Netdata](#netdata-netdata) `netdata` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Nginx Proxy Manager](#nginx-proxy-manager-nginx-proxy-manager) `nginx-proxy-manager` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [NHK WORLD-JAPAN](#nhk-world-japan-nhk-world-japan-tv) `nhk-world-japan-tv` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [NPR Podcasts & Shows](#npr-podcasts--shows-npr-podcasts) `npr-podcasts` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [NTS Radio](#nts-radio-nts-radio) `nts-radio` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -156,23 +212,38 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [OpenRA](#openra-openra) `openra` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [OpenRCT2](#openrct2-openrct2) `openrct2` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [OpenRouter](#openrouter-openrouter) `openrouter` | Partially verified | 3/10 | Free-tier limits (unresolved), Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Free-tier limits from an official source |
+| [OpenTracks](#opentracks-opentracks) `opentracks` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [OpenTTD](#openttd-openttd) `openttd` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [OrangeHRM Starter](#orangehrm-starter-orangehrm-starter) `orangehrm-starter` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Otter.ai](#otterai-otter-ai) `otter-ai` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Overcast](#overcast-overcast) `overcast` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Parivahan Sewa](#parivahan-sewa-parivahan-sewa) `parivahan-sewa` | Unverified | 2/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Path of Exile](#path-of-exile-path-of-exile) `path-of-exile` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Pepper&Carrot](#peppercarrot-pepper-and-carrot) `pepper-and-carrot` | Partially verified | 6/10 | Free-tier limits, Account requirement, Credit-card requirement, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
+| [Plausible Community Edition](#plausible-community-edition-plausible-community-edition) `plausible-community-edition` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [PlayingCards.io](#playingcardsio-playingcards-io) `playingcards-io` | Partially verified | 3/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [PlayStrategy](#playstrategy-playstrategy) `playstrategy` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Pocket ID](#pocket-id-pocket-id) `pocket-id` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Podcast Addict](#podcast-addict-podcast-addict) `podcast-addict` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Podcast Index](#podcast-index-podcast-index) `podcast-index` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Podverse](#podverse-podverse) `podverse` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Poki](#poki-poki) `poki` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Poki Kids](#poki-kids-poki-kids) `poki-kids` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Portainer Community Edition](#portainer-community-edition-portainer-ce) `portainer-ce` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [PyChess Variants (pychess.org)](#pychess-variants-pychessorg-pychess-variants) `pychess-variants` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [qBittorrent](#qbittorrent-qbittorrent) `qbittorrent` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Radio Browser](#radio-browser-radio-browser) `radio-browser` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Rajshri (YouTube channels)](#rajshri-youtube-channels-rajshri-youtube-channels) `rajshri-youtube-channels` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [RBI Financial Education](#rbi-financial-education-rbi-financial-education) `rbi-financial-education` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
+| [Real-ESRGAN](#real-esrgan-real-esrgan) `real-esrgan` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [rembg](#rembg-rembg) `rembg` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [restic](#restic-restic) `restic` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [reveal.js](#revealjs-reveal-js) `reveal-js` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Rijksmuseum collection](#rijksmuseum-collection-rijksmuseum-collection) `rijksmuseum-collection` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Samsung TV Plus](#samsung-tv-plus-samsung-tv-plus-fast) `samsung-tv-plus-fast` | Partially verified | 5/10 | Free-tier limits, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [ScummVM](#scummvm-scummvm) `scummvm` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Seafile Community Edition](#seafile-community-edition-seafile-community) `seafile-community` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [SEBI Investor Website](#sebi-investor-website-sebi-investor-website) `sebi-investor-website` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Shattered Pixel Dungeon](#shattered-pixel-dungeon-shattered-pixel-dungeon) `shattered-pixel-dungeon` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information (unresolved) | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Pricing information from an official source |
 | [Shemaroo Movies (YouTube)](#shemaroo-movies-youtube-shemaroo-movies-youtube) `shemaroo-movies-youtube` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Shortwave](#shortwave-shortwave-radio-app) `shortwave-radio-app` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -182,26 +253,36 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [SomaFM](#somafm-somafm) `somafm` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Sporcle](#sporcle-sporcle) `sporcle` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Spotify Free](#spotify-free-spotify-free) `spotify-free` | Partially verified | 4/10 | Free-tier limits, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Start Bootstrap](#start-bootstrap-start-bootstrap) `start-bootstrap` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Stirling PDF](#stirling-pdf-stirling-pdf) `stirling-pdf` | Unverified | 2/10 | Free status (unresolved), Free-tier limits, Account requirement, Credit-card requirement, Commercial use (unresolved), Personal use, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Settle Free status, Commercial use from an official source |
 | [STIRR](#stirr-stirr-free-tv) `stirr-free-tv` | Partially verified | 3/10 | Official URL, Free-tier limits, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Stunt Rally](#stunt-rally-stunt-rally) `stunt-rally` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Suno](#suno-suno) `suno` | Partially verified | 6/10 | Account requirement, Credit-card requirement, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Supermaven](#supermaven-supermaven) `supermaven` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [SuperTux](#supertux-supertux) `supertux` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [SuperTuxKart](#supertuxkart-supertuxkart) `supertuxkart` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Tandoor Recipes](#tandoor-recipes-tandoor-recipes) `tandoor-recipes` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Tenacity](#tenacity-tenacity) `tenacity` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [TETR.IO](#tetrio-tetr-io) `tetr-io` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [The Public Domain Review](#the-public-domain-review-public-domain-review) `public-domain-review` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [The Roku Channel](#the-roku-channel-the-roku-channel-fast) `the-roku-channel-fast` | Partially verified | 2/10 | Official URL, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [The Seen and the Unseen](#the-seen-and-the-unseen-the-seen-and-the-unseen) `the-seen-and-the-unseen` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Thunderbird](#thunderbird-thunderbird) `thunderbird` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
 | [TuneIn Radio](#tunein-radio-tunein-radio) `tunein-radio` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Udyam Registration (MSME)](#udyam-registration-msme-udyam-registration) `udyam-registration` | Partially verified | 5/10 | Free-tier limits, Account requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Ultimate Vocal Remover](#ultimate-vocal-remover-ultimate-vocal-remover) `ultimate-vocal-remover` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Unciv](#unciv-unciv) `unciv` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [v0](#v0-v0-dev) `v0-dev` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Variety](#variety-variety-wallpaper-manager) `variety-wallpaper-manager` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [VCMI](#vcmi-vcmi) `vcmi` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Ventusky](#ventusky-ventusky) `ventusky` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [VLC media player](#vlc-media-player-vlc) `vlc` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
+| [Wan2.2](#wan22-wan-2-2) `wan-2-2` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [War Thunder](#war-thunder-war-thunder) `war-thunder` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Warframe](#warframe-warframe) `warframe` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Warzone 2100](#warzone-2100-warzone-2100) `warzone-2100` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [WAVES (Prasar Bharati)](#waves-prasar-bharati-waves-prasar-bharati) `waves-prasar-bharati` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
+| [WeKan](#wekan-wekan) `wekan` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [WFMU](#wfmu-wfmu) `wfmu` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Widelands](#widelands-widelands) `widelands` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Wow Kidz (Motu Patlu)](#wow-kidz-motu-patlu-wow-kidz-motu-patlu) `wow-kidz-motu-patlu` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -209,6 +290,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Xumo Play](#xumo-play-xumo-play-fast) `xumo-play-fast` | Partially verified | 4/10 | Free-tier limits, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [YACReader](#yacreader-yacreader) `yacreader` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Zero-K](#zero-k-zero-k) `zero-k` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [ZITADEL](#zitadel-zitadel) `zitadel` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 
 ### 4. Straightforward official documentation
 
@@ -1293,6 +1375,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ✅ Confirmed | The README is part of the public doublespeakgames/adarkroom repository and links a GitHub Pages build of the latest source. | [Official README: browser game, play link, languages](https://raw.githubusercontent.com/doublespeakgames/adarkroom/master/README.md) | 2026-10-11 |
 
+### Activepieces `activepieces`
+
+**Partially verified** · shown on the site as Partially verified · 7/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Official URL | ✅ Confirmed | activepieces/activepieces README links www.activepieces.com as the project site. | [Official repository README: features and licence](https://github.com/activepieces/activepieces) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Activepieces' Community Edition is released as open source under the MIT license and enterprise features are released under Commercial License'. | [Official repository README: features and licence](https://github.com/activepieces/activepieces) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Free: '1,000 credits a month', 'Unlimited flows', 'Up to 5 users'; 'Free forever, no card'. | [Pricing page: Free plan, credits, FAQ on self-hosting](https://www.activepieces.com/pricing) | 2026-10-11 |
+| Credit-card requirement | ✅ Confirmed | FAQ 'Is the free plan really free?': 'Yes. No card, no time limit.' | [Pricing page: Free plan, credits, FAQ on self-hosting](https://www.activepieces.com/pricing) | 2026-10-11 |
+| Licence | ✅ Confirmed | README 'License' section: Community Edition under the MIT license. | [Official repository README: features and licence](https://github.com/activepieces/activepieces) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'A step on a fast model is 2 credits, a smart model is 10, and a frontier model is 20'; Bring your own AI keys '—' on Free; self-hosting FAQ: 'Community Edition is the automation core on its own. Paying adds… running Agents and Chat.' | [Pricing page: Free plan, credits, FAQ on self-hosting](https://www.activepieces.com/pricing) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Plus $20 flat per month; Team $200 flat per month; Ultimate custom. | [Pricing page: Free plan, credits, FAQ on self-hosting](https://www.activepieces.com/pricing) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Hosting: 'Cloud or on-prem' on every plan. | [Pricing page: Free plan, credits, FAQ on self-hosting](https://www.activepieces.com/pricing) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | 'All pieces are open source and available on npmjs.com'; source is public on GitHub. | [Official repository README: features and licence](https://github.com/activepieces/activepieces) | 2026-10-11 |
+
+### AdventureLog `adventurelog`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README links Documentation at https://adventurelog.app and the live demo. | [AdventureLog README](https://raw.githubusercontent.com/seanmorley15/AdventureLog/main/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | Comparison table: "Cost — Free to self-host (GPL-3.0)". | [AdventureLog README](https://raw.githubusercontent.com/seanmorley15/AdventureLog/main/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Distributed under the GNU General Public License v3.0." | [AdventureLog README](https://raw.githubusercontent.com/seanmorley15/AdventureLog/main/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Requirements: Docker Engine + Compose v2 · 2 GB RAM on first boot". | [AdventureLog README](https://raw.githubusercontent.com/seanmorley15/AdventureLog/main/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "Requirements: Docker Engine + Compose v2 · 2 GB RAM on first boot · Linux, VPS, homelab, or macOS". | [AdventureLog README](https://raw.githubusercontent.com/seanmorley15/AdventureLog/main/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "Open source, self-hosted, GPL-3.0". | [AdventureLog README](https://raw.githubusercontent.com/seanmorley15/AdventureLog/main/README.md) | 2026-10-11 |
+
 ### Amazon MX Player `amazon-mx-player`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1311,6 +1431,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | 'The free version of MX Player is ad-supported'; subscriptions and paid apps remove most ads. | [Help: the free version is ad-supported; MX Local / MX Gold plans for users in India reduce ads](https://support.mxplayer.in/support/solutions/articles/43000608796-how-can-i-get-rid-of-advertisements-) | 2026-10-11 |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | Free content is on the MX Player Android app and the Prime Video app on Android, iOS and TV. | [Help: Prime not required; MX Originals, Vdesi shows and movies free on the MX Player Android app and the Prime Video app](https://support.mxplayer.in/support/solutions/articles/43000788233-is-prime-membership-required-to-watch-mx-player-content-or-use-the-local-player-) | 2026-10-11 |
+
+### Anek (Ek Type) `ek-type-anek`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | ektype.in, Ek Type's own site; Anek is 'designed, engineered and maintained by Ek Type'. | [Ek Type Anek family page: scripts, free status, source link](https://ektype.in/anek-family.html) | 2026-10-11 |
+| Free status | ✅ Confirmed | Family page marked 'Free' and 'Free & Open Source' with a complete-family download. | [Ek Type Anek family page: scripts, free status, source link](https://ektype.in/anek-family.html) | 2026-10-11 |
+| Licence | ✅ Confirmed | 'SIL OPEN FONT LICENSE (OFL) — Our open sourced families are released under this license.' | [Ek Type licensing help: OFL for open-sourced families, paid licence types](https://ektype.in/ektype-help.html?lnk=license) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Paid licence types (print/desktop, e-book, app embedding, broadcast, self-hosting, corporate) apply to Ek Type's licensed fonts; the home page marks Sama as 'Licensed' and Ek Odia/Ek Kannada as '(Buy)'. | [Ek Type licensing help: OFL for open-sourced families, paid licence types](https://ektype.in/ektype-help.html?lnk=license) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Installation instructions given for Windows and Mac. | [Ek Type licensing help: OFL for open-sourced families, paid licence types](https://ektype.in/ektype-help.html?lnk=license) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | 'The source files can be downloaded from github.com/EkType/Anek'. | [Ek Type Anek family page: scripts, free status, source link](https://ektype.in/anek-family.html) | 2026-10-11 |
 
 ### Apple Podcasts `apple-podcasts`
 
@@ -1369,6 +1508,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Atkinson Hyperlegible `atkinson-hyperlegible`
+
+**Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | brailleinstitute.org/freefont, the creator's own download page. | [Braille Institute font page: versions, free status, download process](https://www.brailleinstitute.org/freefont/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Good news, it's free for everyone—from personal use to all commercial applications.' and 'Free to download and use. Always.' | [Braille Institute font page: versions, free status, download process](https://www.brailleinstitute.org/freefont/) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | Each version: 'Free for personal use and all commercial applications.' | [Braille Institute font page: versions, free status, download process](https://www.brailleinstitute.org/freefont/) | 2026-10-11 |
+| Personal use | ✅ Confirmed | 'Free for personal use and all commercial applications.' | [Braille Institute font page: versions, free status, download process](https://www.brailleinstitute.org/freefont/) | 2026-10-11 |
+| Licence | ✅ Confirmed | 'By downloading, installing and/or using the font software, you confirm that you have read and agree to be bound by the terms of this End-User License Agreement.' | [Braille Institute font page: versions, free status, download process](https://www.brailleinstitute.org/freefont/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'Please enter your email address to begin downloading.' plus a required EULA agreement checkbox. | [Braille Institute font page: versions, free status, download process](https://www.brailleinstitute.org/freefont/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | Installation instructions given for Windows PC and Mac. | [Braille Institute font page: versions, free status, download process](https://www.brailleinstitute.org/freefont/) | 2026-10-11 |
+
+### AudioCraft (MusicGen) `audiocraft`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | facebookresearch/audiocraft: 'AudioCraft is a PyTorch library for deep learning research on audio generation.' | [Official repository README: models, installation, licence](https://github.com/facebookresearch/audiocraft) | 2026-10-11 |
+| Free status | ✅ Confirmed | README 'License': code 'released under the MIT license'; weights 'released under the CC-BY-NC 4.0 license'. | [Official repository README: models, installation, licence](https://github.com/facebookresearch/audiocraft) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | 'The models weights in this repository are released under the CC-BY-NC 4.0 license as found in the LICENSE_weights file.' NC means non-commercial. | [Official repository README: models, installation, licence](https://github.com/facebookresearch/audiocraft) | 2026-10-11 |
+| Licence | ✅ Confirmed | 'The code in this repository is released under the MIT license as found in the LICENSE file.' | [Official repository README: models, installation, licence](https://github.com/facebookresearch/audiocraft) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'AudioCraft requires Python 3.9, PyTorch 2.1.0'; 'We also recommend having ffmpeg installed'. | [Official repository README: models, installation, licence](https://github.com/facebookresearch/audiocraft) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Code is public and installable with 'python -m pip install -U audiocraft'. | [Official repository README: models, installation, licence](https://github.com/facebookresearch/audiocraft) | 2026-10-11 |
+
 ### Augustus `augustus-caesar-3`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1406,6 +1583,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Pricing information | ✅ Confirmed | The page presents the paid Autodesk Fusion subscription (1-year or 1-month) as the route to full functionality and to any commercial use. That matches the recorded boundary. | [Comparison page: personal non-commercial use only, under USD 1,000 a year, not in primary employment or company environments; list of reduced features; paid subscription options](https://www.autodesk.com/products/fusion-360/personal) | 2026-09-26 |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The installation guide states Fusion runs on both Windows and Mac, with a Windows or Mac installer depending on the operating system — the two platforms recorded. | [Autodesk installation guide: runs on Windows and Mac; requires signing in with an Autodesk Account](https://www.autodesk.com/products/fusion-360/blog/how-to-install-autodesk-fusion-360-windows-mac/) | 2026-09-26 |
+
+### Avidemux `avidemux`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | avidemux.sourceforge.net, with downloads, wiki and forums. | [Official site: description, platforms, licence, latest news](https://avidemux.sourceforge.net/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Avidemux is a free video editor designed for simple cutting, filtering and encoding tasks.' | [Official site: description, platforms, licence, latest news](https://avidemux.sourceforge.net/) | 2026-10-11 |
+| Licence | ✅ Confirmed | 'Avidemux is available for Linux, BSD, Mac OS X and Microsoft Windows under the GNU GPL license.' | [Official site: description, platforms, licence, latest news](https://avidemux.sourceforge.net/) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | 'available for Linux, BSD, Mac OS X and Microsoft Windows'. | [Official site: description, platforms, licence, latest news](https://avidemux.sourceforge.net/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | 'available ... under the GNU GPL license'. | [Official site: description, platforms, licence, latest news](https://avidemux.sourceforge.net/) | 2026-10-11 |
 
 ### Battle for Wesnoth `battle-for-wesnoth`
 
@@ -1445,6 +1641,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The FAQ points to BBC.com and the BBC app on the Apple App Store and Google Play. | [BBC FAQ on audio outside the UK: content, sign-in, downloads, closure of BBC Sounds abroad](https://www.bbc.com/future/article/20250207-bbc-podcasts-are-now-available-on-the-bbc-website-and-app) | 2026-10-11 |
 
+### Beszel `beszel`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the henrygd/beszel repository; documentation at beszel.dev. | [README: features, architecture, licence](https://raw.githubusercontent.com/henrygd/beszel/main/readme.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Beszel is licensed under the MIT License." | [README: features, architecture, licence](https://raw.githubusercontent.com/henrygd/beszel/main/readme.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Beszel is licensed under the MIT License. See the LICENSE file for more details." | [README: features, architecture, licence](https://raw.githubusercontent.com/henrygd/beszel/main/readme.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Agent: Runs on each system you want to monitor and communicates system metrics to the hub." | [README: features, architecture, licence](https://raw.githubusercontent.com/henrygd/beszel/main/readme.md) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | MIT licence badge linking to the repository LICENSE file. | [README: features, architecture, licence](https://raw.githubusercontent.com/henrygd/beszel/main/readme.md) | 2026-10-11 |
+
 ### Blender Studio open movies `blender-studio-open-movies`
 
 **Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1464,6 +1679,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Blockbench `blockbench`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | blockbench.net with Download and 'Open Web App' (web.blockbench.net). | [Official site: features, free statement, web app](https://www.blockbench.net/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Blockbench is free to use for any type of project, forever, no strings attached.' | [Official site: features, free statement, web app](https://www.blockbench.net/) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | 'free to use for any type of project'; README: 'All assets created with Blockbench ... are your own!' | [Official site: features, free statement, web app](https://www.blockbench.net/) | 2026-10-11 |
+| Personal use | ✅ Confirmed | 'free to use for any type of project, forever'. | [Official site: features, free statement, web app](https://www.blockbench.net/) | 2026-10-11 |
+| Licence | ✅ Confirmed | 'The Blockbench source-code is licensed under the GPL license version 3.' | [GitHub repository: GPL-3.0 licence, plugin exception, ownership of creations](https://github.com/JannisX11/blockbench) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | 'The project is open source under the GPL license.' | [Official site: features, free statement, web app](https://www.blockbench.net/) | 2026-10-11 |
+
 ### Bolt.new `bolt-new`
 
 **Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1482,6 +1716,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Pricing information | ✅ Confirmed | Pro from $25/month billed monthly; Teams $30/member/month. | [Official Bolt pricing page: Free $0 plan contents and FAQ 'What are the token limits associated with a free plan?'](https://bolt.new/pricing) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Bootstrap Icons `bootstrap-icons`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | icons.getbootstrap.com; repo calls itself 'Official open source SVG icon library for Bootstrap'. | [Official icon site: description, formats, icon count](https://icons.getbootstrap.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Free, high quality, open source icon library with over 2,078 icons.' | [Official icon site: description, formats, icon count](https://icons.getbootstrap.com/) | 2026-10-11 |
+| Licence | ✅ Confirmed | README 'License: MIT'; sidebar 'MIT license'. | [GitHub repository: MIT licence, install options](https://github.com/twbs/icons) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | 'Official open source SVG icon library for Bootstrap'. | [GitHub repository: MIT licence, install options](https://github.com/twbs/icons) | 2026-10-11 |
 
 ### Brawlhalla `brawlhalla`
 
@@ -1673,6 +1926,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Coqui TTS (Idiap fork) `coqui-tts`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README news: 'Fork of the original, unmaintained repository. New PyPI package: coqui-tts'. | [Idiap fork README: news, installation, models, licence](https://github.com/idiap/coqui-ai-TTS) | 2026-10-11 |
+| Free status | ✅ Confirmed | Repository is published under MPL-2.0 and installed with 'uv pip install coqui-tts'. | [Idiap fork README: news, installation, models, licence](https://github.com/idiap/coqui-ai-TTS) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository sidebar lists 'MPL-2.0 license'. | [Idiap fork README: news, installation, models, licence](https://github.com/idiap/coqui-ai-TTS) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'From coqui-tts 0.27.4, PyTorch is not included by default'; 'tested on Ubuntu 24.04… but should also work on Mac and Windows'. | [Idiap fork README: news, installation, models, licence](https://github.com/idiap/coqui-ai-TTS) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | 'Prebuilt wheels are now also published for macOS and Windows (in addition to Linux as before)'. | [Idiap fork README: news, installation, models, licence](https://github.com/idiap/coqui-ai-TTS) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source is public on GitHub, forked from coqui-ai/TTS. | [Idiap fork README: news, installation, models, licence](https://github.com/idiap/coqui-ai-TTS) | 2026-10-11 |
+
 ### Cornell Lab Bird Cams `cornell-lab-bird-cams`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1710,6 +1982,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The site says you need either the demo or the full game of Theme Hospital, available for example at GOG.com. | [Official site: re-implements Theme Hospital, needs demo or full game (GOG)](https://www.corsixth.com/) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The README says builds exist for Windows and macOS, an AppImage and Flatpak for Linux, and BSD packages. | [README: Windows/macOS builds and Linux AppImage on releases, Flatpak](https://raw.githubusercontent.com/CorsixTH/CorsixTH/master/README.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The site says the engine is being re-implemented in open source code. | [Official site: re-implements Theme Hospital, needs demo or full game (GOG)](https://www.corsixth.com/) | 2026-10-11 |
+
+### Coverr `coverr`
+
+**Partially verified** · shown on the site as Partially verified · 7/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Licence page on coverr.co, the provider's own site. | [Coverr licence page and FAQ](https://coverr.co/license) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'You may use Coverr.co's videos and music for both commercial and non-commercial purposes at no cost.' | [Coverr licence page and FAQ](https://coverr.co/license) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Licence distinguishes 'Free Downloads' from 'Coverr+ Members'; FAQ: 'All of our videos are HD in MP4 format. We sometimes also offer 4K quality, which you're able to download free as well.' | [Coverr licence page and FAQ](https://coverr.co/license) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | 'irrevocable, non-exclusive, worldwide copyright license to download, copy, modify, perform, and use videos and music ... including for commercial purposes'. | [Coverr licence page and FAQ](https://coverr.co/license) | 2026-10-11 |
+| Personal use | ✅ Confirmed | 'for both commercial and non-commercial purposes'. | [Coverr licence page and FAQ](https://coverr.co/license) | 2026-10-11 |
+| Licence | ✅ Confirmed | FAQ: 'Coverr started as CC0 ... We've since decided to keep our videos free to use for commercial purposes as long as it's not by competitors.' | [Coverr licence page and FAQ](https://coverr.co/license) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'This license does not permit: Compiling videos ... to create a similar or competing service. Using videos or music ... for training AI algorithms'; 'we do not provide these releases to users'; FAQ notes Shutterstock videos supplement the catalogue. | [Coverr licence page and FAQ](https://coverr.co/license) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### CrazyGames `crazygames`
 
@@ -1863,6 +2154,63 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | Platforms listed: Windows, macOS, Linux. | [Official itch.io page: 100% free to play; optional $10+ for Fan Pack; Windows/macOS/Linux; not suitable for children or easily disturbed](https://teamsalvato.itch.io/ddlc) | 2026-10-11 |
 
+### Dokploy `dokploy`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Public repository Dokploy/dokploy, linked to dokploy.com. | [GitHub repository page](https://github.com/Dokploy/dokploy) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Dokploy is a free, self-hostable Platform as a Service (PaaS)" | [README: description and feature list](https://raw.githubusercontent.com/Dokploy/dokploy/canary/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | Content outside "/proprietary" directories "is available under the 'Apache License 2.0' license". | [LICENSE.MD: Apache-2.0 with proprietary-directory carve-out](https://raw.githubusercontent.com/Dokploy/dokploy/canary/LICENSE.MD) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "All content that resides under a '/proprietary' directory ... is licensed under the license defined in 'LICENSE_PROPRIETARY'." | [LICENSE.MD: Apache-2.0 with proprietary-directory carve-out](https://raw.githubusercontent.com/Dokploy/dokploy/canary/LICENSE.MD) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "Self-Hosted: Self-host Dokploy on your VPS." | [README: description and feature list](https://raw.githubusercontent.com/Dokploy/dokploy/canary/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source published under Apache License 2.0 outside the proprietary directory. | [LICENSE.MD: Apache-2.0 with proprietary-directory carve-out](https://raw.githubusercontent.com/Dokploy/dokploy/canary/LICENSE.MD) | 2026-10-11 |
+
+### Dolibarr ERP & CRM `dolibarr`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Repository About links www.dolibarr.org. | [GitHub README: licence, installing, features, what it can't do](https://github.com/Dolibarr/dolibarr) | 2026-10-11 |
+| Free status | ✅ Confirmed | "You can freely use, study, modify or distribute it according to its license." | [GitHub README: licence, installing, features, what it can't do](https://github.com/Dolibarr/dolibarr) | 2026-10-11 |
+| Licence | ✅ Confirmed | "either Version 3 of the License, or (at your option) any later version (GPL-3+)". | [GitHub README: licence, installing, features, what it can't do](https://github.com/Dolibarr/dolibarr) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "WHAT DOLIBARR CAN'T DO YET": tasks dependencies, payroll module, native embedded webmail. SaaS: "this third option comes with associated costs". | [GitHub README: licence, installing, features, what it can't do](https://github.com/Dolibarr/dolibarr) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "DoliWamp for Windows", "DoliDeb for Debian, Ubuntu", DoliRpm, and a Docker image. | [GitHub README: licence, installing, features, what it can't do](https://github.com/Dolibarr/dolibarr) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "It's an Open-Source Software suite (written in PHP with JavaScript enhancements)". | [GitHub README: licence, installing, features, what it can't do](https://github.com/Dolibarr/dolibarr) | 2026-10-11 |
+
+### Dozzle `dozzle`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the amir20/dozzle repository; site at dozzle.dev. | [README: features, analytics, licence](https://raw.githubusercontent.com/amir20/dozzle/master/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | "License: MIT"; "Dozzle is an open source project with no funding". | [README: features, analytics, licence](https://raw.githubusercontent.com/amir20/dozzle/master/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | License section: "[MIT](LICENSE)". | [README: features, analytics, licence](https://raw.githubusercontent.com/amir20/dozzle/master/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "It doesn't store any log files"; "it doesn't support offline searching"; analytics can be disabled with "--no-analytics". | [README: features, analytics, licence](https://raw.githubusercontent.com/amir20/dozzle/master/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Described as "an open source project" under the MIT licence. | [README: features, analytics, licence](https://raw.githubusercontent.com/amir20/dozzle/master/README.md) | 2026-10-11 |
+
 ### DW (Deutsche Welle) Live TV `dw-live-tv`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1879,6 +2227,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Official URL | ✅ Confirmed | The DW English live TV page loaded on dw.com with the player and today's schedule. | [DW English live TV page with schedule](https://www.dw.com/en/live-tv/channel-english) | 2026-10-11 |
 | Free status | ✅ Confirmed | DW FAQ: DW for Smart TV is available for free and carries live streams of DW English, Español and Arabia. | [DW FAQ: languages, free Smart TV app, possible country restrictions](https://corporate.dw.com/en/general-questions/a-68756187) | 2026-10-11 |
 | Major limitations | ✅ Confirmed | DW FAQ: 'There might be restrictions depending on the country you live in.' | [DW FAQ: languages, free Smart TV app, possible country restrictions](https://corporate.dw.com/en/general-questions/a-68756187) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### ElevenLabs `elevenlabs`
+
+**Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | elevenlabs.io/pricing: 'Flexible pricing for your needs'. | [Pricing page: plans, FAQ on credits and rollover](https://elevenlabs.io/pricing) | 2026-10-11 |
+| Free status | ✅ Confirmed | Free plan '$0 per month' with '10k credits per month', alongside Starter, Creator, Pro, Scale and Business. | [Pricing page: plans, FAQ on credits and rollover](https://elevenlabs.io/pricing) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | FAQ: 'Free $0 (10,000 credits)'; 'All products draw from one shared monthly credit pool'; 'Text to Speech 1 credit per character'. | [Pricing page: plans, FAQ on credits and rollover](https://elevenlabs.io/pricing) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | Starter: 'Everything in free, plus Commercial License, Instant Voice Cloning… Music commercial use, Dubbing Studio'. | [Pricing page: plans, FAQ on credits and rollover](https://elevenlabs.io/pricing) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | FAQ: 'Rollover does not apply to the Free plan.' | [Pricing page: plans, FAQ on credits and rollover](https://elevenlabs.io/pricing) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Starter $6, Creator $22, Pro $99, Scale $299, Business $990 per month; prices exclude taxes. | [Pricing page: plans, FAQ on credits and rollover](https://elevenlabs.io/pricing) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
@@ -1920,6 +2287,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### EtherCalc `ethercalc`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Overview: https://ethercalc.net/". | [GitHub README: install, self-hosting, licensing](https://github.com/audreyt/ethercalc) | 2026-10-11 |
+| Free status | ✅ Confirmed | "self-hosts anywhere via docker compose up with no Cloudflare account required"; licensing section lists only open licences. | [GitHub README: install, self-hosting, licensing](https://github.com/audreyt/ethercalc) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | "The app deliberately keeps anonymous read/write for anyone who knows a room URL". | [GitHub README: install, self-hosting, licensing](https://github.com/audreyt/ethercalc) | 2026-10-11 |
+| Licence | ✅ Confirmed | Per-file licences: CPAL (Socialtext), Artistic 2.0, CC0 (TypeScript rewrite), MIT, Apache 2.0, MPL 2.0 (images). | [GitHub README: install, self-hosting, licensing](https://github.com/audreyt/ethercalc) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Use this path only on a trusted network"; "If the instance is reachable from the public internet, you must put a reverse proxy in front". | [GitHub README: install, self-hosting, licensing](https://github.com/audreyt/ethercalc) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Install via npm (needs Bun) or Docker; deploys to Cloudflare via wrangler. | [GitHub README: install, self-hosting, licensing](https://github.com/audreyt/ethercalc) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Licensing: Common Public Attribution License, Artistic License 2.0, CC0 for packages/**/*.ts, MIT and Apache 2.0 for bundled libraries. | [GitHub README: install, self-hosting, licensing](https://github.com/audreyt/ethercalc) | 2026-10-11 |
+
+### Etherpad `etherpad`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Repository About links etherpad.org. | [GitHub README: about, installation, licence](https://github.com/ether/etherpad) | 2026-10-11 |
+| Free status | ✅ Confirmed | "No telemetry. No upsells." "The code is Apache 2.0." | [GitHub README: about, installation, licence](https://github.com/ether/etherpad) | 2026-10-11 |
+| Licence | ✅ Confirmed | License: Apache License v2. | [GitHub README: about, installation, licence](https://github.com/ether/etherpad) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Quick install "Requires git and Node.js >= 24"; public instances are "Third party instances not provided by the Etherpad foundation". | [GitHub README: about, installation, licence](https://github.com/ether/etherpad) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "Etherpad runs on your server, under your governance." Installers for macOS/Linux/WSL and Windows PowerShell. | [GitHub README: about, installation, licence](https://github.com/ether/etherpad) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "The code is Apache 2.0. The data format is open." | [GitHub README: about, installation, licence](https://github.com/ether/etherpad) | 2026-10-11 |
+
 ### fheroes2 `fheroes2`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1938,6 +2343,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The README says original resources belong to Ubisoft, advises buying the game on GOG or Ubisoft Store, or downloading a free demo. | [README: open source multiplatform recreation, GPL v2.0, buy original on GOG/Ubisoft or use free demo](https://raw.githubusercontent.com/ihhub/fheroes2/master/README.md) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ✅ Confirmed | The README describes an open source multiplatform project written from scratch. | [README: open source multiplatform recreation, GPL v2.0, buy original on GOG/Ubisoft or use free demo](https://raw.githubusercontent.com/ihhub/fheroes2/master/README.md) | 2026-10-11 |
+
+### FramePack `framepack`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README: 'this GitHub repository is the only official FramePack website. We do not have any web services.' | [Official repository README: requirements, installation, licence](https://github.com/lllyasviel/FramePack) | 2026-10-11 |
+| Free status | ✅ Confirmed | Repository is published under the Apache-2.0 licence with a downloadable one-click package. | [Official repository README: requirements, installation, licence](https://github.com/lllyasviel/FramePack) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository sidebar lists 'Apache-2.0 license'. | [Official repository README: requirements, installation, licence](https://github.com/lllyasviel/FramePack) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Requirements: 'Nvidia GPU in RTX 30XX, 40XX, 50XX series… At least 6GB GPU memory.' Installation: 'You will download more than 30GB from HuggingFace.' | [Official repository README: requirements, installation, licence](https://github.com/lllyasviel/FramePack) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Requirements: 'Linux or Windows operating system.' A one-click Windows package is linked. | [Official repository README: requirements, installation, licence](https://github.com/lllyasviel/FramePack) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source code is public in the repository under Apache-2.0. | [Official repository README: requirements, installation, licence](https://github.com/lllyasviel/FramePack) | 2026-10-11 |
 
 ### Free Music Archive `free-music-archive`
 
@@ -2053,6 +2477,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | Builds offered for Windows x64, macOS (Universal) and Linux x64. | [Official itch.io page: name your own price downloads for Windows/macOS/Linux; source on GitHub under Apache 2.0, assets All Rights Reserved; also on Newgrounds](https://ninja-muffin24.itch.io/funkin) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The page links the source code at github.com/FunkinCrew/funkin. | [Official itch.io page: name your own price downloads for Windows/macOS/Linux; source on GitHub under Apache 2.0, assets All Rights Reserved; also on Newgrounds](https://ninja-muffin24.itch.io/funkin) | 2026-10-11 |
 
+### Gatus `gatus`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the TwiN/gatus repository. | [README: features, storage, deployment, FAQ](https://raw.githubusercontent.com/TwiN/gatus/master/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | Apache License 2.0 grants a "no-charge, royalty-free" copyright licence. | [LICENSE: Apache License 2.0](https://raw.githubusercontent.com/TwiN/gatus/master/LICENSE) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Apache License Version 2.0, January 2004" | [LICENSE: Apache License 2.0](https://raw.githubusercontent.com/TwiN/gatus/master/LICENSE) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Because the data is stored in memory, the data will not survive a restart." "it does not support path-based routing". | [README: features, storage, deployment, FAQ](https://raw.githubusercontent.com/TwiN/gatus/master/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Source published under the Apache License 2.0. | [LICENSE: Apache License 2.0](https://raw.githubusercontent.com/TwiN/gatus/master/LICENSE) | 2026-10-11 |
+
 ### GeoGuessr `geoguessr`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2148,6 +2591,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The FAQ says comics can be read in any web browser, and points to iOS and Android apps. | [FAQ: free account; many comics free; Gold $6.99/month or $69/year for paid pages; browser and iOS/Android apps; offline reading Gold-only; AI comics policy](https://globalcomix.com/support/faq) | 2026-10-11 |
 
+### GoatCounter `goatcounter`
+
+**Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | goatcounter.com is the project home and links the GitHub source. | [Home page: features and pricing section](https://www.goatcounter.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "GoatCounter.com is currently offered for free for reasonable public usage." | [Home page: features and pricing section](https://www.goatcounter.com/) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | "Running your personal website or small-to-medium business on it is fine, but sending millions of pageviews/day isn't." | [Home page: features and pricing section](https://www.goatcounter.com/) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | "Running your personal website or small-to-medium business on it is fine". | [Home page: features and pricing section](https://www.goatcounter.com/) | 2026-10-11 |
+| Personal use | ✅ Confirmed | "Running your personal website ... on it is fine". | [Home page: features and pricing section](https://www.goatcounter.com/) | 2026-10-11 |
+| Licence | ✅ Confirmed | "GoatCounter is licensed under a slightly modified version of European Union Public License (EUPL) 1.2". | [LICENSE file](https://raw.githubusercontent.com/arp242/goatcounter/main/LICENSE) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "available as hosted service on goatcounter.com, or run it on your own server." | [GitHub README: self-hosting](https://github.com/arp242/goatcounter) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "The source code is completely Open Source/Free Software, and it can be self-hosted without restrictions." | [GitHub README: self-hosting](https://github.com/arp242/goatcounter) | 2026-10-11 |
+
 ### Goldmines TV channels `goldmines-tv`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2205,6 +2667,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Goxel `goxel`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | 'This is the official website of the 3D voxel editor Goxel.' | [Official site: features, platforms](https://goxel.xyz/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Get the desktop version now for free in the download page.' | [Official site: features, platforms](https://goxel.xyz/) | 2026-10-11 |
+| Licence | ✅ Confirmed | 'Goxel is released under the GNU GPL3 licence.' | [GitHub repository: licence, CLA note](https://github.com/guillaumechereau/goxel) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | CLA exists 'to allow me to distribute the mobile branch goxel under a non GPL licence'. | [GitHub repository: licence, CLA note](https://github.com/guillaumechereau/goxel) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Desktop 0.15.1 downloads for Windows, MacOS and Linux AppImage; links to iOS and Android versions. | [Download page: desktop and mobile builds](https://goxel.xyz/download) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Repository 'About': 'Goxel: Free and Open Source 3D Voxel Editor'. | [GitHub repository: licence, CLA note](https://github.com/guillaumechereau/goxel) | 2026-10-11 |
+
 ### gPodder `gpodder`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2223,6 +2704,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | The README says gPodder is distributed under GNU GPL version 3 or (at your option) any later version. | [Repository README: GPL-3.0-or-later licence text](https://github.com/gpodder/gpodder) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | Downloads are offered for Windows (installer and portable), macOS and Linux/BSD (Flatpak, distributions, Git). | [Project site: downloads per platform and latest version](https://gpodder.github.io/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The project site calls gPodder a simple, open source podcast client and links its public source. | [Project site: downloads per platform and latest version](https://gpodder.github.io/) | 2026-10-11 |
+
+### Grammarly `grammarly`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | grammarly.com/plans: 'Great Writing Starts With a Plan'. | [Plans page (served in INR): Free, Plus and Enterprise comparison](https://www.grammarly.com/plans) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Free — Write without spelling and grammar mistakes. ₹0 INR / month' alongside Plus and Enterprise. | [Plans page (served in INR): Free, Plus and Enterprise comparison](https://www.grammarly.com/plans) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Compare Plans: 'Generate text with AI prompts — 100 prompts / month' on Free. | [Plans page (served in INR): Free, Plus and Enterprise comparison](https://www.grammarly.com/plans) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Free column shows 'Unavailable' for Adjust your writing tone, Rewrite full sentences, Write fluently in English, Detect AI generated text and Catch accidental plagiarism. | [Plans page (served in INR): Free, Plus and Enterprise comparison](https://www.grammarly.com/plans) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Plus: '₹392 INR / member / month, billed annually; ₹1,000 when billed monthly' (India plan). | [Plans page (served in INR): Free, Plus and Enterprise comparison](https://www.grammarly.com/plans) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | Footer 'Get Grammarly': Windows, Mac, browser extensions (Chrome, Safari, Firefox, Edge), iPhone, iPad and Android. | [Plans page (served in INR): Free, Plus and Enterprise comparison](https://www.grammarly.com/plans) | 2026-10-11 |
+
+### Graphite `graphite-editor`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | graphite.art, operated by Graphite Labs; links the editor at editor.graphite.art. | [Official site: description, status, platforms](https://graphite.art/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Graphite is a free, open source vector graphics editor and animation engine, available now in alpha.' | [Official site: description, status, platforms](https://graphite.art/) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | 'Builds of the application are free to use and redistribute, even for commercial purposes. The artwork you create always belongs to you.' | [Licence page: code licence, commercial use, branding licence](https://graphite.art/license/) | 2026-10-11 |
+| Licence | ✅ Confirmed | 'dual-licensed under your choice of either the MIT License or the Apache License 2.0'. | [Licence page: code licence, commercial use, branding licence](https://graphite.art/license/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'available now in alpha'; desktop download links are posted in the Discord announcements channel for testers. | [Official site: description, status, platforms](https://graphite.art/) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | 'The web app is currently live and desktop apps for Windows, Mac, and Linux are now in a release candidate stage.' | [Official site: description, status, platforms](https://graphite.art/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | 'Graphite is open source software made by its community'. | [Licence page: code licence, commercial use, branding licence](https://graphite.art/license/) | 2026-10-11 |
 
 ### Green Gold TV (Chhota Bheem) `green-gold-tv-youtube`
 
@@ -2262,6 +2781,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Grocy `grocy`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Grocy is a web-based self-hosted groceries & household management solution for your home." Links to Source on GitHub. | [Grocy homepage](https://grocy.info/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Open Source. Built with passion." Download link; donations are optional ("Say thanks"). | [Grocy homepage](https://grocy.info/) | 2026-10-11 |
+| Licence | ✅ Confirmed | "## License The MIT License (MIT)". | [Grocy README: features, licence](https://raw.githubusercontent.com/grocy/grocy/master/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "installable web app (PWA, without providing any offline usage capabilities)". | [Grocy README: features, licence](https://raw.githubusercontent.com/grocy/grocy/master/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "Grocy Desktop — Run Grocy without having to manage a webserver, just like a normal (Windows) desktop application." Docker, Home Assistant, Android and iOS options are marked "Community contribution". | [Grocy homepage](https://grocy.info/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Repository published on GitHub under the MIT License. | [Grocy README: features, licence](https://raw.githubusercontent.com/grocy/grocy/master/README.md) | 2026-10-11 |
+
 ### Groq `groq`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2281,6 +2819,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### GST Returns Offline Tool `gst-returns-offline-tool`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Page on www.gst.gov.in, "Goods and Services Tax, Government of India, States and Union Territories". | [GST portal Downloads > Returns: Returns Offline Tool](https://www.gst.gov.in/download/returns) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Download, extract and run the Returns Offline Tool" — a public download with no fee mentioned. | [GST portal Downloads > Returns: Returns Offline Tool](https://www.gst.gov.in/download/returns) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Currently this tool is available only for GSTR-1 and GSTR-2 form."; "The tool does not work on Linux and Mac." | [GST portal Downloads > Returns: Returns Offline Tool](https://www.gst.gov.in/download/returns) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | "Operating system Windows 7 or above." | [GST portal Downloads > Returns: Returns Offline Tool](https://www.gst.gov.in/download/returns) | 2026-10-11 |
+
 ### Haystack News `haystack-news`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2299,6 +2856,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Pricing information | ✅ Confirmed | FAQ: Premium costs $4.99 per month for news without commercials, with a 30-day free trial. | [Haystack News homepage and FAQ: free with ads, Premium tier, devices](https://www.haystack.tv/) | 2026-10-11 |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | FAQ: available on mobile devices, smart TVs, streaming devices and the web; badges include Android and iPhone. | [Haystack News homepage and FAQ: free with ads, Premium tier, devices](https://www.haystack.tv/) | 2026-10-11 |
+
+### Headscale `headscale`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the juanfont/headscale repository; documentation at headscale.net. | [README: design goal, scope, disclaimer](https://raw.githubusercontent.com/juanfont/headscale/main/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | "An open source, self-hosted implementation of the Tailscale control server." | [README: design goal, scope, disclaimer](https://raw.githubusercontent.com/juanfont/headscale/main/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "BSD 3-Clause License Copyright (c) 2020, Juan Font" | [LICENSE: BSD 3-Clause](https://raw.githubusercontent.com/juanfont/headscale/main/LICENSE) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "It implements a narrow scope, a single Tailscale network (tailnet)"; "we do not support nor encourage the use of reverse proxies and container to run Headscale." | [README: design goal, scope, disclaimer](https://raw.githubusercontent.com/juanfont/headscale/main/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Source published under the BSD 3-Clause licence. | [LICENSE: BSD 3-Clause](https://raw.githubusercontent.com/juanfont/headscale/main/LICENSE) | 2026-10-11 |
 
 ### Hedgewars `hedgewars`
 
@@ -2338,6 +2914,158 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ✅ Confirmed | The README invites issues and pull requests on the public Hextris repository. | [Official README: play links, authors, GPL-3.0-or-later licence](https://raw.githubusercontent.com/Hextris/hextris/gh-pages/README.md) | 2026-10-11 |
 
+### Homarr `homarr`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Public repository homarr-labs/homarr, linked to homarr.dev. | [GitHub repository page: README, Apache-2.0 badge](https://github.com/homarr-labs/homarr) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Homarr is a free-to-use open source project maintained by volunteers" | [GitHub repository page: README, Apache-2.0 badge](https://github.com/homarr-labs/homarr) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | "Apache License 2.0 license which allows commercial usage" | [GitHub repository page: README, Apache-2.0 badge](https://github.com/homarr-labs/homarr) | 2026-10-11 |
+| Licence | ✅ Confirmed | "We publish under the Apache License 2.0 license which allows commercial usage." | [GitHub repository page: README, Apache-2.0 badge](https://github.com/homarr-labs/homarr) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "maintained by volunteers and developers from all over the world" | [GitHub repository page: README, Apache-2.0 badge](https://github.com/homarr-labs/homarr) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "Compatible with any major consumer hardware (x86, Raspberry Pi, old laptops) and most OS (Windows, Linux, TrueNAS, Unraid)" | [GitHub repository page: README, Apache-2.0 badge](https://github.com/homarr-labs/homarr) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Repository sidebar lists "Apache-2.0 license". | [GitHub repository page: README, Apache-2.0 badge](https://github.com/homarr-labs/homarr) | 2026-10-11 |
+
+### Homepage (gethomepage) `gethomepage`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the gethomepage/homepage repository; docs at gethomepage.dev. | [README: features and security notice](https://raw.githubusercontent.com/gethomepage/homepage/dev/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | GNU General Public License Version 3 — a free, copyleft licence. | [LICENSE: GNU GPL v3](https://raw.githubusercontent.com/gethomepage/homepage/dev/LICENSE) | 2026-10-11 |
+| Licence | ✅ Confirmed | "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007" | [LICENSE: GNU GPL v3](https://raw.githubusercontent.com/gethomepage/homepage/dev/LICENSE) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | If reachable from an untrusted network it "must sit behind a reverse proxy (and/or VPN) that enforces authentication". | [README: features and security notice](https://raw.githubusercontent.com/gethomepage/homepage/dev/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "Images built for AMD64, ARM64."; Docker and from-source install. | [README: features and security notice](https://raw.githubusercontent.com/gethomepage/homepage/dev/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source published under the GPL-3.0. | [LICENSE: GNU GPL v3](https://raw.githubusercontent.com/gethomepage/homepage/dev/LICENSE) | 2026-10-11 |
+
+### Hugin `hugin`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | hugin.sourceforge.io; Hugin 2025.0.1 released 2025-12-13. | [Official site: description, status, latest release](https://hugin.sourceforge.io/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Open Source software, free to use, modify and share.' | [Download page: free status, platform builds and limits](https://hugin.sourceforge.io/download/) | 2026-10-11 |
+| Licence | ✅ Confirmed | Project page licence: 'GNU General Public License version 2.0 (GPLv2)'. | [Official SourceForge project page: licence](https://sourceforge.net/projects/hugin/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | '32-bit versions of Windows are only supported up to Hugin 2017.0'; macOS build 'will not run on newer Mac computer with arm64 architecture'. | [Download page: free status, platform builds and limits](https://hugin.sourceforge.io/download/) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | 64-bit Windows installer, a macOS dmg, and Linux via distribution packages, Flatpak and AppImage. | [Download page: free status, platform builds and limits](https://hugin.sourceforge.io/download/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | 'Open Source software'; source tarballs on SourceForge. | [Download page: free status, platform builds and limits](https://hugin.sourceforge.io/download/) | 2026-10-11 |
+
+### HunyuanVideo `hunyuanvideo`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Tencent-Hunyuan/HunyuanVideo repository 'contains PyTorch model definitions, pre-trained weights and inference/sampling code'. | [Official repository README: requirements, weights, installation](https://github.com/Tencent-Hunyuan/HunyuanVideo) | 2026-10-11 |
+| Free status | ✅ Confirmed | Section 2 grants 'for the Territory only, a non-exclusive, non-transferable and royalty-free limited license'. | [Tencent Hunyuan Community License Agreement text](https://github.com/Tencent-Hunyuan/HunyuanVideo/blob/main/LICENSE.txt) | 2026-10-11 |
+| Licence | ✅ Confirmed | File title: 'TENCENT HUNYUAN COMMUNITY LICENSE AGREEMENT'. | [Tencent Hunyuan Community License Agreement text](https://github.com/Tencent-Hunyuan/HunyuanVideo/blob/main/LICENSE.txt) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Section 4: over 100 million monthly active users 'You must request a license from Tencent'; Section 5(b): must not use outputs 'to improve any other AI model'. | [Tencent Hunyuan Community License Agreement text](https://github.com/Tencent-Hunyuan/HunyuanVideo/blob/main/LICENSE.txt) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Requirements: 'An NVIDIA GPU with CUDA support is required… Tested operating system: Linux'. | [Official repository README: requirements, weights, installation](https://github.com/Tencent-Hunyuan/HunyuanVideo) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | 'THIS LICENSE AGREEMENT DOES NOT APPLY IN THE EUROPEAN UNION, UNITED KINGDOM AND SOUTH KOREA' — a territorial restriction that OSI licences do not carry. | [Tencent Hunyuan Community License Agreement text](https://github.com/Tencent-Hunyuan/HunyuanVideo/blob/main/LICENSE.txt) | 2026-10-11 |
+
+### Iconoir `iconoir`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | iconoir.com links the iconoir-icons GitHub repository and licence. | [Official site: formats, icon count, licence footer](https://iconoir.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | '100% free icons. Iconoir is open source and we're ready for your help.' | [Official site: formats, icon count, licence footer](https://iconoir.com/) | 2026-10-11 |
+| Licence | ✅ Confirmed | Footer: 'Content available under a MIT License.' | [Official site: formats, icon count, licence footer](https://iconoir.com/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | 'Iconoir is open source'. | [Official site: formats, icon count, licence footer](https://iconoir.com/) | 2026-10-11 |
+
+### Ideogram `ideogram`
+
+**Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | Ideogram's GitBook documentation links ideogram.ai as the website and ideogram.ai/pricing for subscriptions. | [Official help docs: Plans and Credits (last verified October 1, 2026)](https://docs.ideogram.ai/plans-and-pricing/available-plans) | 2026-10-11 |
+| Free status | ✅ Confirmed | Plans table: 'Free $0 $0 30 a week' alongside Plus, Pro, Team and Enterprise. | [Official help docs: Plans and Credits (last verified October 1, 2026)](https://docs.ideogram.ai/plans-and-pricing/available-plans) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | 'Free accounts get 30 credits each week if they sign in with Google, Apple or Microsoft.' | [Official help docs: Plans and Credits (last verified October 1, 2026)](https://docs.ideogram.ai/plans-and-pricing/available-plans) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | 'Accounts created with an email and password don't get free credits'; free credits require signing in with Google, Apple or Microsoft. | [Official help docs: Plans and Credits (last verified October 1, 2026)](https://docs.ideogram.ai/plans-and-pricing/available-plans) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'On the free plan, everything you generate is public.' Free: 'Wait for next week's 30 credits, or buy credits.' | [Official help docs: Plans and Credits (last verified October 1, 2026)](https://docs.ideogram.ai/plans-and-pricing/available-plans) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Plus $20/month, Pro $60/month, Team $30 per user/month, in US dollars before tax. | [Official help docs: Plans and Credits (last verified October 1, 2026)](https://docs.ideogram.ai/plans-and-pricing/available-plans) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | Docs sidebar links the Website and an 'iOS app' on the App Store. | [Official help docs: Plans and Credits (last verified October 1, 2026)](https://docs.ideogram.ai/plans-and-pricing/available-plans) | 2026-10-11 |
+
+### impress.js `impress-js`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Repository About links impress.js.org. | [GitHub README: usage, browser support, licence](https://github.com/impress/impress.js) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Released under the MIT License"; direct CDN download links provided. | [GitHub README: usage, browser support, licence](https://github.com/impress/impress.js) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Copyright 2011-2012 Bartek Szopka (@bartaz), 2016-2023 Henrik Ingo ... Released under the MIT License". | [GitHub README: usage, browser support, licence](https://github.com/impress/impress.js) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "be aware that in this some of your visitors may not see the presentation correctly, or at all." | [GitHub README: usage, browser support, licence](https://github.com/impress/impress.js) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "recent versions of Firefox and Chrome are known to work well. Reportedly IE now works too." | [GitHub README: usage, browser support, licence](https://github.com/impress/impress.js) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Public source repository under the MIT licence. | [GitHub README: usage, browser support, licence](https://github.com/impress/impress.js) | 2026-10-11 |
+
+### Indic Parler-TTS `indic-parler-tts`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Model page under the ai4bharat organisation; 'This work is the result of a collaboration between the HuggingFace audio team and the AI4Bharat team.' | [Hugging Face model card by AI4Bharat: languages, access conditions, licence](https://huggingface.co/ai4bharat/indic-parler-tts) | 2026-10-11 |
+| Free status | ✅ Confirmed | Model card 'License': 'This model is permissively licensed under the Apache 2.0 license.' | [Hugging Face model card by AI4Bharat: languages, access conditions, licence](https://huggingface.co/ai4bharat/indic-parler-tts) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | 'You need to agree to share your contact information to access this model… Log in or Sign Up to review the conditions and access this model content.' | [Hugging Face model card by AI4Bharat: languages, access conditions, licence](https://huggingface.co/ai4bharat/indic-parler-tts) | 2026-10-11 |
+| Licence | ✅ Confirmed | Model metadata: 'License: apache-2.0'. | [Hugging Face model card by AI4Bharat: languages, access conditions, licence](https://huggingface.co/ai4bharat/indic-parler-tts) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'Indic-Speak is now available… We recommend using Indic-Speak.' '10 languages officially support emotion-specific prompts'. | [Hugging Face model card by AI4Bharat: languages, access conditions, licence](https://huggingface.co/ai4bharat/indic-parler-tts) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Weights are published on Hugging Face under Apache 2.0, built on the open Parler-TTS repository. | [Hugging Face model card by AI4Bharat: languages, access conditions, licence](https://huggingface.co/ai4bharat/indic-parler-tts) | 2026-10-11 |
+
 ### Infobells `infobells-rhymes`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2356,6 +3084,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | YouTube Help says ads before and during videos are removed only by paid YouTube Premium. | [YouTube Help: Premium removes ads shown before and during videos, so free viewing is ad-supported](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Ionicons `ionicons`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | ionic.io/ionicons, 'built by Ionic', linking the ionic-team/ionicons repository. | [Official Ionicons page: licence, formats](https://ionic.io/ionicons) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Completely open source, MIT licensed and built by Ionic.' | [Official Ionicons page: licence, formats](https://ionic.io/ionicons) | 2026-10-11 |
+| Licence | ✅ Confirmed | Footer: 'Released under MIT License'. | [Official Ionicons page: licence, formats](https://ionic.io/ionicons) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | 'Open source icons.' | [Official Ionicons page: licence, formats](https://ionic.io/ionicons) | 2026-10-11 |
 
 ### itch.io browser games `itch-io-browser-games`
 
@@ -2433,6 +3180,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | The README lists Windows, Linux AppImage, macOS, PS Vita, Nintendo Switch and an Android version on Google Play. | [README: open-source Caesar 3, original files required, platforms](https://raw.githubusercontent.com/bvschaik/julius/master/README.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The README describes Julius as an open source re-implementation of Caesar III. | [README: open-source Caesar 3, original files required, platforms](https://raw.githubusercontent.com/bvschaik/julius/master/README.md) | 2026-10-11 |
 
+### Kanboard `kanboard`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Official website: https://kanboard.org/". | [GitHub README: maintenance mode notice and credits](https://github.com/kanboard/kanboard) | 2026-10-11 |
+| Free status | ✅ Confirmed | Distributed under the MIT License; no paid edition is mentioned. | [GitHub README: maintenance mode notice and credits](https://github.com/kanboard/kanboard) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository licence: MIT license. | [GitHub README: maintenance mode notice and credits](https://github.com/kanboard/kanboard) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "This application is in maintenance mode"; "not actively developing any new major features (only small fixes)". | [GitHub README: maintenance mode notice and credits](https://github.com/kanboard/kanboard) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Installation instructions and "Use Kanboard with Docker"; topic self-hosted. | [GitHub README: maintenance mode notice and credits](https://github.com/kanboard/kanboard) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Public source repository, "Distributed under MIT License". | [GitHub README: maintenance mode notice and credits](https://github.com/kanboard/kanboard) | 2026-10-11 |
+
 ### Kasts `kasts`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2451,6 +3217,63 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | The page's details section lists the licence as GPL-2.0-or-later. | [KDE Apps page: features, platforms, releases and licence](https://apps.kde.org/kasts/) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | Linux installs via Discover, Flathub and Snap; F-Droid for Android; Android and Windows listed as other platforms. | [KDE Apps page: features, platforms, releases and licence](https://apps.kde.org/kasts/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The page links the source code at invent.kde.org/multimedia/kasts under GPL-2.0-or-later. | [KDE Apps page: features, platforms, releases and licence](https://apps.kde.org/kasts/) | 2026-10-11 |
+
+### Kimai `kimai`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | kimai.org is the project home. | [Official home page: cloud vs self-hosting](https://www.kimai.org/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Kimai is a professional grade time-tracking application, free and open-source." | [GitHub README: features and requirements](https://github.com/kimai/kimai) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository licence: AGPL-3.0. | [GitHub README: features and requirements](https://github.com/kimai/kimai) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Buy the plugin and keep track of expenses"; self hosting comes with "Community support". | [Official home page: cloud vs self-hosting](https://www.kimai.org/) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Requirements: PHP 8.2+, MariaDB/MySQL, "A webserver and subdomain (subdirectory is not supported)". | [GitHub README: features and requirements](https://github.com/kimai/kimai) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Self hosting: "100% open source (AGPL 3)". | [Official home page: cloud vs self-hosting](https://www.kimai.org/) | 2026-10-11 |
+
+### KitchenOwl `kitchenowl`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README links Website https://kitchenowl.org and Docs https://docs.kitchenowl.org. | [KitchenOwl README: features, apps, licence](https://raw.githubusercontent.com/TomBursch/kitchenowl/main/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | "KitchenOwl is Free Software: You can use, study share and improve it at your will." | [KitchenOwl README: features, apps, licence](https://raw.githubusercontent.com/TomBursch/kitchenowl/main/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "you can redistribute and/or modify it under the terms of the AGPL-3.0 License." | [KitchenOwl README: features, apps, licence](https://raw.githubusercontent.com/TomBursch/kitchenowl/main/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Please keep in mind that this project is still in development." "Partial offline support". | [KitchenOwl README: features, apps, licence](https://raw.githubusercontent.com/TomBursch/kitchenowl/main/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Badges for Google Play, F-Droid and the App Store; "Native Mobile/Web/Desktop apps"; self-hosting guide. | [KitchenOwl README: features, apps, licence](https://raw.githubusercontent.com/TomBursch/kitchenowl/main/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source published on GitHub under AGPL-3.0. | [KitchenOwl README: features, apps, licence](https://raw.githubusercontent.com/TomBursch/kitchenowl/main/README.md) | 2026-10-11 |
+
+### Kokoro TTS `kokoro-tts`
+
+**Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | hexgrad/kokoro: 'An inference library for Kokoro-82M', linked to hf.co/hexgrad/Kokoro-82M. | [Official repository README: model description, languages, licence](https://github.com/hexgrad/kokoro) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Kokoro is an open-weight TTS model… With Apache-licensed weights'. | [Official repository README: model description, languages, licence](https://github.com/hexgrad/kokoro) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | 'With Apache-licensed weights, Kokoro can be deployed anywhere from production environments to personal projects.' | [Official repository README: model description, languages, licence](https://github.com/hexgrad/kokoro) | 2026-10-11 |
+| Personal use | ✅ Confirmed | '…can be deployed anywhere from production environments to personal projects.' | [Official repository README: model description, languages, licence](https://github.com/hexgrad/kokoro) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository sidebar lists 'Apache-2.0 license'. | [Official repository README: model description, languages, licence](https://github.com/hexgrad/kokoro) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Setup installs espeak-ng, 'used for English OOD fallback and some non-English languages'; Japanese needs 'pip install misaki[ja]', Mandarin 'misaki[zh]'. | [Official repository README: model description, languages, licence](https://github.com/hexgrad/kokoro) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Inference code is public in the repository and on PyPI ('pip install kokoro'). | [Official repository README: model description, languages, licence](https://github.com/hexgrad/kokoro) | 2026-10-11 |
 
 ### Komga `komga`
 
@@ -2490,6 +3313,63 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Kopia `kopia`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the kopia/kopia repository; site kopia.io. | [README: features, storage, licence](https://raw.githubusercontent.com/kopia/kopia/master/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Kopia is a fast and secure open-source backup/restore tool" | [README: features, storage, licence](https://raw.githubusercontent.com/kopia/kopia/master/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Kopia is licensed under the Apache License, Version 2.0." | [README: features, storage, licence](https://raw.githubusercontent.com/kopia/kopia/master/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "You must provision and pay for the storage provider"; "Kopia does not 'image' your whole machine"; Rclone support is experimental. | [README: features, storage, licence](https://raw.githubusercontent.com/kopia/kopia/master/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | CLI and GUI packages for Windows 10+, macOS 10.11+ and Linux (amd64, armhf, arm64); Docker images. | [Official installation guide: platforms and variants](https://kopia.io/docs/installation/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "Kopia is open source." | [README: features, storage, licence](https://raw.githubusercontent.com/kopia/kopia/master/README.md) | 2026-10-11 |
+
+### Krayin CRM `krayin-crm`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Repository About links krayincrm.com. | [GitHub README: introduction, requirements and licence](https://github.com/krayin/laravel-crm) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Krayin CRM is a fully open-source CRM framework which will always be free under the MIT License." | [GitHub README: introduction, requirements and licence](https://github.com/krayin/laravel-crm) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository licence: MIT license. | [GitHub README: introduction, requirements and licence](https://github.com/krayin/laravel-crm) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Requirements: "RAM: 3 GB or higher", "PHP: 8.3 or higher"; cloud hosting, SaaS and WhatsApp/VoIP extensions are separate offerings. | [GitHub README: introduction, requirements and licence](https://github.com/krayin/laravel-crm) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Installed with Composer on Apache or NGINX, or via Docker. | [GitHub README: introduction, requirements and licence](https://github.com/krayin/laravel-crm) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "Free & Opensource Laravel CRM solution for SMEs and Enterprises". | [GitHub README: introduction, requirements and licence](https://github.com/krayin/laravel-crm) | 2026-10-11 |
+
+### Krita AI Diffusion `krita-ai-diffusion`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Acly/krita-ai-diffusion README links www.interstice.cloud and docs.interstice.cloud as the project's introduction and docs. | [Official repository README: features, requirements, licence](https://github.com/Acly/krita-ai-diffusion) | 2026-10-11 |
+| Free status | ✅ Confirmed | Repository is published under GPL-3.0; README goal 'Local, Open, Free… run everything local on your hardware.' | [Official repository README: features, requirements, licence](https://github.com/Acly/krita-ai-diffusion) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository sidebar lists 'GPL-3.0 license'. | [Official repository README: features, requirements, licence](https://github.com/Acly/krita-ai-diffusion) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'To run locally a powerful graphics card with at least 6 GB VRAM (NVIDIA) is recommended'; CPU 'supported, but very slow'; 'Required version: 5.2.0 or newer'. | [Official repository README: features, requirements, licence](https://github.com/Acly/krita-ai-diffusion) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | README 'Operating System': 'Windows, Linux, MacOS'. | [Official repository README: features, requirements, licence](https://github.com/Acly/krita-ai-diffusion) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source is public; README: 'We are committed to open source models.' | [Official repository README: features, requirements, licence](https://github.com/Acly/krita-ai-diffusion) | 2026-10-11 |
+
 ### Lahari Music `lahari-music`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2508,6 +3388,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | YouTube Help says ads before and during videos are removed only by paid YouTube Premium. | [YouTube Help: Premium removes ads shown before and during videos, so free viewing is ad-supported](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Leonardo.Ai `leonardo-ai`
+
+**Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | Pricing page on leonardo.ai, '© 2026 All Rights Reserved, Leonardo Interactive Pty Ltd'. | [Pricing page: Free plan allowance, feature table and FAQ on ownership](https://leonardo.ai/pricing/) | 2026-10-11 |
+| Free status | ✅ Confirmed | FREE plan '$0 /month' alongside paid Essential, Premium and Ultimate plans. | [Pricing page: Free plan allowance, feature table and FAQ on ownership](https://leonardo.ai/pricing/) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | FREE: 'Fast Tokens 150 / day', 'Creations access Public', 'Quality settings Basic', 'Personal collections 1'; Rollover Token Bank '-'. | [Pricing page: Free plan allowance, feature table and FAQ on ownership](https://leonardo.ai/pricing/) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | FAQ: 'Free tier users: While Leonardo.Ai owns rights to the images you create, you're granted a non-exclusive, royalty-free licence to use your generated content for commercial purposes.' | [Pricing page: Free plan allowance, feature table and FAQ on ownership](https://leonardo.ai/pricing/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Free-plan table: Personal AI Model Training '-', Private Generations '-', Top-up Tokens '-'; 'Token Top-up Packs are available to paid users only.' | [Pricing page: Free plan allowance, feature table and FAQ on ownership](https://leonardo.ai/pricing/) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Essential $12/month, Premium $30/month, Ultimate $60/month, ex. tax. | [Pricing page: Free plan allowance, feature table and FAQ on ownership](https://leonardo.ai/pricing/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | Page footer shows 'Download on App Store' and 'Get it on Google Play' alongside the web app. | [Pricing page: Free plan allowance, feature table and FAQ on ownership](https://leonardo.ai/pricing/) | 2026-10-11 |
 
 ### Libby `libby-library-app`
 
@@ -2604,6 +3503,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Loop Habit Tracker `loop-habit-tracker`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of iSoron/uhabits: "Loop is a mobile app that helps you create and maintain good habits". | [Loop Habit Tracker README](https://raw.githubusercontent.com/iSoron/uhabits/dev/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | "All features are available to all users. There are no in-app purchases." | [Loop Habit Tracker README](https://raw.githubusercontent.com/iSoron/uhabits/dev/README.md) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | "Loop doesn't require an Internet connection or online account registration." | [Loop Habit Tracker README](https://raw.githubusercontent.com/iSoron/uhabits/dev/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "under the terms of the GNU General Public License ... either version 3 of the License, or (at your option) any later version." | [Loop Habit Tracker README](https://raw.githubusercontent.com/iSoron/uhabits/dev/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "The easiest way to install Loop is through the Google Play Store or F-Droid." | [Loop Habit Tracker README](https://raw.githubusercontent.com/iSoron/uhabits/dev/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "The app is completely open-source (GPLv3)." | [Loop Habit Tracker README](https://raw.githubusercontent.com/iSoron/uhabits/dev/README.md) | 2026-10-11 |
+
 ### Luanti (formerly Minetest) `luanti`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2623,6 +3541,82 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | The downloads page has sections for Windows, Android, Linux, macOS and the BSDs. | [Downloads: Windows, Android (Play/F-Droid/APK), Linux, macOS, BSD; warning about unofficial Play Store builds](https://www.luanti.org/en/downloads/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | LICENSE.txt licenses the source under the LGPL and the bundled media under Creative Commons licences. | [LICENSE.txt: code LGPL 2.1+; textures and sounds CC BY-SA 3.0 and others](https://raw.githubusercontent.com/luanti-org/luanti/master/LICENSE.txt) | 2026-10-11 |
 
+### Lunacy `lunacy`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | icons8.com/lunacy is the Icons8 product page for Lunacy. | [Product page: features, platforms](https://icons8.com/lunacy) | 2026-10-11 |
+| Free status | ✅ Confirmed | Free plan '$0 ... For beginners'; FAQ: 'Lunacy provides an extensive free plan'. | [Pricing page: free plan limits, Pro price](https://icons8.com/lunacy-pricing) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Free: 'Limited to 10 cloud docs', '30-day version history', 'Low-res raster icons', 'No AI tools', 'Linking to Icons8 is required'. | [Pricing page: free plan limits, Pro price](https://icons8.com/lunacy-pricing) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Free plan omits editable vector assets, AI upscaler and background remover, and unlimited cloud documents. | [Pricing page: free plan limits, Pro price](https://icons8.com/lunacy-pricing) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Pro '$11.99 per user/month billed yearly'; Enterprise 'Custom price'. | [Pricing page: free plan limits, Pro price](https://icons8.com/lunacy-pricing) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | FAQ: 'Windows, macOS, and Linux. Lunacy has native apps for all the popular operating systems.' Product page also says 'Lunacy is now in your browser!' | [Pricing page: free plan limits, Pro price](https://icons8.com/lunacy-pricing) | 2026-10-11 |
+
+### Material Maker `material-maker`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Official URL | ✅ Confirmed | materialmaker.org, 'The open source procedural materials authoring tool'. | [Official site: description, download links](https://www.materialmaker.org/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Material Maker is free and open source ... If you don't feel like paying anything, just click the "No thanks, just take me to the downloads" link'. | [Official itch.io page: pay-what-you-want, platforms, licences](https://rodzilla.itch.io/material-maker) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository licence: MIT. | [GitHub repository: MIT licence](https://github.com/RodZill4/material-maker) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Site lists an 'experimental painting tool'; Steam is a separate paid storefront. | [Official site: description, download links](https://www.materialmaker.org/) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | 'Name your own price'; author comment: 'it is paid on both Steam and itch. Except you choose the price on itch. And yeah, you can choose 0$.' | [Official itch.io page: pay-what-you-want, platforms, licences](https://rodzilla.itch.io/material-maker) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | 'A downloadable tool for Windows, macOS, and Linux'. | [Official itch.io page: pay-what-you-want, platforms, licences](https://rodzilla.itch.io/material-maker) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | 'Unless otherwise specified, files in this repository are licensed under the MIT license.' | [GitHub repository: MIT licence](https://github.com/RodZill4/material-maker) | 2026-10-11 |
+
+### Material Symbols `material-symbols`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | google/material-design-icons, 'Material Design icons by Google (Material Symbols)'. | [Official Google repository README: sets, axes, licence, limits](https://github.com/google/material-design-icons) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'We have made these icons available for you to incorporate into your products under the Apache License Version 2.0.' | [Official Google repository README: sets, axes, licence, limits](https://github.com/google/material-design-icons) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | 'incorporate into your products ... Feel free to remix and re-share ... We'd love attribution ... but it's not required.' | [Official Google repository README: sets, axes, licence, limits](https://github.com/google/material-design-icons) | 2026-10-11 |
+| Licence | ✅ Confirmed | README licence section: Apache License Version 2.0. | [Official Google repository README: sets, axes, licence, limits](https://github.com/google/material-design-icons) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'only the 20 and 24 px versions are designed with perfect pixel-grid alignment', 'there are no two-tone icons'; third-party logos excluded; npm not maintained by Google past v3. | [Official Google repository README: sets, axes, licence, limits](https://github.com/google/material-design-icons) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Repository published under the Apache-2.0 licence. | [Official Google repository README: sets, axes, licence, limits](https://github.com/google/material-design-icons) | 2026-10-11 |
+
+### Mautic `mautic`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README links www.mautic.org as the project site. | [GitHub README: benefits and installation](https://github.com/mautic/mautic) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Self-host completely free, forever"; "use it for free, no strings attached". | [GitHub README: benefits and installation](https://github.com/mautic/mautic) | 2026-10-11 |
+| Licence | ✅ Confirmed | GNU General Public License version 3 "or (at your option) any later version". | [LICENSE.txt](https://raw.githubusercontent.com/mautic/mautic/7.x/LICENSE.txt) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Install from GitHub only if you are comfortable using the command line"; hosted access is via "Request a trial". | [GitHub README: benefits and installation](https://github.com/mautic/mautic) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "Don't rely on third-party SaaS, run your own marketing automation"; production package at mautic.org/download. | [GitHub README: benefits and installation](https://github.com/mautic/mautic) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "Mautic is released under the GPL v3." | [LICENSE.txt](https://raw.githubusercontent.com/mautic/mautic/7.x/LICENSE.txt) | 2026-10-11 |
+
 ### Medito `medito`
 
 **Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2641,6 +3635,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | The repository's LICENSE file is the AGPL-3.0. | [LICENSE file in meditohq/medito-app: GNU Affero General Public License v3](https://raw.githubusercontent.com/meditohq/medito-app/develop/LICENSE) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ✅ Confirmed | The app's source is public under the AGPL-3.0. | [LICENSE file in meditohq/medito-app: GNU Affero General Public License v3](https://raw.githubusercontent.com/meditohq/medito-app/develop/LICENSE) | 2026-10-11 |
+
+### Microsoft PowerToys `microsoft-powertoys`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Public repository microsoft/PowerToys. | [GitHub repository page: MIT licence badge](https://github.com/microsoft/PowerToys) | 2026-10-11 |
+| Free status | ✅ Confirmed | Repository published under the MIT licence; installers on GitHub releases. | [GitHub repository page: MIT licence badge](https://github.com/microsoft/PowerToys) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository sidebar lists "MIT license". | [GitHub repository page: MIT licence badge](https://github.com/microsoft/PowerToys) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "The application logs basic diagnostic data (telemetry)." | [README: utilities, installation, privacy](https://raw.githubusercontent.com/microsoft/PowerToys/main/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "a collection of utilities that help you customize Windows"; install via GitHub, Microsoft Store or WinGet. | [README: utilities, installation, privacy](https://raw.githubusercontent.com/microsoft/PowerToys/main/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source on GitHub under MIT; contributions accepted under a CLA. | [GitHub repository page: MIT licence badge](https://github.com/microsoft/PowerToys) | 2026-10-11 |
 
 ### Mindustry `mindustry`
 
@@ -2680,6 +3693,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | 'Access on web and mobile'; App Store and Google Play links in the footer. | [Official Mistral pricing page: Free plan feature list, comparison table, FAQ 'Does Mistral have a free plan?'; iOS and Android app links](https://mistral.ai/pricing) | 2026-10-11 |
 
+### MKVToolNix `mkvtoolnix`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | mkvtoolnix.download, '© 2002 – 2026 Moritz Bunkus'; v102.0 released 2026-09-14. | [Official site: description, platforms, release news](https://mkvtoolnix.download/) | 2026-10-11 |
+| Free status | ✅ Confirmed | README: 'This code comes under the GPL v2 (see www.gnu.org or the file COPYING).' | [Codeberg repository README: licence and third-party licences](https://codeberg.org/mbunkus/mkvtoolnix) | 2026-10-11 |
+| Licence | ✅ Confirmed | 'This code comes under the GPL v2'. | [Codeberg repository README: licence and third-party licences](https://codeberg.org/mbunkus/mkvtoolnix) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 2026-01-02: author would stop macOS binaries; 2026-05-24: two community members took over macOS builds. | [Official site: description, platforms, release news](https://mkvtoolnix.download/) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Title 'Matroska tools for Linux/Unix and Windows'; 2026-05-24 news: macOS DMGs provided again for releases 98 and newer. | [Official site: description, platforms, release news](https://mkvtoolnix.download/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source published on Codeberg under GPL v2. | [Codeberg repository README: licence and third-party licences](https://codeberg.org/mbunkus/mkvtoolnix) | 2026-10-11 |
+
 ### Monkeytype `monkeytype`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2717,6 +3749,63 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | Free YouTube viewing is ad-supported; Premium removes the ads. | [YouTube Help: ads before and during videos are removed only with paid Premium](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### MusicBrainz Picard `musicbrainz-picard`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | picard.musicbrainz.org, 'Brought to you by MetaBrainz Foundation'. | [Official site: features and licence](https://picard.musicbrainz.org/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Picard is licensed under GPL 2.0 or later, and is hosted on GitHub'. | [Official site: features and licence](https://picard.musicbrainz.org/) | 2026-10-11 |
+| Licence | ✅ Confirmed | 'licensed under GPL 2.0 or later'. | [Official site: features and licence](https://picard.musicbrainz.org/) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Downloads for Windows (installer, portable, Microsoft Store), macOS (arm64 and x86_64) and Linux (Flatpak, Snap, distro packages); also Haiku, FreeBSD, OpenBSD. | [Downloads page: platforms](https://picard.musicbrainz.org/downloads/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Section headed 'Open Source'. | [Official site: features and licence](https://picard.musicbrainz.org/) | 2026-10-11 |
+
+### myAadhaar (UIDAI) `myaadhaar-uidai`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | Copyright © 2026 Unique Identification Authority of India; links to the My Aadhaar Portal and Aadhaar App. | [UIDAI homepage: services, fees, Aadhaar app FAQ](https://uidai.gov.in/en/) | 2026-10-11 |
+| Free status | ✅ Confirmed | Service tiles show "Download Aadhaar — Get your Aadhaar instantly" with no fee, while "Address Update" shows "₹75 fee". Mandatory Biometric Update "is FREE OF COST for children aged 5-17 years" till 30 September 2027. | [UIDAI homepage: services, fees, Aadhaar app FAQ](https://uidai.gov.in/en/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | App registration: "Enters their Aadhaar number → Agrees to the Terms ... → Chooses the SIM card → Performs Face Authentication". "Visit your nearest Aadhaar Seva Kendra for service that needs to be done in person." | [UIDAI homepage: services, fees, Aadhaar app FAQ](https://uidai.gov.in/en/) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | "Address Update ... ₹75 fee"; "Charges waived off for availing service of email address update through Aadhaar mobile application till 31.12.2026". | [UIDAI homepage: services, fees, Aadhaar app FAQ](https://uidai.gov.in/en/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | "You can download the Aadhaar app on your Android/iOS device from the Play Store/App Store." Requires "Android version 9.0 and above and iOS version 16.0 and above". | [UIDAI homepage: services, fees, Aadhaar app FAQ](https://uidai.gov.in/en/) | 2026-10-11 |
+
+### MyPaint `mypaint`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | mypaint.app, linked from the GitHub repository 'About' box. | [Official site: description, downloads per OS](https://www.mypaint.app/en/) | 2026-10-11 |
+| Free status | ✅ Confirmed | README 'Legal info': 'MyPaint is Free/Libre/Open Source software.' | [GitHub repository: licence, features, nightly notes](https://github.com/mypaint/mypaint) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository sidebar: 'GPL-2.0 license'. | [GitHub repository: licence, features, nightly notes](https://github.com/mypaint/mypaint) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | README: 'Using alpha releases comes with its own risks. Sometimes bugs can sneak in that causes crashes'. | [GitHub repository: licence, features, nightly notes](https://github.com/mypaint/mypaint) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Download v2.0.1 via Flathub (Linux), MacPorts (macOS) and a Windows installer. | [Official site: description, downloads per OS](https://www.mypaint.app/en/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Repository published publicly with a GPL-2.0 licence file. | [GitHub repository: licence, features, nightly notes](https://github.com/mypaint/mypaint) | 2026-10-11 |
 
 ### n8n `n8n`
 
@@ -2774,6 +3863,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The Gallery makes no warranty that other parties will not impose fees and can only convey the rights it has. | [Free Images and Open Access page: 60,000+ images free for any use, commercial or non-commercial; CC0 dataset on GitHub; no use fees](https://www.nga.gov/artworks/free-images-and-open-access) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Netdata `netdata`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Public repository netdata/netdata, linked to www.netdata.cloud. | [GitHub repository page: GPL-3.0 licence badge](https://github.com/netdata/netdata) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Netdata Agent – Open-source core (GPLv3+)." | [README: ecosystem, licences, platforms, FAQ](https://raw.githubusercontent.com/netdata/netdata/master/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | Netdata Agent licence listed as "GPL v3+". | [README: ecosystem, licences, platforms, FAQ](https://raw.githubusercontent.com/netdata/netdata/master/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Netdata UI – Closed-source but free to use with Netdata Agent and Cloud." "Netdata Cloud – Closed-source, with free and paid tiers." | [README: ecosystem, licences, platforms, FAQ](https://raw.githubusercontent.com/netdata/netdata/master/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Platforms badge: "Linux \| macOS \| FreeBSD \| Windows"; installation guides for each. | [README: ecosystem, licences, platforms, FAQ](https://raw.githubusercontent.com/netdata/netdata/master/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Repository sidebar lists "GPL-3.0 license". | [GitHub repository page: GPL-3.0 licence badge](https://github.com/netdata/netdata) | 2026-10-11 |
+
+### Nginx Proxy Manager `nginx-proxy-manager`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the NginxProxyManager/nginx-proxy-manager repository; docs at nginxproxymanager.com. | [README: features, setup, platform notes](https://raw.githubusercontent.com/NginxProxyManager/nginx-proxy-manager/develop/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | MIT: permission granted "free of charge, to any person obtaining a copy of this software". | [LICENSE: MIT](https://raw.githubusercontent.com/NginxProxyManager/nginx-proxy-manager/develop/LICENSE) | 2026-10-11 |
+| Licence | ✅ Confirmed | "MIT License Copyright (c) 2017" | [LICENSE: MIT](https://raw.githubusercontent.com/NginxProxyManager/nginx-proxy-manager/develop/LICENSE) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "armv7 is no longer supported in version 2.14+"; quick setup maps ports 80, 81 and 443. | [README: features, setup, platform notes](https://raw.githubusercontent.com/NginxProxyManager/nginx-proxy-manager/develop/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "This project comes as a pre-built Docker image" | [README: features, setup, platform notes](https://raw.githubusercontent.com/NginxProxyManager/nginx-proxy-manager/develop/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source published under the MIT licence. | [LICENSE: MIT](https://raw.githubusercontent.com/NginxProxyManager/nginx-proxy-manager/develop/LICENSE) | 2026-10-11 |
 
 ### NHK WORLD-JAPAN `nhk-world-japan-tv`
 
@@ -2965,6 +4092,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### OpenTracks `opentracks`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "OpenTracks: a sport tracker — OpenTracks is a sport tracking application that completely respects your privacy." | [OpenTracks README](https://raw.githubusercontent.com/OpenTracksApp/OpenTracks/main/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | Download table: "Free (F-Droid)", "Free (Nightly for F-Droid)", "Donations". | [OpenTracks README](https://raw.githubusercontent.com/OpenTracksApp/OpenTracks/main/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Apache License Version 2.0, January 2004". | [OpenTracks LICENSE file](https://raw.githubusercontent.com/OpenTracksApp/OpenTracks/main/LICENSE) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "No Internet access: Internet is not used"; maps via Dashboard API: "The reference implementation is OSMDashboard, which presents an OpenStreetMap map". | [OpenTracks README](https://raw.githubusercontent.com/OpenTracksApp/OpenTracks/main/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | F-Droid and Google Play badges; Android package names listed. | [OpenTracks README](https://raw.githubusercontent.com/OpenTracksApp/OpenTracks/main/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source published under the Apache License 2.0. | [OpenTracks LICENSE file](https://raw.githubusercontent.com/OpenTracksApp/OpenTracks/main/LICENSE) | 2026-10-11 |
+
 ### OpenTTD `openttd`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2983,6 +4129,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The download page says a base graphics set is required, downloadable on first run, and TTD files must be owned and cannot be downloaded. | [Download page: stable 15.3 for Linux, macOS, Windows; base graphics requirement](https://www.openttd.org/downloads/openttd-releases/latest) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The download page lists Linux, macOS (Intel/Apple Silicon) and Windows (32-bit, 64-bit, ARM64) builds. | [Download page: stable 15.3 for Linux, macOS, Windows; base graphics requirement](https://www.openttd.org/downloads/openttd-releases/latest) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The README's licensing section applies GPL v2.0 to all files except listed third-party components. | [README: GPL v2.0 licensing, free base sets, free on Steam/GOG/Microsoft Store](https://raw.githubusercontent.com/OpenTTD/OpenTTD/master/README.md) | 2026-10-11 |
+
+### OrangeHRM Starter `orangehrm-starter`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Official OrangeHRM site, open-source section. | [Official open-source page and site navigation](https://www.orangehrm.com/en/open-source) | 2026-10-11 |
+| Free status | ✅ Confirmed | Navigation: "Starter (Open Source) Completely FREE & Open-source HR Software". | [Official open-source page and site navigation](https://www.orangehrm.com/en/open-source) | 2026-10-11 |
+| Licence | ✅ Confirmed | "either version 3 of the License, or (at your option) any later version"; repository shows GPL-3.0. | [GitHub README: OrangeHRM Starter, licence, installation](https://github.com/orangehrm/orangehrm) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Advanced (30 Day Free Trial) Experience OrangeHRM Advanced, commitment-free." | [Official open-source page and site navigation](https://www.orangehrm.com/en/open-source) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Install guides for Linux and Windows, Docker pulls badge, and links to Google Play and App Store apps. | [GitHub README: OrangeHRM Starter, licence, installation](https://github.com/orangehrm/orangehrm) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "OrangeHRM is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License". | [GitHub README: OrangeHRM Starter, licence, installation](https://github.com/orangehrm/orangehrm) | 2026-10-11 |
+
+### Otter.ai `otter-ai`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | otter.ai/pricing: 'Choose the plan that's right for you', © 2026 Otter.ai Inc. | [Pricing page: Basic plan and full comparison table](https://otter.ai/pricing) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Basic — Free forever' alongside Pro, Business and Enterprise. | [Pricing page: Basic plan and full comparison table](https://otter.ai/pricing) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Basic: '300 minutes per user' monthly (no rollover), 'Max transcription time per conversation 30 minutes', '3 lifetime per user' file imports. | [Pricing page: Basic plan and full comparison table](https://otter.ai/pricing) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Basic: 'Conversation history 25 most recent'; 'Max monthly queries for Otter AI Chat 20 per user (3 per conversation)'. | [Pricing page: Basic plan and full comparison table](https://otter.ai/pricing) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Pro $16.99/user/month monthly or $8.33 billed annually; Business $30 monthly or $19.99 annually. | [Pricing page: Basic plan and full comparison table](https://otter.ai/pricing) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | Download for Mac and Windows; 'iOS and Android apps'; 'Web and mobile recording'; Chrome extension. | [Pricing page: Basic plan and full comparison table](https://otter.ai/pricing) | 2026-10-11 |
 
 ### Overcast `overcast`
 
@@ -3041,6 +4225,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Plausible Community Edition `plausible-community-edition`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Official URL | ✅ Confirmed | Repository README links plausible.io as the project site. | [GitHub README: CE vs cloud comparison table and licence section](https://github.com/plausible/analytics) | 2026-10-11 |
+| Free status | ✅ Confirmed | "we have a free as in beer and self-hosted solution called Plausible Community Edition (CE)"; "You never have to pay any fees to us." | [GitHub README: CE vs cloud comparison table and licence section](https://github.com/plausible/analytics) | 2026-10-11 |
+| Licence | ✅ Confirmed | AGPLv3 or any later version; the JavaScript tracker is released under the MIT licence. | [GitHub README: CE vs cloud comparison table and licence section](https://github.com/plausible/analytics) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Premium features (marketing funnels, ecommerce revenue goals, SSO and sites API) are not available" in CE; CE is community supported only. | [GitHub README: CE vs cloud comparison table and licence section](https://github.com/plausible/analytics) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Cloud: "we charge a subscription fee". CE: you pay for your own server, CDN and backups. | [GitHub README: CE vs cloud comparison table and licence section](https://github.com/plausible/analytics) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | CE: "You need to get a server and you need to manage your infrastructure." | [GitHub README: CE vs cloud comparison table and licence section](https://github.com/plausible/analytics) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "Plausible CE is open source under the GNU Affero General Public License Version 3 (AGPLv3) or any later version." | [GitHub README: CE vs cloud comparison table and licence section](https://github.com/plausible/analytics) | 2026-10-11 |
+
 ### PlayingCards.io `playingcards-io`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -3078,6 +4281,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | The README says PlayStrategy is licensed under the GNU Affero General Public License 3 or any later version. | [Official repository README: AGPL-3.0 or later](https://raw.githubusercontent.com/Mind-Sports-Games/lila/master/README.md) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The about page says dozens of abstract strategy games are played directly in the browser with no downloads. | [About PlayStrategy: browser play with no downloads, history](https://playstrategy.org/about) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The server source is published in the Mind-Sports-Games/lila repository under the AGPL. | [Official repository README: AGPL-3.0 or later](https://raw.githubusercontent.com/Mind-Sports-Games/lila/master/README.md) | 2026-10-11 |
+
+### Pocket ID `pocket-id`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the pocket-id/pocket-id repository, linking demo and docs.pocket-id.org. | [README: description and design goal](https://raw.githubusercontent.com/pocket-id/pocket-id/main/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | BSD 2-Clause: redistribution and use in source and binary forms are permitted. | [LICENSE: BSD 2-Clause](https://raw.githubusercontent.com/pocket-id/pocket-id/main/LICENSE) | 2026-10-11 |
+| Licence | ✅ Confirmed | "BSD 2-Clause License Copyright (c) 2024, Elias Schneider" | [LICENSE: BSD 2-Clause](https://raw.githubusercontent.com/pocket-id/pocket-id/main/LICENSE) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "it only supports passkey authentication, which means you don't need a password" | [README: description and design goal](https://raw.githubusercontent.com/pocket-id/pocket-id/main/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "The easiest and recommended way is to use Docker." | [README: description and design goal](https://raw.githubusercontent.com/pocket-id/pocket-id/main/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source published under the BSD 2-Clause licence. | [LICENSE: BSD 2-Clause](https://raw.githubusercontent.com/pocket-id/pocket-id/main/LICENSE) | 2026-10-11 |
 
 ### Podcast Addict `podcast-addict`
 
@@ -3174,6 +4396,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Portainer Community Edition `portainer-ce`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Official URL | ✅ Confirmed | README of the portainer/portainer repository; product site portainer.io. | [README: CE scope, intended use, licensing](https://raw.githubusercontent.com/portainer/portainer/develop/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Portainer Community Edition is a free, lightweight container management UI ... provided as-is, at no cost" | [README: CE scope, intended use, licensing](https://raw.githubusercontent.com/portainer/portainer/develop/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Portainer is licensed under the zlib license." | [README: CE scope, intended use, licensing](https://raw.githubusercontent.com/portainer/portainer/develop/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "It is not intended for, or supported in, business, production, or any other environment where uptime, security posture, or data integrity matter." | [README: CE scope, intended use, licensing](https://raw.githubusercontent.com/portainer/portainer/develop/README.md) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Business Edition is the supported, paid version; "Take3 – get 3 free nodes of Portainer Business". | [README: CE scope, intended use, licensing](https://raw.githubusercontent.com/portainer/portainer/develop/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Business Edition "builds on the same open-source base"; source under zlib. | [README: CE scope, intended use, licensing](https://raw.githubusercontent.com/portainer/portainer/develop/README.md) | 2026-10-11 |
+
 ### PyChess Variants (pychess.org) `pychess-variants`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -3192,6 +4433,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | The repository's LICENSE file is the GNU Affero General Public License, Version 3, 19 November 2007. | [Official LICENSE: GNU Affero General Public License v3](https://raw.githubusercontent.com/gbtami/pychess-variants/master/LICENSE) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ✅ Confirmed | The README describes Pychess-variants as a free, open-source chess server and documents how to build and run it. | [Official README: free open-source variants server, 'will remain free forever'](https://raw.githubusercontent.com/gbtami/pychess-variants/master/README.md) | 2026-10-11 |
+
+### qBittorrent `qbittorrent`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Official site www.qbittorrent.org, linked from the GitHub repository. | [Official site: about, features, platforms](https://www.qbittorrent.org/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "The qBittorrent project aims to provide an open-source software alternative to µTorrent." Features list includes "No Ads". | [Official site: about, features, platforms](https://www.qbittorrent.org/) | 2026-10-11 |
+| Licence | ✅ Confirmed | "The qBittorrent source code is licensed under the GNU General Public License, version 2 or (at your option) any later version (GPLv2+)." | [COPYING: licence terms](https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/COPYING) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "the binary distribution is licensed under GNU General Public License, version 3 or (at your option) any later version (GPLv3+), because it contains GPLv3+ assets" | [COPYING: licence terms](https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/COPYING) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "Available on all platforms: Windows, Linux, macOS, FreeBSD, OS/2" | [Official site: about, features, platforms](https://www.qbittorrent.org/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Public source repository with COPYING, GPLv2 and GPLv3 licence files. | [GitHub repository page](https://github.com/qbittorrent/qBittorrent) | 2026-10-11 |
 
 ### Radio Browser `radio-browser`
 
@@ -3230,6 +4490,101 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | YouTube shows ads unless the viewer pays for Premium. | [YouTube Help: Premium removes the ads shown before and during videos, so free viewing is ad-supported](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### RBI Financial Education `rbi-financial-education`
+
+**Partially verified** · shown on the site as Partially verified · 2/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Reserve Bank of India's Financial Education Initiative". | [RBI Financial Education home](https://www.rbi.org.in/FinancialEducation/Home.aspx) | 2026-10-11 |
+| Free status | ✅ Confirmed | "it has created critical volume of literature and has uploaded on its website in 13 languages for banks and other stakeholders to download and use." | [RBI Financial Education home](https://www.rbi.org.in/FinancialEducation/Home.aspx) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Real-ESRGAN `real-esrgan`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | xinntao/Real-ESRGAN is the repository for the Real-ESRGAN paper by Xintao Wang et al., Tencent ARC Lab. | [Official repository README: usage, executables, licence](https://github.com/xinntao/Real-ESRGAN) | 2026-10-11 |
+| Free status | ✅ Confirmed | Repository is published under BSD-3-Clause with downloadable release executables. | [Official repository README: usage, executables, licence](https://github.com/xinntao/Real-ESRGAN) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository sidebar lists 'BSD-3-Clause license'. | [Official repository README: usage, executables, licence](https://github.com/xinntao/Real-ESRGAN) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'You can try in our website: ARC Demo (now only support RealESRGAN_x4plus_anime_6B)'. | [Official repository README: usage, executables, licence](https://github.com/xinntao/Real-ESRGAN) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | 'You can download Windows / Linux / MacOS executable files for Intel/AMD/Nvidia GPU.' | [Official repository README: usage, executables, licence](https://github.com/xinntao/Real-ESRGAN) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source code is public and installable via 'python setup.py develop' or PyPI. | [Official repository README: usage, executables, licence](https://github.com/xinntao/Real-ESRGAN) | 2026-10-11 |
+
+### rembg `rembg`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | danielgatis/rembg README: 'Rembg is a tool to remove image backgrounds. It can be used as a CLI, Python library, HTTP server, or Docker container.' | [Official repository README: installation, models, licence](https://github.com/danielgatis/rembg) | 2026-10-11 |
+| Free status | ✅ Confirmed | README 'License': 'Licensed under the MIT License.' | [Official repository README: installation, models, licence](https://github.com/danielgatis/rembg) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository sidebar lists 'MIT license'; README: 'Copyright (c) 2020-present Daniel Gatis'. | [Official repository README: installation, models, licence](https://github.com/danielgatis/rembg) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'RMBG-2.0 is released under a BRIA license that requires a paid agreement for commercial use. Model weights carry their own licenses, independent of rembg's MIT license.' | [Official repository README: installation, models, licence](https://github.com/danielgatis/rembg) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Source code is public and installed with pip install "rembg[cpu,cli]". | [Official repository README: installation, models, licence](https://github.com/danielgatis/rembg) | 2026-10-11 |
+
+### restic `restic`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the restic/restic repository. | [README: platforms, backends, licence](https://raw.githubusercontent.com/restic/restic/master/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Restic is licensed under BSD 2-Clause License." | [README: platforms, backends, licence](https://raw.githubusercontent.com/restic/restic/master/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Restic is licensed under BSD 2-Clause License. You can find the complete text in LICENSE." | [README: platforms, backends, licence](https://raw.githubusercontent.com/restic/restic/master/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Losing your password means that your data is irrecoverably lost." | [README: platforms, backends, licence](https://raw.githubusercontent.com/restic/restic/master/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "It supports the three major operating systems (Linux, macOS, Windows) and a few smaller ones (FreeBSD, OpenBSD)." | [README: platforms, backends, licence](https://raw.githubusercontent.com/restic/restic/master/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source published under the OSI-approved BSD 2-Clause licence. | [README: platforms, backends, licence](https://raw.githubusercontent.com/restic/restic/master/README.md) | 2026-10-11 |
+
+### reveal.js `reveal-js`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Check out the live demo at revealjs.com". | [GitHub README](https://github.com/hakimel/reveal.js) | 2026-10-11 |
+| Free status | ✅ Confirmed | "It enables anyone with a web browser to create beautiful presentations for free." | [GitHub README](https://github.com/hakimel/reveal.js) | 2026-10-11 |
+| Licence | ✅ Confirmed | "MIT licensed \| Copyright © 2011-2026 Hakim El Hattab". | [GitHub README](https://github.com/hakimel/reveal.js) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Want to create reveal.js presentation in a graphical editor? Try https://slides.com"; "Watch the reveal.js video course (paid)". | [GitHub README](https://github.com/hakimel/reveal.js) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "anyone with a web browser" can create presentations. | [GitHub README](https://github.com/hakimel/reveal.js) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "reveal.js is an open source HTML presentation framework." | [GitHub README](https://github.com/hakimel/reveal.js) | 2026-10-11 |
 
 ### Rijksmuseum collection `rijksmuseum-collection`
 
@@ -3287,6 +4642,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | COPYING contains the GNU General Public License, Version 3, 29 June 2007. | [COPYING: GNU General Public License version 3](https://raw.githubusercontent.com/scummvm/scummvm/master/COPYING) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The homepage lists Windows, Linux, macOS, iOS, Android, PS Vita, Switch and many more systems. | [Homepage: supported systems (Windows, Linux, macOS, iOS, Android and more)](https://www.scummvm.org/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The source repository ships the GPL version 3 as its COPYING file. | [COPYING: GNU General Public License version 3](https://raw.githubusercontent.com/scummvm/scummvm/master/COPYING) | 2026-10-11 |
+
+### Seafile Community Edition `seafile-community`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Official seafile.com download page for clients and server. | [Official download page: server, clients, Pro edition note](https://www.seafile.com/en/download/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Seafile is an open source cloud storage system with privacy protection and teamwork features." | [GitHub README: features and licence list](https://github.com/haiwen/seafile) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Desktop syncing client (this repository): GPLv2"; "Seafile Server core: AGPLv3". | [GitHub README: features and licence list](https://github.com/haiwen/seafile) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "You don't need a license file to run the pro edition for 3 users." | [Official download page: server, clients, Pro edition note](https://www.seafile.com/en/download/) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Server via Docker for Linux and Raspberry Pi; Android (Play Store/F-Droid) and iOS (App Store) clients. | [Official download page: server, clients, Pro edition note](https://www.seafile.com/en/download/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | License list: "Seafile Server core: AGPLv3", "Seahub (Seafile server Web UI): Apache License v2". | [GitHub README: features and licence list](https://github.com/haiwen/seafile) | 2026-10-11 |
+
+### SEBI Investor Website `sebi-investor-website`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Welcome to Investor website of Securities and Exchange Board of India". | [SEBI investor website homepage](https://investor.sebi.gov.in/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Toll-free Helpline Service for Investors ... available to investors from all over India and is in 7 languages"; education sections on the homepage are open to read. | [Investor Support: Ask SEBI, helpline, registration checks](https://investor.sebi.gov.in/Investor-support.html) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "SEBI will not provide any investment / legal advice." Helpline "available on all days from 9:00 a.m to 6:00 p.m (except on declared public holidays in Maharashtra and Sundays)". | [Investor Support: Ask SEBI, helpline, registration checks](https://investor.sebi.gov.in/Investor-support.html) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### Shattered Pixel Dungeon `shattered-pixel-dungeon`
 
@@ -3459,6 +4852,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Start Bootstrap `start-bootstrap`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Organisation profile links https://startbootstrap.com. | [GitHub organisation page: template repositories and their licences](https://github.com/StartBootstrap) | 2026-10-11 |
+| Free status | ✅ Confirmed | "A free, open source, Bootstrap admin theme created by Start Bootstrap"; repositories shown as MIT. | [GitHub organisation page: template repositories and their licences](https://github.com/StartBootstrap) | 2026-10-11 |
+| Licence | ✅ Confirmed | "The MIT License (MIT) Copyright (c) 2013-2023 Start Bootstrap LLC". | [LICENSE of the landing-page template](https://raw.githubusercontent.com/StartBootstrap/startbootstrap-landing-page/master/LICENSE) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Repository list shows last updates such as "Updated Jul 8, 2024" and "Updated Jun 20, 2024". | [GitHub organisation page: template repositories and their licences](https://github.com/StartBootstrap) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Template repositories are listed with the MIT licence (creative, sb-admin, agency, landing-page, grayscale, personal and others). | [GitHub organisation page: template repositories and their licences](https://github.com/StartBootstrap) | 2026-10-11 |
+
 ### STIRR `stirr-free-tv`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -3496,6 +4908,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The site says development has stopped and data is not fully CC BY compatible. | [Official site: features, GPLv3, data mostly CC BY compatible, runs on Linux and Windows, development stopped](https://cryham.org/stuntrally/) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The site says Stunt Rally runs on GNU/Linux and Windows. | [Official site: features, GPLv3, data mostly CC BY compatible, runs on Linux and Windows, development stopped](https://cryham.org/stuntrally/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The site describes Stunt Rally as FOSS under GPLv3 with mostly CC BY compatible data. | [Official site: features, GPLv3, data mostly CC BY compatible, runs on Linux and Windows, development stopped](https://cryham.org/stuntrally/) | 2026-10-11 |
+
+### Suno `suno`
+
+**Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | suno.com/pricing: 'Start making music for free — Plans for every creator'. | [Pricing page: Free, Pro and Premier plans and comparison table](https://suno.com/pricing) | 2026-10-11 |
+| Free status | ✅ Confirmed | Free plan '$0 /month' alongside Pro ($8/month) and Premier ($24/month). | [Pricing page: Free, Pro and Premier plans and comparison table](https://suno.com/pricing) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Free: '50 credits per day', 'Standard features only', 'Upload up to 8 min of audio', 'Shared creation queue'; available model 'Best free model (v6-mini)'. | [Pricing page: Free, Pro and Premier plans and comparison table](https://suno.com/pricing) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | Free plan: 'No commercial rights'. | [Pricing page: Free, Pro and Premier plans and comparison table](https://suno.com/pricing) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Free plan: 'No monthly song downloads', 'No add-on credit purchases', 'No stem separation'; 'Credits included in subscriptions do not carry over from day to day'. | [Pricing page: Free, Pro and Premier plans and comparison table](https://suno.com/pricing) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Pro $8/month with 2,500 credits; Premier $24/month with 10,000 credits; annual billing saves 20%. | [Pricing page: Free, Pro and Premier plans and comparison table](https://suno.com/pricing) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### Supabase `supabase`
 
@@ -3572,6 +5003,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | COPYING states the code is GPL version 3 or any later version, and lists the data licences (GPL, CC BY, CC BY-SA, public domain). | [COPYING: code GPL v3 or later; data under a mixture of licences](https://raw.githubusercontent.com/supertuxkart/stk-code/master/COPYING) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The download page offers Linux, Windows, macOS and Android builds and says version 1.5 is on the Apple App Store for iOS. | [Download page: free builds for Linux, Windows, macOS, Android, Switch homebrew; iOS on the App Store; itch.io donor gift package](https://supertuxkart.net/Download) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The full source is published in the official GitHub repository under the GPL. | [COPYING: code GPL v3 or later; data under a mixture of licences](https://raw.githubusercontent.com/supertuxkart/stk-code/master/COPYING) | 2026-10-11 |
+
+### Tandoor Recipes `tandoor-recipes`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README links the project site tandoor.dev and docs.tandoor.dev. | [Tandoor README: features, hosting, licence](https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | "This software and *all* its features are and will always be free for everyone to use and enjoy." | [Tandoor README: features, hosting, licence](https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "Beginning with version 0.10.0 the code in this repository is licensed under the GNU AGPL v3 license with a common clause selling exception." | [Tandoor README: features, hosting, licence](https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "A basic permission system exists but this application is not meant to be run as a public page." Hosted version "currently only available in germany". | [Tandoor README: features, hosting, licence](https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "Easy setup with Docker and included examples for Kubernetes, Unraid and Synology"; "Optimized for use on mobile devices". | [Tandoor README: features, hosting, licence](https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source is public, but the Commons Clause selling exception makes it source-available rather than OSI open source. | [Tandoor README: features, hosting, licence](https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/README.md) | 2026-10-11 |
+
+### Tenacity `tenacity`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | tenacityaudio.org is the project site; it links releases on Codeberg. | [Official site: description, platforms, features](https://tenacityaudio.org/) | 2026-10-11 |
+| Free status | ✅ Confirmed | README: 'This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License ... version 2 of the License, or (at your option) any later version.' | [Codeberg repository README: licence and contribution policy](https://codeberg.org/tenacityteam/tenacity) | 2026-10-11 |
+| Licence | ✅ Confirmed | README licence section: GNU GPL version 2 or any later version. | [Codeberg repository README: licence and contribution policy](https://codeberg.org/tenacityteam/tenacity) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | README: 'we do NOT accept any pull requests or issues on GitHub anymore'; use Codeberg. | [Codeberg repository README: licence and contribution policy](https://codeberg.org/tenacityteam/tenacity) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Download button reads 'for Windows, Mac, Linux, and BSD'. | [Official site: description, platforms, features](https://tenacityaudio.org/) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Site: 'developed by a group of volunteers as open-source software.' | [Official site: description, platforms, features](https://tenacityaudio.org/) | 2026-10-11 |
 
 ### TETR.IO `tetr-io`
 
@@ -3668,6 +5137,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Udyam Registration (MSME) `udyam-registration`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | "This is the only Government Portal for MSME (Udyam) Registration"; content managed by the Ministry of MSME, hosted by NIC. | [Udyam Registration portal home page](https://udyamregistration.gov.in/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Udyam (MSME) Registration is Free of Cost and paperless." | [Udyam Registration portal home page](https://udyamregistration.gov.in/) | 2026-10-11 |
+| Credit-card requirement | ✅ Confirmed | "No Costs or Fees are to be paid to anyone." | [Udyam Registration portal home page](https://udyamregistration.gov.in/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Having PAN and GSTIN ... is required"; "No enterprise shall file more than one Udyam Registration." | [Udyam Registration portal home page](https://udyamregistration.gov.in/) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | "Registration Process is totally free. No Costs or Fees are to be paid to anyone." | [Udyam Registration portal home page](https://udyamregistration.gov.in/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | "MSME registration process is fully online, paperless and based on self-declaration." | [Udyam Registration portal home page](https://udyamregistration.gov.in/) | 2026-10-11 |
+
+### Ultimate Vocal Remover `ultimate-vocal-remover`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Anjok07/ultimatevocalremovergui README lists core developers Anjok07 and aufr33 and the official download links. | [Official repository README: installation, requirements, licence](https://github.com/Anjok07/ultimatevocalremovergui) | 2026-10-11 |
+| Free status | ✅ Confirmed | README 'License': 'The Ultimate Vocal Remover GUI code is MIT-licensed.' | [Official repository README: installation, requirements, licence](https://github.com/Anjok07/ultimatevocalremovergui) | 2026-10-11 |
+| Licence | ✅ Confirmed | README links the MIT LICENSE file for the GUI code. | [Official repository README: installation, requirements, licence](https://github.com/Anjok07/ultimatevocalremovergui) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'Nvidia GTX 1060 6GB is the minimum requirement for GPU conversions'; 'only compatible with 64-bit platforms'; 'You must install UVR to the main C:\ drive.' | [Official repository README: installation, requirements, licence](https://github.com/Anjok07/ultimatevocalremovergui) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | README has Windows Installation, MacOS Installation (arm64 and x86_64 DMGs) and Linux Installation sections. | [Official repository README: installation, requirements, licence](https://github.com/Anjok07/ultimatevocalremovergui) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source is public; README 'Contributing' invites pull requests and describes the project as open source. | [Official repository README: installation, requirements, licence](https://github.com/Anjok07/ultimatevocalremovergui) | 2026-10-11 |
+
 ### Unciv `unciv`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -3706,6 +5213,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Variety `variety-wallpaper-manager`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | README of the varietywalls/variety repository: "Variety is a wallpaper manager for Linux systems." | [Variety README](https://raw.githubusercontent.com/varietywalls/variety/master/README.md) | 2026-10-11 |
+| Free status | ✅ Confirmed | LICENSE file is the GNU General Public License Version 3. | [Variety LICENSE file](https://raw.githubusercontent.com/varietywalls/variety/master/LICENSE) | 2026-10-11 |
+| Licence | ✅ Confirmed | "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007". | [Variety LICENSE file](https://raw.githubusercontent.com/varietywalls/variety/master/LICENSE) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Variety is in maintenance mode ... the current maintainers do not have the time to triage all issues and make major changes to the project." | [Variety README](https://raw.githubusercontent.com/varietywalls/variety/master/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | "available in the distro repositories of: Arch Linux, Debian, Ubuntu, NixOS"; "To run Variety you will need Python 3.9+." | [Variety README](https://raw.githubusercontent.com/varietywalls/variety/master/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Source published on GitHub under GPL v3. | [Variety LICENSE file](https://raw.githubusercontent.com/varietywalls/variety/master/LICENSE) | 2026-10-11 |
+
 ### VCMI `vcmi`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -3724,6 +5250,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The site says that to use VCMI you need to own the original data files. | [Official site: open-source Heroes III engine, original data required, platforms](https://vcmi.eu/) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The site lists Windows, Linux, macOS, iOS and Android. | [Official site: open-source Heroes III engine, original data required, platforms](https://vcmi.eu/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The site states VCMI is an open-source engine for Heroes III. | [Official site: open-source Heroes III engine, original data required, platforms](https://vcmi.eu/) | 2026-10-11 |
+
+### Ventusky `ventusky`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Official URL | ✅ Confirmed | "The Ventusky application (web, iOS, Android) ... Ventusky s.r.o. ... Plzeň, Czech Republic". | [About Ventusky](https://my.ventusky.com/about/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "The Ventusky application ... is accessible to anyone around the world"; Premium is a separate paid subscription. | [About Ventusky](https://my.ventusky.com/about/) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | "On desktop, these layers are free for the first 6 days. In the Android and iOS app, they are available only with Premium." "On desktop, the long-term forecast maps are part of Premium." | [Premium features: what needs Premium](https://my.ventusky.com/premium/features) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | "Buy Premium or Premium+ ... One yearly subscription"; "Your subscription renews automatically". Premium covers 4 devices, Premium+ 25. Prices were not rendered in the fetched page. | [Premium: pricing and plans](https://my.ventusky.com/premium/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | "The Ventusky application (web, iOS, Android)". | [About Ventusky](https://my.ventusky.com/about/) | 2026-10-11 |
+
+### Wan2.2 `wan-2-2`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | The Wan-Video organisation's Wan2.2 repository is linked from wan.video and hosts the official README. | [Official repository README: licence agreement, models, hardware notes](https://github.com/Wan-Video/Wan2.2) | 2026-10-11 |
+| Free status | ✅ Confirmed | README 'License Agreement': 'The models in this repository are licensed under the Apache 2.0 License.' | [Official repository README: licence agreement, models, hardware notes](https://github.com/Wan-Video/Wan2.2) | 2026-10-11 |
+| Licence | ✅ Confirmed | Repository sidebar lists 'Apache-2.0 license'; LICENSE.txt is in the repository root. | [Official repository README: licence agreement, models, hardware notes](https://github.com/Wan-Video/Wan2.2) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | README: 'TI2V-5B can generate a 5-second 720P video in under 9 minutes on a single consumer-grade GPU'; usage 'must not involve sharing any content that violates applicable laws'. | [Official repository README: licence agreement, models, hardware notes](https://github.com/Wan-Video/Wan2.2) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | Code and models are published in the repository under Apache 2.0, with weights linked on Hugging Face and ModelScope. | [Official repository README: licence agreement, models, hardware notes](https://github.com/Wan-Video/Wan2.2) | 2026-10-11 |
 
 ### War Thunder `war-thunder`
 
@@ -3800,6 +5364,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Free status | ✅ Confirmed | The page says the WAVES app is available free and is for watching shows, films, live TV and radio. | [Prasar Bharati 'Get Apps' page: WAVES available free on the app stores; watch shows, latest films, live TV/radio and more](https://prasarbharati.gov.in/get-apps/) | 2026-10-11 |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | Download links are given for iOS and Android. | [Prasar Bharati 'Get Apps' page: WAVES available free on the app stores; watch shows, latest films, live TV/radio and more](https://prasarbharati.gov.in/get-apps/) | 2026-10-11 |
+
+### WeKan `wekan`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Repository About links wekan.fi. | [GitHub README: about, features, platforms, requirements, licence](https://github.com/wekan/wekan) | 2026-10-11 |
+| Free status | ✅ Confirmed | "WeKan ® is a FLOSS collaborative kanban board application with MIT license." | [GitHub README: about, features, platforms, requirements, licence](https://github.com/wekan/wekan) | 2026-10-11 |
+| Licence | ✅ Confirmed | "WeKan ® is released under the very permissive MIT license". | [GitHub README: about, features, platforms, requirements, licence](https://github.com/wekan/wekan) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "1 GB RAM minimum free for WeKan ®. Production server should have minimum total 4 GB RAM"; "Only newest WeKan ® is supported." | [GitHub README: about, features, platforms, requirements, licence](https://github.com/wekan/wekan) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Platforms: "Windows/Mac/Linux bundle.zip", Snap, AppImage, Docker, Kubernetes. | [GitHub README: about, features, platforms, requirements, licence](https://github.com/wekan/wekan) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | "Since WeKan ® is a free software, you don't have to trust us with your data". | [GitHub README: about, features, platforms, requirements, licence](https://github.com/wekan/wekan) | 2026-10-11 |
 
 ### WFMU `wfmu`
 
@@ -3934,6 +5517,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | The download page offers Steam, a portable Windows downloader (Zero-K.exe) and a Linux archive on itch.io. | [Download page: Steam, portable Windows downloader, Linux itch.io archive](https://zero-k.info/Wiki/Download) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The homepage says Zero-K aims to be the best open source multi-platform strategy game. | [Homepage: features, 'really free, no in-game currency', open-source statement](https://zero-k.info/) | 2026-10-11 |
 
+### ZITADEL `zitadel`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Public repository zitadel/zitadel, linked to zitadel.com. | [GitHub repository page: AGPL-3.0 licence badge](https://github.com/zitadel/zitadel) | 2026-10-11 |
+| Free status | ✅ Confirmed | "ZITADEL is an open-source identity and access management platform"; self-hosted via Docker Compose. | [README: features, self-hosting, licence](https://raw.githubusercontent.com/zitadel/zitadel/main/README.md) | 2026-10-11 |
+| Licence | ✅ Confirmed | "AGPL-3.0 — see LICENSING.md for the full licensing policy, including Apache 2.0 and MIT exceptions for specific directories." | [README: features, self-hosting, licence](https://raw.githubusercontent.com/zitadel/zitadel/main/README.md) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Deployment requires "PostgreSQL (≥ 14)". | [README: features, self-hosting, licence](https://raw.githubusercontent.com/zitadel/zitadel/main/README.md) | 2026-10-11 |
+| Platform availability *(optional)* | ✅ Confirmed | Self-hosted deployment guides for Docker Compose and Kubernetes. | [README: features, self-hosting, licence](https://raw.githubusercontent.com/zitadel/zitadel/main/README.md) | 2026-10-11 |
+| Open-source status *(optional)* | ✅ Confirmed | Repository sidebar lists "AGPL-3.0 license". | [GitHub repository page: AGPL-3.0 licence badge](https://github.com/zitadel/zitadel) | 2026-10-11 |
+
 ### Cloudflare Pages `cloudflare-pages`
 
 **Checks started, free status not yet confirmed** · shown on the site as Unverified · 1/10 required checks confirmed · last checked 2026-09-26 · checked by agent-assisted pass — awaiting maintainer review
@@ -3971,6 +5573,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | The page footer states the app-specific content is GPL-3.0 by the respective app contributors. | [Apps for GNOME page: features, maintainers, Flathub link and licence](https://apps.gnome.org/Podcasts/) | 2026-10-11 |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The page offers installation from Flathub and lists Linux among its keywords. | [Apps for GNOME page: features, maintainers, Flathub link and licence](https://apps.gnome.org/Podcasts/) | 2026-10-11 |
+
+### MyGov `mygov-india`
+
+**Checks started, free status not yet confirmed** · shown on the site as Unverified · 1/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free status | ⬜ Not checked | _Does the provider's own documentation support the free-status classification?_ | — | — |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "MyGov has been established as Government of India's Citizen Engagement Platform"; "MyGov is part of Digital India Corporation, a Section 8 company under Ministry of Electronics and IT, Government of India." | [MyGov: An Overview](https://www.mygov.in/overview/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Parivahan Sewa `parivahan-sewa`
+
+**Checks started, free status not yet confirmed** · shown on the site as Unverified · 2/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free status | ⬜ Not checked | _Does the provider's own documentation support the free-status classification?_ | — | — |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "This Website belongs to Ministry of Road Transport & Highways (MoRTH) Government of India." | [Parivahan Sewa homepage: services, fees section, mParivahan link](https://parivahan.gov.in/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Menu lists "Fees & User Charges", "Licensing Related Fees and Charges" and "Paid NR Services". Pop-up: "Driving license holders and registered Vehicle owners are urged to ensure that their mobile number is updated in the Vahan and Sarathi portal." | [Parivahan Sewa homepage: services, fees section, mParivahan link](https://parivahan.gov.in/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | Web portal; mParivahan is linked to mparivahan.parivahan.gov.in and a Google Play listing (com.nic.mparivahan). | [Parivahan Sewa homepage: services, fees section, mParivahan link](https://parivahan.gov.in/) | 2026-10-11 |
 
 ### Stirling PDF `stirling-pdf`
 
