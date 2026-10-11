@@ -1,6 +1,4 @@
-import { buttonClasses } from "@/components/ui/button";
 import { primaryNav } from "@/config/navigation";
-import { site } from "@/config/site";
 import { PaletteTrigger } from "@/features/palette/palette-trigger";
 import { Brand } from "./brand";
 import { HeaderScrollSentinel } from "./header-scroll";
@@ -37,19 +35,6 @@ export function SiteHeader() {
             <PaletteTrigger />
 
             <ThemeToggle />
-
-            <a
-              href={site.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonClasses({
-                variant: "secondary",
-                size: "sm",
-                className: "hidden md:inline-flex",
-              })}
-            >
-              Submit
-            </a>
 
             <MobileNav />
           </div>
