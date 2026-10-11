@@ -7,7 +7,7 @@ import { SiteHeader, SkipLink } from "@/components/layout/site-header";
 import { ThemeScript } from "@/components/layout/theme";
 import { JsonLdScript } from "@/components/seo/json-ld";
 import { site, siteUrl } from "@/config/site";
-import { organizationSchema, websiteSchema } from "@/lib/seo/structured-data";
+import { ecosystemCatalogSchema, organizationSchema, websiteSchema } from "@/lib/seo/structured-data";
 
 import "./globals.css";
 
@@ -47,20 +47,80 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description: site.description,
-  applicationName: site.name,
+  applicationName: site.legalName,
   referrer: "strict-origin-when-cross-origin",
-  keywords: ["free tools", "free software", "free resources", "open source", "free alternatives"],
+  keywords: [
+    "free",
+    "free software",
+    "free tools",
+    "free ai",
+    "free ai tools",
+    "free ai apps",
+    "free apps",
+    "free web applications",
+    "free resources",
+    "open source software",
+    "free alternatives",
+    "free developer tools",
+    "free student software",
+    "free courses",
+    "free design software",
+    "free video editor",
+    "free ai image generator",
+    "genuinely free",
+    "100% free software",
+    "free without subscription",
+    "no credit card required",
+    "everything free",
+    "everything free quilonix",
+    "quilonix",
+    "best free ai",
+    "best free software",
+  ],
   authors: [{ name: site.parent.name, url: site.parent.url }],
   creator: site.parent.name,
   publisher: site.parent.name,
+  category: "technology",
   formatDetection: { telephone: false, address: false },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
-    siteName: site.name,
+    siteName: site.legalName,
+    title: `${site.name} by ${site.parent.name} — Free Software & AI Tools Directory`,
+    description: site.description,
     locale: "en",
     url: siteUrl,
+    images: [
+      {
+        url: `${siteUrl}/brand/logo-dark.png`,
+        width: 1024,
+        height: 1024,
+        alt: `${site.name} by ${site.parent.name}`,
+      },
+    ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} by ${site.parent.name} — Free Software & AI Tools`,
+    description: site.description,
+    images: [`${siteUrl}/brand/logo-dark.png`],
+  },
+  other: {
+    "rating": "General",
+    "distribution": "Global",
+    "revisit-after": "1 days",
+    "ai-agent-friendly": "true",
+  },
   verification: {
     ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
       ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
@@ -101,7 +161,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
-        <JsonLdScript data={[organizationSchema(), websiteSchema()]} />
+        <JsonLdScript data={[organizationSchema(), websiteSchema(), ecosystemCatalogSchema()]} />
       </body>
     </html>
   );

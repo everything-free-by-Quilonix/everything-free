@@ -24,16 +24,42 @@ export function organizationSchema(): JsonLd {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: site.name,
-    alternateName: ["Everything Free", site.legalName],
+    alternateName: [
+      "Everything Free",
+      site.legalName,
+      "Everything.Free by Quilonix",
+      "Quilonix Everything.Free",
+      "Free Software Ecosystem",
+    ],
     url: siteUrl,
     // Square, 1024×1024, self-hosted. Used by search engines for the knowledge panel.
     logo: absoluteUrl("/brand/logo-dark.png"),
     description: site.description,
-    sameAs: [site.githubUrl, site.repositoryUrl],
+    email: site.parent.email,
+    sameAs: [
+      site.social.website,
+      site.social.github,
+      site.social.linkedin,
+      site.social.youtube,
+      site.social.instagram,
+      site.social.huggingface,
+      site.social.playStore,
+      site.githubUrl,
+      site.repositoryUrl,
+    ],
     parentOrganization: {
       "@type": "Organization",
       name: site.parent.name,
       url: site.parent.url,
+      sameAs: [
+        site.social.website,
+        site.social.github,
+        site.social.linkedin,
+        site.social.youtube,
+        site.social.instagram,
+        site.social.huggingface,
+        site.social.playStore,
+      ],
     },
   };
 }
@@ -43,8 +69,19 @@ export function websiteSchema(): JsonLd {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: site.name,
+    alternateName: [
+      site.legalName,
+      "Everything Free",
+      "Free Software & AI Tools Directory",
+      "Quilonix Free Ecosystem",
+    ],
     url: siteUrl,
     description: site.description,
+    publisher: {
+      "@type": "Organization",
+      name: site.parent.name,
+      url: site.parent.url,
+    },
     // Declares the search endpoint so engines can offer a direct site search.
     potentialAction: {
       "@type": "SearchAction",
@@ -53,6 +90,23 @@ export function websiteSchema(): JsonLd {
         urlTemplate: `${siteUrl}/resources?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+export function ecosystemCatalogSchema(): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DataCatalog",
+    name: "Everything.Free Library & AI Ecosystem",
+    alternateName: "Everything.Free by Quilonix",
+    description:
+      "A curated, verified catalogue of 100% free software, open-source tools, free AI models, developer resources, and student software.",
+    url: siteUrl,
+    provider: {
+      "@type": "Organization",
+      name: site.parent.name,
+      url: site.parent.url,
     },
   };
 }

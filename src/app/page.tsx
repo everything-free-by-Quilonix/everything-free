@@ -32,7 +32,7 @@ import {
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: `${site.name} â€” ${site.shortDescription}`,
+  title: `${site.name} by ${site.parent.name} — 100% Free Software & AI Tools Directory`,
   description: site.description,
   path: "/",
 });

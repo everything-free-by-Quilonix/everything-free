@@ -44,6 +44,10 @@ const AI_CRAWLERS = [
   "DuckAssistBot",
   "meta-externalagent",
   "CCBot", // Common Crawl, which many models are trained on
+  "cohere-ai",
+  "Bytespider",
+  "Diffbot",
+  "FacebookBot",
 ];
 
 export default function robots(): MetadataRoute.Robots {

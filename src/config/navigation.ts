@@ -116,8 +116,10 @@ export const footerNav: FooterSection[] = [
     links: [
       { label: "Submit a resource", href: "/submit" },
       { label: "Report a problem", href: "/report" },
-      { label: "About", href: "/about" },
-      { label: "Source on GitHub", href: "https://github.com/everything-free-by-Quilonix", external: true },
+      { label: "About Everything.Free", href: "/about" },
+      { label: "Quilonix (Official Site)", href: "https://quilonix.in", external: true },
+      { label: "Quilonix on GitHub", href: "https://github.com/Quilonix", external: true },
+      { label: "Source code on GitHub", href: "https://github.com/everything-free-by-Quilonix/everything-free", external: true },
     ],
   },
 ];

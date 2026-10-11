@@ -118,21 +118,41 @@ export default async function AboutPage() {
               Everything.Free and {site.parent.name}
             </h2>
             <p className="mt-3 leading-relaxed text-fg-muted">
-              Everything.Free is a {site.parent.name} project, developed in the open. It is intended to stand on its own —
-              you should never need to know or care about the parent organisation to use it.
+              Everything.Free is an open-source project by{" "}
+              <ExternalLink href={site.parent.url} className="link-inline">
+                {site.parent.name}
+              </ExternalLink>
+              , a product studio engineering intelligent software, AI systems, and high-performance cloud architectures.
+              Everything.Free is developed completely in the open to provide developers, creators, and students with an
+              uncompromised directory of genuinely free software, free AI tools, and open-source applications.
             </p>
             <p className="mt-3 leading-relaxed text-fg-muted">
               The source is public, which means the classification rules, the seed data and the validation that enforces
-              them can all be read and challenged.
+              them can all be read, inspected, and challenged.
             </p>
-            <p className="mt-4">
-              <ExternalLink
-                href={site.githubUrl}
-                className="text-sm link-inline"
-              >
-                View the project on GitHub
+            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              <ExternalLink href={site.parent.url} className="link-inline">
+                Quilonix Website
               </ExternalLink>
-            </p>
+              <ExternalLink href={site.social.github} className="link-inline">
+                GitHub (@Quilonix)
+              </ExternalLink>
+              <ExternalLink href={site.social.linkedin} className="link-inline">
+                LinkedIn
+              </ExternalLink>
+              <ExternalLink href={site.social.youtube} className="link-inline">
+                YouTube
+              </ExternalLink>
+              <ExternalLink href={site.social.instagram} className="link-inline">
+                Instagram
+              </ExternalLink>
+              <ExternalLink href={site.social.huggingface} className="link-inline">
+                Hugging Face
+              </ExternalLink>
+              <ExternalLink href={site.repositoryUrl} className="link-inline">
+                Project Repository
+              </ExternalLink>
+            </div>
           </section>
 
           <Callout tone="neutral" icon={null} title="This only works with contributions">
