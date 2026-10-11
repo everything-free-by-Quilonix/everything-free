@@ -120,9 +120,9 @@ export const gamesF2p1Resources: Resource[] = defineMediaList([
   {
     slug: "path-of-exile",
     name: "Path of Exile",
-    shortDescription: "Dark-fantasy action RPG from Grinding Gear Games that is completely free and promises it will never be 'pay to win'.",
+    shortDescription: "Dark-fantasy action RPG from Grinding Gear Games, free to play, with a promise it will never be 'pay to win'.",
     longDescription:
-      "Path of Exile is an online action RPG with a vast passive skill tree, socketable skill gems, randomly generated areas and frequent seasonal leagues. Grinding Gear Games' official page says the game is completely free and will never be 'pay to win'; its shop sells cosmetic microtransactions, stash tabs and supporter packs. It runs on PC, Mac, Xbox One and PS4.",
+      "Path of Exile is an online action RPG with a vast passive skill tree, socketable skill gems, randomly generated areas and frequent seasonal leagues. Grinding Gear Games' official page says the game is free and will never be 'pay to win'; its shop sells cosmetic microtransactions, stash tabs and supporter packs. It runs on PC, Mac, Xbox One and PS4.",
     whyListed: "The benchmark for fair free-to-play: years of depth with no paid power.",
     category: "games",
     resourceType: "GAME",

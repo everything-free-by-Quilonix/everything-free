@@ -929,7 +929,7 @@ const batch005Seeds: ResourceSeed[] = [
     "name": "Frappe HR",
     "shortDescription": "Modern open-source HR and payroll management system for growing organizations.",
     "longDescription": "Frappe HR is a full-featured open-source human resource and payroll management application built on the Frappe framework. It streamlines employee onboarding, leave management, attendance tracking, expense claims, performance reviews, and multi-country payroll processing.",
-    "whyListed": "Provides a complete enterprise-grade HR and payroll platform that can be self-hosted completely free without seat licensing.",
+    "whyListed": "Provides a complete enterprise-grade HR and payroll platform that can be self-hosted without seat licensing.",
     "category": "hr",
     "subcategories": [
         "business-finance",
@@ -1200,7 +1200,7 @@ const batch005Seeds: ResourceSeed[] = [
     "name": "Jellyfin",
     "shortDescription": "Free, open-source software media system that puts you in control of managing and streaming your media.",
     "longDescription": "Jellyfin is a volunteer-built, open-source media server that allows users to stream their personal collection of movies, TV shows, music, and photos to any device. It has no premium tiers, no user tracking, and no central authentication servers.",
-    "whyListed": "A 100% free software media streaming server with hardware transcoding and multi-device clients without premium paywalls.",
+    "whyListed": "A free-software media streaming server with hardware transcoding and multi-device clients without premium paywalls.",
     "category": "streaming",
     "subcategories": [
         "movies",

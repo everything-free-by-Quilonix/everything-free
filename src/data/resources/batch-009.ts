@@ -5,7 +5,7 @@ import { defineResources, type ResourceSeed } from "./define";
  * Batch 009: Trending Viral Tools, Rare Hidden Web Gems & Legal Free Movies & Cinema.
  *
  * Expands Everything.Free into high-demand areas:
- * - Legal, 100% free movie and streaming platforms (Tubi, Pluto TV, Kanopy, Internet Archive Film, Plex Free, Documentary+, Popcornflix, JustWatch Free)
+ * - Free, legal movie and streaming platforms (Tubi, Pluto TV, Kanopy, Internet Archive Film, Plex Free, Documentary+, Popcornflix, JustWatch Free)
  * - Rare & viral hidden utilities (Cobalt media downloader, Vectorpea, Radio Garden, Pollinations.ai, Archive.today, Caesium)
  * - Leading open-source subscription killers (n8n, AFFiNE, Spotube, FreeTube)
  */
@@ -275,7 +275,7 @@ export const batch009Resources = defineResources([
     longDescription:
       "Documentary+ is a free global streaming service dedicated to nonfiction cinema. It features a curated library of feature documentaries and shorts directed by celebrated filmmakers, covering culture, politics, sports, music, and science.",
     whyListed:
-      "A dedicated, premium-quality documentary channel streaming festival and award-winning nonfiction cinema for zero cost.",
+      "A dedicated, premium-quality documentary channel streaming festival and award-winning nonfiction cinema.",
     category: "movies",
     subcategories: ["learning", "streaming"],
     resourceType: "SERVICE",

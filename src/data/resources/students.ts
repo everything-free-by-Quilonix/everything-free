@@ -8,7 +8,7 @@ export const studentResources = defineResources([
     longDescription:
       "The GitHub Student Developer Pack provides enrolled students worldwide with free access to professional developer tools and services from GitHub and over 80 industry partners, including cloud platforms, domain names, APIs and learning resources.",
     whyListed:
-      "It is the single most valuable free resource package available to students, bundling thousands of dollars in commercial software at zero cost.",
+      "It is the GitHub Student Developer Pack: free professional developer tools from GitHub and its partners for verified students.",
     category: "students",
     subcategories: ["learning", "study-tools"],
     resourceType: "EDUCATIONAL_RESOURCE",

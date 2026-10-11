@@ -51,6 +51,23 @@ describe("applyResearch", () => {
   });
 });
 
+describe("assurance wording", () => {
+  test('"100% free" in reader-facing copy fails validation', () => {
+    const problems = findDataProblems([makeResource({ slug: "a", shortDescription: "A 100% free tool for converting images quickly." })]);
+    assert.ok(problems.some((problem) => problem.includes('says "100% free"')));
+  });
+
+  test('"completely free" in a limitation fails validation', () => {
+    const problems = findDataProblems([makeResource({ slug: "a", limitations: ["Completely free for students"] })]);
+    assert.ok(problems.some((problem) => problem.includes("Completely free")));
+  });
+
+  test("plain 'free' wording passes", () => {
+    const problems = findDataProblems([makeResource({ slug: "a", shortDescription: "A free tool for converting images in your browser." })]);
+    assert.ok(!problems.some((problem) => problem.includes("state what is free")));
+  });
+});
+
 describe("the recorded research passes", () => {
   test("every overlaid listing is in the library and passes validation", () => {
     const slugs = new Set(researchOverlays.map((entry) => entry.slug));

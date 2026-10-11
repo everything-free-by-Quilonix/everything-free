@@ -201,7 +201,7 @@ export const readExplore1Resources: Resource[] = defineMediaList([
     name: "GlobalComix",
     shortDescription: "Comics, manga and webtoons from creators and publishers; many free to read, others behind the Gold subscription.",
     longDescription:
-      "GlobalComix is a platform where independent creators and publishers publish comics, manga and webtoons. Its FAQ says creating an account is free and many comics are completely free to read in the browser or the iOS and Android apps. Creators can put pages behind a paywall; those need a GlobalComix Gold subscription, and offline reading is Gold-only.",
+      "GlobalComix is a platform where independent creators and publishers publish comics, manga and webtoons. Its FAQ says creating an account is free and many comics are free to read in the browser or the iOS and Android apps. Creators can put pages behind a paywall; those need a GlobalComix Gold subscription, and offline reading is Gold-only.",
     whyListed: "Lets creators publish free comics alongside paid ones, with the free ones readable in any browser.",
     category: "comics",
     resourceType: "SERVICE",

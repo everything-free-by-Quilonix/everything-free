@@ -38,6 +38,9 @@ const FACT_RESTATING_TAGS: ReadonlyMap<string, string> = new Map([
   ["open-source", "openSource"],
 ]);
 
+/** Assurance wording that replaces a stated fact. See the rule in `findDataProblems`. */
+const FREE_ASSURANCE = /\b100\s?%\s*(?:free|legal|safe)\b|\bcompletely (?:free|legal)\b|\btotally free\b|\bat zero cost\b/i;
+
 export interface ValidationOptions {
   /** The moment "the future" starts from. Defaults to now. */
   now?: Date;
@@ -68,6 +71,23 @@ export function findDataProblems(resources: readonly Resource[], options: Valida
 
     if (resource.id !== resource.slug) {
       problems.push(`${where} has id "${resource.id}" that does not match its slug`);
+    }
+
+    /*
+     * "100% free" and "completely free" are assurances, not facts: they say nothing
+     * about what is free, and they are exactly the wording that goes stale when a
+     * plan changes. Say what is free instead. Applies to all reader-facing copy.
+     */
+    for (const [field, text] of [
+      ["shortDescription", resource.shortDescription],
+      ["longDescription", resource.longDescription],
+      ["whyListed", resource.whyListed],
+      ...resource.limitations.map((limit) => ["limitations", limit] as const),
+      ...(resource.features ?? []).map((feature) => ["features", feature] as const),
+    ] as const) {
+      if (FREE_ASSURANCE.test(text)) {
+        problems.push(`${where}: ${field} says "${text.match(FREE_ASSURANCE)?.[0]}"; state what is free instead`);
+      }
     }
 
     if (!isCategoryId(resource.category)) {

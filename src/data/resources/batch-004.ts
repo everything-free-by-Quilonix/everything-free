@@ -579,7 +579,7 @@ export const batch004Resources = defineResources([
     name: "Defold",
     shortDescription: "Ultimate game engine for web, mobile and desktop games with tiny build sizes.",
     longDescription: "Defold is a lightweight 2D-focused game engine utilizing Lua scripting, zero-overhead scene graphs, and instant hot reloading for cross-platform games.",
-    whyListed: "It is a completely free, developer-friendly game engine renowned for creating lightweight web and mobile games.",
+    whyListed: "It is a free, developer-friendly game engine renowned for creating lightweight web and mobile games.",
     category: "games",
     subcategories: ["developer-utilities"],
     resourceType: "DESKTOP_APP",

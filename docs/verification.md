@@ -246,6 +246,31 @@ npm run backlog        # updates docs/verification-backlog.md
 
 CI rejects the pull request if the data breaks a rule or the backlog was not regenerated.
 
+### Research overlays: adding evidence to an existing listing
+
+Most of the library was compiled in batch files with no checks recorded. To add evidence without rewriting those files, a research pass goes in `src/data/resources/research/`, keyed by slug:
+
+```ts
+{
+  slug: "claude",
+  set: { limitations: [/* what the official page actually says */] }, // corrections, optional
+  research: {
+    date: "2026-10-11",
+    sources: [{ url: "https://claude.com/pricing", label: "What this page establishes" }],
+    checks: [{ check: "FREE_STATUS", result: "confirmed", evidence: "'$0 — Free for everyone'", sourceUrl: "https://claude.com/pricing" }],
+    notes: "What was settled, what was corrected, what was not checked.",
+  },
+}
+```
+
+- The status is derived: a confirmed `FREE_STATUS` gives `PARTIALLY_VERIFIED`, otherwise `UNVERIFIED`. It is never `VERIFIED`.
+- An overlay for a slug that is not in the library, or two overlays for one slug, fails the build.
+- If the page contradicts the listing, correct it in `set` and say so in `notes` (for example "Corrected: the listing claimed a 300,000-token context window, which the page does not state").
+- A page you tried and could not read can be listed as a source with a label that says so, and cited by an `unresolved` check. Nothing may be `confirmed` from it.
+- The merged listing goes through every rule in this document.
+
+Reader-facing copy (descriptions, why it is listed, limitations, features) may not use assurances such as "100% free", "completely free" or "at zero cost". The build fails on them. Say what is free instead. Evidence quotes are exempt, because they record the provider's own words.
+
 ---
 
 ## The human gate

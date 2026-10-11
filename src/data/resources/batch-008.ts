@@ -4,7 +4,7 @@ import { defineResources } from "./define";
  * Batch 008: Essential Modern Developer, AI, Cloud Infrastructure & Creative Tools.
  *
  * Expands core categories with heavily requested tools that feature genuine
- * free tiers, open-source codebases, or completely free developer utilities.
+ * free tiers, open-source codebases, or free developer utilities.
  */
 export const batch008Resources = defineResources([
   {
@@ -770,7 +770,7 @@ export const batch008Resources = defineResources([
     longDescription:
       "Cloudflare Tunnels (cloudflared) creates a secure, outbound-only connection between local servers and Cloudflare's edge network, exposing development or homelab applications with automatic SSL.",
     whyListed:
-      "100% free tool that completely eliminates port forwarding, static IP costs, and exposed router vulnerabilities.",
+      "A free tool that removes the need for port forwarding, a static IP or exposed router ports.",
     category: "developer-utilities",
     subcategories: ["hosting", "deployment"],
     resourceType: "DEVELOPER_TOOL",
@@ -1029,7 +1029,7 @@ export const batch008Resources = defineResources([
     longDescription:
       "Lucide is a community-run fork of Feather Icons, offering over 1,400 clean, consistent vector icons with first-class packages for React, Vue, Svelte, Angular, and vanilla web.",
     whyListed:
-      "The undisputed de facto icon library for modern web applications, completely free under the ISC license.",
+      "A widely used icon library for web applications, free under the ISC license.",
     category: "icons",
     subcategories: ["design", "open-source"],
     resourceType: "OPEN_SOURCE",
@@ -1087,7 +1087,7 @@ export const batch008Resources = defineResources([
   {
     slug: "fontshare",
     name: "Fontshare",
-    shortDescription: "Free font service launched by Indian Type Foundry with 100% free commercial licenses.",
+    shortDescription: "Free font service from Indian Type Foundry, with fonts licensed for commercial use.",
     longDescription:
       "Fontshare is a free typography service by the Indian Type Foundry offering high-quality professional fonts free for both personal and commercial use, complete with a global font CDN.",
     whyListed:
@@ -1105,7 +1105,7 @@ export const batch008Resources = defineResources([
     personalUse: "yes",
     features: [
       "Over 100 high-grade professional font families",
-      "100% free for commercial and personal projects",
+      "Free for commercial and personal projects",
       "Built-in CSS CDN for instant web embedding",
       "Includes variable font files and extensive language support",
     ],
@@ -1121,7 +1121,7 @@ export const batch008Resources = defineResources([
     longDescription:
       "Ray.so turns source code snippets into gorgeous images with gradient backgrounds, customizable themes, syntax highlighting, and multiple aspect ratios.",
     whyListed:
-      "Completely free, client-side code image generator with no watermarks or accounts required.",
+      "A free, client-side code image generator with no watermarks or accounts required.",
     category: "developer-utilities",
     subcategories: ["design"],
     resourceType: "WEB_APP",
@@ -1217,7 +1217,7 @@ export const batch008Resources = defineResources([
     longDescription:
       "tldraw is an infinite canvas whiteboard for drawing diagrams, sketching ideas, and collaborating in real-time, available as a free web app and an embeddable React library.",
     whyListed:
-      "Exceptionally tactile, delightful drawing experience that is completely free to use online and open source.",
+      "A hand-drawn-style whiteboard that is free to use online and open source.",
     category: "collaboration",
     subcategories: ["design", "open-source"],
     resourceType: "OPEN_SOURCE",
@@ -1247,9 +1247,9 @@ export const batch008Resources = defineResources([
     name: "draw.io",
     shortDescription: "Security-first diagramming and flow-charting tool with zero paywalls.",
     longDescription:
-      "draw.io (diagrams.net) is an open, completely free diagramming software for creating flowcharts, network architecture diagrams, UML models, and wireframes.",
+      "draw.io (diagrams.net) is open-source, free diagramming software for creating flowcharts, network architecture diagrams, UML models, and wireframes.",
     whyListed:
-      "Completely free, full-featured diagramming tool that stores diagrams directly in your own cloud or local disk.",
+      "A free, full-featured diagramming tool that stores diagrams directly in your own cloud or local disk.",
     category: "documents",
     subcategories: ["collaboration", "design"],
     resourceType: "WEB_APP",
