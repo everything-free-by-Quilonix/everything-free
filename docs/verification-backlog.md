@@ -16,9 +16,9 @@ The order below is a **verification workflow, not a ranking** of the resources. 
 | Resources | 1085 |
 | Verified (signed off by a maintainer) | 0 |
 | Evidence complete, awaiting maintainer sign-off | 4 |
-| Partially verified (free status confirmed, checklist incomplete) | 138 |
+| Partially verified (free status confirmed, checklist incomplete) | 142 |
 | Checks started, free status not yet confirmed | 5 |
-| Not verified yet (no checks recorded) | 938 |
+| Not verified yet (no checks recorded) | 934 |
 
 No maintainer is registered in `src/config/maintainers.ts` yet, so nothing can be signed off. A maintainer adds their own handle there first.
 
@@ -49,7 +49,7 @@ Entries surfaced on the homepage. They are seen most, so an error in them mislea
 | Blender `blender` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | DaVinci Resolve `davinci-resolve` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Figma for Education `figma-education` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| GitHub Student Developer Pack `github-student-developer-pack` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
+| [GitHub Student Developer Pack](#github-student-developer-pack-github-student-developer-pack) `github-student-developer-pack` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | JetBrains Educational License `jetbrains-student-license` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Khan Academy `khan-academy` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Microsoft Azure for Students `azure-for-students` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -76,6 +76,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Battle for Wesnoth](#battle-for-wesnoth-battle-for-wesnoth) `battle-for-wesnoth` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [BBC Audio on BBC.com (outside the UK)](#bbc-audio-on-bbccom-outside-the-uk-bbc-audio-international) `bbc-audio-international` | Partially verified | 3/10 | Official URL, Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Blender Studio open movies](#blender-studio-open-movies-blender-studio-open-movies) `blender-studio-open-movies` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Bolt.new](#boltnew-bolt-new) `bolt-new` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Brawlhalla](#brawlhalla-brawlhalla) `brawlhalla` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Bridge Base Online](#bridge-base-online-bridge-base-online) `bridge-base-online` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Candy Box 2](#candy-box-2-candy-box-2) `candy-box-2` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
@@ -142,6 +143,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Mistral Le Chat](#mistral-le-chat-mistral-le-chat) `mistral-le-chat` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Monkeytype](#monkeytype-monkeytype) `monkeytype` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Muse India (YouTube)](#muse-india-youtube-muse-india-anime) `muse-india-anime` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [n8n](#n8n-n8n) `n8n` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use (unresolved), Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Commercial use from an official source |
 | [National Film Board of Canada](#national-film-board-of-canada-nfb-films) `nfb-films` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [National Gallery of Art Open Access](#national-gallery-of-art-open-access-national-gallery-of-art-open-access) `national-gallery-of-art-open-access` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [NHK WORLD-JAPAN](#nhk-world-japan-nhk-world-japan-tv) `nhk-world-japan-tv` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -193,6 +195,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Thunderbird](#thunderbird-thunderbird) `thunderbird` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
 | [TuneIn Radio](#tunein-radio-tunein-radio) `tunein-radio` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Unciv](#unciv-unciv) `unciv` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [v0](#v0-v0-dev) `v0-dev` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [VCMI](#vcmi-vcmi) `vcmi` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [VLC media player](#vlc-media-player-vlc) `vlc` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
 | [War Thunder](#war-thunder-war-thunder) `war-thunder` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -742,7 +745,6 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | BandLab `bandlab` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | BBC Sound Effects `bbc-sound-effects` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Better Stack `better-stack` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| Bolt.new `bolt-new` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Brevo (free plan) `brevo` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Calendly `calendly` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Canva `canva` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -841,7 +843,6 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | Upstash QStash `upstash-qstash` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Upstash Redis `upstash-redis` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | UptimeRobot `uptimerobot` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| v0 `v0-dev` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Vercel `vercel` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Wanderlog `wanderlog` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Warp `warp-terminal` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -1020,7 +1021,6 @@ Everything else not yet verified.
 | Mozilla Common Voice `mozilla-common-voice` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Mozilla HTTP Observatory `mozilla-http-observatory` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Muktabodha `muktabodha` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| n8n `n8n` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NASA APOD `nasa-apod` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NASA Image and Video Library `nasa-images` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | NASA Open Data Portal `nasa-open-data` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -1461,6 +1461,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Commercial use | ✅ Confirmed | CC BY 4.0, which the terms apply to all digital content unless noted, permits commercial use with attribution. | [Terms: content under CC BY 4.0 unless notified otherwise; membership 9.90 EUR/month; registration free](https://studio.blender.org/terms-and-conditions) | 2026-10-11 |
 | Major limitations | ✅ Confirmed | The Big Buck Bunny page marks the making-of and some film videos 'Subscribe to view'; trademarks are excluded from the licence. | [Big Buck Bunny project page: 'Watch Big Buck Bunny'; some gallery videos marked 'Subscribe to view'](https://studio.blender.org/projects/big-buck-bunny/) | 2026-10-11 |
 | Pricing information | ✅ Confirmed | The terms list membership at 9.90 EUR/month with automatic renewal (14.90 EUR manual), dated April 2020. | [Terms: content under CC BY 4.0 unless notified otherwise; membership 9.90 EUR/month; registration free](https://studio.blender.org/terms-and-conditions) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Bolt.new `bolt-new`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | bolt.new is the product's own site. | [Official Bolt pricing page: Free $0 plan contents and FAQ 'What are the token limits associated with a free plan?'](https://bolt.new/pricing) | 2026-10-11 |
+| Free status | ✅ Confirmed | Free plan at $0: 'Start for free. Upgrade as you go.' | [Official Bolt pricing page: Free $0 plan contents and FAQ 'What are the token limits associated with a free plan?'](https://bolt.new/pricing) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | FAQ: 'Free plans have a 300,000 token daily limit and 1 million token monthly limit.' | [Official Bolt pricing page: Free $0 plan contents and FAQ 'What are the token limits associated with a free plan?'](https://bolt.new/pricing) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Free plan lists 'Bolt branding on websites' and a '10MB file upload limit'. | [Official Bolt pricing page: Free $0 plan contents and FAQ 'What are the token limits associated with a free plan?'](https://bolt.new/pricing) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Pro from $25/month billed monthly; Teams $30/member/month. | [Official Bolt pricing page: Free $0 plan contents and FAQ 'What are the token limits associated with a free plan?'](https://bolt.new/pricing) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
@@ -2091,6 +2110,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### GitHub Student Developer Pack `github-student-developer-pack`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | education.github.com/pack is GitHub's own page for the pack. | [Official Student Developer Pack page: list of offers and their terms (GitHub Pro, Copilot Student, Codespaces, JetBrains, Azure, domains, time-limited partner offers)](https://education.github.com/pack) | 2026-10-11 |
+| Free status | ✅ Confirmed | Offers include 'Free GitHub Pro while you are a student' and 'Free Pro level access to Codespaces'. | [Official Student Developer Pack page: list of offers and their terms (GitHub Pro, Copilot Student, Codespaces, JetBrains, Azure, domains, time-limited partner offers)](https://education.github.com/pack) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | Sign-up goes to github.com/settings/education/benefits, which needs a GitHub account. | [Official Student Developer Pack page: list of offers and their terms (GitHub Pro, Copilot Student, Codespaces, JetBrains, Azure, domains, time-limited partner offers)](https://education.github.com/pack) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Offers carry their own durations (e.g. DataCamp three months, Educative six months, LambdaTest one year); Azure's offer is 'For students aged 18+'; Copilot Student is 'available to verified students'. | [Official Student Developer Pack page: list of offers and their terms (GitHub Pro, Copilot Student, Codespaces, JetBrains, Azure, domains, time-limited partner offers)](https://education.github.com/pack) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### GlobalComix `globalcomix`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2679,6 +2717,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | Free YouTube viewing is ad-supported; Premium removes the ads. | [YouTube Help: ads before and during videos are removed only with paid Premium](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### n8n `n8n`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Commercial use | ⚠️ Could not confirm | Internal business use is allowed but offering n8n to customers is not; a yes/no field cannot state that, so it is left unknown and described in the limitations. | [n8n docs, Community license: Sustainable Use License terms, 'Is n8n open source?' answer, scope of the Enterprise License](https://docs.n8n.io/choose-n8n/faircode-license) | 2026-10-11 |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Official URL | ✅ Confirmed | n8n.io is the company's own site. | [Official pricing page: Cloud plans (Starter, Pro, Business, Enterprise) with free trials; Community Edition self-hosted on GitHub](https://n8n.io/pricing/) | 2026-10-11 |
+| Free status | ✅ Confirmed | The licence grants 'the free right to use, modify, create derivative works, and redistribute' within its limitations. | [n8n docs, Community license: Sustainable Use License terms, 'Is n8n open source?' answer, scope of the Enterprise License](https://docs.n8n.io/choose-n8n/faircode-license) | 2026-10-11 |
+| Licence | ✅ Confirmed | n8n uses the Sustainable Use License, a fair-code licence, plus the n8n Enterprise License for '.ee.' files. | [n8n docs, Community license: Sustainable Use License terms, 'Is n8n open source?' answer, scope of the Enterprise License](https://docs.n8n.io/choose-n8n/faircode-license) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Use 'only for your own internal business purposes or for non-commercial or personal use'; distribute only 'free of charge for non-commercial purposes'. | [n8n docs, Community license: Sustainable Use License terms, 'Is n8n open source?' answer, scope of the Enterprise License](https://docs.n8n.io/choose-n8n/faircode-license) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Cloud Starter 20€/month and Pro 50€/month billed annually; Business 667€/month; trials need no card except Business. | [Official pricing page: Cloud plans (Starter, Pro, Business, Enterprise) with free trials; Community Edition self-hosted on GitHub](https://n8n.io/pricing/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ✅ Confirmed | 'we do not call ourselves open source' — OSI licences cannot limit use, and this one does. | [n8n docs, Community license: Sustainable Use License terms, 'Is n8n open source?' answer, scope of the Enterprise License](https://docs.n8n.io/choose-n8n/faircode-license) | 2026-10-11 |
 
 ### National Film Board of Canada `nfb-films`
 
@@ -3629,6 +3686,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The README FAQ says there is no iOS version planned and Steam declined to host Unciv. | [README: install routes per platform, no iOS/Steam, MPL-2.0 code, media licences](https://raw.githubusercontent.com/yairm210/Unciv/master/README.md) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The README lists Android, Linux, Windows, Raspberry Pi and macOS install routes. | [README: install routes per platform, no iOS/Steam, MPL-2.0 code, media licences](https://raw.githubusercontent.com/yairm210/Unciv/master/README.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The README calls Unciv an open source, moddability-focused remake with MPL-2.0 source. | [README: install routes per platform, no iOS/Steam, MPL-2.0 code, media licences](https://raw.githubusercontent.com/yairm210/Unciv/master/README.md) | 2026-10-11 |
+
+### v0 `v0-dev`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Official URL | ✅ Confirmed | v0.app is Vercel's v0 site; v0.dev is the earlier address. | [Official v0 pricing page: Free $0/month plan contents including '7 message/day limit'; Plus, Business, Enterprise](https://v0.app/pricing) | 2026-10-11 |
+| Free status | ✅ Confirmed | Free plan: '$0/month', 'Free access to v0'. | [Official v0 pricing page: Free $0/month plan contents including '7 message/day limit'; Plus, Business, Enterprise](https://v0.app/pricing) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Free plan includes a '7 message/day limit'. | [Official v0 pricing page: Free $0/month plan contents including '7 message/day limit'; Plus, Business, Enterprise](https://v0.app/pricing) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Plus $30/user/month with $30 monthly credits; Business $100/user/month. | [Official v0 pricing page: Free $0/month plan contents including '7 message/day limit'; Plus, Business, Enterprise](https://v0.app/pricing) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### VCMI `vcmi`
 
