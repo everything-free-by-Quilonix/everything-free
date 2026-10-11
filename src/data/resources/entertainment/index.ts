@@ -12,6 +12,7 @@ import { listenAudio2Resources } from "./listen-audio-2";
 import { listenMusic1Resources } from "./listen-music-1";
 import { gamesIndie1Resources } from "./games-indie-1";
 import { watchFilm2Resources } from "./watch-film-2";
+import { watchIndia2Resources } from "./watch-india-2";
 import { watchTvAnime1Resources } from "./watch-tv-anime-1";
 
 /**
@@ -35,4 +36,5 @@ export const entertainmentResources: Resource[] = [
   ...listenMusic1Resources,
   ...gamesIndie1Resources,
   ...watchFilm2Resources,
+  ...watchIndia2Resources,
 ];
