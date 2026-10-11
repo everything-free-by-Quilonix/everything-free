@@ -13,11 +13,11 @@ The order below is a **verification workflow, not a ranking** of the resources. 
 
 | | Count |
 | --- | --- |
-| Resources | 1167 |
+| Resources | 1191 |
 | Verified (signed off by a maintainer) | 0 |
 | Evidence complete, awaiting maintainer sign-off | 4 |
-| Partially verified (free status confirmed, checklist incomplete) | 222 |
-| Checks started, free status not yet confirmed | 7 |
+| Partially verified (free status confirmed, checklist incomplete) | 245 |
+| Checks started, free status not yet confirmed | 8 |
 | Not verified yet (no checks recorded) | 934 |
 
 No maintainer is registered in `src/config/maintainers.ts` yet, so nothing can be signed off. A maintainer adds their own handle there first.
@@ -69,11 +69,13 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [A Dark Room](#a-dark-room-a-dark-room) `a-dark-room` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Activepieces](#activepieces-activepieces) `activepieces` | Partially verified | 7/10 | Account requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 3 remaining required check(s) |
 | [AdventureLog](#adventurelog-adventurelog) `adventurelog` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [AICTE National Internship Portal](#aicte-national-internship-portal-aicte-national-internship-portal) `aicte-national-internship-portal` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Amazon MX Player](#amazon-mx-player-amazon-mx-player) `amazon-mx-player` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Anek (Ek Type)](#anek-ek-type-ek-type-anek) `ek-type-anek` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Apple Podcasts](#apple-podcasts-apple-podcasts) `apple-podcasts` | Partially verified | 2/10 | Official URL, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Arkadium](#arkadium-arkadium) `arkadium` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Armor Games](#armor-games-armor-games) `armor-games` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [ARTE](#arte-arte-tv) `arte-tv` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Atkinson Hyperlegible](#atkinson-hyperlegible-atkinson-hyperlegible) `atkinson-hyperlegible` | Partially verified | 6/10 | Free-tier limits, Account requirement, Credit-card requirement, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [AudioCraft (MusicGen)](#audiocraft-musicgen-audiocraft) `audiocraft` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Augustus](#augustus-augustus-caesar-3) `augustus-caesar-3` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -88,13 +90,17 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Bootstrap Icons](#bootstrap-icons-bootstrap-icons) `bootstrap-icons` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Brawlhalla](#brawlhalla-brawlhalla) `brawlhalla` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Bridge Base Online](#bridge-base-online-bridge-base-online) `bridge-base-online` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [British Museum Collection online](#british-museum-collection-online-british-museum-collection-online) `british-museum-collection-online` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Candy Box 2](#candy-box-2-candy-box-2) `candy-box-2` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Castro](#castro-castro-podcasts) `castro-podcasts` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [CBC Gem](#cbc-gem-cbc-gem) `cbc-gem` | Partially verified | 5/10 | Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [CBSE Sample Question Papers](#cbse-sample-question-papers-cbse-sample-question-papers) `cbse-sample-question-papers` | Unverified | 2/10 | Free status (unresolved), Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Free status from an official source |
 | [ChatGPT](#chatgpt-chatgpt) `chatgpt` | Partially verified | 3/10 | Official URL, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information (unresolved) | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Pricing information from an official source |
 | [ChuChu TV](#chuchu-tv-chuchu-tv) `chuchu-tv` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Claude](#claude-claude) `claude` | Partially verified | 7/10 | Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 3 remaining required check(s) |
 | [Cleveland Museum of Art Open Access](#cleveland-museum-of-art-open-access-cleveland-museum-open-access) `cleveland-museum-open-access` | Partially verified | 5/10 | Free-tier limits, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Cloudflare Pages](#cloudflare-pages-cloudflare-pages) `cloudflare-pages` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
+| [CMU Open Learning Initiative (Independent Learners)](#cmu-open-learning-initiative-independent-learners-cmu-oli-independent-learner-courses) `cmu-oli-independent-learner-courses` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Comic Book Plus](#comic-book-plus-comic-book-plus) `comic-book-plus` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Coolmath Games](#coolmath-games-coolmath-games) `coolmath-games` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Coqui TTS (Idiap fork)](#coqui-tts-idiap-fork-coqui-tts) `coqui-tts` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -135,11 +141,13 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [GoatCounter](#goatcounter-goatcounter) `goatcounter` | Partially verified | 6/10 | Account requirement, Credit-card requirement, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Goldmines TV channels](#goldmines-tv-channels-goldmines-tv) `goldmines-tv` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Google AI Studio](#google-ai-studio-google-ai-studio) `google-ai-studio` | Partially verified | 3/10 | Official URL, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Google Arts & Culture](#google-arts--culture-google-arts-and-culture) `google-arts-and-culture` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Google Gemini](#google-gemini-google-gemini) `google-gemini` | Partially verified | 6/10 | Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Goxel](#goxel-goxel) `goxel` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [gPodder](#gpodder-gpodder) `gpodder` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Grammarly](#grammarly-grammarly) `grammarly` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Graphite](#graphite-graphite-editor) `graphite-editor` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [GRE POWERPREP Practice Tests (ETS)](#gre-powerprep-practice-tests-ets-gre-powerprep-free-practice-tests) `gre-powerprep-free-practice-tests` | Partially verified | 5/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Green Gold TV (Chhota Bheem)](#green-gold-tv-chhota-bheem-green-gold-tv-youtube) `green-gold-tv-youtube` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Green Gold TV on Samsung TV Plus](#green-gold-tv-on-samsung-tv-plus-green-gold-tv-samsung-fast) `green-gold-tv-samsung-fast` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Grocy](#grocy-grocy) `grocy` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -165,6 +173,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Julius](#julius-julius-caesar-3) `julius-caesar-3` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Kanboard](#kanboard-kanboard) `kanboard` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Kasts](#kasts-kasts) `kasts` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [KEXP](#kexp-kexp) `kexp` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Kimai](#kimai-kimai) `kimai` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [KitchenOwl](#kitchenowl-kitchenowl) `kitchenowl` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Kokoro TTS](#kokoro-tts-kokoro-tts) `kokoro-tts` | Partially verified | 6/10 | Free-tier limits, Account requirement, Credit-card requirement, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
@@ -174,6 +183,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Krayin CRM](#krayin-crm-krayin-crm) `krayin-crm` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Krita AI Diffusion](#krita-ai-diffusion-krita-ai-diffusion) `krita-ai-diffusion` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Lahari Music](#lahari-music-lahari-music) `lahari-music` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Language Transfer](#language-transfer-language-transfer) `language-transfer` | Partially verified | 4/10 | Free-tier limits, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Leonardo.Ai](#leonardoai-leonardo-ai) `leonardo-ai` | Partially verified | 6/10 | Account requirement, Credit-card requirement, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Libby](#libby-libby-library-app) `libby-library-app` | Partially verified | 5/10 | Free-tier limits, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Library of Congress Free to Use and Reuse](#library-of-congress-free-to-use-and-reuse-loc-free-to-use) `loc-free-to-use` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
@@ -181,12 +191,14 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Listen Notes](#listen-notes-listen-notes) `listen-notes` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Lit2Go](#lit2go-lit2go) `lit2go` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Loop Habit Tracker](#loop-habit-tracker-loop-habit-tracker) `loop-habit-tracker` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Loyal Books](#loyal-books-loyal-books) `loyal-books` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Luanti (formerly Minetest)](#luanti-formerly-minetest-luanti) `luanti` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Lunacy](#lunacy-lunacy) `lunacy` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Material Maker](#material-maker-material-maker) `material-maker` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Material Symbols](#material-symbols-material-symbols) `material-symbols` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Mautic](#mautic-mautic) `mautic` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Medito](#medito-medito) `medito` | Partially verified | 5/10 | Free-tier limits, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Microsoft Learn Training](#microsoft-learn-training-microsoft-learn-training) `microsoft-learn-training` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Microsoft PowerToys](#microsoft-powertoys-microsoft-powertoys) `microsoft-powertoys` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Mindustry](#mindustry-mindustry) `mindustry` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information (unresolved) | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Pricing information from an official source |
 | [Mistral Le Chat](#mistral-le-chat-mistral-le-chat) `mistral-le-chat` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -200,6 +212,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [n8n](#n8n-n8n) `n8n` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use (unresolved), Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Commercial use from an official source |
 | [National Film Board of Canada](#national-film-board-of-canada-nfb-films) `nfb-films` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [National Gallery of Art Open Access](#national-gallery-of-art-open-access-national-gallery-of-art-open-access) `national-gallery-of-art-open-access` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [National Scholarship Portal (NSP)](#national-scholarship-portal-nsp-national-scholarship-portal) `national-scholarship-portal` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Netdata](#netdata-netdata) `netdata` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Nginx Proxy Manager](#nginx-proxy-manager-nginx-proxy-manager) `nginx-proxy-manager` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [NHK WORLD-JAPAN](#nhk-world-japan-nhk-world-japan-tv) `nhk-world-japan-tv` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -219,6 +232,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Overcast](#overcast-overcast) `overcast` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Parivahan Sewa](#parivahan-sewa-parivahan-sewa) `parivahan-sewa` | Unverified | 2/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Path of Exile](#path-of-exile-path-of-exile) `path-of-exile` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Paul's Online Math Notes](#pauls-online-math-notes-pauls-online-math-notes) `pauls-online-math-notes` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Pepper&Carrot](#peppercarrot-pepper-and-carrot) `pepper-and-carrot` | Partially verified | 6/10 | Free-tier limits, Account requirement, Credit-card requirement, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Plausible Community Edition](#plausible-community-edition-plausible-community-edition) `plausible-community-edition` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [PlayingCards.io](#playingcardsio-playingcards-io) `playingcards-io` | Partially verified | 3/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -229,17 +243,22 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Podverse](#podverse-podverse) `podverse` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Poki](#poki-poki) `poki` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Poki Kids](#poki-kids-poki-kids) `poki-kids` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Polypad](#polypad-polypad) `polypad` | Partially verified | 3/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Portainer Community Edition](#portainer-community-edition-portainer-ce) `portainer-ce` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
+| [Purdue OWL](#purdue-owl-purdue-owl) `purdue-owl` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [PyChess Variants (pychess.org)](#pychess-variants-pychessorg-pychess-variants) `pychess-variants` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [qBittorrent](#qbittorrent-qbittorrent) `qbittorrent` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Radio Browser](#radio-browser-radio-browser) `radio-browser` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Radio Swiss Classic](#radio-swiss-classic-radio-swiss-classic) `radio-swiss-classic` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Rajshri (YouTube channels)](#rajshri-youtube-channels-rajshri-youtube-channels) `rajshri-youtube-channels` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [RBI Financial Education](#rbi-financial-education-rbi-financial-education) `rbi-financial-education` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Real-ESRGAN](#real-esrgan-real-esrgan) `real-esrgan` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [rembg](#rembg-rembg) `rembg` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [restic](#restic-restic) `restic` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [RetroCrush](#retrocrush-retrocrush) `retrocrush` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [reveal.js](#revealjs-reveal-js) `reveal-js` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Rijksmuseum collection](#rijksmuseum-collection-rijksmuseum-collection) `rijksmuseum-collection` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [roadmap.sh](#roadmapsh-roadmap-sh) `roadmap-sh` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Samsung TV Plus](#samsung-tv-plus-samsung-tv-plus-fast) `samsung-tv-plus-fast` | Partially verified | 5/10 | Free-tier limits, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [ScummVM](#scummvm-scummvm) `scummvm` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Seafile Community Edition](#seafile-community-edition-seafile-community) `seafile-community` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -248,6 +267,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Shemaroo Movies (YouTube)](#shemaroo-movies-youtube-shemaroo-movies-youtube) `shemaroo-movies-youtube` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Shortwave](#shortwave-shortwave-radio-app) `shortwave-radio-app` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Simon Tatham's Portable Puzzle Collection](#simon-tathams-portable-puzzle-collection-simon-tatham-puzzles) `simon-tatham-puzzles` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Simon's Cat](#simons-cat-simons-cat) `simons-cat` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [skribbl.io](#skribblio-skribbl-io) `skribbl-io` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Sling Freestream](#sling-freestream-sling-freestream-fast) `sling-freestream-fast` | Partially verified | 4/10 | Free-tier limits, Account requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [SomaFM](#somafm-somafm) `somafm` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -256,12 +276,14 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Start Bootstrap](#start-bootstrap-start-bootstrap) `start-bootstrap` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Stirling PDF](#stirling-pdf-stirling-pdf) `stirling-pdf` | Unverified | 2/10 | Free status (unresolved), Free-tier limits, Account requirement, Credit-card requirement, Commercial use (unresolved), Personal use, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Settle Free status, Commercial use from an official source |
 | [STIRR](#stirr-stirr-free-tv) `stirr-free-tv` | Partially verified | 3/10 | Official URL, Free-tier limits, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Storynory](#storynory-storynory) `storynory` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Stunt Rally](#stunt-rally-stunt-rally) `stunt-rally` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Suno](#suno-suno) `suno` | Partially verified | 6/10 | Account requirement, Credit-card requirement, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [Supermaven](#supermaven-supermaven) `supermaven` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [SuperTux](#supertux-supertux) `supertux` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [SuperTuxKart](#supertuxkart-supertuxkart) `supertuxkart` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Tandoor Recipes](#tandoor-recipes-tandoor-recipes) `tandoor-recipes` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Tatoeba](#tatoeba-tatoeba) `tatoeba` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Tenacity](#tenacity-tenacity) `tenacity` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [TETR.IO](#tetrio-tetr-io) `tetr-io` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [The Public Domain Review](#the-public-domain-review-public-domain-review) `public-domain-review` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -276,12 +298,14 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Variety](#variety-variety-wallpaper-manager) `variety-wallpaper-manager` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [VCMI](#vcmi-vcmi) `vcmi` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Ventusky](#ventusky-ventusky) `ventusky` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [VIZ Shonen Jump](#viz-shonen-jump-viz-shonen-jump) `viz-shonen-jump` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [VLC media player](#vlc-media-player-vlc) `vlc` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
 | [Wan2.2](#wan22-wan-2-2) `wan-2-2` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [War Thunder](#war-thunder-war-thunder) `war-thunder` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Warframe](#warframe-warframe) `warframe` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Warzone 2100](#warzone-2100-warzone-2100) `warzone-2100` | Partially verified | 5/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [WAVES (Prasar Bharati)](#waves-prasar-bharati-waves-prasar-bharati) `waves-prasar-bharati` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
+| [WEBTOON](#webtoon-webtoon) `webtoon` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [WeKan](#wekan-wekan) `wekan` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [WFMU](#wfmu-wfmu) `wfmu` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Widelands](#widelands-widelands) `widelands` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -1413,6 +1437,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | "Requirements: Docker Engine + Compose v2 · 2 GB RAM on first boot · Linux, VPS, homelab, or macOS". | [AdventureLog README](https://raw.githubusercontent.com/seanmorley15/AdventureLog/main/README.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | "Open source, self-hosted, GPL-3.0". | [AdventureLog README](https://raw.githubusercontent.com/seanmorley15/AdventureLog/main/README.md) | 2026-10-11 |
 
+### AICTE National Internship Portal `aicte-national-internship-portal`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "National Internship Portal by AICTE, Ministry of Education, Government of India. Internships for AICTE, UGC, IGNOU and other students." | [National Internship Portal homepage: listings, logins, registration](https://internship.aicte-india.org/) | 2026-10-11 |
+| Free status | ✅ Confirmed | The homepage offers "Register Free" for students; no fee for students is mentioned. | [National Internship Portal homepage: listings, logins, registration](https://internship.aicte-india.org/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Describes itself as "Internships for AICTE, UGC, IGNOU and other students"; each posting is by a separate host such as TULIP (MoHUA) or NHIDCL. | [National Internship Portal homepage: listings, logins, registration](https://internship.aicte-india.org/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Amazon MX Player `amazon-mx-player`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1505,6 +1548,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Official URL | ✅ Confirmed | The homepage loaded with Game of the Day, new and popular games, and a 2026 Armor Games copyright. | [ArmorGames.com homepage: catalogue, demo tags, ad credit](https://armorgames.com/) | 2026-10-11 |
 | Free status | ✅ Confirmed | The about page says 'Looking to play free online web games? Visit ArmorGames.com'. | [Armor Games about page: history; 'free online web games' at ArmorGames.com](https://armorgames.com/about) | 2026-10-11 |
 | Major limitations | ✅ Confirmed | The homepage footer reads 'Ads Powered by Playwire', and several new listings are tagged Demo. | [ArmorGames.com homepage: catalogue, demo tags, ad credit](https://armorgames.com/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### ARTE `arte-tv`
+
+**Partially verified** · shown on the site as Partially verified · 2/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | arte.tv is the broadcaster's own streaming site. | [arte.tv English homepage: 'ARTE, the European culture TV channel, free and on demand'; genres: documentaries, series, cinema, politics, ARTE Concert, magazines; 'ARTE in 7 languages'](https://www.arte.tv/en/) | 2026-10-11 |
+| Free status | ✅ Confirmed | Page heading: 'ARTE, the European culture TV channel, free and on demand'. | [arte.tv English homepage: 'ARTE, the European culture TV channel, free and on demand'; genres: documentaries, series, cinema, politics, ARTE Concert, magazines; 'ARTE in 7 languages'](https://www.arte.tv/en/) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
@@ -1774,6 +1836,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### British Museum Collection online `british-museum-collection-online`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | britishmuseum.org is the museum's own site. | [Collection online: 'access to almost five million objects in more than two million records'; high-definition zoomable images; collection themes](https://www.britishmuseum.org/collection) | 2026-10-11 |
+| Free status | ✅ Confirmed | Collection online is openly searchable; the page offers no paid tier. | [Collection online: 'access to almost five million objects in more than two million records'; high-definition zoomable images; collection themes](https://www.britishmuseum.org/collection) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | The CC BY-NC-SA 4.0 licence 'does not allow use of our content for commercial purposes'. | [Copyright and permissions: CC BY-NC-SA 4.0 for content marked with the CC logo; credit line; lists of commercial vs non-commercial uses; third-party rights](https://www.britishmuseum.org/terms-use/copyright-and-permissions) | 2026-10-11 |
+| Personal use | ✅ Confirmed | Non-commercial uses such as classroom use and informational websites are listed as permitted. | [Copyright and permissions: CC BY-NC-SA 4.0 for content marked with the CC logo; credit line; lists of commercial vs non-commercial uses; third-party rights](https://www.britishmuseum.org/terms-use/copyright-and-permissions) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'The Creative Commons licence does not apply to everything on our website'; some content has third-party rights. | [Copyright and permissions: CC BY-NC-SA 4.0 for content marked with the CC logo; credit line; lists of commercial vs non-commercial uses; third-party rights](https://www.britishmuseum.org/terms-use/copyright-and-permissions) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Candy Box 2 `candy-box-2`
 
 **Partially verified** · shown on the site as Partially verified · 2/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1811,6 +1892,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Pricing information | ✅ Confirmed | Castro Plus is priced at $24.99/year as an in-app purchase. | [Home page: free app and Castro Plus features and price](https://castro.fm/) | 2026-10-11 |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The site calls Castro the iPhone podcast player, with CarPlay and Apple Watch support. | [Home page: free app and Castro Plus features and price](https://castro.fm/) | 2026-10-11 |
+
+### CBC Gem `cbc-gem`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | gem.cbc.ca is CBC/Radio-Canada's own streaming site. | [CBC Gem homepage: shows, movies, news, sports, kids, live; much content 'only available to our signed in members'](https://gem.cbc.ca/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'For users in Canada, your CBC account lets you watch all on-demand series and films on CBC Gem'; the account is free. | [CBC Help 'Sign up for a CBC account' (updated 9 Oct 2026): free account; in Canada unlocks all on-demand series and films and 14 live channels; Canadian postal code required; Gem limited to account holders within Canada](https://cbchelp.cbc.ca/hc/en-ca/articles/27264104200987-Sign-up-for-a-CBC-account-to-access-more) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Premium subscribers 'can stream any of our video on-demand content ad-free, with some exceptions'. | [CBC Help 'Gem Premium - Ad Free Experience': premium subscribers stream on-demand ad-free; live channels carry ads; kids programming always ad-free](https://cbchelp.cbc.ca/hc/en-ca/articles/4418073209627-CBC-Gem-Premium-Ad-Free-Experience) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | Content is for signed-in members; 'A Canadian postal code is required for all account signups'. | [CBC Help 'Sign up for a CBC account' (updated 9 Oct 2026): free account; in Canada unlocks all on-demand series and films and 14 live channels; Canadian postal code required; Gem limited to account holders within Canada](https://cbchelp.cbc.ca/hc/en-ca/articles/27264104200987-Sign-up-for-a-CBC-account-to-access-more) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'CBC Gem service is limited to account holders within Canada only.' | [CBC Help 'Sign up for a CBC account' (updated 9 Oct 2026): free account; in Canada unlocks all on-demand series and films and 14 live channels; Canadian postal code required; Gem limited to account holders within Canada](https://cbchelp.cbc.ca/hc/en-ca/articles/27264104200987-Sign-up-for-a-CBC-account-to-access-more) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### ChatGPT `chatgpt`
 
@@ -1885,6 +1985,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Account requirement | ✅ Confirmed | Images download from the artwork page and the API needs 'no key or token'. | [Open Access page: CC0 images of public-domain artworks and all metadata; reuse without permission; API with no key; GitHub; 3-D models](https://www.clevelandart.org/open-access) | 2026-10-11 |
 | Commercial use | ✅ Confirmed | CC0 content 'can be used in any application ... all without fees or restriction'; the page mentions merchandising. | [Open Access page: CC0 images of public-domain artworks and all metadata; reuse without permission; API with no key; GitHub; 3-D models](https://www.clevelandart.org/open-access) | 2026-10-11 |
 | Major limitations | ✅ Confirmed | Images are not open access when not yet digitised, under copyright or other restrictions, or not fully owned by the CMA. | [Open Access page: CC0 images of public-domain artworks and all metadata; reuse without permission; API with no key; GitHub; 3-D models](https://www.clevelandart.org/open-access) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### CMU Open Learning Initiative (Independent Learners) `cmu-oli-independent-learner-courses`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | "© 2025 Open Learning Initiative, Carnegie Mellon University." | [OLI independent learner catalogue: free and low-cost courses, examples with prices](https://oli.cmu.edu/independent-learner-courses/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "These courses are self-guided and do not require a teacher or classroom. Many are free or low-cost and open to the public." | [OLI independent learner catalogue: free and low-cost courses, examples with prices](https://oli.cmu.edu/independent-learner-courses/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Independent paid OLI courses are self-paced with no instructor, no tests, no certificate, no credits." | [OLI independent learner catalogue: free and low-cost courses, examples with prices](https://oli.cmu.edu/independent-learner-courses/) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Latest courses list "Arabic 2 for Independent Learners (self-paced) $25" and "Beyond Backpacks ... $10". | [OLI independent learner catalogue: free and low-cost courses, examples with prices](https://oli.cmu.edu/independent-learner-courses/) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
@@ -2648,6 +2767,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Google Arts & Culture `google-arts-and-culture`
+
+**Partially verified** · shown on the site as Partially verified · 2/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | about.artsandculture.google.com is Google's own page for the project, linking artsandculture.google.com. | [About Google Arts & Culture: 'a non-commercial initiative'; mission to bring art and culture online 'accessible to anyone, anywhere'; Google Play and iTunes app links](https://about.artsandculture.google.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Google Arts & Culture is a non-commercial initiative ... so it's accessible to anyone, anywhere.' | [About Google Arts & Culture: 'a non-commercial initiative'; mission to bring art and culture online 'accessible to anyone, anywhere'; Google Play and iTunes app links](https://about.artsandculture.google.com/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | The page links the app on Google Play and iTunes. | [About Google Arts & Culture: 'a non-commercial initiative'; mission to bring art and culture online 'accessible to anyone, anywhere'; Google Play and iTunes app links](https://about.artsandculture.google.com/) | 2026-10-11 |
+
 ### Google Gemini `google-gemini`
 
 **Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2742,6 +2880,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | 'available now in alpha'; desktop download links are posted in the Discord announcements channel for testers. | [Official site: description, status, platforms](https://graphite.art/) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | 'The web app is currently live and desktop apps for Windows, Mac, and Linux are now in a release candidate stage.' | [Official site: description, status, platforms](https://graphite.art/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | 'Graphite is open source software made by its community'. | [Licence page: code licence, commercial use, branding licence](https://graphite.art/license/) | 2026-10-11 |
+
+### GRE POWERPREP Practice Tests (ETS) `gre-powerprep-free-practice-tests`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | "Copyright © 2026 by ETS." Page is part of the GRE section of ets.org. | [ETS POWERPREP page: free and paid practice tests, price](https://www.ets.org/gre/test-takers/general-test/prepare/powerprep.html) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Try our free POWERPREP Online practice tests. With both timed and untimed options" — POWERPREP 1 untimed and POWERPREP 2 timed. | [ETS POWERPREP page: free and paid practice tests, price](https://www.ets.org/gre/test-takers/general-test/prepare/powerprep.html) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | "Create a free GRE account to schedule your test, access prep materials, view scores, and more." | [ETS POWERPREP page: free and paid practice tests, price](https://www.ets.org/gre/test-takers/general-test/prepare/powerprep.html) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Users taking POWERPREP Online Practice Test 1 under untimed conditions will not receive scores on the Verbal Reasoning and Quantitative Reasoning measures." | [ETS POWERPREP page: free and paid practice tests, price](https://www.ets.org/gre/test-takers/general-test/prepare/powerprep.html) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | "POWERPREP® PLUS Online $44.95 per practice test". | [ETS POWERPREP page: free and paid practice tests, price](https://www.ets.org/gre/test-takers/general-test/prepare/powerprep.html) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### Green Gold TV (Chhota Bheem) `green-gold-tv-youtube`
 
@@ -3218,6 +3375,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | Linux installs via Discover, Flathub and Snap; F-Droid for Android; Android and Windows listed as other platforms. | [KDE Apps page: features, platforms, releases and licence](https://apps.kde.org/kasts/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The page links the source code at invent.kde.org/multimedia/kasts under GPL-2.0-or-later. | [KDE Apps page: features, platforms, releases and licence](https://apps.kde.org/kasts/) | 2026-10-11 |
 
+### KEXP `kexp`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | kexp.org is the station's own site, operated by Friends of KEXP, a 501(c)3 nonprofit. | [About KEXP: nonprofit, listener-supported; 90.3 FM Seattle, 92.7 FM Alameda/SF, website and mobile apps; Listen Live player at 64/160 kbps; Streaming Archive; Live on KEXP on YouTube; funded by donors, business supporters and grants](https://www.kexp.org/about/) | 2026-10-11 |
+| Free status | ✅ Confirmed | The site's 'Listen Live' player streams the station; KEXP describes itself as listener-supported, broadcasting 'through our website and mobile apps'. | [About KEXP: nonprofit, listener-supported; 90.3 FM Seattle, 92.7 FM Alameda/SF, website and mobile apps; Listen Live player at 64/160 kbps; Streaming Archive; Live on KEXP on YouTube; funded by donors, business supporters and grants](https://www.kexp.org/about/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Funding includes 'business supporters, corporate and foundation gifts'. | [About KEXP: nonprofit, listener-supported; 90.3 FM Seattle, 92.7 FM Alameda/SF, website and mobile apps; Listen Live player at 64/160 kbps; Streaming Archive; Live on KEXP on YouTube; funded by donors, business supporters and grants](https://www.kexp.org/about/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Kimai `kimai`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -3389,6 +3565,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Language Transfer `language-transfer`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Site header "Language Transfer" with Free Courses, About, Collaborate and Donate pages. | [Language Transfer homepage: courses, funding model](https://www.languagetransfer.org/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "there are no price tags to access any of the material lovingly and painstakingly created, but there are also no adverts, no sign-ups and no-one asking for or selling your data." | [Language Transfer homepage: courses, funding model](https://www.languagetransfer.org/) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | The homepage says there are "no adverts, no sign-ups and no-one asking for or selling your data", so no account is needed to use the courses. | [Language Transfer homepage: courses, funding model](https://www.languagetransfer.org/) | 2026-10-11 |
+| Credit-card requirement | ✅ Confirmed | "no price tags to access any of the material"; payment appears only as optional donations via Patreon or PayPal. | [Language Transfer homepage: courses, funding model](https://www.languagetransfer.org/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Leonardo.Ai `leonardo-ai`
 
 **Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -3522,6 +3717,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | "The easiest way to install Loop is through the Google Play Store or F-Droid." | [Loop Habit Tracker README](https://raw.githubusercontent.com/iSoron/uhabits/dev/README.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | "The app is completely open-source (GPLv3)." | [Loop Habit Tracker README](https://raw.githubusercontent.com/iSoron/uhabits/dev/README.md) | 2026-10-11 |
 
+### Loyal Books `loyal-books`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | loyalbooks.com is the site's own domain; the About page names its company site, Twist Idea. | [Loyal Books homepage: 'Free Public Domain Audiobooks & eBook Downloads'; catalogue of classic titles](https://www.loyalbooks.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'All audio books on LoyalBooks.com are in the public domain ... Enjoy these free audio books.' | [About page: renamed from Books Should Be Free; all audiobooks are public domain; sources are Gutenberg and LibriVox; also offers best sellers](https://www.loyalbooks.com/about) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'We also offer best sellers for those who want the newest books' — these sit outside the public-domain collection. | [About page: renamed from Books Should Be Free; all audiobooks are public domain; sources are Gutenberg and LibriVox; also offers best sellers](https://www.loyalbooks.com/about) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Luanti (formerly Minetest) `luanti`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -3635,6 +3849,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | The repository's LICENSE file is the AGPL-3.0. | [LICENSE file in meditohq/medito-app: GNU Affero General Public License v3](https://raw.githubusercontent.com/meditohq/medito-app/develop/LICENSE) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ✅ Confirmed | The app's source is public under the AGPL-3.0. | [LICENSE file in meditohq/medito-app: GNU Affero General Public License v3](https://raw.githubusercontent.com/meditohq/medito-app/develop/LICENSE) | 2026-10-11 |
+
+### Microsoft Learn Training `microsoft-learn-training`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Welcome to Microsoft Learn"; footer "© Microsoft 2026". | [Microsoft Learn training homepage](https://learn.microsoft.com/en-us/training/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "How much does the training cost? Microsoft Learn training is free and available to anyone who has an interest to learn about Microsoft products." | [Microsoft Learn training FAQ: cost, profile, sandboxes, languages](https://learn.microsoft.com/en-us/training/support/faq) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | "Do I need to create a profile to use Microsoft Learn? No, profile creation isn't required. If you don't have a profile, you can still access and consume all content." | [Microsoft Learn training FAQ: cost, profile, sandboxes, languages](https://learn.microsoft.com/en-us/training/support/faq) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Sandboxes are no longer available. To complete exercises in training modules, you'll need access to an Azure subscription." | [Microsoft Learn training FAQ: cost, profile, sandboxes, languages](https://learn.microsoft.com/en-us/training/support/faq) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### Microsoft PowerToys `microsoft-powertoys`
 
@@ -3863,6 +4096,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The Gallery makes no warranty that other parties will not impose fees and can only convey the rights it has. | [Free Images and Open Access page: 60,000+ images free for any use, commercial or non-commercial; CC0 dataset on GitHub; no use fees](https://www.nga.gov/artworks/free-images-and-open-access) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### National Scholarship Portal (NSP) `national-scholarship-portal`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Page header reads "NSP : National Scholarship Portal · Government of India · Ministry of Electronics & Information Technology". | [NSP homepage: student services, announcements, OTR requirement, CSC charges](https://scholarships.gov.in/) | 2026-10-11 |
+| Free status | ✅ Confirmed | Students apply online via "Apply For One Time Registration (OTR)" and "Apply For Scholarship" with no fee shown; the only charge stated is for assisted filing at CSCs: "fixed at Rs 30.00 (inclusive of all applicable taxes, etc.)". | [NSP homepage: student services, announcements, OTR requirement, CSC charges](https://scholarships.gov.in/) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | "OTR is required to apply for scholarship on National Scholarship Portal." "OTR can be generated using Aadhaar/Aadhaar Enrollment number(EID)". | [NSP homepage: student services, announcements, OTR requirement, CSC charges](https://scholarships.gov.in/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "All disabled students must first login in the UDID portal and provide consent ... Otherwise, they will not be able to submit their application." Face authentication fails if biometrics are locked in Aadhaar. | [NSP homepage: student services, announcements, OTR requirement, CSC charges](https://scholarships.gov.in/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | "NSP OTR App is available on Google Play Store." alongside the web portal. | [NSP homepage: student services, announcements, OTR requirement, CSC charges](https://scholarships.gov.in/) | 2026-10-11 |
 
 ### Netdata `netdata`
 
@@ -4206,6 +4458,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Paul's Online Math Notes `pauls-online-math-notes`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "This site and all the content within this site, unless otherwise noted, is the copyrighted property of Paul Dawkins". | [Terms and conditions of use](https://tutorial.math.lamar.edu/Terms.aspx) | 2026-10-11 |
+| Free status | ✅ Confirmed | "This site and the notes contained in this site were written with the intent of providing students and instructors with a free set of notes that they could use for their classes." | [Terms and conditions of use](https://tutorial.math.lamar.edu/Terms.aspx) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | "You may not display, use, reproduce, distribute or otherwise use any content from this site for any commercial purpose without the express written consent of Paul Dawkins." | [Terms and conditions of use](https://tutorial.math.lamar.edu/Terms.aspx) | 2026-10-11 |
+| Personal use | ✅ Confirmed | "You may print content from this site for your private, non-commercial use." | [Terms and conditions of use](https://tutorial.math.lamar.edu/Terms.aspx) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "The content on this site may not be downloaded, uploaded, imported, mirrored ... for inclusion in a web site, web server, ftp server, or any other networked computer without the express written consent". | [Terms and conditions of use](https://tutorial.math.lamar.edu/Terms.aspx) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Pepper&Carrot `pepper-and-carrot`
 
 **Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -4396,6 +4667,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### Polypad `polypad`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Welcome to Polypad!"; footer "© 2025 Amplify Education". | [Polypad homepage: tools, free statement, no login](https://polypad.amplify.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Polypad is completely free, requires no login or installation, runs on all devices and browsers, and works with any curriculum." | [Polypad homepage: tools, free statement, no login](https://polypad.amplify.com/) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | "requires no login or installation". | [Polypad homepage: tools, free statement, no login](https://polypad.amplify.com/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | "runs on all devices and browsers". | [Polypad homepage: tools, free statement, no login](https://polypad.amplify.com/) | 2026-10-11 |
+
 ### Portainer Community Edition `portainer-ce`
 
 **Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -4414,6 +4704,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Pricing information | ✅ Confirmed | Business Edition is the supported, paid version; "Take3 – get 3 free nodes of Portainer Business". | [README: CE scope, intended use, licensing](https://raw.githubusercontent.com/portainer/portainer/develop/README.md) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ✅ Confirmed | Business Edition "builds on the same open-source base"; source under zlib. | [README: CE scope, intended use, licensing](https://raw.githubusercontent.com/portainer/portainer/develop/README.md) | 2026-10-11 |
+
+### Purdue OWL `purdue-owl`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "This page is brought to you by the OWL at Purdue University." | [Welcome to the Purdue OWL: mission, free service, copyright notice](https://owl.purdue.edu/owl/purdue_owl.html) | 2026-10-11 |
+| Free status | ✅ Confirmed | "The Purdue OWL houses writing resources and instructional material, and we provide these as a free service at Purdue. Students, members of the community, and users worldwide will find information". | [Welcome to the Purdue OWL: mission, free service, copyright notice](https://owl.purdue.edu/owl/purdue_owl.html) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "This material may not be published, reproduced, broadcast, rewritten, or redistributed without permission." | [Welcome to the Purdue OWL: mission, free service, copyright notice](https://owl.purdue.edu/owl/purdue_owl.html) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### PyChess Variants (pychess.org) `pychess-variants`
 
@@ -4469,6 +4778,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Free status | ✅ Confirmed | 'This webservice can be used freely but without guarantee to work.' | [API docs: 'can be used freely but without guarantee to work'; online since 2015; daily station checks; add/vote endpoints; formats](https://docs.radio-browser.info/) | 2026-10-11 |
 | Account requirement | ✅ Confirmed | Requests only need a descriptive User-Agent; no key or account is described. | [API docs: 'can be used freely but without guarantee to work'; online since 2015; daily station checks; add/vote endpoints; formats](https://docs.radio-browser.info/) | 2026-10-11 |
 | Major limitations | ✅ Confirmed | The maintainer warns downtimes are possible; stations are added by users. | [API docs: 'can be used freely but without guarantee to work'; online since 2015; daily station checks; add/vote endpoints; formats](https://docs.radio-browser.info/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Radio Swiss Classic `radio-swiss-classic`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | radioswissclassic.ch is run by the Schweizerische Radio- und Fernsehgesellschaft SRG SSR (© 2026 on the page). | [About us (served in German): programme of SRG SSR; about 6,500 titles, ~50% with a Swiss connection; 'Das werbefreie Radio Swiss Classic'; edited at SRF Studio Basel; web player and music database in navigation](https://www.radioswissclassic.ch/en/about-us) | 2026-10-11 |
+| Free status | ✅ Confirmed | Public-service programme with a 'Radio starten' / Webplayer link on every page and no subscription offered. | [About us (served in German): programme of SRG SSR; about 6,500 titles, ~50% with a Swiss connection; 'Das werbefreie Radio Swiss Classic'; edited at SRF Studio Basel; web player and music database in navigation](https://www.radioswissclassic.ch/en/about-us) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'Das werbefreie Radio Swiss Classic' — the station is advertising-free; programme is chosen by the music editors. | [About us (served in German): programme of SRG SSR; about 6,500 titles, ~50% with a Swiss connection; 'Das werbefreie Radio Swiss Classic'; edited at SRF Studio Basel; web player and music database in navigation](https://www.radioswissclassic.ch/en/about-us) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
@@ -4567,6 +4895,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | "It supports the three major operating systems (Linux, macOS, Windows) and a few smaller ones (FreeBSD, OpenBSD)." | [README: platforms, backends, licence](https://raw.githubusercontent.com/restic/restic/master/README.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | Source published under the OSI-approved BSD 2-Clause licence. | [README: platforms, backends, licence](https://raw.githubusercontent.com/restic/restic/master/README.md) | 2026-10-11 |
 
+### RetroCrush `retrocrush`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | explore.retrocrush.tv is RetroCrush's own site (© 2026 Cineverse), linking www.retrocrush.tv. | [RetroCrush FAQ: free ad-supported option; Premium may be available by region/device; free version includes ads; availability varies by country; titles rotate; dubs/subtitles; platforms incl. web, Android, iOS, Roku](https://explore.retrocrush.tv/frequently-asked-questions-faqs/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'RetroCrush offers a free ad-supported streaming option.' | [RetroCrush FAQ: free ad-supported option; Premium may be available by region/device; free version includes ads; availability varies by country; titles rotate; dubs/subtitles; platforms incl. web, Android, iOS, Roku](https://explore.retrocrush.tv/frequently-asked-questions-faqs/) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | 'The free version of RetroCrush includes advertisements. Premium tiers may reduce ad interruptions where available.' | [RetroCrush FAQ: free ad-supported option; Premium may be available by region/device; free version includes ads; availability varies by country; titles rotate; dubs/subtitles; platforms incl. web, Android, iOS, Roku](https://explore.retrocrush.tv/frequently-asked-questions-faqs/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'Availability varies by country due to streaming rights'; 'certain titles may rotate off the platform when rights expire'. | [RetroCrush FAQ: free ad-supported option; Premium may be available by region/device; free version includes ads; availability varies by country; titles rotate; dubs/subtitles; platforms incl. web, Android, iOS, Roku](https://explore.retrocrush.tv/frequently-asked-questions-faqs/) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | 'Available on web browsers'; platform links include Android and Apple iOS. | [RetroCrush FAQ: free ad-supported option; Premium may be available by region/device; free version includes ads; availability varies by country; titles rotate; dubs/subtitles; platforms incl. web, Android, iOS, Roku](https://explore.retrocrush.tv/frequently-asked-questions-faqs/) | 2026-10-11 |
+
 ### reveal.js `reveal-js`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -4602,6 +4949,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Official URL | ✅ Confirmed | The museum's data-services site links its collection website, rijksmuseum.nl/en/rijksstudio. | [Information and Data Policy introduction: much data and imagery PD or CC0, free incl. commercial; some CC BY 4.0; some in copyright; links to Rijksstudio](https://data.rijksmuseum.nl/policy) | 2026-10-11 |
 | Free status | ✅ Confirmed | Much of the information and data on the collection website 'can be freely used, including for commercial purposes, without needing to request permission'. | [Information and Data Policy introduction: much data and imagery PD or CC0, free incl. commercial; some CC BY 4.0; some in copyright; links to Rijksstudio](https://data.rijksmuseum.nl/policy) | 2026-10-11 |
 | Major limitations | ✅ Confirmed | The policy notes CC BY 4.0 items need attribution and copyrighted photographs are not freely available. | [Information and Data Policy introduction: much data and imagery PD or CC0, free incl. commercial; some CC BY 4.0; some in copyright; links to Rijksstudio](https://data.rijksmuseum.nl/policy) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### roadmap.sh `roadmap-sh`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Hello, I am Kamran Ahmed. I created roadmap.sh to help developers find their path". | [roadmap.sh about/FAQ: what it is, content licence, open-core codebase](https://roadmap.sh/about) | 2026-10-11 |
+| Free status | ✅ Confirmed | "Skill up with community created roadmaps, guides, and courses." Lesson packs: "Short lessons, hands-on projects and an AI tutor ... Every pack starts with free lessons." | [roadmap.sh homepage: roadmaps, lesson packs](https://roadmap.sh/) | 2026-10-11 |
+| Personal use | ✅ Confirmed | "the license of the content on this website does not allow you to redistribute any of the content ... You can use it for personal use or share the link to the content". | [roadmap.sh about/FAQ: what it is, content licence, open-core codebase](https://roadmap.sh/about) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "No, the license of the content on this website does not allow you to redistribute any of the content on this website anywhere." | [roadmap.sh about/FAQ: what it is, content licence, open-core codebase](https://roadmap.sh/about) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
@@ -4757,6 +5123,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | The page says the games run natively on Unix (GTK) and Windows and can be played on the web via JavaScript/WebAssembly. | [Collection homepage: games, web/Windows/Unix builds, MIT licence](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The page offers a source archive and a public git repository at git.tartarus.org. | [Collection homepage: games, web/Windows/Unix builds, MIT licence](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/) | 2026-10-11 |
 
+### Simon's Cat `simons-cat`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | simonscat.com is the official website and links youtube.com/@SimonsCat as its channel. | [Simon's Cat official website: 'Visit our YouTube channel' (youtube.com/@SimonsCat); embedded films; comics, games, shop; © 2014-2026 Simon's Cat Ltd](https://www.simonscat.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | The site embeds its films from YouTube and links the public channel, free to watch. | [Simon's Cat official website: 'Visit our YouTube channel' (youtube.com/@SimonsCat); embedded films; comics, games, shop; © 2014-2026 Simon's Cat Ltd](https://www.simonscat.com/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | YouTube Help says ads before and during videos are removed only by paid YouTube Premium. | [YouTube Help: Premium removes ads shown before and during videos, so free viewing is ad-supported](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### skribbl.io `skribbl-io`
 
 **Partially verified** · shown on the site as Partially verified · 2/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -4890,6 +5275,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | About page lists web, iOS, Android, Roku, Apple TV, Amazon Fire TV, Google TV and Samsung Smart TV. | [STIRR About Us and FAQ: free ad-supported, no account, devices, ownership](https://stirr.com/page/1/about-us/) | 2026-10-11 |
 
+### Storynory `storynory`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | storynory.com is Storynory Ltd's own site (UK company number 05479994). | [Storynory homepage: 'Free Audio Stories for Kids'; free audio stories since November 2005; Patreon support; Apple Podcasts, Spotify, YouTube, RSS](https://www.storynory.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | Site tagline 'Free Audio Stories for Kids'; 'Bertie has been giving the world Free Audio Stories since November 2005'. | [Storynory homepage: 'Free Audio Stories for Kids'; free audio stories since November 2005; Patreon support; Apple Podcasts, Spotify, YouTube, RSS](https://www.storynory.com/) | 2026-10-11 |
+| Commercial use | ✅ Confirmed | 'Developers and producers all over the world licence our high quality audio' — reuse requires a licence. | [Licencing Info: developers and producers licence Storynory audio; site footer 'All rights reserved'](https://www.storynory.com/licencing/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Licensing page and footer: '© 2005–2026 Storynory Ltd ... All rights reserved.' | [Licencing Info: developers and producers licence Storynory audio; site footer 'All rights reserved'](https://www.storynory.com/licencing/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Stunt Rally `stunt-rally`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -5022,6 +5426,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | "A basic permission system exists but this application is not meant to be run as a public page." Hosted version "currently only available in germany". | [Tandoor README: features, hosting, licence](https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/README.md) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | "Easy setup with Docker and included examples for Kubernetes, Unraid and Synology"; "Optimized for use on mobile devices". | [Tandoor README: features, hosting, licence](https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/README.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | Source is public, but the Commons Clause selling exception makes it source-available rather than OSI open source. | [Tandoor README: features, hosting, licence](https://raw.githubusercontent.com/TandoorRecipes/recipes/develop/README.md) | 2026-10-11 |
+
+### Tatoeba `tatoeba`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | "Tatoeba ('we') is a non-profit association ... the Tatoeba website, whose domain name is tatoeba.org". | [Tatoeba terms of use: non-profit, licences, reuse](https://tatoeba.org/en/terms_of_use) | 2026-10-11 |
+| Free status | ✅ Confirmed | "We do not just want to build a large linguistic database, but we also want to share that data and make it freely reusable by other projects." The site asks only for optional donations. | [Tatoeba terms of use: non-profit, licences, reuse](https://tatoeba.org/en/terms_of_use) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | "Certain phrases, in particular audio, may be contributed with a non-marketing condition, and therefore must not be marketed." | [Tatoeba terms of use: non-profit, licences, reuse](https://tatoeba.org/en/terms_of_use) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### Tenacity `tenacity`
 
@@ -5270,6 +5693,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | "The Ventusky application (web, iOS, Android)". | [About Ventusky](https://my.ventusky.com/about/) | 2026-10-11 |
 
+### VIZ Shonen Jump `viz-shonen-jump`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | viz.com is VIZ Media's own site. | [VIZ Shonen Jump page: 'Read Free Manga!'; 'Latest free chapters' list; limited-time Naruto offer; 'Subscribe now and unlock the Shonen Jump digital vault of 20,000+ manga chapters!'](https://www.viz.com/shonenjump) | 2026-10-11 |
+| Free status | ✅ Confirmed | Section headed 'Latest free chapters', linked from 'Read Free Manga!'. | [VIZ Shonen Jump page: 'Read Free Manga!'; 'Latest free chapters' list; limited-time Naruto offer; 'Subscribe now and unlock the Shonen Jump digital vault of 20,000+ manga chapters!'](https://www.viz.com/shonenjump) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | 'Subscribe now and unlock the Shonen Jump digital vault of 20,000+ manga chapters!' | [VIZ Shonen Jump page: 'Read Free Manga!'; 'Latest free chapters' list; limited-time Naruto offer; 'Subscribe now and unlock the Shonen Jump digital vault of 20,000+ manga chapters!'](https://www.viz.com/shonenjump) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'The first 27 chapters are free to read for a limited time!' — some offers are time-limited. | [VIZ Shonen Jump page: 'Read Free Manga!'; 'Latest free chapters' list; limited-time Naruto offer; 'Subscribe now and unlock the Shonen Jump digital vault of 20,000+ manga chapters!'](https://www.viz.com/shonenjump) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Wan2.2 `wan-2-2`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -5364,6 +5806,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Free status | ✅ Confirmed | The page says the WAVES app is available free and is for watching shows, films, live TV and radio. | [Prasar Bharati 'Get Apps' page: WAVES available free on the app stores; watch shows, latest films, live TV/radio and more](https://prasarbharati.gov.in/get-apps/) | 2026-10-11 |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | Download links are given for iOS and Android. | [Prasar Bharati 'Get Apps' page: WAVES available free on the app stores; watch shows, latest films, live TV/radio and more](https://prasarbharati.gov.in/get-apps/) | 2026-10-11 |
+
+### WEBTOON `webtoon`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | webtoons.com is NAVER WEBTOON's own site. | [WEBTOON English homepage: Originals, Canvas, Google Play and App Store links; language switcher (English, Chinese Traditional, Thai, Indonesian, Spanish, French, German); © NAVER WEBTOON](https://www.webtoons.com/en/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'The WEBTOON app is free to download and use! WEBTOON exclusive ORIGINAL series are free to read.' | [WEBTOON Support 'Is the WEBTOON app free?': app free; Originals free to read, weekly; Coins for Fast Pass; Ad Pass unlocks for 3 days by watching ads](https://webtoon.zendesk.com/hc/en-us/articles/360051602511-Is-the-WEBTOON-app-free) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | 'You can purchase Coins to read the latest episodes before anyone else with Fast Pass.' | [WEBTOON Support 'Is the WEBTOON app free?': app free; Originals free to read, weekly; Coins for Fast Pass; Ad Pass unlocks for 3 days by watching ads](https://webtoon.zendesk.com/hc/en-us/articles/360051602511-Is-the-WEBTOON-app-free) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'For Ad Pass series, you can watch short ads to unlock episodes ... available for 3 days.' | [WEBTOON Support 'Is the WEBTOON app free?': app free; Originals free to read, weekly; Coins for Fast Pass; Ad Pass unlocks for 3 days by watching ads](https://webtoon.zendesk.com/hc/en-us/articles/360051602511-Is-the-WEBTOON-app-free) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | The homepage links the app on Google Play and the App Store. | [WEBTOON English homepage: Originals, Canvas, Google Play and App Store links; language switcher (English, Chinese Traditional, Thai, Indonesian, Spanish, French, German); © NAVER WEBTOON](https://www.webtoons.com/en/) | 2026-10-11 |
 
 ### WeKan `wekan`
 
@@ -5535,6 +5996,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | Deployment requires "PostgreSQL (≥ 14)". | [README: features, self-hosting, licence](https://raw.githubusercontent.com/zitadel/zitadel/main/README.md) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | Self-hosted deployment guides for Docker Compose and Kubernetes. | [README: features, self-hosting, licence](https://raw.githubusercontent.com/zitadel/zitadel/main/README.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | Repository sidebar lists "AGPL-3.0 license". | [GitHub repository page: AGPL-3.0 licence badge](https://github.com/zitadel/zitadel) | 2026-10-11 |
+
+### CBSE Sample Question Papers `cbse-sample-question-papers`
+
+**Checks started, free status not yet confirmed** · shown on the site as Unverified · 2/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free status | ⚠️ Could not confirm | Each subject row links straight to PDF files with no fee, login or registration step shown, but the page does not state that the papers are free, so this is not recorded as confirmed. | [CBSE Academic: Class XII SQP & marking scheme for exam 2025-26](https://cbseacademic.nic.in/SQP_CLASSXII_2025-26.html) | 2026-10-11 |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Page footer: "© 2025 CBSE Research & Development Unit"; heading "Class XII Sample Question Paper & Marking Scheme for Exam 2025-26". | [CBSE Academic: Class XII SQP & marking scheme for exam 2025-26](https://cbseacademic.nic.in/SQP_CLASSXII_2025-26.html) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | SQP and MS links are direct PDF links on a public page, with no sign-in shown. | [CBSE Academic: Class XII SQP & marking scheme for exam 2025-26](https://cbseacademic.nic.in/SQP_CLASSXII_2025-26.html) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### Cloudflare Pages `cloudflare-pages`
 

@@ -5,6 +5,7 @@ import { creativeMedia1Resources } from "./creative-media-1";
 import { developerGithub1Resources } from "./developer-github-1";
 import { lifeEveryday1Resources } from "./life-everyday-1";
 import { productivityBusiness1Resources } from "./productivity-business-1";
+import { studentsLearning1Resources } from "./students-learning-1";
 
 /**
  * Researched expansion batches outside Entertainment. Every listing carries the
@@ -17,4 +18,5 @@ export const expansionResources: Resource[] = [
   ...developerGithub1Resources,
   ...lifeEveryday1Resources,
   ...productivityBusiness1Resources,
+  ...studentsLearning1Resources,
 ];

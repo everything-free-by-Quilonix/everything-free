@@ -14,6 +14,7 @@ import { gamesIndie1Resources } from "./games-indie-1";
 import { watchFilm2Resources } from "./watch-film-2";
 import { watchIndia2Resources } from "./watch-india-2";
 import { gamesF2p1Resources } from "./games-f2p-1";
+import { expansionMedia1Resources } from "./expansion-media-1";
 import { watchTvAnime1Resources } from "./watch-tv-anime-1";
 
 /**
@@ -39,4 +40,5 @@ export const entertainmentResources: Resource[] = [
   ...watchFilm2Resources,
   ...watchIndia2Resources,
   ...gamesF2p1Resources,
+  ...expansionMedia1Resources,
 ];

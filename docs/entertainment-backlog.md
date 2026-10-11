@@ -6,11 +6,13 @@ run `npm run check:entertainment` for the current figures.
 
 ## Where the catalogue stands
 
-122 entertainment listings in a library of 1,073 (after the second wave: Indian
-films, cartoons and live TV; radio, audiobooks and meditation; music; itch.io).
-115 are *Partially verified* (free status confirmed against the provider's own page,
+146 entertainment listings in a library of 1,191 (after the third wave: free-to-play
+PC games; KEXP, Radio Swiss Classic, Loyal Books, Storynory, WEBTOON, VIZ Shonen Jump,
+Google Arts & Culture, British Museum, ARTE, CBC Gem, RetroCrush, Simon's Cat).
+139 are *Partially verified* (free status confirmed against the provider's own page,
 with dated sources); 6 older listings (Tubi, Pluto TV, Kanopy, Internet Archive films, Plex, JustWatch)
-have corrected profiles but no recorded checks yet. **Nothing is Verified**: that
+have corrected profiles but no recorded checks yet. 13 are confirmed ad-free and appear
+under the "No ads" filter. **Nothing is Verified**: that
 needs a registered maintainer's sign-off. The table below is from the first wave; run
 `npm run check:entertainment` for current counts.
 
@@ -91,6 +93,12 @@ the project cannot support:
 ## Backlog: candidates read but not settled
 
 Each needs a page that states the free model before it can be listed.
+
+- **Third wave, unreachable or unreadable on 2026-10-11**: Sansad TV and NewsOnAir
+  (connection errors), Digital Comic Museum (403), MANGA Plus, Radio Paradise and the
+  Indian Culture portal (JavaScript-only), Muse Asia / Ani-One (unreachable), Pokémon
+  (bot filter), SBS On Demand and ABC iview (help pages 404). Toei Animation's site
+  offers no free streaming.
 
 - **India**: Prasar Bharati WAVES (only third-party descriptions found),
   NewsOnAir / Akashvani live radio (official pages list channels in Hindi, Tamil,
