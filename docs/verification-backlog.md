@@ -16,9 +16,9 @@ The order below is a **verification workflow, not a ranking** of the resources. 
 | Resources | 1085 |
 | Verified (signed off by a maintainer) | 0 |
 | Evidence complete, awaiting maintainer sign-off | 4 |
-| Partially verified (free status confirmed, checklist incomplete) | 129 |
+| Partially verified (free status confirmed, checklist incomplete) | 138 |
 | Checks started, free status not yet confirmed | 5 |
-| Not verified yet (no checks recorded) | 947 |
+| Not verified yet (no checks recorded) | 938 |
 
 No maintainer is registered in `src/config/maintainers.ts` yet, so nothing can be signed off. A maintainer adds their own handle there first.
 
@@ -80,7 +80,9 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Bridge Base Online](#bridge-base-online-bridge-base-online) `bridge-base-online` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Candy Box 2](#candy-box-2-candy-box-2) `candy-box-2` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Castro](#castro-castro-podcasts) `castro-podcasts` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [ChatGPT](#chatgpt-chatgpt) `chatgpt` | Partially verified | 3/10 | Official URL, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information (unresolved) | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Pricing information from an official source |
 | [ChuChu TV](#chuchu-tv-chuchu-tv) `chuchu-tv` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Claude](#claude-claude) `claude` | Partially verified | 7/10 | Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 3 remaining required check(s) |
 | [Cleveland Museum of Art Open Access](#cleveland-museum-of-art-open-access-cleveland-museum-open-access) `cleveland-museum-open-access` | Partially verified | 5/10 | Free-tier limits, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Cloudflare Pages](#cloudflare-pages-cloudflare-pages) `cloudflare-pages` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
 | [Comic Book Plus](#comic-book-plus-comic-book-plus) `comic-book-plus` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -107,12 +109,16 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Friday Night Funkin'](#friday-night-funkin-friday-night-funkin) `friday-night-funkin` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [GeoGuessr](#geoguessr-geoguessr) `geoguessr` | Partially verified | 4/10 | Account requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Getty Open Content](#getty-open-content-getty-open-content) `getty-open-content` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [GitHub Copilot Free](#github-copilot-free-github-copilot-free) `github-copilot-free` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [GlobalComix](#globalcomix-globalcomix) `globalcomix` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [GNOME Podcasts](#gnome-podcasts-gnome-podcasts) `gnome-podcasts` | Unverified | 2/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Goldmines TV channels](#goldmines-tv-channels-goldmines-tv) `goldmines-tv` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Google AI Studio](#google-ai-studio-google-ai-studio) `google-ai-studio` | Partially verified | 3/10 | Official URL, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Google Gemini](#google-gemini-google-gemini) `google-gemini` | Partially verified | 6/10 | Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
 | [gPodder](#gpodder-gpodder) `gpodder` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Green Gold TV (Chhota Bheem)](#green-gold-tv-chhota-bheem-green-gold-tv-youtube) `green-gold-tv-youtube` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Green Gold TV on Samsung TV Plus](#green-gold-tv-on-samsung-tv-plus-green-gold-tv-samsung-fast) `green-gold-tv-samsung-fast` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Groq](#groq-groq) `groq` | Partially verified | 3/10 | Free-tier limits (unresolved), Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Free-tier limits from an official source |
 | [Haystack News](#haystack-news-haystack-news) `haystack-news` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Hedgewars](#hedgewars-hedgewars) `hedgewars` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Hextris](#hextris-hextris) `hextris` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -133,6 +139,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Luanti (formerly Minetest)](#luanti-formerly-minetest-luanti) `luanti` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Medito](#medito-medito) `medito` | Partially verified | 5/10 | Free-tier limits, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Mindustry](#mindustry-mindustry) `mindustry` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information (unresolved) | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Pricing information from an official source |
+| [Mistral Le Chat](#mistral-le-chat-mistral-le-chat) `mistral-le-chat` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Monkeytype](#monkeytype-monkeytype) `monkeytype` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Muse India (YouTube)](#muse-india-youtube-muse-india-anime) `muse-india-anime` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [National Film Board of Canada](#national-film-board-of-canada-nfb-films) `nfb-films` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -146,6 +153,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [OpenMW](#openmw-openmw) `openmw` | Partially verified | 3/10 | Official URL (unresolved), Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Official URL, Platform availability from an official source |
 | [OpenRA](#openra-openra) `openra` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [OpenRCT2](#openrct2-openrct2) `openrct2` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [OpenRouter](#openrouter-openrouter) `openrouter` | Partially verified | 3/10 | Free-tier limits (unresolved), Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Free-tier limits from an official source |
 | [OpenTTD](#openttd-openttd) `openttd` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Overcast](#overcast-overcast) `overcast` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Path of Exile](#path-of-exile-path-of-exile) `path-of-exile` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -175,6 +183,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Stirling PDF](#stirling-pdf-stirling-pdf) `stirling-pdf` | Unverified | 2/10 | Free status (unresolved), Free-tier limits, Account requirement, Credit-card requirement, Commercial use (unresolved), Personal use, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Settle Free status, Commercial use from an official source |
 | [STIRR](#stirr-stirr-free-tv) `stirr-free-tv` | Partially verified | 3/10 | Official URL, Free-tier limits, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Stunt Rally](#stunt-rally-stunt-rally) `stunt-rally` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Supermaven](#supermaven-supermaven) `supermaven` | Partially verified | 5/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [SuperTux](#supertux-supertux) `supertux` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [SuperTuxKart](#supertuxkart-supertuxkart) `supertuxkart` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [TETR.IO](#tetrio-tetr-io) `tetr-io` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
@@ -738,8 +747,6 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | Calendly `calendly` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Canva `canva` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Carrd `carrd` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| ChatGPT `chatgpt` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| Claude `claude` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Clerk `clerk` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Clockify `clockify` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Cloudflare `cloudflare` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -765,15 +772,11 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | GitHub `github` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GitHub Actions `github-actions` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | GitHub Codespaces `github-codespaces` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| GitHub Copilot Free `github-copilot-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Glitch `glitch` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| Google AI Studio `google-ai-studio` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Google Colab `google-colab` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Google Docs, Sheets and Slides `google-docs-editors` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Google Earth `google-earth` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Google Earth Engine `google-earth-engine` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| Google Gemini `google-gemini` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| Groq `groq` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Haikei `haikei` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Healthchecks.io `healthchecks-io` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Highlight.io `highlight-io` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -803,7 +806,6 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | ntfy `ntfy` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Onshape Free Plan `onshape-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | OpenAQ API `openaq` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| OpenRouter `openrouter` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | openrouteservice `openrouteservice` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | OrbStack `orbstack` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | ORCID Public API `orcid-public-api` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -824,7 +826,6 @@ Free tiers, trials, limited and personal-use offerings change with the vendor's 
 | Shodan Free Tier `shodan-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Sketchfab Free 3D Models `sketchfab-free` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | StackBlitz `stackblitz` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| Supermaven `supermaven` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Tailscale `tailscale` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Tally `tally` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | Tigris Data `tigris-data` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -1012,7 +1013,6 @@ Everything else not yet verified.
 | Measurement Lab (M-Lab) `measurement-lab` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MedlinePlus `medlineplus` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MET Norway Weather API `met-norway-api` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
-| Mistral Le Chat `mistral-le-chat` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MIT App Inventor `mit-app-inventor` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MIT OpenCourseWare `mit-opencourseware` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
 | MITRE ATT&CK `mitre-attack` | Unverified | 0/10 | All | never | — | Start a verification pass (begin with Free status) |
@@ -1540,6 +1540,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The site calls Castro the iPhone podcast player, with CarPlay and Apple Watch support. | [Home page: free app and Castro Plus features and price](https://castro.fm/) | 2026-10-11 |
 
+### ChatGPT `chatgpt`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Pricing information | ⚠️ Could not confirm | chatgpt.com/pricing returned HTTP 403 to the research fetch, so paid prices were not read. | [Official pricing page: attempted, returned HTTP 403 to the research fetch; nothing confirmed from it](https://chatgpt.com/pricing) | 2026-10-11 |
+| Official URL | ⬜ Not checked | _Does the link go to the provider's own site, and does it load?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Free status | ✅ Confirmed | 'ChatGPT is free to use.' Free tier users have chat, tools and GPTs. | [OpenAI Help Center, ChatGPT Free Tier FAQ: free to use; capabilities; rate-limit rules; ads; GPT creation](https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | 'Free users have unlimited everyday text chats, subject to abuse-prevention safeguards'; uploads, image generation, voice and data analysis have separate limits. | [OpenAI Help Center, ChatGPT Free Tier FAQ: free to use; capabilities; rate-limit rules; ads; GPT creation](https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'Ads may appear in the Free tier in certain countries'; GPT creation is not available on personal accounts. | [OpenAI Help Center, ChatGPT Free Tier FAQ: free to use; capabilities; rate-limit rules; ads; GPT creation](https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### ChuChu TV `chuchu-tv`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1558,6 +1577,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | YouTube Help says ads before and during videos are removed only by paid YouTube Premium. | [YouTube Help: Premium removes ads shown before and during videos, so free viewing is ad-supported](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Claude `claude`
+
+**Partially verified** · shown on the site as Partially verified · 7/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | claude.com is Anthropic's product site; 'Try Claude' links to claude.ai. | [Official pricing page: Free plan $0 'Free for everyone', feature comparison table, payment options and usage-limit FAQ](https://claude.com/pricing) | 2026-10-11 |
+| Free status | ✅ Confirmed | Free plan: '$0 — Free for everyone'. | [Official pricing page: Free plan $0 'Free for everyone', feature comparison table, payment options and usage-limit FAQ](https://claude.com/pricing) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | FAQ: limits reset on a rolling five-hour window with no fixed message count; Projects 'Up to 5' on Free; Opus 'No' on Free. | [Official pricing page: Free plan $0 'Free for everyone', feature comparison table, payment options and usage-limit FAQ](https://claude.com/pricing) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | The Free plan button goes to claude.ai/login?plan=free. | [Official pricing page: Free plan $0 'Free for everyone', feature comparison table, payment options and usage-limit FAQ](https://claude.com/pricing) | 2026-10-11 |
+| Credit-card requirement | ✅ Confirmed | Payment options table lists credit card as 'n/a' for the Free plan. | [Official pricing page: Free plan $0 'Free for everyone', feature comparison table, payment options and usage-limit FAQ](https://claude.com/pricing) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Claude Code, Claude Science, Research, Chrome and Microsoft 365 are 'No' on Free; model training is 'Opt-out'. | [Official pricing page: Free plan $0 'Free for everyone', feature comparison table, payment options and usage-limit FAQ](https://claude.com/pricing) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Pro is $17/month billed annually or $20 monthly; Max from $100/month. | [Official pricing page: Free plan $0 'Free for everyone', feature comparison table, payment options and usage-limit FAQ](https://claude.com/pricing) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | 'Chat on web, iOS, Android and Desktop' is included on Free. | [Official pricing page: Free plan $0 'Free for everyone', feature comparison table, payment options and usage-limit FAQ](https://claude.com/pricing) | 2026-10-11 |
 
 ### Cleveland Museum of Art Open Access `cleveland-museum-open-access`
 
@@ -2034,6 +2072,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
+### GitHub Copilot Free `github-copilot-free`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | github.com/features/copilot/plans is GitHub's own plan page. | [Official Copilot plans page: Free $0, feature table per plan, FAQ on Free eligibility, limits and data use](https://github.com/features/copilot/plans) | 2026-10-11 |
+| Free status | ✅ Confirmed | The Free plan is listed at $0; FAQ: 'GitHub Copilot Free is a new free pricing tier with limited functionality for individual developers'. | [Official Copilot plans page: Free $0, feature table per plan, FAQ on Free eligibility, limits and data use](https://github.com/features/copilot/plans) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Inline suggestions: 'Free plan 2,000 per month'. FAQ: 'limited to 2000 completions and 50 chat requests'. | [Official Copilot plans page: Free $0, feature table per plan, FAQ on Free eligibility, limits and data use](https://github.com/features/copilot/plans) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Code review, cloud agent and buying extra credits are 'Not included' on Free; Business/Enterprise seat holders are not eligible; individual-plan data may train models unless opted out. | [Official Copilot plans page: Free $0, feature table per plan, FAQ on Free eligibility, limits and data use](https://github.com/features/copilot/plans) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Pro $10/month, Pro+ $39/month, Max $100/month. | [Official Copilot plans page: Free $0, feature table per plan, FAQ on Free eligibility, limits and data use](https://github.com/features/copilot/plans) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### GlobalComix `globalcomix`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2069,6 +2126,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Free status | ✅ Confirmed | 'Goldmines, Goldmines Bollywood, and Goldmines Movies are Free to Air Satellite Channels and are available on DD Free Dish.' | [Goldmines Channels page: three Hindi movie channels; 'Free to Air Satellite Channels ... available on DD Free Dish'; DTH and MSO distribution list; dubbed South Indian films](https://www.goldmines.co.in/channels.html) | 2026-10-11 |
 | Account requirement | ✅ Confirmed | Free-to-air satellite reception needs no subscription or sign-in. | [Goldmines Channels page: three Hindi movie channels; 'Free to Air Satellite Channels ... available on DD Free Dish'; DTH and MSO distribution list; dubbed South Indian films](https://www.goldmines.co.in/channels.html) | 2026-10-11 |
 | Major limitations | ✅ Confirmed | Distribution is via DD Free Dish, DTH services and cable operators, i.e. a TV connection is needed. | [Goldmines Channels page: three Hindi movie channels; 'Free to Air Satellite Channels ... available on DD Free Dish'; DTH and MSO distribution list; dubbed South Indian films](https://www.goldmines.co.in/channels.html) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Google AI Studio `google-ai-studio`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Official URL | ⬜ Not checked | _Does the link go to the provider's own site, and does it load?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Free status | ✅ Confirmed | Gemini Developer API: a tier at 'no cost' for developers and small projects, including Google AI Studio access. | [Official Google AI plans page (Developer tab): Gemini Developer API no-cost tier versus pay-as-you-go tier](https://gemini.google/subscriptions/) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | No-cost tier: 'limited access to some models', input and output tokens at no cost. | [Official Google AI plans page (Developer tab): Gemini Developer API no-cost tier versus pay-as-you-go tier](https://gemini.google/subscriptions/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | No-cost tier: 'content used to improve our products'; paid tier adds higher rate limits, context caching, Batch API and the most advanced models. | [Official Google AI plans page (Developer tab): Gemini Developer API no-cost tier versus pay-as-you-go tier](https://gemini.google/subscriptions/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Google Gemini `google-gemini`
+
+**Partially verified** · shown on the site as Partially verified · 6/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | gemini.google is Google's official Gemini site. | [Official Google AI plans page (India): Free ₹0/month with a Google Account and its feature list; paid plans in INR; usage-limit footnote](https://gemini.google/subscriptions/) | 2026-10-11 |
+| Free status | ✅ Confirmed | Free plan: '₹0 INR / month' with a Google Account. | [Official Google AI plans page (India): Free ₹0/month with a Google Account and its feature list; paid plans in INR; usage-limit footnote](https://gemini.google/subscriptions/) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Footnote 2: compute-based usage limits that refresh every 5 hours until a weekly limit; free plan lists Flash-Lite access. | [Official Google AI plans page (India): Free ₹0/month with a Google Account and its feature list; paid plans in INR; usage-limit footnote](https://gemini.google/subscriptions/) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | The free plan is offered 'with a Google account'. | [Official Google AI plans page (India): Free ₹0/month with a Google Account and its feature list; paid plans in INR; usage-limit footnote](https://gemini.google/subscriptions/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Paid plans add Pro-model access, 2x–4x the free usage and video generation. | [Official Google AI plans page (India): Free ₹0/month with a Google Account and its feature list; paid plans in INR; usage-limit footnote](https://gemini.google/subscriptions/) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Google AI Plus ₹399/month, Google AI Pro ₹1,950/month, Ultra from ₹6,500/month (India). | [Official Google AI plans page (India): Free ₹0/month with a Google Account and its feature list; paid plans in INR; usage-limit footnote](https://gemini.google/subscriptions/) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
@@ -2126,6 +2221,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Official URL | ✅ Confirmed | The announcement is on greengold.tv, the studio's own site. | [Green Gold news: Green Gold TV FAST channel on Samsung TV Plus, across India in Hindi, no subscriptions, logins or downloads; show list and schedule](https://www.greengold.tv/news/green-gold-strikes-fast-gold-with-new-samsung-tv-plus-channel/) | 2026-10-11 |
 | Free status | ✅ Confirmed | It describes a free ad-supported streaming television channel 'without requiring subscriptions, logins or extra downloads'. | [Green Gold news: Green Gold TV FAST channel on Samsung TV Plus, across India in Hindi, no subscriptions, logins or downloads; show list and schedule](https://www.greengold.tv/news/green-gold-strikes-fast-gold-with-new-samsung-tv-plus-channel/) | 2026-10-11 |
 | Major limitations | ✅ Confirmed | The channel is ad-supported and on Samsung TV Plus only, within its Kids category. | [Green Gold news: Green Gold TV FAST channel on Samsung TV Plus, across India in Hindi, no subscriptions, logins or downloads; show list and schedule](https://www.greengold.tv/news/green-gold-strikes-fast-gold-with-new-samsung-tv-plus-channel/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Groq `groq`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⚠️ Could not confirm | The table switches between plans and the fetched copy did not show which plan its numbers belonged to, so no figures were recorded. | [Groq docs, Rate Limits: Free Plan and Developer Plan limit tables, how limits are measured, upgrade note](https://console.groq.com/docs/rate-limits) | 2026-10-11 |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | console.groq.com is Groq's developer console and documentation. | [Groq docs, Rate Limits: Free Plan and Developer Plan limit tables, how limits are measured, upgrade note](https://console.groq.com/docs/rate-limits) | 2026-10-11 |
+| Free status | ✅ Confirmed | The page has a 'Free Plan Limits' table alongside 'Developer Plan Limits'. | [Groq docs, Rate Limits: Free Plan and Developer Plan limit tables, how limits are measured, upgrade note](https://console.groq.com/docs/rate-limits) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | 'Rate limits apply at the organization level'; 'Upgrade to Developer plan to access higher limits, Batch and Flex processing'. | [Groq docs, Rate Limits: Free Plan and Developer Plan limit tables, how limits are measured, upgrade note](https://console.groq.com/docs/rate-limits) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
@@ -2509,6 +2623,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Platform availability *(optional)* | ✅ Confirmed | The README gives desktop build steps for Windows and Linux/macOS plus Android; the site links Google Play, F-Droid and the App Store. | [README: automatic builds per commit, desktop/server/Android build instructions](https://raw.githubusercontent.com/Anuken/Mindustry/master/README.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The full source is public in the Anuken/Mindustry repository under GPL-3.0. | [GitHub licence detection for the repository: GPL-3.0](https://api.github.com/repos/Anuken/Mindustry) | 2026-10-11 |
 
+### Mistral Le Chat `mistral-le-chat`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Major limitations | ⬜ Not checked | _Are the significant limitations documented, including inconvenient ones?_ | — | — |
+| Official URL | ✅ Confirmed | The Free plan's 'Start now' links to chat.mistral.ai, matching the listing. | [Official Mistral pricing page: Free plan feature list, comparison table, FAQ 'Does Mistral have a free plan?'; iOS and Android app links](https://mistral.ai/pricing) | 2026-10-11 |
+| Free status | ✅ Confirmed | FAQ: 'Yes, Mistral's Free plan provides limited access to Vibe' — a free tier, not unrestricted free use. | [Official Mistral pricing page: Free plan feature list, comparison table, FAQ 'Does Mistral have a free plan?'; iOS and Android app links](https://mistral.ai/pricing) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | Free: 'Limited messages and web searches', 'Limited coding sessions', 'Basic image generation'; library 'Limited'; task scheduling 'Up to 5'. | [Official Mistral pricing page: Free plan feature list, comparison table, FAQ 'Does Mistral have a free plan?'; iOS and Android app links](https://mistral.ai/pricing) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Pro $14.99/month; Team $24.99/user/month; students $5.99/month. | [Official Mistral pricing page: Free plan feature list, comparison table, FAQ 'Does Mistral have a free plan?'; iOS and Android app links](https://mistral.ai/pricing) | 2026-10-11 |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+| Platform availability *(optional)* | ✅ Confirmed | 'Access on web and mobile'; App Store and Google Play links in the footer. | [Official Mistral pricing page: Free plan feature list, comparison table, FAQ 'Does Mistral have a free plan?'; iOS and Android app links](https://mistral.ai/pricing) | 2026-10-11 |
+
 ### Monkeytype `monkeytype`
 
 **Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2755,6 +2888,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The README says OpenRCT2 requires original files of RollerCoaster Tycoon 2, which can be bought on Steam or GOG. | [README: original RCT2 files required (Steam/GOG), downloads and launcher, GPL v3 or later](https://raw.githubusercontent.com/OpenRCT2/OpenRCT2/develop/readme.md) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The official site lists downloads for Windows, macOS, Linux and Android. | [Official site: downloads for Windows, macOS, Linux and Android](https://openrct2.io/) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The README describes OpenRCT2 as an open-source re-implementation of RollerCoaster Tycoon 2 under the GPL. | [README: original RCT2 files required (Steam/GOG), downloads and launcher, GPL v3 or later](https://raw.githubusercontent.com/OpenRCT2/OpenRCT2/develop/readme.md) | 2026-10-11 |
+
+### OpenRouter `openrouter`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⚠️ Could not confirm | The page's limit table rendered without its numbers in the fetch, so the exact per-minute and per-day figures were not confirmed. | [OpenRouter docs, Limits: free-model request caps by credits purchased, credit and budget limits](https://openrouter.ai/docs/api/reference/limits) | 2026-10-11 |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | OpenRouter's own documentation. | [OpenRouter docs, Limits: free-model request caps by credits purchased, credit and budget limits](https://openrouter.ai/docs/api/reference/limits) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'If you're using a free model variant … the following limits apply', with requests-per-minute and per-day caps: free variants exist. | [OpenRouter docs, Limits: free-model request caps by credits purchased, credit and budget limits](https://openrouter.ai/docs/api/reference/limits) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Higher daily cap after purchasing credits; 'If your account has a negative credit balance, you may see errors, including for free models.' | [OpenRouter docs, Limits: free-model request caps by credits purchased, credit and budget limits](https://openrouter.ai/docs/api/reference/limits) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### OpenTTD `openttd`
 
@@ -3306,6 +3458,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Pricing information | ✅ Confirmed | The pricing page shows the Pro plan removing pausing ('Never'), adding automatic backups and email support. That matches the recorded free/paid boundary. | [Pricing page: Free plan with 500 MB database per project, pausing after 1 week of inactivity, no automatic backups or PITR, community support only](https://supabase.com/pricing) | 2026-09-26 |
 | Platform availability *(optional)* | ✅ Confirmed | Used through the browser-based dashboard (hosted), and the self-hosting guide documents running it on your own infrastructure — the two platforms recorded. | [Self-hosting guide: Supabase can be run on your own infrastructure with Docker](https://supabase.com/docs/guides/self-hosting) | 2026-09-26 |
 | Open-source status *(optional)* | ✅ Confirmed | The official repository is Apache-2.0 licensed, and the self-hosting guide documents running the stack yourself. | [Self-hosting guide: Supabase can be run on your own infrastructure with Docker](https://supabase.com/docs/guides/self-hosting) | 2026-09-26 |
+
+### Supermaven `supermaven`
+
+**Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Official URL | ✅ Confirmed | supermaven.com is the product's own site. | [Official homepage with Plans & Pricing: Free tier $0/month with feature list (Pro-only items marked), Pro $10/month with 30-day trial; editors supported](https://supermaven.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Free Tier — $0/month — The fastest copilot, completely free.' | [Official homepage with Plans & Pricing: Free tier $0/month with feature list (Pro-only items marked), Pro $10/month with 30-day trial; editors supported](https://supermaven.com/) | 2026-10-11 |
+| Free-tier limits | ✅ Confirmed | The free list marks '1 million token context window', 'Largest, most intelligent model', 'Adapts to your coding style' and chat credits as 'Pro only'. | [Official homepage with Plans & Pricing: Free tier $0/month with feature list (Pro-only items marked), Pro $10/month with 30-day trial; editors supported](https://supermaven.com/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | '7-day data retention limit' is listed on every plan. | [Official homepage with Plans & Pricing: Free tier $0/month with feature list (Pro-only items marked), Pro $10/month with 30-day trial; editors supported](https://supermaven.com/) | 2026-10-11 |
+| Pricing information | ✅ Confirmed | Pro $10/month with a 30-day free trial; Team $10/user/month. | [Official homepage with Plans & Pricing: Free tier $0/month with feature list (Pro-only items marked), Pro $10/month with 30-day trial; editors supported](https://supermaven.com/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### SuperTux `supertux`
 

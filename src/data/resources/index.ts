@@ -17,6 +17,7 @@ import { educationResources } from "./education";
 import { entertainmentResources } from "./entertainment";
 import { lifeResources } from "./life";
 import { productivityResources } from "./productivity";
+import { applyResearch, researchOverlays } from "./research";
 import { studentResources } from "./students";
 import { findDataProblems } from "./validate";
 
@@ -27,7 +28,7 @@ import { findDataProblems } from "./validate";
  * depends on the file boundaries. Consumers should not import this directly —
  * go through `lib/repository` so the storage layer stays swappable.
  */
-const allSeedResources: Resource[] = [
+const compiledResources: Resource[] = [
   ...creativeResources,
   ...developmentResources,
   ...educationResources,
@@ -47,6 +48,9 @@ const allSeedResources: Resource[] = [
   ...batch010Resources,
   ...entertainmentResources,
 ];
+
+/** Dated research passes over compiled listings (see `research/`), applied before validation. */
+const allSeedResources: Resource[] = applyResearch(compiledResources, researchOverlays);
 
 /**
  * Validates the library at module load and throws on any problem, so `next build`
