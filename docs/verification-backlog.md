@@ -13,10 +13,10 @@ The order below is a **verification workflow, not a ranking** of the resources. 
 
 | | Count |
 | --- | --- |
-| Resources | 1073 |
+| Resources | 1080 |
 | Verified (signed off by a maintainer) | 0 |
 | Evidence complete, awaiting maintainer sign-off | 4 |
-| Partially verified (free status confirmed, checklist incomplete) | 117 |
+| Partially verified (free status confirmed, checklist incomplete) | 124 |
 | Checks started, free status not yet confirmed | 5 |
 | Not verified yet (no checks recorded) | 947 |
 
@@ -79,6 +79,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Bridge Base Online](#bridge-base-online-bridge-base-online) `bridge-base-online` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Candy Box 2](#candy-box-2-candy-box-2) `candy-box-2` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Castro](#castro-castro-podcasts) `castro-podcasts` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [ChuChu TV](#chuchu-tv-chuchu-tv) `chuchu-tv` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Cleveland Museum of Art Open Access](#cleveland-museum-of-art-open-access-cleveland-museum-open-access) `cleveland-museum-open-access` | Partially verified | 5/10 | Free-tier limits, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Cloudflare Pages](#cloudflare-pages-cloudflare-pages) `cloudflare-pages` | Unverified | 1/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-09-26 | agent-assisted pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
 | [Comic Book Plus](#comic-book-plus-comic-book-plus) `comic-book-plus` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -91,6 +92,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [DD Free Dish](#dd-free-dish-dd-free-dish) `dd-free-dish` | Partially verified | 1/10 | Official URL, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 9 remaining required check(s) |
 | [DD National (Doordarshan)](#dd-national-doordarshan-dd-national-doordarshan) `dd-national-doordarshan` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [DevilutionX](#devilutionx-devilutionx) `devilutionx` | Partially verified | 6/10 | Free-tier limits, Account requirement, Credit-card requirement, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 4 remaining required check(s) |
+| [Dice Media](#dice-media-dice-media) `dice-media` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Doki Doki Literature Club!](#doki-doki-literature-club-doki-doki-literature-club) `doki-doki-literature-club` | Partially verified | 4/10 | Free-tier limits, Account requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [DW (Deutsche Welle) Live TV](#dw-deutsche-welle-live-tv-dw-live-tv) `dw-live-tv` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Endless Sky](#endless-sky-endless-sky) `endless-sky` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -106,12 +108,14 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Getty Open Content](#getty-open-content-getty-open-content) `getty-open-content` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [GlobalComix](#globalcomix-globalcomix) `globalcomix` | Partially verified | 4/10 | Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [GNOME Podcasts](#gnome-podcasts-gnome-podcasts) `gnome-podcasts` | Unverified | 2/10 | Free status, Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
+| [Goldmines TV channels](#goldmines-tv-channels-goldmines-tv) `goldmines-tv` | Partially verified | 4/10 | Free-tier limits, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [gPodder](#gpodder-gpodder) `gpodder` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Green Gold TV (Chhota Bheem)](#green-gold-tv-chhota-bheem-green-gold-tv-youtube) `green-gold-tv-youtube` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Green Gold TV on Samsung TV Plus](#green-gold-tv-on-samsung-tv-plus-green-gold-tv-samsung-fast) `green-gold-tv-samsung-fast` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Haystack News](#haystack-news-haystack-news) `haystack-news` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Hedgewars](#hedgewars-hedgewars) `hedgewars` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Hextris](#hextris-hextris) `hextris` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [Infobells](#infobells-infobells-rhymes) `infobells-rhymes` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [itch.io browser games](#itchio-browser-games-itch-io-browser-games) `itch-io-browser-games` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [itch.io free games](#itchio-free-games-itch-io-free-games) `itch-io-free-games` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [itch.io game jams](#itchio-game-jams-itch-io-game-jams) `itch-io-game-jams` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -119,6 +123,7 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Kasts](#kasts-kasts) `kasts` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Komga](#komga-komga) `komga` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [Kongregate](#kongregate-kongregate) `kongregate` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
+| [Lahari Music](#lahari-music-lahari-music) `lahari-music` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
 | [Libby](#libby-libby-library-app) `libby-library-app` | Partially verified | 5/10 | Free-tier limits, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Library of Congress Free to Use and Reuse](#library-of-congress-free-to-use-and-reuse-loc-free-to-use) `loc-free-to-use` | Partially verified | 2/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 8 remaining required check(s) |
 | [Lishogi](#lishogi-lishogi) `lishogi` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
@@ -128,6 +133,8 @@ A pass has recorded sources. Finishing it is cheaper than starting a new one.
 | [Medito](#medito-medito) `medito` | Partially verified | 5/10 | Free-tier limits, Commercial use, Personal use, Major limitations, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 5 remaining required check(s) |
 | [Mindustry](#mindustry-mindustry) `mindustry` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Major limitations, Pricing information (unresolved) | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Settle Pricing information from an official source |
 | [Monkeytype](#monkeytype-monkeytype) `monkeytype` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
+| [Muse India (YouTube)](#muse-india-youtube-muse-india-anime) `muse-india-anime` | Partially verified | 3/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 7 remaining required check(s) |
+| [National Film Board of Canada](#national-film-board-of-canada-nfb-films) `nfb-films` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [National Gallery of Art Open Access](#national-gallery-of-art-open-access-national-gallery-of-art-open-access) `national-gallery-of-art-open-access` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [NHK WORLD-JAPAN](#nhk-world-japan-nhk-world-japan-tv) `nhk-world-japan-tv` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Personal use, Licence, Pricing information | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
 | [NPR Podcasts & Shows](#npr-podcasts--shows-npr-podcasts) `npr-podcasts` | Partially verified | 4/10 | Free-tier limits, Account requirement, Credit-card requirement, Commercial use, Personal use, Licence | 2026-10-11 | agent-assisted research pass — awaiting maintainer review | Confirm 6 remaining required check(s) |
@@ -1509,6 +1516,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The site calls Castro the iPhone podcast player, with CarPlay and Apple Watch support. | [Home page: free app and Castro Plus features and price](https://castro.fm/) | 2026-10-11 |
 
+### ChuChu TV `chuchu-tv`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | chuchutv.com is the studio's own site; it links each official YouTube channel. | [ChuChu TV homepage: languages available with links to official YouTube channels — English, Spanish, Portuguese, French, Tamil, Hindi, Bangla, Telugu, Kannada, Hindi ISL](https://chuchutv.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | The studio publishes its rhymes and stories on public YouTube channels, which are free to watch. | [ChuChu TV homepage: languages available with links to official YouTube channels — English, Spanish, Portuguese, French, Tamil, Hindi, Bangla, Telugu, Kannada, Hindi ISL](https://chuchutv.com/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | YouTube Help says ads before and during videos are removed only by paid YouTube Premium. | [YouTube Help: Premium removes ads shown before and during videos, so free viewing is ad-supported](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### Cleveland Museum of Art Open Access `cleveland-museum-open-access`
 
 **Partially verified** · shown on the site as Partially verified · 5/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -1717,6 +1743,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The README says you need the original game's data (buy Diablo on GOG or Battle.net) or the shareware spawn.mpq for the shareware portion. | [README: data requirement (GOG/Battle.net or shareware spawn.mpq), releases, Sustainable Use License, Blizzard notice](https://raw.githubusercontent.com/diasurgical/DevilutionX/master/README.md) | 2026-10-11 |
 | Platform availability *(optional)* | ✅ Confirmed | The installing guide has sections for Android, Windows, Linux, macOS, iOS & iPadOS, Switch, Xbox, PlayStation 4 and Vita. | [Installing guide: Android, Windows, Linux, macOS, iOS, Switch, Xbox, PlayStation sections](https://raw.githubusercontent.com/diasurgical/DevilutionX/master/docs/installing.md) | 2026-10-11 |
 | Open-source status *(optional)* | ✅ Confirmed | The licence limits use to internal business, non-commercial or personal purposes, so it is source-available rather than open source. | [LICENSE.md: Sustainable Use License terms (non-commercial/personal use)](https://raw.githubusercontent.com/diasurgical/DevilutionX/master/LICENSE.md) | 2026-10-11 |
+
+### Dice Media `dice-media`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | Pocket Aces, Dice Media's parent, links the Dice YouTube channel from its own site. | [Pocket Aces site: Dice Media premium storytelling linked to its YouTube channel; series list and awards; content also licensed to OTT; part of Saregama](https://pocketaces.in/) | 2026-10-11 |
+| Free status | ✅ Confirmed | Dice Media publishes its series on its YouTube channel, free to watch. | [Pocket Aces site: Dice Media premium storytelling linked to its YouTube channel; series list and awards; content also licensed to OTT; part of Saregama](https://pocketaces.in/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Pocket Aces says it also licenses the content to OTT apps, TV and in-flight. | [Pocket Aces site: Dice Media premium storytelling linked to its YouTube channel; series list and awards; content also licensed to OTT; part of Saregama](https://pocketaces.in/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### Doki Doki Literature Club! `doki-doki-literature-club`
 
@@ -1984,6 +2029,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 | Platform availability *(optional)* | ✅ Confirmed | The FAQ says comics can be read in any web browser, and points to iOS and Android apps. | [FAQ: free account; many comics free; Gold $6.99/month or $69/year for paid pages; browser and iOS/Android apps; offline reading Gold-only; AI comics policy](https://globalcomix.com/support/faq) | 2026-10-11 |
 
+### Goldmines TV channels `goldmines-tv`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | goldmines.co.in is Goldmines Telefilms' own site. | [Goldmines Channels page: three Hindi movie channels; 'Free to Air Satellite Channels ... available on DD Free Dish'; DTH and MSO distribution list; dubbed South Indian films](https://www.goldmines.co.in/channels.html) | 2026-10-11 |
+| Free status | ✅ Confirmed | 'Goldmines, Goldmines Bollywood, and Goldmines Movies are Free to Air Satellite Channels and are available on DD Free Dish.' | [Goldmines Channels page: three Hindi movie channels; 'Free to Air Satellite Channels ... available on DD Free Dish'; DTH and MSO distribution list; dubbed South Indian films](https://www.goldmines.co.in/channels.html) | 2026-10-11 |
+| Account requirement | ✅ Confirmed | Free-to-air satellite reception needs no subscription or sign-in. | [Goldmines Channels page: three Hindi movie channels; 'Free to Air Satellite Channels ... available on DD Free Dish'; DTH and MSO distribution list; dubbed South Indian films](https://www.goldmines.co.in/channels.html) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Distribution is via DD Free Dish, DTH services and cable operators, i.e. a TV connection is needed. | [Goldmines Channels page: three Hindi movie channels; 'Free to Air Satellite Channels ... available on DD Free Dish'; DTH and MSO distribution list; dubbed South Indian films](https://www.goldmines.co.in/channels.html) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
 ### gPodder `gpodder`
 
 **Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
@@ -2097,6 +2161,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Licence | ✅ Confirmed | The README states it may be redistributed and modified under the GNU GPL as published by the FSF, version 3 or any later version. | [Official README: play links, authors, GPL-3.0-or-later licence](https://raw.githubusercontent.com/Hextris/hextris/gh-pages/README.md) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ✅ Confirmed | The README invites issues and pull requests on the public Hextris repository. | [Official README: play links, authors, GPL-3.0-or-later licence](https://raw.githubusercontent.com/Hextris/hextris/gh-pages/README.md) | 2026-10-11 |
+
+### Infobells `infobells-rhymes`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | infobells.com is the company's own site, with its Bengaluru office address. | [Infobells homepage: regional rhymes in Hindi, Telugu, Tamil, Kannada, Bangla, Malayalam; channel milestones (Hindi 1M, Telugu 1M, Tamil 750k, Kannada 100k, English 300k); Bengaluru address](https://www.infobells.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | The site describes its rhymes published on YouTube channels with subscriber counts; YouTube viewing is free. | [Infobells homepage: regional rhymes in Hindi, Telugu, Tamil, Kannada, Bangla, Malayalam; channel milestones (Hindi 1M, Telugu 1M, Tamil 750k, Kannada 100k, English 300k); Bengaluru address](https://www.infobells.com/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | YouTube Help says ads before and during videos are removed only by paid YouTube Premium. | [YouTube Help: Premium removes ads shown before and during videos, so free viewing is ad-supported](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### itch.io browser games `itch-io-browser-games`
 
@@ -2228,6 +2311,25 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
 | Official URL | ✅ Confirmed | The browse page loaded with a 'Browse All Games' catalogue and the footer description of Kongregate as a free online games portal. | [Kongregate browse page: free games, Kreds purchase, about text](https://www.kongregate.com/games) | 2026-10-11 |
 | Free status | ✅ Confirmed | The page says 'Discover thousands of free games across all categories' and offers a 'Purchase Kreds' option for paid currency. | [Kongregate browse page: free games, Kreds purchase, about text](https://www.kongregate.com/games) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### Lahari Music `lahari-music`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | The label's own links page lists youtube.com/@laharimusic_kannada as its Kannada channel. | [Lahari Music official links: YouTube @laharimusicindia (music videos & full albums), @laharimusic_kannada (Kannada hits, lyrics & trailers), licensing contact](https://links.laharimusic.com/) | 2026-10-11 |
+| Free status | ✅ Confirmed | The label publishes music videos and full albums on YouTube, free to watch. | [Lahari Music official links: YouTube @laharimusicindia (music videos & full albums), @laharimusic_kannada (Kannada hits, lyrics & trailers), licensing contact](https://links.laharimusic.com/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | YouTube Help says ads before and during videos are removed only by paid YouTube Premium. | [YouTube Help: Premium removes ads shown before and during videos, so free viewing is ad-supported](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
@@ -2401,6 +2503,44 @@ For a resource with no checks yet, run `npm run worksheet -- <slug>` for a blank
 | Major limitations | ✅ Confirmed | The README feature list includes 'Minimalistic design, with optional advertisements'. | [Official README: features, optional advertisements, donations](https://raw.githubusercontent.com/monkeytypegame/monkeytype/master/README.md) | 2026-10-11 |
 | Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
 | Open-source status *(optional)* | ✅ Confirmed | The README describes the public repository, contribution guide and code of conduct for the site's source. | [Official README: features, optional advertisements, donations](https://raw.githubusercontent.com/monkeytypegame/monkeytype/master/README.md) | 2026-10-11 |
+
+### Muse India (YouTube) `muse-india-anime`
+
+**Partially verified** · shown on the site as Partially verified · 3/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Personal use | ⬜ Not checked | _Do the terms permit personal, non-commercial use?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | The report links the Muse Hindi Dub channel and cites Muse India's own announcement. | [Anime News Network (news report): Muse India YouTube channel since April 2022; new Muse Hindi Dub channel from May 2026; channel URL](https://www.animenewsnetwork.com/news/2026-05-29/muse-asia-launches-new-muse-hindi-dub-youtube-channel/.237931) | 2026-10-11 |
+| Free status | ✅ Confirmed | Muse streams licensed anime on its YouTube channels, which are free to watch. | [Anime News Network (news report): Muse India YouTube channel since April 2022; new Muse Hindi Dub channel from May 2026; channel URL](https://www.animenewsnetwork.com/news/2026-05-29/muse-asia-launches-new-muse-hindi-dub-youtube-channel/.237931) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Free YouTube viewing is ad-supported; Premium removes the ads. | [YouTube Help: ads before and during videos are removed only with paid Premium](https://support.google.com/youtube/answer/6308116?hl=en) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
+
+### National Film Board of Canada `nfb-films`
+
+**Partially verified** · shown on the site as Partially verified · 4/10 required checks confirmed · last checked 2026-10-11 · checked by agent-assisted research pass — awaiting maintainer review
+
+| Check | Result | Evidence | Source | Read on |
+| --- | --- | --- | --- | --- |
+| Free-tier limits | ⬜ Not checked | _What exactly does the free offering cap, and is that recorded?_ | — | — |
+| Account requirement | ⬜ Not checked | _Can it be used without creating an account?_ | — | — |
+| Credit-card requirement | ⬜ Not checked | _Is a payment method required to start using the free offering?_ | — | — |
+| Commercial use | ⬜ Not checked | _Do the terms permit paid or business use of the free offering?_ | — | — |
+| Licence | ⬜ Not checked | _Is the recorded licence the one the provider actually publishes?_ | — | — |
+| Pricing information | ⬜ Not checked | _Where does the free/paid boundary sit, according to the provider?_ | — | — |
+| Official URL | ✅ Confirmed | nfb.ca/about is the National Film Board's own page. | [About the NFB: 14,000+ works, 7,000 free on nfb.ca; stream free or download for personal use; documentaries, animation, series; English and French; profile to rent/download](https://www.nfb.ca/about/) | 2026-10-11 |
+| Free status | ✅ Confirmed | '7,000 of which are available free of charge on nfb.ca' and 'can be streamed free of charge or downloaded for your personal use'. | [About the NFB: 14,000+ works, 7,000 free on nfb.ca; stream free or download for personal use; documentaries, animation, series; English and French; profile to rent/download](https://www.nfb.ca/about/) | 2026-10-11 |
+| Personal use | ✅ Confirmed | Streaming and downloading are offered 'for your personal use'. | [About the NFB: 14,000+ works, 7,000 free on nfb.ca; stream free or download for personal use; documentaries, animation, series; English and French; profile to rent/download](https://www.nfb.ca/about/) | 2026-10-11 |
+| Major limitations | ✅ Confirmed | Public screenings and institutional use go through separate licensing; a profile enables renting and downloading. | [About the NFB: 14,000+ works, 7,000 free on nfb.ca; stream free or download for personal use; documentaries, animation, series; English and French; profile to rent/download](https://www.nfb.ca/about/) | 2026-10-11 |
+| Platform availability *(optional)* | ⬜ Not checked | _Are the listed platforms the ones the provider supports?_ | — | — |
+| Open-source status *(optional)* | ⬜ Not checked | _Is the source genuinely published under an open-source licence?_ | — | — |
 
 ### National Gallery of Art Open Access `national-gallery-of-art-open-access`
 
