@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { plural } from "@/components/ui/count";
 import { formatCount } from "@/lib/utils/format";
 
@@ -40,24 +38,10 @@ export function ResultsToolbar({
   /** The sort select and, below `lg`, the filters button. */
   children: ReactNode;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const toolbar = ref.current;
-    if (!toolbar || typeof ResizeObserver === "undefined") return;
-    const observer = new ResizeObserver(([entry]) => {
-      const height = entry.borderBoxSize?.[0]?.blockSize ?? entry.contentRect.height;
-      toolbar.toggleAttribute("data-wrapped", height > 56);
-    });
-    observer.observe(toolbar);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div
-      ref={ref}
       data-results-toolbar=""
-      className="material-functional sticky top-(--header-h) z-(--z-sticky) -mx-4 flex min-h-12 flex-wrap items-center gap-x-4 gap-y-2 px-4 py-1.5"
+      className="flex min-h-12 flex-wrap items-center gap-x-4 gap-y-2 py-2"
     >
       <p className="mr-auto text-sm text-fg-muted tabular-nums" aria-live="polite">
         <span className="text-fg">{formatCount(total)}</span> {plural(total, "listing", "listings")}

@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Icon } from "@/components/icons";
 import { categoryGroups } from "@/config/categories";
 import { formatCount } from "@/lib/utils/format";
 import { cn } from "@/lib/utils/cn";
@@ -23,6 +24,10 @@ export function CategoryFilterBar({
   onSelectCategory: (categoryId: string) => void;
   disabled?: boolean;
 }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
   // Dynamically compute counts from real resource data for each category group
   const tabs = useMemo<CategoryTab[]>(() => {
     const totalCount = resources.length;
@@ -51,9 +56,111 @@ export function CategoryFilterBar({
     return result;
   }, [resources]);
 
+  const updateScrollState = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 2);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 2);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    updateScrollState();
+
+    const handleScroll = () => {
+      updateScrollState();
+    };
+
+    el.addEventListener("scroll", handleScroll, { passive: true });
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateScrollState();
+    });
+    resizeObserver.observe(el);
+
+    return () => {
+      el.removeEventListener("scroll", handleScroll);
+      resizeObserver.disconnect();
+    };
+  }, [updateScrollState, tabs]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const activeBtn = el.querySelector<HTMLButtonElement>('[aria-pressed="true"]');
+    if (activeBtn) {
+      const containerRect = el.getBoundingClientRect();
+      const btnRect = activeBtn.getBoundingClientRect();
+      if (btnRect.left < containerRect.left + 48 || btnRect.right > containerRect.right - 48) {
+        activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+      }
+    }
+  }, [activeCategoryId]);
+
+  const scrollByDirection = (direction: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const distance = Math.max(200, Math.floor(el.clientWidth * 0.6));
+    el.scrollBy({
+      left: direction === "left" ? -distance : distance,
+      behavior: "smooth",
+    });
+  };
+
+  const maskStyle = useMemo<React.CSSProperties>(() => {
+    if (canScrollLeft && canScrollRight) {
+      return {
+        maskImage:
+          "linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%)",
+      };
+    }
+    if (canScrollLeft) {
+      return {
+        maskImage: "linear-gradient(to right, transparent 0%, black 48px, black 100%)",
+        WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 48px, black 100%)",
+      };
+    }
+    if (canScrollRight) {
+      return {
+        maskImage: "linear-gradient(to right, black 0%, black calc(100% - 48px), transparent 100%)",
+        WebkitMaskImage: "linear-gradient(to right, black 0%, black calc(100% - 48px), transparent 100%)",
+      };
+    }
+    return {};
+  }, [canScrollLeft, canScrollRight]);
+
   return (
-    <nav aria-label="Category filters" className="w-full">
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 pt-1 no-scrollbar scroll-smooth">
+    <nav aria-label="Category filters" className="relative w-full">
+      {/* Subtle left navigation chevron when scrollable left */}
+      {canScrollLeft && (
+        <div className="absolute left-0 top-0 bottom-2 z-10 hidden sm:flex items-center pr-3 pointer-events-none">
+          <button
+            type="button"
+            onClick={() => scrollByDirection("left")}
+            aria-label="Scroll categories left"
+            className="pointer-events-auto flex h-7 w-7 items-center justify-center rounded-md border border-border bg-surface text-fg shadow-2xs transition-colors hover:bg-surface-raised hover:border-border-strong cursor-pointer"
+          >
+            <Icon name="chevron-left" size={14} />
+          </button>
+        </div>
+      )}
+
+      {/* Horizontally scrollable tabs with edge fade mask and hidden scrollbar */}
+      <div
+        ref={scrollRef}
+        onScroll={updateScrollState}
+        style={{
+          ...maskStyle,
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+        className="flex items-center gap-1.5 overflow-x-auto pb-2 pt-1 no-scrollbar scrollbar-none scroll-smooth transition-[mask-image]"
+      >
         {tabs.map((tab) => {
           const isSelected =
             (tab.id === "all" && (!activeCategoryId || activeCategoryId === "all")) ||
@@ -89,6 +196,20 @@ export function CategoryFilterBar({
           );
         })}
       </div>
+
+      {/* Subtle right navigation chevron when scrollable right */}
+      {canScrollRight && (
+        <div className="absolute right-0 top-0 bottom-2 z-10 hidden sm:flex items-center pl-3 pointer-events-none">
+          <button
+            type="button"
+            onClick={() => scrollByDirection("right")}
+            aria-label="Scroll categories right"
+            className="pointer-events-auto flex h-7 w-7 items-center justify-center rounded-md border border-border bg-surface text-fg shadow-2xs transition-colors hover:bg-surface-raised hover:border-border-strong cursor-pointer"
+          >
+            <Icon name="chevron-right" size={14} />
+          </button>
+        </div>
+      )}
     </nav>
   );
 }

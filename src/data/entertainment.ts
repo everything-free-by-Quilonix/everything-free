@@ -699,4 +699,11 @@ export const FREE_ENTERTAINMENT_PORTALS: EntertainmentPortal[] = [
     freeScope: "Historical public domain audio",
     category: "audio",
   },
+  {
+    name: "Vega App",
+    description: "Open-source media streaming and casting application for Android and Desktop with Google Cast, DLNA, and custom plugins.",
+    url: "https://vega.8man.in",
+    freeScope: "Free streaming & casting client (GitHub)",
+    category: "movies",
+  },
 ];

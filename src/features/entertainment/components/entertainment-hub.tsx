@@ -245,6 +245,33 @@ export function EntertainmentHub() {
               </li>
             ))}
           </ul>
+
+          {/* Featured open-source streaming client */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-md border border-border bg-surface p-5">
+            <div>
+              <span className="inline-block text-2xs font-semibold uppercase tracking-wider text-fg-subtle">
+                Featured Open-Source Media Client
+              </span>
+              <h3 className="mt-1 font-display text-base font-semibold text-fg">
+                Vega App — Streaming &amp; Casting for Android, TV and Desktop
+              </h3>
+              <p className="mt-1 max-w-2xl text-xs text-fg-muted">
+                Ad-free streaming client with Google Cast, DLNA, subtitle controls, offline downloading, and community plugin support. Free and source-available on GitHub.
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-2.5">
+              <Link href="/resources/vega-app" className="link-inline text-xs rounded-xs">
+                View in library
+              </Link>
+              <ExternalLink
+                href="https://github.com/vega-org/vega-app"
+                className="inline-flex items-center gap-1.5 rounded-md border border-border-strong bg-surface-raised px-3 py-1.5 text-xs font-semibold text-fg shadow-2xs hover:bg-surface-hover"
+              >
+                <span>GitHub</span>
+                <Icon name="external-link" size={12} />
+              </ExternalLink>
+            </div>
+          </div>
         </div>
       ) : null}
 

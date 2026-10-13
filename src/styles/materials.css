@@ -93,17 +93,6 @@ dialog[data-ef-modal] {
   box-shadow: var(--shadow-overlay);
 }
 
-/* The results toolbar sticks under the header, so anchors and focused records
-   scroll clear of both. A custom property set on a descendant cannot reach html,
-   so the height is declared from the root. When the row wraps the toolbar marks
-   itself and the offset follows: two 40px rows plus the 8px gap. */
-html:has([data-results-toolbar]) {
-  --toolbar-h: 48px;
-}
-
-html:has([data-results-toolbar][data-wrapped]) {
-  --toolbar-h: 88px;
-}
 
 /* The record page's mobile action bar: hidden (and out of the tab order) until
    it is marked visible; while visible the page ends above it. */

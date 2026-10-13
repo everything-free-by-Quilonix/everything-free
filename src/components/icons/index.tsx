@@ -66,6 +66,7 @@ const paths = {
   "arrow-up-right": <path d="M7 17 17 7M8 7h9v9" />,
   "chevron-down": <path d="M6 9l6 6 6-6" />,
   "chevron-up": <path d="M6 15l6-6 6 6" />,
+  "chevron-left": <path d="M15 18l-6-6 6-6" />,
   "chevron-right": <path d="M9 6l6 6-6 6" />,
   "external-link": (
     <>
